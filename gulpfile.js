@@ -247,7 +247,8 @@ gulp.task('build', function() {
 });
 
 gulp.task('gh-pages', function(){
-    exec('git subtree push --prefix dist origin gh-pages', {silent:true}).output;
+    require('shelljs/global');
+    exec('git subtree push --prefix doc origin gh-pages', {silent:true}).output;
 })
 
 gulp.task('default', ['build', 'doc']);
