@@ -9,6 +9,12 @@ var jshint = require('gulp-jshint');
 var fs = require('fs');
 var Mustache = require('mustache');
 var _ = require('lodash');
+var rimraf = require('gulp-rimraf');
+
+gulp.task('clean', function() {
+  return gulp.src(['./dist', './doc', './gen'], { read: false })
+      .pipe(rimraf());
+});
 
 function getDefaultValue(type){
 
@@ -205,7 +211,7 @@ function parseJsonSchema(opts, type){
     return data;
 }
 
-var build = function(env) {
+var buildApi = function(env) {
     return gulp.src('./gen/*core.js')
                 .pipe(addsrc('./gen/*[^core].js'))
                 .pipe(concat('purecloud-api.js'))
@@ -242,7 +248,7 @@ gulp.task('build', function() {
     var source = Mustache.render(fs.readFileSync('templates/core.mustache', 'utf-8'), swagger);
     fs.writeFileSync("gen/PureCloud.core.js", source);
 
-    return build();
+    return buildApi();
 
 });
 
