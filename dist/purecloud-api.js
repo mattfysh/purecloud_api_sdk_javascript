@@ -63,6 +63,12 @@ var PureCloud =  (function () {
         _token = token;
     };
 
+    self.setEnvironment = function(environment){
+        _environment = environment;
+        _host = 'api.'+ environment + '.com';
+
+    };
+
     function sendRestRequest(method, url, body){
         var requestParams = {
              method: method,
@@ -76,7 +82,7 @@ var PureCloud =  (function () {
          };
 
          if(body){
-             requestParams.data = body;
+             requestParams.data = JSON.stringify(body);
          }
 
          var request = $.ajax(requestParams);
@@ -208,7 +214,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/alerting/alerts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.alerts = self.alerting.alerts || {};
@@ -230,7 +236,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/alerting/alerts/unread?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.alerts = self.alerting.alerts || {};
@@ -259,7 +265,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/alerting/alerts/{alertId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.alerts = self.alerting.alerts || {};
@@ -317,7 +323,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/analytics/alerting/alerts/{alertId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.alerts = self.alerting.alerts || {};
@@ -346,7 +352,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/analytics/alerting/alerts/{alertId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.rules = self.alerting.rules || {};
@@ -395,7 +401,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/alerting/rules?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.rules = self.alerting.rules || {};
@@ -432,7 +438,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/analytics/alerting/rules?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.rules = self.alerting.rules || {};
@@ -461,7 +467,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/alerting/rules/{ruleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.rules = self.alerting.rules || {};
@@ -506,7 +512,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/analytics/alerting/rules/{ruleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.alerting = self.alerting || {};
 	self.alerting.rules = self.alerting.rules || {};
@@ -535,7 +541,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/analytics/alerting/rules/{ruleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.metrics = self.metrics || {};
 	self.metrics.query = self.metrics.query || {};
@@ -562,7 +568,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/analytics/metrics/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.query = self.query || {};
 
@@ -595,7 +601,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/analytics/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.metadata = self.reporting.metadata || {};
@@ -639,7 +645,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/metadata?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.reportformats = self.reporting.reportformats || {};
@@ -660,7 +666,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/reportformats?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -695,7 +701,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/schedules?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -758,7 +764,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/analytics/reporting/schedules?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -787,7 +793,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/schedules/{scheduleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -858,7 +864,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/analytics/reporting/schedules/{scheduleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -887,7 +893,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/analytics/reporting/schedules/{scheduleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -931,7 +937,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/schedules/{scheduleId}/history?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -962,7 +968,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/schedules/{scheduleId}/history/latest?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -1000,7 +1006,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/schedules/{scheduleId}/history/{runId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.schedules = self.reporting.schedules || {};
@@ -1030,7 +1036,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/analytics/reporting/schedules/{scheduleId}/runreport?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.timeperiods = self.reporting.timeperiods || {};
@@ -1051,7 +1057,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/timeperiods?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reporting = self.reporting || {};
 	self.reporting.metadata = self.reporting.metadata || {};
@@ -1089,7 +1095,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/analytics/reporting/{reportId}/metadata?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.segments = self.segments || {};
 	self.segments.query = self.segments.query || {};
@@ -1116,7 +1122,7 @@ PureCloud.analytics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/analytics/segments/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -1257,7 +1263,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.build = self.dependencytracking.build || {};
@@ -1278,7 +1284,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/build?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.build = self.dependencytracking.build || {};
@@ -1299,7 +1305,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/dependencytracking/build?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.consumedresources = self.dependencytracking.consumedresources || {};
@@ -1375,7 +1381,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/consumedresources?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.consumingresources = self.dependencytracking.consumingresources || {};
@@ -1440,7 +1446,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/consumingresources?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.deletedresourceconsumers = self.dependencytracking.deletedresourceconsumers || {};
@@ -1510,7 +1516,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/deletedresourceconsumers?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.object = self.dependencytracking.object || {};
@@ -1599,7 +1605,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/object?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.types = self.dependencytracking.types || {};
@@ -1634,7 +1640,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/types?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dependencytracking = self.dependencytracking || {};
 	self.dependencytracking.types = self.dependencytracking.types || {};
@@ -1663,7 +1669,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/dependencytracking/types/{typeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.ivrs = self.ivrs || {};
 
@@ -1711,7 +1717,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/ivrs?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.ivrs = self.ivrs || {};
 
@@ -1772,7 +1778,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/ivrs?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.ivrs = self.ivrs || {};
 	self.ivrs.actions = self.ivrs.actions || {};
@@ -1805,7 +1811,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/ivrs/actions/publish?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.ivrs = self.ivrs || {};
 
@@ -1833,7 +1839,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/ivrs/{ivrId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.ivrs = self.ivrs || {};
 
@@ -1902,7 +1908,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/architect/ivrs/{ivrId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.ivrs = self.ivrs || {};
 
@@ -1930,7 +1936,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/ivrs/{ivrId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 
@@ -1985,7 +1991,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/prompts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 
@@ -2020,7 +2026,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/prompts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 
@@ -2048,7 +2054,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/prompts/{promptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 
@@ -2091,7 +2097,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/architect/prompts/{promptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 
@@ -2119,7 +2125,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/prompts/{promptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 	self.prompts.resources = self.prompts.resources || {};
@@ -2162,7 +2168,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/prompts/{promptId}/resources?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 	self.prompts.resources = self.prompts.resources || {};
@@ -2211,7 +2217,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/prompts/{promptId}/resources?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 	self.prompts.resources = self.prompts.resources || {};
@@ -2248,7 +2254,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/prompts/{promptId}/resources/{language}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 	self.prompts.resources = self.prompts.resources || {};
@@ -2305,7 +2311,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/architect/prompts/{promptId}/resources/{language}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.prompts = self.prompts || {};
 	self.prompts.resources = self.prompts.resources || {};
@@ -2342,7 +2348,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/prompts/{promptId}/resources/{language}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedulegroups = self.schedulegroups || {};
 
@@ -2390,7 +2396,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/schedulegroups?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedulegroups = self.schedulegroups || {};
 
@@ -2435,7 +2441,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/schedulegroups?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedulegroups = self.schedulegroups || {};
 
@@ -2463,7 +2469,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/schedulegroups/{scheduleGroupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedulegroups = self.schedulegroups || {};
 
@@ -2516,7 +2522,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/architect/schedulegroups/{scheduleGroupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedulegroups = self.schedulegroups || {};
 
@@ -2544,7 +2550,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/schedulegroups/{scheduleGroupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 
@@ -2592,7 +2598,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/schedules?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 
@@ -2680,7 +2686,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/schedules?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 
@@ -2708,7 +2714,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/schedules/{scheduleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 
@@ -2804,7 +2810,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/architect/schedules/{scheduleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 
@@ -2832,7 +2838,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/schedules/{scheduleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.systemprompts = self.systemprompts || {};
 
@@ -2901,7 +2907,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/systemprompts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.systemprompts = self.systemprompts || {};
 
@@ -2929,7 +2935,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/systemprompts/{promptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.systemprompts = self.systemprompts || {};
 	self.systemprompts.resources = self.systemprompts.resources || {};
@@ -2986,7 +2992,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/systemprompts/{promptId}/resources?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.systemprompts = self.systemprompts || {};
 	self.systemprompts.resources = self.systemprompts.resources || {};
@@ -3036,7 +3042,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/systemprompts/{promptId}/resources?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.systemprompts = self.systemprompts || {};
 	self.systemprompts.resources = self.systemprompts.resources || {};
@@ -3073,7 +3079,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/systemprompts/{promptId}/resources/{language}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.systemprompts = self.systemprompts || {};
 	self.systemprompts.resources = self.systemprompts.resources || {};
@@ -3110,7 +3116,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/systemprompts/{promptId}/resources/{language}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicexmloperations = self.voicexmloperations || {};
 
@@ -3179,7 +3185,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/voicexmloperations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicexmloperations = self.voicexmloperations || {};
 
@@ -3221,7 +3227,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/architect/voicexmloperations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicexmloperations = self.voicexmloperations || {};
 
@@ -3249,7 +3255,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/architect/voicexmloperations/{voiceXmlOperationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicexmloperations = self.voicexmloperations || {};
 
@@ -3299,7 +3305,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/architect/voicexmloperations/{voiceXmlOperationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicexmloperations = self.voicexmloperations || {};
 
@@ -3327,7 +3333,7 @@ PureCloud.architect = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/architect/voicexmloperations/{voiceXmlOperationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -3402,7 +3408,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/authorization/licenses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.permissions = self.permissions || {};
 
@@ -3436,7 +3442,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/authorization/permissions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -3498,7 +3504,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/authorization/roles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -3540,7 +3546,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/authorization/roles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 	self.roles.default = self.roles.default || {};
@@ -3568,7 +3574,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/authorization/roles/default?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 	self.roles.default = self.roles.default || {};
@@ -3595,7 +3601,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/authorization/roles/default?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 	self.roles.comparedefault = self.roles.comparedefault || {};
@@ -3632,7 +3638,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 	self.roles.comparedefault = self.roles.comparedefault || {};
@@ -3691,7 +3697,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -3719,7 +3725,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/authorization/roles/{roleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -3769,7 +3775,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/authorization/roles/{roleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -3797,7 +3803,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/authorization/roles/{roleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -3847,7 +3853,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/authorization/roles/{roleId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 	self.roles.users = self.roles.users || {};
@@ -3883,7 +3889,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/authorization/roles/{roleId}/users/add?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 	self.roles.users = self.roles.users || {};
@@ -3919,7 +3925,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/authorization/roles/{roleId}/users/remove?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.users = self.users || {};
 	self.users.roles = self.users.roles || {};
@@ -3948,7 +3954,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/authorization/users/{userId}/roles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.users = self.users || {};
 	self.users.roles = self.users.roles || {};
@@ -3983,7 +3989,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/authorization/users/{userId}/roles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.users = self.users || {};
 	self.users.roles = self.users.roles || {};
@@ -4012,7 +4018,7 @@ PureCloud.authorization = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/authorization/users/{userId}/roles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -4145,7 +4151,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/account?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.account = self.account || {};
 
@@ -4188,7 +4194,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/account?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 
@@ -4248,7 +4254,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/accounts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 
@@ -4283,7 +4289,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/accounts/{accountId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 
@@ -4351,7 +4357,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/accounts/{accountId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 
@@ -4379,7 +4385,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/billing/accounts/{accountId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 	self.accounts.overview = self.accounts.overview || {};
@@ -4408,7 +4414,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/accounts/{accountId}/overview?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 	self.accounts.status = self.accounts.status || {};
@@ -4437,7 +4443,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/accounts/{accountId}/status?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.accounts = self.accounts || {};
 	self.accounts.status = self.accounts.status || {};
@@ -4485,7 +4491,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/accounts/{accountId}/status?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.additionalservices = self.additionalservices || {};
 
@@ -4505,7 +4511,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/additionalservices?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.addresses = self.addresses || {};
 
@@ -4525,7 +4531,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/addresses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.addresses = self.addresses || {};
 
@@ -4560,7 +4566,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/addresses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.addresses = self.addresses || {};
 
@@ -4588,7 +4594,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/addresses/{addressId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.addresses = self.addresses || {};
 
@@ -4631,7 +4637,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/addresses/{addressId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.basicproducts = self.basicproducts || {};
 
@@ -4651,7 +4657,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/basicproducts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carrierservices = self.carrierservices || {};
 	self.carrierservices.usage = self.carrierservices.usage || {};
@@ -4694,7 +4700,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/carrierservices/usage/calls?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carrierservices = self.carrierservices || {};
 	self.carrierservices.usage = self.carrierservices.usage || {};
@@ -4738,7 +4744,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/carrierservices/usage/calls/csv?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactsales = self.contactsales || {};
 
@@ -4782,7 +4788,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/contactsales?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contracts = self.contracts || {};
 
@@ -4810,7 +4816,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/contracts/{quoteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.currencies = self.currencies || {};
 
@@ -4830,7 +4836,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/currencies?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.hardwarerates = self.hardwarerates || {};
 
@@ -4861,7 +4867,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/hardwarerates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.historicalvoicerates = self.historicalvoicerates || {};
 	self.historicalvoicerates.inbound = self.historicalvoicerates.inbound || {};
@@ -4928,7 +4934,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/historicalvoicerates/inbound?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.historicalvoicerates = self.historicalvoicerates || {};
 	self.historicalvoicerates.outbound = self.historicalvoicerates.outbound || {};
@@ -4996,7 +5002,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/historicalvoicerates/outbound/domestic?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.historicalvoicerates = self.historicalvoicerates || {};
 	self.historicalvoicerates.outbound = self.historicalvoicerates.outbound || {};
@@ -5071,7 +5077,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/historicalvoicerates/outbound/international?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.invoices = self.invoices || {};
 
@@ -5105,7 +5111,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/invoices?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.invoices = self.invoices || {};
 
@@ -5133,7 +5139,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/invoices/{invoiceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.invoices = self.invoices || {};
 	self.invoices.pdf = self.invoices.pdf || {};
@@ -5162,7 +5168,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/invoices/{invoiceId}/pdf?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.orders = self.orders || {};
 
@@ -5214,7 +5220,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/orders?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.periods = self.periods || {};
 
@@ -5248,7 +5254,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/periods?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.products = self.products || {};
 
@@ -5268,7 +5274,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/products?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.products = self.products || {};
 
@@ -5294,7 +5300,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/products?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.quotes = self.quotes || {};
 
@@ -5314,7 +5320,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/quotes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.quotes = self.quotes || {};
 
@@ -5361,7 +5367,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/quotes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.quotes = self.quotes || {};
 
@@ -5389,7 +5395,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/quotes/{quoteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.quotes = self.quotes || {};
 
@@ -5444,7 +5450,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/quotes/{quoteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.quotes = self.quotes || {};
 
@@ -5472,7 +5478,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/billing/quotes/{quoteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rates = self.rates || {};
 
@@ -5499,7 +5505,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/rates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rates = self.rates || {};
 
@@ -5527,7 +5533,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/rates/{rateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reports = self.reports || {};
 	self.reports.billableusagedata = self.reports.billableusagedata || {};
@@ -5557,7 +5563,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/reports/billableusagedata/{reportId}/csv?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.snapshots = self.snapshots || {};
 
@@ -5577,7 +5583,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/billing/snapshots?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.thirdpartyaccounts = self.thirdpartyaccounts || {};
 
@@ -5618,7 +5624,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/thirdpartyaccounts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.thirdpartyaccounts = self.thirdpartyaccounts || {};
 
@@ -5646,7 +5652,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/thirdpartyaccounts/{accountId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.thirdpartyaccounts = self.thirdpartyaccounts || {};
 	self.thirdpartyaccounts.subscriptions = self.thirdpartyaccounts.subscriptions || {};
@@ -5689,7 +5695,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/thirdpartyaccounts/{accountId}/subscriptions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.thirdpartyaccounts = self.thirdpartyaccounts || {};
 	self.thirdpartyaccounts.subscriptions = self.thirdpartyaccounts.subscriptions || {};
@@ -5726,7 +5732,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/thirdpartyaccounts/{accountId}/subscriptions/{subscriptionId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicerate = self.voicerate || {};
 
@@ -5768,7 +5774,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/billing/voicerate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicerate = self.voicerate || {};
 
@@ -5804,7 +5810,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/billing/voicerate/{currency}/{amendmentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicerates = self.voicerates || {};
 	self.voicerates.inbound = self.voicerates.inbound || {};
@@ -5843,7 +5849,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/voicerates/inbound?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicerates = self.voicerates || {};
 	self.voicerates.outbound = self.voicerates.outbound || {};
@@ -5883,7 +5889,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/voicerates/outbound/domestic?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicerates = self.voicerates || {};
 	self.voicerates.outbound = self.voicerates.outbound || {};
@@ -5944,7 +5950,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/voicerates/outbound/international?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voiceratescsv = self.voiceratescsv || {};
 
@@ -5964,7 +5970,7 @@ PureCloud.billing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/billing/voiceratescsv?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -6040,7 +6046,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/carriers?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 
@@ -6066,7 +6072,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/carrierservices/carriers?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 
@@ -6094,7 +6100,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/carriers/{carrierId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 
@@ -6150,7 +6156,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/carriers/{carrierId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 	self.carriers.services = self.carriers.services || {};
@@ -6193,7 +6199,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/carriers/{carrierId}/services?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 	self.carriers.services = self.carriers.services || {};
@@ -6256,7 +6262,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/carrierservices/carriers/{carrierId}/services?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 	self.carriers.services = self.carriers.services || {};
@@ -6300,7 +6306,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/carriers/{carrierId}/services/{serviceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 	self.carriers.services = self.carriers.services || {};
@@ -6371,7 +6377,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/carriers/{carrierId}/services/{serviceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.carriers = self.carriers || {};
 	self.carriers.services = self.carriers.services || {};
@@ -6408,7 +6414,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/carrierservices/carriers/{carrierId}/services/{serviceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.csvschemas = self.csvschemas || {};
 
@@ -6428,7 +6434,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/csvschemas?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.csvschemas = self.csvschemas || {};
 
@@ -6456,7 +6462,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/csvschemas/{carrierId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.csvschemas = self.csvschemas || {};
 
@@ -6501,7 +6507,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/csvschemas/{carrierId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.csvschemas = self.csvschemas || {};
 	self.csvschemas.name = self.csvschemas.name || {};
@@ -6538,7 +6544,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/csvschemas/{carrierId}/name/{name}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.csvschemas = self.csvschemas || {};
 	self.csvschemas.name = self.csvschemas.name || {};
@@ -6575,7 +6581,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/carrierservices/csvschemas/{carrierId}/name/{name}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.progress = self.progress || {};
 
@@ -6595,7 +6601,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/progress?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.report = self.report || {};
 
@@ -6825,7 +6831,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/report?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformendpoints = self.transformendpoints || {};
 
@@ -6866,7 +6872,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/transformendpoints?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformendpoints = self.transformendpoints || {};
 
@@ -6908,7 +6914,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/carrierservices/transformendpoints?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformendpoints = self.transformendpoints || {};
 
@@ -6936,7 +6942,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/transformendpoints/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformendpoints = self.transformendpoints || {};
 
@@ -6986,7 +6992,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/transformendpoints/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformendpoints = self.transformendpoints || {};
 
@@ -7014,7 +7020,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/carrierservices/transformendpoints/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformprogress = self.transformprogress || {};
 	self.transformprogress.search = self.transformprogress.search || {};
@@ -7043,7 +7049,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/transformprogress/search/{service}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformprogress = self.transformprogress || {};
 	self.transformprogress.search = self.transformprogress.search || {};
@@ -7080,7 +7086,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/transformprogress/search/{service}/{modeltype}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformprogress = self.transformprogress || {};
 	self.transformprogress.search = self.transformprogress.search || {};
@@ -7125,7 +7131,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/transformprogress/search/{service}/{modeltype}/{modelid}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.transformprogress = self.transformprogress || {};
 
@@ -7153,7 +7159,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/transformprogress/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.spreadsheets = self.uploadtransform.spreadsheets || {};
@@ -7195,7 +7201,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/uploadtransform/spreadsheets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.spreadsheets = self.uploadtransform.spreadsheets || {};
@@ -7256,7 +7262,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/carrierservices/uploadtransform/spreadsheets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.spreadsheets = self.uploadtransform.spreadsheets || {};
@@ -7285,7 +7291,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/uploadtransform/spreadsheets/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.spreadsheets = self.uploadtransform.spreadsheets || {};
@@ -7354,7 +7360,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/uploadtransform/spreadsheets/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.spreadsheets = self.uploadtransform.spreadsheets || {};
@@ -7383,7 +7389,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/carrierservices/uploadtransform/spreadsheets/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.texttables = self.uploadtransform.texttables || {};
@@ -7411,7 +7417,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/uploadtransform/texttables?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.texttables = self.uploadtransform.texttables || {};
@@ -7471,7 +7477,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/carrierservices/uploadtransform/texttables?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.texttables = self.uploadtransform.texttables || {};
@@ -7500,7 +7506,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/uploadtransform/texttables/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.texttables = self.uploadtransform.texttables || {};
@@ -7568,7 +7574,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/uploadtransform/texttables/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uploadtransform = self.uploadtransform || {};
 	self.uploadtransform.texttables = self.uploadtransform.texttables || {};
@@ -7597,7 +7603,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/carrierservices/uploadtransform/texttables/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.xlsxschemas = self.xlsxschemas || {};
 
@@ -7617,7 +7623,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/xlsxschemas?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.xlsxschemas = self.xlsxschemas || {};
 
@@ -7645,7 +7651,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/xlsxschemas/{carrierId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.xlsxschemas = self.xlsxschemas || {};
 
@@ -7686,7 +7692,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/carrierservices/xlsxschemas/{carrierId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.xlsxschemas = self.xlsxschemas || {};
 	self.xlsxschemas.name = self.xlsxschemas.name || {};
@@ -7723,7 +7729,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/carrierservices/xlsxschemas/{carrierId}/name/{name}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.xlsxschemas = self.xlsxschemas || {};
 	self.xlsxschemas.name = self.xlsxschemas.name || {};
@@ -7760,7 +7766,7 @@ PureCloud.carrierservices = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/carrierservices/xlsxschemas/{carrierId}/name/{name}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -7902,7 +7908,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/didpools?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.didpools = self.didpools || {};
 
@@ -7948,7 +7954,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/didpools?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.didpools = self.didpools || {};
 
@@ -7976,7 +7982,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/didpools/{didPoolId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.didpools = self.didpools || {};
 
@@ -8030,7 +8036,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/didpools/{didPoolId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.didpools = self.didpools || {};
 
@@ -8058,7 +8064,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/didpools/{didPoolId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dids = self.dids || {};
 
@@ -8113,7 +8119,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/dids?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dids = self.dids || {};
 
@@ -8141,7 +8147,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/dids/{didId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dids = self.dids || {};
 
@@ -8203,7 +8209,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/dids/{didId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edgegroups = self.edgegroups || {};
 
@@ -8251,7 +8257,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edgegroups?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edgegroups = self.edgegroups || {};
 
@@ -8293,7 +8299,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/edgegroups?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edgegroups = self.edgegroups || {};
 
@@ -8321,7 +8327,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edgegroups/{edgeGroupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edgegroups = self.edgegroups || {};
 
@@ -8371,7 +8377,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/edgegroups/{edgeGroupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edgegroups = self.edgegroups || {};
 
@@ -8399,7 +8405,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/edgegroups/{edgeGroupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 
@@ -8461,7 +8467,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 
@@ -8552,7 +8558,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/edges?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.certificateauthorities = self.edges.certificateauthorities || {};
@@ -8573,7 +8579,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/certificateauthorities?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.certificateauthorities = self.edges.certificateauthorities || {};
@@ -8620,7 +8626,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/edges/certificateauthorities?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.certificateauthorities = self.edges.certificateauthorities || {};
@@ -8649,7 +8655,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/certificateauthorities/{certificateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.certificateauthorities = self.edges.certificateauthorities || {};
@@ -8704,7 +8710,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/edges/certificateauthorities/{certificateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.certificateauthorities = self.edges.certificateauthorities || {};
@@ -8733,7 +8739,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/edges/certificateauthorities/{certificateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 
@@ -8761,7 +8767,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 
@@ -8860,7 +8866,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/edges/{edgeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 
@@ -8888,7 +8894,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/edges/{edgeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.lines = self.edges.lines || {};
@@ -8931,7 +8937,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/lines?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.lines = self.edges.lines || {};
@@ -8968,7 +8974,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/lines/{lineId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.lines = self.edges.lines || {};
@@ -9097,7 +9103,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/edges/{edgeId}/lines/{lineId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.logicalinterfaces = self.edges.logicalinterfaces || {};
@@ -9126,7 +9132,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/logicalinterfaces?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.logicalinterfaces = self.edges.logicalinterfaces || {};
@@ -9204,7 +9210,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/edges/{edgeId}/logicalinterfaces?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.logicalinterfaces = self.edges.logicalinterfaces || {};
@@ -9241,7 +9247,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.logicalinterfaces = self.edges.logicalinterfaces || {};
@@ -9327,7 +9333,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.logicalinterfaces = self.edges.logicalinterfaces || {};
@@ -9364,7 +9370,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.physicalinterfaces = self.edges.physicalinterfaces || {};
@@ -9393,7 +9399,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/physicalinterfaces?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.physicalinterfaces = self.edges.physicalinterfaces || {};
@@ -9430,7 +9436,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/physicalinterfaces/{interfaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.reboot = self.edges.reboot || {};
@@ -9459,7 +9465,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/edges/{edgeId}/reboot?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.softwareupdate = self.edges.softwareupdate || {};
@@ -9488,7 +9494,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/softwareupdate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.softwareupdate = self.edges.softwareupdate || {};
@@ -9545,7 +9551,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/edges/{edgeId}/softwareupdate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.softwareupdate = self.edges.softwareupdate || {};
@@ -9574,7 +9580,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/edges/{edgeId}/softwareupdate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edges = self.edges || {};
 	self.edges.softwareversions = self.edges.softwareversions || {};
@@ -9603,7 +9609,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edges/{edgeId}/softwareversions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.edgeversionreport = self.edgeversionreport || {};
 
@@ -9623,7 +9629,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/edgeversionreport?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.endpoints = self.endpoints || {};
 
@@ -9671,7 +9677,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/endpoints?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.endpoints = self.endpoints || {};
 
@@ -9727,7 +9733,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/endpoints?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.endpoints = self.endpoints || {};
 
@@ -9755,7 +9761,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/endpoints/{endpointId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.endpoints = self.endpoints || {};
 
@@ -9819,7 +9825,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/endpoints/{endpointId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.endpoints = self.endpoints || {};
 
@@ -9847,7 +9853,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/endpoints/{endpointId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensionpools = self.extensionpools || {};
 
@@ -9895,7 +9901,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/extensionpools?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensionpools = self.extensionpools || {};
 
@@ -9939,7 +9945,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/extensionpools?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensionpools = self.extensionpools || {};
 
@@ -9967,7 +9973,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/extensionpools/{extensionPoolId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensionpools = self.extensionpools || {};
 
@@ -10019,7 +10025,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/extensionpools/{extensionPoolId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensionpools = self.extensionpools || {};
 
@@ -10047,7 +10053,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/extensionpools/{extensionPoolId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensions = self.extensions || {};
 
@@ -10102,7 +10108,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/extensions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensions = self.extensions || {};
 
@@ -10130,7 +10136,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/extensions/{extensionId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.extensions = self.extensions || {};
 
@@ -10192,7 +10198,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/extensions/{extensionId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.organization = self.organization || {};
 
@@ -10212,7 +10218,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/organization?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.organization = self.organization || {};
 
@@ -10255,7 +10261,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/organization?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.organizations = self.organizations || {};
 
@@ -10291,7 +10297,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/organizations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.organizations = self.organizations || {};
 
@@ -10319,7 +10325,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/organizations/{orgId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.organizations = self.organizations || {};
 
@@ -10370,7 +10376,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/organizations/{orgId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.organizations = self.organizations || {};
 
@@ -10398,7 +10404,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/organizations/{orgId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outboundroutes = self.outboundroutes || {};
 
@@ -10453,7 +10459,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/outboundroutes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outboundroutes = self.outboundroutes || {};
 
@@ -10521,7 +10527,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/outboundroutes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outboundroutes = self.outboundroutes || {};
 
@@ -10549,7 +10555,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/outboundroutes/{outboundRouteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outboundroutes = self.outboundroutes || {};
 
@@ -10625,7 +10631,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/outboundroutes/{outboundRouteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outboundroutes = self.outboundroutes || {};
 
@@ -10653,7 +10659,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/outboundroutes/{outboundRouteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordingkeys = self.recordingkeys || {};
 
@@ -10687,7 +10693,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/recordingkeys?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordingkeys = self.recordingkeys || {};
 
@@ -10707,7 +10713,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/recordingkeys?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordingkeys = self.recordingkeys || {};
 	self.recordingkeys.rotationschedule = self.recordingkeys.rotationschedule || {};
@@ -10728,7 +10734,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/recordingkeys/rotationschedule?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordingkeys = self.recordingkeys || {};
 	self.recordingkeys.rotationschedule = self.recordingkeys.rotationschedule || {};
@@ -10763,7 +10769,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/recordingkeys/rotationschedule?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -10832,7 +10838,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/retentionpolicies?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -10887,7 +10893,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/retentionpolicies?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -10918,7 +10924,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/retentionpolicies?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -10946,7 +10952,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/retentionpolicies/{policyId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -11009,7 +11015,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/retentionpolicies/{policyId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -11037,7 +11043,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/retentionpolicies/{policyId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.retentionpolicies = self.retentionpolicies || {};
 
@@ -11100,7 +11106,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/configuration/retentionpolicies/{policyId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schemas = self.schemas || {};
 	self.schemas.edges = self.schemas.edges || {};
@@ -11136,7 +11142,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/schemas/edges/vnext?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schemas = self.schemas || {};
 	self.schemas.edges = self.schemas.edges || {};
@@ -11180,7 +11186,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schemas = self.schemas || {};
 	self.schemas.edges = self.schemas.edges || {};
@@ -11232,7 +11238,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schemas = self.schemas || {};
 	self.schemas.edges = self.schemas.edges || {};
@@ -11278,7 +11284,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schemas = self.schemas || {};
 	self.schemas.edges = self.schemas.edges || {};
@@ -11347,7 +11353,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extension}/{metadataId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 
@@ -11395,7 +11401,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/sites?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 
@@ -11454,7 +11460,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/sites?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 
@@ -11482,7 +11488,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/sites/{siteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 
@@ -11549,7 +11555,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/sites/{siteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 
@@ -11577,7 +11583,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/configuration/sites/{siteId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 	self.sites.numberplans = self.sites.numberplans || {};
@@ -11606,7 +11612,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/sites/{siteId}/numberplans?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 	self.sites.numberplans = self.sites.numberplans || {};
@@ -11641,7 +11647,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/sites/{siteId}/numberplans?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 	self.sites.numberplans = self.sites.numberplans || {};
@@ -11678,7 +11684,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/sites/{siteId}/numberplans/classifications?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 	self.sites.numberplans = self.sites.numberplans || {};
@@ -11715,7 +11721,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/sites/{siteId}/numberplans/{numberPlanId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sites = self.sites || {};
 	self.sites.rebalance = self.sites.rebalance || {};
@@ -11744,7 +11750,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/configuration/sites/{siteId}/rebalance?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uservoicemailpolicies = self.uservoicemailpolicies || {};
 
@@ -11772,7 +11778,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/uservoicemailpolicies/{userId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.uservoicemailpolicies = self.uservoicemailpolicies || {};
 
@@ -11825,7 +11831,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/configuration/uservoicemailpolicies/{userId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicemailpolicy = self.voicemailpolicy || {};
 
@@ -11845,7 +11851,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/configuration/voicemailpolicy?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.voicemailpolicy = self.voicemailpolicy || {};
 
@@ -11893,7 +11899,7 @@ PureCloud.configuration = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/configuration/voicemailpolicy?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -12001,7 +12007,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/auditquery?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -12076,7 +12082,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/documents?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -12137,7 +12143,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/documents?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -12175,7 +12181,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/documents/{documentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -12239,7 +12245,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/documents/{documentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -12274,7 +12280,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/documents/{documentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 	self.documents.audits = self.documents.audits || {};
@@ -12345,7 +12351,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/documents/{documentId}/audits?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 	self.documents.content = self.documents.content || {};
@@ -12383,7 +12389,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/documents/{documentId}/content?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 	self.documents.content = self.documents.content || {};
@@ -12432,7 +12438,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/documents/{documentId}/content?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.query = self.query || {};
 
@@ -12500,7 +12506,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.query = self.query || {};
 
@@ -12549,7 +12555,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.securityprofiles = self.securityprofiles || {};
 
@@ -12569,7 +12575,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/securityprofiles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.securityprofiles = self.securityprofiles || {};
 
@@ -12597,7 +12603,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/securityprofiles/{securityProfileId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.shared = self.shared || {};
 
@@ -12650,7 +12656,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/shared/{sharedId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.shares = self.shares || {};
 
@@ -12699,7 +12705,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/shares?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.shares = self.shares || {};
 
@@ -12742,7 +12748,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/shares?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.shares = self.shares || {};
 
@@ -12778,7 +12784,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/shares/{shareId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.shares = self.shares || {};
 
@@ -12806,7 +12812,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/shares/{shareId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.status = self.status || {};
 
@@ -12840,7 +12846,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/status?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.status = self.status || {};
 
@@ -12868,7 +12874,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/status/{statusId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.status = self.status || {};
 
@@ -12896,7 +12902,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/status/{statusId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 
@@ -12967,7 +12973,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 
@@ -12999,7 +13005,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 
@@ -13036,7 +13042,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 
@@ -13091,7 +13097,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/contentmanagement/workspaces/{workspaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 
@@ -13126,7 +13132,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/workspaces/{workspaceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13169,7 +13175,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13222,7 +13228,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13259,7 +13265,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13320,7 +13326,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13357,7 +13363,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13419,7 +13425,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13476,7 +13482,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13522,7 +13528,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/{instanceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13592,7 +13598,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/{instanceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.attributes = self.workspaces.attributes || {};
@@ -13638,7 +13644,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/{instanceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.delta = self.workspaces.delta || {};
@@ -13678,7 +13684,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces/{workspaceId}/delta?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.members = self.workspaces.members || {};
@@ -13729,7 +13735,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/members?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.members = self.workspaces.members || {};
@@ -13774,7 +13780,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.members = self.workspaces.members || {};
@@ -13877,7 +13883,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.members = self.workspaces.members || {};
@@ -13914,7 +13920,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.tagvalues = self.workspaces.tagvalues || {};
@@ -13972,7 +13978,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.tagvalues = self.workspaces.tagvalues || {};
@@ -14016,7 +14022,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.tagvalues = self.workspaces.tagvalues || {};
@@ -14067,7 +14073,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.tagvalues = self.workspaces.tagvalues || {};
@@ -14112,7 +14118,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.tagvalues = self.workspaces.tagvalues || {};
@@ -14164,7 +14170,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workspaces = self.workspaces || {};
 	self.workspaces.tagvalues = self.workspaces.tagvalues || {};
@@ -14201,7 +14207,7 @@ PureCloud.contentmanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -14292,7 +14298,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -14366,7 +14372,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.maximumconferenceparties = self.maximumconferenceparties || {};
 
@@ -14386,7 +14392,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/maximumconferenceparties?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.query = self.query || {};
 
@@ -14420,7 +14426,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.query = self.query || {};
 
@@ -14462,7 +14468,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/query/{anchor}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -14489,7 +14495,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -14535,7 +14541,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -14563,7 +14569,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/messages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -14614,7 +14620,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/{conversationId}/messages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 	self.messages.draft = self.messages.draft || {};
@@ -14643,7 +14649,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/messages/draft?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 	self.messages.draft = self.messages.draft || {};
@@ -14695,7 +14701,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}/messages/draft?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -14731,7 +14737,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/messages/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 
@@ -14778,7 +14784,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/{conversationId}/participants?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 
@@ -14840,7 +14846,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}/participants/{participantId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.attributes = self.participants.attributes || {};
@@ -14888,7 +14894,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}/participants/{participantId}/attributes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.consult = self.participants.consult || {};
@@ -14944,7 +14950,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/{conversationId}/participants/{participantId}/consult?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.consult = self.participants.consult || {};
@@ -14992,7 +14998,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}/participants/{participantId}/consult?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.consult = self.participants.consult || {};
@@ -15029,7 +15035,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/conversations/{conversationId}/participants/{participantId}/consult?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.monitor = self.participants.monitor || {};
@@ -15066,7 +15072,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/{conversationId}/participants/{participantId}/monitor?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.replace = self.participants.replace || {};
@@ -15138,7 +15144,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/{conversationId}/participants/{participantId}/replace?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.wrapup = self.participants.wrapup || {};
@@ -15182,7 +15188,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/participants/{participantId}/wrapup?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.participants = self.participants || {};
 	self.participants.wrapupcodes = self.participants.wrapupcodes || {};
@@ -15219,7 +15225,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/participants/{participantId}/wrapupcodes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 
@@ -15264,7 +15270,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/recordings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 
@@ -15333,7 +15339,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/recordings/{recordingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 
@@ -15413,7 +15419,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}/recordings/{recordingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 
@@ -15481,7 +15487,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/conversations/{conversationId}/recordings/{recordingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 	self.recordings.annotations = self.recordings.annotations || {};
@@ -15518,7 +15524,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 	self.recordings.annotations = self.recordings.annotations || {};
@@ -15598,7 +15604,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 	self.recordings.annotations = self.recordings.annotations || {};
@@ -15643,7 +15649,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 	self.recordings.annotations = self.recordings.annotations || {};
@@ -15731,7 +15737,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.recordings = self.recordings || {};
 	self.recordings.annotations = self.recordings.annotations || {};
@@ -15776,7 +15782,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.tags = self.tags || {};
 
@@ -15804,7 +15810,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/tags?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodes = self.wrapupcodes || {};
 
@@ -15832,7 +15838,7 @@ PureCloud.conversations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/conversations/{conversationId}/wrapupcodes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -15893,7 +15899,7 @@ PureCloud.diagnostics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/diagnostics?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.support = self.support || {};
 
@@ -15929,7 +15935,7 @@ PureCloud.diagnostics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/diagnostics/support?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.trace = self.trace || {};
 
@@ -15964,7 +15970,7 @@ PureCloud.diagnostics = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/diagnostics/trace?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -16007,7 +16013,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/evaluations/favoritetemplates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.favoritetemplates = self.favoritetemplates || {};
 
@@ -16038,7 +16044,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/evaluations/favoritetemplates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.favoritetemplates = self.favoritetemplates || {};
 
@@ -16066,7 +16072,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/evaluations/favoritetemplates/{templateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.templates = self.templates || {};
 
@@ -16114,7 +16120,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/evaluations/templates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.templates = self.templates || {};
 
@@ -16154,7 +16160,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/evaluations/templates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.templates = self.templates || {};
 
@@ -16182,7 +16188,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/evaluations/templates/{templateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.templates = self.templates || {};
 
@@ -16230,7 +16236,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/evaluations/templates/{templateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.templates = self.templates || {};
 
@@ -16258,7 +16264,7 @@ PureCloud.evaluations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/evaluations/templates/{templateId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -16318,7 +16324,7 @@ PureCloud.fax = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/fax/documents?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -16346,7 +16352,7 @@ PureCloud.fax = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/fax/documents/{documentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -16410,7 +16416,7 @@ PureCloud.fax = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/fax/documents/{documentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 
@@ -16438,7 +16444,7 @@ PureCloud.fax = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/fax/documents/{documentId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.documents = self.documents || {};
 	self.documents.content = self.documents.content || {};
@@ -16467,7 +16473,7 @@ PureCloud.fax = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/fax/documents/{documentId}/content?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.summary = self.summary || {};
 
@@ -16487,7 +16493,7 @@ PureCloud.fax = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/fax/summary?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -16533,7 +16539,7 @@ PureCloud.featuretoggles = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/featuretoggles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -16679,7 +16685,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -16760,7 +16766,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.actions = self.actions || {};
 	self.actions.checkin = self.actions.checkin || {};
@@ -16788,7 +16794,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/actions/checkin?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.actions = self.actions || {};
 	self.actions.checkout = self.actions.checkout || {};
@@ -16816,7 +16822,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/actions/checkout?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.actions = self.actions || {};
 	self.actions.deactivate = self.actions.deactivate || {};
@@ -16844,7 +16850,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/actions/deactivate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.actions = self.actions || {};
 	self.actions.debug = self.actions.debug || {};
@@ -16883,7 +16889,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/actions/debug?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.actions = self.actions || {};
 	self.actions.publish = self.actions.publish || {};
@@ -16918,7 +16924,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/actions/publish?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.actions = self.actions || {};
 	self.actions.revert = self.actions.revert || {};
@@ -16946,7 +16952,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/actions/revert?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -16980,7 +16986,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows/{flowId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17069,7 +17075,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/flows/{flowId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17096,7 +17102,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/flows/{flowId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.latestconfiguration = self.latestconfiguration || {};
 
@@ -17131,7 +17137,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows/{flowId}/latestconfiguration?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.publishedresults = self.publishedresults || {};
 
@@ -17167,7 +17173,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows/{flowId}/publishedresults/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.versions = self.versions || {};
 
@@ -17216,7 +17222,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows/{flowId}/versions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.versions = self.versions || {};
 
@@ -17250,7 +17256,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/flows/{flowId}/versions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.versions = self.versions || {};
 
@@ -17293,7 +17299,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows/{flowId}/versions/{versionId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.versions = self.versions || {};
 	self.versions.configuration = self.versions.configuration || {};
@@ -17337,7 +17343,7 @@ PureCloud.flows = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/flows/{flowId}/versions/{versionId}/configuration?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -17396,7 +17402,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/greetings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17449,7 +17455,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/greetings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.defaults = self.defaults || {};
 
@@ -17469,7 +17475,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/greetings/defaults?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.defaults = self.defaults || {};
 
@@ -17517,7 +17523,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/greetings/defaults?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17544,7 +17550,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/greetings/{greetingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17605,7 +17611,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/greetings/{greetingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17632,7 +17638,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/greetings/{greetingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.media = self.media || {};
 
@@ -17668,7 +17674,7 @@ PureCloud.greetings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/greetings/{greetingId}/media?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -17731,7 +17737,7 @@ PureCloud.groups = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/groups?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -17758,7 +17764,7 @@ PureCloud.groups = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/groups/{groupId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.members = self.members || {};
 
@@ -17800,7 +17806,7 @@ PureCloud.groups = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/groups/{groupId}/members?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -17840,7 +17846,7 @@ PureCloud.health = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/health/check?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -17885,7 +17891,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/identityproviders?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.onelogin = self.onelogin || {};
 
@@ -17905,7 +17911,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/identityproviders/onelogin?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.onelogin = self.onelogin || {};
 
@@ -17941,7 +17947,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/identityproviders/onelogin?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.onelogin = self.onelogin || {};
 
@@ -17961,7 +17967,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/identityproviders/onelogin?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.purecloud = self.purecloud || {};
 
@@ -17981,7 +17987,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/identityproviders/purecloud?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.purecloud = self.purecloud || {};
 
@@ -18014,7 +18020,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/identityproviders/purecloud?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.purecloud = self.purecloud || {};
 
@@ -18034,7 +18040,7 @@ PureCloud.identityproviders = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/identityproviders/purecloud?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -18087,7 +18093,7 @@ PureCloud.languages = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/languages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -18114,7 +18120,7 @@ PureCloud.languages = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/languages/{languageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -18170,7 +18176,7 @@ PureCloud.licensing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/licensing/licenses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.orgassignments = self.orgassignments || {};
 
@@ -18190,7 +18196,7 @@ PureCloud.licensing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/licensing/orgassignments?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.orgassignments = self.orgassignments || {};
 
@@ -18218,7 +18224,7 @@ PureCloud.licensing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/licensing/orgassignments/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.permissions = self.permissions || {};
 
@@ -18245,7 +18251,7 @@ PureCloud.licensing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/licensing/permissions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.userassignments = self.userassignments || {};
 
@@ -18265,7 +18271,7 @@ PureCloud.licensing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/licensing/userassignments?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.userassignments = self.userassignments || {};
 
@@ -18293,7 +18299,7 @@ PureCloud.licensing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/licensing/userassignments/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -18362,7 +18368,7 @@ PureCloud.locations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/locations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -18389,7 +18395,7 @@ PureCloud.locations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/locations/{locationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -18435,7 +18441,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/notifications/availabletopics?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.channels = self.channels || {};
 
@@ -18455,7 +18461,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/notifications/channels?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.channels = self.channels || {};
 
@@ -18475,7 +18481,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/notifications/channels?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.channels = self.channels || {};
 	self.channels.subscriptions = self.channels.subscriptions || {};
@@ -18504,7 +18510,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/notifications/channels/{channelId}/subscriptions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.channels = self.channels || {};
 	self.channels.subscriptions = self.channels.subscriptions || {};
@@ -18539,7 +18545,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/notifications/channels/{channelId}/subscriptions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.channels = self.channels || {};
 	self.channels.subscriptions = self.channels.subscriptions || {};
@@ -18574,7 +18580,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/notifications/channels/{channelId}/subscriptions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.channels = self.channels || {};
 	self.channels.subscriptions = self.channels.subscriptions || {};
@@ -18603,7 +18609,7 @@ PureCloud.notifications = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/notifications/channels/{channelId}/subscriptions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -18646,7 +18652,7 @@ PureCloud.oauth = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/oauth/clients?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.clients = self.clients || {};
 
@@ -18686,7 +18692,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/oauth/clients?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.clients = self.clients || {};
 
@@ -18714,7 +18720,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/oauth/clients/{clientId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.clients = self.clients || {};
 
@@ -18760,7 +18766,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/oauth/clients/{clientId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.clients = self.clients || {};
 
@@ -18788,7 +18794,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/oauth/clients/{clientId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.clients = self.clients || {};
 	self.clients.secret = self.clients.secret || {};
@@ -18817,7 +18823,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/oauth/clients/{clientId}/secret?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -18984,7 +18990,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/audits?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callabletimesets = self.callabletimesets || {};
 
@@ -19058,7 +19064,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/callabletimesets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callabletimesets = self.callabletimesets || {};
 
@@ -19095,7 +19101,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/callabletimesets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callabletimesets = self.callabletimesets || {};
 
@@ -19123,7 +19129,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/callabletimesets/{callableTimeSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callabletimesets = self.callabletimesets || {};
 
@@ -19168,7 +19174,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/callabletimesets/{callableTimeSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callabletimesets = self.callabletimesets || {};
 
@@ -19196,7 +19202,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/callabletimesets/{callableTimeSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callanalysisresponsesets = self.callanalysisresponsesets || {};
 
@@ -19270,7 +19276,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/callanalysisresponsesets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callanalysisresponsesets = self.callanalysisresponsesets || {};
 
@@ -19307,7 +19313,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/callanalysisresponsesets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callanalysisresponsesets = self.callanalysisresponsesets || {};
 
@@ -19335,7 +19341,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/callanalysisresponsesets/{callAnalysisSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callanalysisresponsesets = self.callanalysisresponsesets || {};
 
@@ -19380,7 +19386,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/callanalysisresponsesets/{callAnalysisSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callanalysisresponsesets = self.callanalysisresponsesets || {};
 
@@ -19408,7 +19414,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/callanalysisresponsesets/{callAnalysisSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 
@@ -19517,7 +19523,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/campaigns?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 
@@ -19553,7 +19559,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/campaigns?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 
@@ -19581,7 +19587,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/campaigns/{campaignId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 
@@ -19625,7 +19631,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/campaigns/{campaignId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 
@@ -19653,7 +19659,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/campaigns/{campaignId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 	self.campaigns.agents = self.campaigns.agents || {};
@@ -19701,7 +19707,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/campaigns/{campaignId}/agents/{userId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 	self.campaigns.callback = self.campaigns.callback || {};
@@ -19746,7 +19752,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/campaigns/{campaignId}/callback/schedule?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 	self.campaigns.diagnostics = self.campaigns.diagnostics || {};
@@ -19775,7 +19781,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/campaigns/{campaignId}/diagnostics?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.campaigns = self.campaigns || {};
 	self.campaigns.stats = self.campaigns.stats || {};
@@ -19804,7 +19810,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/campaigns/{campaignId}/stats?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 
@@ -19892,7 +19898,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/contactlists?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 
@@ -19924,7 +19930,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/contactlists?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.penetrationrates = self.contactlists.penetrationrates || {};
@@ -19951,7 +19957,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/contactlists/penetrationrates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 
@@ -19993,7 +19999,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/contactlists/{contactListId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 
@@ -20033,7 +20039,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/contactlists/{contactListId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 
@@ -20061,7 +20067,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/contactlists/{contactListId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.contacts = self.contactlists.contacts || {};
@@ -20103,7 +20109,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/contactlists/{contactListId}/contacts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.contacts = self.contactlists.contacts || {};
@@ -20140,7 +20146,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.contacts = self.contactlists.contacts || {};
@@ -20217,7 +20223,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.contacts = self.contactlists.contacts || {};
@@ -20254,7 +20260,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.export = self.contactlists.export || {};
@@ -20283,7 +20289,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/contactlists/{contactListId}/export?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.importstatus = self.contactlists.importstatus || {};
@@ -20312,7 +20318,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/contactlists/{contactListId}/importstatus?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.contactlists = self.contactlists || {};
 	self.contactlists.penetrationrate = self.contactlists.penetrationrate || {};
@@ -20349,7 +20355,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/contactlists/{contactListId}/{campaignId}/penetrationrate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.conversations = self.conversations || {};
 	self.conversations.dnc = self.conversations.dnc || {};
@@ -20378,7 +20384,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/conversations/{conversationId}/dnc?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 
@@ -20466,7 +20472,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/dnclists?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 
@@ -20512,7 +20518,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/dnclists?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 
@@ -20554,7 +20560,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/dnclists/{dncListId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 
@@ -20608,7 +20614,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/dnclists/{dncListId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 
@@ -20636,7 +20642,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/dnclists/{dncListId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 	self.dnclists.export = self.dnclists.export || {};
@@ -20665,7 +20671,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/dnclists/{dncListId}/export?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 	self.dnclists.importstatus = self.dnclists.importstatus || {};
@@ -20694,7 +20700,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/dnclists/{dncListId}/importstatus?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.dnclists = self.dnclists || {};
 	self.dnclists.phonenumbers = self.dnclists.phonenumbers || {};
@@ -20729,7 +20735,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/dnclists/{dncListId}/phonenumbers?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.previews = self.previews || {};
 
@@ -20749,7 +20755,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/previews?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.previews = self.previews || {};
 
@@ -20777,7 +20783,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/previews/{previewId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.previews = self.previews || {};
 	self.previews.dispositioncall = self.previews.dispositioncall || {};
@@ -20828,7 +20834,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/previews/{previewId}/dispositioncall?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.previews = self.previews || {};
 	self.previews.placecall = self.previews.placecall || {};
@@ -20869,7 +20875,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/previews/{previewId}/placecall?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rulesets = self.rulesets || {};
 
@@ -20943,7 +20949,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/rulesets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rulesets = self.rulesets || {};
 
@@ -20990,7 +20996,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/rulesets?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rulesets = self.rulesets || {};
 
@@ -21018,7 +21024,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/rulesets/{ruleSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rulesets = self.rulesets || {};
 
@@ -21073,7 +21079,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/rulesets/{ruleSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.rulesets = self.rulesets || {};
 
@@ -21101,7 +21107,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/rulesets/{ruleSetId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.campaigns = self.schedules.campaigns || {};
@@ -21122,7 +21128,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/schedules/campaigns?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.campaigns = self.schedules.campaigns || {};
@@ -21151,7 +21157,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/schedules/campaigns/{campaignId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.campaigns = self.schedules.campaigns || {};
@@ -21203,7 +21209,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/schedules/campaigns/{campaignId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.campaigns = self.schedules.campaigns || {};
@@ -21232,7 +21238,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/schedules/campaigns/{campaignId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.sequences = self.schedules.sequences || {};
@@ -21253,7 +21259,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/schedules/sequences?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.sequences = self.schedules.sequences || {};
@@ -21282,7 +21288,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/schedules/sequences/{sequenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.sequences = self.schedules.sequences || {};
@@ -21334,7 +21340,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/schedules/sequences/{sequenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.schedules = self.schedules || {};
 	self.schedules.sequences = self.schedules.sequences || {};
@@ -21363,7 +21369,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/schedules/sequences/{sequenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sequences = self.sequences || {};
 
@@ -21437,7 +21443,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/sequences?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sequences = self.sequences || {};
 
@@ -21477,7 +21483,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/outbound/sequences?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sequences = self.sequences || {};
 
@@ -21505,7 +21511,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/sequences/{sequenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sequences = self.sequences || {};
 
@@ -21553,7 +21559,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/sequences/{sequenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.sequences = self.sequences || {};
 
@@ -21581,7 +21587,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/outbound/sequences/{sequenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodemappings = self.wrapupcodemappings || {};
 
@@ -21601,7 +21607,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/outbound/wrapupcodemappings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodemappings = self.wrapupcodemappings || {};
 
@@ -21639,7 +21645,7 @@ PureCloud.outbound = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/outbound/wrapupcodemappings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -21692,7 +21698,7 @@ PureCloud.presencedefinitions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/presencedefinitions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -21785,7 +21791,7 @@ PureCloud.presencedefinitions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/presencedefinitions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -21812,7 +21818,7 @@ PureCloud.presencedefinitions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/presencedefinitions/{presenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -21913,7 +21919,7 @@ PureCloud.presencedefinitions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/presencedefinitions/{presenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -21940,7 +21946,7 @@ PureCloud.presencedefinitions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/presencedefinitions/{presenceId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -22047,7 +22053,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/associations/documents/{id}/history?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22105,7 +22111,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/definitions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22171,7 +22177,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22200,7 +22206,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/definitions/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22242,7 +22248,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions/{id}/commands/activate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22284,7 +22290,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions/{id}/commands/associatewithworkspaces?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22315,7 +22321,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions/{id}/commands/delete?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22357,7 +22363,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions/{id}/commands/lock?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22387,7 +22393,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/definitions/{id}/flowcache?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22423,7 +22429,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/processautomation/flows/definitions/{id}/flowcache?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22467,7 +22473,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/definitions/{id}/versions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22556,7 +22562,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions/{id}/versions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22601,7 +22607,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/definitions/{id}/versions/{version}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.definitions = self.flows.definitions || {};
@@ -22641,7 +22647,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/definitions/{id}/versions/{version}/commands/publish?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.instances = self.flows.instances || {};
@@ -22687,7 +22693,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/instances?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.instances = self.flows.instances || {};
@@ -22730,7 +22736,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/instances/commands/search?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.instances = self.flows.instances || {};
@@ -22759,7 +22765,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/instances/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.instances = self.flows.instances || {};
@@ -22802,7 +22808,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/flows/instances/{id}/commands/terminate?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.flows = self.flows || {};
 	self.flows.instances = self.flows.instances || {};
@@ -22832,7 +22838,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/flows/instances/{id}/history?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.reports = self.reports || {};
 	self.reports.flow = self.reports.flow || {};
@@ -22874,7 +22880,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/reports/flow/search?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -22917,7 +22923,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/workitems/instances/commands/search?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -22946,7 +22952,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/workitems/instances/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -22989,7 +22995,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/workitems/instances/{id}/commands/submit?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -23020,7 +23026,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/workitems/instances/{id}/commands/takeownership?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -23063,7 +23069,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/processautomation/workitems/instances/{id}/commands/transfer?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -23093,7 +23099,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/processautomation/workitems/instances/{id}/workitemcache?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.workitems = self.workitems || {};
 	self.workitems.instances = self.workitems.instances || {};
@@ -23163,7 +23169,7 @@ PureCloud.processautomation = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/processautomation/workitems/instances/{id}/workitemcache?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -23294,7 +23300,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/agents/activity?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.calibrations = self.calibrations || {};
 
@@ -23370,7 +23376,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/calibrations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.calibrations = self.calibrations || {};
 
@@ -23535,7 +23541,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/quality/calibrations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.calibrations = self.calibrations || {};
 
@@ -23570,7 +23576,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/calibrations/{calibrationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.calibrations = self.calibrations || {};
 
@@ -23736,7 +23742,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/quality/calibrations/{calibrationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.calibrations = self.calibrations || {};
 
@@ -23771,7 +23777,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/quality/calibrations/{calibrationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.conversations = self.conversations || {};
 	self.conversations.audits = self.conversations.audits || {};
@@ -23842,7 +23848,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/conversations/{conversationId}/audits?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.conversations = self.conversations || {};
 	self.conversations.evaluations = self.conversations.evaluations || {};
@@ -24021,7 +24027,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/quality/conversations/{conversationId}/evaluations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.conversations = self.conversations || {};
 	self.conversations.evaluations = self.conversations.evaluations || {};
@@ -24065,7 +24071,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.conversations = self.conversations || {};
 	self.conversations.evaluations = self.conversations.evaluations || {};
@@ -24252,7 +24258,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.conversations = self.conversations || {};
 	self.conversations.evaluations = self.conversations.evaluations || {};
@@ -24296,7 +24302,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.evaluations = self.evaluations || {};
 	self.evaluations.query = self.evaluations.query || {};
@@ -24422,7 +24428,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/evaluations/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.evaluations = self.evaluations || {};
 	self.evaluations.query = self.evaluations.query || {};
@@ -24471,7 +24477,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/quality/evaluations/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.evaluations = self.evaluations || {};
 	self.evaluations.scoring = self.evaluations.scoring || {};
@@ -24521,7 +24527,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/quality/evaluations/scoring?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.evaluators = self.evaluators || {};
 	self.evaluators.activity = self.evaluators.activity || {};
@@ -24598,7 +24604,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/evaluators/activity?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.forms = self.forms || {};
 
@@ -24646,7 +24652,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/forms?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.forms = self.forms || {};
 
@@ -24696,7 +24702,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/quality/forms?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.forms = self.forms || {};
 
@@ -24724,7 +24730,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/forms/{formId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.forms = self.forms || {};
 
@@ -24782,7 +24788,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/quality/forms/{formId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.forms = self.forms || {};
 
@@ -24810,7 +24816,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/quality/forms/{formId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.forms = self.forms || {};
 	self.forms.versions = self.forms.versions || {};
@@ -24853,7 +24859,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/forms/{formId}/versions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.publishedforms = self.publishedforms || {};
 
@@ -24894,7 +24900,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/publishedforms?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.publishedforms = self.publishedforms || {};
 
@@ -24944,7 +24950,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/quality/publishedforms?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.publishedforms = self.publishedforms || {};
 
@@ -24972,7 +24978,7 @@ PureCloud.quality = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/quality/publishedforms/{formId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -25032,7 +25038,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/responsemanagement/libraries?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.libraries = self.libraries || {};
 
@@ -25093,7 +25099,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/responsemanagement/libraries?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.libraries = self.libraries || {};
 
@@ -25121,7 +25127,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/responsemanagement/libraries/{libraryId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.libraries = self.libraries || {};
 
@@ -25190,7 +25196,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/responsemanagement/libraries/{libraryId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.libraries = self.libraries || {};
 
@@ -25218,7 +25224,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/responsemanagement/libraries/{libraryId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.responses = self.responses || {};
 
@@ -25263,7 +25269,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/responsemanagement/responses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.responses = self.responses || {};
 
@@ -25326,7 +25332,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/responsemanagement/responses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.responses = self.responses || {};
 	self.responses.query = self.responses.query || {};
@@ -25360,7 +25366,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/responsemanagement/responses/query?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.responses = self.responses || {};
 
@@ -25388,7 +25394,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/responsemanagement/responses/{responseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.responses = self.responses || {};
 
@@ -25459,7 +25465,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/responsemanagement/responses/{responseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.responses = self.responses || {};
 
@@ -25487,7 +25493,7 @@ PureCloud.responsemanagement = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/responsemanagement/responses/{responseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -25552,7 +25558,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/email/domains?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25587,7 +25593,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/routing/email/domains?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25617,7 +25623,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/email/domains/{domain}/routes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25676,7 +25682,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/routing/email/domains/{domain}/routes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25714,7 +25720,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/email/domains/{domain}/routes/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25781,7 +25787,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/routing/email/domains/{domain}/routes/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25819,7 +25825,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/routing/email/domains/{domain}/routes/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.domains = self.email.domains || {};
@@ -25848,7 +25854,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/routing/email/domains/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.email = self.email || {};
 	self.email.setup = self.email.setup || {};
@@ -25869,7 +25875,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/email/setup?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -25932,7 +25938,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/queues?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -26001,7 +26007,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/routing/queues?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -26029,7 +26035,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/queues/{queueId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -26098,7 +26104,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/routing/queues/{queueId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -26126,7 +26132,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/routing/queues/{queueId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.members = self.queues.members || {};
@@ -26198,7 +26204,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/queues/{queueId}/members?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.members = self.queues.members || {};
@@ -26282,7 +26288,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/routing/queues/{queueId}/members/{memberId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.users = self.queues.users || {};
@@ -26346,7 +26352,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/queues/{queueId}/users?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.users = self.queues.users || {};
@@ -26388,7 +26394,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/routing/queues/{queueId}/users?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.users = self.queues.users || {};
@@ -26423,7 +26429,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/routing/queues/{queueId}/users?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.users = self.queues.users || {};
@@ -26460,7 +26466,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/routing/queues/{queueId}/users/{memberId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.users = self.queues.users || {};
@@ -26544,7 +26550,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/routing/queues/{queueId}/users/{memberId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.wrapupcodes = self.queues.wrapupcodes || {};
@@ -26581,7 +26587,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/queues/{queueId}/wrapupcodes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.wrapupcodes = self.queues.wrapupcodes || {};
@@ -26624,7 +26630,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/routing/queues/{queueId}/wrapupcodes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 	self.queues.wrapupcodes = self.queues.wrapupcodes || {};
@@ -26661,7 +26667,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/routing/queues/{queueId}/wrapupcodes/{codeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.skills = self.skills || {};
 
@@ -26709,7 +26715,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/skills?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodes = self.wrapupcodes || {};
 
@@ -26750,7 +26756,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/wrapupcodes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodes = self.wrapupcodes || {};
 
@@ -26787,7 +26793,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/routing/wrapupcodes?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodes = self.wrapupcodes || {};
 
@@ -26815,7 +26821,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/routing/wrapupcodes/{codeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodes = self.wrapupcodes || {};
 
@@ -26860,7 +26866,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/routing/wrapupcodes/{codeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.wrapupcodes = self.wrapupcodes || {};
 
@@ -26888,7 +26894,7 @@ PureCloud.routing = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/routing/wrapupcodes/{codeId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -26977,7 +26983,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27002,7 +27008,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/scripts?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.published = self.published || {};
 
@@ -27057,7 +27063,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/published?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.published = self.published || {};
 
@@ -27089,7 +27095,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/scripts/published?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.published = self.published || {};
 
@@ -27117,7 +27123,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/published/{scriptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.published = self.published || {};
 	self.published.pages = self.published.pages || {};
@@ -27146,7 +27152,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/published/{scriptId}/pages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.published = self.published || {};
 	self.published.pages = self.published.pages || {};
@@ -27183,7 +27189,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/published/{scriptId}/pages/{pageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.published = self.published || {};
 	self.published.variables = self.published.variables || {};
@@ -27212,7 +27218,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/published/{scriptId}/variables?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.templates = self.templates || {};
 
@@ -27247,7 +27253,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/scripts/templates?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27274,7 +27280,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/{scriptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27324,7 +27330,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/scripts/{scriptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27351,7 +27357,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/scripts/{scriptId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.pages = self.pages || {};
 
@@ -27379,7 +27385,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/{scriptId}/pages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.pages = self.pages || {};
 
@@ -27425,7 +27431,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/scripts/{scriptId}/pages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.pages = self.pages || {};
 
@@ -27461,7 +27467,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/scripts/{scriptId}/pages/{pageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.pages = self.pages || {};
 
@@ -27515,7 +27521,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/scripts/{scriptId}/pages/{pageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.pages = self.pages || {};
 
@@ -27551,7 +27557,7 @@ PureCloud.scripts = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/scripts/{scriptId}/pages/{pageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -27609,7 +27615,7 @@ PureCloud.search = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/search/chats?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -27662,7 +27668,7 @@ PureCloud.sessions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/sessions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27692,7 +27698,7 @@ PureCloud.sessions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/sessions?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27719,7 +27725,7 @@ PureCloud.sessions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/sessions/{sessionId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27746,7 +27752,7 @@ PureCloud.sessions = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/sessions/{sessionId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -27785,7 +27791,7 @@ PureCloud.settings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/settings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27810,7 +27816,7 @@ PureCloud.settings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/settings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -27880,7 +27886,7 @@ PureCloud.stations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/stations?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -27907,7 +27913,7 @@ PureCloud.stations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/stations/{id}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.associateduser = self.associateduser || {};
 
@@ -27935,7 +27941,7 @@ PureCloud.stations = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/stations/{id}/associateduser?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -27974,7 +27980,7 @@ PureCloud.statuses = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/statuses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -28068,7 +28074,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/linebasesettings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28098,7 +28104,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/linebasesettings/{lineBaseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28155,7 +28161,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/lines?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28189,7 +28195,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/lines/template?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28219,7 +28225,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/lines/{lineId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28269,7 +28275,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phonebasesettings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28338,7 +28344,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/telephony/providers/edge/phonebasesettings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28375,7 +28381,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phonebasesettings/availablemetabases?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28409,7 +28415,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phonebasesettings/template?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28439,7 +28445,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phonebasesettings/{phoneBaseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28516,7 +28522,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/telephony/providers/edge/phonebasesettings/{phoneBaseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28546,7 +28552,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/telephony/providers/edge/phonebasesettings/{phoneBaseId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28631,7 +28637,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phones?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28751,7 +28757,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/telephony/providers/edge/phones?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28785,7 +28791,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phones/template?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28815,7 +28821,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/phones/{phoneId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28943,7 +28949,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/telephony/providers/edge/phones/{phoneId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -28973,7 +28979,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/telephony/providers/edge/phones/{phoneId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
@@ -29009,7 +29015,7 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/telephony/providers/edge/timezones?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -29062,7 +29068,7 @@ PureCloud.timezones = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/timezones?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -29145,7 +29151,7 @@ PureCloud.userrecordings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/userrecordings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.summary = self.summary || {};
 
@@ -29165,7 +29171,7 @@ PureCloud.userrecordings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/userrecordings/summary?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -29199,7 +29205,7 @@ PureCloud.userrecordings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/userrecordings/{recordingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -29274,7 +29280,7 @@ PureCloud.userrecordings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/userrecordings/{recordingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -29301,7 +29307,7 @@ PureCloud.userrecordings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/userrecordings/{recordingId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.media = self.media || {};
 
@@ -29338,7 +29344,7 @@ PureCloud.userrecordings = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/userrecordings/{recordingId}/media?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -29476,7 +29482,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -29572,7 +29578,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/users?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.me = self.me || {};
 
@@ -29599,7 +29605,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/me?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -29633,7 +29639,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	/**
@@ -29741,7 +29747,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/users/{userId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callforwarding = self.callforwarding || {};
 
@@ -29769,7 +29775,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/callforwarding?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callforwarding = self.callforwarding || {};
 
@@ -29839,7 +29845,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/users/{userId}/callforwarding?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.callforwarding = self.callforwarding || {};
 
@@ -29909,7 +29915,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/users/{userId}/callforwarding?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.greetings = self.greetings || {};
 
@@ -29951,7 +29957,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/greetings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.greetings = self.greetings || {};
 
@@ -30013,7 +30019,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('POST', '/api/v1/users/{userId}/greetings?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.greetings = self.greetings || {};
 	self.greetings.defaults = self.greetings.defaults || {};
@@ -30042,7 +30048,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/greetings/defaults?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.greetings = self.greetings || {};
 	self.greetings.defaults = self.greetings.defaults || {};
@@ -30099,7 +30105,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/users/{userId}/greetings/defaults?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outofoffice = self.outofoffice || {};
 
@@ -30127,7 +30133,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/outofoffice?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.outofoffice = self.outofoffice || {};
 
@@ -30201,7 +30207,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/users/{userId}/outofoffice?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.presences = self.presences || {};
 
@@ -30243,7 +30249,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/presences?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.presences = self.presences || {};
 
@@ -30279,7 +30285,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/presences/{source}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.presences = self.presences || {};
 
@@ -30399,7 +30405,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/users/{userId}/presences/{source}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.presences = self.presences || {};
 
@@ -30519,7 +30525,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/users/{userId}/presences/{source}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.primarypresence = self.primarypresence || {};
 
@@ -30547,7 +30553,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/primarypresence?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -30589,7 +30595,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/queues?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -30623,7 +30629,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/users/{userId}/queues?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.queues = self.queues || {};
 
@@ -30701,7 +30707,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PATCH', '/api/v1/users/{userId}/queues/{queueId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PATCH', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.roles = self.roles || {};
 
@@ -30729,7 +30735,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/roles?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.routingstatus = self.routingstatus || {};
 
@@ -30757,7 +30763,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/routingstatus?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.routingstatus = self.routingstatus || {};
 
@@ -30798,7 +30804,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/users/{userId}/routingstatus?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.settablestatuses = self.settablestatuses || {};
 
@@ -30826,7 +30832,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/settablestatuses?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.skills = self.skills || {};
 
@@ -30854,7 +30860,7 @@ PureCloud.users = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/users/{userId}/skills?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
@@ -30900,7 +30906,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/voicemail/mailbox?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -30920,7 +30926,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/voicemail/messages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -30940,7 +30946,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/voicemail/messages?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -30968,7 +30974,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/voicemail/messages/{messageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -31052,7 +31058,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('PUT', '/api/v1/voicemail/messages/{messageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 
@@ -31080,7 +31086,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('DELETE', '/api/v1/voicemail/messages/{messageId}?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.messages = self.messages || {};
 	self.messages.media = self.messages.media || {};
@@ -31118,7 +31124,7 @@ PureCloud.voicemail = (function (PureCloud) {
 
 
 
-		return PureCloud.makeRequest('GET', '/api/v1/voicemail/messages/{messageId}/media?'+$.param(queryParameters), requestBody);
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;

@@ -63,6 +63,12 @@ var PureCloud =  (function () {
         _token = token;
     };
 
+    self.setEnvironment = function(environment){
+        _environment = environment;
+        _host = 'api.'+ environment + '.com';
+
+    };
+
     function sendRestRequest(method, url, body){
         var requestParams = {
              method: method,
@@ -76,7 +82,7 @@ var PureCloud =  (function () {
          };
 
          if(body){
-             requestParams.data = body;
+             requestParams.data = JSON.stringify(body);
          }
 
          var request = $.ajax(requestParams);
