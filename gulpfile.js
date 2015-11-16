@@ -9,12 +9,7 @@ var jshint = require('gulp-jshint');
 var fs = require('fs');
 var Mustache = require('mustache');
 var _ = require('lodash');
-var rimraf = require('gulp-rimraf');
-
-gulp.task('clean', function() {
-  return gulp.src(['./dist', './doc', './gen'], { read: false })
-      .pipe(rimraf());
-});
+var replace = require('gulp-replace');
 
 function getDefaultValue(type){
 
@@ -211,7 +206,7 @@ function parseJsonSchema(opts, type){
     return data;
 }
 
-var buildApi = function(env) {
+var build = function(env) {
     return gulp.src('./gen/*core.js')
                 .pipe(addsrc('./gen/*[^core].js'))
                 .pipe(concat('purecloud-api.js'))
@@ -225,6 +220,10 @@ var buildApi = function(env) {
 gulp.task('doc', function() {
     require('shelljs/global');
     exec('node_modules/jsdoc/jsdoc.js dist/purecloud-api.js --readme README.md -d doc -u tutorials', {silent:true}).output;
+
+    return gulp.src('./doc/**/*')
+                .pipe(replace(/<footer>.*<\/footer>/g, ''))
+
 });
 
 gulp.task('build', function() {
@@ -248,7 +247,7 @@ gulp.task('build', function() {
     var source = Mustache.render(fs.readFileSync('templates/core.mustache', 'utf-8'), swagger);
     fs.writeFileSync("gen/PureCloud.core.js", source);
 
-    return buildApi();
+    return build();
 
 });
 
