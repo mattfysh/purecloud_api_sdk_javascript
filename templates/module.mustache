@@ -1,0 +1,85 @@
+if(!window.PureCloud){
+	var errorMsg = "PureCloud core is not defined, make sure you reference PureCloud.core before you include {{&moduleName}}";
+	if(console && console.error){
+		console.error(errorMsg);
+	}else {
+		console.log(errorMsg);
+	}
+}
+
+{{&moduleName}} = (function (PureCloud) {
+
+	{{#namespaces}}
+	/**
+	* @namespace {{.}}
+	**/
+	{{/namespaces}}
+
+	var self = {};
+    {{#value}}
+	{{#parentPath}}
+	self.{{.}} = self.{{.}} || {};
+	{{/parentPath}}
+	{{#relativePath}}
+	self.{{&relativePath}} = self.{{&relativePath}} || {};
+	{{/relativePath}}
+
+	/**
+     * {{&summary}}
+     * @method {{&methodName}}
+	 * @memberof {{&namespacePath}}
+    {{#parameters}}
+
+	* @param {{=<% %>=}}{<%&type%>}<%={{ }}=%> {{&camelCaseName}} - {{&description}}
+	{{#enum}}
+	{{.}},
+	{{/enum}}
+    {{/parameters}}
+	{{#bodyExample}}
+	 * @example
+	 * Body Example:
+	 * {{&bodyExample}}
+	{{/bodyExample}}
+	 *
+     */
+     self.{{&relativePath}}{{#relativePath}}.{{/relativePath}}{{&methodName}} = function({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}}){
+		var path = '{{&path}}';
+
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+	    {{#parameters}}
+        {{#isQueryParameter}}
+
+		if({{&camelCaseName}} !== undefined){
+			queryParameters.{{&name}} = {{&camelCaseName}};
+		}
+
+		{{/isQueryParameter}}
+        {{#isPathParameter}}
+        path = path.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', {{&camelCaseName}});
+
+		{{/isPathParameter}}
+        {{#isBodyParameter}}
+        if({{&camelCaseName}} !== undefined){
+            requestBody = {{&camelCaseName}};
+        }
+
+		{{/isBodyParameter}}
+        {{#required}}
+        if({{&camelCaseName}} === undefined){
+			throw 'Missing required {{&paramType}} parameter: {{&camelCaseName}}';
+        }
+
+		{{/required}}
+	    {{/parameters}}
+
+
+		return PureCloud.makeRequest('{{&method}}', '{{&path}}?'+$.param(queryParameters), requestBody);
+     };
+    {{/value}}
+
+	return self;
+}(PureCloud));

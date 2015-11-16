@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='../gen/PureCloud.core.js'></script>
+    <script src='../gen/PureCloud.users.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js'></script>
+
+    <script>
+        PureCloud.authorize('bfadf7a0-3364-4f65-9fda-00d37877113f', 'http://localhost:8085/oauth2/callback', "inindca");
+
+        PureCloud.users.me.getUser().done(function(data){
+            var template = $('#personTpl').html();
+            var html = Mustache.to_html(template, data);
+            $('#sampleArea').html(html);
+        }).error(function(){
+            alert("error");
+        });
+    </script>
+</head>
+
+<body>
+    <script id="personTpl" type="text/template">
+    <h1>{{displayName}} {{email}}</h1>
+    <label>Phone Number:</label> {{phoneNumber}}<br/>
+    <label>Title:</label> {{phoneNumber}}<br/>
+
+    <label>Permissions:</label><br/>
+    {{#permissions}}
+    {{.}}<br/>
+    {{/permissions}}
+    </script>
+    <div id='sampleArea'>
+    </div>
+</body>

@@ -1,0 +1,65 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <!--<script src='../gen/PureCloud.core.js'></script>
+    <script src='../gen/PureCloud.users.js'></script>-->
+    <script src='dist/purecloud-api.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js'></script>
+
+    <script>
+        PureCloud.authorize('bfadf7a0-3364-4f65-9fda-00d37877113f', 'http://localhost:8085/oauth2/callback', "inindca");
+        var lastData = null;
+
+        function getUsers(page){
+            PureCloud.users.getUsers(10,page).done(generateTemplate).error(function(){
+                alert("error");
+            });
+        }
+        getUsers(0);
+
+        function nextPage(){
+            PureCloud.get(lastData.nextUri).done(generateTemplate);
+        }
+
+        function previousPage(){
+            PureCloud.get(lastData.previousUri).done(generateTemplate);
+        }
+
+        function generateTemplate(data){
+            lastData = data;
+            var template = $('#personTpl').html();
+            var html = Mustache.to_html(template, data);
+            $('#generated').html(html);
+        }
+
+    </script>
+</head>
+
+<body>
+    <script id="personTpl" type="text/template">
+        Total: {{total}}
+        <button  class="btn btn-default" onclick="nextPage()">
+            Next Page
+        </button>
+        <button  class="btn btn-default" onclick="previousPage()">
+            Previous Page
+        </button>
+
+    <table  class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Title</th>
+        </tr>
+    {{#entities}}
+    <tr>
+        <td>{{displayName}}</td>
+        <td>{{title}}</td>
+    </tr>
+    {{/entities}}
+</table>
+    </script>
+    <div id='generated'>
+    </div>
+</body>

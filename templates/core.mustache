@@ -1,0 +1,110 @@
+/**
+* @description {{&info.description}}
+* @namespace PureCloud
+**/
+var PureCloud =  (function () {
+    var _host = '{{&host}}';
+    var _environment = "mypurecloud";
+
+    var _token = null;
+    var self = {};
+
+    /**
+	 * Initiates a redirect to authorize the client using oauth
+     * @memberof PureCloud
+     * @param  {string} clientId    The application's Client ID
+	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
+	 * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud, ININSCA, etc.
+	 */
+    self.authorize = function(clientId, redirectUrl, environment){
+        environment = environment || _environment;
+        _host = 'api.'+ environment + '.com';
+
+        var auth_url = 'https://login.'+environment+'.com';
+
+        if(window.location.hash) {
+            //Parse out the hash values of the URL to get the token
+            var hash_array = location.hash.substring(1).split('&');
+            var hash_key_val = new Array(hash_array.length);
+            for (var i = 0; i < hash_array.length; i++) {
+                hash_key_val[i] = hash_array[i].split('=');
+            }
+
+            hash_key_val.forEach(function (pair) {
+                if (pair[0] == "access_token") {
+
+                    // Store token
+                    _token = pair[1];
+
+                    // Clear hash from URL
+                    location.hash = '';
+                }
+            });
+            return;
+        }
+
+        var url = auth_url + '/authorize' +
+			'?response_type=token' +
+			'&client_id=' + encodeURI(clientId) +
+			'&redirect_uri=' + encodeURI(redirectUrl);
+		console.debug(url);
+
+		// Redirect to oauth url
+		console.debug('Initiating oauth process');
+		window.location.replace(url);
+    };
+
+    /**
+     * Sets the authorization token, this is only needed if not using .authorize(...)
+     * @memberof PureCloud
+     * @param  {string} token Authorization token
+     */
+    self.setAuthToken = function(token){
+        _token = token;
+    };
+
+    function sendRestRequest(method, url, body){
+        var requestParams = {
+             method: method,
+             url: url,
+             headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json',
+             },
+             beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + _token);},
+             timeout: 2000
+         };
+
+         if(body){
+             requestParams.data = body;
+         }
+
+         var request = $.ajax(requestParams);
+
+         return request;
+    }
+
+    /**
+     * Executes an authenticated GET to PureCloud
+     * @memberof PureCloud
+     * @param  {string} url The full URL to get
+     * @example PureCloud.get("http://api.mypurecloud.com/api/v1/users/me");
+     */
+    self.get = function(url){
+        return sendRestRequest("GET", url);
+    };
+
+    /**
+     * Executes an authenticated request to PureCloud
+     * @memberof PureCloud
+     * @param  {method} The HTTP method (GET, POST, PUT, DELETE)
+     * @param  {path} The relative uri path
+     * @param  {body} The body to send
+     * @example PureCloud.makeRequest("GET", "/api/v1/users/me");
+     */
+    self.makeRequest = function(method,path,body){
+        return sendRestRequest(method, 'https://'+ _host + path, body);
+    };
+
+	return self;
+}());

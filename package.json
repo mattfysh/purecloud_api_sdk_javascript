@@ -1,0 +1,29 @@
+{
+  "name": "platform_javascript_client",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "jsdoc": "~3.3.3",
+    "mustache": "~2.2.0",
+    "lodash": "~3.10.1",
+    "shelljs": "~0.5.3",
+    "concat-files":"*",
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-minify": "^0.0.5",
+    "gulp-concat": "^2.6.0",
+    "gulp-add-src": "^0.2.0",
+    "gulp-jshint":"^1.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
