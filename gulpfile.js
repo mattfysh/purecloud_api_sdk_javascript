@@ -218,7 +218,7 @@ var build = function(env) {
 
 gulp.task('doc', function() {
     require('shelljs/global');
-    var version = exec('node_modules/jsdoc/jsdoc.js dist/purecloud-api.js --readme README.md -d doc -u tutorials', {silent:true}).output;
+    exec('node_modules/jsdoc/jsdoc.js dist/purecloud-api.js --readme README.md -d doc -u tutorials', {silent:true}).output;
 });
 
 gulp.task('build', function() {
@@ -245,5 +245,9 @@ gulp.task('build', function() {
     return build();
 
 });
+
+gulp.task('gh-pages', function(){
+    exec('git subtree push --prefix dist origin gh-pages', {silent:true}).output;
+})
 
 gulp.task('default', ['build', 'doc']);
