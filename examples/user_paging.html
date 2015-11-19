@@ -3,8 +3,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
     <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
-    <!--<script src='../gen/PureCloud.core.js'></script>
-    <script src='../gen/PureCloud.users.js'></script>-->
     <script src='dist/purecloud-api.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js'></script>
 
@@ -32,8 +30,14 @@
             $('#generated').html(html);
         }
 
+        var redirectUrl = "http://localhost:8085/authredirect.html";
+
+        if(window.location.hostname === 'mypurecloud.github.io'){
+            redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/authredirect.html";
+        }
+
         if(!PureCloud.hasAuthorizationToken()){
-            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', 'http://localhost:8085/oauth2/callback', "user_paging");
+            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "status_subscription");
         }
         else{
             getUsers(1);

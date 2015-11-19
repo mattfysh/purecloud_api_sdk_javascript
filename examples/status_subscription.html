@@ -6,9 +6,14 @@
 
     <script>
         var webSocket = null;
+        var redirectUrl = "http://localhost:8085/authredirect.html";
+
+        if(window.location.hostname === 'mypurecloud.github.io'){
+            redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/authredirect.html";
+        }
 
         if(!PureCloud.hasAuthorizationToken()){
-            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', 'http://localhost:8085/oauth2/callback', "status_subscription");
+            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "status_subscription");
         }
 
         PureCloud.users.me.getUser().done(function(data){
