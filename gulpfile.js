@@ -230,8 +230,9 @@ gulp.task('doc', function() {
     gulp.src("./dist/**/*")
             .pipe(gulp.dest('./doc/examples/dist'));
 
-    return gulp.src('./doc/**/*')
-                .pipe(replace(/<footer>.*<\/footer>/g, ''))
+    return gulp.src('./doc/*.html')
+                .pipe(replace(/<footer[\W\w]*<\/footer>/gm, ''))
+                .pipe(gulp.dest('./doc/'));
 
 });
 
