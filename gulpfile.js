@@ -228,7 +228,7 @@ gulp.task('doc', function() {
             .pipe(gulp.dest('./doc/examples'));
 
     gulp.src("./dist/**/*")
-            .pipe(gulp.dest('./doc/dist'));
+            .pipe(gulp.dest('./doc/examples/dist'));
 
     return gulp.src('./doc/**/*')
                 .pipe(replace(/<footer>.*<\/footer>/g, ''))
