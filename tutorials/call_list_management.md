@@ -1,4 +1,4 @@
-There might be scenarios where contact records need to be individually added to a campaign.  We can use the PureCloud.outbound.contactlists.contacts.createDialerContacts method to add new records.
+There might be scenarios where contact records need to be individually added to a campaign.  We can use the PureCloud.outbound.contactlists.contacts.createDialerContacts method to add new records.  The data field of the contact is a hash of contact list column and the value where the key is the call list column name.
 
 Campaigns will most likely need to be restarted after contacts are added.  We can use the PureCloud.outbound.campaigns.getDialerCampaign and PureCloud.outbound.campaigns.updateDialerCampaign methods to start the campaign.  We first call getDialerCampaign to get the current information on the campaign, then we will set campaignStatus to "on" and update the campaign.  It is important to get the campaign details first because there is a version on the campaign and the data that you post to the server needs to have the same version as the current version in the system.
 

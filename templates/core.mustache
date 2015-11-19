@@ -4,49 +4,69 @@
 **/
 var PureCloud =  (function () {
     var _host = '{{&host}}';
-    var _environment = "mypurecloud";
+    var _auth_url = '';
+    var _environment = "mypurecloud.com";
 
     var _token = null;
+    var _state = null;
     var self = {};
+
+    if(window.location.hash) {
+        //Parse out the hash values of the URL to get the token
+        var hash_array = location.hash.substring(1).split('&');
+        var hash_key_val = new Array(hash_array.length);
+        for (var i = 0; i < hash_array.length; i++) {
+            hash_key_val[i] = hash_array[i].split('=');
+        }
+
+        hash_key_val.forEach(function (pair) {
+            if (pair[0] == "access_token") {
+
+                // Store token
+                _token = pair[1];
+
+                // Clear hash from URL
+                location.hash = '';
+            }
+
+            if (pair[0] == "state") {
+                // Store token
+                _state = pair[1];
+            }
+        });
+    }
+
+    /**
+	 * Gets the value of State that was passed into the .authorize method
+     * @memberof PureCloud
+     */
+    self.getState = function(){
+        return _state;
+    };
 
     /**
 	 * Initiates a redirect to authorize the client using oauth
      * @memberof PureCloud
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
-	 * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud, ININSCA, etc.
-	 */
-    self.authorize = function(clientId, redirectUrl, environment){
+	 * @param  {string} state (Optional) State variable that is returned to the application after authentication.  This can be grabbed from the .getState() method.
+     * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
+     */
+    self.authorize = function(clientId, redirectUrl, state, environment){
         environment = environment || _environment;
-        _host = 'api.'+ environment + '.com';
+        _host = 'api.'+ environment;
 
-        var auth_url = 'https://login.'+environment+'.com';
+        _auth_url = 'https://login.'+environment;
 
-        if(window.location.hash) {
-            //Parse out the hash values of the URL to get the token
-            var hash_array = location.hash.substring(1).split('&');
-            var hash_key_val = new Array(hash_array.length);
-            for (var i = 0; i < hash_array.length; i++) {
-                hash_key_val[i] = hash_array[i].split('=');
-            }
-
-            hash_key_val.forEach(function (pair) {
-                if (pair[0] == "access_token") {
-
-                    // Store token
-                    _token = pair[1];
-
-                    // Clear hash from URL
-                    location.hash = '';
-                }
-            });
-            return;
-        }
-
-        var url = auth_url + '/authorize' +
+        var url = _auth_url + '/authorize' +
 			'?response_type=token' +
 			'&client_id=' + encodeURI(clientId) +
 			'&redirect_uri=' + encodeURI(redirectUrl);
+
+        if(state !== undefined && state !== null){
+            url = url + '&state=' + state;
+        }
+
 		console.debug(url);
 
 		// Redirect to oauth url
@@ -63,9 +83,30 @@ var PureCloud =  (function () {
         _token = token;
     };
 
+    /**
+     * Returns if the authorization token is set
+     * @memberof PureCloud
+     */
+    self.hasAuthorizationToken = function(){
+        return _token !== null;
+    };
+
+    /**
+     * Clears authorization token and logs out.
+     * @memberof PureCloud
+     */
+    self.logout = function(){
+        _token = null;
+		window.location.replace(this._auth_url + "/logout");
+    };
+
+    /**
+    * The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
+    * @memberof PureCloud
+    **/
     self.setEnvironment = function(environment){
         _environment = environment;
-        _host = 'api.'+ environment + '.com';
+        _host = 'api.'+ environment;
 
     };
 

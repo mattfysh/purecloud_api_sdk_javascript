@@ -1,0 +1,46 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src='dist/purecloud-api.js'></script>
+
+    <script>
+        var webSocket = null;
+
+        if(!PureCloud.hasAuthorizationToken()){
+            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', 'http://localhost:8085/oauth2/callback', "status_subscription");
+        }
+
+        PureCloud.users.me.getUser().done(function(data){
+            var myUserId = data.id;
+
+            PureCloud.notifications.channels.createChannel().done(function(data){
+                //start a new web socket using the connect Uri of the channel
+                webSocket = new WebSocket(data.connectUri);
+                webSocket.onopen = function(){
+                    console.log("Socket has been opened!");
+                    //now that the connection is open, we can start our subscription.
+                    PureCloud.notifications.channels.subscriptions.addSubscription(data.id, [{"id": "users."+ myUserId +".status"}]).done
+                };
+
+                webSocket.onmessage = function(message) {
+
+                    var returnData =  JSON.parse(message.data);
+                    console.log("Message: "+ message.data);
+
+                    $('body').html($('body').html() + "<br/>" + new Date().toLocaleTimeString() + " - " + message.data + "<hr/>");
+
+                };
+            }).error(function(){
+                alert("error");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <b>See information on using the notification service at <a href='http://developer.mypurecloud.com/resources/use-notification-service/'>http://developer.mypurecloud.com/resources/use-notification-service/</a></b>
+    <br/>
+
+Change your status in PureCloud to see update notifications
+</body>

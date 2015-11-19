@@ -2,12 +2,12 @@
 
 # Platform API Javascript Client
 
-Docs can be found at http://mypurecloud.github.io/PublicApiJavascriptWrapper/
+Docs can be found at http://mypurecloud.github.io/purecloud_javascript_client
 * Install with [Bower](http://bower.io):
 ```
 bower install purecloud-api
 ```
-
+Source code https://github.com/MyPureCloud/purecloud_javascript_client
 
 # Using the Library
 ## Referencing the modules
@@ -53,6 +53,7 @@ PureCloud.users.me.getUser().done(function(userObject){
 
 
 # Running the Examples
+Examples can be found at https://github.com/MyPureCloud/purecloud_javascript_client/examples
 ```
 cd examples
 node install

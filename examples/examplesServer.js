@@ -12,8 +12,8 @@ app.get("/", function(req, res){
 })
 
 app.get("/oauth2/callback", function(req,res){
-    res.redirect("/user_paging.html")
-})
+    res.redirect("/authredirect.html")
+});
 
 var httpServer = http.createServer(app);
 httpServer.listen('8085');

@@ -1,0 +1,24 @@
+<!-- this page is used so that we can have the same callback for all examples, but we take the state variable out of the response and use it to redirect-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script type="text/javascript">
+    var hash_array = location.hash.substring(1).split('&');
+    var hash_key_val = new Array(hash_array.length);
+    for (var i = 0; i < hash_array.length; i++) {
+        hash_key_val[i] = hash_array[i].split('=');
+    }
+
+    hash_key_val.forEach(function (pair) {
+        if (pair[0] == "state") {
+            window.location.replace(window.location.origin+'/' + pair[1]+ '.html' + window.location.hash);
+        }
+    });
+    </script>
+</head>
+<body>
+</body>
+</html>

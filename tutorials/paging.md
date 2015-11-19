@@ -47,3 +47,5 @@ PureCloud.users.GetUsers(10, 0).done(function(data){
 
 });
 ```
+
+see https://github.com/MyPureCloud/purecloud_javascript_client/blob/master/examples/user_paging.html for a full example.

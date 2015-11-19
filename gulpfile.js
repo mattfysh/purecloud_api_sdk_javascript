@@ -6,6 +6,7 @@ var minify = require('gulp-minify');
 var concat = require('gulp-concat');
 var addsrc = require('gulp-add-src');
 var jshint = require('gulp-jshint');
+var rename = require('gulp-rename');
 var fs = require('fs');
 var Mustache = require('mustache');
 var _ = require('lodash');
@@ -221,12 +222,45 @@ gulp.task('doc', function() {
     require('shelljs/global');
     exec('node_modules/jsdoc/jsdoc.js dist/purecloud-api.js --readme README.md -d doc -u tutorials', {silent:true}).output;
 
+    //copy examples and dist to /doc too so that whan we map
+    //the repo to the gh-pages branch, the examples can be run from there.
+    gulp.src("./examples/*.html")
+            .pipe(gulp.dest('./doc/examples'));
+
+    gulp.src("./dist/**/*")
+            .pipe(gulp.dest('./doc/dist'));
+
     return gulp.src('./doc/**/*')
                 .pipe(replace(/<footer>.*<\/footer>/g, ''))
 
 });
 
+gulp.task('movegen', function(){
+    return gulp.src("./gen/*.*")
+                  .pipe(rename(function (path) {
+                    path.basename = path.basename.toLowerCase();
+                  }))
+                  .pipe(gulp.dest("./dist/partials")); // ./dist/main/text/ciao/hello-goodbye.md
+
+});
+
+function fileExists(filePath)
+{
+    try
+    {
+        return fs.statSync(filePath).isDirectory();
+    }
+    catch (err)
+    {
+        return false;
+    }
+}
+
 gulp.task('build', function() {
+
+    if (!fileExists("gen")) {
+        fs.mkdirSync('gen');
+    }
 
     var file = 'swagger_full.json';
     var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
@@ -254,6 +288,13 @@ gulp.task('build', function() {
 gulp.task('gh-pages', function(){
     require('shelljs/global');
     exec('git subtree push --prefix doc origin gh-pages', {silent:true}).output;
-})
+});
 
-gulp.task('default', ['build', 'doc']);
+gulp.task('watch', function() {
+    gulp.watch('./templates/*', ['default']);
+    gulp.watch('./tutorials/*', ['doc']);
+});
+
+gulp.task('default', ['build'], function () {
+  gulp.start(['movegen', 'doc']);
+});
