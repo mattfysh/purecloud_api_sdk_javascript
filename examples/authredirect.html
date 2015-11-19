@@ -14,8 +14,15 @@
 
     hash_key_val.forEach(function (pair) {
         if (pair[0] == "state") {
-            window.location.replace(window.location.origin+'/' + pair[1]+ '.html' + window.location.hash);
+            if(window.location.hostname === 'mypurecloud.github.io'){
+                redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/" + pair[1] + '.html';
+            }
+            else {
+                window.location.replace(window.location.origin+'/' + pair[1]+ '.html' + window.location.hash);
+            }
         }
+
+
     });
     </script>
 </head>

@@ -53,6 +53,9 @@ PureCloud.users.me.getUser().done(function(userObject){
 
 
 # Running the Examples
+Live examples can be run from http://mypurecloud.github.io/purecloud_javascript_client/examples/index.html
+
+## Running Locally
 Examples can be found at https://github.com/MyPureCloud/purecloud_javascript_client/examples
 ```
 cd examples
