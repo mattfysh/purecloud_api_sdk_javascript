@@ -1326,9 +1326,9 @@ PureCloud.conversations = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "description": "",
    "selfUri": ""
@@ -1451,9 +1451,9 @@ PureCloud.conversations = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "description": "",
    "selfUri": ""

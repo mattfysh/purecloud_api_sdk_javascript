@@ -82,9 +82,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
@@ -109,9 +109,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -202,9 +202,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
@@ -229,9 +229,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""

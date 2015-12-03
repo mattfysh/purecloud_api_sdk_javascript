@@ -157,9 +157,9 @@ PureCloud.voicemail = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "selfUri": ""
 }

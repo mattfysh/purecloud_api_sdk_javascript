@@ -204,9 +204,9 @@ PureCloud.users = (function (PureCloud) {
       "type": "",
       "selfUri": ""
    },
-   "defaultStationUri": "",
    "stationUri": "",
-   "lastStationUri": ""
+   "lastStationUri": "",
+   "defaultStationUri": ""
 }
 	 *
      */
@@ -360,9 +360,9 @@ PureCloud.users = (function (PureCloud) {
       "type": "",
       "selfUri": ""
    },
-   "defaultStationUri": "",
    "stationUri": "",
-   "lastStationUri": ""
+   "lastStationUri": "",
+   "defaultStationUri": ""
 }
 	 *
      */
@@ -398,7 +398,7 @@ PureCloud.users = (function (PureCloud) {
      * @method getCallforwarding
 	 * @memberof users/callforwarding
 
-	* @param {string} userId - 
+	* @param {string} userId - User ID
 	 *
      */
      self.callforwarding.getCallforwarding = function(userId){
@@ -425,7 +425,7 @@ PureCloud.users = (function (PureCloud) {
      * @method updateCallforwarding
 	 * @memberof users/callforwarding
 
-	* @param {string} userId - 
+	* @param {string} userId - User ID
 
 	* @param {} body - 
 	 * @example
@@ -455,9 +455,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -494,7 +494,7 @@ PureCloud.users = (function (PureCloud) {
      * @method patchCallforwarding
 	 * @memberof users/callforwarding
 
-	* @param {string} userId - 
+	* @param {string} userId - User ID
 
 	* @param {} body - 
 	 * @example
@@ -524,9 +524,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -806,9 +806,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "startDate": "",
    "endDate": "",
@@ -957,9 +957,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -997,9 +997,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -1076,9 +1076,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -1116,9 +1116,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
-      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": ""
+      "lastStationUri": "",
+      "defaultStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""

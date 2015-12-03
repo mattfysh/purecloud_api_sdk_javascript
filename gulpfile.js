@@ -11,6 +11,7 @@ var fs = require('fs');
 var Mustache = require('mustache');
 var _ = require('lodash');
 var replace = require('gulp-replace');
+var rimraf = require('gulp-rimraf');
 
 function getDefaultValue(type){
 
@@ -53,7 +54,6 @@ function getModelDefinition(swagger, modelName, depth){
         definition.push('"' + name + '" : ' + defaultValue );
 
     }
-
 
     return JSON.stringify(JSON.parse("{" + definition.join(',') + "}"), null, "   ");
 }
@@ -257,13 +257,42 @@ function fileExists(filePath)
     }
 }
 
-gulp.task('build', function() {
+gulp.task('clean:doc', function(){
+    return gulp.src('./doc', { read: false })
+        .pipe(rimraf());
+});
+
+gulp.task('clean:gen', function(){
+    return gulp.src('./gen', { read: false })
+        .pipe(rimraf());
+});
+
+gulp.task('clean:dist', function(){
+    return gulp.src('./dist', { read: false })
+        .pipe(rimraf());
+});
+
+gulp.task('clean', ['clean:doc', 'clean:dist', 'clean:gen']);
+
+gulp.task('download', function(){
+    var url = "https://api.mypurecloud.com/api/v1/docs/swagger";
+
+    var download = require("gulp-download");
+
+    return download(url)
+        .pipe(rename(function (path) {
+          path.basename = path.basename + ".json"
+        }))
+        .pipe(gulp.dest("."));
+});
+
+gulp.task('build', ['clean', 'download'], function() {
 
     if (!fileExists("gen")) {
         fs.mkdirSync('gen');
     }
 
-    var file = 'swagger_full.json';
+    var file = 'swagger.json';
     var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
 
     var data = parseJsonSchema({

@@ -210,7 +210,7 @@ PureCloud.authorization = (function (PureCloud) {
      * @method restoreAllDefaultRoles
 	 * @memberof authorization/roles/default
 
-	* @param {boolean} force - 
+	* @param {boolean} force - Restore default roles
 	 *
      */
      self.roles.default.restoreAllDefaultRoles = function(force){

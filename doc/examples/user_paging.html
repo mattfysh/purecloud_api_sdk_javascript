@@ -37,7 +37,7 @@
         }
 
         if(!PureCloud.hasAuthorizationToken()){
-            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "status_subscription");
+            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_paging");
         }
         else{
             getUsers(1);

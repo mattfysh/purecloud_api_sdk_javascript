@@ -70,8 +70,8 @@ PureCloud.identityproviders = (function (PureCloud) {
    "id": "",
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "selfUri": ""
 }
 	 *
@@ -171,6 +171,73 @@ PureCloud.identityproviders = (function (PureCloud) {
      */
      self.purecloud.deletePurecloudIdentityProvider = function(){
 		var path = '/api/v1/identityproviders/purecloud';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
+     };
+
+	/**
+     * 
+     * @method getIdentityProvider
+	 * @memberof identityproviders
+	 *
+     */
+     self.getIdentityProvider = function(){
+		var path = '/api/v1/identityproviders/{providerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
+     };
+
+	/**
+     * 
+     * @method updateIdentityProvider
+	 * @memberof identityproviders
+
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "selfUri": ""
+}
+	 *
+     */
+     self.updateIdentityProvider = function(body){
+		var path = '/api/v1/identityproviders/{providerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
+     };
+
+	/**
+     * 
+     * @method deleteIdentityProvider
+	 * @memberof identityproviders
+	 *
+     */
+     self.deleteIdentityProvider = function(){
+		var path = '/api/v1/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

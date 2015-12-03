@@ -21,9 +21,6 @@ PureCloud.analytics = (function (PureCloud) {
 	* @namespace analytics/metrics/query
 	**/
 	/**
-	* @namespace analytics/query
-	**/
-	/**
 	* @namespace analytics/reporting/metadata
 	**/
 	/**
@@ -293,10 +290,24 @@ PureCloud.analytics = (function (PureCloud) {
 	 * {
    "id": "",
    "name": "",
-   "order": 0,
-   "category": "",
-   "conditions": [],
-   "actions": []
+   "title": "",
+   "description": "",
+   "enabled": true,
+   "metric": "",
+   "entity": {
+      "kind": "",
+      "id": "",
+      "name": ""
+   },
+   "metricThresholds": [],
+   "inAlarm": true,
+   "occurrence": {
+      "limit": 0,
+      "type": ""
+   },
+   "mediaType": "",
+   "statistic": "",
+   "selfUri": ""
 }
 	 *
      */
@@ -359,10 +370,24 @@ PureCloud.analytics = (function (PureCloud) {
 	 * {
    "id": "",
    "name": "",
-   "order": 0,
-   "category": "",
-   "conditions": [],
-   "actions": []
+   "title": "",
+   "description": "",
+   "enabled": true,
+   "metric": "",
+   "entity": {
+      "kind": "",
+      "id": "",
+      "name": ""
+   },
+   "metricThresholds": [],
+   "inAlarm": true,
+   "occurrence": {
+      "limit": 0,
+      "type": ""
+   },
+   "mediaType": "",
+   "statistic": "",
+   "selfUri": ""
 }
 	 *
      */
@@ -436,38 +461,6 @@ PureCloud.analytics = (function (PureCloud) {
         if(body !== undefined && body !== null){
             requestBody = body;
         }
-
-
-
-		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
-     };
-	self.query = self.query || {};
-
-	/**
-     * 
-     * @method sendQuery
-	 * @memberof analytics/query
-
-	* @param {} body - queryObject
-
-	* @param {string} version - Version number
-	 *
-     */
-     self.query.sendQuery = function(body, version){
-		var path = '/api/v1/analytics/query';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		if(version !== undefined && version !== null){
-			queryParameters.version = version;
-		}
 
 
 
@@ -592,8 +585,13 @@ PureCloud.analytics = (function (PureCloud) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
+      "end": "",
       "start": "",
-      "end": ""
+      "chronology": {},
+      "startMillis": 0,
+      "endMillis": 0,
+      "beforeNow": true,
+      "afterNow": true
    },
    "reportFormat": "",
    "locale": "",
@@ -684,8 +682,13 @@ PureCloud.analytics = (function (PureCloud) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
+      "end": "",
       "start": "",
-      "end": ""
+      "chronology": {},
+      "startMillis": 0,
+      "endMillis": 0,
+      "beforeNow": true,
+      "afterNow": true
    },
    "reportFormat": "",
    "locale": "",

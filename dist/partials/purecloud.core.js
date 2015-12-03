@@ -55,7 +55,6 @@ var PureCloud =  (function () {
     self.authorize = function(clientId, redirectUrl, state, environment){
         environment = environment || _environment;
         _host = 'api.'+ environment;
-
         _auth_url = 'https://login.'+environment;
 
         var url = _auth_url + '/authorize' +
@@ -84,6 +83,14 @@ var PureCloud =  (function () {
     };
 
     /**
+     * Gets the authorization token
+     * @memberof PureCloud
+     */
+    self.getAuthToken = function(){
+        return _token;
+    };
+
+    /**
      * Returns if the authorization token is set
      * @memberof PureCloud
      */
@@ -103,10 +110,12 @@ var PureCloud =  (function () {
     /**
     * The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
     * @memberof PureCloud
+    * @param  {string} environment PureCloud environment (mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc)
     **/
     self.setEnvironment = function(environment){
         _environment = environment;
         _host = 'api.'+ environment;
+        _auth_url = 'https://login.'+environment;
 
     };
 
@@ -144,9 +153,9 @@ var PureCloud =  (function () {
     /**
      * Executes an authenticated request to PureCloud
      * @memberof PureCloud
-     * @param  {method} The HTTP method (GET, POST, PUT, DELETE)
-     * @param  {path} The relative uri path
-     * @param  {body} The body to send
+     * @param  {string} method The HTTP method (GET, POST, PUT, DELETE)
+     * @param  {uri} path The relative uri path
+     * @param  {JSON} body The body to send
      * @example PureCloud.makeRequest("GET", "/api/v1/users/me");
      */
     self.makeRequest = function(method,path,body){

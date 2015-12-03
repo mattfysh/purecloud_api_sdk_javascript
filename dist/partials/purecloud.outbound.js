@@ -1059,6 +1059,22 @@ PureCloud.outbound = (function (PureCloud) {
 	 * Body Example:
 	 * {
    "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0,
    "selfUri": ""
 }
 	 *
@@ -1159,6 +1175,22 @@ PureCloud.outbound = (function (PureCloud) {
 	 * Body Example:
 	 * {
    "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0,
    "selfUri": ""
 }
 	 *
@@ -1308,13 +1340,11 @@ PureCloud.outbound = (function (PureCloud) {
    "name": "",
    "contactListId": "",
    "data": {
-      "array": true,
-      "null": true,
+      "nodeType": "",
       "valueNode": true,
       "containerNode": true,
       "missingNode": true,
       "object": true,
-      "nodeType": "",
       "pojo": true,
       "number": true,
       "integralNumber": true,
@@ -1328,7 +1358,9 @@ PureCloud.outbound = (function (PureCloud) {
       "bigInteger": true,
       "textual": true,
       "boolean": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "callRecords": {},
    "callable": true,

@@ -35,6 +35,15 @@ PureCloud.telephony = (function (PureCloud) {
 	/**
 	* @namespace telephony/providers/edge/timezones
 	**/
+	/**
+	* @namespace telephony/providers/edge/trunkbasesettings
+	**/
+	/**
+	* @namespace telephony/providers/edge/trunkbasesettings/availablemetabases
+	**/
+	/**
+	* @namespace telephony/providers/edge/trunkbasesettings/template
+	**/
 
 	var self = {};
 	self.providers = self.providers || {};
@@ -304,13 +313,11 @@ PureCloud.telephony = (function (PureCloud) {
    },
    "lines": [],
    "properties": {
-      "array": true,
-      "null": true,
+      "nodeType": "",
       "valueNode": true,
       "containerNode": true,
       "missingNode": true,
       "object": true,
-      "nodeType": "",
       "pojo": true,
       "number": true,
       "integralNumber": true,
@@ -324,7 +331,9 @@ PureCloud.telephony = (function (PureCloud) {
       "bigInteger": true,
       "textual": true,
       "boolean": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "capabilities": {
       "provisions": true,
@@ -472,13 +481,11 @@ PureCloud.telephony = (function (PureCloud) {
    },
    "lines": [],
    "properties": {
-      "array": true,
-      "null": true,
+      "nodeType": "",
       "valueNode": true,
       "containerNode": true,
       "missingNode": true,
       "object": true,
-      "nodeType": "",
       "pojo": true,
       "number": true,
       "integralNumber": true,
@@ -492,7 +499,9 @@ PureCloud.telephony = (function (PureCloud) {
       "bigInteger": true,
       "textual": true,
       "boolean": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "capabilities": {
       "provisions": true,
@@ -710,13 +719,11 @@ PureCloud.telephony = (function (PureCloud) {
       "selfUri": ""
    },
    "properties": {
-      "array": true,
-      "null": true,
+      "nodeType": "",
       "valueNode": true,
       "containerNode": true,
       "missingNode": true,
       "object": true,
-      "nodeType": "",
       "pojo": true,
       "number": true,
       "integralNumber": true,
@@ -730,7 +737,9 @@ PureCloud.telephony = (function (PureCloud) {
       "bigInteger": true,
       "textual": true,
       "boolean": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "capabilities": {
       "provisions": true,
@@ -893,13 +902,11 @@ PureCloud.telephony = (function (PureCloud) {
       "selfUri": ""
    },
    "properties": {
-      "array": true,
-      "null": true,
+      "nodeType": "",
       "valueNode": true,
       "containerNode": true,
       "missingNode": true,
       "object": true,
-      "nodeType": "",
       "pojo": true,
       "number": true,
       "integralNumber": true,
@@ -913,7 +920,9 @@ PureCloud.telephony = (function (PureCloud) {
       "bigInteger": true,
       "textual": true,
       "boolean": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "capabilities": {
       "provisions": true,
@@ -1008,6 +1017,324 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+
+	/**
+     * 
+     * @method getTrunkBaseSettings
+	 * @memberof telephony/providers/edge/trunkbasesettings
+
+	* @param {integer} pageNumber - Page number
+
+	* @param {integer} pageSize - Page size
+
+	* @param {string} sortBy - Value by which to sort
+
+	* @param {string} sortOrder - Sort order
+	 *
+     */
+     self.providers.edge.trunkbasesettings.getTrunkBaseSettings = function(pageNumber, pageSize, sortBy, sortOrder){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+
+	/**
+     * 
+     * @method createTrunkBaseSettings
+	 * @memberof telephony/providers/edge/trunkbasesettings
+
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "trunkMetabase": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "properties": {
+      "nodeType": "",
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "object": true,
+      "pojo": true,
+      "number": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "float": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "boolean": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "selfUri": ""
+}
+	 *
+     */
+     self.providers.edge.trunkbasesettings.createTrunkBaseSettings = function(body){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+	self.providers.edge.trunkbasesettings.availablemetabases = self.providers.edge.trunkbasesettings.availablemetabases || {};
+
+	/**
+     * 
+     * @method getTrunkMakesAndModels
+	 * @memberof telephony/providers/edge/trunkbasesettings/availablemetabases
+
+	* @param {string} type - 
+	EXTERNAL,
+	PHONE,
+	EDGE,
+
+	* @param {integer} pageSize - 
+
+	* @param {integer} pageNumber - 
+	 *
+     */
+     self.providers.edge.trunkbasesettings.availablemetabases.getTrunkMakesAndModels = function(type, pageSize, pageNumber){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings/availablemetabases';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(type !== undefined && type !== null){
+			queryParameters.type = type;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+	self.providers.edge.trunkbasesettings.template = self.providers.edge.trunkbasesettings.template || {};
+
+	/**
+     * 
+     * @method getNewPhoneBaseSettingsInstance
+	 * @memberof telephony/providers/edge/trunkbasesettings/template
+
+	* @param {string} trunkMetabaseId - The id of a metabase object upon which to base this Trunk Base Settings
+	 *
+     */
+     self.providers.edge.trunkbasesettings.template.getNewPhoneBaseSettingsInstance = function(trunkMetabaseId){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings/template';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(trunkMetabaseId !== undefined && trunkMetabaseId !== null){
+			queryParameters.trunkMetabaseId = trunkMetabaseId;
+		}
+
+        if(trunkMetabaseId === undefined && trunkMetabaseId !== null){
+			throw 'Missing required  parameter: trunkMetabaseId';
+        }
+
+
+
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+
+	/**
+     * 
+     * @method getTrunkBaseSettings
+	 * @memberof telephony/providers/edge/trunkbasesettings
+
+	* @param {string} trunkBaseSettingsId - Trunk Base ID
+	 *
+     */
+     self.providers.edge.trunkbasesettings.getTrunkBaseSettings = function(trunkBaseSettingsId){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings/{trunkBaseSettingsId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
+
+        if(trunkBaseSettingsId === undefined && trunkBaseSettingsId !== null){
+			throw 'Missing required  parameter: trunkBaseSettingsId';
+        }
+
+
+
+		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+
+	/**
+     * 
+     * @method updateTrunkBaseSettings
+	 * @memberof telephony/providers/edge/trunkbasesettings
+
+	* @param {string} trunkBaseSettingsId - Trunk Base ID
+
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "trunkMetabase": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "properties": {
+      "nodeType": "",
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "object": true,
+      "pojo": true,
+      "number": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "float": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "boolean": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "selfUri": ""
+}
+	 *
+     */
+     self.providers.edge.trunkbasesettings.updateTrunkBaseSettings = function(trunkBaseSettingsId, body){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings/{trunkBaseSettingsId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
+
+        if(trunkBaseSettingsId === undefined && trunkBaseSettingsId !== null){
+			throw 'Missing required  parameter: trunkBaseSettingsId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+
+		return PureCloud.makeRequest('PUT', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.trunkbasesettings = self.providers.edge.trunkbasesettings || {};
+
+	/**
+     * 
+     * @method deleteTrunkBaseSettings
+	 * @memberof telephony/providers/edge/trunkbasesettings
+
+	* @param {string} trunkBaseSettingsId - Trunk Base ID
+	 *
+     */
+     self.providers.edge.trunkbasesettings.deleteTrunkBaseSettings = function(trunkBaseSettingsId){
+		var path = '/api/v1/telephony/providers/edge/trunkbasesettings/{trunkBaseSettingsId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
+
+        if(trunkBaseSettingsId === undefined && trunkBaseSettingsId !== null){
+			throw 'Missing required  parameter: trunkBaseSettingsId';
+        }
+
+
+
+		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
      };
 
 	return self;
