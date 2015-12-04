@@ -51,26 +51,75 @@ var PureCloud =  (function () {
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
 	 * @param  {string} state (Optional) State variable that is returned to the application after authentication.  This can be grabbed from the .getState() method.
      * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
+     * @example PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
+         //this method will be called once we have a valid authorization token
+         // if we don't have one a redirect to login will be called and then after redirecting back here,
+         // the done method will be called.
+     });
+     *
+     * @example PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/', "State Value", "mypurecloud.ie");
      */
     self.authorize = function(clientId, redirectUrl, state, environment){
-        environment = environment || _environment;
-        _host = 'api.'+ environment;
-        _auth_url = 'https://login.'+environment;
+        var _doneCallback = function(){console.error("callback not set");};
 
-        var url = _auth_url + '/authorize' +
-			'?response_type=token' +
-			'&client_id=' + encodeURI(clientId) +
-			'&redirect_uri=' + encodeURI(redirectUrl);
+        var defer = {
+            done: function(callback){
+                _doneCallback = callback;
+            }
+        };
 
-        if(state !== undefined && state !== null){
-            url = url + '&state=' + state;
+        var existingToken = null;
+
+        if(window && window.localStorage){
+            existingToken = window.localStorage.authtoken;
         }
 
-		console.debug(url);
+        if(_token){
+            existingToken = _token;
+        }
 
-		// Redirect to oauth url
-		console.debug('Initiating oauth process');
-		window.location.replace(url);
+        function authRedirect(){
+            environment = environment || _environment;
+            _host = 'api.'+ environment;
+            _auth_url = 'https://login.'+environment;
+
+            var url = _auth_url + '/authorize' +
+                '?response_type=token' +
+                '&client_id=' + encodeURI(clientId) +
+                '&redirect_uri=' + encodeURI(redirectUrl);
+
+            if(state !== undefined && state !== null){
+                url = url + '&state=' + state;
+            }
+
+            //console.debug(url);
+
+            // Redirect to oauth url
+            //console.debug('Initiating oauth process');
+            window.location.replace(url);
+        }
+
+        if(existingToken && existingToken !== ''){
+            _token = existingToken;
+            sendRestRequest("GET", "https://" + _host + "/api/v1/users/me").done(function(){
+                //has good auth token
+                _token = existingToken;
+
+                if(window && window.localStorage){
+                    window.localStorage.authtoken = _token;
+                }
+
+                _doneCallback();
+
+            }).error(function(){
+                //don't have an auth token yet
+                authRedirect();
+            });
+        }else{
+            authRedirect();
+        }
+
+        return defer;
     };
 
     /**
@@ -104,6 +153,11 @@ var PureCloud =  (function () {
      */
     self.logout = function(){
         _token = null;
+
+        if(window && window.localStorage){
+            delete window.localStorage.authtoken;
+        }
+
 		window.location.replace(this._auth_url + "/logout");
     };
 
@@ -141,12 +195,18 @@ var PureCloud =  (function () {
     }
 
     /**
-     * Executes an authenticated GET to PureCloud
+     * Executes an authenticated GET to PureCloud.  Can be used with paging URIs to get a page that has a defined full url.
      * @memberof PureCloud
-     * @param  {string} url The full URL to get
-     * @example PureCloud.get("http://api.mypurecloud.com/api/v1/users/me");
+     * @param  {string} url The full or relative path URL to get
+     * @example PureCloud.get("https://api.mypurecloud.com/api/v1/users/me");
+     * @example PureCloud.get("/api/v1/users/me");
      */
     self.get = function(url){
+
+        if(url[0] === '/'){
+            url = 'https://'+ _host + url;
+        }
+
         return sendRestRequest("GET", url);
     };
 
@@ -7195,9 +7255,9 @@ PureCloud.contentmanagement = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "group": {
       "id": "",
@@ -8895,9 +8955,9 @@ PureCloud.conversations = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "description": "",
    "selfUri": ""
@@ -9020,9 +9080,9 @@ PureCloud.conversations = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "description": "",
    "selfUri": ""
@@ -14147,9 +14207,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
@@ -14174,9 +14234,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -14267,9 +14327,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
@@ -14294,9 +14354,9 @@ PureCloud.presencedefinitions = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -14595,9 +14655,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -14621,9 +14681,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "conversation": {
       "id": "",
@@ -14694,9 +14754,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "selfUri": ""
 }
@@ -14793,9 +14853,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -14819,9 +14879,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "conversation": {
       "id": "",
@@ -14892,9 +14952,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "selfUri": ""
 }
@@ -15087,9 +15147,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -15113,9 +15173,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "calibration": {
       "id": "",
@@ -15310,9 +15370,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -15336,9 +15396,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "calibration": {
       "id": "",
@@ -15844,10 +15904,10 @@ PureCloud.quality = (function (PureCloud) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
-      "firstUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -15922,10 +15982,10 @@ PureCloud.quality = (function (PureCloud) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
-      "firstUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -16086,10 +16146,10 @@ PureCloud.quality = (function (PureCloud) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
-      "firstUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -16873,9 +16933,9 @@ PureCloud.routing = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -17130,9 +17190,9 @@ PureCloud.routing = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -19673,9 +19733,9 @@ PureCloud.users = (function (PureCloud) {
       "type": "",
       "selfUri": ""
    },
+   "defaultStationUri": "",
    "stationUri": "",
-   "lastStationUri": "",
-   "defaultStationUri": ""
+   "lastStationUri": ""
 }
 	 *
      */
@@ -19829,9 +19889,9 @@ PureCloud.users = (function (PureCloud) {
       "type": "",
       "selfUri": ""
    },
+   "defaultStationUri": "",
    "stationUri": "",
-   "lastStationUri": "",
-   "defaultStationUri": ""
+   "lastStationUri": ""
 }
 	 *
      */
@@ -19924,9 +19984,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -19993,9 +20053,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -20275,9 +20335,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "startDate": "",
    "endDate": "",
@@ -20426,9 +20486,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -20466,9 +20526,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -20545,9 +20605,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -20585,9 +20645,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -21114,9 +21174,9 @@ PureCloud.voicemail = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "selfUri": ""
 }

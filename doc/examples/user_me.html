@@ -12,10 +12,7 @@
             redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/authredirect.html";
         }
 
-        if(!PureCloud.hasAuthorizationToken()){
-            PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_me");
-        }
-        else{
+        PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_me").done(function(){
             PureCloud.users.me.getUser().done(function(data){
                 var template = $('#personTpl').html();
                 var html = Mustache.to_html(template, data);
@@ -23,7 +20,7 @@
             }).error(function(){
                 alert("error");
             });
-        }
+        })
 
     </script>
 </head>

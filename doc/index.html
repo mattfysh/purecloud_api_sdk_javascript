@@ -54,7 +54,11 @@
 <pre class="prettyprint source"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;pure-cloud-api.js&quot;>&lt;/script></code></pre><p>Including only a subset.  It is important to note that PureCloud.core.js must be referenced first.</p>
 <pre class="prettyprint source"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;PureCloud.core.js&quot;>&lt;/script>
 &lt;script type=&quot;text/javascript&quot; src=&quot;PureCloud.users.js&quot;>&lt;/script></code></pre><h2>Authenticating</h2><p>Let the library handle the OAuth2 redirects for you.</p>
-<pre class="prettyprint source"><code>PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/');</code></pre><p>or if  you already have a bearer token, you can specify it using</p>
+<pre class="prettyprint source"><code>PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
+    //this method will be called once we have a valid authorization token
+    // if we don't have one a redirect to login will be called and then after redirecting back here,
+    // the done method will be called.
+});</code></pre><p>or if  you already have a bearer token, you can specify it using</p>
 <pre class="prettyprint source"><code>PureCloud.setToken(&quot;MYTOKEN&quot;);</code></pre><h2>Making Requests</h2><p>Requests return the JQuery deferred object https://api.jquery.com/category/deferred-object/ so handlers can be registered to that response.</p>
 <pre class="prettyprint source"><code>PureCloud.users.me.getUser().done(function(userObject){
                                 //successfully got the user object, do something with it here

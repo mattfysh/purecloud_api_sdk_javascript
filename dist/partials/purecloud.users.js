@@ -204,9 +204,9 @@ PureCloud.users = (function (PureCloud) {
       "type": "",
       "selfUri": ""
    },
+   "defaultStationUri": "",
    "stationUri": "",
-   "lastStationUri": "",
-   "defaultStationUri": ""
+   "lastStationUri": ""
 }
 	 *
      */
@@ -360,9 +360,9 @@ PureCloud.users = (function (PureCloud) {
       "type": "",
       "selfUri": ""
    },
+   "defaultStationUri": "",
    "stationUri": "",
-   "lastStationUri": "",
-   "defaultStationUri": ""
+   "lastStationUri": ""
 }
 	 *
      */
@@ -455,9 +455,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -524,9 +524,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -806,9 +806,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "startDate": "",
    "endDate": "",
@@ -957,9 +957,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -997,9 +997,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""
@@ -1076,9 +1076,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -1116,9 +1116,9 @@ PureCloud.users = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "modifiedDate": "",
    "selfUri": ""

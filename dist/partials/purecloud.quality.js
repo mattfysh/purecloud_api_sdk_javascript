@@ -235,9 +235,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -261,9 +261,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "conversation": {
       "id": "",
@@ -334,9 +334,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "selfUri": ""
 }
@@ -433,9 +433,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -459,9 +459,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "conversation": {
       "id": "",
@@ -532,9 +532,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "selfUri": ""
 }
@@ -727,9 +727,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -753,9 +753,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "calibration": {
       "id": "",
@@ -950,9 +950,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "agent": {
       "id": "",
@@ -976,9 +976,9 @@ PureCloud.quality = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "calibration": {
       "id": "",
@@ -1484,10 +1484,10 @@ PureCloud.quality = (function (PureCloud) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
-      "firstUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -1562,10 +1562,10 @@ PureCloud.quality = (function (PureCloud) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
-      "firstUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -1726,10 +1726,10 @@ PureCloud.quality = (function (PureCloud) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
-      "firstUri": "",
       "pageCount": 0
    },
    "selfUri": ""

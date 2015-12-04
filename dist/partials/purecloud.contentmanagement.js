@@ -1333,9 +1333,9 @@ PureCloud.contentmanagement = (function (PureCloud) {
       "permissions": [],
       "selfUri": "",
       "requestedStatus": {},
+      "defaultStationUri": "",
       "stationUri": "",
-      "lastStationUri": "",
-      "defaultStationUri": ""
+      "lastStationUri": ""
    },
    "group": {
       "id": "",

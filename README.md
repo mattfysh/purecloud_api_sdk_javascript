@@ -31,7 +31,11 @@ Including only a subset.  It is important to note that PureCloud.core.js must be
 ## Authenticating
 Let the library handle the OAuth2 redirects for you.
 ```
-PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/');
+PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
+    //this method will be called once we have a valid authorization token
+    // if we don't have one a redirect to login will be called and then after redirecting back here,
+    // the done method will be called.
+});
 ```
 
 or if  you already have a bearer token, you can specify it using
