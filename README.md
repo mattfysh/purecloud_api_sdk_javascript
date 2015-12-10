@@ -40,7 +40,7 @@ PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:80
 
 or if  you already have a bearer token, you can specify it using
 ```
-PureCloud.setToken("MYTOKEN");
+PureCloud.setAuthToken("MYTOKEN");
 ```
 
 
