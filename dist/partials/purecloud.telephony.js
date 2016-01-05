@@ -33,6 +33,9 @@ PureCloud.telephony = (function (PureCloud) {
 	* @namespace telephony/providers/edge/phones/template
 	**/
 	/**
+	* @namespace telephony/providers/edge/phones/reboot
+	**/
+	/**
 	* @namespace telephony/providers/edge/timezones
 	**/
 	/**
@@ -338,7 +341,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -506,7 +511,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -744,7 +751,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -927,7 +936,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -982,6 +993,36 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.phones = self.providers.edge.phones || {};
+	self.providers.edge.phones.reboot = self.providers.edge.phones.reboot || {};
+
+	/**
+     * 
+     * @method rebootPhone
+	 * @memberof telephony/providers/edge/phones/reboot
+
+	* @param {string} phoneId - Phone Id
+	 *
+     */
+     self.providers.edge.phones.reboot.rebootPhone = function(phoneId){
+		var path = '/api/v1/telephony/providers/edge/phones/{phoneId}/reboot';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{phoneId}', phoneId);
+
+        if(phoneId === undefined && phoneId !== null){
+			throw 'Missing required  parameter: phoneId';
+        }
+
+
+
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};

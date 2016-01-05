@@ -70,8 +70,8 @@ PureCloud.identityproviders = (function (PureCloud) {
    "id": "",
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "selfUri": ""
 }
 	 *

@@ -42,6 +42,9 @@ PureCloud.configuration = (function (PureCloud) {
 	* @namespace configuration/edges/softwareversions
 	**/
 	/**
+	* @namespace configuration/edges/unpair
+	**/
+	/**
 	* @namespace configuration/edgeversionreport
 	**/
 	/**
@@ -1798,6 +1801,34 @@ PureCloud.configuration = (function (PureCloud) {
 
 		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
+	self.edges = self.edges || {};
+	self.edges.unpair = self.edges.unpair || {};
+
+	/**
+     * 
+     * @method unpairEdge
+	 * @memberof configuration/edges/unpair
+
+	* @param {string} edgeId - Edge Id
+	 *
+     */
+     self.edges.unpair.unpairEdge = function(edgeId){
+		var path = '/api/v1/configuration/edges/{edgeId}/unpair';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
+     };
 	self.edgeversionreport = self.edgeversionreport || {};
 
 	/**
@@ -3022,7 +3053,8 @@ PureCloud.configuration = (function (PureCloud) {
       "mediaTypes": [],
       "forQueues": [],
       "duration": {},
-      "wrapupCodes": []
+      "wrapupCodes": [],
+      "timeAllowed": {}
    },
    "actions": {
       "retainRecording": true,
@@ -3135,7 +3167,8 @@ PureCloud.configuration = (function (PureCloud) {
       "mediaTypes": [],
       "forQueues": [],
       "duration": {},
-      "wrapupCodes": []
+      "wrapupCodes": [],
+      "timeAllowed": {}
    },
    "actions": {
       "retainRecording": true,
@@ -3224,7 +3257,8 @@ PureCloud.configuration = (function (PureCloud) {
       "mediaTypes": [],
       "forQueues": [],
       "duration": {},
-      "wrapupCodes": []
+      "wrapupCodes": [],
+      "timeAllowed": {}
    },
    "actions": {
       "retainRecording": true,
@@ -3512,12 +3546,16 @@ PureCloud.configuration = (function (PureCloud) {
 
 	* @param {integer} pageNumber - Page number
 
+	* @param {string} sortBy - Sort by
+
+	* @param {string} sortOrder - Sort order
+
 	* @param {string} name - Name
 
-	* @param {string} sortBy - Sort by
+	* @param {string} locationid - Location Id
 	 *
      */
-     self.sites.getSites = function(pageSize, pageNumber, name, sortBy){
+     self.sites.getSites = function(pageSize, pageNumber, sortBy, sortOrder, name, locationid){
 		var path = '/api/v1/configuration/sites';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3535,13 +3573,23 @@ PureCloud.configuration = (function (PureCloud) {
 		}
 
 
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
 		if(name !== undefined && name !== null){
 			queryParameters.name = name;
 		}
 
 
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
+		if(locationid !== undefined && locationid !== null){
+			queryParameters.location.id = locationid;
 		}
 
 

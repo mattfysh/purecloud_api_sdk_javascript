@@ -1483,11 +1483,11 @@ PureCloud.quality = (function (PureCloud) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -1561,11 +1561,11 @@ PureCloud.quality = (function (PureCloud) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -1725,11 +1725,11 @@ PureCloud.quality = (function (PureCloud) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    },
    "selfUri": ""

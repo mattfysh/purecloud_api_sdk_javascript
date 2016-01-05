@@ -62,6 +62,9 @@ var PureCloud =  (function () {
     self.authorize = function(clientId, redirectUrl, state, environment){
         var _doneCallback = function(){console.error("callback not set");};
 
+        environment = environment || _environment;
+        _host = 'api.'+ environment;
+
         var defer = {
             done: function(callback){
                 _doneCallback = callback;
@@ -79,8 +82,6 @@ var PureCloud =  (function () {
         }
 
         function authRedirect(){
-            environment = environment || _environment;
-            _host = 'api.'+ environment;
             _auth_url = 'https://login.'+environment;
 
             var url = _auth_url + '/authorize' +
@@ -158,7 +159,7 @@ var PureCloud =  (function () {
             delete window.localStorage.authtoken;
         }
 
-		window.location.replace(this._auth_url + "/logout");
+		window.location.replace(_auth_url + "/logout");
     };
 
     /**
@@ -1925,6 +1926,9 @@ PureCloud.configuration = (function (PureCloud) {
 	* @namespace configuration/edges/softwareversions
 	**/
 	/**
+	* @namespace configuration/edges/unpair
+	**/
+	/**
 	* @namespace configuration/edgeversionreport
 	**/
 	/**
@@ -3681,6 +3685,34 @@ PureCloud.configuration = (function (PureCloud) {
 
 		return PureCloud.makeRequest('GET', path + '?' +$.param(queryParameters), requestBody);
      };
+	self.edges = self.edges || {};
+	self.edges.unpair = self.edges.unpair || {};
+
+	/**
+     * 
+     * @method unpairEdge
+	 * @memberof configuration/edges/unpair
+
+	* @param {string} edgeId - Edge Id
+	 *
+     */
+     self.edges.unpair.unpairEdge = function(edgeId){
+		var path = '/api/v1/configuration/edges/{edgeId}/unpair';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
+     };
 	self.edgeversionreport = self.edgeversionreport || {};
 
 	/**
@@ -4905,7 +4937,8 @@ PureCloud.configuration = (function (PureCloud) {
       "mediaTypes": [],
       "forQueues": [],
       "duration": {},
-      "wrapupCodes": []
+      "wrapupCodes": [],
+      "timeAllowed": {}
    },
    "actions": {
       "retainRecording": true,
@@ -5018,7 +5051,8 @@ PureCloud.configuration = (function (PureCloud) {
       "mediaTypes": [],
       "forQueues": [],
       "duration": {},
-      "wrapupCodes": []
+      "wrapupCodes": [],
+      "timeAllowed": {}
    },
    "actions": {
       "retainRecording": true,
@@ -5107,7 +5141,8 @@ PureCloud.configuration = (function (PureCloud) {
       "mediaTypes": [],
       "forQueues": [],
       "duration": {},
-      "wrapupCodes": []
+      "wrapupCodes": [],
+      "timeAllowed": {}
    },
    "actions": {
       "retainRecording": true,
@@ -5395,12 +5430,16 @@ PureCloud.configuration = (function (PureCloud) {
 
 	* @param {integer} pageNumber - Page number
 
+	* @param {string} sortBy - Sort by
+
+	* @param {string} sortOrder - Sort order
+
 	* @param {string} name - Name
 
-	* @param {string} sortBy - Sort by
+	* @param {string} locationid - Location Id
 	 *
      */
-     self.sites.getSites = function(pageSize, pageNumber, name, sortBy){
+     self.sites.getSites = function(pageSize, pageNumber, sortBy, sortOrder, name, locationid){
 		var path = '/api/v1/configuration/sites';
 	    var requestBody;
 	    var queryParameters = {};
@@ -5418,13 +5457,23 @@ PureCloud.configuration = (function (PureCloud) {
 		}
 
 
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
 		if(name !== undefined && name !== null){
 			queryParameters.name = name;
 		}
 
 
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
+		if(locationid !== undefined && locationid !== null){
+			queryParameters.location.id = locationid;
 		}
 
 
@@ -10250,8 +10299,8 @@ PureCloud.identityproviders = (function (PureCloud) {
    "id": "",
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "selfUri": ""
 }
 	 *
@@ -15903,11 +15952,11 @@ PureCloud.quality = (function (PureCloud) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -15981,11 +16030,11 @@ PureCloud.quality = (function (PureCloud) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -16145,11 +16194,11 @@ PureCloud.quality = (function (PureCloud) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -17917,6 +17966,9 @@ PureCloud.telephony = (function (PureCloud) {
 	* @namespace telephony/providers/edge/phones/template
 	**/
 	/**
+	* @namespace telephony/providers/edge/phones/reboot
+	**/
+	/**
 	* @namespace telephony/providers/edge/timezones
 	**/
 	/**
@@ -18222,7 +18274,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -18390,7 +18444,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -18628,7 +18684,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -18811,7 +18869,9 @@ PureCloud.telephony = (function (PureCloud) {
    "capabilities": {
       "provisions": true,
       "registers": true,
-      "hardwareIdType": ""
+      "dualRegisters": true,
+      "hardwareIdType": "",
+      "allowReboot": true
    },
    "selfUri": ""
 }
@@ -18866,6 +18926,36 @@ PureCloud.telephony = (function (PureCloud) {
 
 
 		return PureCloud.makeRequest('DELETE', path + '?' +$.param(queryParameters), requestBody);
+     };
+	self.providers = self.providers || {};
+	self.providers.edge = self.providers.edge || {};
+	self.providers.edge.phones = self.providers.edge.phones || {};
+	self.providers.edge.phones.reboot = self.providers.edge.phones.reboot || {};
+
+	/**
+     * 
+     * @method rebootPhone
+	 * @memberof telephony/providers/edge/phones/reboot
+
+	* @param {string} phoneId - Phone Id
+	 *
+     */
+     self.providers.edge.phones.reboot.rebootPhone = function(phoneId){
+		var path = '/api/v1/telephony/providers/edge/phones/{phoneId}/reboot';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        path = path.replace('{phoneId}', phoneId);
+
+        if(phoneId === undefined && phoneId !== null){
+			throw 'Missing required  parameter: phoneId';
+        }
+
+
+
+		return PureCloud.makeRequest('POST', path + '?' +$.param(queryParameters), requestBody);
      };
 	self.providers = self.providers || {};
 	self.providers.edge = self.providers.edge || {};
