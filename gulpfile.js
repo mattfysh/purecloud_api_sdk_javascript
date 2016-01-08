@@ -276,12 +276,6 @@ gulp.task('download', function(){
 
 gulp.task('build', ['clean'], function() {
 
-
-
-});
-
-gulp.task('buildonly', [], function() {
-
     if (!fileExists("gen")) {
         fs.mkdirSync('gen');
     }
