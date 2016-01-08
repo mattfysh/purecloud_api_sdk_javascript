@@ -1,8 +1,8 @@
 <html>
 <head>
     <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
-    <script src='dist/partials/purecloud.core.js'></script>
-    <script src='dist/partials/purecloud.users.js'></script>
+    <script src='dist/partials/purecloud.js'></script>
+    <script src='dist/partials/usersapi.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js'></script>
 
     <script>
@@ -11,9 +11,11 @@
         if(window.location.hostname === 'mypurecloud.github.io'){
             redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/authredirect.html";
         }
+        var pureCloudSession = new PureCloudSession();
+        var usersapi = new UsersApi(pureCloudSession);
 
-        PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_me").done(function(){
-            PureCloud.users.me.getUser().done(function(data){
+        pureCloudSession.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_me").done(function(){
+            usersapi.getMe().done(function(data){
                 var template = $('#personTpl').html();
                 var html = Mustache.to_html(template, data);
                 $('#sampleArea').html(html);

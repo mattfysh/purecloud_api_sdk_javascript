@@ -12,16 +12,20 @@
             redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/authredirect.html";
         }
 
-        PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "status_subscription").done(function(){
-            PureCloud.users.me.getUser().done(function(data){
+        var pureCloudSession = new PureCloudSession();
+        var usersapi = new UsersApi(pureCloudSession);
+        var notificationsapi = new NotificationsApi(pureCloudSession);
+
+        pureCloudSession.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "status_subscription").done(function(){
+            usersapi.getMe().done(function(data){
                 var myUserId = data.id;
 
-                PureCloud.notifications.channels.createChannel().done(function(data){
+                notificationsapi.createChannels().done(function(data){
                     //start a new web socket using the connect Uri of the channel
                     webSocket = new WebSocket(data.connectUri);
                     webSocket.onopen = function(){
                         //now that the connection is open, we can start our subscription.
-                        PureCloud.notifications.channels.subscriptions.addSubscription(data.id, [{"id": "users."+ myUserId +".status"}]).done
+                        notificationsapi.createChannelsChannelSubscriptions(data.id, [{"id": "users."+ myUserId +".status"}])
                     };
 
                     webSocket.onmessage = function(message) {
@@ -29,6 +33,7 @@
                         $('body').html($('body').html() + "<br/>" + new Date().toLocaleTimeString() + " - " + message.data + "<hr/>");
 
                     };
+                });
             }).error(function(){
                 alert("error");
             });

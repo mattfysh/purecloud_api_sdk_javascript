@@ -73,12 +73,6 @@ var camelCase = function(id) {
     return tokens.join('');
 };
 
-function getMethodName(str)
-{
-    var titleCase = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    return titleCase.charAt(0).toLowerCase() + titleCase.substr(1);
-}
-
 function parseJsonSchema(opts, type){
     var classPaths = [];
 
@@ -103,13 +97,6 @@ function parseJsonSchema(opts, type){
 
         _.forEach(api, function(op, m){
 
-            //console.log('---')
-            //console.log(op.operationId);
-            //*********
-            op.operationId = getMethodName(op.operationId).replace(/[ '\.\/\(\)-]/g, '');
-            //op.operationId = null;
-            //******
-
             var relativePath = classPath.split('.');
             relativePath.shift();
             relativePath.shift();
@@ -122,8 +109,9 @@ function parseJsonSchema(opts, type){
                 methodName: op.operationId,
                 method: m.toUpperCase(),
                 isGET: m.toUpperCase() === 'GET',
-                summary: op.description,
-                parameters: []
+                summary: op.summary,
+                parameters: [],
+                tags: op.tags
 
             };
 
@@ -196,7 +184,7 @@ function parseJsonSchema(opts, type){
         });
 
         methodArray.push({
-            moduleName: 'PureCloud.' + key,
+            moduleName: key[0].toUpperCase() + key.substring(1) + "Api",
             value : data.methods[key],
             namespaces: namespaces
         });
@@ -220,7 +208,7 @@ var build = function(env) {
 
 gulp.task('doc', function() {
     require('shelljs/global');
-    exec('node_modules/jsdoc/jsdoc.js dist/purecloud-api.js --readme README.md -d doc -u tutorials', {silent:true}).output;
+    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js --readme README.md -d doc -u tutorials', {silent:true}).output;
 
     //copy examples and dist to /doc too so that whan we map
     //the repo to the gh-pages branch, the examples can be run from there.
@@ -275,7 +263,7 @@ gulp.task('clean:dist', function(){
 gulp.task('clean', ['clean:doc', 'clean:dist', 'clean:gen']);
 
 gulp.task('download', function(){
-    var url = "https://api.mypurecloud.com/api/v1/docs/swagger";
+    var url = "https://api.inindca.com/api/v1/docs/swagger  ";
 
     var download = require("gulp-download");
 
@@ -286,7 +274,13 @@ gulp.task('download', function(){
         .pipe(gulp.dest("."));
 });
 
-gulp.task('build', ['clean', 'download'], function() {
+gulp.task('build', ['clean'], function() {
+
+
+
+});
+
+gulp.task('buildonly', [], function() {
 
     if (!fileExists("gen")) {
         fs.mkdirSync('gen');
@@ -309,7 +303,7 @@ gulp.task('build', ['clean', 'download'], function() {
 
     //Write the core file
     var source = Mustache.render(fs.readFileSync('templates/core.mustache', 'utf-8'), swagger);
-    fs.writeFileSync("gen/PureCloud.core.js", source);
+    fs.writeFileSync("gen/purecloudsession.js", source);
 
     return build();
 
@@ -327,4 +321,5 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['build'], function () {
   gulp.start(['movegen', 'doc']);
+  //gulp.start(['movegen']);
 });

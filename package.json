@@ -2,7 +2,7 @@
   "name": "platform_javascript_client",
   "version": "0.0.0",
   "description": "",
-  "main": "build.js",
+  "main": "test.js",
   "directories": {
     "example": "examples"
   },
@@ -32,5 +32,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

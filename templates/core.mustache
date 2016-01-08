@@ -1,11 +1,12 @@
 /**
 * @description {{&info.description}}
-* @namespace PureCloud
+* @class
+* @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
 **/
-var PureCloud =  (function () {
+var PureCloudSession =  function (environment) {
     var _host = '{{&host}}';
     var _auth_url = '';
-    var _environment = "mypurecloud.com";
+    var _environment = environment || "mypurecloud.com";
 
     var _token = null;
     var _state = null;
@@ -37,29 +38,29 @@ var PureCloud =  (function () {
     }
 
     /**
-	 * Gets the value of State that was passed into the .authorize method
-     * @memberof PureCloud
+	 * @description Gets the value of State that was passed into the .authorize method
+     * @memberOf PureCloudSession#
      */
-    self.getState = function(){
+    function getState (){
         return _state;
-    };
+    }
+    self.getState = getState;
 
     /**
 	 * Initiates a redirect to authorize the client using oauth
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
 	 * @param  {string} state (Optional) State variable that is returned to the application after authentication.  This can be grabbed from the .getState() method.
-     * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
-     * @example PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
+     * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
          //this method will be called once we have a valid authorization token
          // if we don't have one a redirect to login will be called and then after redirecting back here,
          // the done method will be called.
      });
      *
-     * @example PureCloud.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/', "State Value", "mypurecloud.ie");
+     * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/', "State Value");
      */
-    self.authorize = function(clientId, redirectUrl, state, environment){
+    function authorize(clientId, redirectUrl, state, environment){
         var _doneCallback = function(){console.error("callback not set");};
 
         environment = environment || _environment;
@@ -121,38 +122,43 @@ var PureCloud =  (function () {
         }
 
         return defer;
-    };
+    }
+    self.authorize = authorize;
 
     /**
      * Sets the authorization token, this is only needed if not using .authorize(...)
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      * @param  {string} token Authorization token
      */
-    self.setAuthToken = function(token){
+    function setAuthToken(token){
         _token = token;
-    };
+    }
+    self.setAuthToken = setAuthToken;
 
     /**
      * Gets the authorization token
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      */
-    self.getAuthToken = function(){
+    function getAuthToken(){
         return _token;
-    };
+    }
+
+    self.getAuthToken = getAuthToken;
 
     /**
      * Returns if the authorization token is set
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      */
-    self.hasAuthorizationToken = function(){
+    function hasAuthorizationToken(){
         return _token !== null;
-    };
+    }
+    self.hasAuthorizationToken=hasAuthorizationToken;
 
     /**
      * Clears authorization token and logs out.
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      */
-    self.logout = function(){
+    function logout(){
         _token = null;
 
         if(window && window.localStorage){
@@ -160,19 +166,20 @@ var PureCloud =  (function () {
         }
 
 		window.location.replace(_auth_url + "/logout");
-    };
+    }
+    self.logout = logout;
 
     /**
     * The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
-    * @memberof PureCloud
+    * @memberof PureCloudSession#
     * @param  {string} environment PureCloud environment (mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc)
     **/
-    self.setEnvironment = function(environment){
+    function setEnvironment(environment){
         _environment = environment;
         _host = 'api.'+ environment;
         _auth_url = 'https://login.'+environment;
-
-    };
+    }
+    self.setEnvironment = setEnvironment;
 
     function sendRestRequest(method, url, body){
         var requestParams = {
@@ -197,31 +204,32 @@ var PureCloud =  (function () {
 
     /**
      * Executes an authenticated GET to PureCloud.  Can be used with paging URIs to get a page that has a defined full url.
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      * @param  {string} url The full or relative path URL to get
-     * @example PureCloud.get("https://api.mypurecloud.com/api/v1/users/me");
-     * @example PureCloud.get("/api/v1/users/me");
+     * @example pureCloudSession.get("https://api.mypurecloud.com/api/v1/users/me");
+     * @example pureCloudSession.get("/api/v1/users/me");
      */
-    self.get = function(url){
-
+    function get(url){
         if(url[0] === '/'){
             url = 'https://'+ _host + url;
         }
 
         return sendRestRequest("GET", url);
-    };
+    }
+    self.get = get;
 
     /**
      * Executes an authenticated request to PureCloud
-     * @memberof PureCloud
+     * @memberof PureCloudSession#
      * @param  {string} method The HTTP method (GET, POST, PUT, DELETE)
      * @param  {uri} path The relative uri path
      * @param  {JSON} body The body to send
-     * @example PureCloud.makeRequest("GET", "/api/v1/users/me");
+     * @example pureCloudSession.makeRequest("GET", "/api/v1/users/me");
      */
-    self.makeRequest = function(method,path,body){
+    function makeRequest (method,path,body){
         return sendRestRequest(method, 'https://'+ _host + path, body);
-    };
+    }
+    self.makeRequest = makeRequest;
 
 	return self;
-}());
+};
