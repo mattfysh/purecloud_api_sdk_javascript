@@ -5,7 +5,8 @@
 */
 var DateApi = function (pureCloudSession) {
 	/**
-     * Get the current system date/time
+     * @summary Get the current system date/time
+	 * @description 
 	 * @memberOf DateApi#
 	*/
 	function get(){

@@ -5,7 +5,8 @@
 */
 var CertificateApi = function (pureCloudSession) {
 	/**
-     * Returns the information about an X509 PEM encoded certificate or certificate chain.
+     * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
+	 * @description 
 	 * @memberOf CertificateApi#
 	* @param {} body - 
 	 * @example

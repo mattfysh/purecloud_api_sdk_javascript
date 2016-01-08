@@ -5,7 +5,8 @@
 */
 var QualityApi = function (pureCloudSession) {
 	/**
-     * Gets a list of Agent Activities
+     * @summary Gets a list of Agent Activities
+	 * @description Including the number of evaluations and average evaluation score
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - The total page size requested
 	* @param {integer} pageNumber - The page number requested
@@ -74,7 +75,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getAgentsActivity = getAgentsActivity;
 	/**
-     * Get the list of calibrations
+     * @summary Get the list of calibrations
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - The total page size requested
 	* @param {integer} pageNumber - The page number requested
@@ -137,7 +139,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getCalibrations = getCalibrations;
 	/**
-     * Create a calibration
+     * @summary Create a calibration
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {} body - calibration
 	* @param {string} expand - calibratorId
@@ -298,7 +301,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.createCalibrations = createCalibrations;
 	/**
-     * Get a calibration by id.
+     * @summary Get a calibration by id.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} calibrationId - Calibration ID
 	* @param {string} calibratorId - calibratorId
@@ -326,7 +330,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getCalibrationsCalibration = getCalibrationsCalibration;
 	/**
-     * Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
+     * @summary Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} calibrationId - Calibration ID
 	* @param {} body - Calibration
@@ -488,7 +493,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.updateCalibrationsCalibration = updateCalibrationsCalibration;
 	/**
-     * Delete a calibration by id.
+     * @summary Delete a calibration by id.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} calibrationId - Calibration ID
 	* @param {string} calibratorId - calibratorId
@@ -516,7 +522,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.deleteCalibrationsCalibration = deleteCalibrationsCalibration;
 	/**
-     * Get audits for conversation or recording
+     * @summary Get audits for conversation or recording
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {integer} pageSize - The total page size requested
@@ -574,7 +581,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getConversationsConversationAudits = getConversationsConversationAudits;
 	/**
-     * Create an evaluation
+     * @summary Create an evaluation
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - 
 	* @param {} body - evaluation
@@ -746,7 +754,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.createConversationsConversationEvaluations = createConversationsConversationEvaluations;
 	/**
-     * Get an evaluation
+     * @summary Get an evaluation
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - 
 	* @param {string} evaluationId - 
@@ -781,7 +790,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getConversationsConversationEvaluationsByEvaluationId = getConversationsConversationEvaluationsByEvaluationId;
 	/**
-     * Update an evaluation
+     * @summary Update an evaluation
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - 
 	* @param {string} evaluationId - 
@@ -960,7 +970,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.updateConversationsConversationEvaluationsByEvaluationId = updateConversationsConversationEvaluationsByEvaluationId;
 	/**
-     * Delete an evaluation
+     * @summary Delete an evaluation
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - 
 	* @param {string} evaluationId - 
@@ -995,7 +1006,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.deleteConversationsConversationEvaluationsByEvaluationId = deleteConversationsConversationEvaluationsByEvaluationId;
 	/**
-     * Queries Evaluations and returns a paged list
+     * @summary Queries Evaluations and returns a paged list
+	 * @description Query params must include one of conversationId, evaluatorUserId, or agentUserId
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - The total page size requested
 	* @param {integer} pageNumber - The page number requested
@@ -1100,7 +1112,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getEvaluationsQuery = getEvaluationsQuery;
 	/**
-     * Query evaluations
+     * @summary Query evaluations
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {} body - query
 	* @param {string} expand - evaluator,agent
@@ -1141,7 +1154,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.createEvaluationsQuery = createEvaluationsQuery;
 	/**
-     * Score evaluation
+     * @summary Score evaluation
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {} body - evaluationAndScoringSet
 	 * @example
@@ -1184,7 +1198,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.createEvaluationsScoring = createEvaluationsScoring;
 	/**
-     * Get an evaluator activity
+     * @summary Get an evaluator activity
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - The total page size requested
 	* @param {integer} pageNumber - The page number requested
@@ -1247,7 +1262,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getEvaluatorsActivity = getEvaluatorsActivity;
 	/**
-     * Get the list of evaluation forms
+     * @summary Get the list of evaluation forms
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -1286,7 +1302,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getForms = getForms;
 	/**
-     * Create an evaluation form.
+     * @summary Create an evaluation form.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {} body - 
 	 * @example
@@ -1330,7 +1347,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.createForms = createForms;
 	/**
-     * Get an evaluation form
+     * @summary Get an evaluation form
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	*/
@@ -1352,7 +1370,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getFormsForm = getFormsForm;
 	/**
-     * Update an evaluation form.
+     * @summary Update an evaluation form.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	* @param {} body - 
@@ -1403,7 +1422,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.updateFormsForm = updateFormsForm;
 	/**
-     * Delete an evaluation form.
+     * @summary Delete an evaluation form.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	*/
@@ -1425,7 +1445,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.deleteFormsForm = deleteFormsForm;
 	/**
-     * Gets all the revisions for a specific evaluation.
+     * @summary Gets all the revisions for a specific evaluation.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	* @param {integer} pageSize - Page size
@@ -1459,7 +1480,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getFormsFormVersions = getFormsFormVersions;
 	/**
-     * Get the published evaluation forms.
+     * @summary Get the published evaluation forms.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -1492,7 +1514,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getPublishedforms = getPublishedforms;
 	/**
-     * Publish an evaluation form.
+     * @summary Publish an evaluation form.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {} body - 
 	 * @example
@@ -1536,7 +1559,8 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.createPublishedforms = createPublishedforms;
 	/**
-     * Get the published evaluation forms.
+     * @summary Get the published evaluation forms.
+	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	*/

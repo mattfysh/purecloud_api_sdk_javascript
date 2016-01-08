@@ -5,7 +5,8 @@
 */
 var RoutingApi = function (pureCloudSession) {
 	/**
-     * Get domains
+     * @summary Get domains
+	 * @description 
 	 * @memberOf RoutingApi#
 	*/
 	function getEmailDomains(){
@@ -20,7 +21,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getEmailDomains = getEmailDomains;
 	/**
-     * Create a domain
+     * @summary Create a domain
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {} body - Domain
 	 * @example
@@ -48,7 +50,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.createEmailDomains = createEmailDomains;
 	/**
-     * Get routes
+     * @summary Get routes
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	*/
@@ -70,7 +73,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getEmailDomainsDomainRoutes = getEmailDomainsDomainRoutes;
 	/**
-     * Create a route
+     * @summary Create a route
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	* @param {} body - Route
@@ -120,7 +124,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.createEmailDomainsDomainRoutes = createEmailDomainsDomainRoutes;
 	/**
-     * Get a route
+     * @summary Get a route
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	* @param {string} id - route ID
@@ -149,7 +154,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getEmailDomainsDomainRoutesById = getEmailDomainsDomainRoutesById;
 	/**
-     * Update a route
+     * @summary Update a route
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	* @param {string} id - route ID
@@ -206,7 +212,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.updateEmailDomainsDomainRoutesById = updateEmailDomainsDomainRoutesById;
 	/**
-     * Delete a route
+     * @summary Delete a route
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	* @param {string} id - route ID
@@ -235,7 +242,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteEmailDomainsDomainRoutesById = deleteEmailDomainsDomainRoutesById;
 	/**
-     * Delete a domain
+     * @summary Delete a domain
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} id - domain ID
 	*/
@@ -257,7 +265,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteEmailDomainsId = deleteEmailDomainsId;
 	/**
-     * Get email setup
+     * @summary Get email setup
+	 * @description 
 	 * @memberOf RoutingApi#
 	*/
 	function getEmailSetup(){
@@ -272,7 +281,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getEmailSetup = getEmailSetup;
 	/**
-     * Get list of queues.
+     * @summary Get list of queues.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} QueueId - Queue ID
 	* @param {integer} pageSize - Page size
@@ -324,7 +334,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getQueues = getQueues;
 	/**
-     * Create queue
+     * @summary Create queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} QueueId - Queue ID
 	* @param {} body - Queue
@@ -386,7 +397,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.createQueues = createQueues;
 	/**
-     * Get details about this queue.
+     * @summary Get details about this queue.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	*/
@@ -408,7 +420,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getQueuesQueue = getQueuesQueue;
 	/**
-     * Update a queue
+     * @summary Update a queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue
@@ -470,7 +483,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.updateQueuesQueue = updateQueuesQueue;
 	/**
-     * Delete a queue
+     * @summary Delete a queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	*/
@@ -492,9 +506,10 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteQueuesQueue = deleteQueuesQueue;
 	/**
-     * Get members in a queue
+     * @summary Get members in a queue
+	 * @description Get the list of members of a queue
 	 * @memberOf RoutingApi#
-	* @param {string} queueId - 
+	* @param {string} queueId - Get the list of members of a queue
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} userId - UserID
@@ -551,7 +566,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getQueuesQueueMembers = getQueuesQueueMembers;
 	/**
-     * Join or unjoin a user to the queue.
+     * @summary Join or unjoin a user to the queue.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} memberId - Member/User ID
@@ -627,7 +643,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.updateQueuesQueueMembersByMemberId = updateQueuesQueueMembersByMemberId;
 	/**
-     * Get the members of this queue
+     * @summary Get the members of this queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {integer} pageSize - Page size
@@ -679,7 +696,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getQueuesQueueUsers = getQueuesQueueUsers;
 	/**
-     * Bulk add or delete up to 100 queue members
+     * @summary Bulk add or delete up to 100 queue members
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
@@ -712,7 +730,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.createQueuesQueueUsers = createQueuesQueueUsers;
 	/**
-     * Join or unjoin a set of users for a queue
+     * @summary Join or unjoin a set of users for a queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
@@ -739,7 +758,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.patchQueuesQueueUsers = patchQueuesQueueUsers;
 	/**
-     * Delete queue member
+     * @summary Delete queue member
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} memberId - Member ID
@@ -768,7 +788,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteQueuesQueueUsersByMemberId = deleteQueuesQueueUsersByMemberId;
 	/**
-     * Update the ring number of joined status for a User in a Queue
+     * @summary Update the ring number of joined status for a User in a Queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} memberId - Member ID
@@ -844,7 +865,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.patchQueuesQueueUsersByMemberId = patchQueuesQueueUsersByMemberId;
 	/**
-     * Get the wrap-up codes for a queue
+     * @summary Get the wrap-up codes for a queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
@@ -873,7 +895,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getQueuesQueueWrapupcodes = getQueuesQueueWrapupcodes;
 	/**
-     * Add up to 100 wrap-up codes to a queue
+     * @summary Add up to 100 wrap-up codes to a queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
@@ -907,7 +930,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.createQueuesQueueWrapupcodes = createQueuesQueueWrapupcodes;
 	/**
-     * Delete a wrap-up code from a queue
+     * @summary Delete a wrap-up code from a queue
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
@@ -936,7 +960,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteQueuesQueueWrapupcodesByCodeId = deleteQueuesQueueWrapupcodesByCodeId;
 	/**
-     * Get the list of skills.
+     * @summary Get the list of skills.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -975,7 +1000,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getSkills = getSkills;
 	/**
-     * Get the utilization settings.
+     * @summary Get the utilization settings.
+	 * @description 
 	 * @memberOf RoutingApi#
 	*/
 	function getUtilization(){
@@ -990,7 +1016,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getUtilization = getUtilization;
 	/**
-     * Update the utilization settings.
+     * @summary Update the utilization settings.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {} body - utilization
 	 * @example
@@ -1018,7 +1045,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.updateUtilization = updateUtilization;
 	/**
-     * Delete utilization settings and revert to system defaults.
+     * @summary Delete utilization settings and revert to system defaults.
+	 * @description 
 	 * @memberOf RoutingApi#
 	*/
 	function deleteUtilization(){
@@ -1033,7 +1061,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteUtilization = deleteUtilization;
 	/**
-     * Get list of wrapup codes.
+     * @summary Get list of wrapup codes.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -1066,7 +1095,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getWrapupcodes = getWrapupcodes;
 	/**
-     * Create a wrap-up code
+     * @summary Create a wrap-up code
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {} body - WrapupCode
 	 * @example
@@ -1097,7 +1127,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.createWrapupcodes = createWrapupcodes;
 	/**
-     * Get details about this wrap-up code.
+     * @summary Get details about this wrap-up code.
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} codeId - Wrapup Code ID
 	*/
@@ -1119,7 +1150,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.getWrapupcodesCode = getWrapupcodesCode;
 	/**
-     * Update wrap-up code
+     * @summary Update wrap-up code
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} codeId - Wrapup Code ID
 	* @param {} body - WrapupCode
@@ -1157,7 +1189,8 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.updateWrapupcodesCode = updateWrapupcodesCode;
 	/**
-     * Delete wrap-up code
+     * @summary Delete wrap-up code
+	 * @description 
 	 * @memberOf RoutingApi#
 	* @param {string} codeId - Wrapup Code ID
 	*/

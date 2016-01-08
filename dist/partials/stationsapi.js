@@ -5,7 +5,8 @@
 */
 var StationsApi = function (pureCloudSession) {
 	/**
-     * Get the list of available stations.
+     * @summary Get the list of available stations.
+	 * @description 
 	 * @memberOf StationsApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -44,7 +45,8 @@ var StationsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Get station.
+     * @summary Get station.
+	 * @description 
 	 * @memberOf StationsApi#
 	* @param {string} id - Station ID
 	*/
@@ -66,7 +68,8 @@ var StationsApi = function (pureCloudSession) {
 	}
 	self.getId = getId;
 	/**
-     * Unassigns the user assigned to this station
+     * @summary Unassigns the user assigned to this station
+	 * @description 
 	 * @memberOf StationsApi#
 	* @param {string} id - Station ID
 	*/

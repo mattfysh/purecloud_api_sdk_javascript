@@ -5,7 +5,8 @@
 */
 var GreetingsApi = function (pureCloudSession) {
 	/**
-     * Gets an Organization's Greetings
+     * @summary Gets an Organization's Greetings
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -32,7 +33,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Create a Greeting for an Organization
+     * @summary Create a Greeting for an Organization
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {} body - The Greeting to create
 	 * @example
@@ -80,7 +82,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.create = create;
 	/**
-     * Get an Organization's DefaultGreetingList
+     * @summary Get an Organization's DefaultGreetingList
+	 * @description 
 	 * @memberOf GreetingsApi#
 	*/
 	function getDefaults(){
@@ -95,7 +98,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.getDefaults = getDefaults;
 	/**
-     * Update an Organization's DefaultGreetingList
+     * @summary Update an Organization's DefaultGreetingList
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {} body - The updated defaultGreetingList
 	 * @example
@@ -137,7 +141,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.updateDefaults = updateDefaults;
 	/**
-     * Get a Greeting with the given GreetingId
+     * @summary Get a Greeting with the given GreetingId
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
 	*/
@@ -159,7 +164,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.getGreeting = getGreeting;
 	/**
-     * Updates the Greeting with the given GreetingId
+     * @summary Updates the Greeting with the given GreetingId
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
 	* @param {} body - The updated Greeting
@@ -214,7 +220,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.updateGreeting = updateGreeting;
 	/**
-     * Deletes a Greeting with the given GreetingId
+     * @summary Deletes a Greeting with the given GreetingId
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
 	*/
@@ -236,7 +243,8 @@ var GreetingsApi = function (pureCloudSession) {
 	}
 	self.deleteGreeting = deleteGreeting;
 	/**
-     * Get media playback URI for this greeting
+     * @summary Get media playback URI for this greeting
+	 * @description 
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
 	* @param {string} formatId - The desired format (WAV, etc.)

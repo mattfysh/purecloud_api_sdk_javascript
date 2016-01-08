@@ -146,12 +146,10 @@
     <h4 class="name" id="createRoles"><span class="type-signature"></span>createRoles<span class="signature">(body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Create an organization role.</p>
+    
 
 
-
-<div class="description">
-    Create an organization role.
-</div>
 
 
 
@@ -238,7 +236,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line133">line 133</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line137">line 137</a>
     </li></ul></dd>
     
 
@@ -291,11 +289,13 @@
     <h4 class="name" id="createRolesDefault"><span class="type-signature"></span>createRolesDefault<span class="signature">(force)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Restores all default roles</p>
+    
 
 
 
 <div class="description">
-    Restores all default roles
+    This endpoint serves several purposes. 1. It provides the org with default roles. This is important for default roles that will be added after go-live (they can retroactively add the new default-role). Note: When not using a query param of force=true, it only adds the default roles not configured for the org; it does not overwrite roles. 2. Using the query param force=true, you can restore all default roles. Note: This does not have an effect on custom roles.
 </div>
 
 
@@ -388,7 +388,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line153">line 153</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -422,11 +422,13 @@
     <h4 class="name" id="createRolesLeftRoleComparedefaultByRightRoleId"><span class="type-signature"></span>createRolesLeftRoleComparedefaultByRightRoleId<span class="signature">(leftRoleId, rightRoleId, body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Get an unsaved org role to default role comparison</p>
+    
 
 
 
 <div class="description">
-    Get an unsaved org role to default role comparison
+    Allows users to compare their existing roles in an unsaved state to its default role
 </div>
 
 
@@ -519,7 +521,7 @@
 
             
 
-            <td class="description last">-</td>
+            <td class="description last">Allows users to compare their existing roles in an unsaved state to its default role</td>
         </tr>
 
     
@@ -560,7 +562,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line241">line 241</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -613,12 +615,10 @@
     <h4 class="name" id="deleteRolesRole"><span class="type-signature"></span>deleteRolesRole<span class="signature">(roleId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Delete an organization role.</p>
+    
 
 
-
-<div class="description">
-    Delete an organization role.
-</div>
 
 
 
@@ -710,7 +710,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line338">line 338</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line349">line 349</a>
     </li></ul></dd>
     
 
@@ -744,12 +744,10 @@
     <h4 class="name" id="deleteUsersUserRoles"><span class="type-signature"></span>deleteUsersUserRoles<span class="signature">(userId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Removes all the roles from the user.</p>
+    
 
 
-
-<div class="description">
-    Removes all the roles from the user.
-</div>
 
 
 
@@ -841,7 +839,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line506">line 506</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line523">line 523</a>
     </li></ul></dd>
     
 
@@ -875,12 +873,10 @@
     <h4 class="name" id="getLicenses"><span class="type-signature"></span>getLicenses<span class="signature">(pageSize, pageNumber)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Retrieve a list of all licenses defined in the system</p>
+    
 
 
-
-<div class="description">
-    Retrieve a list of all licenses defined in the system
-</div>
 
 
 
@@ -995,7 +991,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line13">line 13</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -1029,11 +1025,13 @@
     <h4 class="name" id="getPermissions"><span class="type-signature"></span>getPermissions<span class="signature">(pageSize, pageNumber)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Get all permissions.</p>
+    
 
 
 
 <div class="description">
-    Get all permissions.
+    Retrieve a list of all permission defined in the system.
 </div>
 
 
@@ -1149,7 +1147,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line40">line 40</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -1183,12 +1181,10 @@
     <h4 class="name" id="getRoles"><span class="type-signature"></span>getRoles<span class="signature">(pageSize, pageNumber, sortBy, expand, permission, userCount)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Retrieve a list of all roles defined for the organization</p>
+    
 
 
-
-<div class="description">
-    Retrieve a list of all roles defined for the organization
-</div>
 
 
 
@@ -1395,7 +1391,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line71">line 71</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -1429,11 +1425,13 @@
     <h4 class="name" id="getRolesLeftRoleComparedefaultByRightRoleId"><span class="type-signature"></span>getRolesLeftRoleComparedefaultByRightRoleId<span class="signature">(leftRoleId, rightRoleId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Get an org role to default role comparison comparison</p>
+    
 
 
 
 <div class="description">
-    Get an org role to default role comparison comparison
+    Compares any organization role to a default role id and show differences
 </div>
 
 
@@ -1549,7 +1547,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line195">line 195</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line202">line 202</a>
     </li></ul></dd>
     
 
@@ -1583,11 +1581,13 @@
     <h4 class="name" id="getRolesRole"><span class="type-signature"></span>getRolesRole<span class="signature">(roleId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Get a single organization role.</p>
+    
 
 
 
 <div class="description">
-    Get a single organization role.
+    Get the organization role specified by its ID.
 </div>
 
 
@@ -1680,7 +1680,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line273">line 273</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line282">line 282</a>
     </li></ul></dd>
     
 
@@ -1714,12 +1714,10 @@
     <h4 class="name" id="getUsersUserRoles"><span class="type-signature"></span>getUsersUserRoles<span class="signature">(userId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Get the list of roles for a user.</p>
+    
 
 
-
-<div class="description">
-    Get the list of roles for a user.
-</div>
 
 
 
@@ -1811,7 +1809,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line457">line 457</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line472">line 472</a>
     </li></ul></dd>
     
 
@@ -1844,6 +1842,8 @@
 
     <h4 class="name" id="patchRolesRole"><span class="type-signature"></span>patchRolesRole<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
+    
+    <p class="summary">Patch Organization Role for needsUpdate Field</p>
     
 
 
@@ -1919,7 +1919,7 @@
 
             
 
-            <td class="description last">-</td>
+            <td class="description last">Patch Organization Role for needsUpdate Field</td>
         </tr>
 
     
@@ -1960,7 +1960,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line377">line 377</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line389">line 389</a>
     </li></ul></dd>
     
 
@@ -2013,12 +2013,10 @@
     <h4 class="name" id="updateRolesDefault"><span class="type-signature"></span>updateRolesDefault<span class="signature">(body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Restore specified default roles</p>
+    
 
 
-
-<div class="description">
-    Restore specified default roles
-</div>
 
 
 
@@ -2105,7 +2103,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line174">line 174</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -2139,11 +2137,13 @@
     <h4 class="name" id="updateRolesRole"><span class="type-signature"></span>updateRolesRole<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Update an organization role.</p>
+    
 
 
 
 <div class="description">
-    Update an organization role.
+    Update
 </div>
 
 
@@ -2213,7 +2213,7 @@
 
             
 
-            <td class="description last">-</td>
+            <td class="description last">Update</td>
         </tr>
 
     
@@ -2254,7 +2254,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line312">line 312</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line322">line 322</a>
     </li></ul></dd>
     
 
@@ -2307,12 +2307,10 @@
     <h4 class="name" id="updateRolesRoleUsersAdd"><span class="type-signature"></span>updateRolesRoleUsersAdd<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Sets the users for the role</p>
+    
 
 
-
-<div class="description">
-    Sets the users for the role
-</div>
 
 
 
@@ -2422,7 +2420,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line404">line 404</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line417">line 417</a>
     </li></ul></dd>
     
 
@@ -2456,12 +2454,10 @@
     <h4 class="name" id="updateRolesRoleUsersRemove"><span class="type-signature"></span>updateRolesRoleUsersRemove<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Removes the users from the role</p>
+    
 
 
-
-<div class="description">
-    Removes the users from the role
-</div>
 
 
 
@@ -2571,7 +2567,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line431">line 431</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line445">line 445</a>
     </li></ul></dd>
     
 
@@ -2605,12 +2601,10 @@
     <h4 class="name" id="updateUsersUserRoles"><span class="type-signature"></span>updateUsersUserRoles<span class="signature">(userId, body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Sets the user's roles</p>
+    
 
 
-
-<div class="description">
-    Sets the user's roles
-</div>
 
 
 
@@ -2720,7 +2714,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line480">line 480</a>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line496">line 496</a>
     </li></ul></dd>
     
 

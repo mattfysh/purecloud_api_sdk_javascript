@@ -33,7 +33,8 @@
 */
 var FlowsApi = function (pureCloudSession) {
 	/**
-     * Get a pageable list of flows, filtered by query parameters
+     * @summary Get a pageable list of flows, filtered by query parameters
+	 * @description Multiple IDs can be specified, in which case all matching flows will be returned, and no other parameters will be evaluated.
 	 * @memberOf FlowsApi#
 	* @param {string} type - Type
 	* @param {integer} pageNumber - Page number
@@ -114,7 +115,8 @@ var FlowsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Create flow
+     * @summary Create flow
+	 * @description 
 	 * @memberOf FlowsApi#
 	* @param {} body - 
 	 * @example

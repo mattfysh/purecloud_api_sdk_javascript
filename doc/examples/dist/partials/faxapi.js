@@ -5,7 +5,8 @@
 */
 var FaxApi = function (pureCloudSession) {
 	/**
-     * Get a list of fax documents.
+     * @summary Get a list of fax documents.
+	 * @description 
 	 * @memberOf FaxApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -32,7 +33,8 @@ var FaxApi = function (pureCloudSession) {
 	}
 	self.getDocuments = getDocuments;
 	/**
-     * Get a document.
+     * @summary Get a document.
+	 * @description 
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
@@ -54,7 +56,8 @@ var FaxApi = function (pureCloudSession) {
 	}
 	self.getDocumentsDocument = getDocumentsDocument;
 	/**
-     * Update a fax document.
+     * @summary Update a fax document.
+	 * @description 
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	* @param {} body - Document
@@ -111,7 +114,8 @@ var FaxApi = function (pureCloudSession) {
 	}
 	self.updateDocumentsDocument = updateDocumentsDocument;
 	/**
-     * Delete a fax document.
+     * @summary Delete a fax document.
+	 * @description 
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
@@ -133,7 +137,8 @@ var FaxApi = function (pureCloudSession) {
 	}
 	self.deleteDocumentsDocument = deleteDocumentsDocument;
 	/**
-     * Download a fax document.
+     * @summary Download a fax document.
+	 * @description 
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
@@ -155,7 +160,8 @@ var FaxApi = function (pureCloudSession) {
 	}
 	self.getDocumentsDocumentContent = getDocumentsDocumentContent;
 	/**
-     * Get fax summary
+     * @summary Get fax summary
+	 * @description 
 	 * @memberOf FaxApi#
 	*/
 	function getSummary(){

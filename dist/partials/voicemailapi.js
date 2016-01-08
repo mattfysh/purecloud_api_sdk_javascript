@@ -5,7 +5,8 @@
 */
 var VoicemailApi = function (pureCloudSession) {
 	/**
-     * Get mailbox information
+     * @summary Get mailbox information
+	 * @description 
 	 * @memberOf VoicemailApi#
 	*/
 	function getMailbox(){
@@ -20,7 +21,8 @@ var VoicemailApi = function (pureCloudSession) {
 	}
 	self.getMailbox = getMailbox;
 	/**
-     * List voicemail messages
+     * @summary List voicemail messages
+	 * @description 
 	 * @memberOf VoicemailApi#
 	*/
 	function getMessages(){
@@ -35,7 +37,8 @@ var VoicemailApi = function (pureCloudSession) {
 	}
 	self.getMessages = getMessages;
 	/**
-     * Delete all voicemail messages
+     * @summary Delete all voicemail messages
+	 * @description 
 	 * @memberOf VoicemailApi#
 	*/
 	function deleteMessages(){
@@ -50,7 +53,8 @@ var VoicemailApi = function (pureCloudSession) {
 	}
 	self.deleteMessages = deleteMessages;
 	/**
-     * Get message.
+     * @summary Get message.
+	 * @description 
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	*/
@@ -72,7 +76,8 @@ var VoicemailApi = function (pureCloudSession) {
 	}
 	self.getMessagesMessage = getMessagesMessage;
 	/**
-     * Update a message.
+     * @summary Update a message.
+	 * @description 
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	* @param {} body - VoicemailMessage
@@ -150,7 +155,8 @@ var VoicemailApi = function (pureCloudSession) {
 	}
 	self.updateMessagesMessage = updateMessagesMessage;
 	/**
-     * Delete a message.
+     * @summary Delete a message.
+	 * @description 
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	*/
@@ -172,7 +178,8 @@ var VoicemailApi = function (pureCloudSession) {
 	}
 	self.deleteMessagesMessage = deleteMessagesMessage;
 	/**
-     * Get media playback URI for this message
+     * @summary Get media playback URI for this message
+	 * @description 
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	* @param {string} formatId - The desired format (WEBM, WAV, etc.)

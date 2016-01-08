@@ -5,7 +5,8 @@
 */
 var NotificationsApi = function (pureCloudSession) {
 	/**
-     * Get available notification topics.
+     * @summary Get available notification topics.
+	 * @description 
 	 * @memberOf NotificationsApi#
 	*/
 	function getAvailabletopics(){
@@ -20,7 +21,8 @@ var NotificationsApi = function (pureCloudSession) {
 	}
 	self.getAvailabletopics = getAvailabletopics;
 	/**
-     * The list of existing channels
+     * @summary The list of existing channels
+	 * @description 
 	 * @memberOf NotificationsApi#
 	*/
 	function getChannels(){
@@ -35,7 +37,8 @@ var NotificationsApi = function (pureCloudSession) {
 	}
 	self.getChannels = getChannels;
 	/**
-     * Create a new channel
+     * @summary Create a new channel
+	 * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
 	 * @memberOf NotificationsApi#
 	*/
 	function createChannels(){
@@ -50,7 +53,8 @@ var NotificationsApi = function (pureCloudSession) {
 	}
 	self.createChannels = createChannels;
 	/**
-     * The list of all subscriptions for this channel
+     * @summary The list of all subscriptions for this channel
+	 * @description 
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	*/
@@ -72,7 +76,8 @@ var NotificationsApi = function (pureCloudSession) {
 	}
 	self.getChannelsChannelSubscriptions = getChannelsChannelSubscriptions;
 	/**
-     * Add a list of subscriptions to the existing list of subscriptions
+     * @summary Add a list of subscriptions to the existing list of subscriptions
+	 * @description 
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
@@ -99,7 +104,8 @@ var NotificationsApi = function (pureCloudSession) {
 	}
 	self.createChannelsChannelSubscriptions = createChannelsChannelSubscriptions;
 	/**
-     * Replace the current list of subscriptions with a new list.
+     * @summary Replace the current list of subscriptions with a new list.
+	 * @description 
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
@@ -126,7 +132,8 @@ var NotificationsApi = function (pureCloudSession) {
 	}
 	self.updateChannelsChannelSubscriptions = updateChannelsChannelSubscriptions;
 	/**
-     * Remove all subscriptions
+     * @summary Remove all subscriptions
+	 * @description 
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	*/

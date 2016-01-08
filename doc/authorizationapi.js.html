@@ -33,7 +33,8 @@
 */
 var AuthorizationApi = function (pureCloudSession) {
 	/**
-     * Retrieve a list of all licenses defined in the system
+     * @summary Retrieve a list of all licenses defined in the system
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -60,7 +61,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getLicenses = getLicenses;
 	/**
-     * Get all permissions.
+     * @summary Get all permissions.
+	 * @description Retrieve a list of all permission defined in the system.
 	 * @memberOf AuthorizationApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -87,7 +89,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getPermissions = getPermissions;
 	/**
-     * Retrieve a list of all roles defined for the organization
+     * @summary Retrieve a list of all roles defined for the organization
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {integer} pageSize - The total page size requested
 	* @param {integer} pageNumber - The page number requested
@@ -138,7 +141,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getRoles = getRoles;
 	/**
-     * Create an organization role.
+     * @summary Create an organization role.
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {} body - 
 	 * @example
@@ -174,7 +178,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.createRoles = createRoles;
 	/**
-     * Restores all default roles
+     * @summary Restores all default roles
+	 * @description This endpoint serves several purposes. 1. It provides the org with default roles. This is important for default roles that will be added after go-live (they can retroactively add the new default-role). Note: When not using a query param of force=true, it only adds the default roles not configured for the org; it does not overwrite roles. 2. Using the query param force=true, you can restore all default roles. Note: This does not have an effect on custom roles.
 	 * @memberOf AuthorizationApi#
 	* @param {boolean} force - Restore default roles
 	*/
@@ -195,7 +200,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.createRolesDefault = createRolesDefault;
 	/**
-     * Restore specified default roles
+     * @summary Restore specified default roles
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {} body - 
 	*/
@@ -215,7 +221,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.updateRolesDefault = updateRolesDefault;
 	/**
-     * Get an org role to default role comparison comparison
+     * @summary Get an org role to default role comparison comparison
+	 * @description Compares any organization role to a default role id and show differences
 	 * @memberOf AuthorizationApi#
 	* @param {string} leftRoleId - Left Role ID
 	* @param {string} rightRoleId - Right Role id
@@ -244,11 +251,12 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getRolesLeftRoleComparedefaultByRightRoleId = getRolesLeftRoleComparedefaultByRightRoleId;
 	/**
-     *  Get an unsaved org role to default role comparison
+     * @summary  Get an unsaved org role to default role comparison
+	 * @description Allows users to compare their existing roles in an unsaved state to its default role
 	 * @memberOf AuthorizationApi#
 	* @param {string} leftRoleId - Left Role ID
 	* @param {string} rightRoleId - Right Role id
-	* @param {} body - 
+	* @param {} body - Allows users to compare their existing roles in an unsaved state to its default role
 	 * @example
 	 * Body Example:
 	 * {
@@ -294,7 +302,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.createRolesLeftRoleComparedefaultByRightRoleId = createRolesLeftRoleComparedefaultByRightRoleId;
 	/**
-     * Get a single organization role.
+     * @summary Get a single organization role.
+	 * @description Get the organization role specified by its ID.
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	*/
@@ -316,10 +325,11 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getRolesRole = getRolesRole;
 	/**
-     * Update an organization role.
+     * @summary Update an organization role.
+	 * @description Update
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
-	* @param {} body - 
+	* @param {} body - Update
 	 * @example
 	 * Body Example:
 	 * {
@@ -359,7 +369,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.updateRolesRole = updateRolesRole;
 	/**
-     * Delete an organization role.
+     * @summary Delete an organization role.
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	*/
@@ -381,10 +392,11 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.deleteRolesRole = deleteRolesRole;
 	/**
-     * Patch Organization Role for needsUpdate Field
+     * @summary Patch Organization Role for needsUpdate Field
+	 * @description Patch Organization Role for needsUpdate Field
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
-	* @param {} body - 
+	* @param {} body - Patch Organization Role for needsUpdate Field
 	 * @example
 	 * Body Example:
 	 * {
@@ -424,7 +436,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.patchRolesRole = patchRolesRole;
 	/**
-     * Sets the users for the role
+     * @summary Sets the users for the role
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	* @param {} body - 
@@ -451,7 +464,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.updateRolesRoleUsersAdd = updateRolesRoleUsersAdd;
 	/**
-     * Removes the users from the role
+     * @summary Removes the users from the role
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	* @param {} body - 
@@ -478,7 +492,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.updateRolesRoleUsersRemove = updateRolesRoleUsersRemove;
 	/**
-     * Get the list of roles for a user.
+     * @summary Get the list of roles for a user.
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	*/
@@ -500,7 +515,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getUsersUserRoles = getUsersUserRoles;
 	/**
-     * Sets the user's roles
+     * @summary Sets the user's roles
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	* @param {} body - 
@@ -527,7 +543,8 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.updateUsersUserRoles = updateUsersUserRoles;
 	/**
-     * Removes all the roles from the user.
+     * @summary Removes all the roles from the user.
+	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	*/

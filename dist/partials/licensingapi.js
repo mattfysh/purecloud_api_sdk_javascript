@@ -5,7 +5,8 @@
 */
 var LicensingApi = function (pureCloudSession) {
 	/**
-     * Get Licenses required for a set of permissions.
+     * @summary Get Licenses required for a set of permissions.
+	 * @description 
 	 * @memberOf LicensingApi#
 	* @param {array} permission - Permission
 	*/
@@ -26,7 +27,8 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getLicenses = getLicenses;
 	/**
-     * Get org license assignments.
+     * @summary Get org license assignments.
+	 * @description 
 	 * @memberOf LicensingApi#
 	*/
 	function getOrgassignments(){
@@ -41,7 +43,8 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getOrgassignments = getOrgassignments;
 	/**
-     * Get org license assignment.
+     * @summary Get org license assignment.
+	 * @description 
 	 * @memberOf LicensingApi#
 	* @param {string} id - ID
 	*/
@@ -63,7 +66,8 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getOrgassignmentsId = getOrgassignmentsId;
 	/**
-     * Get Licenses required per permission.
+     * @summary Get Licenses required per permission.
+	 * @description 
 	 * @memberOf LicensingApi#
 	* @param {array} id - ID
 	*/
@@ -84,7 +88,8 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getPermissions = getPermissions;
 	/**
-     * Get user license assignments.
+     * @summary Get user license assignments.
+	 * @description 
 	 * @memberOf LicensingApi#
 	*/
 	function getUserassignments(){
@@ -99,7 +104,8 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getUserassignments = getUserassignments;
 	/**
-     * Get user license assignment.
+     * @summary Get user license assignment.
+	 * @description 
 	 * @memberOf LicensingApi#
 	* @param {string} id - ID
 	*/

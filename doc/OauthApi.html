@@ -146,11 +146,15 @@
     <h4 class="name" id="createClients"><span class="type-signature"></span>createClients<span class="signature">(body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Create OAuth client</p>
+    
 
 
 
 <div class="description">
-    Create OAuth client
+    The OAuth Grant/Client is required in order to create an authentication token and gain access to PureCloud. 
+The preferred authorizedGrantTypes is 'CODE' which requires applications to send a client ID and client secret. This is typically a web server. 
+If the client is unable to secure the client secret then the 'TOKEN' grant type aka IMPLICIT should be used. This is would be for browser or mobile apps.
 </div>
 
 
@@ -238,7 +242,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line39">line 39</a>
+        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -287,11 +291,13 @@
     <h4 class="name" id="createClientsClientSecret"><span class="type-signature"></span>createClientsClientSecret<span class="signature">(clientId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Regenerate Client Secret</p>
+    
 
 
 
 <div class="description">
-    Regenerate Client Secret
+    This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
 </div>
 
 
@@ -384,7 +390,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line142">line 142</a>
+        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -418,12 +424,10 @@
     <h4 class="name" id="deleteClientsClient"><span class="type-signature"></span>deleteClientsClient<span class="signature">(clientId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Delete OAuth Client</p>
+    
 
 
-
-<div class="description">
-    Delete OAuth Client
-</div>
 
 
 
@@ -515,7 +519,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line120">line 120</a>
+        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line127">line 127</a>
     </li></ul></dd>
     
 
@@ -549,12 +553,10 @@
     <h4 class="name" id="getClients"><span class="type-signature"></span>getClients<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">The list of OAuth clients</p>
+    
 
 
-
-<div class="description">
-    The list of OAuth clients
-</div>
 
 
 
@@ -597,7 +599,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line11">line 11</a>
+        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -631,12 +633,10 @@
     <h4 class="name" id="getClientsClient"><span class="type-signature"></span>getClientsClient<span class="signature">(clientId)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Get OAuth Client</p>
+    
 
 
-
-<div class="description">
-    Get OAuth Client
-</div>
 
 
 
@@ -728,7 +728,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line59">line 59</a>
+        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -762,12 +762,10 @@
     <h4 class="name" id="updateClientsClient"><span class="type-signature"></span>updateClientsClient<span class="signature">(clientId, body)</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary">Update OAuth Client</p>
+    
 
 
-
-<div class="description">
-    Update OAuth Client
-</div>
 
 
 
@@ -877,7 +875,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line94">line 94</a>
+        <a href="oauthapi.js.html">oauthapi.js</a>, <a href="oauthapi.js.html#line100">line 100</a>
     </li></ul></dd>
     
 

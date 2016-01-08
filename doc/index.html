@@ -55,7 +55,8 @@
 <pre class="prettyprint source"><code>&lt;script type=&quot;text/javascript&quot; src=&quot;purecloudsession.js&quot;>&lt;/script>
 &lt;script type=&quot;text/javascript&quot; src=&quot;usersapi.js&quot;>&lt;/script></code></pre><h2>Authenticating</h2><p>Let the library handle the OAuth2 redirects for you.</p>
 <pre class="prettyprint source"><code>var pureCloudSession = new PureCloudSession();
-pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX','http://localhost:8085/examples/').done(function(){
+pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX','http://localhost:8085/examples/')
+                .done(function(){
     //this method will be called once we have a valid authorization token
     // if we don't have one a redirect to login will be called and then after redirecting back here,
     // the done method will be called.

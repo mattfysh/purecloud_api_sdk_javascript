@@ -5,7 +5,8 @@
 */
 var IdentityprovidersApi = function (pureCloudSession) {
 	/**
-     * The list of identity providers
+     * @summary The list of identity providers
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function get(){
@@ -20,7 +21,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Get OneLogin Identity Provider
+     * @summary Get OneLogin Identity Provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function getOnelogin(){
@@ -35,7 +37,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.getOnelogin = getOnelogin;
 	/**
-     * Update/Create OneLogin Identity Provider
+     * @summary Update/Create OneLogin Identity Provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	* @param {} body - Provider
 	 * @example
@@ -65,7 +68,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.updateOnelogin = updateOnelogin;
 	/**
-     * Delete OneLogin Identity Provider
+     * @summary Delete OneLogin Identity Provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function deleteOnelogin(){
@@ -80,7 +84,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.deleteOnelogin = deleteOnelogin;
 	/**
-     * Get PureCloud Identity Provider
+     * @summary Get PureCloud Identity Provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function getPurecloud(){
@@ -95,7 +100,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.getPurecloud = getPurecloud;
 	/**
-     * Update/Create PureCloud Identity Provider
+     * @summary Update/Create PureCloud Identity Provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	* @param {} body - Provider
 	 * @example
@@ -122,7 +128,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.updatePurecloud = updatePurecloud;
 	/**
-     * Delete PureCloud Identity Provider
+     * @summary Delete PureCloud Identity Provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function deletePurecloud(){
@@ -137,7 +144,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.deletePurecloud = deletePurecloud;
 	/**
-     * Get an identity provider
+     * @summary Get an identity provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function getProverId(){
@@ -152,7 +160,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.getProverId = getProverId;
 	/**
-     * Update an identity provider
+     * @summary Update an identity provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	* @param {} body - Provider
 	 * @example
@@ -179,7 +188,8 @@ var IdentityprovidersApi = function (pureCloudSession) {
 	}
 	self.updateProverId = updateProverId;
 	/**
-     * Delete an identity provider
+     * @summary Delete an identity provider
+	 * @description 
 	 * @memberOf IdentityprovidersApi#
 	*/
 	function deleteProverId(){

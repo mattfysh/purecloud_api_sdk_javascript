@@ -5,7 +5,8 @@
 */
 var ComplianceApi = function (pureCloudSession) {
 	/**
-     * Get information about HIPAA compliance
+     * @summary Get information about HIPAA compliance
+	 * @description 
 	 * @memberOf ComplianceApi#
 	*/
 	function getHipaa(){
@@ -20,7 +21,8 @@ var ComplianceApi = function (pureCloudSession) {
 	}
 	self.getHipaa = getHipaa;
 	/**
-     * Update HIPAA compliance options
+     * @summary Update HIPAA compliance options
+	 * @description 
 	 * @memberOf ComplianceApi#
 	* @param {} body - 
 	 * @example

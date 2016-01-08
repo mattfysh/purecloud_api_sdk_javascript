@@ -5,7 +5,8 @@
 */
 var UsersApi = function (pureCloudSession) {
 	/**
-     * Get the list of available users.
+     * @summary Get the list of available users.
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -74,7 +75,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Create a configuration service user.
+     * @summary Create a configuration service user.
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {} body - User
 	 * @example
@@ -171,7 +173,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.create = create;
 	/**
-     * Get user.
+     * @summary Get user.
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {array} expand - Which fields, if any, to expand
 	*/
@@ -192,7 +195,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getMe = getMe;
 	/**
-     * Get user.
+     * @summary Get user.
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {array} expand - Which fields, if any, to expand
@@ -220,7 +224,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUser = getUser;
 	/**
-     * Set user station
+     * @summary Set user station
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - stationUri
@@ -328,7 +333,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.updateUser = updateUser;
 	/**
-     * Get a user's CallForwarding
+     * @summary Get a user's CallForwarding
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -350,7 +356,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserCallforwarding = getUserCallforwarding;
 	/**
-     * Update a user's CallForwarding
+     * @summary Update a user's CallForwarding
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - 
@@ -414,7 +421,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.updateUserCallforwarding = updateUserCallforwarding;
 	/**
-     * Patch a user's CallForwarding
+     * @summary Patch a user's CallForwarding
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - 
@@ -478,7 +486,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.patchUserCallforwarding = patchUserCallforwarding;
 	/**
-     * Get a list of the User's Greetings
+     * @summary Get a list of the User's Greetings
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {integer} pageSize - Page size
@@ -512,7 +521,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserGreetings = getUserGreetings;
 	/**
-     * Creates a Greeting for a User
+     * @summary Creates a Greeting for a User
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - The Greeting to create
@@ -567,7 +577,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.createUserGreetings = createUserGreetings;
 	/**
-     * Grabs the list of Default Greetings given a User's ID
+     * @summary Grabs the list of Default Greetings given a User's ID
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -589,7 +600,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserGreetingsDefaults = getUserGreetingsDefaults;
 	/**
-     * Updates the DefaultGreetingList of the specified User
+     * @summary Updates the DefaultGreetingList of the specified User
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - The updated defaultGreetingList
@@ -638,7 +650,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.updateUserGreetingsDefaults = updateUserGreetingsDefaults;
 	/**
-     * Get a OutOfOffice
+     * @summary Get a OutOfOffice
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -660,7 +673,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserOutofoffice = getUserOutofoffice;
 	/**
-     * Update an OutOfOffice
+     * @summary Update an OutOfOffice
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - The updated UserPresence
@@ -728,7 +742,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.updateUserOutofoffice = updateUserOutofoffice;
 	/**
-     * Get an User's list of Presences
+     * @summary Get an User's list of Presences
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {integer} pageNumber - Page number
@@ -762,7 +777,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserPresences = getUserPresences;
 	/**
-     * Get a UserPresence
+     * @summary Get a UserPresence
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {string} source - Source
@@ -791,7 +807,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserPresencesBySource = getUserPresencesBySource;
 	/**
-     * Update a UserPresence
+     * @summary Update a UserPresence
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {string} source - Source
@@ -905,7 +922,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.updateUserPresencesBySource = updateUserPresencesBySource;
 	/**
-     * Patch a UserPresence
+     * @summary Patch a UserPresence
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {string} source - Source
@@ -1019,7 +1037,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.patchUserPresencesBySource = patchUserPresencesBySource;
 	/**
-     * Get a user's Primary UserPresence
+     * @summary Get a user's Primary UserPresence
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -1041,7 +1060,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserPrimarypresence = getUserPrimarypresence;
 	/**
-     * Get queues for user
+     * @summary Get queues for user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {integer} pageSize - Page size
@@ -1075,7 +1095,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserQueues = getUserQueues;
 	/**
-     * Join or unjoin a set of queues for a user
+     * @summary Join or unjoin a set of queues for a user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - User Queues
@@ -1102,7 +1123,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.patchUserQueues = patchUserQueues;
 	/**
-     * Join or unjoin a queue for a user
+     * @summary Join or unjoin a queue for a user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} userId - User ID
@@ -1172,7 +1194,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.patchUserQueuesByQueueId = patchUserQueuesByQueueId;
 	/**
-     * List roles for user
+     * @summary List roles for user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -1194,7 +1217,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserRoles = getUserRoles;
 	/**
-     * Fetch the routing status of a user
+     * @summary Fetch the routing status of a user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -1216,7 +1240,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserRoutingstatus = getUserRoutingstatus;
 	/**
-     * Update the routing status of a user
+     * @summary Update the routing status of a user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - Routing Status
@@ -1250,7 +1275,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.updateUserRoutingstatus = updateUserRoutingstatus;
 	/**
-     * Get settable statuses
+     * @summary Get settable statuses
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -1272,7 +1298,8 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserSettablestatuses = getUserSettablestatuses;
 	/**
-     * List skills for user
+     * @summary List skills for user
+	 * @description 
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/

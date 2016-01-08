@@ -5,7 +5,8 @@
 */
 var LocationsApi = function (pureCloudSession) {
 	/**
-     * Get the list of locations.
+     * @summary Get the list of locations.
+	 * @description 
 	 * @memberOf LocationsApi#
 	* @param {string} state - Location state
 	ACTIVE,
@@ -46,7 +47,8 @@ var LocationsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Get Location by ID.
+     * @summary Get Location by ID.
+	 * @description 
 	 * @memberOf LocationsApi#
 	* @param {string} locationId - Location ID
 	*/

@@ -5,7 +5,8 @@
 */
 var SearchApi = function (pureCloudSession) {
 	/**
-     * Search chat history
+     * @summary Search chat history
+	 * @description 
 	 * @memberOf SearchApi#
 	* @param {} body - Search request options
 	 * @example

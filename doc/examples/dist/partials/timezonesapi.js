@@ -5,7 +5,8 @@
 */
 var TimezonesApi = function (pureCloudSession) {
 	/**
-     * Get time zones list
+     * @summary Get time zones list
+	 * @description 
 	 * @memberOf TimezonesApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number

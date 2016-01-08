@@ -5,7 +5,8 @@
 */
 var UserrecordingsApi = function (pureCloudSession) {
 	/**
-     * Get a list of user recordings.
+     * @summary Get a list of user recordings.
+	 * @description 
 	 * @memberOf UserrecordingsApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -38,7 +39,8 @@ var UserrecordingsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Get user recording summary
+     * @summary Get user recording summary
+	 * @description 
 	 * @memberOf UserrecordingsApi#
 	*/
 	function getSummary(){
@@ -53,7 +55,8 @@ var UserrecordingsApi = function (pureCloudSession) {
 	}
 	self.getSummary = getSummary;
 	/**
-     * Get a user recording.
+     * @summary Get a user recording.
+	 * @description 
 	 * @memberOf UserrecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	* @param {string} expand - conversation
@@ -81,7 +84,8 @@ var UserrecordingsApi = function (pureCloudSession) {
 	}
 	self.getRecording = getRecording;
 	/**
-     * Update a user recording.
+     * @summary Update a user recording.
+	 * @description 
 	 * @memberOf UserrecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	* @param {} body - UserRecording
@@ -149,7 +153,8 @@ var UserrecordingsApi = function (pureCloudSession) {
 	}
 	self.updateRecording = updateRecording;
 	/**
-     * Delete a user recording.
+     * @summary Delete a user recording.
+	 * @description 
 	 * @memberOf UserrecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	*/
@@ -171,7 +176,8 @@ var UserrecordingsApi = function (pureCloudSession) {
 	}
 	self.deleteRecording = deleteRecording;
 	/**
-     * Download a user recording.
+     * @summary Download a user recording.
+	 * @description 
 	 * @memberOf UserrecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	* @param {string} formatId - The desired format (WEBM, WAV, etc.)

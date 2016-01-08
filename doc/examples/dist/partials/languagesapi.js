@@ -5,7 +5,8 @@
 */
 var LanguagesApi = function (pureCloudSession) {
 	/**
-     * Get the list of supported languages.
+     * @summary Get the list of supported languages.
+	 * @description 
 	 * @memberOf LanguagesApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -32,7 +33,8 @@ var LanguagesApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Get language
+     * @summary Get language
+	 * @description 
 	 * @memberOf LanguagesApi#
 	* @param {string} languageId - Language ID
 	*/

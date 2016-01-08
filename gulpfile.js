@@ -74,7 +74,6 @@ var camelCase = function(id) {
 };
 
 function parseJsonSchema(opts, type){
-    var classPaths = [];
 
     var swagger = opts.swagger;
     var authorizedMethods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'COPY', 'HEAD', 'OPTIONS', 'LINK', 'UNLIK', 'PURGE', 'LOCK', 'UNLOCK', 'PROPFIND'];
@@ -83,7 +82,6 @@ function parseJsonSchema(opts, type){
         description: swagger.info.description,
         isSecure: swagger.securityDefinitions !== undefined,
         moduleName: opts.moduleName,
-        className: opts.className,
         domain: (swagger.schemes && swagger.schemes.length > 0 && swagger.host && swagger.basePath) ? swagger.schemes[0] + '://' + swagger.host + swagger.basePath : '',
         methods: {},
         classes: []
@@ -103,13 +101,12 @@ function parseJsonSchema(opts, type){
 
             var method = {
                 path: path,
-                className: classPath.split('.').pop(),
                 classPath: classPath,
-                namespacePath: classPath.replace(/\./g,'/').replace("PureCloud/",''),
                 methodName: op.operationId,
                 method: m.toUpperCase(),
                 isGET: m.toUpperCase() === 'GET',
                 summary: op.summary,
+                description: op.description,
                 parameters: [],
                 tags: op.tags
 
@@ -176,17 +173,10 @@ function parseJsonSchema(opts, type){
     var methodArray = [];
     for (var key in data.methods) {
         var methods = data.methods[key];
-        var namespaces = [];
-        methods.forEach(function(ns){
-            if(namespaces.indexOf(ns.namespacePath) == -1){
-                namespaces.push(ns.namespacePath);
-            }
-        });
 
         methodArray.push({
             moduleName: key[0].toUpperCase() + key.substring(1) + "Api",
             value : data.methods[key],
-            namespaces: namespaces
         });
     }
     data.methods = methodArray;
@@ -285,7 +275,6 @@ gulp.task('build', ['clean'], function() {
 
     var data = parseJsonSchema({
         moduleName: 'PureCloud',
-        className: 'PureCloud',
         swagger: swagger,
     });
 

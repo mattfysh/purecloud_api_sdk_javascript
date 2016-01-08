@@ -5,7 +5,8 @@
 */
 var TelephonyApi = function (pureCloudSession) {
 	/**
-     * Get a listing of line base settings objects
+     * @summary Get a listing of line base settings objects
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -44,7 +45,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeLinebasesettings = getProvidersEdgeLinebasesettings;
 	/**
-     * Get a line base settings object by ID
+     * @summary Get a line base settings object by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} lineBaseId - Line base ID
 	*/
@@ -66,7 +68,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeLinebasesettingsLineBase = getProvidersEdgeLinebasesettingsLineBase;
 	/**
-     * Get a list of Lines
+     * @summary Get a list of Lines
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -111,7 +114,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeLines = getProvidersEdgeLines;
 	/**
-     * Get a Line instance template based on a Line Base Settings object. This object can then be modified and saved as a new Line instance
+     * @summary Get a Line instance template based on a Line Base Settings object. This object can then be modified and saved as a new Line instance
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} lineBaseSettingsId - The id of a Line Base Settings object upon which to base this Line
 	*/
@@ -136,7 +140,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeLinesTemplate = getProvidersEdgeLinesTemplate;
 	/**
-     * Get a Line by ID
+     * @summary Get a Line by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} lineId - Line ID
 	*/
@@ -158,7 +163,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeLinesLine = getProvidersEdgeLinesLine;
 	/**
-     * Get a list of Phone Base Settings objects
+     * @summary Get a list of Phone Base Settings objects
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -197,7 +203,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhonebasesettings = getProvidersEdgePhonebasesettings;
 	/**
-     * Create a new Phone Base Settings object
+     * @summary Create a new Phone Base Settings object
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {} body - 
 	 * @example
@@ -260,7 +267,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.createProvidersEdgePhonebasesettings = createProvidersEdgePhonebasesettings;
 	/**
-     * Get a list of available makes and models to create a new Phone Base Settings
+     * @summary Get a list of available makes and models to create a new Phone Base Settings
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -287,7 +295,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhonebasesettingsAvailablemetabases = getProvidersEdgePhonebasesettingsAvailablemetabases;
 	/**
-     * Get a Phone Base Settings instance template from a given make and model. This object can then be modified and saved as a new Phone Base Settings instance
+     * @summary Get a Phone Base Settings instance template from a given make and model. This object can then be modified and saved as a new Phone Base Settings instance
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneMetabaseId - The id of a metabase object upon which to base this Phone Base Settings
 	*/
@@ -312,7 +321,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhonebasesettingsTemplate = getProvidersEdgePhonebasesettingsTemplate;
 	/**
-     * Get a Phone Base Settings object by ID
+     * @summary Get a Phone Base Settings object by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneBaseId - Phone base ID
 	*/
@@ -334,7 +344,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhonebasesettingsPhoneBase = getProvidersEdgePhonebasesettingsPhoneBase;
 	/**
-     * Update a Phone Base Settings by ID
+     * @summary Update a Phone Base Settings by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneBaseId - Phone base ID
 	* @param {} body - 
@@ -404,7 +415,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.updateProvidersEdgePhonebasesettingsPhoneBase = updateProvidersEdgePhonebasesettingsPhoneBase;
 	/**
-     * Delete a Phone Base Settings by ID
+     * @summary Delete a Phone Base Settings by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneBaseId - Phone base ID
 	*/
@@ -426,7 +438,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.deleteProvidersEdgePhonebasesettingsPhoneBase = deleteProvidersEdgePhonebasesettingsPhoneBase;
 	/**
-     * Get a list of Phone Instances
+     * @summary Get a list of Phone Instances
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -495,7 +508,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhones = getProvidersEdgePhones;
 	/**
-     * Create a new Phone
+     * @summary Create a new Phone
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {} body - 
 	 * @example
@@ -609,7 +623,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.createProvidersEdgePhones = createProvidersEdgePhones;
 	/**
-     * Reboot Multiple Phones
+     * @summary Reboot Multiple Phones
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {} body - body
 	 * @example
@@ -634,7 +649,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.createProvidersEdgePhonesReboot = createProvidersEdgePhonesReboot;
 	/**
-     * Get a Phone instance template based on a Phone Base Settings object. This object can then be modified and saved as a new Phone instance
+     * @summary Get a Phone instance template based on a Phone Base Settings object. This object can then be modified and saved as a new Phone instance
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneBaseSettingsId - The id of a Phone Base Settings object upon which to base this Phone
 	*/
@@ -659,7 +675,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhonesTemplate = getProvidersEdgePhonesTemplate;
 	/**
-     * Get a Phone by ID
+     * @summary Get a Phone by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneId - Phone ID
 	*/
@@ -681,7 +698,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgePhonesPhone = getProvidersEdgePhonesPhone;
 	/**
-     * Update a Phone by ID
+     * @summary Update a Phone by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneId - Phone ID
 	* @param {} body - 
@@ -802,7 +820,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.updateProvidersEdgePhonesPhone = updateProvidersEdgePhonesPhone;
 	/**
-     * Delete a Phone by ID
+     * @summary Delete a Phone by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneId - Phone ID
 	*/
@@ -824,7 +843,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.deleteProvidersEdgePhonesPhone = deleteProvidersEdgePhonesPhone;
 	/**
-     * Reboot a Phone
+     * @summary Reboot a Phone
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} phoneId - Phone Id
 	*/
@@ -846,7 +866,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.createProvidersEdgePhonesPhoneReboot = createProvidersEdgePhonesPhoneReboot;
 	/**
-     * Get a list of Edge-compatible time zones
+     * @summary Get a list of Edge-compatible time zones
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -873,7 +894,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeTimezones = getProvidersEdgeTimezones;
 	/**
-     * Get Trunk Base Settings listing
+     * @summary Get Trunk Base Settings listing
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -912,7 +934,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeTrunkbasesettings = getProvidersEdgeTrunkbasesettings;
 	/**
-     * Create a Trunk Base Settings object
+     * @summary Create a Trunk Base Settings object
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {} body - 
 	 * @example
@@ -967,7 +990,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.createProvidersEdgeTrunkbasesettings = createProvidersEdgeTrunkbasesettings;
 	/**
-     * Get a list of available makes and models to create a new Trunk Base Settings
+     * @summary Get a list of available makes and models to create a new Trunk Base Settings
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} type - 
 	EXTERNAL,
@@ -1003,7 +1027,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeTrunkbasesettingsAvailablemetabases = getProvidersEdgeTrunkbasesettingsAvailablemetabases;
 	/**
-     * Get a Trunk Base Settings instance template from a given make and model. This object can then be modified and saved as a new Trunk Base Settings instance
+     * @summary Get a Trunk Base Settings instance template from a given make and model. This object can then be modified and saved as a new Trunk Base Settings instance
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} trunkMetabaseId - The id of a metabase object upon which to base this Trunk Base Settings
 	*/
@@ -1028,7 +1053,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeTrunkbasesettingsTemplate = getProvidersEdgeTrunkbasesettingsTemplate;
 	/**
-     * Get a Trunk Base Settings object by ID
+     * @summary Get a Trunk Base Settings object by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} trunkBaseSettingsId - Trunk Base ID
 	*/
@@ -1050,7 +1076,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeTrunkbasesettingsTrunkBaseSettings = getProvidersEdgeTrunkbasesettingsTrunkBaseSettings;
 	/**
-     * Update a Trunk Base Settings object by ID
+     * @summary Update a Trunk Base Settings object by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} trunkBaseSettingsId - Trunk Base ID
 	* @param {} body - 
@@ -1112,7 +1139,8 @@ var TelephonyApi = function (pureCloudSession) {
 	}
 	self.updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings = updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings;
 	/**
-     * Delete a Trunk Base Settings object by ID
+     * @summary Delete a Trunk Base Settings object by ID
+	 * @description 
 	 * @memberOf TelephonyApi#
 	* @param {string} trunkBaseSettingsId - Trunk Base ID
 	*/

@@ -5,7 +5,8 @@
 */
 var AnalyticsApi = function (pureCloudSession) {
 	/**
-     * Get a list of alerts.
+     * @summary Get a list of alerts.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -44,7 +45,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getAlertingAlerts = getAlertingAlerts;
 	/**
-     * A count of unread alerts.
+     * @summary A count of unread alerts.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	*/
 	function getAlertingAlertsUnread(){
@@ -59,7 +61,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getAlertingAlertsUnread = getAlertingAlertsUnread;
 	/**
-     * Get an alert.
+     * @summary Get an alert.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} alertId - Alert ID
 	*/
@@ -81,7 +84,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getAlertingAlertsAlert = getAlertingAlertsAlert;
 	/**
-     * Update an alerts unread status.
+     * @summary Update an alerts unread status.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} alertId - Alert ID
 	* @param {} body - Alert
@@ -131,7 +135,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.updateAlertingAlertsAlert = updateAlertingAlertsAlert;
 	/**
-     * Delete an alert.
+     * @summary Delete an alert.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} alertId - Alert ID
 	*/
@@ -153,7 +158,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.deleteAlertingAlertsAlert = deleteAlertingAlertsAlert;
 	/**
-     * Get a list of rules.
+     * @summary Get a list of rules.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -192,7 +198,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getAlertingRules = getAlertingRules;
 	/**
-     * Create an alerting rule.
+     * @summary Create an alerting rule.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {} body - Rule
 	 * @example
@@ -236,7 +243,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.createAlertingRules = createAlertingRules;
 	/**
-     * Get an alerting rule.
+     * @summary Get an alerting rule.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} ruleId - Rule ID
 	*/
@@ -258,7 +266,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getAlertingRulesRule = getAlertingRulesRule;
 	/**
-     * Update an alerting rule.
+     * @summary Update an alerting rule.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} ruleId - Rule ID
 	* @param {} body - Rule
@@ -309,7 +318,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.updateAlertingRulesRule = updateAlertingRulesRule;
 	/**
-     * Delete an alerting rule.
+     * @summary Delete an alerting rule.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} ruleId - Rule ID
 	*/
@@ -331,7 +341,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.deleteAlertingRulesRule = deleteAlertingRulesRule;
 	/**
-     * Executes a metrics query against the analytics service
+     * @summary Executes a metrics query against the analytics service
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {} body - queryObject
 	*/
@@ -351,7 +362,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.createMetricsQuery = createMetricsQuery;
 	/**
-     * Get list of reporting metadata.
+     * @summary Get list of reporting metadata.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -385,7 +397,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingMetadata = getReportingMetadata;
 	/**
-     * Get a list of report formats
+     * @summary Get a list of report formats
+	 * @description Get a list of report formats.
 	 * @memberOf AnalyticsApi#
 	*/
 	function getReportingReportformats(){
@@ -400,7 +413,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingReportformats = getReportingReportformats;
 	/**
-     * Get a list of scheduled report jobs
+     * @summary Get a list of scheduled report jobs
+	 * @description Get a list of scheduled report jobs.
 	 * @memberOf AnalyticsApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -427,7 +441,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingSchedules = getReportingSchedules;
 	/**
-     * Create a scheduled report job
+     * @summary Create a scheduled report job
+	 * @description Create a scheduled report job.
 	 * @memberOf AnalyticsApi#
 	* @param {} body - ReportSchedule
 	 * @example
@@ -483,7 +498,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.createReportingSchedules = createReportingSchedules;
 	/**
-     * Get a scheduled report job.
+     * @summary Get a scheduled report job.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
@@ -505,7 +521,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingSchedulesSchedule = getReportingSchedulesSchedule;
 	/**
-     * Update a scheduled report job.
+     * @summary Update a scheduled report job.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	* @param {} body - ReportSchedule
@@ -568,7 +585,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.updateReportingSchedulesSchedule = updateReportingSchedulesSchedule;
 	/**
-     * Delete a scheduled report job.
+     * @summary Delete a scheduled report job.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
@@ -590,7 +608,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.deleteReportingSchedulesSchedule = deleteReportingSchedulesSchedule;
 	/**
-     * Get list of completed scheduled report jobs.
+     * @summary Get list of completed scheduled report jobs.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	* @param {integer} pageNumber - 
@@ -624,7 +643,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingSchedulesScheduleHistory = getReportingSchedulesScheduleHistory;
 	/**
-     * Get most recently completed scheduled report job.
+     * @summary Get most recently completed scheduled report job.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
@@ -646,7 +666,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingSchedulesScheduleHistoryLatest = getReportingSchedulesScheduleHistoryLatest;
 	/**
-     * A completed scheduled report job
+     * @summary A completed scheduled report job
+	 * @description A completed scheduled report job.
 	 * @memberOf AnalyticsApi#
 	* @param {string} runId - Run ID
 	* @param {string} scheduleId - Schedule ID
@@ -675,7 +696,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingSchedulesScheduleHistoryByRunId = getReportingSchedulesScheduleHistoryByRunId;
 	/**
-     * Place a scheduled report immediately into the reporting queue
+     * @summary Place a scheduled report immediately into the reporting queue
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
@@ -697,7 +719,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.createReportingSchedulesScheduleRunreport = createReportingSchedulesScheduleRunreport;
 	/**
-     * Get a list of report time periods.
+     * @summary Get a list of report time periods.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	*/
 	function getReportingTimeperiods(){
@@ -712,7 +735,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingTimeperiods = getReportingTimeperiods;
 	/**
-     * Get a reporting metadata.
+     * @summary Get a reporting metadata.
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {string} reportId - Report ID
 	* @param {string} acceptLanguage - Accepted language
@@ -741,7 +765,8 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.getReportingReportMetadata = getReportingReportMetadata;
 	/**
-     * Executes a segments query against the analytics service
+     * @summary Executes a segments query against the analytics service
+	 * @description 
 	 * @memberOf AnalyticsApi#
 	* @param {} body - queryObject
 	*/

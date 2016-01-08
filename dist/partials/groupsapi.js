@@ -5,7 +5,8 @@
 */
 var GroupsApi = function (pureCloudSession) {
 	/**
-     * Get a group list
+     * @summary Get a group list
+	 * @description 
 	 * @memberOf GroupsApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -38,7 +39,8 @@ var GroupsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Get group
+     * @summary Get group
+	 * @description 
 	 * @memberOf GroupsApi#
 	* @param {string} groupId - Group ID
 	*/
@@ -60,7 +62,8 @@ var GroupsApi = function (pureCloudSession) {
 	}
 	self.getGroup = getGroup;
 	/**
-     * Get group members
+     * @summary Get group members
+	 * @description 
 	 * @memberOf GroupsApi#
 	* @param {string} groupId - Group ID
 	* @param {integer} pageSize - Page size

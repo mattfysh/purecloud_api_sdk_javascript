@@ -5,7 +5,8 @@
 */
 var PresencedefinitionsApi = function (pureCloudSession) {
 	/**
-     * Get an Organization's list of Presences
+     * @summary Get an Organization's list of Presences
+	 * @description 
 	 * @memberOf PresencedefinitionsApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -32,7 +33,8 @@ var PresencedefinitionsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Create an OrganizationPresence
+     * @summary Create an OrganizationPresence
+	 * @description 
 	 * @memberOf PresencedefinitionsApi#
 	* @param {} body - The OrganizationPresence to create
 	 * @example
@@ -122,7 +124,8 @@ var PresencedefinitionsApi = function (pureCloudSession) {
 	}
 	self.create = create;
 	/**
-     * Get an OrganizationPresence
+     * @summary Get an OrganizationPresence
+	 * @description 
 	 * @memberOf PresencedefinitionsApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
@@ -144,7 +147,8 @@ var PresencedefinitionsApi = function (pureCloudSession) {
 	}
 	self.getPresence = getPresence;
 	/**
-     * Update an OrganizationPresence
+     * @summary Update an OrganizationPresence
+	 * @description 
 	 * @memberOf PresencedefinitionsApi#
 	* @param {string} presenceId - Organization Presence ID
 	* @param {} body - The OrganizationPresence to update
@@ -241,7 +245,8 @@ var PresencedefinitionsApi = function (pureCloudSession) {
 	}
 	self.updatePresence = updatePresence;
 	/**
-     * Delete an OrganizationPresence
+     * @summary Delete an OrganizationPresence
+	 * @description 
 	 * @memberOf PresencedefinitionsApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/

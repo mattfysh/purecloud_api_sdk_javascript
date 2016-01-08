@@ -8,19 +8,21 @@
 
     <script>
         var lastData = null;
+        var pureCloudSession = new PureCloudSession();
+        var usersapi = new UsersApi(pureCloudSession);
 
         function getUsers(page){
-            PureCloud.users.getUsers(10,page).done(generateTemplate).error(function(data){
+            usersapi.get(10,page).done(generateTemplate).error(function(data){
                 console.log(data);
             });
         }
 
         function nextPage(){
-            PureCloud.get(lastData.nextUri).done(generateTemplate);
+            pureCloudSession.get(lastData.nextUri).done(generateTemplate);
         }
 
         function previousPage(){
-            PureCloud.get(lastData.previousUri).done(generateTemplate);
+            pureCloudSession.get(lastData.previousUri).done(generateTemplate);
         }
 
         function generateTemplate(data){
@@ -36,7 +38,7 @@
             redirectUrl = "http://mypurecloud.github.io/purecloud_javascript_client/examples/authredirect.html";
         }
 
-        PureCloud.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_paging").done(function(){
+        pureCloudSession.authorize('efb6698a-5f76-4f90-bf29-9a69a3555602', redirectUrl, "user_paging").done(function(){
             getUsers(1);
         });
 

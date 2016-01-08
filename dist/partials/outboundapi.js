@@ -5,7 +5,8 @@
 */
 var OutboundApi = function (pureCloudSession) {
 	/**
-     * Retrieves audits for dialer.
+     * @summary Retrieves audits for dialer.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - AuditSearch
 	* @param {integer} pageSize - Page size
@@ -63,7 +64,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createAudits = createAudits;
 	/**
-     * Query callable time set list
+     * @summary Query callable time set list
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -126,7 +128,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCallabletimesets = getCallabletimesets;
 	/**
-     * Create callable time set
+     * @summary Create callable time set
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - DialerCallableTimeSet
 	 * @example
@@ -157,7 +160,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createCallabletimesets = createCallabletimesets;
 	/**
-     * Get callable time set
+     * @summary Get callable time set
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callableTimeSetId - Callable Time Set ID
 	*/
@@ -179,7 +183,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCallabletimesetsCallableTimeSet = getCallabletimesetsCallableTimeSet;
 	/**
-     * Update callable time set
+     * @summary Update callable time set
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callableTimeSetId - Callable Time Set ID
 	* @param {} body - DialerCallableTimeSet
@@ -217,7 +222,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateCallabletimesetsCallableTimeSet = updateCallabletimesetsCallableTimeSet;
 	/**
-     * Delete callable time set
+     * @summary Delete callable time set
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callableTimeSetId - Callable Time Set ID
 	*/
@@ -239,7 +245,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteCallabletimesetsCallableTimeSet = deleteCallabletimesetsCallableTimeSet;
 	/**
-     * Query a list of dialer call analysis response sets.
+     * @summary Query a list of dialer call analysis response sets.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -302,7 +309,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCallanalysisresponsesets = getCallanalysisresponsesets;
 	/**
-     * Create a dialer call analysis response set.
+     * @summary Create a dialer call analysis response set.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - ResponseSet
 	 * @example
@@ -333,7 +341,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createCallanalysisresponsesets = createCallanalysisresponsesets;
 	/**
-     * Get a dialer call analysis response set.
+     * @summary Get a dialer call analysis response set.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callAnalysisSetId - Call Analysis Response Set ID
 	*/
@@ -355,7 +364,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCallanalysisresponsesetsCallAnalysisSet = getCallanalysisresponsesetsCallAnalysisSet;
 	/**
-     * Update a dialer call analysis response set.
+     * @summary Update a dialer call analysis response set.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callAnalysisSetId - Call Analysis Response Set ID
 	* @param {} body - ResponseSet
@@ -393,7 +403,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateCallanalysisresponsesetsCallAnalysisSet = updateCallanalysisresponsesetsCallAnalysisSet;
 	/**
-     * Delete a dialer call analysis response set.
+     * @summary Delete a dialer call analysis response set.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callAnalysisSetId - Call Analysis Response Set ID
 	*/
@@ -415,7 +426,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteCallanalysisresponsesetsCallAnalysisSet = deleteCallanalysisresponsesetsCallAnalysisSet;
 	/**
-     * Query a list of dialer campaigns.
+     * @summary Query a list of dialer campaigns.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -508,7 +520,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCampaigns = getCampaigns;
 	/**
-     * Create a campaign.
+     * @summary Create a campaign.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - Campaign
 	 * @example
@@ -538,7 +551,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createCampaigns = createCampaigns;
 	/**
-     * Get dialer campaign.
+     * @summary Get dialer campaign.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
@@ -560,7 +574,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCampaignsCampaign = getCampaignsCampaign;
 	/**
-     * Update a campaign.
+     * @summary Update a campaign.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	* @param {} body - Campaign
@@ -597,7 +612,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateCampaignsCampaign = updateCampaignsCampaign;
 	/**
-     * Delete a campaign.
+     * @summary Delete a campaign.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
@@ -619,7 +635,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteCampaignsCampaign = deleteCampaignsCampaign;
 	/**
-     * Send notification that an agent's state changed 
+     * @summary Send notification that an agent's state changed 
+	 * @description New agent state.
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	* @param {string} userId - Agent's user ID
@@ -658,7 +675,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateCampaignsCampaignAgentsByUserId = updateCampaignsCampaignAgentsByUserId;
 	/**
-     * Schedule a Callback for a Dialer Campaign
+     * @summary Schedule a Callback for a Dialer Campaign
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	* @param {} body - ContactCallbackRequest
@@ -694,7 +712,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createCampaignsCampaignCallbackSchedule = createCampaignsCampaignCallbackSchedule;
 	/**
-     * Get campaign diagnostics
+     * @summary Get campaign diagnostics
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
@@ -716,7 +735,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCampaignsCampaignDiagnostics = getCampaignsCampaignDiagnostics;
 	/**
-     * Get statistics about a Dialer Campaign
+     * @summary Get statistics about a Dialer Campaign
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
@@ -738,7 +758,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCampaignsCampaignStats = getCampaignsCampaignStats;
 	/**
-     * Query a list of contact lists.
+     * @summary Query a list of contact lists.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
@@ -813,7 +834,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getContactlists = getContactlists;
 	/**
-     * Create a contact List.
+     * @summary Create a contact List.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - ContactList
 	 * @example
@@ -855,7 +877,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createContactlists = createContactlists;
 	/**
-     * Get penetration rates for a list of penetration rate identifiers (contact list id and qualifier id)
+     * @summary Get penetration rates for a list of penetration rate identifiers (contact list id and qualifier id)
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - PenetrationRateIdentifierList
 	*/
@@ -875,7 +898,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createContactlistsPenetrationrates = createContactlistsPenetrationrates;
 	/**
-     * Get dialer contactList.
+     * @summary Get dialer contactList.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	* @param {boolean} importStatus - Import status
@@ -909,7 +933,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getContactlistsContactList = getContactlistsContactList;
 	/**
-     * Update a contact list.
+     * @summary Update a contact list.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	* @param {} body - ContactList
@@ -958,7 +983,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateContactlistsContactList = updateContactlistsContactList;
 	/**
-     * Delete a contact list.
+     * @summary Delete a contact list.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	*/
@@ -980,7 +1006,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteContactlistsContactList = deleteContactlistsContactList;
 	/**
-     * Add contacts to a contact list.
+     * @summary Add contacts to a contact list.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - Contact List ID
 	* @param {} body - Contact
@@ -1013,7 +1040,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createContactlistsContactListContacts = createContactlistsContactListContacts;
 	/**
-     * Get dialer contactList.
+     * @summary Get dialer contactList.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - Contact List ID
 	* @param {string} contactId - Contact ID
@@ -1042,7 +1070,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getContactlistsContactListContactsByContactId = getContactlistsContactListContactsByContactId;
 	/**
-     * Update a contact.
+     * @summary Update a contact.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - Contact List ID
 	* @param {string} contactId - Contact ID
@@ -1110,7 +1139,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateContactlistsContactListContactsByContactId = updateContactlistsContactListContactsByContactId;
 	/**
-     * Delete a contact.
+     * @summary Delete a contact.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - Contact List ID
 	* @param {string} contactId - Contact ID
@@ -1139,7 +1169,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteContactlistsContactListContactsByContactId = deleteContactlistsContactListContactsByContactId;
 	/**
-     * Initiate the export of a contact list.
+     * @summary Initiate the export of a contact list.
+	 * @description Returns 200 if received OK.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	*/
@@ -1161,7 +1192,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createContactlistsContactListExport = createContactlistsContactListExport;
 	/**
-     * Get dialer contactList import status.
+     * @summary Get dialer contactList import status.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	*/
@@ -1183,7 +1215,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getContactlistsContactListImportstatus = getContactlistsContactListImportstatus;
 	/**
-     * Get Dialer campaign's penetration rate
+     * @summary Get Dialer campaign's penetration rate
+	 * @description Get dialer campaign's penetration rate.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	* @param {string} campaignId - Campaign ID
@@ -1212,7 +1245,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getContactlistsContactListByCampaignIdPenetrationrate = getContactlistsContactListByCampaignIdPenetrationrate;
 	/**
-     * Add phone numbers to a Dialer DNC list.
+     * @summary Add phone numbers to a Dialer DNC list.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} conversationId - Conversation ID
 	*/
@@ -1234,7 +1268,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createConversationsConversationDnc = createConversationsConversationDnc;
 	/**
-     * Query dialer DNC lists
+     * @summary Query dialer DNC lists
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
@@ -1309,7 +1344,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getDnclists = getDnclists;
 	/**
-     * Create dialer DNC list
+     * @summary Create dialer DNC list
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - DncList
 	 * @example
@@ -1349,7 +1385,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createDnclists = createDnclists;
 	/**
-     * Get dialer DNC list
+     * @summary Get dialer DNC list
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	* @param {boolean} importStatus - Import status
@@ -1383,7 +1420,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getDnclistsDncList = getDnclistsDncList;
 	/**
-     * Update dialer DNC list
+     * @summary Update dialer DNC list
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	* @param {} body - DncList
@@ -1430,7 +1468,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateDnclistsDncList = updateDnclistsDncList;
 	/**
-     * Delete dialer DNC list
+     * @summary Delete dialer DNC list
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	*/
@@ -1452,7 +1491,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteDnclistsDncList = deleteDnclistsDncList;
 	/**
-     * Initiate the export of a dnc list.
+     * @summary Initiate the export of a dnc list.
+	 * @description Returns 200 if received OK.
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	*/
@@ -1474,7 +1514,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createDnclistsDncListExport = createDnclistsDncListExport;
 	/**
-     * Get dialer dncList import status.
+     * @summary Get dialer dncList import status.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	*/
@@ -1496,7 +1537,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getDnclistsDncListImportstatus = getDnclistsDncListImportstatus;
 	/**
-     * Add phone numbers to a Dialer DNC list.
+     * @summary Add phone numbers to a Dialer DNC list.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	* @param {} body - DNC Phone Numbers
@@ -1523,7 +1565,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createDnclistsDncListPhonenumbers = createDnclistsDncListPhonenumbers;
 	/**
-     * Get dialer preview for user
+     * @summary Get dialer preview for user
+	 * @description 
 	 * @memberOf OutboundApi#
 	*/
 	function getPreviews(){
@@ -1538,7 +1581,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getPreviews = getPreviews;
 	/**
-     * Get dialer preview
+     * @summary Get dialer preview
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} previewId - preview ID
 	*/
@@ -1560,7 +1604,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getPreviewsPreview = getPreviewsPreview;
 	/**
-     * Disposition preview call
+     * @summary Disposition preview call
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} previewId - preview ID
 	* @param {} body - 
@@ -1603,7 +1648,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createPreviewsPreviewDispositioncall = createPreviewsPreviewDispositioncall;
 	/**
-     * place preview call
+     * @summary place preview call
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} previewId - preview ID
 	* @param {} body - 
@@ -1636,7 +1682,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createPreviewsPreviewPlacecall = createPreviewsPreviewPlacecall;
 	/**
-     * Query a list of Rule Sets.
+     * @summary Query a list of Rule Sets.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -1699,7 +1746,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getRulesets = getRulesets;
 	/**
-     * Create a Dialer Call Analysis Response Set.
+     * @summary Create a Dialer Call Analysis Response Set.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - RuleSet
 	 * @example
@@ -1740,7 +1788,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createRulesets = createRulesets;
 	/**
-     * Get a Rule Set by ID.
+     * @summary Get a Rule Set by ID.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} ruleSetId - Rule Set ID
 	*/
@@ -1762,7 +1811,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getRulesetsRuleSet = getRulesetsRuleSet;
 	/**
-     * Update a RuleSet.
+     * @summary Update a RuleSet.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} ruleSetId - Rule Set ID
 	* @param {} body - RuleSet
@@ -1810,7 +1860,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateRulesetsRuleSet = updateRulesetsRuleSet;
 	/**
-     * Delete a Rule set.
+     * @summary Delete a Rule set.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} ruleSetId - Rule Set ID
 	*/
@@ -1832,7 +1883,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteRulesetsRuleSet = deleteRulesetsRuleSet;
 	/**
-     * Query for a list of dialer campaign schedules.
+     * @summary Query for a list of dialer campaign schedules.
+	 * @description 
 	 * @memberOf OutboundApi#
 	*/
 	function getSchedulesCampaigns(){
@@ -1847,7 +1899,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getSchedulesCampaigns = getSchedulesCampaigns;
 	/**
-     * Get a dialer campaign schedule.
+     * @summary Get a dialer campaign schedule.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
@@ -1869,7 +1922,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getSchedulesCampaignsCampaign = getSchedulesCampaignsCampaign;
 	/**
-     * Update a new campaign schedule.
+     * @summary Update a new campaign schedule.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	* @param {} body - CampaignSchedule
@@ -1913,7 +1967,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateSchedulesCampaignsCampaign = updateSchedulesCampaignsCampaign;
 	/**
-     * Delete a dialer campaign schedule.
+     * @summary Delete a dialer campaign schedule.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
@@ -1935,7 +1990,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteSchedulesCampaignsCampaign = deleteSchedulesCampaignsCampaign;
 	/**
-     * Query for a list of dialer sequence schedules.
+     * @summary Query for a list of dialer sequence schedules.
+	 * @description 
 	 * @memberOf OutboundApi#
 	*/
 	function getSchedulesSequences(){
@@ -1950,7 +2006,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getSchedulesSequences = getSchedulesSequences;
 	/**
-     * Get a dialer sequence schedule.
+     * @summary Get a dialer sequence schedule.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Sequence ID
 	*/
@@ -1972,7 +2029,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getSchedulesSequencesSequence = getSchedulesSequencesSequence;
 	/**
-     * Update a new sequence schedule.
+     * @summary Update a new sequence schedule.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Sequence ID
 	* @param {} body - SequenceSchedule
@@ -2016,7 +2074,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateSchedulesSequencesSequence = updateSchedulesSequencesSequence;
 	/**
-     * Delete a dialer sequence schedule.
+     * @summary Delete a dialer sequence schedule.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Sequence ID
 	*/
@@ -2038,7 +2097,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteSchedulesSequencesSequence = deleteSchedulesSequencesSequence;
 	/**
-     * Query a list of dialer campaign sequences.
+     * @summary Query a list of dialer campaign sequences.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -2101,7 +2161,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getSequences = getSequences;
 	/**
-     * Create a new campaign sequence.
+     * @summary Create a new campaign sequence.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - Organization
 	 * @example
@@ -2135,7 +2196,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.createSequences = createSequences;
 	/**
-     * Get a dialer campaign sequence.
+     * @summary Get a dialer campaign sequence.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Campaign Sequence ID
 	*/
@@ -2157,7 +2219,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getSequencesSequence = getSequencesSequence;
 	/**
-     * Update a new campaign sequence.
+     * @summary Update a new campaign sequence.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Campaign Sequence ID
 	* @param {} body - Organization
@@ -2198,7 +2261,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.updateSequencesSequence = updateSequencesSequence;
 	/**
-     * Delete a dialer campaign sequence.
+     * @summary Delete a dialer campaign sequence.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Campaign Sequence ID
 	*/
@@ -2220,7 +2284,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteSequencesSequence = deleteSequencesSequence;
 	/**
-     * Get the Dialer wrap up code mapping.
+     * @summary Get the Dialer wrap up code mapping.
+	 * @description 
 	 * @memberOf OutboundApi#
 	*/
 	function getWrapupcodemappings(){
@@ -2235,7 +2300,8 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getWrapupcodemappings = getWrapupcodemappings;
 	/**
-     * Update the Dialer wrap up code mapping.
+     * @summary Update the Dialer wrap up code mapping.
+	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {} body - wrapUpCodeMapping
 	 * @example

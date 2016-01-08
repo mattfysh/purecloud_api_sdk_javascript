@@ -5,7 +5,8 @@
 */
 var StatusesApi = function (pureCloudSession) {
 	/**
-     * Get the user and system statuses
+     * @summary Get the user and system statuses
+	 * @description 
 	 * @memberOf StatusesApi#
 	*/
 	function get(){

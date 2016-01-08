@@ -5,7 +5,8 @@
 */
 var ConversationsApi = function (pureCloudSession) {
 	/**
-     * Get conversations
+     * @summary Get conversations
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} communicationType - Call or Chat communication filtering
 	*/
@@ -26,7 +27,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Create conversation
+     * @summary Create conversation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} call - Phone number to call
 	* @param {string} callFrom - Queue id to place the call from
@@ -88,7 +90,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.create = create;
 	/**
-     * Get the maximum number of participants that this user can have on a conference
+     * @summary Get the maximum number of participants that this user can have on a conference
+	 * @description 
 	 * @memberOf ConversationsApi#
 	*/
 	function getMaximumconferenceparties(){
@@ -103,7 +106,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getMaximumconferenceparties = getMaximumconferenceparties;
 	/**
-     * Query historical conversations
+     * @summary Query historical conversations
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {} body - 
 	 * @example
@@ -131,7 +135,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createQuery = createQuery;
 	/**
-     * Query historical conversations with a date/time anchor
+     * @summary Query historical conversations with a date/time anchor
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} anchor - Anchor
 	* @param {} body - 
@@ -166,7 +171,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createQueryAnchor = createQueryAnchor;
 	/**
-     * Get conversation
+     * @summary Get conversation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
@@ -188,7 +194,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversation = getConversation;
 	/**
-     * Update conversation
+     * @summary Update conversation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {} body - Conversation
@@ -228,7 +235,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversation = updateConversation;
 	/**
-     * Get conversation messages
+     * @summary Get conversation messages
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
@@ -250,7 +258,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationMessages = getConversationMessages;
 	/**
-     * Send an email reply
+     * @summary Send an email reply
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {} body - Reply
@@ -296,7 +305,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createConversationMessages = createConversationMessages;
 	/**
-     * Get conversation draft reply
+     * @summary Get conversation draft reply
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
@@ -318,7 +328,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationMessagesDraft = getConversationMessagesDraft;
 	/**
-     * Update conversation draft reply
+     * @summary Update conversation draft reply
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {} body - Draft
@@ -364,7 +375,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationMessagesDraft = updateConversationMessagesDraft;
 	/**
-     * Get conversation message
+     * @summary Get conversation message
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} id - message ID
@@ -393,7 +405,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationMessagesById = getConversationMessagesById;
 	/**
-     * Add participants to a conversation
+     * @summary Add participants to a conversation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {} body - Conversation
@@ -433,11 +446,12 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createConversationParticipants = createConversationParticipants;
 	/**
-     * Update a participant.
+     * @summary Update a participant.
+	 * @description Specify the state as CONNECTED, DISCONNECTED. You can specify a wrap-up code.
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
-	* @param {} body - 
+	* @param {} body - Specify the state as CONNECTED, DISCONNECTED. You can specify a wrap-up code.
 	 * @example
 	 * Body Example:
 	 * {
@@ -487,7 +501,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationParticipantsByParticipantId = updateConversationParticipantsByParticipantId;
 	/**
-     * Update the attributes on a conversation participant.
+     * @summary Update the attributes on a conversation participant.
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
@@ -526,7 +541,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationParticipantsByParticipantIdAttributes = updateConversationParticipantsByParticipantIdAttributes;
 	/**
-     * Initiate and update consult transfer
+     * @summary Initiate and update consult transfer
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - The object of the transfer
@@ -573,7 +589,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createConversationParticipantsByParticipantIdConsult = createConversationParticipantsByParticipantIdConsult;
 	/**
-     * Change who can speak
+     * @summary Change who can speak
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - The object of the transfer
@@ -612,7 +629,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationParticipantsByParticipantIdConsult = updateConversationParticipantsByParticipantIdConsult;
 	/**
-     * Cancel the transfer
+     * @summary Cancel the transfer
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - The object of the transfer
@@ -641,7 +659,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.deleteConversationParticipantsByParticipantIdConsult = deleteConversationParticipantsByParticipantIdConsult;
 	/**
-     * Listen in on the conversation from the point of view of a given participant.
+     * @summary Listen in on the conversation from the point of view of a given participant.
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
@@ -670,7 +689,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createConversationParticipantsByParticipantIdMonitor = createConversationParticipantsByParticipantIdMonitor;
 	/**
-     * Replace this participant with the specified user and/or address
+     * @summary Replace this participant with the specified user and/or address
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
@@ -729,7 +749,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createConversationParticipantsByParticipantIdReplace = createConversationParticipantsByParticipantIdReplace;
 	/**
-     * Get the wrap-up for this conversation participant. 
+     * @summary Get the wrap-up for this conversation participant. 
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
@@ -764,7 +785,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationParticipantsByParticipantIdWrapup = getConversationParticipantsByParticipantIdWrapup;
 	/**
-     * Get list of wrapup codes for this conversation participant
+     * @summary Get list of wrapup codes for this conversation participant
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
@@ -793,7 +815,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationParticipantsByParticipantIdWrapupcodes = getConversationParticipantsByParticipantIdWrapupcodes;
 	/**
-     * Get all of a Conversation's Recordings.
+     * @summary Get all of a Conversation's Recordings.
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for completion.
@@ -830,7 +853,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationRecordings = getConversationRecordings;
 	/**
-     * Gets a specific recording.
+     * @summary Gets a specific recording.
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -888,7 +912,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationRecordingsByRecordingId = getConversationRecordingsByRecordingId;
 	/**
-     * Sets the restore state on a recording.
+     * @summary Sets the restore state on a recording.
+	 * @description It is not currently possible to force something into long term storage, so this can only be used to request a restoration. In addition, a restoration takes some time, and so it is not guaranteed to be completed for several hours.
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -959,7 +984,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationRecordingsByRecordingId = updateConversationRecordingsByRecordingId;
 	/**
-     * Updates the recording retention durations
+     * @summary Updates the recording retention durations
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -1019,7 +1045,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.patchConversationRecordingsByRecordingId = patchConversationRecordingsByRecordingId;
 	/**
-     * Get annotations for recording
+     * @summary Get annotations for recording
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -1048,7 +1075,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationRecordingsByRecordingIdAnnotations = getConversationRecordingsByRecordingIdAnnotations;
 	/**
-     * Create annotation
+     * @summary Create annotation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -1120,7 +1148,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.createConversationRecordingsByRecordingIdAnnotations = createConversationRecordingsByRecordingIdAnnotations;
 	/**
-     * Get annotation
+     * @summary Get annotation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -1156,7 +1185,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationRecordingsByRecordingIdAnnotationsByAnnotationId = getConversationRecordingsByRecordingIdAnnotationsByAnnotationId;
 	/**
-     * Update annotation
+     * @summary Update annotation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -1235,7 +1265,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationRecordingsByRecordingIdAnnotationsByAnnotationId = updateConversationRecordingsByRecordingIdAnnotationsByAnnotationId;
 	/**
-     * Delete annotation
+     * @summary Delete annotation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
@@ -1271,7 +1302,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.deleteConversationRecordingsByRecordingIdAnnotationsByAnnotationId = deleteConversationRecordingsByRecordingIdAnnotationsByAnnotationId;
 	/**
-     * Get possible tags for Conversation
+     * @summary Get possible tags for Conversation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
@@ -1293,7 +1325,8 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getConversationTags = getConversationTags;
 	/**
-     * Get possible wrap-up codes for Conversation
+     * @summary Get possible wrap-up codes for Conversation
+	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/

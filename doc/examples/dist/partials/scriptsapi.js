@@ -5,7 +5,8 @@
 */
 var ScriptsApi = function (pureCloudSession) {
 	/**
-     * Get the list of scripts
+     * @summary Get the list of scripts
+	 * @description 
 	 * @memberOf ScriptsApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -50,7 +51,8 @@ var ScriptsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Create a script.
+     * @summary Create a script.
+	 * @description 
 	 * @memberOf ScriptsApi#
 	* @param {} body - 
 	*/

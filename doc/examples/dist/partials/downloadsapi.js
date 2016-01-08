@@ -5,7 +5,8 @@
 */
 var DownloadsApi = function (pureCloudSession) {
 	/**
-     * OAuth Callback used during code authorization grant flow.
+     * @summary OAuth Callback used during code authorization grant flow.
+	 * @description 
 	 * @memberOf DownloadsApi#
 	* @param {string} code - 
 	* @param {string} state - 
@@ -32,10 +33,11 @@ var DownloadsApi = function (pureCloudSession) {
 	}
 	self.getCallback = getCallback;
 	/**
-     * Issues a redirect to a signed secure download URL for specified download
+     * @summary Issues a redirect to a signed secure download URL for specified download
+	 * @description this method will issue a redirect to the url to the content
 	 * @memberOf DownloadsApi#
 	* @param {string} downloadId - Download ID
-	* @param {string} contentDisposition - 
+	* @param {string} contentDisposition - this method will issue a redirect to the url to the content
 	*/
 	function getDownload(downloadId, contentDisposition){
 		var apipath = '/api/v1/downloads/{downloadId}';

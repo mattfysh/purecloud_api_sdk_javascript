@@ -5,7 +5,8 @@
 */
 var OrphanrecordingsApi = function (pureCloudSession) {
 	/**
-     * Gets all orphan recordings
+     * @summary Gets all orphan recordings
+	 * @description 
 	 * @memberOf OrphanrecordingsApi#
 	* @param {integer} pageSize - The total page size requested
 	* @param {integer} pageNumber - The page number requested
@@ -44,7 +45,8 @@ var OrphanrecordingsApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
-     * Gets a single orphan recording
+     * @summary Gets a single orphan recording
+	 * @description 
 	 * @memberOf OrphanrecordingsApi#
 	* @param {string} orphanId - Orphan ID
 	*/
@@ -66,7 +68,8 @@ var OrphanrecordingsApi = function (pureCloudSession) {
 	}
 	self.getOrphan = getOrphan;
 	/**
-     *  deletes a single orphan recording
+     * @summary  deletes a single orphan recording
+	 * @description 
 	 * @memberOf OrphanrecordingsApi#
 	* @param {string} orphanId - Orphan ID
 	*/

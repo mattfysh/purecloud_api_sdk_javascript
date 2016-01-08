@@ -5,7 +5,8 @@
 */
 var ContentmanagementApi = function (pureCloudSession) {
 	/**
-     * Query audits
+     * @summary Query audits
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {} body - Allows for a filtered query returning facet information
 	 * @example
@@ -39,7 +40,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createAuditquery = createAuditquery;
 	/**
-     * Get a list of documents.
+     * @summary Get a list of documents.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} name - Name
@@ -102,7 +104,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getDocuments = getDocuments;
 	/**
-     * Add a document.
+     * @summary Add a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {} body - Document
 	* @param {string} copySource - Copy a document within a workspace or to a new workspace. Provide a document ID as the copy source.
@@ -154,7 +157,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createDocuments = createDocuments;
 	/**
-     * Get a document.
+     * @summary Get a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} documentId - Document ID
 	* @param {string} expand - Expand some document fields
@@ -185,7 +189,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getDocumentsDocument = getDocumentsDocument;
 	/**
-     * Update a document.
+     * @summary Update a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} documentId - Document ID
 	* @param {} body - Document
@@ -240,7 +245,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createDocumentsDocument = createDocumentsDocument;
 	/**
-     * Delete a document.
+     * @summary Delete a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} documentId - Document ID
 	* @param {boolean} override - Override any lock on the document
@@ -268,7 +274,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.deleteDocumentsDocument = deleteDocumentsDocument;
 	/**
-     * Get a list of audits for a document.
+     * @summary Get a list of audits for a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} documentId - Document ID
 	* @param {integer} pageSize - Page size
@@ -326,7 +333,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getDocumentsDocumentAudits = getDocumentsDocumentAudits;
 	/**
-     * Download a document.
+     * @summary Download a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} documentId - Document ID
 	* @param {string} disposition - Request how the content will be downloaded: attached as a file or inline. Default is attachment.
@@ -356,7 +364,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getDocumentsDocumentContent = getDocumentsDocumentContent;
 	/**
-     * Replace the contents of a document.
+     * @summary Replace the contents of a document.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} documentId - Document ID
 	* @param {} body - Replace Request
@@ -396,7 +405,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createDocumentsDocumentContent = createDocumentsDocumentContent;
 	/**
-     * Query content
+     * @summary Query content
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -453,7 +463,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getQuery = getQuery;
 	/**
-     * Query content
+     * @summary Query content
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {} body - Allows for a filtered query returning facet information
 	* @param {string} expand - Expand some document fields
@@ -495,7 +506,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createQuery = createQuery;
 	/**
-     * Get a List of Security Profiles
+     * @summary Get a List of Security Profiles
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	*/
 	function getSecurityprofiles(){
@@ -510,7 +522,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getSecurityprofiles = getSecurityprofiles;
 	/**
-     * Get a Security Profile
+     * @summary Get a Security Profile
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} securityProfileId - Security Profile Id
 	*/
@@ -532,7 +545,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getSecurityprofilesSecurityProfile = getSecurityprofilesSecurityProfile;
 	/**
-     * Get shared documents. Securely download a shared document.
+     * @summary Get shared documents. Securely download a shared document.
+	 * @description This method requires the download sharing URI obtained in the get document response (downloadSharingUri). Documents may be shared between users in the same workspace. Documents may also be shared between any user by creating a content management share.
 	 * @memberOf ContentmanagementApi#
 	* @param {string} sharedId - Shared ID
 	* @param {boolean} redirect - Turn on or off redirect
@@ -576,7 +590,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getSharedShared = getSharedShared;
 	/**
-     * Gets a list of shares.  You must specify at least one filter (e.g. entityId).
+     * @summary Gets a list of shares.  You must specify at least one filter (e.g. entityId).
+	 * @description Failing to specify a filter will return 400.
 	 * @memberOf ContentmanagementApi#
 	* @param {string} entityId - Filters the shares returned to only the entity specified by the value of this parameter.
 	* @param {string} expand - Expand share fields
@@ -616,7 +631,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getShares = getShares;
 	/**
-     * Creates a new share or updates an existing share if the entity has already been shared
+     * @summary Creates a new share or updates an existing share if the entity has already been shared
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {} body - CreateShareRequest - entity id and type and a single member or list of members are required
 	 * @example
@@ -653,7 +669,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createShares = createShares;
 	/**
-     * Retrieve details about an existing share.
+     * @summary Retrieve details about an existing share.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} shareId - Share ID
 	* @param {string} expand - Expand share fields
@@ -682,7 +699,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getSharesShare = getSharesShare;
 	/**
-     * Deletes an existing share.
+     * @summary Deletes an existing share.
+	 * @description This revokes sharing rights specified in the share record
 	 * @memberOf ContentmanagementApi#
 	* @param {string} shareId - Share ID
 	*/
@@ -704,7 +722,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.deleteSharesShare = deleteSharesShare;
 	/**
-     * Get a list of statuses for pending operations
+     * @summary Get a list of statuses for pending operations
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -731,7 +750,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getStatus = getStatus;
 	/**
-     * Get a status.
+     * @summary Get a status.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} statusId - Status ID
 	*/
@@ -753,7 +773,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getStatusStatus = getStatusStatus;
 	/**
-     * Cancel the command for this status
+     * @summary Cancel the command for this status
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} statusId - Status ID
 	*/
@@ -775,7 +796,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.deleteStatusStatus = deleteStatusStatus;
 	/**
-     * Get a list of workspaces.
+     * @summary Get a list of workspaces.
+	 * @description Specifying 'content' access will return all workspaces the user has document access to, while 'admin' access will return all group workspaces the user has administrative rights to.
 	 * @memberOf ContentmanagementApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -837,7 +859,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getWorkspaces = getWorkspaces;
 	/**
-     * Create a group workspace
+     * @summary Create a group workspace
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {} body - Workspace
 	 * @example
@@ -863,7 +886,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createWorkspaces = createWorkspaces;
 	/**
-     * Get a workspace.
+     * @summary Get a workspace.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} expand - Expand some workspace fields
@@ -893,7 +917,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getWorkspacesWorkspace = getWorkspacesWorkspace;
 	/**
-     * Update a workspace
+     * @summary Update a workspace
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {} body - Workspace
@@ -941,7 +966,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.updateWorkspacesWorkspace = updateWorkspacesWorkspace;
 	/**
-     * Delete a workspace
+     * @summary Delete a workspace
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} moveChildrenToWorkspaceId - New location for objects in deleted workspace.
@@ -969,7 +995,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.deleteWorkspacesWorkspace = deleteWorkspacesWorkspace;
 	/**
-     * Get a list workspace members
+     * @summary Get a list workspace members
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {integer} pageSize - Page size
@@ -1010,7 +1037,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getWorkspacesWorkspaceMembers = getWorkspacesWorkspaceMembers;
 	/**
-     * Get a workspace member
+     * @summary Get a workspace member
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} memberId - Member ID
@@ -1046,7 +1074,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getWorkspacesWorkspaceMembersByMemberId = getWorkspacesWorkspaceMembersByMemberId;
 	/**
-     * Add a member to a workspace
+     * @summary Add a member to a workspace
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} memberId - Member ID
@@ -1141,7 +1170,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.updateWorkspacesWorkspaceMembersByMemberId = updateWorkspacesWorkspaceMembersByMemberId;
 	/**
-     * Delete a member from a workspace
+     * @summary Delete a member from a workspace
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} memberId - Member ID
@@ -1170,7 +1200,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.deleteWorkspacesWorkspaceMembersByMemberId = deleteWorkspacesWorkspaceMembersByMemberId;
 	/**
-     * Get a list of workspace tags
+     * @summary Get a list of workspace tags
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} value - filter the list of tags returned
@@ -1217,7 +1248,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getWorkspacesWorkspaceTagvalues = getWorkspacesWorkspaceTagvalues;
 	/**
-     * Create a workspace tag
+     * @summary Create a workspace tag
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {} body - tag
@@ -1253,7 +1285,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createWorkspacesWorkspaceTagvalues = createWorkspacesWorkspaceTagvalues;
 	/**
-     * Perform a prefix query on tags in the workspace
+     * @summary Perform a prefix query on tags in the workspace
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {} body - query
@@ -1294,7 +1327,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.createWorkspacesWorkspaceTagvaluesQuery = createWorkspacesWorkspaceTagvaluesQuery;
 	/**
-     * Get a workspace tag
+     * @summary Get a workspace tag
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} tagId - Tag ID
@@ -1330,7 +1364,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.getWorkspacesWorkspaceTagvaluesByTagId = getWorkspacesWorkspaceTagvaluesByTagId;
 	/**
-     * Update a workspace tag. Will update all documents with the new tag value.
+     * @summary Update a workspace tag. Will update all documents with the new tag value.
+	 * @description 
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} tagId - Tag ID
@@ -1373,7 +1408,8 @@ var ContentmanagementApi = function (pureCloudSession) {
 	}
 	self.updateWorkspacesWorkspaceTagvaluesByTagId = updateWorkspacesWorkspaceTagvaluesByTagId;
 	/**
-     * Delete workspace tag
+     * @summary Delete workspace tag
+	 * @description Delete a tag from a workspace. Will remove this tag from all documents.
 	 * @memberOf ContentmanagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} tagId - Tag ID

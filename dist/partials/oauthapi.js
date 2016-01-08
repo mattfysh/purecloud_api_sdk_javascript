@@ -5,7 +5,8 @@
 */
 var OauthApi = function (pureCloudSession) {
 	/**
-     * The list of OAuth clients
+     * @summary The list of OAuth clients
+	 * @description 
 	 * @memberOf OauthApi#
 	*/
 	function getClients(){
@@ -20,7 +21,10 @@ var OauthApi = function (pureCloudSession) {
 	}
 	self.getClients = getClients;
 	/**
-     * Create OAuth client
+     * @summary Create OAuth client
+	 * @description The OAuth Grant/Client is required in order to create an authentication token and gain access to PureCloud. 
+The preferred authorizedGrantTypes is 'CODE' which requires applications to send a client ID and client secret. This is typically a web server. 
+If the client is unable to secure the client secret then the 'TOKEN' grant type aka IMPLICIT should be used. This is would be for browser or mobile apps.
 	 * @memberOf OauthApi#
 	* @param {} body - Client
 	 * @example
@@ -52,7 +56,8 @@ var OauthApi = function (pureCloudSession) {
 	}
 	self.createClients = createClients;
 	/**
-     * Get OAuth Client
+     * @summary Get OAuth Client
+	 * @description 
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	*/
@@ -74,7 +79,8 @@ var OauthApi = function (pureCloudSession) {
 	}
 	self.getClientsClient = getClientsClient;
 	/**
-     * Update OAuth Client
+     * @summary Update OAuth Client
+	 * @description 
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	* @param {} body - Client
@@ -113,7 +119,8 @@ var OauthApi = function (pureCloudSession) {
 	}
 	self.updateClientsClient = updateClientsClient;
 	/**
-     * Delete OAuth Client
+     * @summary Delete OAuth Client
+	 * @description 
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	*/
@@ -135,7 +142,8 @@ var OauthApi = function (pureCloudSession) {
 	}
 	self.deleteClientsClient = deleteClientsClient;
 	/**
-     * Regenerate Client Secret
+     * @summary Regenerate Client Secret
+	 * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	*/
