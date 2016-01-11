@@ -5,186 +5,6 @@
 */
 var TelephonyApi = function (pureCloudSession) {
 	/**
-     * @summary Redirect GET requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	*/
-	function getBootstrapPhonesId(id){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getBootstrapPhonesId = getBootstrapPhonesId;
-	/**
-     * @summary Redirect PUT requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	*/
-	function updateBootstrapPhonesId(id){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateBootstrapPhonesId = updateBootstrapPhonesId;
-	/**
-     * @summary Redirect GET requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} file - Requested file
-	*/
-	function getBootstrapPhonesIdByFile(id, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined && file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getBootstrapPhonesIdByFile = getBootstrapPhonesIdByFile;
-	/**
-     * @summary Redirect PUT requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} file - Requested file
-	*/
-	function updateBootstrapPhonesIdByFile(id, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined && file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateBootstrapPhonesIdByFile = updateBootstrapPhonesIdByFile;
-	/**
-     * @summary Redirect GET requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} path - Requested path
-	* @param {string} file - Requested file
-	*/
-	function getBootstrapPhonesIdByPathByFile(id, path, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{path}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{path}', path);
-
-        if(path === undefined && path !== null){
-			throw 'Missing required  parameter: path';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined && file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getBootstrapPhonesIdByPathByFile = getBootstrapPhonesIdByPathByFile;
-	/**
-     * @summary Redirect PUT requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} path - Requested path
-	* @param {string} file - Requested file
-	*/
-	function updateBootstrapPhonesIdByPathByFile(id, path, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{path}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{path}', path);
-
-        if(path === undefined && path !== null){
-			throw 'Missing required  parameter: path';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined && file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateBootstrapPhonesIdByPathByFile = updateBootstrapPhonesIdByPathByFile;
-	/**
      * @summary Get a listing of line base settings objects
 	 * @description 
 	 * @memberOf TelephonyApi#
@@ -400,11 +220,11 @@ var TelephonyApi = function (pureCloudSession) {
    "lines": [],
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -415,9 +235,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -542,11 +362,11 @@ var TelephonyApi = function (pureCloudSession) {
    "lines": [],
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -557,9 +377,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -756,11 +576,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -771,9 +591,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -947,11 +767,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -962,9 +782,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -1130,11 +950,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -1145,9 +965,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -1273,11 +1093,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -1288,9 +1108,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },

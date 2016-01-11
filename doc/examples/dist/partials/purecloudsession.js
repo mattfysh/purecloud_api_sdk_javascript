@@ -4,7 +4,7 @@
 * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
 **/
 var PureCloudSession =  function (environment) {
-    var _host = 'api.inindca.com';
+    var _host = 'api.mypurecloud.com';
     var _auth_url = '';
     var _environment = environment || "mypurecloud.com";
 

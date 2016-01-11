@@ -33,186 +33,6 @@
 */
 var TelephonyApi = function (pureCloudSession) {
 	/**
-     * @summary Redirect GET requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	*/
-	function getBootstrapPhonesId(id){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined &amp;&amp; id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getBootstrapPhonesId = getBootstrapPhonesId;
-	/**
-     * @summary Redirect PUT requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	*/
-	function updateBootstrapPhonesId(id){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined &amp;&amp; id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateBootstrapPhonesId = updateBootstrapPhonesId;
-	/**
-     * @summary Redirect GET requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} file - Requested file
-	*/
-	function getBootstrapPhonesIdByFile(id, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined &amp;&amp; id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined &amp;&amp; file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getBootstrapPhonesIdByFile = getBootstrapPhonesIdByFile;
-	/**
-     * @summary Redirect PUT requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} file - Requested file
-	*/
-	function updateBootstrapPhonesIdByFile(id, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined &amp;&amp; id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined &amp;&amp; file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateBootstrapPhonesIdByFile = updateBootstrapPhonesIdByFile;
-	/**
-     * @summary Redirect GET requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} path - Requested path
-	* @param {string} file - Requested file
-	*/
-	function getBootstrapPhonesIdByPathByFile(id, path, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{path}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined &amp;&amp; id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{path}', path);
-
-        if(path === undefined &amp;&amp; path !== null){
-			throw 'Missing required  parameter: path';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined &amp;&amp; file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getBootstrapPhonesIdByPathByFile = getBootstrapPhonesIdByPathByFile;
-	/**
-     * @summary Redirect PUT requests to proper edge
-	 * @description 
-	 * @memberOf TelephonyApi#
-	* @param {string} id - Phone's physical address AKA MAC address
-	* @param {string} path - Requested path
-	* @param {string} file - Requested file
-	*/
-	function updateBootstrapPhonesIdByPathByFile(id, path, file){
-		var apipath = '/api/v1/telephony/bootstrap/phones/{id}/{path}/{file}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined &amp;&amp; id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-        apipath = apipath.replace('{path}', path);
-
-        if(path === undefined &amp;&amp; path !== null){
-			throw 'Missing required  parameter: path';
-        }
-
-        apipath = apipath.replace('{file}', file);
-
-        if(file === undefined &amp;&amp; file !== null){
-			throw 'Missing required  parameter: file';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateBootstrapPhonesIdByPathByFile = updateBootstrapPhonesIdByPathByFile;
-	/**
      * @summary Get a listing of line base settings objects
 	 * @description 
 	 * @memberOf TelephonyApi#
@@ -428,11 +248,11 @@ var TelephonyApi = function (pureCloudSession) {
    "lines": [],
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -443,9 +263,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -570,11 +390,11 @@ var TelephonyApi = function (pureCloudSession) {
    "lines": [],
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -585,9 +405,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -784,11 +604,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -799,9 +619,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -975,11 +795,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -990,9 +810,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -1158,11 +978,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -1173,9 +993,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -1301,11 +1121,11 @@ var TelephonyApi = function (pureCloudSession) {
    },
    "properties": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -1316,9 +1136,9 @@ var TelephonyApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -1382,7 +1202,7 @@ var TelephonyApi = function (pureCloudSession) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
 </nav>
 
 <br class="clear">

@@ -362,33 +362,6 @@ var AnalyticsApi = function (pureCloudSession) {
 	}
 	self.createMetricsQuery = createMetricsQuery;
 	/**
-     * @summary Executes a query against the analytics service
-	 * @description 
-	 * @memberOf AnalyticsApi#
-	* @param {} body - queryObject
-	* @param {string} version - Version number
-	*/
-	function createQuery(body, version){
-		var apipath = '/api/v1/analytics/query';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		if(version !== undefined && version !== null){
-			queryParameters.version = version;
-		}
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createQuery = createQuery;
-	/**
      * @summary Get list of reporting metadata.
 	 * @description 
 	 * @memberOf AnalyticsApi#
@@ -488,8 +461,8 @@ var AnalyticsApi = function (pureCloudSession) {
       "end": "",
       "start": "",
       "chronology": {},
-      "endMillis": 0,
       "startMillis": 0,
+      "endMillis": 0,
       "beforeNow": true,
       "afterNow": true
    },
@@ -574,8 +547,8 @@ var AnalyticsApi = function (pureCloudSession) {
       "end": "",
       "start": "",
       "chronology": {},
-      "endMillis": 0,
       "startMillis": 0,
+      "endMillis": 0,
       "beforeNow": true,
       "afterNow": true
    },

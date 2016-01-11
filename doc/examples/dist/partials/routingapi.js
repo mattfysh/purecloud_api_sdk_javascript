@@ -1101,11 +1101,12 @@ var RoutingApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "id": "",
-   "code": 0,
-   "label": "",
-   "notes": "",
-   "tags": [],
-   "duration": 0
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
 }
 	*/
 	function createWrapupcodes(body){
@@ -1156,11 +1157,12 @@ var RoutingApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "id": "",
-   "code": 0,
-   "label": "",
-   "notes": "",
-   "tags": [],
-   "duration": 0
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
 }
 	*/
 	function updateWrapupcodesCode(codeId, body){

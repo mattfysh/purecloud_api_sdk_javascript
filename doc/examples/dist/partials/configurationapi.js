@@ -13,14 +13,14 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "id": "",
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": "",
-      "selfUri": ""
+      "country": "",
+      "A1": "",
+      "A3": "",
+      "RD": "",
+      "HNO": "",
+      "LOC": "",
+      "NAM": "",
+      "PC": ""
    }
 }
 	*/

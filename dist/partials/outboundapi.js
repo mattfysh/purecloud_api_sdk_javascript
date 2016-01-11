@@ -928,22 +928,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0,
    "selfUri": ""
 }
 	*/
@@ -1028,22 +1012,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0,
    "selfUri": ""
 }
 	*/
@@ -1170,11 +1138,11 @@ var OutboundApi = function (pureCloudSession) {
    "contactListId": "",
    "data": {
       "nodeType": "",
-      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
+      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -1185,9 +1153,9 @@ var OutboundApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
-      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "array": true,
       "null": true
    },

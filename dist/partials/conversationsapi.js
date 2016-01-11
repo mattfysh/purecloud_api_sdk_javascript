@@ -375,36 +375,6 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationMessagesDraft = updateConversationMessagesDraft;
 	/**
-     * @summary Delete attachment from draft
-	 * @description 
-	 * @memberOf ConversationsApi#
-	* @param {string} conversationId - conversation ID
-	* @param {string} attachmentId - attachment ID
-	*/
-	function deleteConversationMessagesDraftAttachmentsByAttachmentId(conversationId, attachmentId){
-		var apipath = '/api/v1/conversations/{conversationId}/messages/draft/attachments/{attachmentId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{conversationId}', conversationId);
-
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
-
-        apipath = apipath.replace('{attachmentId}', attachmentId);
-
-        if(attachmentId === undefined && attachmentId !== null){
-			throw 'Missing required  parameter: attachmentId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteConversationMessagesDraftAttachmentsByAttachmentId = deleteConversationMessagesDraftAttachmentsByAttachmentId;
-	/**
      * @summary Get conversation message
 	 * @description 
 	 * @memberOf ConversationsApi#
