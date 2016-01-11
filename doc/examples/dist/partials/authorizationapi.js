@@ -279,7 +279,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	*/
-	function getRolesRole(roleId){
+	function getRole(roleId){
 		var apipath = '/api/v1/authorization/roles/{roleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -295,7 +295,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRolesRole = getRolesRole;
+	self.getRole = getRole;
 	/**
      * @summary Update an organization role.
 	 * @description Update
@@ -319,7 +319,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateRolesRole(roleId, body){
+	function updateRole(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -339,14 +339,14 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRolesRole = updateRolesRole;
+	self.updateRole = updateRole;
 	/**
      * @summary Delete an organization role.
 	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	*/
-	function deleteRolesRole(roleId){
+	function deleteRole(roleId){
 		var apipath = '/api/v1/authorization/roles/{roleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -362,7 +362,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteRolesRole = deleteRolesRole;
+	self.deleteRole = deleteRole;
 	/**
      * @summary Patch Organization Role for needsUpdate Field
 	 * @description Patch Organization Role for needsUpdate Field
@@ -386,7 +386,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function patchRolesRole(roleId, body){
+	function patchRole(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -406,7 +406,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchRolesRole = patchRolesRole;
+	self.patchRole = patchRole;
 	/**
      * @summary Sets the users for the role
 	 * @description 
@@ -414,7 +414,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {string} roleId - Role ID
 	* @param {} body - 
 	*/
-	function updateRolesRoleUsersAdd(roleId, body){
+	function updateRoleUsersAdd(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}/users/add';
 	    var requestBody;
 	    var queryParameters = {};
@@ -434,7 +434,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRolesRoleUsersAdd = updateRolesRoleUsersAdd;
+	self.updateRoleUsersAdd = updateRoleUsersAdd;
 	/**
      * @summary Removes the users from the role
 	 * @description 
@@ -442,7 +442,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {string} roleId - Role ID
 	* @param {} body - 
 	*/
-	function updateRolesRoleUsersRemove(roleId, body){
+	function updateRoleUsersRemove(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}/users/remove';
 	    var requestBody;
 	    var queryParameters = {};
@@ -462,14 +462,14 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRolesRoleUsersRemove = updateRolesRoleUsersRemove;
+	self.updateRoleUsersRemove = updateRoleUsersRemove;
 	/**
      * @summary Get the list of roles for a user.
 	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	*/
-	function getUsersUserRoles(userId){
+	function getUserRoles(userId){
 		var apipath = '/api/v1/authorization/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -485,7 +485,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUsersUserRoles = getUsersUserRoles;
+	self.getUserRoles = getUserRoles;
 	/**
      * @summary Sets the user's roles
 	 * @description 
@@ -493,7 +493,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	* @param {} body - 
 	*/
-	function updateUsersUserRoles(userId, body){
+	function updateUserRoles(userId, body){
 		var apipath = '/api/v1/authorization/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -513,14 +513,14 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateUsersUserRoles = updateUsersUserRoles;
+	self.updateUserRoles = updateUserRoles;
 	/**
      * @summary Removes all the roles from the user.
 	 * @description 
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	*/
-	function deleteUsersUserRoles(userId){
+	function deleteUserRoles(userId){
 		var apipath = '/api/v1/authorization/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -536,7 +536,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteUsersUserRoles = deleteUsersUserRoles;
+	self.deleteUserRoles = deleteUserRoles;
 
     return self;
 };

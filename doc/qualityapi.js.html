@@ -185,7 +185,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -212,7 +211,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -286,7 +284,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -335,7 +332,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} calibrationId - Calibration ID
 	* @param {string} calibratorId - calibratorId
 	*/
-	function getCalibrationsCalibration(calibrationId, calibratorId){
+	function getCalibration(calibrationId, calibratorId){
 		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -356,7 +353,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCalibrationsCalibration = getCalibrationsCalibration;
+	self.getCalibration = getCalibration;
 	/**
      * @summary Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
 	 * @description 
@@ -376,7 +373,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -403,7 +399,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -477,7 +472,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -499,7 +493,7 @@ var QualityApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateCalibrationsCalibration(calibrationId, body){
+	function updateCalibration(calibrationId, body){
 		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -519,7 +513,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateCalibrationsCalibration = updateCalibrationsCalibration;
+	self.updateCalibration = updateCalibration;
 	/**
      * @summary Delete a calibration by id.
 	 * @description 
@@ -527,7 +521,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} calibrationId - Calibration ID
 	* @param {string} calibratorId - calibratorId
 	*/
-	function deleteCalibrationsCalibration(calibrationId, calibratorId){
+	function deleteCalibration(calibrationId, calibratorId){
 		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -548,7 +542,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteCalibrationsCalibration = deleteCalibrationsCalibration;
+	self.deleteCalibration = deleteCalibration;
 	/**
      * @summary Get audits for conversation or recording
 	 * @description 
@@ -561,7 +555,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} recordingId - id of the recording
 	* @param {string} entityType - entity type options: Recording, Calibration, Evaluation, Annotation
 	*/
-	function getConversationsConversationAudits(conversationId, pageSize, pageNumber, sortBy, expand, recordingId, entityType){
+	function getConversationAudits(conversationId, pageSize, pageNumber, sortBy, expand, recordingId, entityType){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
@@ -607,7 +601,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationsConversationAudits = getConversationsConversationAudits;
+	self.getConversationAudits = getConversationAudits;
 	/**
      * @summary Create an evaluation
 	 * @description 
@@ -650,7 +644,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -677,7 +670,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -755,7 +747,7 @@ var QualityApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function createConversationsConversationEvaluations(conversationId, body, expand){
+	function createConversationEvaluations(conversationId, body, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -780,7 +772,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createConversationsConversationEvaluations = createConversationsConversationEvaluations;
+	self.createConversationEvaluations = createConversationEvaluations;
 	/**
      * @summary Get an evaluation
 	 * @description 
@@ -789,7 +781,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} evaluationId - 
 	* @param {string} expand - agent, evaluator, evaluationForm
 	*/
-	function getConversationsConversationEvaluationsByEvaluationId(conversationId, evaluationId, expand){
+	function getConversationEvaluationsByEvaluationId(conversationId, evaluationId, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -816,7 +808,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationsConversationEvaluationsByEvaluationId = getConversationsConversationEvaluationsByEvaluationId;
+	self.getConversationEvaluationsByEvaluationId = getConversationEvaluationsByEvaluationId;
 	/**
      * @summary Update an evaluation
 	 * @description 
@@ -860,7 +852,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -887,7 +878,6 @@ var QualityApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -965,7 +955,7 @@ var QualityApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateConversationsConversationEvaluationsByEvaluationId(conversationId, evaluationId, body, expand){
+	function updateConversationEvaluationsByEvaluationId(conversationId, evaluationId, body, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -996,7 +986,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateConversationsConversationEvaluationsByEvaluationId = updateConversationsConversationEvaluationsByEvaluationId;
+	self.updateConversationEvaluationsByEvaluationId = updateConversationEvaluationsByEvaluationId;
 	/**
      * @summary Delete an evaluation
 	 * @description 
@@ -1005,7 +995,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} evaluationId - 
 	* @param {string} expand - evaluatorId
 	*/
-	function deleteConversationsConversationEvaluationsByEvaluationId(conversationId, evaluationId, expand){
+	function deleteConversationEvaluationsByEvaluationId(conversationId, evaluationId, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1032,7 +1022,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteConversationsConversationEvaluationsByEvaluationId = deleteConversationsConversationEvaluationsByEvaluationId;
+	self.deleteConversationEvaluationsByEvaluationId = deleteConversationEvaluationsByEvaluationId;
 	/**
      * @summary Queries Evaluations and returns a paged list
 	 * @description Query params must include one of conversationId, evaluatorUserId, or agentUserId
@@ -1380,7 +1370,7 @@ var QualityApi = function (pureCloudSession) {
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	*/
-	function getFormsForm(formId){
+	function getForm(formId){
 		var apipath = '/api/v1/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1396,7 +1386,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFormsForm = getFormsForm;
+	self.getForm = getForm;
 	/**
      * @summary Update an evaluation form.
 	 * @description 
@@ -1428,7 +1418,7 @@ var QualityApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateFormsForm(formId, body){
+	function updateForm(formId, body){
 		var apipath = '/api/v1/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1448,14 +1438,14 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateFormsForm = updateFormsForm;
+	self.updateForm = updateForm;
 	/**
      * @summary Delete an evaluation form.
 	 * @description 
 	 * @memberOf QualityApi#
 	* @param {string} formId - Form ID
 	*/
-	function deleteFormsForm(formId){
+	function deleteForm(formId){
 		var apipath = '/api/v1/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1471,7 +1461,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteFormsForm = deleteFormsForm;
+	self.deleteForm = deleteForm;
 	/**
      * @summary Gets all the revisions for a specific evaluation.
 	 * @description 
@@ -1480,7 +1470,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getFormsFormVersions(formId, pageSize, pageNumber){
+	function getFormVersions(formId, pageSize, pageNumber){
 		var apipath = '/api/v1/quality/forms/{formId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1506,7 +1496,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFormsFormVersions = getFormsFormVersions;
+	self.getFormVersions = getFormVersions;
 	/**
      * @summary Get the published evaluation forms.
 	 * @description 
@@ -1622,7 +1612,7 @@ var QualityApi = function (pureCloudSession) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="StatusesApi.html">StatusesApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
 </nav>
 
 <br class="clear">

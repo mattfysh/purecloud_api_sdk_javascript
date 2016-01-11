@@ -166,7 +166,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	acl,
 	workspace,
 	*/
-	function getDocumentsDocument(documentId, expand){
+	function getDocument(documentId, expand){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -187,7 +187,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocumentsDocument = getDocumentsDocument;
+	self.getDocument = getDocument;
 	/**
      * @summary Update a document.
 	 * @description 
@@ -213,7 +213,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "removeAttributeGroupInstanceIds": []
 }
 	*/
-	function createDocumentsDocument(documentId, body, expand, override){
+	function createDocument(documentId, body, expand, override){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -243,7 +243,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createDocumentsDocument = createDocumentsDocument;
+	self.createDocument = createDocument;
 	/**
      * @summary Delete a document.
 	 * @description 
@@ -251,7 +251,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} documentId - Document ID
 	* @param {boolean} override - Override any lock on the document
 	*/
-	function deleteDocumentsDocument(documentId, override){
+	function deleteDocument(documentId, override){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -272,7 +272,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteDocumentsDocument = deleteDocumentsDocument;
+	self.deleteDocument = deleteDocument;
 	/**
      * @summary Get a list of audits for a document.
 	 * @description 
@@ -285,7 +285,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	* @param {string} sortOrder - Sort order
 	*/
-	function getDocumentsDocumentAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder){
+	function getDocumentAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
@@ -331,7 +331,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocumentsDocumentAudits = getDocumentsDocumentAudits;
+	self.getDocumentAudits = getDocumentAudits;
 	/**
      * @summary Download a document.
 	 * @description 
@@ -341,7 +341,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	attachment,
 	inline,
 	*/
-	function getDocumentsDocumentContent(documentId, disposition){
+	function getDocumentContent(documentId, disposition){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -362,7 +362,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocumentsDocumentContent = getDocumentsDocumentContent;
+	self.getDocumentContent = getDocumentContent;
 	/**
      * @summary Replace the contents of a document.
 	 * @description 
@@ -378,7 +378,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "authToken": ""
 }
 	*/
-	function createDocumentsDocumentContent(documentId, body, override){
+	function createDocumentContent(documentId, body, override){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -403,7 +403,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createDocumentsDocumentContent = createDocumentsDocumentContent;
+	self.createDocumentContent = createDocumentContent;
 	/**
      * @summary Query content
 	 * @description 
@@ -527,7 +527,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	 * @memberOf ContentmanagementApi#
 	* @param {string} securityProfileId - Security Profile Id
 	*/
-	function getSecurityprofilesSecurityProfile(securityProfileId){
+	function getSecurityProfile(securityProfileId){
 		var apipath = '/api/v1/contentmanagement/securityprofiles/{securityProfileId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -543,7 +543,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSecurityprofilesSecurityProfile = getSecurityprofilesSecurityProfile;
+	self.getSecurityProfile = getSecurityProfile;
 	/**
      * @summary Get shared documents. Securely download a shared document.
 	 * @description This method requires the download sharing URI obtained in the get document response (downloadSharingUri). Documents may be shared between users in the same workspace. Documents may also be shared between any user by creating a content management share.
@@ -676,7 +676,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand share fields
 	member,
 	*/
-	function getSharesShare(shareId, expand){
+	function getShare(shareId, expand){
 		var apipath = '/api/v1/contentmanagement/shares/{shareId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -697,14 +697,14 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSharesShare = getSharesShare;
+	self.getShare = getShare;
 	/**
      * @summary Deletes an existing share.
 	 * @description This revokes sharing rights specified in the share record
 	 * @memberOf ContentmanagementApi#
 	* @param {string} shareId - Share ID
 	*/
-	function deleteSharesShare(shareId){
+	function deleteShare(shareId){
 		var apipath = '/api/v1/contentmanagement/shares/{shareId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -720,7 +720,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSharesShare = deleteSharesShare;
+	self.deleteShare = deleteShare;
 	/**
      * @summary Get a list of statuses for pending operations
 	 * @description 
@@ -894,7 +894,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	summary,
 	acl,
 	*/
-	function getWorkspacesWorkspace(workspaceId, expand){
+	function getWorkspace(workspaceId, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -915,7 +915,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWorkspacesWorkspace = getWorkspacesWorkspace;
+	self.getWorkspace = getWorkspace;
 	/**
      * @summary Update a workspace
 	 * @description 
@@ -944,7 +944,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateWorkspacesWorkspace(workspaceId, body){
+	function updateWorkspace(workspaceId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -964,7 +964,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateWorkspacesWorkspace = updateWorkspacesWorkspace;
+	self.updateWorkspace = updateWorkspace;
 	/**
      * @summary Delete a workspace
 	 * @description 
@@ -972,7 +972,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} moveChildrenToWorkspaceId - New location for objects in deleted workspace.
 	*/
-	function deleteWorkspacesWorkspace(workspaceId, moveChildrenToWorkspaceId){
+	function deleteWorkspace(workspaceId, moveChildrenToWorkspaceId){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -993,7 +993,468 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteWorkspacesWorkspace = deleteWorkspacesWorkspace;
+	self.deleteWorkspace = deleteWorkspace;
+	/**
+     * @summary Get a list of workspace attributes
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getWorkspaceAttributes(workspaceId, pageSize, pageNumber){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getWorkspaceAttributes = getWorkspaceAttributes;
+	/**
+     * @summary Create a workspace attribute
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {} body - workspaceAttribute
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "restrictions": {
+      "date": {},
+      "number": {},
+      "string": {},
+      "list": {}
+   },
+   "format": "",
+   "multipleValues": true,
+   "inUse": true,
+   "memberAttributes": [],
+   "selfUri": ""
+}
+	*/
+	function createWorkspaceAttributes(workspaceId, body){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createWorkspaceAttributes = createWorkspaceAttributes;
+	/**
+     * @summary Get a workspace attribute
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	*/
+	function getWorkspaceAttributesByAttributeId(workspaceId, attributeId){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getWorkspaceAttributesByAttributeId = getWorkspaceAttributesByAttributeId;
+	/**
+     * @summary Update a workspace attribute
+	 * @description Attribute value will be updated in all documents.
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	* @param {} body - Workspace
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "restrictions": {
+      "date": {},
+      "number": {},
+      "string": {},
+      "list": {}
+   },
+   "format": "",
+   "multipleValues": true,
+   "inUse": true,
+   "memberAttributes": [],
+   "selfUri": ""
+}
+	*/
+	function updateWorkspaceAttributesByAttributeId(workspaceId, attributeId, body){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateWorkspaceAttributesByAttributeId = updateWorkspaceAttributesByAttributeId;
+	/**
+     * @summary Delete an attribute from a workspace
+	 * @description Attribute will be removed from all documents.
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	*/
+	function deleteWorkspaceAttributesByAttributeId(workspaceId, attributeId){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteWorkspaceAttributesByAttributeId = deleteWorkspaceAttributesByAttributeId;
+	/**
+     * @summary Create atrribute group instance
+	 * @description Create a workspace attribute group instance. A group instance represents an ordered collection of attribute values that can be associated with documents. An instance is uniquely defined by an attribute group and the attribute values that make it up. Once created, the new instance will be assigned an instance ID that can be used in further API operations. A group instance value can be assigned to one or more workspace documents.
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	* @param {} body - instance
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "members": [],
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "attribute": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
+	*/
+	function createWorkspaceAttributesByAttributeIdInstances(workspaceId, attributeId, body){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createWorkspaceAttributesByAttributeIdInstances = createWorkspaceAttributesByAttributeIdInstances;
+	/**
+     * @summary Query attribute group instances
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	* @param {} body - Provides a way to query or locate specific attribute group instances. The query request provides the ability to broadly match all instances or filter the results based on matching specific fields defined by the attribute group.
+	 * @example
+	 * Body Example:
+	 * {
+   "pageNumber": 0,
+   "pageSize": 0,
+   "sort": [],
+   "members": []
+}
+	*/
+	function createWorkspaceAttributesByAttributeIdInstancesQuery(workspaceId, attributeId, body){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+        if(body === undefined && body !== null){
+			throw 'Missing required  parameter: body';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createWorkspaceAttributesByAttributeIdInstancesQuery = createWorkspaceAttributesByAttributeIdInstancesQuery;
+	/**
+     * @summary Get an attribute group instance
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	* @param {string} instanceId - Instance ID
+	*/
+	function getWorkspaceAttributesByAttributeIdInstancesByInstanceId(workspaceId, attributeId, instanceId){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/{instanceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+        apipath = apipath.replace('{instanceId}', instanceId);
+
+        if(instanceId === undefined && instanceId !== null){
+			throw 'Missing required  parameter: instanceId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getWorkspaceAttributesByAttributeIdInstancesByInstanceId = getWorkspaceAttributesByAttributeIdInstancesByInstanceId;
+	/**
+     * @summary Update an attribute group instance
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	* @param {string} instanceId - Instance ID
+	* @param {} body - Workspace
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "members": [],
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "attribute": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
+	*/
+	function updateWorkspaceAttributesByAttributeIdInstancesByInstanceId(workspaceId, attributeId, instanceId, body){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/{instanceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+        apipath = apipath.replace('{instanceId}', instanceId);
+
+        if(instanceId === undefined && instanceId !== null){
+			throw 'Missing required  parameter: instanceId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateWorkspaceAttributesByAttributeIdInstancesByInstanceId = updateWorkspaceAttributesByAttributeIdInstancesByInstanceId;
+	/**
+     * @summary Delete an instance from a workspace. The instance will be removed from all documents.
+	 * @description 
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {string} attributeId - Attribute ID
+	* @param {string} instanceId - Instance ID
+	*/
+	function deleteWorkspaceAttributesByAttributeIdInstancesByInstanceId(workspaceId, attributeId, instanceId){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/attributes/{attributeId}/instances/{instanceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        apipath = apipath.replace('{attributeId}', attributeId);
+
+        if(attributeId === undefined && attributeId !== null){
+			throw 'Missing required  parameter: attributeId';
+        }
+
+        apipath = apipath.replace('{instanceId}', instanceId);
+
+        if(instanceId === undefined && instanceId !== null){
+			throw 'Missing required  parameter: instanceId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteWorkspaceAttributesByAttributeIdInstancesByInstanceId = deleteWorkspaceAttributesByAttributeIdInstancesByInstanceId;
+	/**
+     * @summary Retrieves a list of changes to documents in a workspace.
+	 * @description Only usable on personal workspaces.
+	 * @memberOf ContentmanagementApi#
+	* @param {string} workspaceId - Workspace ID
+	* @param {} body - DeltaRequest
+	 * @example
+	 * Body Example:
+	 * {
+   "contextToken": ""
+}
+	*/
+	function createWorkspaceDelta(workspaceId, body){
+		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/delta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{workspaceId}', workspaceId);
+
+        if(workspaceId === undefined && workspaceId !== null){
+			throw 'Missing required  parameter: workspaceId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createWorkspaceDelta = createWorkspaceDelta;
 	/**
      * @summary Get a list workspace members
 	 * @description 
@@ -1004,7 +1465,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand workspace member fields
 	member,
 	*/
-	function getWorkspacesWorkspaceMembers(workspaceId, pageSize, pageNumber, expand){
+	function getWorkspaceMembers(workspaceId, pageSize, pageNumber, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1035,7 +1496,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWorkspacesWorkspaceMembers = getWorkspacesWorkspaceMembers;
+	self.getWorkspaceMembers = getWorkspaceMembers;
 	/**
      * @summary Get a workspace member
 	 * @description 
@@ -1045,7 +1506,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand workspace member fields
 	member,
 	*/
-	function getWorkspacesWorkspaceMembersByMemberId(workspaceId, memberId, expand){
+	function getWorkspaceMembersByMemberId(workspaceId, memberId, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1072,7 +1533,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWorkspacesWorkspaceMembersByMemberId = getWorkspacesWorkspaceMembersByMemberId;
+	self.getWorkspaceMembersByMemberId = getWorkspaceMembersByMemberId;
 	/**
      * @summary Add a member to a workspace
 	 * @description 
@@ -1104,7 +1565,6 @@ var ContentmanagementApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -1142,7 +1602,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateWorkspacesWorkspaceMembersByMemberId(workspaceId, memberId, body){
+	function updateWorkspaceMembersByMemberId(workspaceId, memberId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1168,7 +1628,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateWorkspacesWorkspaceMembersByMemberId = updateWorkspacesWorkspaceMembersByMemberId;
+	self.updateWorkspaceMembersByMemberId = updateWorkspaceMembersByMemberId;
 	/**
      * @summary Delete a member from a workspace
 	 * @description 
@@ -1176,7 +1636,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} memberId - Member ID
 	*/
-	function deleteWorkspacesWorkspaceMembersByMemberId(workspaceId, memberId){
+	function deleteWorkspaceMembersByMemberId(workspaceId, memberId){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1198,7 +1658,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteWorkspacesWorkspaceMembersByMemberId = deleteWorkspacesWorkspaceMembersByMemberId;
+	self.deleteWorkspaceMembersByMemberId = deleteWorkspaceMembersByMemberId;
 	/**
      * @summary Get a list of workspace tags
 	 * @description 
@@ -1210,7 +1670,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand some document fields
 	acl,
 	*/
-	function getWorkspacesWorkspaceTagvalues(workspaceId, value, pageSize, pageNumber, expand){
+	function getWorkspaceTagvalues(workspaceId, value, pageSize, pageNumber, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1246,7 +1706,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWorkspacesWorkspaceTagvalues = getWorkspacesWorkspaceTagvalues;
+	self.getWorkspaceTagvalues = getWorkspaceTagvalues;
 	/**
      * @summary Create a workspace tag
 	 * @description 
@@ -1263,7 +1723,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function createWorkspacesWorkspaceTagvalues(workspaceId, body){
+	function createWorkspaceTagvalues(workspaceId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1283,7 +1743,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createWorkspacesWorkspaceTagvalues = createWorkspacesWorkspaceTagvalues;
+	self.createWorkspaceTagvalues = createWorkspaceTagvalues;
 	/**
      * @summary Perform a prefix query on tags in the workspace
 	 * @description 
@@ -1300,7 +1760,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "pageSize": 0
 }
 	*/
-	function createWorkspacesWorkspaceTagvaluesQuery(workspaceId, body, expand){
+	function createWorkspaceTagvaluesQuery(workspaceId, body, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1325,7 +1785,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createWorkspacesWorkspaceTagvaluesQuery = createWorkspacesWorkspaceTagvaluesQuery;
+	self.createWorkspaceTagvaluesQuery = createWorkspaceTagvaluesQuery;
 	/**
      * @summary Get a workspace tag
 	 * @description 
@@ -1335,7 +1795,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand some document fields
 	acl,
 	*/
-	function getWorkspacesWorkspaceTagvaluesByTagId(workspaceId, tagId, expand){
+	function getWorkspaceTagvaluesByTagId(workspaceId, tagId, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1362,7 +1822,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWorkspacesWorkspaceTagvaluesByTagId = getWorkspacesWorkspaceTagvaluesByTagId;
+	self.getWorkspaceTagvaluesByTagId = getWorkspaceTagvaluesByTagId;
 	/**
      * @summary Update a workspace tag. Will update all documents with the new tag value.
 	 * @description 
@@ -1380,7 +1840,7 @@ var ContentmanagementApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateWorkspacesWorkspaceTagvaluesByTagId(workspaceId, tagId, body){
+	function updateWorkspaceTagvaluesByTagId(workspaceId, tagId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1406,7 +1866,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateWorkspacesWorkspaceTagvaluesByTagId = updateWorkspacesWorkspaceTagvaluesByTagId;
+	self.updateWorkspaceTagvaluesByTagId = updateWorkspaceTagvaluesByTagId;
 	/**
      * @summary Delete workspace tag
 	 * @description Delete a tag from a workspace. Will remove this tag from all documents.
@@ -1414,7 +1874,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} tagId - Tag ID
 	*/
-	function deleteWorkspacesWorkspaceTagvaluesByTagId(workspaceId, tagId){
+	function deleteWorkspaceTagvaluesByTagId(workspaceId, tagId){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1436,7 +1896,7 @@ var ContentmanagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteWorkspacesWorkspaceTagvaluesByTagId = deleteWorkspacesWorkspaceTagvaluesByTagId;
+	self.deleteWorkspaceTagvaluesByTagId = deleteWorkspaceTagvaluesByTagId;
 
     return self;
 };

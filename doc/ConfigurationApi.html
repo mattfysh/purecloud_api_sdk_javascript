@@ -143,6 +143,147 @@
 
     
 
+    <h4 class="name" id="createAddressvalidation"><span class="type-signature"></span>createAddressvalidation<span class="signature">(body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Validates a street address</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">-</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "address": {
+      "id": "",
+      "name": "",
+      "street": "",
+      "city": "",
+      "countryName": "",
+      "stateName": "",
+      "postalCode": "",
+      "selfUri": ""
+   }
+}</code></pre>
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="createDidpools"><span class="type-signature"></span>createDidpools<span class="signature">(body)</span><span class="type-signature"></span></h4>
 
     
@@ -236,7 +377,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line67">line 67</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -383,7 +524,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line363">line 363</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line398">line 398</a>
     </li></ul></dd>
     
 
@@ -425,6 +566,332 @@
    "createdByApp": "",
    "selfUri": ""
 }</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createEdgeLogicalinterfaces"><span class="type-signature"></span>createEdgeLogicalinterfaces<span class="signature">(edgeId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Create an edge logical interface.</p>
+    
+
+
+
+<div class="description">
+    Create
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Create</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1190">line 1190</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "edgeUri": "",
+   "edgeAssignedId": "",
+   "friendlyName": "",
+   "vlanTagId": 0,
+   "hardwareAddress": "",
+   "physicalAdapterId": "",
+   "ipAddress": "",
+   "gateway": "",
+   "primaryDns": "",
+   "secondaryDns": "",
+   "ifStatus": "",
+   "routes": [],
+   "addresses": [],
+   "ipv4Capabilities": {
+      "enabled": true,
+      "dhcp": true,
+      "metric": 0
+   },
+   "ipv6Capabilities": {
+      "enabled": true,
+      "dhcp": true,
+      "metric": 0
+   },
+   "currentState": "",
+   "lastModifiedUserId": "",
+   "lastModifiedCorrelationId": "",
+   "commandResponses": [],
+   "selfUri": ""
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createEdgeReboot"><span class="type-signature"></span>createEdgeReboot<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Reboot an Edge</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1408">line 1408</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -526,7 +993,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line591">line 591</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line626">line 626</a>
     </li></ul></dd>
     
 
@@ -718,7 +1185,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line648">line 648</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line683">line 683</a>
     </li></ul></dd>
     
 
@@ -772,333 +1239,7 @@
 
     
 
-    <h4 class="name" id="createEdgesEdgeLogicalinterfaces"><span class="type-signature"></span>createEdgesEdgeLogicalinterfaces<span class="signature">(edgeId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Create an edge logical interface.</p>
-    
-
-
-
-<div class="description">
-    Create
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Create</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1155">line 1155</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "edgeUri": "",
-   "edgeAssignedId": "",
-   "friendlyName": "",
-   "vlanTagId": 0,
-   "hardwareAddress": "",
-   "physicalAdapterId": "",
-   "ipAddress": "",
-   "gateway": "",
-   "primaryDns": "",
-   "secondaryDns": "",
-   "ifStatus": "",
-   "routes": [],
-   "addresses": [],
-   "ipv4Capabilities": {
-      "enabled": true,
-      "dhcp": true,
-      "metric": 0
-   },
-   "ipv6Capabilities": {
-      "enabled": true,
-      "dhcp": true,
-      "metric": 0
-   },
-   "currentState": "",
-   "lastModifiedUserId": "",
-   "lastModifiedCorrelationId": "",
-   "commandResponses": [],
-   "selfUri": ""
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createEdgesEdgeReboot"><span class="type-signature"></span>createEdgesEdgeReboot<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Reboot an Edge</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1373">line 1373</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createEdgesEdgeSoftwareupdate"><span class="type-signature"></span>createEdgesEdgeSoftwareupdate<span class="signature">(edgeId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createEdgeSoftwareupdate"><span class="type-signature"></span>createEdgeSoftwareupdate<span class="signature">(edgeId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Starts a software update for this edge.</p>
@@ -1214,7 +1355,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1442">line 1442</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1477">line 1477</a>
     </li></ul></dd>
     
 
@@ -1270,7 +1411,7 @@
 
     
 
-    <h4 class="name" id="createEdgesEdgeUnpair"><span class="type-signature"></span>createEdgesEdgeUnpair<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createEdgeUnpair"><span class="type-signature"></span>createEdgeUnpair<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Unpair an Edge</p>
@@ -1368,7 +1509,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1515">line 1515</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1550">line 1550</a>
     </li></ul></dd>
     
 
@@ -1492,7 +1633,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1624">line 1624</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1659">line 1659</a>
     </li></ul></dd>
     
 
@@ -1649,7 +1790,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1807">line 1807</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1842">line 1842</a>
     </li></ul></dd>
     
 
@@ -1794,7 +1935,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2109">line 2109</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2144">line 2144</a>
     </li></ul></dd>
     
 
@@ -1931,7 +2072,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2309">line 2309</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2344">line 2344</a>
     </li></ul></dd>
     
 
@@ -2056,7 +2197,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2473">line 2473</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2508">line 2508</a>
     </li></ul></dd>
     
 
@@ -2180,7 +2321,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2623">line 2623</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2667">line 2667</a>
     </li></ul></dd>
     
 
@@ -2234,8 +2375,140 @@
       "assignCalibrations": [],
       "retentionDuration": {}
    },
+   "policyErrors": {
+      "policyErrorMessages": []
+   },
    "selfUri": ""
 }</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createSiteRebalance"><span class="type-signature"></span>createSiteRebalance<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Triggers the rebalance operation.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>siteId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Site ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3404">line 3404</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2337,7 +2610,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3116">line 3116</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3166">line 3166</a>
     </li></ul></dd>
     
 
@@ -2396,135 +2669,6 @@
    },
    "selfUri": ""
 }</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createSitesSiteRebalance"><span class="type-signature"></span>createSitesSiteRebalance<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Triggers the rebalance operation.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>siteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Site ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3354">line 3354</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2631,7 +2775,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line159">line 159</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line194">line 194</a>
     </li></ul></dd>
     
 
@@ -2662,7 +2806,136 @@
 
     
 
-    <h4 class="name" id="deleteEdgegroupsEdgeGroup"><span class="type-signature"></span>deleteEdgegroupsEdgeGroup<span class="signature">(edgeGroupId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteEdge"><span class="type-signature"></span>deleteEdge<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Delete a edge.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line914">line 914</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteEdgeGroup"><span class="type-signature"></span>deleteEdgeGroup<span class="signature">(edgeGroupId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete an edge group.</p>
@@ -2760,7 +3033,159 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line451">line 451</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line486">line 486</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteEdgeLogicalinterfacesByInterfaceId"><span class="type-signature"></span>deleteEdgeLogicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Delete an edge logical interface</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>interfaceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Interface ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1326">line 1326</a>
     </li></ul></dd>
     
 
@@ -2889,7 +3314,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line740">line 740</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line775">line 775</a>
     </li></ul></dd>
     
 
@@ -2920,288 +3345,7 @@
 
     
 
-    <h4 class="name" id="deleteEdgesEdge"><span class="type-signature"></span>deleteEdgesEdge<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Delete a edge.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line879">line 879</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="deleteEdgesEdgeLogicalinterfacesByInterfaceId"><span class="type-signature"></span>deleteEdgesEdgeLogicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Delete an edge logical interface</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>interfaceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Interface ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1291">line 1291</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="deleteEdgesEdgeSoftwareupdate"><span class="type-signature"></span>deleteEdgesEdgeSoftwareupdate<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteEdgeSoftwareupdate"><span class="type-signature"></span>deleteEdgeSoftwareupdate<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Cancels any in-progress update for this edge.</p>
@@ -3299,7 +3443,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1469">line 1469</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1504">line 1504</a>
     </li></ul></dd>
     
 
@@ -3330,7 +3474,7 @@
 
     
 
-    <h4 class="name" id="deleteEndpointsEndpoint"><span class="type-signature"></span>deleteEndpointsEndpoint<span class="signature">(endpointId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteEndpoint"><span class="type-signature"></span>deleteEndpoint<span class="signature">(endpointId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete endpoint</p>
@@ -3428,7 +3572,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1726">line 1726</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1761">line 1761</a>
     </li></ul></dd>
     
 
@@ -3459,7 +3603,7 @@
 
     
 
-    <h4 class="name" id="deleteExtensionpoolsExtensionPool"><span class="type-signature"></span>deleteExtensionpoolsExtensionPool<span class="signature">(extensionPoolId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteExtensionPool"><span class="type-signature"></span>deleteExtensionPool<span class="signature">(extensionPoolId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete an extension pool by ID</p>
@@ -3557,7 +3701,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1897">line 1897</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1932">line 1932</a>
     </li></ul></dd>
     
 
@@ -3686,7 +3830,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2198">line 2198</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2233">line 2233</a>
     </li></ul></dd>
     
 
@@ -3717,7 +3861,7 @@
 
     
 
-    <h4 class="name" id="deleteOutboundroutesOutboundRoute"><span class="type-signature"></span>deleteOutboundroutesOutboundRoute<span class="signature">(outboundRouteId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteOutboundRoute"><span class="type-signature"></span>deleteOutboundRoute<span class="signature">(outboundRouteId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete Outbound Route</p>
@@ -3815,7 +3959,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2423">line 2423</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2458">line 2458</a>
     </li></ul></dd>
     
 
@@ -3948,7 +4092,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2644">line 2644</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2688">line 2688</a>
     </li></ul></dd>
     
 
@@ -4077,7 +4221,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2751">line 2751</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2798">line 2798</a>
     </li></ul></dd>
     
 
@@ -4108,7 +4252,7 @@
 
     
 
-    <h4 class="name" id="deleteSitesSite"><span class="type-signature"></span>deleteSitesSite<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteSite"><span class="type-signature"></span>deleteSite<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete an ednpoint</p>
@@ -4206,7 +4350,136 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3221">line 3221</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3271">line 3271</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getDId"><span class="type-signature"></span>getDId<span class="signature">(didId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get a DID by ID.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>didId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DID ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line263">line 263</a>
     </li></ul></dd>
     
 
@@ -4381,7 +4654,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line15">line 15</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -4510,7 +4783,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line88">line 88</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -4731,7 +5004,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line186">line 186</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line221">line 221</a>
     </li></ul></dd>
     
 
@@ -4762,10 +5035,10 @@
 
     
 
-    <h4 class="name" id="getDidsDId"><span class="type-signature"></span>getDidsDId<span class="signature">(didId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEdge"><span class="type-signature"></span>getEdge<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Get a DID by ID.</p>
+    <p class="summary">Get edge.</p>
     
 
 
@@ -4803,7 +5076,7 @@
 
         <tr>
             
-                <td class="name"><code>didId</code></td>
+                <td class="name"><code>edgeId</code></td>
             
 
             <td class="type">
@@ -4819,7 +5092,7 @@
 
             
 
-            <td class="description last">DID ID</td>
+            <td class="description last">Edge ID</td>
         </tr>
 
     
@@ -4860,7 +5133,136 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line228">line 228</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line798">line 798</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEdgeGroup"><span class="type-signature"></span>getEdgeGroup<span class="signature">(edgeGroupId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get edge group.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeGroupId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge group ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line419">line 419</a>
     </li></ul></dd>
     
 
@@ -5058,7 +5460,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line310">line 310</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line345">line 345</a>
     </li></ul></dd>
     
 
@@ -5089,10 +5491,10 @@
 
     
 
-    <h4 class="name" id="getEdgegroupsEdgeGroup"><span class="type-signature"></span>getEdgegroupsEdgeGroup<span class="signature">(edgeGroupId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEdgeLines"><span class="type-signature"></span>getEdgeLines<span class="signature">(edgeId, pageSize, pageNumber)</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Get edge group.</p>
+    <p class="summary">Get the list of lines.</p>
     
 
 
@@ -5130,7 +5532,7 @@
 
         <tr>
             
-                <td class="name"><code>edgeGroupId</code></td>
+                <td class="name"><code>edgeId</code></td>
             
 
             <td class="type">
@@ -5146,7 +5548,53 @@
 
             
 
-            <td class="description last">Edge group ID</td>
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Page size</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageNumber</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">integer</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Page number</td>
         </tr>
 
     
@@ -5187,7 +5635,729 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line384">line 384</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line939">line 939</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEdgeLinesByLineId"><span class="type-signature"></span>getEdgeLinesByLineId<span class="signature">(edgeId, lineId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get line</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lineId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Line ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line973">line 973</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEdgeLogicalinterfaces"><span class="type-signature"></span>getEdgeLogicalinterfaces<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get edge logical interfaces.</p>
+    
+
+
+
+<div class="description">
+    Retrieve a list of all configured logical interfaces from a specific edge.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1123">line 1123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEdgeLogicalinterfacesByInterfaceId"><span class="type-signature"></span>getEdgeLogicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get an edge logical interface</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>interfaceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Interface ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1218">line 1218</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEdgePhysicalinterfaces"><span class="type-signature"></span>getEdgePhysicalinterfaces<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Retrieve a list of all configured physical interfaces from a specific edge.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1355">line 1355</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEdgePhysicalinterfacesByInterfaceId"><span class="type-signature"></span>getEdgePhysicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get edge physical interface.</p>
+    
+
+
+
+<div class="description">
+    Retrieve a physical interface from a specific edge.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>interfaceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Interface ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1379">line 1379</a>
     </li></ul></dd>
     
 
@@ -5431,7 +6601,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line479">line 479</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line514">line 514</a>
     </li></ul></dd>
     
 
@@ -5511,7 +6681,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line611">line 611</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line646">line 646</a>
     </li></ul></dd>
     
 
@@ -5640,7 +6810,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line669">line 669</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line704">line 704</a>
     </li></ul></dd>
     
 
@@ -5671,1033 +6841,7 @@
 
     
 
-    <h4 class="name" id="getEdgesEdge"><span class="type-signature"></span>getEdgesEdge<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get edge.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line763">line 763</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgeLines"><span class="type-signature"></span>getEdgesEdgeLines<span class="signature">(edgeId, pageSize, pageNumber)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get the list of lines.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pageSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Page size</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pageNumber</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Page number</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line904">line 904</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgeLinesByLineId"><span class="type-signature"></span>getEdgesEdgeLinesByLineId<span class="signature">(edgeId, lineId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get line</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>lineId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Line ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line938">line 938</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgeLogicalinterfaces"><span class="type-signature"></span>getEdgesEdgeLogicalinterfaces<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get edge logical interfaces.</p>
-    
-
-
-
-<div class="description">
-    Retrieve a list of all configured logical interfaces from a specific edge.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1088">line 1088</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgeLogicalinterfacesByInterfaceId"><span class="type-signature"></span>getEdgesEdgeLogicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get an edge logical interface</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>interfaceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Interface ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1183">line 1183</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgePhysicalinterfaces"><span class="type-signature"></span>getEdgesEdgePhysicalinterfaces<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Retrieve a list of all configured physical interfaces from a specific edge.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1320">line 1320</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgePhysicalinterfacesByInterfaceId"><span class="type-signature"></span>getEdgesEdgePhysicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get edge physical interface.</p>
-    
-
-
-
-<div class="description">
-    Retrieve a physical interface from a specific edge.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>interfaceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Interface ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1344">line 1344</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getEdgesEdgeSoftwareupdate"><span class="type-signature"></span>getEdgesEdgeSoftwareupdate<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEdgeSoftwareupdate"><span class="type-signature"></span>getEdgeSoftwareupdate<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Gets software update status information about any edge.</p>
@@ -6795,7 +6939,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1396">line 1396</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1431">line 1431</a>
     </li></ul></dd>
     
 
@@ -6826,7 +6970,7 @@
 
     
 
-    <h4 class="name" id="getEdgesEdgeSoftwareversions"><span class="type-signature"></span>getEdgesEdgeSoftwareversions<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getEdgeSoftwareversions"><span class="type-signature"></span>getEdgeSoftwareversions<span class="signature">(edgeId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Gets all the available software versions for this edge.</p>
@@ -6924,7 +7068,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1492">line 1492</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1527">line 1527</a>
     </li></ul></dd>
     
 
@@ -7008,7 +7152,136 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1537">line 1537</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1572">line 1572</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getEndpoint"><span class="type-signature"></span>getEndpoint<span class="signature">(endpointId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get endpoint</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>endpointId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Endpoint ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1680">line 1680</a>
     </li></ul></dd>
     
 
@@ -7206,7 +7479,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1557">line 1557</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1592">line 1592</a>
     </li></ul></dd>
     
 
@@ -7237,10 +7510,10 @@
 
     
 
-    <h4 class="name" id="getEndpointsEndpoint"><span class="type-signature"></span>getEndpointsEndpoint<span class="signature">(endpointId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getExtension"><span class="type-signature"></span>getExtension<span class="signature">(extensionId)</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Get endpoint</p>
+    <p class="summary">Get an extension by ID.</p>
     
 
 
@@ -7278,7 +7551,7 @@
 
         <tr>
             
-                <td class="name"><code>endpointId</code></td>
+                <td class="name"><code>extensionId</code></td>
             
 
             <td class="type">
@@ -7294,7 +7567,7 @@
 
             
 
-            <td class="description last">Endpoint ID</td>
+            <td class="description last">Extension ID</td>
         </tr>
 
     
@@ -7335,7 +7608,136 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1645">line 1645</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2001">line 2001</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getExtensionPool"><span class="type-signature"></span>getExtensionPool<span class="signature">(extensionPoolId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get an extension pool by ID</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>extensionPoolId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Extension pool ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1863">line 1863</a>
     </li></ul></dd>
     
 
@@ -7533,136 +7935,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1752">line 1752</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getExtensionpoolsExtensionPool"><span class="type-signature"></span>getExtensionpoolsExtensionPool<span class="signature">(extensionPoolId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get an extension pool by ID</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>extensionPoolId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Extension pool ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1828">line 1828</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1787">line 1787</a>
     </li></ul></dd>
     
 
@@ -7883,136 +8156,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1924">line 1924</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getExtensionsExtension"><span class="type-signature"></span>getExtensionsExtension<span class="signature">(extensionId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get an extension by ID.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>extensionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Extension ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1966">line 1966</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1959">line 1959</a>
     </li></ul></dd>
     
 
@@ -8092,7 +8236,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2044">line 2044</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2079">line 2079</a>
     </li></ul></dd>
     
 
@@ -8221,7 +8365,136 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2130">line 2130</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2165">line 2165</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getOutboundRoute"><span class="type-signature"></span>getOutboundRoute<span class="signature">(outboundRouteId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get outbound route</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>outboundRouteId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Outbound route ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2365">line 2365</a>
     </li></ul></dd>
     
 
@@ -8442,136 +8715,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2225">line 2225</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getOutboundroutesOutboundRoute"><span class="type-signature"></span>getOutboundroutesOutboundRoute<span class="signature">(outboundRouteId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get outbound route</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>outboundRouteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Outbound route ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2330">line 2330</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2260">line 2260</a>
     </li></ul></dd>
     
 
@@ -8723,7 +8867,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2447">line 2447</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2482">line 2482</a>
     </li></ul></dd>
     
 
@@ -8803,7 +8947,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2489">line 2489</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2524">line 2524</a>
     </li></ul></dd>
     
 
@@ -8834,7 +8978,7 @@
 
     
 
-    <h4 class="name" id="getRetentionpolicies"><span class="type-signature"></span>getRetentionpolicies<span class="signature">(pageSize, pageNumber, sortBy, expand, name, enabled, summary)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getRetentionpolicies"><span class="type-signature"></span>getRetentionpolicies<span class="signature">(pageSize, pageNumber, sortBy, expand, name, enabled, summary, hasErrors)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Gets retention policy list with query options to filter on name and enabled.</p>
@@ -9037,6 +9181,29 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>hasErrors</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">provides a way to fetch all policies with errors or policies that do not have errors</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -9074,7 +9241,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2541">line 2541</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2577">line 2577</a>
     </li></ul></dd>
     
 
@@ -9203,7 +9370,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2670">line 2670</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2714">line 2714</a>
     </li></ul></dd>
     
 
@@ -9355,7 +9522,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2833">line 2833</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2883">line 2883</a>
     </li></ul></dd>
     
 
@@ -9530,7 +9697,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2862">line 2862</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2912">line 2912</a>
     </li></ul></dd>
     
 
@@ -9728,7 +9895,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2898">line 2898</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2948">line 2948</a>
     </li></ul></dd>
     
 
@@ -9903,7 +10070,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2939">line 2939</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2989">line 2989</a>
     </li></ul></dd>
     
 
@@ -10147,7 +10314,569 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2979">line 2979</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3029">line 3029</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSite"><span class="type-signature"></span>getSite<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get endpoint.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>siteId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Site ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3187">line 3187</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSiteNumberplans"><span class="type-signature"></span>getSiteNumberplans<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get the list of Number Plans for this Site.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>siteId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Site ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3294">line 3294</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSiteNumberplansByNumberPlanId"><span class="type-signature"></span>getSiteNumberplansByNumberPlanId<span class="signature">(siteId, numberPlanId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get a Number Plan by ID.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>siteId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Site ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numberPlanId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number Plan ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3375">line 3375</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSiteNumberplansClassifications"><span class="type-signature"></span>getSiteNumberplansClassifications<span class="signature">(siteId, classification)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get a list of Classifications for this Site</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>siteId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Site ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>classification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Classification</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3346">line 3346</a>
     </li></ul></dd>
     
 
@@ -10391,569 +11120,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3036">line 3036</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSitesSite"><span class="type-signature"></span>getSitesSite<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get endpoint.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>siteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Site ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3137">line 3137</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSitesSiteNumberplans"><span class="type-signature"></span>getSitesSiteNumberplans<span class="signature">(siteId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get the list of Number Plans for this Site.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>siteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Site ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3244">line 3244</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSitesSiteNumberplansByNumberPlanId"><span class="type-signature"></span>getSitesSiteNumberplansByNumberPlanId<span class="signature">(siteId, numberPlanId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get a Number Plan by ID.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>siteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Site ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>numberPlanId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Number Plan ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3325">line 3325</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSitesSiteNumberplansClassifications"><span class="type-signature"></span>getSitesSiteNumberplansClassifications<span class="signature">(siteId, classification)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get a list of Classifications for this Site</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>siteId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Site ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>classification</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Classification</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3296">line 3296</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3086">line 3086</a>
     </li></ul></dd>
     
 
@@ -11082,7 +11249,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3377">line 3377</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3427">line 3427</a>
     </li></ul></dd>
     
 
@@ -11162,7 +11329,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3446">line 3446</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3496">line 3496</a>
     </li></ul></dd>
     
 
@@ -11309,7 +11476,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2805">line 2805</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2855">line 2855</a>
     </li></ul></dd>
     
 
@@ -11362,6 +11529,9 @@
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
       "retentionDuration": {}
+   },
+   "policyErrors": {
+      "policyErrorMessages": []
    },
    "selfUri": ""
 }</code></pre>
@@ -11489,7 +11659,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3416">line 3416</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3466">line 3466</a>
     </li></ul></dd>
     
 
@@ -11529,6 +11699,184 @@
    "quotaSizeBytes": 0,
    "createdDate": "",
    "modifiedDate": ""
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateDId"><span class="type-signature"></span>updateDId<span class="signature">(didId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Update a DID by ID.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>didId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DID ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">-</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line315">line 315</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "phoneNumber": "",
+   "didPool": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "ownerType": "",
+   "selfUri": ""
 }</code></pre>
 
 
@@ -11654,7 +12002,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line132">line 132</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line167">line 167</a>
     </li></ul></dd>
     
 
@@ -11708,521 +12056,7 @@
 
     
 
-    <h4 class="name" id="updateDidsDId"><span class="type-signature"></span>updateDidsDId<span class="signature">(didId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Update a DID by ID.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>didId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">DID ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">-</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line280">line 280</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "phoneNumber": "",
-   "didPool": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "ownerType": "",
-   "selfUri": ""
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="updateEdgegroupsEdgeGroup"><span class="type-signature"></span>updateEdgegroupsEdgeGroup<span class="signature">(edgeGroupId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Update an edge group.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edgeGroupId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Edge group ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">EdgeGroup</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line424">line 424</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "selfUri": ""
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="updateEdgesCertificateauthoritiesCertificate"><span class="type-signature"></span>updateEdgesCertificateauthoritiesCertificate<span class="signature">(certificateId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Update a certificate authority.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>certificateId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Certificate ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">-</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line713">line 713</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "certificate": "",
-   "type": "",
-   "services": [],
-   "certificateDetails": [],
-   "selfUri": ""
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="updateEdgesEdge"><span class="type-signature"></span>updateEdgesEdge<span class="signature">(edgeId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateEdge"><span class="type-signature"></span>updateEdge<span class="signature">(edgeId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a edge.</p>
@@ -12338,7 +12172,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line852">line 852</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line887">line 887</a>
     </li></ul></dd>
     
 
@@ -12437,7 +12271,173 @@
 
     
 
-    <h4 class="name" id="updateEdgesEdgeLinesByLineId"><span class="type-signature"></span>updateEdgesEdgeLinesByLineId<span class="signature">(edgeId, lineId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateEdgeGroup"><span class="type-signature"></span>updateEdgeGroup<span class="signature">(edgeGroupId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Update an edge group.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>edgeGroupId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Edge group ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">EdgeGroup</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line459">line 459</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "selfUri": ""
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateEdgeLinesByLineId"><span class="type-signature"></span>updateEdgeLinesByLineId<span class="signature">(edgeId, lineId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a line.</p>
@@ -12576,7 +12576,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1055">line 1055</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1090">line 1090</a>
     </li></ul></dd>
     
 
@@ -12696,7 +12696,7 @@
 
     
 
-    <h4 class="name" id="updateEdgesEdgeLogicalinterfacesByInterfaceId"><span class="type-signature"></span>updateEdgesEdgeLogicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateEdgeLogicalinterfacesByInterfaceId"><span class="type-signature"></span>updateEdgeLogicalinterfacesByInterfaceId<span class="signature">(edgeId, interfaceId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update an edge logical interface.</p>
@@ -12835,7 +12835,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1257">line 1257</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1292">line 1292</a>
     </li></ul></dd>
     
 
@@ -12912,7 +12912,177 @@
 
     
 
-    <h4 class="name" id="updateEndpointsEndpoint"><span class="type-signature"></span>updateEndpointsEndpoint<span class="signature">(endpointId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateEdgesCertificateauthoritiesCertificate"><span class="type-signature"></span>updateEdgesCertificateauthoritiesCertificate<span class="signature">(certificateId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Update a certificate authority.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>certificateId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Certificate ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">-</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line748">line 748</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "certificate": "",
+   "type": "",
+   "services": [],
+   "certificateDetails": [],
+   "selfUri": ""
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateEndpoint"><span class="type-signature"></span>updateEndpoint<span class="signature">(endpointId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update endpoint</p>
@@ -13028,7 +13198,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1699">line 1699</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1734">line 1734</a>
     </li></ul></dd>
     
 
@@ -13092,175 +13262,7 @@
 
     
 
-    <h4 class="name" id="updateExtensionpoolsExtensionPool"><span class="type-signature"></span>updateExtensionpoolsExtensionPool<span class="signature">(extensionPoolId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Update an extension pool by ID</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>extensionPoolId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Extension pool ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ExtensionPool</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1870">line 1870</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "startNumber": "",
-   "endNumber": "",
-   "selfUri": ""
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="updateExtensionsExtension"><span class="type-signature"></span>updateExtensionsExtension<span class="signature">(extensionId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateExtension"><span class="type-signature"></span>updateExtension<span class="signature">(extensionId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update an extension by ID.</p>
@@ -13376,7 +13378,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2018">line 2018</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2053">line 2053</a>
     </li></ul></dd>
     
 
@@ -13428,6 +13430,174 @@
       "selfUri": ""
    },
    "ownerType": "",
+   "selfUri": ""
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateExtensionPool"><span class="type-signature"></span>updateExtensionPool<span class="signature">(extensionPoolId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Update an extension pool by ID</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>extensionPoolId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Extension pool ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ExtensionPool</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line1905">line 1905</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "startNumber": "",
+   "endNumber": "",
    "selfUri": ""
 }</code></pre>
 
@@ -13531,7 +13701,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2078">line 2078</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2113">line 2113</a>
     </li></ul></dd>
     
 
@@ -13698,7 +13868,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2171">line 2171</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2206">line 2206</a>
     </li></ul></dd>
     
 
@@ -13749,7 +13919,7 @@
 
     
 
-    <h4 class="name" id="updateOutboundroutesOutboundRoute"><span class="type-signature"></span>updateOutboundroutesOutboundRoute<span class="signature">(outboundRouteId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateOutboundRoute"><span class="type-signature"></span>updateOutboundRoute<span class="signature">(outboundRouteId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update outbound route</p>
@@ -13865,7 +14035,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2396">line 2396</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2431">line 2431</a>
     </li></ul></dd>
     
 
@@ -14034,7 +14204,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2514">line 2514</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2549">line 2549</a>
     </li></ul></dd>
     
 
@@ -14192,7 +14362,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2724">line 2724</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line2771">line 2771</a>
     </li></ul></dd>
     
 
@@ -14246,6 +14416,9 @@
       "assignCalibrations": [],
       "retentionDuration": {}
    },
+   "policyErrors": {
+      "policyErrorMessages": []
+   },
    "selfUri": ""
 }</code></pre>
 
@@ -14256,7 +14429,7 @@
 
     
 
-    <h4 class="name" id="updateSitesSite"><span class="type-signature"></span>updateSitesSite<span class="signature">(siteId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateSite"><span class="type-signature"></span>updateSite<span class="signature">(siteId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a endpoint.</p>
@@ -14372,7 +14545,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3194">line 3194</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3244">line 3244</a>
     </li></ul></dd>
     
 
@@ -14439,7 +14612,7 @@
 
     
 
-    <h4 class="name" id="updateSitesSiteNumberplans"><span class="type-signature"></span>updateSitesSiteNumberplans<span class="signature">(siteId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateSiteNumberplans"><span class="type-signature"></span>updateSiteNumberplans<span class="signature">(siteId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update the list of Number Plans.</p>
@@ -14555,7 +14728,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3268">line 3268</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3318">line 3318</a>
     </li></ul></dd>
     
 
@@ -14679,7 +14852,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3485">line 3485</a>
+        <a href="configurationapi.js.html">configurationapi.js</a>, <a href="configurationapi.js.html#line3535">line 3535</a>
     </li></ul></dd>
     
 
@@ -14746,7 +14919,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="StatusesApi.html">StatusesApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
 </nav>
 
 <br class="clear">

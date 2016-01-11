@@ -61,7 +61,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	*/
-	function getClientsClient(clientId){
+	function getClient(clientId){
 		var apipath = '/api/v1/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -77,7 +77,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getClientsClient = getClientsClient;
+	self.getClient = getClient;
 	/**
      * @summary Update OAuth Client
 	 * @description 
@@ -97,7 +97,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
    "selfUri": ""
 }
 	*/
-	function updateClientsClient(clientId, body){
+	function updateClient(clientId, body){
 		var apipath = '/api/v1/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -117,14 +117,14 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateClientsClient = updateClientsClient;
+	self.updateClient = updateClient;
 	/**
      * @summary Delete OAuth Client
 	 * @description 
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	*/
-	function deleteClientsClient(clientId){
+	function deleteClient(clientId){
 		var apipath = '/api/v1/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -140,14 +140,14 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteClientsClient = deleteClientsClient;
+	self.deleteClient = deleteClient;
 	/**
      * @summary Regenerate Client Secret
 	 * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
 	 * @memberOf OauthApi#
 	* @param {string} clientId - Client ID
 	*/
-	function createClientsClientSecret(clientId){
+	function createClientSecret(clientId){
 		var apipath = '/api/v1/oauth/clients/{clientId}/secret';
 	    var requestBody;
 	    var queryParameters = {};
@@ -163,7 +163,7 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createClientsClientSecret = createClientsClientSecret;
+	self.createClientSecret = createClientSecret;
 
     return self;
 };

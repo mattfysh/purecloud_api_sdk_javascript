@@ -86,7 +86,7 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	*/
-	function getChannelsChannelSubscriptions(channelId){
+	function getChannelSubscriptions(channelId){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -102,7 +102,7 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getChannelsChannelSubscriptions = getChannelsChannelSubscriptions;
+	self.getChannelSubscriptions = getChannelSubscriptions;
 	/**
      * @summary Add a list of subscriptions to the existing list of subscriptions
 	 * @description 
@@ -110,7 +110,7 @@ var NotificationsApi = function (pureCloudSession) {
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
 	*/
-	function createChannelsChannelSubscriptions(channelId, body){
+	function createChannelSubscriptions(channelId, body){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -130,7 +130,7 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createChannelsChannelSubscriptions = createChannelsChannelSubscriptions;
+	self.createChannelSubscriptions = createChannelSubscriptions;
 	/**
      * @summary Replace the current list of subscriptions with a new list.
 	 * @description 
@@ -138,7 +138,7 @@ var NotificationsApi = function (pureCloudSession) {
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
 	*/
-	function updateChannelsChannelSubscriptions(channelId, body){
+	function updateChannelSubscriptions(channelId, body){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -158,14 +158,14 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateChannelsChannelSubscriptions = updateChannelsChannelSubscriptions;
+	self.updateChannelSubscriptions = updateChannelSubscriptions;
 	/**
      * @summary Remove all subscriptions
 	 * @description 
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	*/
-	function deleteChannelsChannelSubscriptions(channelId){
+	function deleteChannelSubscriptions(channelId){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -181,7 +181,7 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteChannelsChannelSubscriptions = deleteChannelsChannelSubscriptions;
+	self.deleteChannelSubscriptions = deleteChannelSubscriptions;
 
     return self;
 };
@@ -195,7 +195,7 @@ var NotificationsApi = function (pureCloudSession) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="StatusesApi.html">StatusesApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
 </nav>
 
 <br class="clear">

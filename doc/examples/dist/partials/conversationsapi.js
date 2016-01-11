@@ -375,6 +375,36 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.updateConversationMessagesDraft = updateConversationMessagesDraft;
 	/**
+     * @summary Delete attachment from draft
+	 * @description 
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} attachmentId - attachment ID
+	*/
+	function deleteConversationMessagesDraftAttachmentsByAttachmentId(conversationId, attachmentId){
+		var apipath = '/api/v1/conversations/{conversationId}/messages/draft/attachments/{attachmentId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{attachmentId}', attachmentId);
+
+        if(attachmentId === undefined && attachmentId !== null){
+			throw 'Missing required  parameter: attachmentId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationMessagesDraftAttachmentsByAttachmentId = deleteConversationMessagesDraftAttachmentsByAttachmentId;
+	/**
      * @summary Get conversation message
 	 * @description 
 	 * @memberOf ConversationsApi#
@@ -819,7 +849,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @description 
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for completion.
+	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
 	Any integer greater than or equal to 0.,
 	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
 	WEBM,
@@ -924,6 +954,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "id": "",
+   "name": "",
    "conversationId": "",
    "path": "",
    "startTime": "",
@@ -944,7 +975,8 @@ var ConversationsApi = function (pureCloudSession) {
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": ""
+   "recordingId": "",
+   "selfUri": ""
 }
 	*/
 	function updateConversationRecordingsByRecordingId(conversationId, recordingId, body, restoreDays){
@@ -994,6 +1026,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "id": "",
+   "name": "",
    "conversationId": "",
    "path": "",
    "startTime": "",
@@ -1014,7 +1047,8 @@ var ConversationsApi = function (pureCloudSession) {
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": ""
+   "recordingId": "",
+   "selfUri": ""
 }
 	*/
 	function patchConversationRecordingsByRecordingId(conversationId, recordingId, body){
@@ -1097,7 +1131,6 @@ var ConversationsApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -1208,7 +1241,6 @@ var ConversationsApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,

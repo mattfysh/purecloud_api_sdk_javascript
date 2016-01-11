@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: bridgeapi.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: bridgeapi.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* @class
+* @example
+* var api = new BridgeApi(pureCloudSession);
+*/
+var BridgeApi = function (pureCloudSession) {
+	/**
+     * @summary Get user actions categories
+	 * @description 
+	 * @memberOf BridgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getUseractionsCategories(pageSize, pageNumber){
+		var apipath = '/api/v1/bridge/useractions/categories';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUseractionsCategories = getUseractionsCategories;
+	/**
+     * @summary Get user actions metadata
+	 * @description 
+	 * @memberOf BridgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	* @param {string} expand - requests.inputSchema,requests.successSchema
+	*/
+	function getUseractionsMetadata(pageSize, pageNumber, sortBy, sortOrder, expand){
+		var apipath = '/api/v1/bridge/useractions/metadata';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(expand !== undefined &amp;&amp; expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUseractionsMetadata = getUseractionsMetadata;
+	/**
+     * @summary Get user action metadata
+	 * @description 
+	 * @memberOf BridgeApi#
+	* @param {string} name - Name
+	* @param {string} expand - requests.inputSchema,requests.successSchema
+	*/
+	function getUseractionsMetadataName(name, expand){
+		var apipath = '/api/v1/bridge/useractions/metadata/{name}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{name}', name);
+
+        if(name === undefined &amp;&amp; name !== null){
+			throw 'Missing required  parameter: name';
+        }
+
+
+		if(expand !== undefined &amp;&amp; expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUseractionsMetadataName = getUseractionsMetadataName;
+
+    return self;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+</nav>
+
+<br class="clear">
+
+
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -612,7 +612,7 @@
 
     
 
-    <h4 class="name" id="deleteRolesRole"><span class="type-signature"></span>deleteRolesRole<span class="signature">(roleId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteRole"><span class="type-signature"></span>deleteRole<span class="signature">(roleId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete an organization role.</p>
@@ -741,7 +741,7 @@
 
     
 
-    <h4 class="name" id="deleteUsersUserRoles"><span class="type-signature"></span>deleteUsersUserRoles<span class="signature">(userId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteUserRoles"><span class="type-signature"></span>deleteUserRoles<span class="signature">(userId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Removes all the roles from the user.</p>
@@ -1178,6 +1178,139 @@
 
     
 
+    <h4 class="name" id="getRole"><span class="type-signature"></span>getRole<span class="signature">(roleId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get a single organization role.</p>
+    
+
+
+
+<div class="description">
+    Get the organization role specified by its ID.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>roleId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Role ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line282">line 282</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="getRoles"><span class="type-signature"></span>getRoles<span class="signature">(pageSize, pageNumber, sortBy, expand, permission, userCount)</span><span class="type-signature"></span></h4>
 
     
@@ -1578,140 +1711,7 @@
 
     
 
-    <h4 class="name" id="getRolesRole"><span class="type-signature"></span>getRolesRole<span class="signature">(roleId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get a single organization role.</p>
-    
-
-
-
-<div class="description">
-    Get the organization role specified by its ID.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>roleId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Role ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line282">line 282</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getUsersUserRoles"><span class="type-signature"></span>getUsersUserRoles<span class="signature">(userId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getUserRoles"><span class="type-signature"></span>getUserRoles<span class="signature">(userId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Get the list of roles for a user.</p>
@@ -1840,7 +1840,7 @@
 
     
 
-    <h4 class="name" id="patchRolesRole"><span class="type-signature"></span>patchRolesRole<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="patchRole"><span class="type-signature"></span>patchRole<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Patch Organization Role for needsUpdate Field</p>
@@ -1961,6 +1961,176 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line389">line 389</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "description": "",
+   "defaultRoleId": "",
+   "permissions": [],
+   "licenses": [],
+   "permissionPolicies": [],
+   "code": "",
+   "userCount": 0,
+   "roleNeedsUpdate": true,
+   "default": true,
+   "selfUri": ""
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateRole"><span class="type-signature"></span>updateRole<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Update an organization role.</p>
+    
+
+
+
+<div class="description">
+    Update
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>roleId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Role ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Update</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line322">line 322</a>
     </li></ul></dd>
     
 
@@ -2134,177 +2304,7 @@
 
     
 
-    <h4 class="name" id="updateRolesRole"><span class="type-signature"></span>updateRolesRole<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Update an organization role.</p>
-    
-
-
-
-<div class="description">
-    Update
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>roleId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Role ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Update</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="authorizationapi.js.html">authorizationapi.js</a>, <a href="authorizationapi.js.html#line322">line 322</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "description": "",
-   "defaultRoleId": "",
-   "permissions": [],
-   "licenses": [],
-   "permissionPolicies": [],
-   "code": "",
-   "userCount": 0,
-   "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="updateRolesRoleUsersAdd"><span class="type-signature"></span>updateRolesRoleUsersAdd<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateRoleUsersAdd"><span class="type-signature"></span>updateRoleUsersAdd<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Sets the users for the role</p>
@@ -2451,7 +2451,7 @@
 
     
 
-    <h4 class="name" id="updateRolesRoleUsersRemove"><span class="type-signature"></span>updateRolesRoleUsersRemove<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateRoleUsersRemove"><span class="type-signature"></span>updateRoleUsersRemove<span class="signature">(roleId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Removes the users from the role</p>
@@ -2598,7 +2598,7 @@
 
     
 
-    <h4 class="name" id="updateUsersUserRoles"><span class="type-signature"></span>updateUsersUserRoles<span class="signature">(userId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateUserRoles"><span class="type-signature"></span>updateUserRoles<span class="signature">(userId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Sets the user's roles</p>
@@ -2756,7 +2756,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="StatusesApi.html">StatusesApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
 </nav>
 
 <br class="clear">

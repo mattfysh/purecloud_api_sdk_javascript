@@ -165,7 +165,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} callableTimeSetId - Callable Time Set ID
 	*/
-	function getCallabletimesetsCallableTimeSet(callableTimeSetId){
+	function getCallableTimeSet(callableTimeSetId){
 		var apipath = '/api/v1/outbound/callabletimesets/{callableTimeSetId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -181,7 +181,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCallabletimesetsCallableTimeSet = getCallabletimesetsCallableTimeSet;
+	self.getCallableTimeSet = getCallableTimeSet;
 	/**
      * @summary Update callable time set
 	 * @description 
@@ -200,7 +200,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateCallabletimesetsCallableTimeSet(callableTimeSetId, body){
+	function updateCallableTimeSet(callableTimeSetId, body){
 		var apipath = '/api/v1/outbound/callabletimesets/{callableTimeSetId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -220,14 +220,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateCallabletimesetsCallableTimeSet = updateCallabletimesetsCallableTimeSet;
+	self.updateCallableTimeSet = updateCallableTimeSet;
 	/**
      * @summary Delete callable time set
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} callableTimeSetId - Callable Time Set ID
 	*/
-	function deleteCallabletimesetsCallableTimeSet(callableTimeSetId){
+	function deleteCallableTimeSet(callableTimeSetId){
 		var apipath = '/api/v1/outbound/callabletimesets/{callableTimeSetId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -243,7 +243,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteCallabletimesetsCallableTimeSet = deleteCallabletimesetsCallableTimeSet;
+	self.deleteCallableTimeSet = deleteCallableTimeSet;
 	/**
      * @summary Query a list of dialer call analysis response sets.
 	 * @description 
@@ -529,10 +529,53 @@ var OutboundApi = function (pureCloudSession) {
 	 * {
    "id": "",
    "name": "",
-   "selfUri": "",
-   "phoneNumberColumns": [],
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true,
+   "selfUri": ""
 }
 	*/
 	function createCampaigns(body){
@@ -556,7 +599,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
-	function getCampaignsCampaign(campaignId){
+	function getCampaign(campaignId){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -572,7 +615,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCampaignsCampaign = getCampaignsCampaign;
+	self.getCampaign = getCampaign;
 	/**
      * @summary Update a campaign.
 	 * @description 
@@ -584,13 +627,56 @@ var OutboundApi = function (pureCloudSession) {
 	 * {
    "id": "",
    "name": "",
-   "selfUri": "",
-   "phoneNumberColumns": [],
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true,
+   "selfUri": ""
 }
 	*/
-	function updateCampaignsCampaign(campaignId, body){
+	function updateCampaign(campaignId, body){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -610,14 +696,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateCampaignsCampaign = updateCampaignsCampaign;
+	self.updateCampaign = updateCampaign;
 	/**
      * @summary Delete a campaign.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
-	function deleteCampaignsCampaign(campaignId){
+	function deleteCampaign(campaignId){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -633,7 +719,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteCampaignsCampaign = deleteCampaignsCampaign;
+	self.deleteCampaign = deleteCampaign;
 	/**
      * @summary Send notification that an agent's state changed 
 	 * @description New agent state.
@@ -647,7 +733,7 @@ var OutboundApi = function (pureCloudSession) {
    "stage": ""
 }
 	*/
-	function updateCampaignsCampaignAgentsByUserId(campaignId, userId, body){
+	function updateCampaignAgentsByUserId(campaignId, userId, body){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}/agents/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -673,7 +759,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateCampaignsCampaignAgentsByUserId = updateCampaignsCampaignAgentsByUserId;
+	self.updateCampaignAgentsByUserId = updateCampaignAgentsByUserId;
 	/**
      * @summary Schedule a Callback for a Dialer Campaign
 	 * @description 
@@ -690,7 +776,7 @@ var OutboundApi = function (pureCloudSession) {
    "schedule": ""
 }
 	*/
-	function createCampaignsCampaignCallbackSchedule(campaignId, body){
+	function createCampaignCallbackSchedule(campaignId, body){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}/callback/schedule';
 	    var requestBody;
 	    var queryParameters = {};
@@ -710,14 +796,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createCampaignsCampaignCallbackSchedule = createCampaignsCampaignCallbackSchedule;
+	self.createCampaignCallbackSchedule = createCampaignCallbackSchedule;
 	/**
      * @summary Get campaign diagnostics
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
-	function getCampaignsCampaignDiagnostics(campaignId){
+	function getCampaignDiagnostics(campaignId){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}/diagnostics';
 	    var requestBody;
 	    var queryParameters = {};
@@ -733,14 +819,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCampaignsCampaignDiagnostics = getCampaignsCampaignDiagnostics;
+	self.getCampaignDiagnostics = getCampaignDiagnostics;
 	/**
      * @summary Get statistics about a Dialer Campaign
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
-	function getCampaignsCampaignStats(campaignId){
+	function getCampaignStats(campaignId){
 		var apipath = '/api/v1/outbound/campaigns/{campaignId}/stats';
 	    var requestBody;
 	    var queryParameters = {};
@@ -756,7 +842,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCampaignsCampaignStats = getCampaignsCampaignStats;
+	self.getCampaignStats = getCampaignStats;
 	/**
      * @summary Query a list of contact lists.
 	 * @description 
@@ -905,7 +991,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	*/
-	function getContactlistsContactList(contactListId, importStatus, includeSize){
+	function getContactList(contactListId, importStatus, includeSize){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -931,7 +1017,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContactlistsContactList = getContactlistsContactList;
+	self.getContactList = getContactList;
 	/**
      * @summary Update a contact list.
 	 * @description 
@@ -961,7 +1047,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateContactlistsContactList(contactListId, body){
+	function updateContactList(contactListId, body){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -981,14 +1067,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateContactlistsContactList = updateContactlistsContactList;
+	self.updateContactList = updateContactList;
 	/**
      * @summary Delete a contact list.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	*/
-	function deleteContactlistsContactList(contactListId){
+	function deleteContactList(contactListId){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1004,7 +1090,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContactlistsContactList = deleteContactlistsContactList;
+	self.deleteContactList = deleteContactList;
 	/**
      * @summary Add contacts to a contact list.
 	 * @description 
@@ -1013,7 +1099,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {} body - Contact
 	* @param {boolean} priority - 
 	*/
-	function createContactlistsContactListContacts(contactListId, body, priority){
+	function createContactListContacts(contactListId, body, priority){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1038,7 +1124,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createContactlistsContactListContacts = createContactlistsContactListContacts;
+	self.createContactListContacts = createContactListContacts;
 	/**
      * @summary Get dialer contactList.
 	 * @description 
@@ -1046,7 +1132,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {string} contactListId - Contact List ID
 	* @param {string} contactId - Contact ID
 	*/
-	function getContactlistsContactListContactsByContactId(contactListId, contactId){
+	function getContactListContactsByContactId(contactListId, contactId){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1068,7 +1154,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContactlistsContactListContactsByContactId = getContactlistsContactListContactsByContactId;
+	self.getContactListContactsByContactId = getContactListContactsByContactId;
 	/**
      * @summary Update a contact.
 	 * @description 
@@ -1084,11 +1170,11 @@ var OutboundApi = function (pureCloudSession) {
    "contactListId": "",
    "data": {
       "nodeType": "",
+      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
-      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -1099,9 +1185,9 @@ var OutboundApi = function (pureCloudSession) {
       "textual": true,
       "boolean": true,
       "binary": true,
+      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
-      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -1111,7 +1197,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateContactlistsContactListContactsByContactId(contactListId, contactId, body){
+	function updateContactListContactsByContactId(contactListId, contactId, body){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1137,7 +1223,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateContactlistsContactListContactsByContactId = updateContactlistsContactListContactsByContactId;
+	self.updateContactListContactsByContactId = updateContactListContactsByContactId;
 	/**
      * @summary Delete a contact.
 	 * @description 
@@ -1145,7 +1231,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {string} contactListId - Contact List ID
 	* @param {string} contactId - Contact ID
 	*/
-	function deleteContactlistsContactListContactsByContactId(contactListId, contactId){
+	function deleteContactListContactsByContactId(contactListId, contactId){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1167,14 +1253,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContactlistsContactListContactsByContactId = deleteContactlistsContactListContactsByContactId;
+	self.deleteContactListContactsByContactId = deleteContactListContactsByContactId;
 	/**
      * @summary Initiate the export of a contact list.
 	 * @description Returns 200 if received OK.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	*/
-	function createContactlistsContactListExport(contactListId){
+	function createContactListExport(contactListId){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/export';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1190,14 +1276,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createContactlistsContactListExport = createContactlistsContactListExport;
+	self.createContactListExport = createContactListExport;
 	/**
      * @summary Get dialer contactList import status.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	*/
-	function getContactlistsContactListImportstatus(contactListId){
+	function getContactListImportstatus(contactListId){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/importstatus';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1213,7 +1299,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContactlistsContactListImportstatus = getContactlistsContactListImportstatus;
+	self.getContactListImportstatus = getContactListImportstatus;
 	/**
      * @summary Get Dialer campaign's penetration rate
 	 * @description Get dialer campaign's penetration rate.
@@ -1221,7 +1307,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {string} contactListId - ContactList ID
 	* @param {string} campaignId - Campaign ID
 	*/
-	function getContactlistsContactListByCampaignIdPenetrationrate(contactListId, campaignId){
+	function getContactListByCampaignIdPenetrationrate(contactListId, campaignId){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}/{campaignId}/penetrationrate';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1243,14 +1329,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContactlistsContactListByCampaignIdPenetrationrate = getContactlistsContactListByCampaignIdPenetrationrate;
+	self.getContactListByCampaignIdPenetrationrate = getContactListByCampaignIdPenetrationrate;
 	/**
      * @summary Add phone numbers to a Dialer DNC list.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} conversationId - Conversation ID
 	*/
-	function createConversationsConversationDnc(conversationId){
+	function createConversationDnc(conversationId){
 		var apipath = '/api/v1/outbound/conversations/{conversationId}/dnc';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1266,7 +1352,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createConversationsConversationDnc = createConversationsConversationDnc;
+	self.createConversationDnc = createConversationDnc;
 	/**
      * @summary Query dialer DNC lists
 	 * @description 
@@ -1392,7 +1478,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	*/
-	function getDnclistsDncList(dncListId, importStatus, includeSize){
+	function getDncList(dncListId, importStatus, includeSize){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1418,7 +1504,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDnclistsDncList = getDnclistsDncList;
+	self.getDncList = getDncList;
 	/**
      * @summary Update dialer DNC list
 	 * @description 
@@ -1446,7 +1532,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateDnclistsDncList(dncListId, body){
+	function updateDncList(dncListId, body){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1466,14 +1552,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateDnclistsDncList = updateDnclistsDncList;
+	self.updateDncList = updateDncList;
 	/**
      * @summary Delete dialer DNC list
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	*/
-	function deleteDnclistsDncList(dncListId){
+	function deleteDncList(dncListId){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1489,14 +1575,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteDnclistsDncList = deleteDnclistsDncList;
+	self.deleteDncList = deleteDncList;
 	/**
      * @summary Initiate the export of a dnc list.
 	 * @description Returns 200 if received OK.
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	*/
-	function createDnclistsDncListExport(dncListId){
+	function createDncListExport(dncListId){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}/export';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1512,14 +1598,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createDnclistsDncListExport = createDnclistsDncListExport;
+	self.createDncListExport = createDncListExport;
 	/**
      * @summary Get dialer dncList import status.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
 	*/
-	function getDnclistsDncListImportstatus(dncListId){
+	function getDncListImportstatus(dncListId){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}/importstatus';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1535,7 +1621,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDnclistsDncListImportstatus = getDnclistsDncListImportstatus;
+	self.getDncListImportstatus = getDncListImportstatus;
 	/**
      * @summary Add phone numbers to a Dialer DNC list.
 	 * @description 
@@ -1543,7 +1629,7 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {string} dncListId - DncList ID
 	* @param {} body - DNC Phone Numbers
 	*/
-	function createDnclistsDncListPhonenumbers(dncListId, body){
+	function createDncListPhonenumbers(dncListId, body){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}/phonenumbers';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1563,7 +1649,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createDnclistsDncListPhonenumbers = createDnclistsDncListPhonenumbers;
+	self.createDncListPhonenumbers = createDncListPhonenumbers;
 	/**
      * @summary Get dialer preview for user
 	 * @description 
@@ -1586,7 +1672,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} previewId - preview ID
 	*/
-	function getPreviewsPreview(previewId){
+	function getPreview(previewId){
 		var apipath = '/api/v1/outbound/previews/{previewId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1602,7 +1688,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPreviewsPreview = getPreviewsPreview;
+	self.getPreview = getPreview;
 	/**
      * @summary Disposition preview call
 	 * @description 
@@ -1626,7 +1712,7 @@ var OutboundApi = function (pureCloudSession) {
    }
 }
 	*/
-	function createPreviewsPreviewDispositioncall(previewId, body){
+	function createPreviewDispositioncall(previewId, body){
 		var apipath = '/api/v1/outbound/previews/{previewId}/dispositioncall';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1646,7 +1732,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createPreviewsPreviewDispositioncall = createPreviewsPreviewDispositioncall;
+	self.createPreviewDispositioncall = createPreviewDispositioncall;
 	/**
      * @summary place preview call
 	 * @description 
@@ -1660,7 +1746,7 @@ var OutboundApi = function (pureCloudSession) {
    "phoneNumber": ""
 }
 	*/
-	function createPreviewsPreviewPlacecall(previewId, body){
+	function createPreviewPlacecall(previewId, body){
 		var apipath = '/api/v1/outbound/previews/{previewId}/placecall';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1680,7 +1766,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createPreviewsPreviewPlacecall = createPreviewsPreviewPlacecall;
+	self.createPreviewPlacecall = createPreviewPlacecall;
 	/**
      * @summary Query a list of Rule Sets.
 	 * @description 
@@ -1793,7 +1879,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} ruleSetId - Rule Set ID
 	*/
-	function getRulesetsRuleSet(ruleSetId){
+	function getRuleSet(ruleSetId){
 		var apipath = '/api/v1/outbound/rulesets/{ruleSetId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1809,7 +1895,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRulesetsRuleSet = getRulesetsRuleSet;
+	self.getRuleSet = getRuleSet;
 	/**
      * @summary Update a RuleSet.
 	 * @description 
@@ -1838,7 +1924,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateRulesetsRuleSet(ruleSetId, body){
+	function updateRuleSet(ruleSetId, body){
 		var apipath = '/api/v1/outbound/rulesets/{ruleSetId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1858,14 +1944,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRulesetsRuleSet = updateRulesetsRuleSet;
+	self.updateRuleSet = updateRuleSet;
 	/**
      * @summary Delete a Rule set.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} ruleSetId - Rule Set ID
 	*/
-	function deleteRulesetsRuleSet(ruleSetId){
+	function deleteRuleSet(ruleSetId){
 		var apipath = '/api/v1/outbound/rulesets/{ruleSetId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1881,7 +1967,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteRulesetsRuleSet = deleteRulesetsRuleSet;
+	self.deleteRuleSet = deleteRuleSet;
 	/**
      * @summary Query for a list of dialer campaign schedules.
 	 * @description 
@@ -1904,7 +1990,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
-	function getSchedulesCampaignsCampaign(campaignId){
+	function getSchedulesCampaign(campaignId){
 		var apipath = '/api/v1/outbound/schedules/campaigns/{campaignId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1920,7 +2006,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSchedulesCampaignsCampaign = getSchedulesCampaignsCampaign;
+	self.getSchedulesCampaign = getSchedulesCampaign;
 	/**
      * @summary Update a new campaign schedule.
 	 * @description 
@@ -1945,7 +2031,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateSchedulesCampaignsCampaign(campaignId, body){
+	function updateSchedulesCampaign(campaignId, body){
 		var apipath = '/api/v1/outbound/schedules/campaigns/{campaignId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1965,14 +2051,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateSchedulesCampaignsCampaign = updateSchedulesCampaignsCampaign;
+	self.updateSchedulesCampaign = updateSchedulesCampaign;
 	/**
      * @summary Delete a dialer campaign schedule.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
 	*/
-	function deleteSchedulesCampaignsCampaign(campaignId){
+	function deleteSchedulesCampaign(campaignId){
 		var apipath = '/api/v1/outbound/schedules/campaigns/{campaignId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1988,7 +2074,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSchedulesCampaignsCampaign = deleteSchedulesCampaignsCampaign;
+	self.deleteSchedulesCampaign = deleteSchedulesCampaign;
 	/**
      * @summary Query for a list of dialer sequence schedules.
 	 * @description 
@@ -2011,7 +2097,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Sequence ID
 	*/
-	function getSchedulesSequencesSequence(sequenceId){
+	function getSchedulesSequence(sequenceId){
 		var apipath = '/api/v1/outbound/schedules/sequences/{sequenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2027,7 +2113,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSchedulesSequencesSequence = getSchedulesSequencesSequence;
+	self.getSchedulesSequence = getSchedulesSequence;
 	/**
      * @summary Update a new sequence schedule.
 	 * @description 
@@ -2052,7 +2138,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateSchedulesSequencesSequence(sequenceId, body){
+	function updateSchedulesSequence(sequenceId, body){
 		var apipath = '/api/v1/outbound/schedules/sequences/{sequenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2072,14 +2158,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateSchedulesSequencesSequence = updateSchedulesSequencesSequence;
+	self.updateSchedulesSequence = updateSchedulesSequence;
 	/**
      * @summary Delete a dialer sequence schedule.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Sequence ID
 	*/
-	function deleteSchedulesSequencesSequence(sequenceId){
+	function deleteSchedulesSequence(sequenceId){
 		var apipath = '/api/v1/outbound/schedules/sequences/{sequenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2095,7 +2181,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSchedulesSequencesSequence = deleteSchedulesSequencesSequence;
+	self.deleteSchedulesSequence = deleteSchedulesSequence;
 	/**
      * @summary Query a list of dialer campaign sequences.
 	 * @description 
@@ -2201,7 +2287,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Campaign Sequence ID
 	*/
-	function getSequencesSequence(sequenceId){
+	function getSequence(sequenceId){
 		var apipath = '/api/v1/outbound/sequences/{sequenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2217,7 +2303,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSequencesSequence = getSequencesSequence;
+	self.getSequence = getSequence;
 	/**
      * @summary Update a new campaign sequence.
 	 * @description 
@@ -2239,7 +2325,7 @@ var OutboundApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateSequencesSequence(sequenceId, body){
+	function updateSequence(sequenceId, body){
 		var apipath = '/api/v1/outbound/sequences/{sequenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2259,14 +2345,14 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateSequencesSequence = updateSequencesSequence;
+	self.updateSequence = updateSequence;
 	/**
      * @summary Delete a dialer campaign sequence.
 	 * @description 
 	 * @memberOf OutboundApi#
 	* @param {string} sequenceId - Campaign Sequence ID
 	*/
-	function deleteSequencesSequence(sequenceId){
+	function deleteSequence(sequenceId){
 		var apipath = '/api/v1/outbound/sequences/{sequenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2282,7 +2368,7 @@ var OutboundApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSequencesSequence = deleteSequencesSequence;
+	self.deleteSequence = deleteSequence;
 	/**
      * @summary Get the Dialer wrap up code mapping.
 	 * @description 

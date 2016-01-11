@@ -38,7 +38,7 @@ var FaxApi = function (pureCloudSession) {
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
-	function getDocumentsDocument(documentId){
+	function getDocument(documentId){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -54,7 +54,7 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocumentsDocument = getDocumentsDocument;
+	self.getDocument = getDocument;
 	/**
      * @summary Update a fax document.
 	 * @description 
@@ -92,7 +92,7 @@ var FaxApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateDocumentsDocument(documentId, body){
+	function updateDocument(documentId, body){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -112,14 +112,14 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateDocumentsDocument = updateDocumentsDocument;
+	self.updateDocument = updateDocument;
 	/**
      * @summary Delete a fax document.
 	 * @description 
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
-	function deleteDocumentsDocument(documentId){
+	function deleteDocument(documentId){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -135,14 +135,14 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteDocumentsDocument = deleteDocumentsDocument;
+	self.deleteDocument = deleteDocument;
 	/**
      * @summary Download a fax document.
 	 * @description 
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
-	function getDocumentsDocumentContent(documentId){
+	function getDocumentContent(documentId){
 		var apipath = '/api/v1/fax/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -158,7 +158,7 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocumentsDocumentContent = getDocumentsDocumentContent;
+	self.getDocumentContent = getDocumentContent;
 	/**
      * @summary Get fax summary
 	 * @description 

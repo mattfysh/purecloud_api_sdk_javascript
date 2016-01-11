@@ -58,7 +58,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	*/
-	function getMessagesMessage(messageId){
+	function getMessage(messageId){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -74,7 +74,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessagesMessage = getMessagesMessage;
+	self.getMessage = getMessage;
 	/**
      * @summary Update a message.
 	 * @description 
@@ -111,7 +111,6 @@ var VoicemailApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -133,7 +132,7 @@ var VoicemailApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateMessagesMessage(messageId, body){
+	function updateMessage(messageId, body){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -153,14 +152,14 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateMessagesMessage = updateMessagesMessage;
+	self.updateMessage = updateMessage;
 	/**
      * @summary Delete a message.
 	 * @description 
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	*/
-	function deleteMessagesMessage(messageId){
+	function deleteMessage(messageId){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -176,7 +175,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteMessagesMessage = deleteMessagesMessage;
+	self.deleteMessage = deleteMessage;
 	/**
      * @summary Get media playback URI for this message
 	 * @description 
@@ -186,7 +185,7 @@ var VoicemailApi = function (pureCloudSession) {
 	WEBM,
 	WAV,
 	*/
-	function getMessagesMessageMedia(messageId, formatId){
+	function getMessageMedia(messageId, formatId){
 		var apipath = '/api/v1/voicemail/messages/{messageId}/media';
 	    var requestBody;
 	    var queryParameters = {};
@@ -207,7 +206,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessagesMessageMedia = getMessagesMessageMedia;
+	self.getMessageMedia = getMessageMedia;
 
     return self;
 };

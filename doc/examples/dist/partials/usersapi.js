@@ -89,14 +89,6 @@ var UsersApi = function (pureCloudSession) {
    "displayName": "",
    "phoneNumber": "",
    "userImages": [],
-   "status": {
-      "id": "",
-      "name": "",
-      "alertable": true,
-      "dateModified": "",
-      "type": "",
-      "selfUri": ""
-   },
    "chat": {
       "jabberId": ""
    },
@@ -125,13 +117,15 @@ var UsersApi = function (pureCloudSession) {
       "userId": "",
       "call": {},
       "email": {},
-      "chat": {}
+      "chat": {},
+      "socialExpression": {}
    },
    "conversationSummary": {
       "userId": "",
       "call": {},
       "email": {},
-      "chat": {}
+      "chat": {},
+      "socialExpression": {}
    },
    "outOfOffice": {
       "id": "",
@@ -239,14 +233,6 @@ var UsersApi = function (pureCloudSession) {
    "displayName": "",
    "phoneNumber": "",
    "userImages": [],
-   "status": {
-      "id": "",
-      "name": "",
-      "alertable": true,
-      "dateModified": "",
-      "type": "",
-      "selfUri": ""
-   },
    "chat": {
       "jabberId": ""
    },
@@ -275,13 +261,15 @@ var UsersApi = function (pureCloudSession) {
       "userId": "",
       "call": {},
       "email": {},
-      "chat": {}
+      "chat": {},
+      "socialExpression": {}
    },
    "conversationSummary": {
       "userId": "",
       "call": {},
       "email": {},
-      "chat": {}
+      "chat": {},
+      "socialExpression": {}
    },
    "outOfOffice": {
       "id": "",
@@ -374,7 +362,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -439,7 +426,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -691,7 +677,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -826,7 +811,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -867,7 +851,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -941,7 +924,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -982,7 +964,6 @@ var UsersApi = function (pureCloudSession) {
       "displayName": "",
       "phoneNumber": "",
       "userImages": [],
-      "status": {},
       "chat": {},
       "roles": [],
       "voicemailEnabled": true,
@@ -1274,29 +1255,6 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.updateUserRoutingstatus = updateUserRoutingstatus;
-	/**
-     * @summary Get settable statuses
-	 * @description 
-	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	*/
-	function getUserSettablestatuses(userId){
-		var apipath = '/api/v1/users/{userId}/settablestatuses';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserSettablestatuses = getUserSettablestatuses;
 	/**
      * @summary List skills for user
 	 * @description 

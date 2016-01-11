@@ -669,144 +669,7 @@
 
     
 
-    <h4 class="name" id="createCampaigns"><span class="type-signature"></span>createCampaigns<span class="signature">(body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Create a campaign.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Campaign</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line538">line 538</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>Body Example:
-{
-   "id": "",
-   "name": "",
-   "selfUri": "",
-   "phoneNumberColumns": [],
-   "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0
-}</code></pre>
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createCampaignsCampaignCallbackSchedule"><span class="type-signature"></span>createCampaignsCampaignCallbackSchedule<span class="signature">(campaignId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createCampaignCallbackSchedule"><span class="type-signature"></span>createCampaignCallbackSchedule<span class="signature">(campaignId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Schedule a Callback for a Dialer Campaign</p>
@@ -922,7 +785,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line693">line 693</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line779">line 779</a>
     </li></ul></dd>
     
 
@@ -965,10 +828,10 @@
 
     
 
-    <h4 class="name" id="createContactlists"><span class="type-signature"></span>createContactlists<span class="signature">(body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createCampaigns"><span class="type-signature"></span>createCampaigns<span class="signature">(body)</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Create a contact List.</p>
+    <p class="summary">Create a campaign.</p>
     
 
 
@@ -1017,7 +880,7 @@
 
             
 
-            <td class="description last">ContactList</td>
+            <td class="description last">Campaign</td>
         </tr>
 
     
@@ -1058,7 +921,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line864">line 864</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line581">line 581</a>
     </li></ul></dd>
     
 
@@ -1092,18 +955,49 @@
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0,
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
+   "skipPreviewDisabled": true,
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true,
    "selfUri": ""
 }</code></pre>
 
@@ -1114,7 +1008,7 @@
 
     
 
-    <h4 class="name" id="createContactlistsContactListContacts"><span class="type-signature"></span>createContactlistsContactListContacts<span class="signature">(contactListId, body, priority)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createContactListContacts"><span class="type-signature"></span>createContactListContacts<span class="signature">(contactListId, body, priority)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Add contacts to a contact list.</p>
@@ -1253,7 +1147,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1016">line 1016</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1102">line 1102</a>
     </li></ul></dd>
     
 
@@ -1284,7 +1178,7 @@
 
     
 
-    <h4 class="name" id="createContactlistsContactListExport"><span class="type-signature"></span>createContactlistsContactListExport<span class="signature">(contactListId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createContactListExport"><span class="type-signature"></span>createContactListExport<span class="signature">(contactListId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Initiate the export of a contact list.</p>
@@ -1386,7 +1280,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1177">line 1177</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1263">line 1263</a>
     </li></ul></dd>
     
 
@@ -1409,6 +1303,155 @@
 
 
 
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createContactlists"><span class="type-signature"></span>createContactlists<span class="signature">(body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Create a contact List.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ContactList</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line950">line 950</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Body Example:
+{
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0,
+   "selfUri": ""
+}</code></pre>
 
 
 
@@ -1510,7 +1553,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line885">line 885</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line971">line 971</a>
     </li></ul></dd>
     
 
@@ -1541,7 +1584,7 @@
 
     
 
-    <h4 class="name" id="createConversationsConversationDnc"><span class="type-signature"></span>createConversationsConversationDnc<span class="signature">(conversationId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createConversationDnc"><span class="type-signature"></span>createConversationDnc<span class="signature">(conversationId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Add phone numbers to a Dialer DNC list.</p>
@@ -1639,7 +1682,287 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1253">line 1253</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1339">line 1339</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createDncListExport"><span class="type-signature"></span>createDncListExport<span class="signature">(dncListId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Initiate the export of a dnc list.</p>
+    
+
+
+
+<div class="description">
+    Returns 200 if received OK.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dncListId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DncList ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1585">line 1585</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createDncListPhonenumbers"><span class="type-signature"></span>createDncListPhonenumbers<span class="signature">(dncListId, body)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Add phone numbers to a Dialer DNC list.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dncListId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DncList ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DNC Phone Numbers</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1632">line 1632</a>
     </li></ul></dd>
     
 
@@ -1763,7 +2086,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1372">line 1372</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1458">line 1458</a>
     </li></ul></dd>
     
 
@@ -1817,287 +2140,7 @@
 
     
 
-    <h4 class="name" id="createDnclistsDncListExport"><span class="type-signature"></span>createDnclistsDncListExport<span class="signature">(dncListId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Initiate the export of a dnc list.</p>
-    
-
-
-
-<div class="description">
-    Returns 200 if received OK.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dncListId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">DncList ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1499">line 1499</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createDnclistsDncListPhonenumbers"><span class="type-signature"></span>createDnclistsDncListPhonenumbers<span class="signature">(dncListId, body)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Add phone numbers to a Dialer DNC list.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dncListId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">DncList ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">DNC Phone Numbers</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1546">line 1546</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createPreviewsPreviewDispositioncall"><span class="type-signature"></span>createPreviewsPreviewDispositioncall<span class="signature">(previewId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createPreviewDispositioncall"><span class="type-signature"></span>createPreviewDispositioncall<span class="signature">(previewId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Disposition preview call</p>
@@ -2213,7 +2256,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1629">line 1629</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1715">line 1715</a>
     </li></ul></dd>
     
 
@@ -2263,7 +2306,7 @@
 
     
 
-    <h4 class="name" id="createPreviewsPreviewPlacecall"><span class="type-signature"></span>createPreviewsPreviewPlacecall<span class="signature">(previewId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createPreviewPlacecall"><span class="type-signature"></span>createPreviewPlacecall<span class="signature">(previewId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">place preview call</p>
@@ -2379,7 +2422,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1663">line 1663</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1749">line 1749</a>
     </li></ul></dd>
     
 
@@ -2512,7 +2555,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1775">line 1775</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1861">line 1861</a>
     </li></ul></dd>
     
 
@@ -2660,7 +2703,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2183">line 2183</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2269">line 2269</a>
     </li></ul></dd>
     
 
@@ -2708,7 +2751,7 @@
 
     
 
-    <h4 class="name" id="deleteCallabletimesetsCallableTimeSet"><span class="type-signature"></span>deleteCallabletimesetsCallableTimeSet<span class="signature">(callableTimeSetId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteCallableTimeSet"><span class="type-signature"></span>deleteCallableTimeSet<span class="signature">(callableTimeSetId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete callable time set</p>
@@ -2966,7 +3009,7 @@
 
     
 
-    <h4 class="name" id="deleteCampaignsCampaign"><span class="type-signature"></span>deleteCampaignsCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteCampaign"><span class="type-signature"></span>deleteCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a campaign.</p>
@@ -3064,7 +3107,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line620">line 620</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line706">line 706</a>
     </li></ul></dd>
     
 
@@ -3095,7 +3138,7 @@
 
     
 
-    <h4 class="name" id="deleteContactlistsContactList"><span class="type-signature"></span>deleteContactlistsContactList<span class="signature">(contactListId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteContactList"><span class="type-signature"></span>deleteContactList<span class="signature">(contactListId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a contact list.</p>
@@ -3193,7 +3236,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line991">line 991</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1077">line 1077</a>
     </li></ul></dd>
     
 
@@ -3224,7 +3267,7 @@
 
     
 
-    <h4 class="name" id="deleteContactlistsContactListContactsByContactId"><span class="type-signature"></span>deleteContactlistsContactListContactsByContactId<span class="signature">(contactListId, contactId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteContactListContactsByContactId"><span class="type-signature"></span>deleteContactListContactsByContactId<span class="signature">(contactListId, contactId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a contact.</p>
@@ -3345,7 +3388,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1148">line 1148</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1234">line 1234</a>
     </li></ul></dd>
     
 
@@ -3376,7 +3419,7 @@
 
     
 
-    <h4 class="name" id="deleteDnclistsDncList"><span class="type-signature"></span>deleteDnclistsDncList<span class="signature">(dncListId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteDncList"><span class="type-signature"></span>deleteDncList<span class="signature">(dncListId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete dialer DNC list</p>
@@ -3474,7 +3517,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1476">line 1476</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1562">line 1562</a>
     </li></ul></dd>
     
 
@@ -3505,7 +3548,7 @@
 
     
 
-    <h4 class="name" id="deleteRulesetsRuleSet"><span class="type-signature"></span>deleteRulesetsRuleSet<span class="signature">(ruleSetId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteRuleSet"><span class="type-signature"></span>deleteRuleSet<span class="signature">(ruleSetId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a Rule set.</p>
@@ -3603,7 +3646,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1868">line 1868</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1954">line 1954</a>
     </li></ul></dd>
     
 
@@ -3634,7 +3677,7 @@
 
     
 
-    <h4 class="name" id="deleteSchedulesCampaignsCampaign"><span class="type-signature"></span>deleteSchedulesCampaignsCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteSchedulesCampaign"><span class="type-signature"></span>deleteSchedulesCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a dialer campaign schedule.</p>
@@ -3732,7 +3775,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1975">line 1975</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2061">line 2061</a>
     </li></ul></dd>
     
 
@@ -3763,7 +3806,7 @@
 
     
 
-    <h4 class="name" id="deleteSchedulesSequencesSequence"><span class="type-signature"></span>deleteSchedulesSequencesSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteSchedulesSequence"><span class="type-signature"></span>deleteSchedulesSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a dialer sequence schedule.</p>
@@ -3861,7 +3904,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2082">line 2082</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2168">line 2168</a>
     </li></ul></dd>
     
 
@@ -3892,7 +3935,7 @@
 
     
 
-    <h4 class="name" id="deleteSequencesSequence"><span class="type-signature"></span>deleteSequencesSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteSequence"><span class="type-signature"></span>deleteSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Delete a dialer campaign sequence.</p>
@@ -3990,7 +4033,136 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2269">line 2269</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2355">line 2355</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getCallableTimeSet"><span class="type-signature"></span>getCallableTimeSet<span class="signature">(callableTimeSetId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get callable time set</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callableTimeSetId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callable Time Set ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line168">line 168</a>
     </li></ul></dd>
     
 
@@ -4247,135 +4419,6 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line89">line 89</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getCallabletimesetsCallableTimeSet"><span class="type-signature"></span>getCallabletimesetsCallableTimeSet<span class="signature">(callableTimeSetId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get callable time set</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callableTimeSetId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Callable Time Set ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line168">line 168</a>
     </li></ul></dd>
     
 
@@ -4791,6 +4834,264 @@
 
     
 
+    <h4 class="name" id="getCampaign"><span class="type-signature"></span>getCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get dialer campaign.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>campaignId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Campaign ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line602">line 602</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getCampaignDiagnostics"><span class="type-signature"></span>getCampaignDiagnostics<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get campaign diagnostics</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>campaignId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Campaign ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line806">line 806</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="getCampaigns"><span class="type-signature"></span>getCampaigns<span class="signature">(pageSize, pageNumber, filterType, name, contactListId, dncListId, distributionQueueId, edgeGroupId, callAnalysisResponseSetId, sortBy, sortOrder)</span><span class="type-signature"></span></h4>
 
     
@@ -5162,265 +5463,7 @@
 
     
 
-    <h4 class="name" id="getCampaignsCampaign"><span class="type-signature"></span>getCampaignsCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get dialer campaign.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>campaignId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Campaign ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line559">line 559</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getCampaignsCampaignDiagnostics"><span class="type-signature"></span>getCampaignsCampaignDiagnostics<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get campaign diagnostics</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>campaignId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Campaign ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line720">line 720</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getCampaignsCampaignStats"><span class="type-signature"></span>getCampaignsCampaignStats<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getCampaignStats"><span class="type-signature"></span>getCampaignStats<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Get statistics about a Dialer Campaign</p>
@@ -5518,7 +5561,619 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line743">line 743</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line829">line 829</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getContactList"><span class="type-signature"></span>getContactList<span class="signature">(contactListId, importStatus, includeSize)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get dialer contactList.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactListId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ContactList ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>importStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Import status</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>includeSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Include size</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line994">line 994</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getContactListByCampaignIdPenetrationrate"><span class="type-signature"></span>getContactListByCampaignIdPenetrationrate<span class="signature">(contactListId, campaignId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get Dialer campaign's penetration rate</p>
+    
+
+
+
+<div class="description">
+    Get dialer campaign's penetration rate.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactListId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ContactList ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>campaignId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Campaign ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1310">line 1310</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getContactListContactsByContactId"><span class="type-signature"></span>getContactListContactsByContactId<span class="signature">(contactListId, contactId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get dialer contactList.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactListId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Contact List ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contactId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Contact ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1135">line 1135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getContactListImportstatus"><span class="type-signature"></span>getContactListImportstatus<span class="signature">(contactListId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get dialer contactList import status.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>contactListId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ContactList ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1286">line 1286</a>
     </li></ul></dd>
     
 
@@ -5820,7 +6475,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line785">line 785</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line871">line 871</a>
     </li></ul></dd>
     
 
@@ -5851,10 +6506,10 @@
 
     
 
-    <h4 class="name" id="getContactlistsContactList"><span class="type-signature"></span>getContactlistsContactList<span class="signature">(contactListId, importStatus, includeSize)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getDncList"><span class="type-signature"></span>getDncList<span class="signature">(dncListId, importStatus, includeSize)</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Get dialer contactList.</p>
+    <p class="summary">Get dialer DNC list</p>
     
 
 
@@ -5892,7 +6547,7 @@
 
         <tr>
             
-                <td class="name"><code>contactListId</code></td>
+                <td class="name"><code>dncListId</code></td>
             
 
             <td class="type">
@@ -5908,7 +6563,7 @@
 
             
 
-            <td class="description last">ContactList ID</td>
+            <td class="description last">DncList ID</td>
         </tr>
 
     
@@ -5995,7 +6650,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line908">line 908</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1481">line 1481</a>
     </li></ul></dd>
     
 
@@ -6026,17 +6681,13 @@
 
     
 
-    <h4 class="name" id="getContactlistsContactListByCampaignIdPenetrationrate"><span class="type-signature"></span>getContactlistsContactListByCampaignIdPenetrationrate<span class="signature">(contactListId, campaignId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getDncListImportstatus"><span class="type-signature"></span>getDncListImportstatus<span class="signature">(dncListId)</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Get Dialer campaign's penetration rate</p>
+    <p class="summary">Get dialer dncList import status.</p>
     
 
 
-
-<div class="description">
-    Get dialer campaign's penetration rate.
-</div>
 
 
 
@@ -6071,7 +6722,7 @@
 
         <tr>
             
-                <td class="name"><code>contactListId</code></td>
+                <td class="name"><code>dncListId</code></td>
             
 
             <td class="type">
@@ -6087,30 +6738,7 @@
 
             
 
-            <td class="description last">ContactList ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>campaignId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Campaign ID</td>
+            <td class="description last">DncList ID</td>
         </tr>
 
     
@@ -6151,288 +6779,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1224">line 1224</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getContactlistsContactListContactsByContactId"><span class="type-signature"></span>getContactlistsContactListContactsByContactId<span class="signature">(contactListId, contactId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get dialer contactList.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>contactListId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Contact List ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>contactId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Contact ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1049">line 1049</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getContactlistsContactListImportstatus"><span class="type-signature"></span>getContactlistsContactListImportstatus<span class="signature">(contactListId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get dialer contactList import status.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>contactListId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ContactList ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1200">line 1200</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1608">line 1608</a>
     </li></ul></dd>
     
 
@@ -6734,7 +7081,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1295">line 1295</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1381">line 1381</a>
     </li></ul></dd>
     
 
@@ -6765,391 +7112,7 @@
 
     
 
-    <h4 class="name" id="getDnclistsDncList"><span class="type-signature"></span>getDnclistsDncList<span class="signature">(dncListId, importStatus, includeSize)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get dialer DNC list</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dncListId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">DncList ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>importStatus</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Import status</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>includeSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Include size</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1395">line 1395</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getDnclistsDncListImportstatus"><span class="type-signature"></span>getDnclistsDncListImportstatus<span class="signature">(dncListId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get dialer dncList import status.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dncListId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">DncList ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1522">line 1522</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getPreviews"><span class="type-signature"></span>getPreviews<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get dialer preview for user</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1572">line 1572</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getPreviewsPreview"><span class="type-signature"></span>getPreviewsPreview<span class="signature">(previewId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getPreview"><span class="type-signature"></span>getPreview<span class="signature">(previewId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Get dialer preview</p>
@@ -7247,7 +7210,216 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1589">line 1589</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1675">line 1675</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getPreviews"><span class="type-signature"></span>getPreviews<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get dialer preview for user</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1658">line 1658</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getRuleSet"><span class="type-signature"></span>getRuleSet<span class="signature">(ruleSetId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get a Rule Set by ID.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ruleSetId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Rule Set ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1882">line 1882</a>
     </li></ul></dd>
     
 
@@ -7503,7 +7675,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1707">line 1707</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1793">line 1793</a>
     </li></ul></dd>
     
 
@@ -7534,216 +7706,7 @@
 
     
 
-    <h4 class="name" id="getRulesetsRuleSet"><span class="type-signature"></span>getRulesetsRuleSet<span class="signature">(ruleSetId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get a Rule Set by ID.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>ruleSetId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Rule Set ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1796">line 1796</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSchedulesCampaigns"><span class="type-signature"></span>getSchedulesCampaigns<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Query for a list of dialer campaign schedules.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1890">line 1890</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSchedulesCampaignsCampaign"><span class="type-signature"></span>getSchedulesCampaignsCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getSchedulesCampaign"><span class="type-signature"></span>getSchedulesCampaign<span class="signature">(campaignId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Get a dialer campaign schedule.</p>
@@ -7841,7 +7804,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1907">line 1907</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1993">line 1993</a>
     </li></ul></dd>
     
 
@@ -7872,10 +7835,10 @@
 
     
 
-    <h4 class="name" id="getSchedulesSequences"><span class="type-signature"></span>getSchedulesSequences<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getSchedulesCampaigns"><span class="type-signature"></span>getSchedulesCampaigns<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
-    <p class="summary">Query for a list of dialer sequence schedules.</p>
+    <p class="summary">Query for a list of dialer campaign schedules.</p>
     
 
 
@@ -7921,7 +7884,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1997">line 1997</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1976">line 1976</a>
     </li></ul></dd>
     
 
@@ -7952,7 +7915,7 @@
 
     
 
-    <h4 class="name" id="getSchedulesSequencesSequence"><span class="type-signature"></span>getSchedulesSequencesSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getSchedulesSequence"><span class="type-signature"></span>getSchedulesSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Get a dialer sequence schedule.</p>
@@ -8050,7 +8013,216 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2014">line 2014</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2100">line 2100</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSchedulesSequences"><span class="type-signature"></span>getSchedulesSequences<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Query for a list of dialer sequence schedules.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2083">line 2083</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getSequence"><span class="type-signature"></span>getSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Get a dialer campaign sequence.</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sequenceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Campaign Sequence ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2290">line 2290</a>
     </li></ul></dd>
     
 
@@ -8306,136 +8478,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2122">line 2122</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSequencesSequence"><span class="type-signature"></span>getSequencesSequence<span class="signature">(sequenceId)</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary">Get a dialer campaign sequence.</p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>sequenceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Campaign Sequence ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2204">line 2204</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2208">line 2208</a>
     </li></ul></dd>
     
 
@@ -8515,7 +8558,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2291">line 2291</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2377">line 2377</a>
     </li></ul></dd>
     
 
@@ -8546,7 +8589,7 @@
 
     
 
-    <h4 class="name" id="updateCallabletimesetsCallableTimeSet"><span class="type-signature"></span>updateCallabletimesetsCallableTimeSet<span class="signature">(callableTimeSetId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateCallableTimeSet"><span class="type-signature"></span>updateCallableTimeSet<span class="signature">(callableTimeSetId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update callable time set</p>
@@ -8868,7 +8911,7 @@
 
     
 
-    <h4 class="name" id="updateCampaignsCampaign"><span class="type-signature"></span>updateCampaignsCampaign<span class="signature">(campaignId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateCampaign"><span class="type-signature"></span>updateCampaign<span class="signature">(campaignId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a campaign.</p>
@@ -8984,7 +9027,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line593">line 593</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line679">line 679</a>
     </li></ul></dd>
     
 
@@ -9015,10 +9058,53 @@
 {
    "id": "",
    "name": "",
-   "selfUri": "",
-   "phoneNumberColumns": [],
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true,
+   "selfUri": ""
 }</code></pre>
 
 
@@ -9028,7 +9114,7 @@
 
     
 
-    <h4 class="name" id="updateCampaignsCampaignAgentsByUserId"><span class="type-signature"></span>updateCampaignsCampaignAgentsByUserId<span class="signature">(campaignId, userId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateCampaignAgentsByUserId"><span class="type-signature"></span>updateCampaignAgentsByUserId<span class="signature">(campaignId, userId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Send notification that an agent's state changed</p>
@@ -9171,7 +9257,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line650">line 650</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line736">line 736</a>
     </li></ul></dd>
     
 
@@ -9210,7 +9296,7 @@
 
     
 
-    <h4 class="name" id="updateContactlistsContactList"><span class="type-signature"></span>updateContactlistsContactList<span class="signature">(contactListId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateContactList"><span class="type-signature"></span>updateContactList<span class="signature">(contactListId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a contact list.</p>
@@ -9326,7 +9412,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line964">line 964</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1050">line 1050</a>
     </li></ul></dd>
     
 
@@ -9382,7 +9468,7 @@
 
     
 
-    <h4 class="name" id="updateContactlistsContactListContactsByContactId"><span class="type-signature"></span>updateContactlistsContactListContactsByContactId<span class="signature">(contactListId, contactId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateContactListContactsByContactId"><span class="type-signature"></span>updateContactListContactsByContactId<span class="signature">(contactListId, contactId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a contact.</p>
@@ -9521,7 +9607,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1114">line 1114</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1200">line 1200</a>
     </li></ul></dd>
     
 
@@ -9555,11 +9641,11 @@
    "contactListId": "",
    "data": {
       "nodeType": "",
+      "missingNode": true,
       "object": true,
       "pojo": true,
       "number": true,
       "integralNumber": true,
-      "floatingPointNumber": true,
       "short": true,
       "int": true,
       "long": true,
@@ -9570,9 +9656,9 @@
       "textual": true,
       "boolean": true,
       "binary": true,
+      "floatingPointNumber": true,
       "valueNode": true,
       "containerNode": true,
-      "missingNode": true,
       "array": true,
       "null": true
    },
@@ -9589,7 +9675,7 @@
 
     
 
-    <h4 class="name" id="updateDnclistsDncList"><span class="type-signature"></span>updateDnclistsDncList<span class="signature">(dncListId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateDncList"><span class="type-signature"></span>updateDncList<span class="signature">(dncListId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update dialer DNC list</p>
@@ -9705,7 +9791,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1449">line 1449</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1535">line 1535</a>
     </li></ul></dd>
     
 
@@ -9759,7 +9845,7 @@
 
     
 
-    <h4 class="name" id="updateRulesetsRuleSet"><span class="type-signature"></span>updateRulesetsRuleSet<span class="signature">(ruleSetId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateRuleSet"><span class="type-signature"></span>updateRuleSet<span class="signature">(ruleSetId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a RuleSet.</p>
@@ -9875,7 +9961,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1841">line 1841</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1927">line 1927</a>
     </li></ul></dd>
     
 
@@ -9930,7 +10016,7 @@
 
     
 
-    <h4 class="name" id="updateSchedulesCampaignsCampaign"><span class="type-signature"></span>updateSchedulesCampaignsCampaign<span class="signature">(campaignId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateSchedulesCampaign"><span class="type-signature"></span>updateSchedulesCampaign<span class="signature">(campaignId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a new campaign schedule.</p>
@@ -10046,7 +10132,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line1948">line 1948</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2034">line 2034</a>
     </li></ul></dd>
     
 
@@ -10097,7 +10183,7 @@
 
     
 
-    <h4 class="name" id="updateSchedulesSequencesSequence"><span class="type-signature"></span>updateSchedulesSequencesSequence<span class="signature">(sequenceId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateSchedulesSequence"><span class="type-signature"></span>updateSchedulesSequence<span class="signature">(sequenceId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a new sequence schedule.</p>
@@ -10213,7 +10299,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2055">line 2055</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2141">line 2141</a>
     </li></ul></dd>
     
 
@@ -10264,7 +10350,7 @@
 
     
 
-    <h4 class="name" id="updateSequencesSequence"><span class="type-signature"></span>updateSequencesSequence<span class="signature">(sequenceId, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateSequence"><span class="type-signature"></span>updateSequence<span class="signature">(sequenceId, body)</span><span class="type-signature"></span></h4>
 
     
     <p class="summary">Update a new campaign sequence.</p>
@@ -10380,7 +10466,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2242">line 2242</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2328">line 2328</a>
     </li></ul></dd>
     
 
@@ -10521,7 +10607,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2320">line 2320</a>
+        <a href="outboundapi.js.html">outboundapi.js</a>, <a href="outboundapi.js.html#line2406">line 2406</a>
     </li></ul></dd>
     
 
@@ -10578,7 +10664,7 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="StatusesApi.html">StatusesApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="BillingApi.html">BillingApi</a></li><li><a href="BridgeApi.html">BridgeApi</a></li><li><a href="CarrierservicesApi.html">CarrierservicesApi</a></li><li><a href="CertificateApi.html">CertificateApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentmanagementApi.html">ContentmanagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DateApi.html">DateApi</a></li><li><a href="DiagnosticsApi.html">DiagnosticsApi</a></li><li><a href="DirectoryApi.html">DirectoryApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="EvaluationsApi.html">EvaluationsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="FeaturetogglesApi.html">FeaturetogglesApi</a></li><li><a href="FlowsApi.html">FlowsApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="HealthApi.html">HealthApi</a></li><li><a href="IdentityprovidersApi.html">IdentityprovidersApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OauthApi.html">OauthApi</a></li><li><a href="OrphanrecordingsApi.html">OrphanrecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresencedefinitionsApi.html">PresencedefinitionsApi</a></li><li><a href="ProcessautomationApi.html">ProcessautomationApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="ResponsemanagementApi.html">ResponsemanagementApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScripterApi.html">ScripterApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="SessionsApi.html">SessionsApi</a></li><li><a href="SettingsApi.html">SettingsApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyApi.html">TelephonyApi</a></li><li><a href="TimezonesApi.html">TimezonesApi</a></li><li><a href="UserrecordingsApi.html">UserrecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li><li><a href="WorkforcemanagementApi.html">WorkforcemanagementApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
 </nav>
 
 <br class="clear">

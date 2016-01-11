@@ -5,6 +5,41 @@
 */
 var ConfigurationApi = function (pureCloudSession) {
 	/**
+     * @summary Validates a street address
+	 * @description 
+	 * @memberOf ConfigurationApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "address": {
+      "id": "",
+      "name": "",
+      "street": "",
+      "city": "",
+      "countryName": "",
+      "stateName": "",
+      "postalCode": "",
+      "selfUri": ""
+   }
+}
+	*/
+	function createAddressvalidation(body){
+		var apipath = '/api/v1/configuration/addressvalidation';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createAddressvalidation = createAddressvalidation;
+	/**
      * @summary Get a listing of DID Pools
 	 * @description 
 	 * @memberOf ConfigurationApi#
@@ -225,7 +260,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} didId - DID ID
 	*/
-	function getDidsDId(didId){
+	function getDId(didId){
 		var apipath = '/api/v1/configuration/dids/{didId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -241,7 +276,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDidsDId = getDidsDId;
+	self.getDId = getDId;
 	/**
      * @summary Update a DID by ID.
 	 * @description 
@@ -277,7 +312,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateDidsDId(didId, body){
+	function updateDId(didId, body){
 		var apipath = '/api/v1/configuration/dids/{didId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -297,7 +332,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateDidsDId = updateDidsDId;
+	self.updateDId = updateDId;
 	/**
      * @summary Get the list of edge groups.
 	 * @description 
@@ -381,7 +416,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeGroupId - Edge group ID
 	*/
-	function getEdgegroupsEdgeGroup(edgeGroupId){
+	function getEdgeGroup(edgeGroupId){
 		var apipath = '/api/v1/configuration/edgegroups/{edgeGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -397,7 +432,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgegroupsEdgeGroup = getEdgegroupsEdgeGroup;
+	self.getEdgeGroup = getEdgeGroup;
 	/**
      * @summary Update an edge group.
 	 * @description 
@@ -421,7 +456,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateEdgegroupsEdgeGroup(edgeGroupId, body){
+	function updateEdgeGroup(edgeGroupId, body){
 		var apipath = '/api/v1/configuration/edgegroups/{edgeGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -441,14 +476,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateEdgegroupsEdgeGroup = updateEdgegroupsEdgeGroup;
+	self.updateEdgeGroup = updateEdgeGroup;
 	/**
      * @summary Delete an edge group.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeGroupId - Edge group ID
 	*/
-	function deleteEdgegroupsEdgeGroup(edgeGroupId){
+	function deleteEdgeGroup(edgeGroupId){
 		var apipath = '/api/v1/configuration/edgegroups/{edgeGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -464,7 +499,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEdgegroupsEdgeGroup = deleteEdgegroupsEdgeGroup;
+	self.deleteEdgeGroup = deleteEdgeGroup;
 	/**
      * @summary Get the list of edges.
 	 * @description 
@@ -760,7 +795,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function getEdgesEdge(edgeId){
+	function getEdge(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -776,7 +811,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdge = getEdgesEdge;
+	self.getEdge = getEdge;
 	/**
      * @summary Update a edge.
 	 * @description 
@@ -849,7 +884,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateEdgesEdge(edgeId, body){
+	function updateEdge(edgeId, body){
 		var apipath = '/api/v1/configuration/edges/{edgeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -869,14 +904,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateEdgesEdge = updateEdgesEdge;
+	self.updateEdge = updateEdge;
 	/**
      * @summary Delete a edge.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function deleteEdgesEdge(edgeId){
+	function deleteEdge(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -892,7 +927,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEdgesEdge = deleteEdgesEdge;
+	self.deleteEdge = deleteEdge;
 	/**
      * @summary Get the list of lines.
 	 * @description 
@@ -901,7 +936,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getEdgesEdgeLines(edgeId, pageSize, pageNumber){
+	function getEdgeLines(edgeId, pageSize, pageNumber){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/lines';
 	    var requestBody;
 	    var queryParameters = {};
@@ -927,7 +962,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgeLines = getEdgesEdgeLines;
+	self.getEdgeLines = getEdgeLines;
 	/**
      * @summary Get line
 	 * @description 
@@ -935,7 +970,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	* @param {string} lineId - Line ID
 	*/
-	function getEdgesEdgeLinesByLineId(edgeId, lineId){
+	function getEdgeLinesByLineId(edgeId, lineId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/lines/{lineId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -957,7 +992,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgeLinesByLineId = getEdgesEdgeLinesByLineId;
+	self.getEdgeLinesByLineId = getEdgeLinesByLineId;
 	/**
      * @summary Update a line.
 	 * @description 
@@ -1052,7 +1087,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateEdgesEdgeLinesByLineId(edgeId, lineId, body){
+	function updateEdgeLinesByLineId(edgeId, lineId, body){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/lines/{lineId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1078,14 +1113,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateEdgesEdgeLinesByLineId = updateEdgesEdgeLinesByLineId;
+	self.updateEdgeLinesByLineId = updateEdgeLinesByLineId;
 	/**
      * @summary Get edge logical interfaces.
 	 * @description Retrieve a list of all configured logical interfaces from a specific edge.
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function getEdgesEdgeLogicalinterfaces(edgeId){
+	function getEdgeLogicalinterfaces(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1101,7 +1136,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgeLogicalinterfaces = getEdgesEdgeLogicalinterfaces;
+	self.getEdgeLogicalinterfaces = getEdgeLogicalinterfaces;
 	/**
      * @summary Create an edge logical interface.
 	 * @description Create
@@ -1152,7 +1187,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function createEdgesEdgeLogicalinterfaces(edgeId, body){
+	function createEdgeLogicalinterfaces(edgeId, body){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1172,7 +1207,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createEdgesEdgeLogicalinterfaces = createEdgesEdgeLogicalinterfaces;
+	self.createEdgeLogicalinterfaces = createEdgeLogicalinterfaces;
 	/**
      * @summary Get an edge logical interface
 	 * @description 
@@ -1180,7 +1215,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	* @param {string} interfaceId - Interface ID
 	*/
-	function getEdgesEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId){
+	function getEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1202,7 +1237,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgeLogicalinterfacesByInterfaceId = getEdgesEdgeLogicalinterfacesByInterfaceId;
+	self.getEdgeLogicalinterfacesByInterfaceId = getEdgeLogicalinterfacesByInterfaceId;
 	/**
      * @summary Update an edge logical interface.
 	 * @description 
@@ -1254,7 +1289,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateEdgesEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId, body){
+	function updateEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId, body){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1280,7 +1315,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateEdgesEdgeLogicalinterfacesByInterfaceId = updateEdgesEdgeLogicalinterfacesByInterfaceId;
+	self.updateEdgeLogicalinterfacesByInterfaceId = updateEdgeLogicalinterfacesByInterfaceId;
 	/**
      * @summary Delete an edge logical interface
 	 * @description 
@@ -1288,7 +1323,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	* @param {string} interfaceId - Interface ID
 	*/
-	function deleteEdgesEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId){
+	function deleteEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1310,14 +1345,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEdgesEdgeLogicalinterfacesByInterfaceId = deleteEdgesEdgeLogicalinterfacesByInterfaceId;
+	self.deleteEdgeLogicalinterfacesByInterfaceId = deleteEdgeLogicalinterfacesByInterfaceId;
 	/**
      * @summary Retrieve a list of all configured physical interfaces from a specific edge.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function getEdgesEdgePhysicalinterfaces(edgeId){
+	function getEdgePhysicalinterfaces(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/physicalinterfaces';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1333,7 +1368,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgePhysicalinterfaces = getEdgesEdgePhysicalinterfaces;
+	self.getEdgePhysicalinterfaces = getEdgePhysicalinterfaces;
 	/**
      * @summary Get edge physical interface.
 	 * @description Retrieve a physical interface from a specific edge.
@@ -1341,7 +1376,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	* @param {string} interfaceId - Interface ID
 	*/
-	function getEdgesEdgePhysicalinterfacesByInterfaceId(edgeId, interfaceId){
+	function getEdgePhysicalinterfacesByInterfaceId(edgeId, interfaceId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/physicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1363,14 +1398,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgePhysicalinterfacesByInterfaceId = getEdgesEdgePhysicalinterfacesByInterfaceId;
+	self.getEdgePhysicalinterfacesByInterfaceId = getEdgePhysicalinterfacesByInterfaceId;
 	/**
      * @summary Reboot an Edge
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function createEdgesEdgeReboot(edgeId){
+	function createEdgeReboot(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/reboot';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1386,14 +1421,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createEdgesEdgeReboot = createEdgesEdgeReboot;
+	self.createEdgeReboot = createEdgeReboot;
 	/**
      * @summary Gets software update status information about any edge.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function getEdgesEdgeSoftwareupdate(edgeId){
+	function getEdgeSoftwareupdate(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareupdate';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1409,7 +1444,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgeSoftwareupdate = getEdgesEdgeSoftwareupdate;
+	self.getEdgeSoftwareupdate = getEdgeSoftwareupdate;
 	/**
      * @summary Starts a software update for this edge.
 	 * @description 
@@ -1439,7 +1474,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "current": true
 }
 	*/
-	function createEdgesEdgeSoftwareupdate(edgeId, body){
+	function createEdgeSoftwareupdate(edgeId, body){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareupdate';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1459,14 +1494,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createEdgesEdgeSoftwareupdate = createEdgesEdgeSoftwareupdate;
+	self.createEdgeSoftwareupdate = createEdgeSoftwareupdate;
 	/**
      * @summary Cancels any in-progress update for this edge.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function deleteEdgesEdgeSoftwareupdate(edgeId){
+	function deleteEdgeSoftwareupdate(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareupdate';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1482,14 +1517,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEdgesEdgeSoftwareupdate = deleteEdgesEdgeSoftwareupdate;
+	self.deleteEdgeSoftwareupdate = deleteEdgeSoftwareupdate;
 	/**
      * @summary Gets all the available software versions for this edge.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
 	*/
-	function getEdgesEdgeSoftwareversions(edgeId){
+	function getEdgeSoftwareversions(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareversions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1505,14 +1540,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEdgesEdgeSoftwareversions = getEdgesEdgeSoftwareversions;
+	self.getEdgeSoftwareversions = getEdgeSoftwareversions;
 	/**
      * @summary Unpair an Edge
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge Id
 	*/
-	function createEdgesEdgeUnpair(edgeId){
+	function createEdgeUnpair(edgeId){
 		var apipath = '/api/v1/configuration/edges/{edgeId}/unpair';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1528,7 +1563,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createEdgesEdgeUnpair = createEdgesEdgeUnpair;
+	self.createEdgeUnpair = createEdgeUnpair;
 	/**
      * @summary Get the edge version report.
 	 * @description The report will not have consistent data about the edge version(s) until all edges have been reset.
@@ -1642,7 +1677,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} endpointId - Endpoint ID
 	*/
-	function getEndpointsEndpoint(endpointId){
+	function getEndpoint(endpointId){
 		var apipath = '/api/v1/configuration/endpoints/{endpointId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1658,7 +1693,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEndpointsEndpoint = getEndpointsEndpoint;
+	self.getEndpoint = getEndpoint;
 	/**
      * @summary Update endpoint
 	 * @description 
@@ -1696,7 +1731,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateEndpointsEndpoint(endpointId, body){
+	function updateEndpoint(endpointId, body){
 		var apipath = '/api/v1/configuration/endpoints/{endpointId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1716,14 +1751,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateEndpointsEndpoint = updateEndpointsEndpoint;
+	self.updateEndpoint = updateEndpoint;
 	/**
      * @summary Delete endpoint
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} endpointId - Endpoint ID
 	*/
-	function deleteEndpointsEndpoint(endpointId){
+	function deleteEndpoint(endpointId){
 		var apipath = '/api/v1/configuration/endpoints/{endpointId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1739,7 +1774,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEndpointsEndpoint = deleteEndpointsEndpoint;
+	self.deleteEndpoint = deleteEndpoint;
 	/**
      * @summary Get a listing of extension pools
 	 * @description 
@@ -1825,7 +1860,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} extensionPoolId - Extension pool ID
 	*/
-	function getExtensionpoolsExtensionPool(extensionPoolId){
+	function getExtensionPool(extensionPoolId){
 		var apipath = '/api/v1/configuration/extensionpools/{extensionPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1841,7 +1876,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExtensionpoolsExtensionPool = getExtensionpoolsExtensionPool;
+	self.getExtensionPool = getExtensionPool;
 	/**
      * @summary Update an extension pool by ID
 	 * @description 
@@ -1867,7 +1902,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateExtensionpoolsExtensionPool(extensionPoolId, body){
+	function updateExtensionPool(extensionPoolId, body){
 		var apipath = '/api/v1/configuration/extensionpools/{extensionPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1887,14 +1922,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateExtensionpoolsExtensionPool = updateExtensionpoolsExtensionPool;
+	self.updateExtensionPool = updateExtensionPool;
 	/**
      * @summary Delete an extension pool by ID
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} extensionPoolId - Extension pool ID
 	*/
-	function deleteExtensionpoolsExtensionPool(extensionPoolId){
+	function deleteExtensionPool(extensionPoolId){
 		var apipath = '/api/v1/configuration/extensionpools/{extensionPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1910,7 +1945,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteExtensionpoolsExtensionPool = deleteExtensionpoolsExtensionPool;
+	self.deleteExtensionPool = deleteExtensionPool;
 	/**
      * @summary Get a listing of extensions
 	 * @description 
@@ -1963,7 +1998,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} extensionId - Extension ID
 	*/
-	function getExtensionsExtension(extensionId){
+	function getExtension(extensionId){
 		var apipath = '/api/v1/configuration/extensions/{extensionId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1979,7 +2014,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExtensionsExtension = getExtensionsExtension;
+	self.getExtension = getExtension;
 	/**
      * @summary Update an extension by ID.
 	 * @description 
@@ -2015,7 +2050,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateExtensionsExtension(extensionId, body){
+	function updateExtension(extensionId, body){
 		var apipath = '/api/v1/configuration/extensions/{extensionId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2035,7 +2070,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateExtensionsExtension = updateExtensionsExtension;
+	self.updateExtension = updateExtension;
 	/**
      * @summary Get context organization.
 	 * @description 
@@ -2327,7 +2362,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} outboundRouteId - Outbound route ID
 	*/
-	function getOutboundroutesOutboundRoute(outboundRouteId){
+	function getOutboundRoute(outboundRouteId){
 		var apipath = '/api/v1/configuration/outboundroutes/{outboundRouteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2343,7 +2378,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOutboundroutesOutboundRoute = getOutboundroutesOutboundRoute;
+	self.getOutboundRoute = getOutboundRoute;
 	/**
      * @summary Update outbound route
 	 * @description 
@@ -2393,7 +2428,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateOutboundroutesOutboundRoute(outboundRouteId, body){
+	function updateOutboundRoute(outboundRouteId, body){
 		var apipath = '/api/v1/configuration/outboundroutes/{outboundRouteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2413,14 +2448,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateOutboundroutesOutboundRoute = updateOutboundroutesOutboundRoute;
+	self.updateOutboundRoute = updateOutboundRoute;
 	/**
      * @summary Delete Outbound Route
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} outboundRouteId - Outbound route ID
 	*/
-	function deleteOutboundroutesOutboundRoute(outboundRouteId){
+	function deleteOutboundRoute(outboundRouteId){
 		var apipath = '/api/v1/configuration/outboundroutes/{outboundRouteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2436,7 +2471,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteOutboundroutesOutboundRoute = deleteOutboundroutesOutboundRoute;
+	self.deleteOutboundRoute = deleteOutboundRoute;
 	/**
      * @summary Get encryption key list
 	 * @description 
@@ -2537,8 +2572,9 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} name - the policy name - used for filtering results in searches.
 	* @param {boolean} enabled - checks to see if policy is enabled - use enabled = true or enabled = false
 	* @param {boolean} summary - provides a less verbose response of policy lists.
+	* @param {boolean} hasErrors - provides a way to fetch all policies with errors or policies that do not have errors
 	*/
-	function getRetentionpolicies(pageSize, pageNumber, sortBy, expand, name, enabled, summary){
+	function getRetentionpolicies(pageSize, pageNumber, sortBy, expand, name, enabled, summary, hasErrors){
 		var apipath = '/api/v1/configuration/retentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2581,6 +2617,11 @@ var ConfigurationApi = function (pureCloudSession) {
 		}
 
 
+		if(hasErrors !== undefined && hasErrors !== null){
+			queryParameters.hasErrors = hasErrors;
+		}
+
+
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getRetentionpolicies = getRetentionpolicies;
@@ -2616,6 +2657,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
       "retentionDuration": {}
+   },
+   "policyErrors": {
+      "policyErrorMessages": []
    },
    "selfUri": ""
 }
@@ -2718,6 +2762,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "assignCalibrations": [],
       "retentionDuration": {}
    },
+   "policyErrors": {
+      "policyErrorMessages": []
+   },
    "selfUri": ""
 }
 	*/
@@ -2798,6 +2845,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
       "retentionDuration": {}
+   },
+   "policyErrors": {
+      "policyErrorMessages": []
    },
    "selfUri": ""
 }
@@ -3134,7 +3184,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	* @param {string} siteId - Site ID
 	*/
-	function getSitesSite(siteId){
+	function getSite(siteId){
 		var apipath = '/api/v1/configuration/sites/{siteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3150,7 +3200,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSitesSite = getSitesSite;
+	self.getSite = getSite;
 	/**
      * @summary Update a endpoint.
 	 * @description 
@@ -3191,7 +3241,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "selfUri": ""
 }
 	*/
-	function updateSitesSite(siteId, body){
+	function updateSite(siteId, body){
 		var apipath = '/api/v1/configuration/sites/{siteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3211,14 +3261,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateSitesSite = updateSitesSite;
+	self.updateSite = updateSite;
 	/**
      * @summary Delete an ednpoint
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} siteId - Site ID
 	*/
-	function deleteSitesSite(siteId){
+	function deleteSite(siteId){
 		var apipath = '/api/v1/configuration/sites/{siteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3234,14 +3284,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSitesSite = deleteSitesSite;
+	self.deleteSite = deleteSite;
 	/**
      * @summary Get the list of Number Plans for this Site.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} siteId - Site ID
 	*/
-	function getSitesSiteNumberplans(siteId){
+	function getSiteNumberplans(siteId){
 		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3257,7 +3307,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSitesSiteNumberplans = getSitesSiteNumberplans;
+	self.getSiteNumberplans = getSiteNumberplans;
 	/**
      * @summary Update the list of Number Plans.
 	 * @description 
@@ -3265,7 +3315,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	* @param {} body - 
 	*/
-	function updateSitesSiteNumberplans(siteId, body){
+	function updateSiteNumberplans(siteId, body){
 		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3285,7 +3335,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateSitesSiteNumberplans = updateSitesSiteNumberplans;
+	self.updateSiteNumberplans = updateSiteNumberplans;
 	/**
      * @summary Get a list of Classifications for this Site
 	 * @description 
@@ -3293,7 +3343,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	* @param {string} classification - Classification
 	*/
-	function getSitesSiteNumberplansClassifications(siteId, classification){
+	function getSiteNumberplansClassifications(siteId, classification){
 		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans/classifications';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3314,7 +3364,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSitesSiteNumberplansClassifications = getSitesSiteNumberplansClassifications;
+	self.getSiteNumberplansClassifications = getSiteNumberplansClassifications;
 	/**
      * @summary Get a Number Plan by ID.
 	 * @description 
@@ -3322,7 +3372,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	* @param {string} numberPlanId - Number Plan ID
 	*/
-	function getSitesSiteNumberplansByNumberPlanId(siteId, numberPlanId){
+	function getSiteNumberplansByNumberPlanId(siteId, numberPlanId){
 		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans/{numberPlanId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3344,14 +3394,14 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSitesSiteNumberplansByNumberPlanId = getSitesSiteNumberplansByNumberPlanId;
+	self.getSiteNumberplansByNumberPlanId = getSiteNumberplansByNumberPlanId;
 	/**
      * @summary Triggers the rebalance operation.
 	 * @description 
 	 * @memberOf ConfigurationApi#
 	* @param {string} siteId - Site ID
 	*/
-	function createSitesSiteRebalance(siteId){
+	function createSiteRebalance(siteId){
 		var apipath = '/api/v1/configuration/sites/{siteId}/rebalance';
 	    var requestBody;
 	    var queryParameters = {};
@@ -3367,7 +3417,7 @@ var ConfigurationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createSitesSiteRebalance = createSitesSiteRebalance;
+	self.createSiteRebalance = createSiteRebalance;
 	/**
      * @summary Get a user's voicemail policy
 	 * @description 
