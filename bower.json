@@ -1,0 +1,24 @@
+{
+    "name": "PureCloud",
+    "homepage": "https://github.com/MyPureCloud/purecloud_javascript_client",
+    "authors": [
+        "Interactive Intelligence"
+    ],
+    "description": "A wrapper for the Public API made out of JavaScript",
+    "main": "dist/purecloud-api.js",
+    "moduleType": [
+        "globals"
+    ],
+    "license": "MIT",
+    "ignore": [
+        ".*",
+        "src",
+        "gulp-tasks",
+        "examples",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "*.*"
+    ]
+}
