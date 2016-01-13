@@ -295,6 +295,16 @@ gulp.task('build', ['clean'], function() {
 
 });
 
+gulp.task('jshint', function(){
+    return gulp.src('./gen/*core.js')
+                .pipe(addsrc('./gen/*[^core].js'))
+                .pipe(addsrc('./examples/*.html'))
+                .pipe(jshint.extract('always'))
+                .pipe(jshint())
+                .pipe(jshint.reporter('default'))
+
+});
+
 gulp.task('gh-pages', function(){
     require('shelljs/global');
     exec('git subtree push --prefix doc origin gh-pages', {silent:true}).output;
@@ -306,6 +316,6 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build'], function () {
-  gulp.start(['movegen', 'doc']);
+  gulp.start(['movegen', 'doc', 'jshint']);
   //gulp.start(['movegen']);
 });

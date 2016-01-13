@@ -25,7 +25,7 @@
                     webSocket = new WebSocket(data.connectUri);
                     webSocket.onopen = function(){
                         //now that the connection is open, we can start our subscription.
-                        notificationsapi.createChannelsChannelSubscriptions(data.id, [{"id": "users."+ myUserId +".status"}])
+                        notificationsapi.createChannelsChannelSubscriptions(data.id, [{"id": "users."+ myUserId +".status"}]);
                     };
 
                     webSocket.onmessage = function(message) {
@@ -37,7 +37,7 @@
             }).error(function(){
                 alert("error");
             });
-        })
+        });
 
     </script>
 </head>
