@@ -241,8 +241,11 @@ gulp.task('clean:doc', function(){
 });
 
 gulp.task('clean:gen', function(){
-    return gulp.src('./gen', { read: false })
-        .pipe(rimraf());
+    if (!fileExists("gen")) {
+        return gulp.src('./gen', { read: false })
+            .pipe(rimraf());
+    }
+    
 });
 
 gulp.task('clean:dist', function(){
