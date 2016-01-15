@@ -1,6 +1,27 @@
 function execute(url, validationCallback){
+
+    function executeValidationCallback(page){
+        console.log("validation callback");
+        setTimeout(function(){
+            var verified = page.evaluate(validationCallback);
+
+            page.evaluate(function(){
+                localStorage.clear();
+            });
+            if(verified === true){
+                console.log("passed");
+                phantom.exit();
+            }else{
+                console.log("unable to validate page");
+                phantom.exit(1);
+            }
+
+
+        },2000);
+    }
+
     var page = new WebPage();
-    
+
     var system = require('system');
     var env = system.env;
 
@@ -31,9 +52,10 @@ function execute(url, validationCallback){
     };
 
     page.onLoadFinished = function(status) {
-      if(page.url.indexOf(url)> -1){
-          if(authentication.hasPureCloudAccessToken()){
-              validationCallback(page);
+      if(page.url.indexOf(url) > -1){
+          if(authentication.hasPureCloudAccessToken(page)){
+              console.log("hasToken")
+              executeValidationCallback(page);
           }
       }
     };
@@ -42,9 +64,12 @@ function execute(url, validationCallback){
     page.open(url, function (status) {
         console.log("Page open ("+ status+"): " + url);
         try{
-            if(authentication.hasPureCloudAccessToken(page)){
-                validationCallback(page);
-            }
+            setTimeout(function(){
+                if(authentication.hasPureCloudAccessToken(page)){
+                    executeValidationCallback(page);
+                }
+            }, 2000);
+
         }
         catch(e){
             console.log(e);

@@ -2,31 +2,18 @@
 
 var url = 'http://localhost:8085/user_me.html';
 
-function validationCallback(page){
-    console.log("validation callback");
-    setTimeout(function(){
-        var verified = page.evaluate(function() {
-                try{
-                    var headerText = $("#userHeader").html();
-
-                    console.log(headerText);
-                    return headerText != "";
-                }
-                catch(e){
-                    return false;
-                }
-            });
-
-        if(verified === true){
-            console.log("passed");
-            phantom.exit();
-        }else{
-            console.log("unable to validate page");
-            phantom.exit(1);
-        }
-    },2000);
-
+//this method is called in the context of the page and should return true if the page is valid
+function validationCallback() {
+    try{
+        var headerText = $("#userHeader").html();
+        return (typeof headerText != 'undefined') && headerText != "";
+    }
+    catch(e){
+        console.log(e);
+        return false;
+    }
 }
+
 
 var pageHandler = require('./pageHandlerModule');
 

@@ -27,7 +27,8 @@ When creating a new integration test for an example, start off with this basic t
 ```
 var url = 'http://localhost:8085/user_me.html';
 
-function validationCallback(page){
+//this method is called in the context of the page and should return true if the page is valid
+function validationCallback(){
 
 }
 

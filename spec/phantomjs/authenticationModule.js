@@ -1,6 +1,8 @@
 function hasPureCloudAccessToken(page){
     var hasToken = page.evaluate(function() {
-     return pureCloudSession.hasAuthorizationToken();
+        console.log("checking token on " +  pureCloudSession);
+        console.log("has token? " +  pureCloudSession.hasAuthorizationToken());
+     return pureCloudSession && pureCloudSession.hasAuthorizationToken();
    });
 
    return hasToken;
@@ -10,20 +12,27 @@ function setupLoginHandler(page, username, password, orgid){
 
     function fillInUserAndPassword(){
         page.evaluate(function(username, password) {
-            console.log("logging in");
             $('#email').val(username);
             $('#password').val(password);
             $(".btn-login").prop("disabled", false);
             $('#password').change();
             $('#email').change();
-            console.log($(".btn-login"));
             $(".btn-login").click();
-            console.log("done");
 
         }, username, password);
     }
 
     page.onNavigationRequested = function(url, type, willNavigate, main) {
+        var tokenRegex = /access_token.*/;
+
+        if(tokenRegex.test(url)){
+            //make sure not to trace out access tokens
+            console.log("Navigation requested " + url.replace(tokenRegex,'<TOKENHIDDEN>'));
+        }else{
+            console.log("Navigation requested " + url );
+        }
+
+
       if(url === "https://login.mypurecloud.com/#/authenticate"){
           setTimeout(function(){
                   if(orgid){
@@ -53,8 +62,6 @@ function setupLoginHandler(page, username, password, orgid){
       else if(url === 'https://login.mypurecloud.com/#/authenticate-adv/org/' + orgid){
           setTimeout(function(){
               fillInUserAndPassword();
-
-              page.render("login.png");
           }, 500);
       }
   };

@@ -22,10 +22,8 @@ var PureCloudSession =  function (environment) {
 
         hash_key_val.forEach(function (pair) {
             if (pair[0] == "access_token") {
-
                 // Store token
                 _token = pair[1];
-
                 // Clear hash from URL
                 location.hash = '';
             }
