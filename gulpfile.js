@@ -105,6 +105,7 @@ function parseJsonSchema(opts, type){
                 isGET: m.toUpperCase() === 'GET',
                 summary: op.summary,
                 description: op.description,
+                hasDescription: op.description && op.description.length > 0,
                 parameters: [],
                 tags: op.tags
 
@@ -202,19 +203,18 @@ var build = function(env) {
 
 gulp.task('doc', function() {
     require('shelljs/global');
-    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js --readme README.md -d doc -u tutorials', {silent:true}).output;
+    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc_custom/conf.json --readme README.md -d doc_out -u tutorials', {silent:true}).output;
 
     //copy examples and dist to /doc too so that whan we map
     //the repo to the gh-pages branch, the examples can be run from there.
     gulp.src("./examples/*.html")
-            .pipe(gulp.dest('./doc/examples'));
+            .pipe(gulp.dest('./doc_out/examples'));
 
     gulp.src("./dist/**/*")
-            .pipe(gulp.dest('./doc/examples/dist'));
+            .pipe(gulp.dest('./doc_out/examples/dist'));
 
-    return gulp.src('./doc/*.html')
-                .pipe(replace(/<footer[\W\w]*<\/footer>/gm, ''))
-                .pipe(gulp.dest('./doc/'));
+    return gulp.src("./dist/**/*")
+            .pipe(gulp.dest('./doc_out/examples/dist'));
 
 });
 
@@ -223,7 +223,7 @@ gulp.task('movegen', function(){
                   .pipe(rename(function (path) {
                     path.basename = path.basename.toLowerCase();
                   }))
-                  .pipe(gulp.dest("./dist/partials")); // ./dist/main/text/ciao/hello-goodbye.md
+                  .pipe(gulp.dest("./dist/partials"));
 
 });
 
@@ -240,7 +240,7 @@ function fileExists(filePath)
 }
 
 gulp.task('clean:doc', function(){
-    return gulp.src('./doc', { read: false })
+    return gulp.src('./doc_out', { read: false })
         .pipe(rimraf());
 });
 
@@ -311,7 +311,7 @@ gulp.task('jshint', function(){
 
 gulp.task('gh-pages', function(){
     require('shelljs/global');
-    exec('git subtree push --prefix doc origin gh-pages', {silent:true}).output;
+    exec('git subtree push --prefix doc_out origin gh-pages', {silent:true}).output;
 });
 
 gulp.task('watch', function() {
