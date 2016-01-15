@@ -19,8 +19,8 @@
                 var template = $('#personTpl').html();
                 var html = Mustache.to_html(template, data);
                 $('#sampleArea').html(html);
-            }).error(function(){
-                alert("error");
+            }).error(function(error){
+                console.log("error: " + error);
             });
         });
 

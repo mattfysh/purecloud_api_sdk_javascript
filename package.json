@@ -27,7 +27,6 @@
   "devDependencies": {
     "rifraf": "~2.0.2",
     "gulp-rimraf": "~0.1.1",
-    "phantom" :"^0.8.4",
     "express":"*"
   },
   "scripts": {
