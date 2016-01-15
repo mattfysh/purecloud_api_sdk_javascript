@@ -8,8 +8,7 @@
 ## Building the Library
 
 1. Execute ````gulp````
-2. Use ````pure-cloud-api.js```` from the _dist_ folder
-
+2. Use ````purecloud-api.js```` from the _dist_ folder
 
 ## Folders
 dist - destination directory for the built javascript
@@ -17,4 +16,23 @@ doc - documentation folder
 examples - small example pages showing usage
 src - additional src files that will be merged with the generated files
 templates - mustache templates that are used to generate the code
-tutorials - markdown examples that explain core concepts.  These get merged into the generated doc. 
+tutorials - markdown examples that explain core concepts.  These get merged into the generated doc.
+spec - unit and integration tests
+
+## Running the tests
+There are a series of integrations tests built using phantomjs and are located in the spec/phantomjs folder.  The authenticationModule is used to script the login using OAuth in phantomjs.  pageHandlerMondule is a simple module that handles a lot of the heavy lifting of operating a phantomjs script, this leaves the actual page test scripts to be as simple as possible.
+
+When creating a new integration test for an example, start off with this basic template, replace the url parameter and fill out the validationCallback function with your asserts and checks.
+
+```
+var url = 'http://localhost:8085/user_me.html';
+
+function validationCallback(page){
+
+}
+
+var pageHandler = require('./pageHandlerModule');
+
+pageHandler.execute(url, validationCallback);
+
+```

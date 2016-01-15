@@ -80,9 +80,7 @@ function parseJsonSchema(opts, type){
     var data = {
         isNode: type === 'node',
         description: swagger.info.description,
-        isSecure: swagger.securityDefinitions !== undefined,
         moduleName: opts.moduleName,
-        domain: (swagger.schemes && swagger.schemes.length > 0 && swagger.host && swagger.basePath) ? swagger.schemes[0] + '://' + swagger.host + swagger.basePath : '',
         methods: {},
         classes: []
     };
@@ -157,13 +155,19 @@ function parseJsonSchema(opts, type){
             if(method.parameters.length > 0){
                 method.parameters[method.parameters.length-1].last = true;
             }
-            //data.methods.push(method);
-            if (data.methods[operationGroup] == null){
-                data.methods[operationGroup] = [];
+
+            for(var tagIndex =0; tagIndex < op.tags.length; tagIndex++){
+                var tag = op.tags[tagIndex].replace(/ /g, "");
+
+                if (data.methods[tag] == null){
+                    data.methods[tag] = [];
+                }
+                if(method.method != "HEAD"){
+                    data.methods[tag].push(method);
+                }
+
             }
-            if(method.method != "HEAD"){
-                data.methods[operationGroup].push(method);
-            }
+
 
         });
     });
@@ -288,7 +292,7 @@ gulp.task('build', ['clean'], function() {
     });
 
     //Write the core file
-    var source = Mustache.render(fs.readFileSync('templates/core.mustache', 'utf-8'), swagger);
+    var source = Mustache.render(fs.readFileSync('templates/purecloudsession.mustache', 'utf-8'), swagger);
     fs.writeFileSync("gen/purecloudsession.js", source);
 
     return build();

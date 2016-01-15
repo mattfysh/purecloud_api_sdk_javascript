@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: outboundapi.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: outboundapi.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* @class
+* @example
+* var api = new OutboundApi(pureCloudSession);
+*/
+var OutboundApi = function (pureCloudSession) {
+	/**
+     * @summary Retrieves audits for dialer.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - AuditSearch
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	* @param {boolean} facetsOnly - Facets only
+	 * @example
+	 * Body Example:
+	 * {
+   "queryPhrase": "",
+   "queryFields": [],
+   "facets": [],
+   "filters": []
+}
+	*/
+	function createAudits(body, pageSize, pageNumber, sortBy, sortOrder, facetsOnly){
+		var apipath = '/api/v1/outbound/audits';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(facetsOnly !== undefined &amp;&amp; facetsOnly !== null){
+			queryParameters.facetsOnly = facetsOnly;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createAudits = createAudits;
+	/**
+     * @summary Query callable time set list
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getCallabletimesets(pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/callabletimesets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallabletimesets = getCallabletimesets;
+	/**
+     * @summary Create callable time set
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - DialerCallableTimeSet
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "callableTimes": [],
+   "selfUri": ""
+}
+	*/
+	function createCallabletimesets(body){
+		var apipath = '/api/v1/outbound/callabletimesets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createCallabletimesets = createCallabletimesets;
+	/**
+     * @summary Get callable time set
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} callableTimeSetId - Callable Time Set ID
+	*/
+	function getCallableTimeSet(callableTimeSetId){
+		var apipath = '/api/v1/outbound/callabletimesets/{callableTimeSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callableTimeSetId}', callableTimeSetId);
+
+        if(callableTimeSetId === undefined &amp;&amp; callableTimeSetId !== null){
+			throw 'Missing required  parameter: callableTimeSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallableTimeSet = getCallableTimeSet;
+	/**
+     * @summary Update callable time set
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} callableTimeSetId - Callable Time Set ID
+	* @param {} body - DialerCallableTimeSet
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "callableTimes": [],
+   "selfUri": ""
+}
+	*/
+	function updateCallableTimeSet(callableTimeSetId, body){
+		var apipath = '/api/v1/outbound/callabletimesets/{callableTimeSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callableTimeSetId}', callableTimeSetId);
+
+        if(callableTimeSetId === undefined &amp;&amp; callableTimeSetId !== null){
+			throw 'Missing required  parameter: callableTimeSetId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateCallableTimeSet = updateCallableTimeSet;
+	/**
+     * @summary Delete callable time set
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} callableTimeSetId - Callable Time Set ID
+	*/
+	function deleteCallableTimeSet(callableTimeSetId){
+		var apipath = '/api/v1/outbound/callabletimesets/{callableTimeSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callableTimeSetId}', callableTimeSetId);
+
+        if(callableTimeSetId === undefined &amp;&amp; callableTimeSetId !== null){
+			throw 'Missing required  parameter: callableTimeSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCallableTimeSet = deleteCallableTimeSet;
+	/**
+     * @summary Query a list of dialer call analysis response sets.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getCallanalysisresponsesets(pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/callanalysisresponsesets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallanalysisresponsesets = getCallanalysisresponsesets;
+	/**
+     * @summary Create a dialer call analysis response set.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - ResponseSet
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "responses": {},
+   "selfUri": ""
+}
+	*/
+	function createCallanalysisresponsesets(body){
+		var apipath = '/api/v1/outbound/callanalysisresponsesets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createCallanalysisresponsesets = createCallanalysisresponsesets;
+	/**
+     * @summary Get a dialer call analysis response set.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} callAnalysisSetId - Call Analysis Response Set ID
+	*/
+	function getCallanalysisresponsesetsCallAnalysisSet(callAnalysisSetId){
+		var apipath = '/api/v1/outbound/callanalysisresponsesets/{callAnalysisSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callAnalysisSetId}', callAnalysisSetId);
+
+        if(callAnalysisSetId === undefined &amp;&amp; callAnalysisSetId !== null){
+			throw 'Missing required  parameter: callAnalysisSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallanalysisresponsesetsCallAnalysisSet = getCallanalysisresponsesetsCallAnalysisSet;
+	/**
+     * @summary Update a dialer call analysis response set.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} callAnalysisSetId - Call Analysis Response Set ID
+	* @param {} body - ResponseSet
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "responses": {},
+   "selfUri": ""
+}
+	*/
+	function updateCallanalysisresponsesetsCallAnalysisSet(callAnalysisSetId, body){
+		var apipath = '/api/v1/outbound/callanalysisresponsesets/{callAnalysisSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callAnalysisSetId}', callAnalysisSetId);
+
+        if(callAnalysisSetId === undefined &amp;&amp; callAnalysisSetId !== null){
+			throw 'Missing required  parameter: callAnalysisSetId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateCallanalysisresponsesetsCallAnalysisSet = updateCallanalysisresponsesetsCallAnalysisSet;
+	/**
+     * @summary Delete a dialer call analysis response set.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} callAnalysisSetId - Call Analysis Response Set ID
+	*/
+	function deleteCallanalysisresponsesetsCallAnalysisSet(callAnalysisSetId){
+		var apipath = '/api/v1/outbound/callanalysisresponsesets/{callAnalysisSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callAnalysisSetId}', callAnalysisSetId);
+
+        if(callAnalysisSetId === undefined &amp;&amp; callAnalysisSetId !== null){
+			throw 'Missing required  parameter: callAnalysisSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCallanalysisresponsesetsCallAnalysisSet = deleteCallanalysisresponsesetsCallAnalysisSet;
+	/**
+     * @summary Query a list of dialer campaigns.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} contactListId - Contact List ID
+	* @param {string} dncListId - DNC list ID
+	* @param {string} distributionQueueId - Distribution queue ID
+	* @param {string} edgeGroupId - Edge group ID
+	* @param {string} callAnalysisResponseSetId - Call analysis response set ID
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getCampaigns(pageSize, pageNumber, filterType, name, contactListId, dncListId, distributionQueueId, edgeGroupId, callAnalysisResponseSetId, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/campaigns';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(contactListId !== undefined &amp;&amp; contactListId !== null){
+			queryParameters.contactListId = contactListId;
+		}
+
+
+		if(dncListId !== undefined &amp;&amp; dncListId !== null){
+			queryParameters.dncListId = dncListId;
+		}
+
+
+		if(distributionQueueId !== undefined &amp;&amp; distributionQueueId !== null){
+			queryParameters.distributionQueueId = distributionQueueId;
+		}
+
+
+		if(edgeGroupId !== undefined &amp;&amp; edgeGroupId !== null){
+			queryParameters.edgeGroupId = edgeGroupId;
+		}
+
+
+		if(callAnalysisResponseSetId !== undefined &amp;&amp; callAnalysisResponseSetId !== null){
+			queryParameters.callAnalysisResponseSetId = callAnalysisResponseSetId;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCampaigns = getCampaigns;
+	/**
+     * @summary Create a campaign.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - Campaign
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
+   "skipPreviewDisabled": true,
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true,
+   "selfUri": ""
+}
+	*/
+	function createCampaigns(body){
+		var apipath = '/api/v1/outbound/campaigns';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createCampaigns = createCampaigns;
+	/**
+     * @summary Get dialer campaign.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function getCampaign(campaignId){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCampaign = getCampaign;
+	/**
+     * @summary Update a campaign.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	* @param {} body - Campaign
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
+   "skipPreviewDisabled": true,
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true,
+   "selfUri": ""
+}
+	*/
+	function updateCampaign(campaignId, body){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateCampaign = updateCampaign;
+	/**
+     * @summary Delete a campaign.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function deleteCampaign(campaignId){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCampaign = deleteCampaign;
+	/**
+     * @summary Send notification that an agent's state changed 
+	 * @description New agent state.
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	* @param {string} userId - Agent's user ID
+	* @param {} body - agent
+	 * @example
+	 * Body Example:
+	 * {
+   "stage": ""
+}
+	*/
+	function updateCampaignAgentsByUserId(campaignId, userId, body){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}/agents/{userId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined &amp;&amp; userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateCampaignAgentsByUserId = updateCampaignAgentsByUserId;
+	/**
+     * @summary Schedule a Callback for a Dialer Campaign
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	* @param {} body - ContactCallbackRequest
+	 * @example
+	 * Body Example:
+	 * {
+   "campaignId": "",
+   "contactListId": "",
+   "contactId": "",
+   "phoneColumn": "",
+   "schedule": ""
+}
+	*/
+	function createCampaignCallbackSchedule(campaignId, body){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}/callback/schedule';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createCampaignCallbackSchedule = createCampaignCallbackSchedule;
+	/**
+     * @summary Get campaign diagnostics
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function getCampaignDiagnostics(campaignId){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}/diagnostics';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCampaignDiagnostics = getCampaignDiagnostics;
+	/**
+     * @summary Get statistics about a Dialer Campaign
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function getCampaignStats(campaignId){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}/stats';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCampaignStats = getCampaignStats;
+	/**
+     * @summary Query a list of contact lists.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {boolean} importStatus - Import status
+	* @param {boolean} includeSize - Include size
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getContactlists(importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/contactlists';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(importStatus !== undefined &amp;&amp; importStatus !== null){
+			queryParameters.importStatus = importStatus;
+		}
+
+
+		if(includeSize !== undefined &amp;&amp; includeSize !== null){
+			queryParameters.includeSize = includeSize;
+		}
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getContactlists = getContactlists;
+	/**
+     * @summary Create a contact List.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - ContactList
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "selfUri": ""
+}
+	*/
+	function createContactlists(body){
+		var apipath = '/api/v1/outbound/contactlists';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createContactlists = createContactlists;
+	/**
+     * @summary Get penetration rates for a list of penetration rate identifiers (contact list id and qualifier id)
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - PenetrationRateIdentifierList
+	*/
+	function createContactlistsPenetrationrates(body){
+		var apipath = '/api/v1/outbound/contactlists/penetrationrates';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createContactlistsPenetrationrates = createContactlistsPenetrationrates;
+	/**
+     * @summary Get dialer contactList.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	* @param {boolean} importStatus - Import status
+	* @param {boolean} includeSize - Include size
+	*/
+	function getContactList(contactListId, importStatus, includeSize){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+
+		if(importStatus !== undefined &amp;&amp; importStatus !== null){
+			queryParameters.importStatus = importStatus;
+		}
+
+
+		if(includeSize !== undefined &amp;&amp; includeSize !== null){
+			queryParameters.includeSize = includeSize;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getContactList = getContactList;
+	/**
+     * @summary Update a contact list.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	* @param {} body - ContactList
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "selfUri": ""
+}
+	*/
+	function updateContactList(contactListId, body){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateContactList = updateContactList;
+	/**
+     * @summary Delete a contact list.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	*/
+	function deleteContactList(contactListId){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteContactList = deleteContactList;
+	/**
+     * @summary Add contacts to a contact list.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - Contact List ID
+	* @param {} body - Contact
+	* @param {boolean} priority - 
+	*/
+	function createContactListContacts(contactListId, body, priority){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		if(priority !== undefined &amp;&amp; priority !== null){
+			queryParameters.priority = priority;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createContactListContacts = createContactListContacts;
+	/**
+     * @summary Get dialer contactList.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - Contact List ID
+	* @param {string} contactId - Contact ID
+	*/
+	function getContactListContactsByContactId(contactListId, contactId){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+        apipath = apipath.replace('{contactId}', contactId);
+
+        if(contactId === undefined &amp;&amp; contactId !== null){
+			throw 'Missing required  parameter: contactId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getContactListContactsByContactId = getContactListContactsByContactId;
+	/**
+     * @summary Update a contact.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - Contact List ID
+	* @param {string} contactId - Contact ID
+	* @param {} body - Contact
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "contactListId": "",
+   "data": {
+      "nodeType": "",
+      "object": true,
+      "pojo": true,
+      "number": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "float": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "boolean": true,
+      "binary": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "array": true,
+      "null": true
+   },
+   "callRecords": {},
+   "callable": true,
+   "phoneNumberStatus": {},
+   "selfUri": ""
+}
+	*/
+	function updateContactListContactsByContactId(contactListId, contactId, body){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+        apipath = apipath.replace('{contactId}', contactId);
+
+        if(contactId === undefined &amp;&amp; contactId !== null){
+			throw 'Missing required  parameter: contactId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateContactListContactsByContactId = updateContactListContactsByContactId;
+	/**
+     * @summary Delete a contact.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - Contact List ID
+	* @param {string} contactId - Contact ID
+	*/
+	function deleteContactListContactsByContactId(contactListId, contactId){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/contacts/{contactId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+        apipath = apipath.replace('{contactId}', contactId);
+
+        if(contactId === undefined &amp;&amp; contactId !== null){
+			throw 'Missing required  parameter: contactId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteContactListContactsByContactId = deleteContactListContactsByContactId;
+	/**
+     * @summary Initiate the export of a contact list.
+	 * @description Returns 200 if received OK.
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	*/
+	function createContactListExport(contactListId){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/export';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createContactListExport = createContactListExport;
+	/**
+     * @summary Get dialer contactList import status.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	*/
+	function getContactListImportstatus(contactListId){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/importstatus';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getContactListImportstatus = getContactListImportstatus;
+	/**
+     * @summary Get Dialer campaign's penetration rate
+	 * @description Get dialer campaign's penetration rate.
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	* @param {string} campaignId - Campaign ID
+	*/
+	function getContactListByCampaignIdPenetrationrate(contactListId, campaignId){
+		var apipath = '/api/v1/outbound/contactlists/{contactListId}/{campaignId}/penetrationrate';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined &amp;&amp; contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getContactListByCampaignIdPenetrationrate = getContactListByCampaignIdPenetrationrate;
+	/**
+     * @summary Add phone numbers to a Dialer DNC list.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} conversationId - Conversation ID
+	*/
+	function createConversationDnc(conversationId){
+		var apipath = '/api/v1/outbound/conversations/{conversationId}/dnc';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined &amp;&amp; conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createConversationDnc = createConversationDnc;
+	/**
+     * @summary Query dialer DNC lists
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {boolean} importStatus - Import status
+	* @param {boolean} includeSize - Include size
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getDnclists(importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/dnclists';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(importStatus !== undefined &amp;&amp; importStatus !== null){
+			queryParameters.importStatus = importStatus;
+		}
+
+
+		if(includeSize !== undefined &amp;&amp; includeSize !== null){
+			queryParameters.includeSize = includeSize;
+		}
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getDnclists = getDnclists;
+	/**
+     * @summary Create dialer DNC list
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - DncList
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "phoneNumberColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "fileKey": "",
+   "size": 0,
+   "selfUri": ""
+}
+	*/
+	function createDnclists(body){
+		var apipath = '/api/v1/outbound/dnclists';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createDnclists = createDnclists;
+	/**
+     * @summary Get dialer DNC list
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	* @param {boolean} importStatus - Import status
+	* @param {boolean} includeSize - Include size
+	*/
+	function getDncList(dncListId, importStatus, includeSize){
+		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined &amp;&amp; dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+
+		if(importStatus !== undefined &amp;&amp; importStatus !== null){
+			queryParameters.importStatus = importStatus;
+		}
+
+
+		if(includeSize !== undefined &amp;&amp; includeSize !== null){
+			queryParameters.includeSize = includeSize;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getDncList = getDncList;
+	/**
+     * @summary Update dialer DNC list
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	* @param {} body - DncList
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "phoneNumberColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "fileKey": "",
+   "size": 0,
+   "selfUri": ""
+}
+	*/
+	function updateDncList(dncListId, body){
+		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined &amp;&amp; dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateDncList = updateDncList;
+	/**
+     * @summary Delete dialer DNC list
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	*/
+	function deleteDncList(dncListId){
+		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined &amp;&amp; dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteDncList = deleteDncList;
+	/**
+     * @summary Initiate the export of a dnc list.
+	 * @description Returns 200 if received OK.
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	*/
+	function createDncListExport(dncListId){
+		var apipath = '/api/v1/outbound/dnclists/{dncListId}/export';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined &amp;&amp; dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createDncListExport = createDncListExport;
+	/**
+     * @summary Get dialer dncList import status.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	*/
+	function getDncListImportstatus(dncListId){
+		var apipath = '/api/v1/outbound/dnclists/{dncListId}/importstatus';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined &amp;&amp; dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getDncListImportstatus = getDncListImportstatus;
+	/**
+     * @summary Add phone numbers to a Dialer DNC list.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	* @param {} body - DNC Phone Numbers
+	*/
+	function createDncListPhonenumbers(dncListId, body){
+		var apipath = '/api/v1/outbound/dnclists/{dncListId}/phonenumbers';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined &amp;&amp; dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createDncListPhonenumbers = createDncListPhonenumbers;
+	/**
+     * @summary Get dialer preview for user
+	 * @description 
+	 * @memberOf OutboundApi#
+	*/
+	function getPreviews(){
+		var apipath = '/api/v1/outbound/previews';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPreviews = getPreviews;
+	/**
+     * @summary Get dialer preview
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} previewId - preview ID
+	*/
+	function getPreview(previewId){
+		var apipath = '/api/v1/outbound/previews/{previewId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{previewId}', previewId);
+
+        if(previewId === undefined &amp;&amp; previewId !== null){
+			throw 'Missing required  parameter: previewId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPreview = getPreview;
+	/**
+     * @summary Disposition preview call
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} previewId - preview ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "callId": "",
+   "wrapupCodeId": "",
+   "contact": {
+      "id": "",
+      "name": "",
+      "contactListId": "",
+      "data": {},
+      "callRecords": {},
+      "callable": true,
+      "phoneNumberStatus": {},
+      "selfUri": ""
+   }
+}
+	*/
+	function createPreviewDispositioncall(previewId, body){
+		var apipath = '/api/v1/outbound/previews/{previewId}/dispositioncall';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{previewId}', previewId);
+
+        if(previewId === undefined &amp;&amp; previewId !== null){
+			throw 'Missing required  parameter: previewId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createPreviewDispositioncall = createPreviewDispositioncall;
+	/**
+     * @summary place preview call
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} previewId - preview ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "callId": "",
+   "phoneNumber": ""
+}
+	*/
+	function createPreviewPlacecall(previewId, body){
+		var apipath = '/api/v1/outbound/previews/{previewId}/placecall';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{previewId}', previewId);
+
+        if(previewId === undefined &amp;&amp; previewId !== null){
+			throw 'Missing required  parameter: previewId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createPreviewPlacecall = createPreviewPlacecall;
+	/**
+     * @summary Query a list of Rule Sets.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getRulesets(pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/rulesets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getRulesets = getRulesets;
+	/**
+     * @summary Create a Dialer Call Analysis Response Set.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - RuleSet
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "rules": [],
+   "selfUri": ""
+}
+	*/
+	function createRulesets(body){
+		var apipath = '/api/v1/outbound/rulesets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createRulesets = createRulesets;
+	/**
+     * @summary Get a Rule Set by ID.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} ruleSetId - Rule Set ID
+	*/
+	function getRuleSet(ruleSetId){
+		var apipath = '/api/v1/outbound/rulesets/{ruleSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{ruleSetId}', ruleSetId);
+
+        if(ruleSetId === undefined &amp;&amp; ruleSetId !== null){
+			throw 'Missing required  parameter: ruleSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getRuleSet = getRuleSet;
+	/**
+     * @summary Update a RuleSet.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} ruleSetId - Rule Set ID
+	* @param {} body - RuleSet
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "rules": [],
+   "selfUri": ""
+}
+	*/
+	function updateRuleSet(ruleSetId, body){
+		var apipath = '/api/v1/outbound/rulesets/{ruleSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{ruleSetId}', ruleSetId);
+
+        if(ruleSetId === undefined &amp;&amp; ruleSetId !== null){
+			throw 'Missing required  parameter: ruleSetId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateRuleSet = updateRuleSet;
+	/**
+     * @summary Delete a Rule set.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} ruleSetId - Rule Set ID
+	*/
+	function deleteRuleSet(ruleSetId){
+		var apipath = '/api/v1/outbound/rulesets/{ruleSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{ruleSetId}', ruleSetId);
+
+        if(ruleSetId === undefined &amp;&amp; ruleSetId !== null){
+			throw 'Missing required  parameter: ruleSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteRuleSet = deleteRuleSet;
+	/**
+     * @summary Query for a list of dialer campaign schedules.
+	 * @description 
+	 * @memberOf OutboundApi#
+	*/
+	function getSchedulesCampaigns(){
+		var apipath = '/api/v1/outbound/schedules/campaigns';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchedulesCampaigns = getSchedulesCampaigns;
+	/**
+     * @summary Get a dialer campaign schedule.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function getSchedulesCampaign(campaignId){
+		var apipath = '/api/v1/outbound/schedules/campaigns/{campaignId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchedulesCampaign = getSchedulesCampaign;
+	/**
+     * @summary Update a new campaign schedule.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	* @param {} body - CampaignSchedule
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "intervals": [],
+   "timeZone": "",
+   "campaign": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
+	*/
+	function updateSchedulesCampaign(campaignId, body){
+		var apipath = '/api/v1/outbound/schedules/campaigns/{campaignId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateSchedulesCampaign = updateSchedulesCampaign;
+	/**
+     * @summary Delete a dialer campaign schedule.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function deleteSchedulesCampaign(campaignId){
+		var apipath = '/api/v1/outbound/schedules/campaigns/{campaignId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined &amp;&amp; campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSchedulesCampaign = deleteSchedulesCampaign;
+	/**
+     * @summary Query for a list of dialer sequence schedules.
+	 * @description 
+	 * @memberOf OutboundApi#
+	*/
+	function getSchedulesSequences(){
+		var apipath = '/api/v1/outbound/schedules/sequences';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchedulesSequences = getSchedulesSequences;
+	/**
+     * @summary Get a dialer sequence schedule.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} sequenceId - Sequence ID
+	*/
+	function getSchedulesSequence(sequenceId){
+		var apipath = '/api/v1/outbound/schedules/sequences/{sequenceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{sequenceId}', sequenceId);
+
+        if(sequenceId === undefined &amp;&amp; sequenceId !== null){
+			throw 'Missing required  parameter: sequenceId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchedulesSequence = getSchedulesSequence;
+	/**
+     * @summary Update a new sequence schedule.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} sequenceId - Sequence ID
+	* @param {} body - SequenceSchedule
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "intervals": [],
+   "timeZone": "",
+   "sequence": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
+	*/
+	function updateSchedulesSequence(sequenceId, body){
+		var apipath = '/api/v1/outbound/schedules/sequences/{sequenceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{sequenceId}', sequenceId);
+
+        if(sequenceId === undefined &amp;&amp; sequenceId !== null){
+			throw 'Missing required  parameter: sequenceId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateSchedulesSequence = updateSchedulesSequence;
+	/**
+     * @summary Delete a dialer sequence schedule.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} sequenceId - Sequence ID
+	*/
+	function deleteSchedulesSequence(sequenceId){
+		var apipath = '/api/v1/outbound/schedules/sequences/{sequenceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{sequenceId}', sequenceId);
+
+        if(sequenceId === undefined &amp;&amp; sequenceId !== null){
+			throw 'Missing required  parameter: sequenceId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSchedulesSequence = deleteSchedulesSequence;
+	/**
+     * @summary Query a list of dialer campaign sequences.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} filterType - Filter type
+	EQUALS,
+	REGEX,
+	CONTAINS,
+	PREFIX,
+	LESSTHAN,
+	LESSTHANEQUALTO,
+	GREATERTHAN,
+	GREATERTHANEQUALTO,
+	BEGINSWITH,
+	ENDSWITH,
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	ascending,
+	descending,
+	*/
+	function getSequences(pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+		var apipath = '/api/v1/outbound/sequences';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined &amp;&amp; pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined &amp;&amp; pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(filterType !== undefined &amp;&amp; filterType !== null){
+			queryParameters.filterType = filterType;
+		}
+
+
+		if(name !== undefined &amp;&amp; name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined &amp;&amp; sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined &amp;&amp; sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSequences = getSequences;
+	/**
+     * @summary Create a new campaign sequence.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - Organization
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "campaigns": [],
+   "currentCampaign": 0,
+   "status": "",
+   "stopMessage": "",
+   "selfUri": ""
+}
+	*/
+	function createSequences(body){
+		var apipath = '/api/v1/outbound/sequences';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createSequences = createSequences;
+	/**
+     * @summary Get a dialer campaign sequence.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} sequenceId - Campaign Sequence ID
+	*/
+	function getSequence(sequenceId){
+		var apipath = '/api/v1/outbound/sequences/{sequenceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{sequenceId}', sequenceId);
+
+        if(sequenceId === undefined &amp;&amp; sequenceId !== null){
+			throw 'Missing required  parameter: sequenceId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSequence = getSequence;
+	/**
+     * @summary Update a new campaign sequence.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} sequenceId - Campaign Sequence ID
+	* @param {} body - Organization
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "campaigns": [],
+   "currentCampaign": 0,
+   "status": "",
+   "stopMessage": "",
+   "selfUri": ""
+}
+	*/
+	function updateSequence(sequenceId, body){
+		var apipath = '/api/v1/outbound/sequences/{sequenceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{sequenceId}', sequenceId);
+
+        if(sequenceId === undefined &amp;&amp; sequenceId !== null){
+			throw 'Missing required  parameter: sequenceId';
+        }
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateSequence = updateSequence;
+	/**
+     * @summary Delete a dialer campaign sequence.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {string} sequenceId - Campaign Sequence ID
+	*/
+	function deleteSequence(sequenceId){
+		var apipath = '/api/v1/outbound/sequences/{sequenceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{sequenceId}', sequenceId);
+
+        if(sequenceId === undefined &amp;&amp; sequenceId !== null){
+			throw 'Missing required  parameter: sequenceId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSequence = deleteSequence;
+	/**
+     * @summary Get the Dialer wrap up code mapping.
+	 * @description 
+	 * @memberOf OutboundApi#
+	*/
+	function getWrapupcodemappings(){
+		var apipath = '/api/v1/outbound/wrapupcodemappings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getWrapupcodemappings = getWrapupcodemappings;
+	/**
+     * @summary Update the Dialer wrap up code mapping.
+	 * @description 
+	 * @memberOf OutboundApi#
+	* @param {} body - wrapUpCodeMapping
+	 * @example
+	 * Body Example:
+	 * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "defaultSet": [],
+   "mapping": {},
+   "selfUri": ""
+}
+	*/
+	function updateWrapupcodemappings(body){
+		var apipath = '/api/v1/outbound/wrapupcodemappings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined &amp;&amp; body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateWrapupcodemappings = updateWrapupcodemappings;
+
+    return self;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AnalyticsApi.html">AnalyticsApi</a></li><li><a href="ArchitectApi.html">ArchitectApi</a></li><li><a href="AuthorizationApi.html">AuthorizationApi</a></li><li><a href="ComplianceApi.html">ComplianceApi</a></li><li><a href="ConfigurationApi.html">ConfigurationApi</a></li><li><a href="ContentManagementApi.html">ContentManagementApi</a></li><li><a href="ConversationsApi.html">ConversationsApi</a></li><li><a href="DownloadsApi.html">DownloadsApi</a></li><li><a href="FaxApi.html">FaxApi</a></li><li><a href="GreetingsApi.html">GreetingsApi</a></li><li><a href="GroupsApi.html">GroupsApi</a></li><li><a href="LanguagesApi.html">LanguagesApi</a></li><li><a href="LicensingApi.html">LicensingApi</a></li><li><a href="LocationsApi.html">LocationsApi</a></li><li><a href="NotificationsApi.html">NotificationsApi</a></li><li><a href="OAuthApi.html">OAuthApi</a></li><li><a href="OrphanedRecordingsApi.html">OrphanedRecordingsApi</a></li><li><a href="OutboundApi.html">OutboundApi</a></li><li><a href="PresenceApi.html">PresenceApi</a></li><li><a href="PureCloudSession.html">PureCloudSession</a></li><li><a href="QualityApi.html">QualityApi</a></li><li><a href="RoutingApi.html">RoutingApi</a></li><li><a href="ScriptsApi.html">ScriptsApi</a></li><li><a href="SearchApi.html">SearchApi</a></li><li><a href="StationsApi.html">StationsApi</a></li><li><a href="TelephonyProvidersEdgeApi.html">TelephonyProvidersEdgeApi</a></li><li><a href="UserRecordingsApi.html">UserRecordingsApi</a></li><li><a href="UsersApi.html">UsersApi</a></li><li><a href="UtilitiesApi.html">UtilitiesApi</a></li><li><a href="VoicemailApi.html">VoicemailApi</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-call_list_management.html">call_list_management</a></li><li><a href="tutorial-paging.html">paging</a></li></ul>
+</nav>
+
+<br class="clear">
+
+
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
