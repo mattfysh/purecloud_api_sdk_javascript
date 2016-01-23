@@ -203,12 +203,12 @@ var build = function(env) {
 
 gulp.task('doc', function() {
     require('shelljs/global');
-    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc/conf.json --readme README.md -d doc_out', {silent:false}).output;
-    exec('rm -rf doc_out/styles')
-    exec('rm -rf doc_out/scripts')
-    exec('rm -rf doc_out/fonts')
+    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc/conf.json --readme README.md -d doc_out_temp', {silent:false}).output;
 
-    return
+    return gulp.src('./doc_out_temp/*.html').pipe(rename(function (path) {
+      path.extname = path.extname + ".erb"
+    }))
+    .pipe(gulp.dest("./doc_out"));
 });
 
 gulp.task('movegen', function(){
