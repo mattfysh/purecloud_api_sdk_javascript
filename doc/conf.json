@@ -1,13 +1,9 @@
 {
     "templates": {
         "default": {
-            "staticFiles": {
-                "include": [
-                    "./doc_custom/custom.css"
-                ]
-            },
             "includeDate" : false,
-            "layoutFile" : "layout.tmpl"
+            "layoutFile" : "layout.tmpl",
+            "outputSourceFiles": false
         }
     }
 }

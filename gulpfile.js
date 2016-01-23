@@ -203,19 +203,12 @@ var build = function(env) {
 
 gulp.task('doc', function() {
     require('shelljs/global');
-    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc_custom/conf.json --readme README.md -d doc_out -u tutorials', {silent:true}).output;
+    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc/conf.json --readme README.md -d doc_out', {silent:false}).output;
+    exec('rm -rf doc_out/styles')
+    exec('rm -rf doc_out/scripts')
+    exec('rm -rf doc_out/fonts')
 
-    //copy examples and dist to /doc too so that whan we map
-    //the repo to the gh-pages branch, the examples can be run from there.
-    gulp.src("./examples/*.html")
-            .pipe(gulp.dest('./doc_out/examples'));
-
-    gulp.src("./dist/**/*")
-            .pipe(gulp.dest('./doc_out/examples/dist'));
-
-    return gulp.src("./dist/**/*")
-            .pipe(gulp.dest('./doc_out/examples/dist'));
-
+    return
 });
 
 gulp.task('movegen', function(){
@@ -260,7 +253,7 @@ gulp.task('clean:dist', function(){
 gulp.task('clean', ['clean:doc', 'clean:dist', 'clean:gen']);
 
 gulp.task('download', function(){
-    var url = "https://api.inindca.com/api/v1/docs/swagger  ";
+    var url = "https://api.mypurecloud.com/api/v1/docs/swagger  ";
 
     var download = require("gulp-download");
 
@@ -309,17 +302,12 @@ gulp.task('jshint', function(){
 
 });
 
-gulp.task('gh-pages', function(){
-    require('shelljs/global');
-    exec('git subtree push --prefix doc_out origin gh-pages', {silent:true}).output;
-});
-
 gulp.task('watch', function() {
     gulp.watch('./templates/*', ['default']);
     gulp.watch('./tutorials/*', ['doc']);
 });
 
 gulp.task('default', ['build'], function () {
-  gulp.start(['movegen', 'doc', 'jshint']);
-  //gulp.start(['movegen']);
+  gulp.start(['movegen', 'jshint']);
+
 });
