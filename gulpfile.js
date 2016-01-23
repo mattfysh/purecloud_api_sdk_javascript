@@ -233,8 +233,10 @@ function fileExists(filePath)
 }
 
 gulp.task('clean:doc', function(){
-    return gulp.src('./doc_out', { read: false })
-        .pipe(rimraf());
+    if (fileExists("doc_out")) {
+        return gulp.src('./doc_out', { read: false })
+            .pipe(rimraf());
+    }
 });
 
 gulp.task('clean:gen', function(){
