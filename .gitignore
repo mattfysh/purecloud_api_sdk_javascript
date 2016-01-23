@@ -2,3 +2,4 @@ node_modules/
 .DS_STORE
 gen/
 doc_out/
+doc.zip
