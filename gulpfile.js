@@ -328,6 +328,7 @@ gulp.task('default', function (callback) {
 
 
 gulp.task('jenkins', function(callback){
+
     var oldSwagger = JSON.parse(fs.readFileSync('swagger.json', 'UTF-8'));
 
     pclib.updateSwaggerAndVersion('swagger.json', 'version.json', 'mypurecloud.com', function(hasChanges){
@@ -335,9 +336,11 @@ gulp.task('jenkins', function(callback){
             runSequence('default',
              'doc',
              callback);
+
+             fs.writeFileSync("newVersion.md", "true");
         }else{
             console.log("no changes")
-            process.exit(1);
+
         }
     });
 });
