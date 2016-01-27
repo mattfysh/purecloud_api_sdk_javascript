@@ -319,7 +319,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function (callback) {
-  
+
   runSequence('build',
    ['movegen', 'jshint'],
    callback);
@@ -332,12 +332,12 @@ gulp.task('jenkins', function(callback){
 
     pclib.updateSwaggerAndVersion('swagger.json', 'version.json', 'mypurecloud.com', function(hasChanges){
         if(hasChanges){
-            gulp.start(['default','doc']);
-        }else{
             runSequence('default',
              'doc',
              callback);
-
+        }else{
+            console.log("no changes")
+            process.exit(1);
         }
     });
 });
