@@ -50,7 +50,6 @@ var ScriptsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -62,14 +61,13 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createForms(body){
@@ -117,7 +115,6 @@ var ScriptsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -129,14 +126,13 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateForm(formId, body){
@@ -256,7 +252,6 @@ var ScriptsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -268,14 +263,13 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createPublishedforms(body){

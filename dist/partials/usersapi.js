@@ -80,7 +80,6 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "username": "",
    "email": "",
@@ -101,15 +100,13 @@ var UsersApi = function (pureCloudSession) {
    },
    "password": "",
    "primaryPresence": {
-      "id": "",
       "name": "",
       "user": {},
       "source": "",
       "presenceDefinition": {},
       "message": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "conversations": {
       "userId": "",
@@ -126,27 +123,21 @@ var UsersApi = function (pureCloudSession) {
       "socialExpression": {}
    },
    "outOfOffice": {
-      "id": "",
       "name": "",
       "user": {},
       "startDate": "",
       "endDate": "",
-      "active": true,
-      "selfUri": ""
+      "active": true
    },
    "permissions": [],
-   "selfUri": "",
    "requestedStatus": {
-      "id": "",
       "name": "",
       "alertable": true,
       "dateModified": "",
-      "type": "",
-      "selfUri": ""
+      "type": ""
    },
    "defaultStationUri": "",
-   "stationUri": "",
-   "lastStationUri": ""
+   "stationUri": ""
 }
 	*/
 	function create(body){
@@ -221,7 +212,6 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "username": "",
    "email": "",
@@ -242,15 +232,13 @@ var UsersApi = function (pureCloudSession) {
    },
    "password": "",
    "primaryPresence": {
-      "id": "",
       "name": "",
       "user": {},
       "source": "",
       "presenceDefinition": {},
       "message": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "conversations": {
       "userId": "",
@@ -267,27 +255,21 @@ var UsersApi = function (pureCloudSession) {
       "socialExpression": {}
    },
    "outOfOffice": {
-      "id": "",
       "name": "",
       "user": {},
       "startDate": "",
       "endDate": "",
-      "active": true,
-      "selfUri": ""
+      "active": true
    },
    "permissions": [],
-   "selfUri": "",
    "requestedStatus": {
-      "id": "",
       "name": "",
       "alertable": true,
       "dateModified": "",
-      "type": "",
-      "selfUri": ""
+      "type": ""
    },
    "defaultStationUri": "",
-   "stationUri": "",
-   "lastStationUri": ""
+   "stationUri": ""
 }
 	*/
 	function updateUser(userId, body){
@@ -345,10 +327,8 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -367,16 +347,13 @@ var UsersApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function updateUserCallforwarding(userId, body){
@@ -408,10 +385,8 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -430,16 +405,13 @@ var UsersApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function patchUserCallforwarding(userId, body){
@@ -493,10 +465,8 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -515,16 +485,13 @@ var UsersApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "startDate": "",
    "endDate": "",
-   "active": true,
-   "selfUri": ""
+   "active": true
 }
 	*/
 	function updateUserOutofoffice(userId, body){
@@ -552,6 +519,84 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.updateUserOutofoffice = updateUserOutofoffice;
+	/**
+     * @summary Get a user's PrimaryUserPresenceSource
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function getUserPrimarypresencesource(userId){
+		var apipath = '/api/v1/users/{userId}/primarypresencesource';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserPrimarypresencesource = getUserPrimarypresencesource;
+	/**
+     * @summary Update a user's PrimaryUserPresenceSource
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "user": {
+      "name": "",
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
+   },
+   "primarySource": ""
+}
+	*/
+	function updateUserPrimarypresencesource(userId, body){
+		var apipath = '/api/v1/users/{userId}/primarypresencesource';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateUserPrimarypresencesource = updateUserPrimarypresencesource;
 	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
@@ -622,7 +667,6 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -652,8 +696,7 @@ var UsersApi = function (pureCloudSession) {
    "callingPartyName": "",
    "callingPartyNumber": "",
    "joined": true,
-   "memberCount": 0,
-   "selfUri": ""
+   "memberCount": 0
 }
 	*/
 	function patchUserQueuesByQueueId(queueId, userId, body){

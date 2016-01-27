@@ -38,13 +38,11 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "languageLabels": {},
    "systemPresence": "",
    "deactivated": true,
    "createdBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -63,15 +61,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -90,14 +85,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function create(body){
@@ -149,13 +141,11 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "languageLabels": {},
    "systemPresence": "",
    "deactivated": true,
    "createdBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -174,15 +164,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -201,14 +188,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function updatePresence(presenceId, body){
@@ -330,10 +314,8 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -352,15 +334,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "source": "",
    "presenceDefinition": {
-      "id": "",
       "name": "",
       "languageLabels": {},
       "systemPresence": "",
@@ -368,12 +347,10 @@ var PresenceApi = function (pureCloudSession) {
       "createdBy": {},
       "createdDate": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "message": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -392,14 +369,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function updateUserPresencesBySource(userId, source, body){
@@ -442,10 +416,8 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -464,15 +436,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "source": "",
    "presenceDefinition": {
-      "id": "",
       "name": "",
       "languageLabels": {},
       "systemPresence": "",
@@ -480,12 +449,10 @@ var PresenceApi = function (pureCloudSession) {
       "createdBy": {},
       "createdDate": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "message": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -504,14 +471,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function patchUserPresencesBySource(userId, source, body){

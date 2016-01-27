@@ -88,15 +88,12 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "title": "",
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -105,8 +102,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "endTime": "",
    "mediaType": "",
    "statistic": "",
-   "ruleUri": "",
-   "selfUri": ""
+   "ruleUri": ""
 }
 	*/
 	function updateAlertingAlert(alertId, body){
@@ -200,24 +196,10 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * {
    "id": "",
    "name": "",
-   "title": "",
-   "description": "",
-   "enabled": true,
-   "metric": "",
-   "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
-   },
-   "metricThresholds": [],
-   "inAlarm": true,
-   "occurrence": {
-      "limit": 0,
-      "type": ""
-   },
-   "mediaType": "",
-   "statistic": "",
-   "selfUri": ""
+   "order": 0,
+   "category": "",
+   "conditions": [],
+   "actions": []
 }
 	*/
 	function createAlertingRules(body){
@@ -267,24 +249,10 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * {
    "id": "",
    "name": "",
-   "title": "",
-   "description": "",
-   "enabled": true,
-   "metric": "",
-   "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
-   },
-   "metricThresholds": [],
-   "inAlarm": true,
-   "occurrence": {
-      "limit": 0,
-      "type": ""
-   },
-   "mediaType": "",
-   "statistic": "",
-   "selfUri": ""
+   "order": 0,
+   "category": "",
+   "conditions": [],
+   "actions": []
 }
 	*/
 	function updateAlertingRule(ruleId, body){
@@ -436,7 +404,6 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "quartzCronExpression": "",
    "nextFireTime": "",
@@ -446,13 +413,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "startMillis": 0,
-      "endMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -460,7 +422,6 @@ var AnalyticsApi = function (pureCloudSession) {
    "reportId": "",
    "parameters": {},
    "lastRun": {
-      "id": "",
       "name": "",
       "reportId": "",
       "runTime": "",
@@ -469,10 +430,8 @@ var AnalyticsApi = function (pureCloudSession) {
       "runDurationMsec": 0,
       "reportUrl": "",
       "reportFormat": "",
-      "scheduleUri": "",
-      "selfUri": ""
-   },
-   "selfUri": ""
+      "scheduleUri": ""
+   }
 }
 	*/
 	function createReportingSchedules(body){
@@ -520,7 +479,6 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "quartzCronExpression": "",
    "nextFireTime": "",
@@ -530,13 +488,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "startMillis": 0,
-      "endMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -544,7 +497,6 @@ var AnalyticsApi = function (pureCloudSession) {
    "reportId": "",
    "parameters": {},
    "lastRun": {
-      "id": "",
       "name": "",
       "reportId": "",
       "runTime": "",
@@ -553,10 +505,8 @@ var AnalyticsApi = function (pureCloudSession) {
       "runDurationMsec": 0,
       "reportUrl": "",
       "reportFormat": "",
-      "scheduleUri": "",
-      "selfUri": ""
-   },
-   "selfUri": ""
+      "scheduleUri": ""
+   }
 }
 	*/
 	function updateReportingSchedule(scheduleId, body){

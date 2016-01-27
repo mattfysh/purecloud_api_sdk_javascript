@@ -28,7 +28,9 @@
     "rifraf": "~2.0.2",
     "gulp-rimraf": "~0.1.1",
     "phantomjs" :"^1.9.19",
-    "express":"*"
+    "express":"*",
+    "PureCloudApiLibraries":"git://github.com/MyPureCloud/PureCloudApiLibraries.git",
+    "run-sequence" : "1.1.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -132,13 +132,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "callableTimes": [],
-   "selfUri": ""
+   "callableTimes": []
 }
 	*/
 	function createCallabletimesets(body){
@@ -186,13 +184,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "callableTimes": [],
-   "selfUri": ""
+   "callableTimes": []
 }
 	*/
 	function updateCallableTimeSet(callableTimeSetId, body){
@@ -308,13 +304,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "responses": {},
-   "selfUri": ""
+   "responses": {}
 }
 	*/
 	function createCallanalysisresponsesets(body){
@@ -362,13 +356,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "responses": {},
-   "selfUri": ""
+   "responses": {}
 }
 	*/
 	function updateCallanalysisresponsesetsCallAnalysisSet(callAnalysisSetId, body){
@@ -514,7 +506,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -561,8 +552,7 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
-   "selfUri": ""
+   "singleNumberPreview": true
 }
 	*/
 	function createCampaigns(body){
@@ -610,7 +600,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -657,8 +646,7 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
-   "selfUri": ""
+   "singleNumberPreview": true
 }
 	*/
 	function updateCampaign(campaignId, body){
@@ -906,8 +894,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function createContactlists(body){
@@ -987,8 +989,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function updateContactList(contactListId, body){
@@ -1105,7 +1121,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "contactListId": "",
    "data": {
@@ -1133,8 +1148,7 @@ var OutboundApi = function (pureCloudSession) {
    },
    "callRecords": {},
    "callable": true,
-   "phoneNumberStatus": {},
-   "selfUri": ""
+   "phoneNumberStatus": {}
 }
 	*/
 	function updateContactListContactsByContactId(contactListId, contactId, body){
@@ -1372,7 +1386,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -1386,8 +1399,7 @@ var OutboundApi = function (pureCloudSession) {
       "failureReason": ""
    },
    "fileKey": "",
-   "size": 0,
-   "selfUri": ""
+   "size": 0
 }
 	*/
 	function createDnclists(body){
@@ -1447,7 +1459,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -1461,8 +1472,7 @@ var OutboundApi = function (pureCloudSession) {
       "failureReason": ""
    },
    "fileKey": "",
-   "size": 0,
-   "selfUri": ""
+   "size": 0
 }
 	*/
 	function updateDncList(dncListId, body){
@@ -1628,14 +1638,12 @@ var OutboundApi = function (pureCloudSession) {
    "callId": "",
    "wrapupCodeId": "",
    "contact": {
-      "id": "",
       "name": "",
       "contactListId": "",
       "data": {},
       "callRecords": {},
       "callable": true,
-      "phoneNumberStatus": {},
-      "selfUri": ""
+      "phoneNumberStatus": {}
    }
 }
 	*/
@@ -1763,7 +1771,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -1778,8 +1785,7 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "rules": [],
-   "selfUri": ""
+   "rules": []
 }
 	*/
 	function createRulesets(body){
@@ -1827,7 +1833,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -1842,8 +1847,7 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "rules": [],
-   "selfUri": ""
+   "rules": []
 }
 	*/
 	function updateRuleSet(ruleSetId, body){
@@ -1934,7 +1938,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -1945,8 +1948,7 @@ var OutboundApi = function (pureCloudSession) {
       "id": "",
       "name": "",
       "selfUri": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateSchedulesCampaign(campaignId, body){
@@ -2037,7 +2039,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -2048,8 +2049,7 @@ var OutboundApi = function (pureCloudSession) {
       "id": "",
       "name": "",
       "selfUri": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateSchedulesSequence(sequenceId, body){
@@ -2165,7 +2165,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -2173,8 +2172,7 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
-   "selfUri": ""
+   "stopMessage": ""
 }
 	*/
 	function createSequences(body){
@@ -2222,7 +2220,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -2230,8 +2227,7 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
-   "selfUri": ""
+   "stopMessage": ""
 }
 	*/
 	function updateSequence(sequenceId, body){
@@ -2299,14 +2295,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
    "defaultSet": [],
-   "mapping": {},
-   "selfUri": ""
+   "mapping": {}
 }
 	*/
 	function updateWrapupcodemappings(body){

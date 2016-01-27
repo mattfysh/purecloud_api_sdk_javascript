@@ -93,7 +93,6 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "type": "",
@@ -105,7 +104,6 @@ var ArchitectApi = function (pureCloudSession) {
    "active": true,
    "deleted": true,
    "publishedVersion": {
-      "id": "",
       "name": "",
       "commitVersion": "",
       "configurationVersion": "",
@@ -114,11 +112,9 @@ var ArchitectApi = function (pureCloudSession) {
       "configurationUri": "",
       "dateCreated": 0,
       "generationId": "",
-      "publishResultUri": "",
-      "selfUri": ""
+      "publishResultUri": ""
    },
    "checkedInVersion": {
-      "id": "",
       "name": "",
       "commitVersion": "",
       "configurationVersion": "",
@@ -127,11 +123,9 @@ var ArchitectApi = function (pureCloudSession) {
       "configurationUri": "",
       "dateCreated": 0,
       "generationId": "",
-      "publishResultUri": "",
-      "selfUri": ""
+      "publishResultUri": ""
    },
    "savedVersion": {
-      "id": "",
       "name": "",
       "commitVersion": "",
       "configurationVersion": "",
@@ -140,11 +134,9 @@ var ArchitectApi = function (pureCloudSession) {
       "configurationUri": "",
       "dateCreated": 0,
       "generationId": "",
-      "publishResultUri": "",
-      "selfUri": ""
+      "publishResultUri": ""
    },
-   "system": true,
-   "selfUri": ""
+   "system": true
 }
 	*/
 	function create(body){

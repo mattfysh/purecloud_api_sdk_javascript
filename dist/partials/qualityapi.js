@@ -111,7 +111,6 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversationId": "",
    "path": "",
@@ -133,8 +132,7 @@ var QualityApi = function (pureCloudSession) {
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": "",
-   "selfUri": ""
+   "recordingId": ""
 }
 	*/
 	function updateConversationRecordingsByRecordingId(conversationId, recordingId, body, restoreDays){
@@ -182,7 +180,6 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversationId": "",
    "path": "",
@@ -204,8 +201,7 @@ var QualityApi = function (pureCloudSession) {
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": "",
-   "selfUri": ""
+   "recordingId": ""
 }
 	*/
 	function patchConversationRecordingsByRecordingId(conversationId, recordingId, body){
@@ -273,13 +269,11 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "location": 0,
    "durationMs": 0,
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -298,14 +292,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "description": "",
-   "selfUri": ""
+   "description": ""
 }
 	*/
 	function createConversationRecordingsByRecordingIdAnnotations(conversationId, recordingId, body){
@@ -381,13 +372,11 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "location": 0,
    "durationMs": 0,
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -406,14 +395,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "description": "",
-   "selfUri": ""
+   "description": ""
 }
 	*/
 	function updateConversationRecordingsByRecordingIdAnnotationsByAnnotationId(conversationId, recordingId, annotationId, body){
@@ -493,8 +479,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
-	* @param {string} startTime - Start time of agent activity
-	* @param {string} endTime - End time of agent activity
+	* @param {string} startTime - Start time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - End time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {array} agentUserId - user id of agent requested
 	* @param {string} evaluatorUserId - user id of the evaluator
 	* @param {string} name - name
@@ -563,8 +549,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
 	* @param {string} conversationId - conversation id
-	* @param {string} startTime - Beginning of the calibration query
-	* @param {string} endTime - end of the calibration query
+	* @param {string} startTime - Beginning of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - end of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} calibratorId - user id of calibrator
 	*/
 	function getCalibrations(pageSize, pageNumber, sortBy, expand, conversationId, startTime, endTime, calibratorId){
@@ -626,10 +612,8 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "calibrator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -648,14 +632,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -674,33 +655,27 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "contextId": "",
    "averageScore": 0,
@@ -710,7 +685,6 @@ var QualityApi = function (pureCloudSession) {
    "evaluations": [],
    "evaluators": [],
    "scoringIndex": {
-      "id": "",
       "name": "",
       "conversation": {},
       "evaluationForm": {},
@@ -724,11 +698,9 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
-      "isScoringIndex": true,
-      "selfUri": ""
+      "isScoringIndex": true
    },
    "expertEvaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -747,13 +719,10 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
-   },
-   "selfUri": ""
+      "stationUri": ""
+   }
 }
 	*/
 	function createCalibrations(body, expand){
@@ -812,10 +781,8 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "calibrator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -834,14 +801,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -860,33 +824,27 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "contextId": "",
    "averageScore": 0,
@@ -896,7 +854,6 @@ var QualityApi = function (pureCloudSession) {
    "evaluations": [],
    "evaluators": [],
    "scoringIndex": {
-      "id": "",
       "name": "",
       "conversation": {},
       "evaluationForm": {},
@@ -910,11 +867,9 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
-      "isScoringIndex": true,
-      "selfUri": ""
+      "isScoringIndex": true
    },
    "expertEvaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -933,13 +888,10 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
-   },
-   "selfUri": ""
+      "stationUri": ""
+   }
 }
 	*/
 	function updateCalibration(calibrationId, body){
@@ -1058,32 +1010,26 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "evaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -1102,14 +1048,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -1128,14 +1071,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "calibration": {
-      "id": "",
       "name": "",
       "calibrator": {},
       "agent": {},
@@ -1149,8 +1089,7 @@ var QualityApi = function (pureCloudSession) {
       "evaluations": [],
       "evaluators": [],
       "scoringIndex": {},
-      "expertEvaluator": {},
-      "selfUri": ""
+      "expertEvaluator": {}
    },
    "status": "",
    "answers": {
@@ -1166,7 +1105,6 @@ var QualityApi = function (pureCloudSession) {
    "assignedDate": "",
    "changedDate": "",
    "queue": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -1186,11 +1124,9 @@ var QualityApi = function (pureCloudSession) {
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
-      "memberCount": 0,
-      "selfUri": ""
+      "memberCount": 0
    },
-   "isScoringIndex": true,
-   "selfUri": ""
+   "isScoringIndex": true
 }
 	*/
 	function createConversationEvaluations(conversationId, body, expand){
@@ -1264,32 +1200,26 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "evaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -1308,14 +1238,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -1334,14 +1261,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "calibration": {
-      "id": "",
       "name": "",
       "calibrator": {},
       "agent": {},
@@ -1355,8 +1279,7 @@ var QualityApi = function (pureCloudSession) {
       "evaluations": [],
       "evaluators": [],
       "scoringIndex": {},
-      "expertEvaluator": {},
-      "selfUri": ""
+      "expertEvaluator": {}
    },
    "status": "",
    "answers": {
@@ -1372,7 +1295,6 @@ var QualityApi = function (pureCloudSession) {
    "assignedDate": "",
    "changedDate": "",
    "queue": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -1392,11 +1314,9 @@ var QualityApi = function (pureCloudSession) {
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
-      "memberCount": 0,
-      "selfUri": ""
+      "memberCount": 0
    },
-   "isScoringIndex": true,
-   "selfUri": ""
+   "isScoringIndex": true
 }
 	*/
 	function updateConversationEvaluationsByEvaluationId(conversationId, evaluationId, body, expand){
@@ -1621,15 +1541,13 @@ var QualityApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "answers": {
       "totalScore": {},
@@ -1663,8 +1581,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
-	* @param {string} startTime - The start time specified
-	* @param {string} endTime - The end time specified
+	* @param {string} startTime - The start time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - The end time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} name - Evaluator name
 	* @param {array} permission - permission strings
 	*/

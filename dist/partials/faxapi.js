@@ -61,7 +61,6 @@ var FaxApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -85,8 +84,7 @@ var FaxApi = function (pureCloudSession) {
    "receiverAddress": "",
    "thumbnails": [],
    "sharingUri": "",
-   "downloadSharingUri": "",
-   "selfUri": ""
+   "downloadSharingUri": ""
 }
 	*/
 	function updateDocument(documentId, body){

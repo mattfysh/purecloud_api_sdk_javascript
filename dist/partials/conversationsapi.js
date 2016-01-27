@@ -195,15 +195,13 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "startTime": "",
    "endTime": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
-   "recordingState": "",
-   "selfUri": ""
+   "recordingState": ""
 }
 	*/
 	function updateConversation(conversationId, body){
@@ -257,8 +255,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "htmlBody": "",
+   "textBody": "",
    "id": "",
-   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -268,10 +267,7 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
-   "time": "",
-   "selfUri": ""
+   "time": ""
 }
 	*/
 	function createConversationMessages(conversationId, body){
@@ -325,8 +321,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "htmlBody": "",
+   "textBody": "",
    "id": "",
-   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -336,10 +333,7 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
-   "time": "",
-   "selfUri": ""
+   "time": ""
 }
 	*/
 	function updateConversationMessagesDraft(conversationId, body){
@@ -363,6 +357,35 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.updateConversationMessagesDraft = updateConversationMessagesDraft;
+	/**
+     * @summary Delete attachment from draft
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} attachmentId - attachment ID
+	*/
+	function deleteConversationMessagesDraftAttachmentsByAttachmentId(conversationId, attachmentId){
+		var apipath = '/api/v1/conversations/{conversationId}/messages/draft/attachments/{attachmentId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{attachmentId}', attachmentId);
+
+        if(attachmentId === undefined && attachmentId !== null){
+			throw 'Missing required  parameter: attachmentId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationMessagesDraftAttachmentsByAttachmentId = deleteConversationMessagesDraftAttachmentsByAttachmentId;
 	/**
      * @summary Get conversation message
 	 * @memberOf ConversationsApi#
@@ -400,15 +423,13 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "startTime": "",
    "endTime": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
-   "recordingState": "",
-   "selfUri": ""
+   "recordingState": ""
 }
 	*/
 	function createConversationParticipants(conversationId, body){

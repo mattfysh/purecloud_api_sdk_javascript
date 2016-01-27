@@ -89,7 +89,6 @@ var UserRecordingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -105,21 +104,18 @@ var UserRecordingsApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "contentLength": 0,
    "durationMilliseconds": 0,
    "thumbnails": [],
-   "read": true,
-   "selfUri": ""
+   "read": true
 }
 	*/
 	function updateRecording(recordingId, body, expand){

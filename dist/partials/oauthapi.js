@@ -41,12 +41,10 @@ var OAuthApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": "",
-   "selfUri": ""
+   "ssoTargetURI": ""
 }
 	*/
 	function updateOnelogin(body){
@@ -101,9 +99,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "name": "",
-   "selfUri": ""
+   "name": ""
 }
 	*/
 	function updatePurecloud(body){
@@ -158,9 +154,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "name": "",
-   "selfUri": ""
+   "name": ""
 }
 	*/
 	function updateProverId(body){
@@ -218,14 +212,12 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "accessTokenValiditySeconds": 0,
    "authorizedGrantTypes": [],
    "description": "",
    "registeredRedirectUri": [],
-   "secret": "",
-   "selfUri": ""
+   "secret": ""
 }
 	*/
 	function createClients(body){
@@ -273,14 +265,12 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "accessTokenValiditySeconds": 0,
    "authorizedGrantTypes": [],
    "description": "",
    "registeredRedirectUri": [],
-   "secret": "",
-   "selfUri": ""
+   "secret": ""
 }
 	*/
 	function updateClient(clientId, body){

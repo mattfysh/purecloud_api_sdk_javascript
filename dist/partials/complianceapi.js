@@ -26,10 +26,8 @@ var ComplianceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "enableIdleTokenTimeout": true,
-   "selfUri": ""
+   "enableIdleTokenTimeout": true
 }
 	*/
 	function updateHipaa(body){

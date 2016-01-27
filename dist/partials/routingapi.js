@@ -26,10 +26,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "mxRecordStatus": "",
-   "selfUri": ""
+   "mxRecordStatus": ""
 }
 	*/
 	function createEmailDomains(body){
@@ -77,7 +75,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "pattern": "",
    "queue": {
@@ -94,8 +91,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "fromName": "",
    "fromEmail": "",
-   "spamThreshold": {},
-   "selfUri": ""
+   "spamThreshold": {}
 }
 	*/
 	function createEmailDomainRoutes(domain, body){
@@ -157,7 +153,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "pattern": "",
    "queue": {
@@ -174,8 +169,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "fromName": "",
    "fromEmail": "",
-   "spamThreshold": {},
-   "selfUri": ""
+   "spamThreshold": {}
 }
 	*/
 	function updateEmailDomainRoutesById(domain, id, body){
@@ -331,7 +325,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -360,8 +353,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
-   "memberCount": 0,
-   "selfUri": ""
+   "memberCount": 0
 }
 	*/
 	function createQueues(QueueId, body){
@@ -415,7 +407,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -444,8 +435,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
-   "memberCount": 0,
-   "selfUri": ""
+   "memberCount": 0
 }
 	*/
 	function updateQueue(queueId, body){
@@ -560,10 +550,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -582,11 +570,9 @@ var RoutingApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -595,8 +581,7 @@ var RoutingApi = function (pureCloudSession) {
       "userId": "",
       "status": "",
       "startTime": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateQueueMembersByMemberId(queueId, memberId, body){
@@ -776,10 +761,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -798,11 +781,9 @@ var RoutingApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -811,8 +792,7 @@ var RoutingApi = function (pureCloudSession) {
       "userId": "",
       "status": "",
       "startTime": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function patchQueueUsersByMemberId(queueId, memberId, body){
@@ -995,10 +975,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "utilization": {},
-   "selfUri": ""
+   "utilization": {}
 }
 	*/
 	function updateUtilization(body){
@@ -1071,13 +1049,11 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "createdBy": ""
 }
 	*/
 	function createWrapupcodes(body){
@@ -1125,13 +1101,11 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "createdBy": ""
 }
 	*/
 	function updateWrapupcodesCode(codeId, body){

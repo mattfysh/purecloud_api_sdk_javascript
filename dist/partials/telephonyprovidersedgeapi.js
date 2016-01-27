@@ -203,7 +203,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "phoneMetaBase": {
       "id": "",
@@ -240,8 +239,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createProvidersEdgePhonebasesettings(body){
@@ -341,7 +339,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "phoneMetaBase": {
       "id": "",
@@ -378,8 +375,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateProvidersEdgePhonebasesettingsPhoneBase(phoneBaseId, body){
@@ -501,7 +497,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -539,26 +534,22 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    },
    "lines": [],
    "status": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "secondaryStatus": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "properties": {
       "nodeType": "",
@@ -589,8 +580,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createProvidersEdgePhones(body){
@@ -688,7 +678,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -726,26 +715,22 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    },
    "lines": [],
    "status": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "secondaryStatus": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "properties": {
       "nodeType": "",
@@ -776,8 +761,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateProvidersEdgePhone(phoneId, body){
@@ -918,7 +902,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "trunkMetabase": {
       "id": "",
@@ -948,7 +931,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "array": true,
       "null": true
    },
-   "selfUri": ""
+   "trunkType": ""
 }
 	*/
 	function createProvidersEdgeTrunkbasesettings(body){
@@ -1057,7 +1040,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "trunkMetabase": {
       "id": "",
@@ -1087,7 +1069,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "array": true,
       "null": true
    },
-   "selfUri": ""
+   "trunkType": ""
 }
 	*/
 	function updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings(trunkBaseSettingsId, body){

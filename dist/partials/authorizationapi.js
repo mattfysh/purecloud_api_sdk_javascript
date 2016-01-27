@@ -117,7 +117,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -127,8 +126,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function createRoles(body){
@@ -228,7 +226,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -238,8 +235,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function createRolesLeftRoleComparedefaultByRightRoleId(leftRoleId, rightRoleId, body){
@@ -301,7 +297,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -311,8 +306,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function updateRole(roleId, body){
@@ -367,7 +361,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -377,8 +370,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function patchRole(roleId, body){

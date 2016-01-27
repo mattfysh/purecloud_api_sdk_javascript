@@ -44,7 +44,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -58,8 +57,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "startPhoneNumber": "",
    "endPhoneNumber": "",
    "comments": "",
-   "provider": "",
-   "selfUri": ""
+   "provider": ""
 }
 	*/
 	function createDidpools(body){
@@ -107,7 +105,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -121,8 +118,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "startPhoneNumber": "",
    "endPhoneNumber": "",
    "comments": "",
-   "provider": "",
-   "selfUri": ""
+   "provider": ""
 }
 	*/
 	function updateDidpoolsDPoolId(didPoolId, body){
@@ -243,7 +239,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -265,8 +260,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "ownerType": "",
-   "selfUri": ""
+   "ownerType": ""
 }
 	*/
 	function updateDId(didId, body){
@@ -336,7 +330,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -347,7 +340,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createEdgegroups(body){
@@ -395,7 +388,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -406,7 +398,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateEdgeGroup(edgeGroupId, body){
@@ -510,7 +502,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -538,7 +529,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "patch": "",
    "statusCode": "",
    "edgeGroup": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -549,7 +539,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "selfUri": ""
+      "managed": true
    },
    "site": {
       "id": "",
@@ -570,7 +560,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "onlineStatus": "",
    "serialNumber": "",
    "physicalEdge": true,
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createEdges(body){
@@ -610,7 +600,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -624,8 +613,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "certificate": "",
    "type": "",
    "services": [],
-   "certificateDetails": [],
-   "selfUri": ""
+   "certificateDetails": []
 }
 	*/
 	function createEdgesCertificateauthorities(body){
@@ -673,7 +661,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -687,8 +674,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "certificate": "",
    "type": "",
    "services": [],
-   "certificateDetails": [],
-   "selfUri": ""
+   "certificateDetails": []
 }
 	*/
 	function updateEdgesCertificateauthoritiesCertificate(certificateId, body){
@@ -764,7 +750,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -792,7 +777,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "patch": "",
    "statusCode": "",
    "edgeGroup": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -803,7 +787,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "selfUri": ""
+      "managed": true
    },
    "site": {
       "id": "",
@@ -824,7 +808,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "onlineStatus": "",
    "serialNumber": "",
    "physicalEdge": true,
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateEdge(edgeId, body){
@@ -942,7 +926,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "schema": {
       "id": "",
@@ -951,7 +934,6 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "properties": {},
    "edge": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -984,10 +966,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "onlineStatus": "",
       "serialNumber": "",
       "physicalEdge": true,
-      "selfUri": ""
+      "managed": true
    },
    "edgeGroup": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -998,11 +979,10 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "selfUri": ""
+      "managed": true
    },
    "lineType": "",
    "endpoint": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -1018,12 +998,10 @@ var ConfigurationApi = function (pureCloudSession) {
       "schema": {},
       "enabled": true,
       "site": {},
-      "dids": [],
-      "selfUri": ""
+      "dids": []
    },
    "ipAddress": "",
-   "logicalInterfaceId": "",
-   "selfUri": ""
+   "logicalInterfaceId": ""
 }
 	*/
 	function updateEdgeLinesByLineId(edgeId, lineId, body){
@@ -1085,7 +1063,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1122,8 +1099,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": [],
-   "selfUri": ""
+   "commandResponses": []
 }
 	*/
 	function createEdgeLogicalinterfaces(edgeId, body){
@@ -1185,7 +1161,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1222,8 +1197,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": [],
-   "selfUri": ""
+   "commandResponses": []
 }
 	*/
 	function updateEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId, body){
@@ -1387,14 +1361,12 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "version": {
-      "id": "",
       "name": "",
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
       "current": true,
-      "latestRelease": true,
-      "selfUri": ""
+      "latestRelease": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -1555,7 +1527,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1579,8 +1550,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "dids": [],
-   "selfUri": ""
+   "dids": []
 }
 	*/
 	function createEndpoints(body){
@@ -1628,7 +1598,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1652,8 +1621,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "dids": [],
-   "selfUri": ""
+   "dids": []
 }
 	*/
 	function updateEndpoint(endpointId, body){
@@ -1745,7 +1713,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1757,8 +1724,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "startNumber": "",
-   "endNumber": "",
-   "selfUri": ""
+   "endNumber": ""
 }
 	*/
 	function createExtensionpools(body){
@@ -1806,7 +1772,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1818,8 +1783,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "startNumber": "",
-   "endNumber": "",
-   "selfUri": ""
+   "endNumber": ""
 }
 	*/
 	function updateExtensionPool(extensionPoolId, body){
@@ -1940,7 +1904,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1962,8 +1925,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "ownerType": "",
-   "selfUri": ""
+   "ownerType": ""
 }
 	*/
 	function updateExtension(extensionId, body){
@@ -2009,7 +1971,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "thirdPartyOrgId": "",
    "thirdPartyOrgName": "",
@@ -2020,8 +1981,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "version": 0,
    "state": "",
    "defaultSiteId": "",
-   "deletable": true,
-   "selfUri": ""
+   "deletable": true
 }
 	*/
 	function updateOrganization(body){
@@ -2099,7 +2059,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "thirdPartyOrgId": "",
    "thirdPartyOrgName": "",
@@ -2110,8 +2069,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "version": 0,
    "state": "",
    "defaultSiteId": "",
-   "deletable": true,
-   "selfUri": ""
+   "deletable": true
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
@@ -2209,7 +2167,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2221,7 +2178,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "site": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2240,13 +2196,13 @@ var ConfigurationApi = function (pureCloudSession) {
       "edges": [],
       "edgeAutoUpdateConfig": {},
       "location": {},
-      "selfUri": ""
+      "managed": true
    },
    "classificationTypes": [],
    "enabled": true,
    "endpoints": [],
    "distribution": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createOutboundroutes(body){
@@ -2294,7 +2250,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2306,7 +2261,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "site": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2325,13 +2279,13 @@ var ConfigurationApi = function (pureCloudSession) {
       "edges": [],
       "edgeAutoUpdateConfig": {},
       "location": {},
-      "selfUri": ""
+      "managed": true
    },
    "classificationTypes": [],
    "enabled": true,
    "endpoints": [],
    "distribution": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateOutboundRoute(outboundRouteId, body){
@@ -2441,10 +2395,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "period": "",
-   "selfUri": ""
+   "period": ""
 }
 	*/
 	function updateRecordingkeysRotationschedule(body){
@@ -2533,7 +2485,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -2560,8 +2511,7 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "policyErrors": {
       "policyErrorMessages": []
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createRetentionpolicies(body){
@@ -2635,7 +2585,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -2662,8 +2611,7 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "policyErrors": {
       "policyErrorMessages": []
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateRetentionpoliciesPolicy(policyId, body){
@@ -2717,7 +2665,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -2744,8 +2691,7 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "policyErrors": {
       "policyErrorMessages": []
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function patchRetentionpoliciesPolicy(policyId, body){
@@ -3021,7 +2967,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3041,15 +2986,15 @@ var ConfigurationApi = function (pureCloudSession) {
    "edgeAutoUpdateConfig": {
       "timeZone": "",
       "rrule": "",
-      "start": {},
-      "end": {}
+      "start": "",
+      "end": ""
    },
    "location": {
       "id": "",
       "name": "",
       "selfUri": ""
    },
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createSites(body){
@@ -3097,7 +3042,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3117,15 +3061,15 @@ var ConfigurationApi = function (pureCloudSession) {
    "edgeAutoUpdateConfig": {
       "timeZone": "",
       "rrule": "",
-      "start": {},
-      "end": {}
+      "start": "",
+      "end": ""
    },
    "location": {
       "id": "",
       "name": "",
       "selfUri": ""
    },
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateSite(siteId, body){

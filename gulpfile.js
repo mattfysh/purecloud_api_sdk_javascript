@@ -12,6 +12,11 @@ var Mustache = require('mustache');
 var _ = require('lodash');
 var replace = require('gulp-replace');
 var rimraf = require('gulp-rimraf');
+var pclibSwaggerGen = require('PureCloudApiLibraries').swaggerGen();
+var pclibSwaggerVersion = require('PureCloudApiLibraries').swaggerVersioning();
+var pclib = require('PureCloudApiLibraries');
+var runSequence = require('run-sequence');
+
 
 function getDefaultValue(type){
 
@@ -34,7 +39,10 @@ function getDefaultValue(type){
     }
 }
 
-function getModelDefinition(swagger, modelName, depth){
+function getModelDefinition(isResponse, swagger, modelName, depth){
+    if(typeof(modelName) === "undefined"){
+        return "";
+    }
     var modelName = modelName.replace('#/definitions/','');
     if(depth >1){
         return "{}";
@@ -46,13 +54,14 @@ function getModelDefinition(swagger, modelName, depth){
     for(var name in properties){
         var defaultValue = '""';
         if(properties[name]["$ref"]){
-            defaultValue = getModelDefinition(swagger, properties[name]["$ref"], depth + 1);
+            defaultValue = getModelDefinition(isResponse, swagger, properties[name]["$ref"], depth + 1);
         }else{
             defaultValue = getDefaultValue(properties[name].type);
         }
 
-        definition.push('"' + name + '" : ' + defaultValue );
-
+        if(isResponse === true || properties[name].readOnly !== true){
+            definition.push('"' + name + '" : ' + defaultValue );
+        }
     }
 
     return JSON.stringify(JSON.parse("{" + definition.join(',') + "}"), null, "   ");
@@ -142,7 +151,7 @@ function parseJsonSchema(opts, type){
                 if(parameter.in === 'body'){
                     parameter.isBodyParameter = true;
                     if(parameter.schema["$ref"]){
-                        method.bodyExample = getModelDefinition(swagger, parameter.schema["$ref"], 0);
+                        method.bodyExample = getModelDefinition(false, swagger, parameter.schema["$ref"], 0);
                     }
 
                 } else if(parameter.in === 'path'){
@@ -309,7 +318,26 @@ gulp.task('watch', function() {
     gulp.watch('./tutorials/*', ['doc']);
 });
 
-gulp.task('default', ['build'], function () {
-  gulp.start(['movegen', 'jshint']);
+gulp.task('default', function (callback) {
+  
+  runSequence('build',
+   ['movegen', 'jshint'],
+   callback);
 
+});
+
+
+gulp.task('jenkins', function(callback){
+    var oldSwagger = JSON.parse(fs.readFileSync('swagger.json', 'UTF-8'));
+
+    pclib.updateSwaggerAndVersion('swagger.json', 'version.json', 'mypurecloud.com', function(hasChanges){
+        if(hasChanges){
+            gulp.start(['default','doc']);
+        }else{
+            runSequence('default',
+             'doc',
+             callback);
+
+        }
+    });
 });

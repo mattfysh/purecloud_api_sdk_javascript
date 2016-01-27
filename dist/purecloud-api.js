@@ -88,15 +88,12 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "title": "",
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -105,8 +102,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "endTime": "",
    "mediaType": "",
    "statistic": "",
-   "ruleUri": "",
-   "selfUri": ""
+   "ruleUri": ""
 }
 	*/
 	function updateAlertingAlert(alertId, body){
@@ -200,24 +196,10 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * {
    "id": "",
    "name": "",
-   "title": "",
-   "description": "",
-   "enabled": true,
-   "metric": "",
-   "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
-   },
-   "metricThresholds": [],
-   "inAlarm": true,
-   "occurrence": {
-      "limit": 0,
-      "type": ""
-   },
-   "mediaType": "",
-   "statistic": "",
-   "selfUri": ""
+   "order": 0,
+   "category": "",
+   "conditions": [],
+   "actions": []
 }
 	*/
 	function createAlertingRules(body){
@@ -267,24 +249,10 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * {
    "id": "",
    "name": "",
-   "title": "",
-   "description": "",
-   "enabled": true,
-   "metric": "",
-   "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
-   },
-   "metricThresholds": [],
-   "inAlarm": true,
-   "occurrence": {
-      "limit": 0,
-      "type": ""
-   },
-   "mediaType": "",
-   "statistic": "",
-   "selfUri": ""
+   "order": 0,
+   "category": "",
+   "conditions": [],
+   "actions": []
 }
 	*/
 	function updateAlertingRule(ruleId, body){
@@ -436,7 +404,6 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "quartzCronExpression": "",
    "nextFireTime": "",
@@ -446,13 +413,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "startMillis": 0,
-      "endMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -460,7 +422,6 @@ var AnalyticsApi = function (pureCloudSession) {
    "reportId": "",
    "parameters": {},
    "lastRun": {
-      "id": "",
       "name": "",
       "reportId": "",
       "runTime": "",
@@ -469,10 +430,8 @@ var AnalyticsApi = function (pureCloudSession) {
       "runDurationMsec": 0,
       "reportUrl": "",
       "reportFormat": "",
-      "scheduleUri": "",
-      "selfUri": ""
-   },
-   "selfUri": ""
+      "scheduleUri": ""
+   }
 }
 	*/
 	function createReportingSchedules(body){
@@ -520,7 +479,6 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "quartzCronExpression": "",
    "nextFireTime": "",
@@ -530,13 +488,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "startMillis": 0,
-      "endMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -544,7 +497,6 @@ var AnalyticsApi = function (pureCloudSession) {
    "reportId": "",
    "parameters": {},
    "lastRun": {
-      "id": "",
       "name": "",
       "reportId": "",
       "runTime": "",
@@ -553,10 +505,8 @@ var AnalyticsApi = function (pureCloudSession) {
       "runDurationMsec": 0,
       "reportUrl": "",
       "reportFormat": "",
-      "scheduleUri": "",
-      "selfUri": ""
-   },
-   "selfUri": ""
+      "scheduleUri": ""
+   }
 }
 	*/
 	function updateReportingSchedule(scheduleId, body){
@@ -873,7 +823,6 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "type": "",
@@ -885,7 +834,6 @@ var ArchitectApi = function (pureCloudSession) {
    "active": true,
    "deleted": true,
    "publishedVersion": {
-      "id": "",
       "name": "",
       "commitVersion": "",
       "configurationVersion": "",
@@ -894,11 +842,9 @@ var ArchitectApi = function (pureCloudSession) {
       "configurationUri": "",
       "dateCreated": 0,
       "generationId": "",
-      "publishResultUri": "",
-      "selfUri": ""
+      "publishResultUri": ""
    },
    "checkedInVersion": {
-      "id": "",
       "name": "",
       "commitVersion": "",
       "configurationVersion": "",
@@ -907,11 +853,9 @@ var ArchitectApi = function (pureCloudSession) {
       "configurationUri": "",
       "dateCreated": 0,
       "generationId": "",
-      "publishResultUri": "",
-      "selfUri": ""
+      "publishResultUri": ""
    },
    "savedVersion": {
-      "id": "",
       "name": "",
       "commitVersion": "",
       "configurationVersion": "",
@@ -920,11 +864,9 @@ var ArchitectApi = function (pureCloudSession) {
       "configurationUri": "",
       "dateCreated": 0,
       "generationId": "",
-      "publishResultUri": "",
-      "selfUri": ""
+      "publishResultUri": ""
    },
-   "system": true,
-   "selfUri": ""
+   "system": true
 }
 	*/
 	function create(body){
@@ -1065,7 +1007,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -1075,8 +1016,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function createRoles(body){
@@ -1176,7 +1116,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -1186,8 +1125,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function createRolesLeftRoleComparedefaultByRightRoleId(leftRoleId, rightRoleId, body){
@@ -1249,7 +1187,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -1259,8 +1196,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function updateRole(roleId, body){
@@ -1315,7 +1251,6 @@ var AuthorizationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "defaultRoleId": "",
@@ -1325,8 +1260,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "code": "",
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true,
-   "selfUri": ""
+   "default": true
 }
 	*/
 	function patchRole(roleId, body){
@@ -1507,10 +1441,8 @@ var ComplianceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "enableIdleTokenTimeout": true,
-   "selfUri": ""
+   "enableIdleTokenTimeout": true
 }
 	*/
 	function updateHipaa(body){
@@ -1578,7 +1510,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1592,8 +1523,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "startPhoneNumber": "",
    "endPhoneNumber": "",
    "comments": "",
-   "provider": "",
-   "selfUri": ""
+   "provider": ""
 }
 	*/
 	function createDidpools(body){
@@ -1641,7 +1571,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1655,8 +1584,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "startPhoneNumber": "",
    "endPhoneNumber": "",
    "comments": "",
-   "provider": "",
-   "selfUri": ""
+   "provider": ""
 }
 	*/
 	function updateDidpoolsDPoolId(didPoolId, body){
@@ -1777,7 +1705,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1799,8 +1726,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "ownerType": "",
-   "selfUri": ""
+   "ownerType": ""
 }
 	*/
 	function updateDId(didId, body){
@@ -1870,7 +1796,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1881,7 +1806,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createEdgegroups(body){
@@ -1929,7 +1854,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -1940,7 +1864,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateEdgeGroup(edgeGroupId, body){
@@ -2044,7 +1968,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2072,7 +1995,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "patch": "",
    "statusCode": "",
    "edgeGroup": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2083,7 +2005,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "selfUri": ""
+      "managed": true
    },
    "site": {
       "id": "",
@@ -2104,7 +2026,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "onlineStatus": "",
    "serialNumber": "",
    "physicalEdge": true,
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createEdges(body){
@@ -2144,7 +2066,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2158,8 +2079,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "certificate": "",
    "type": "",
    "services": [],
-   "certificateDetails": [],
-   "selfUri": ""
+   "certificateDetails": []
 }
 	*/
 	function createEdgesCertificateauthorities(body){
@@ -2207,7 +2127,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2221,8 +2140,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "certificate": "",
    "type": "",
    "services": [],
-   "certificateDetails": [],
-   "selfUri": ""
+   "certificateDetails": []
 }
 	*/
 	function updateEdgesCertificateauthoritiesCertificate(certificateId, body){
@@ -2298,7 +2216,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2326,7 +2243,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "patch": "",
    "statusCode": "",
    "edgeGroup": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2337,7 +2253,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "selfUri": ""
+      "managed": true
    },
    "site": {
       "id": "",
@@ -2358,7 +2274,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "onlineStatus": "",
    "serialNumber": "",
    "physicalEdge": true,
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateEdge(edgeId, body){
@@ -2476,7 +2392,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "schema": {
       "id": "",
@@ -2485,7 +2400,6 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "properties": {},
    "edge": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2518,10 +2432,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "onlineStatus": "",
       "serialNumber": "",
       "physicalEdge": true,
-      "selfUri": ""
+      "managed": true
    },
    "edgeGroup": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2532,11 +2445,10 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "selfUri": ""
+      "managed": true
    },
    "lineType": "",
    "endpoint": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -2552,12 +2464,10 @@ var ConfigurationApi = function (pureCloudSession) {
       "schema": {},
       "enabled": true,
       "site": {},
-      "dids": [],
-      "selfUri": ""
+      "dids": []
    },
    "ipAddress": "",
-   "logicalInterfaceId": "",
-   "selfUri": ""
+   "logicalInterfaceId": ""
 }
 	*/
 	function updateEdgeLinesByLineId(edgeId, lineId, body){
@@ -2619,7 +2529,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2656,8 +2565,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": [],
-   "selfUri": ""
+   "commandResponses": []
 }
 	*/
 	function createEdgeLogicalinterfaces(edgeId, body){
@@ -2719,7 +2627,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -2756,8 +2663,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": [],
-   "selfUri": ""
+   "commandResponses": []
 }
 	*/
 	function updateEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId, body){
@@ -2921,14 +2827,12 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "version": {
-      "id": "",
       "name": "",
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
       "current": true,
-      "latestRelease": true,
-      "selfUri": ""
+      "latestRelease": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -3089,7 +2993,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3113,8 +3016,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "dids": [],
-   "selfUri": ""
+   "dids": []
 }
 	*/
 	function createEndpoints(body){
@@ -3162,7 +3064,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3186,8 +3087,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "dids": [],
-   "selfUri": ""
+   "dids": []
 }
 	*/
 	function updateEndpoint(endpointId, body){
@@ -3279,7 +3179,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3291,8 +3190,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "startNumber": "",
-   "endNumber": "",
-   "selfUri": ""
+   "endNumber": ""
 }
 	*/
 	function createExtensionpools(body){
@@ -3340,7 +3238,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3352,8 +3249,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "startNumber": "",
-   "endNumber": "",
-   "selfUri": ""
+   "endNumber": ""
 }
 	*/
 	function updateExtensionPool(extensionPoolId, body){
@@ -3474,7 +3370,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3496,8 +3391,7 @@ var ConfigurationApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "ownerType": "",
-   "selfUri": ""
+   "ownerType": ""
 }
 	*/
 	function updateExtension(extensionId, body){
@@ -3543,7 +3437,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "thirdPartyOrgId": "",
    "thirdPartyOrgName": "",
@@ -3554,8 +3447,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "version": 0,
    "state": "",
    "defaultSiteId": "",
-   "deletable": true,
-   "selfUri": ""
+   "deletable": true
 }
 	*/
 	function updateOrganization(body){
@@ -3633,7 +3525,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "thirdPartyOrgId": "",
    "thirdPartyOrgName": "",
@@ -3644,8 +3535,7 @@ var ConfigurationApi = function (pureCloudSession) {
    "version": 0,
    "state": "",
    "defaultSiteId": "",
-   "deletable": true,
-   "selfUri": ""
+   "deletable": true
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
@@ -3743,7 +3633,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3755,7 +3644,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "site": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -3774,13 +3662,13 @@ var ConfigurationApi = function (pureCloudSession) {
       "edges": [],
       "edgeAutoUpdateConfig": {},
       "location": {},
-      "selfUri": ""
+      "managed": true
    },
    "classificationTypes": [],
    "enabled": true,
    "endpoints": [],
    "distribution": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createOutboundroutes(body){
@@ -3828,7 +3716,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -3840,7 +3727,6 @@ var ConfigurationApi = function (pureCloudSession) {
    "modifiedByApp": "",
    "createdByApp": "",
    "site": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -3859,13 +3745,13 @@ var ConfigurationApi = function (pureCloudSession) {
       "edges": [],
       "edgeAutoUpdateConfig": {},
       "location": {},
-      "selfUri": ""
+      "managed": true
    },
    "classificationTypes": [],
    "enabled": true,
    "endpoints": [],
    "distribution": "",
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateOutboundRoute(outboundRouteId, body){
@@ -3975,10 +3861,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "period": "",
-   "selfUri": ""
+   "period": ""
 }
 	*/
 	function updateRecordingkeysRotationschedule(body){
@@ -4067,7 +3951,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -4094,8 +3977,7 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "policyErrors": {
       "policyErrorMessages": []
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createRetentionpolicies(body){
@@ -4169,7 +4051,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -4196,8 +4077,7 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "policyErrors": {
       "policyErrorMessages": []
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateRetentionpoliciesPolicy(policyId, body){
@@ -4251,7 +4131,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -4278,8 +4157,7 @@ var ConfigurationApi = function (pureCloudSession) {
    },
    "policyErrors": {
       "policyErrorMessages": []
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function patchRetentionpoliciesPolicy(policyId, body){
@@ -4555,7 +4433,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -4575,15 +4452,15 @@ var ConfigurationApi = function (pureCloudSession) {
    "edgeAutoUpdateConfig": {
       "timeZone": "",
       "rrule": "",
-      "start": {},
-      "end": {}
+      "start": "",
+      "end": ""
    },
    "location": {
       "id": "",
       "name": "",
       "selfUri": ""
    },
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function createSites(body){
@@ -4631,7 +4508,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -4651,15 +4527,15 @@ var ConfigurationApi = function (pureCloudSession) {
    "edgeAutoUpdateConfig": {
       "timeZone": "",
       "rrule": "",
-      "start": {},
-      "end": {}
+      "start": "",
+      "end": ""
    },
    "location": {
       "id": "",
       "name": "",
       "selfUri": ""
    },
-   "selfUri": ""
+   "managed": true
 }
 	*/
 	function updateSite(siteId, body){
@@ -5465,15 +5341,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "members": []
 }
@@ -5743,7 +5615,6 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "isCurrentUserWorkspace": true,
@@ -5758,8 +5629,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "summary": {
       "totalDocumentCount": 0
    },
-   "acl": [],
-   "selfUri": ""
+   "acl": []
 }
 	*/
 	function updateWorkspace(workspaceId, body){
@@ -5897,7 +5767,6 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "workspace": {
       "id": "",
@@ -5911,7 +5780,6 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -5930,29 +5798,22 @@ var ContentManagementApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "group": {
-      "id": "",
       "name": "",
       "description": "",
       "memberCount": 0,
       "groupType": "",
       "groupImages": {},
-      "groupState": "",
-      "selfUri": ""
+      "groupState": ""
    },
    "securityProfile": {
-      "id": "",
       "name": "",
-      "permissions": [],
-      "selfUri": ""
-   },
-   "selfUri": ""
+      "permissions": []
+   }
 }
 	*/
 	function updateWorkspaceMembersByMemberId(workspaceId, memberId, body){
@@ -6066,11 +5927,9 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "inUse": true,
-   "acl": [],
-   "selfUri": ""
+   "acl": []
 }
 	*/
 	function createWorkspaceTagvalues(workspaceId, body){
@@ -6180,11 +6039,9 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "inUse": true,
-   "acl": [],
-   "selfUri": ""
+   "acl": []
 }
 	*/
 	function updateWorkspaceTagvaluesByTagId(workspaceId, tagId, body){
@@ -6445,15 +6302,13 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "startTime": "",
    "endTime": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
-   "recordingState": "",
-   "selfUri": ""
+   "recordingState": ""
 }
 	*/
 	function updateConversation(conversationId, body){
@@ -6507,8 +6362,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "htmlBody": "",
+   "textBody": "",
    "id": "",
-   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6518,10 +6374,7 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
-   "time": "",
-   "selfUri": ""
+   "time": ""
 }
 	*/
 	function createConversationMessages(conversationId, body){
@@ -6575,8 +6428,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "htmlBody": "",
+   "textBody": "",
    "id": "",
-   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6586,10 +6440,7 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
-   "time": "",
-   "selfUri": ""
+   "time": ""
 }
 	*/
 	function updateConversationMessagesDraft(conversationId, body){
@@ -6613,6 +6464,35 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.updateConversationMessagesDraft = updateConversationMessagesDraft;
+	/**
+     * @summary Delete attachment from draft
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} attachmentId - attachment ID
+	*/
+	function deleteConversationMessagesDraftAttachmentsByAttachmentId(conversationId, attachmentId){
+		var apipath = '/api/v1/conversations/{conversationId}/messages/draft/attachments/{attachmentId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{attachmentId}', attachmentId);
+
+        if(attachmentId === undefined && attachmentId !== null){
+			throw 'Missing required  parameter: attachmentId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationMessagesDraftAttachmentsByAttachmentId = deleteConversationMessagesDraftAttachmentsByAttachmentId;
 	/**
      * @summary Get conversation message
 	 * @memberOf ConversationsApi#
@@ -6650,15 +6530,13 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "startTime": "",
    "endTime": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
-   "recordingState": "",
-   "selfUri": ""
+   "recordingState": ""
 }
 	*/
 	function createConversationParticipants(conversationId, body){
@@ -7220,7 +7098,6 @@ var FaxApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -7244,8 +7121,7 @@ var FaxApi = function (pureCloudSession) {
    "receiverAddress": "",
    "thumbnails": [],
    "sharingUri": "",
-   "downloadSharingUri": "",
-   "selfUri": ""
+   "downloadSharingUri": ""
 }
 	*/
 	function updateDocument(documentId, body){
@@ -7372,14 +7248,11 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "ownerType": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "audioFile": {
       "durationMilliseconds": 0,
@@ -7390,8 +7263,7 @@ var GreetingsApi = function (pureCloudSession) {
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function create(body){
@@ -7435,20 +7307,16 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "ownerType": "",
    "greetings": {},
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function updateDefaults(body){
@@ -7500,14 +7368,11 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "ownerType": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "audioFile": {
       "durationMilliseconds": 0,
@@ -7518,8 +7383,7 @@ var GreetingsApi = function (pureCloudSession) {
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function updateGreeting(greetingId, body){
@@ -7640,14 +7504,11 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "ownerType": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "audioFile": {
       "durationMilliseconds": 0,
@@ -7658,8 +7519,7 @@ var GreetingsApi = function (pureCloudSession) {
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function createUserGreetings(userId, body){
@@ -7717,20 +7577,16 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "ownerType": "",
    "greetings": {},
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function updateUserGreetingsDefaults(userId, body){
@@ -8316,12 +8172,10 @@ var OAuthApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": "",
-   "selfUri": ""
+   "ssoTargetURI": ""
 }
 	*/
 	function updateOnelogin(body){
@@ -8376,9 +8230,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "name": "",
-   "selfUri": ""
+   "name": ""
 }
 	*/
 	function updatePurecloud(body){
@@ -8433,9 +8285,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "name": "",
-   "selfUri": ""
+   "name": ""
 }
 	*/
 	function updateProverId(body){
@@ -8493,14 +8343,12 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "accessTokenValiditySeconds": 0,
    "authorizedGrantTypes": [],
    "description": "",
    "registeredRedirectUri": [],
-   "secret": "",
-   "selfUri": ""
+   "secret": ""
 }
 	*/
 	function createClients(body){
@@ -8548,14 +8396,12 @@ If the client is unable to secure the client secret then the 'TOKEN' grant type 
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "accessTokenValiditySeconds": 0,
    "authorizedGrantTypes": [],
    "description": "",
    "registeredRedirectUri": [],
-   "secret": "",
-   "selfUri": ""
+   "secret": ""
 }
 	*/
 	function updateClient(clientId, body){
@@ -8855,13 +8701,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "callableTimes": [],
-   "selfUri": ""
+   "callableTimes": []
 }
 	*/
 	function createCallabletimesets(body){
@@ -8909,13 +8753,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "callableTimes": [],
-   "selfUri": ""
+   "callableTimes": []
 }
 	*/
 	function updateCallableTimeSet(callableTimeSetId, body){
@@ -9031,13 +8873,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "responses": {},
-   "selfUri": ""
+   "responses": {}
 }
 	*/
 	function createCallanalysisresponsesets(body){
@@ -9085,13 +8925,11 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "responses": {},
-   "selfUri": ""
+   "responses": {}
 }
 	*/
 	function updateCallanalysisresponsesetsCallAnalysisSet(callAnalysisSetId, body){
@@ -9237,7 +9075,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -9284,8 +9121,7 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
-   "selfUri": ""
+   "singleNumberPreview": true
 }
 	*/
 	function createCampaigns(body){
@@ -9333,7 +9169,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -9380,8 +9215,7 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
-   "selfUri": ""
+   "singleNumberPreview": true
 }
 	*/
 	function updateCampaign(campaignId, body){
@@ -9629,8 +9463,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function createContactlists(body){
@@ -9710,8 +9558,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function updateContactList(contactListId, body){
@@ -9828,7 +9690,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "contactListId": "",
    "data": {
@@ -9856,8 +9717,7 @@ var OutboundApi = function (pureCloudSession) {
    },
    "callRecords": {},
    "callable": true,
-   "phoneNumberStatus": {},
-   "selfUri": ""
+   "phoneNumberStatus": {}
 }
 	*/
 	function updateContactListContactsByContactId(contactListId, contactId, body){
@@ -10095,7 +9955,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10109,8 +9968,7 @@ var OutboundApi = function (pureCloudSession) {
       "failureReason": ""
    },
    "fileKey": "",
-   "size": 0,
-   "selfUri": ""
+   "size": 0
 }
 	*/
 	function createDnclists(body){
@@ -10170,7 +10028,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10184,8 +10041,7 @@ var OutboundApi = function (pureCloudSession) {
       "failureReason": ""
    },
    "fileKey": "",
-   "size": 0,
-   "selfUri": ""
+   "size": 0
 }
 	*/
 	function updateDncList(dncListId, body){
@@ -10351,14 +10207,12 @@ var OutboundApi = function (pureCloudSession) {
    "callId": "",
    "wrapupCodeId": "",
    "contact": {
-      "id": "",
       "name": "",
       "contactListId": "",
       "data": {},
       "callRecords": {},
       "callable": true,
-      "phoneNumberStatus": {},
-      "selfUri": ""
+      "phoneNumberStatus": {}
    }
 }
 	*/
@@ -10486,7 +10340,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10501,8 +10354,7 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "rules": [],
-   "selfUri": ""
+   "rules": []
 }
 	*/
 	function createRulesets(body){
@@ -10550,7 +10402,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10565,8 +10416,7 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "rules": [],
-   "selfUri": ""
+   "rules": []
 }
 	*/
 	function updateRuleSet(ruleSetId, body){
@@ -10657,7 +10507,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10668,8 +10517,7 @@ var OutboundApi = function (pureCloudSession) {
       "id": "",
       "name": "",
       "selfUri": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateSchedulesCampaign(campaignId, body){
@@ -10760,7 +10608,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10771,8 +10618,7 @@ var OutboundApi = function (pureCloudSession) {
       "id": "",
       "name": "",
       "selfUri": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateSchedulesSequence(sequenceId, body){
@@ -10888,7 +10734,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10896,8 +10741,7 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
-   "selfUri": ""
+   "stopMessage": ""
 }
 	*/
 	function createSequences(body){
@@ -10945,7 +10789,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -10953,8 +10796,7 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
-   "selfUri": ""
+   "stopMessage": ""
 }
 	*/
 	function updateSequence(sequenceId, body){
@@ -11022,14 +10864,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
    "defaultSet": [],
-   "mapping": {},
-   "selfUri": ""
+   "mapping": {}
 }
 	*/
 	function updateWrapupcodemappings(body){
@@ -11091,13 +10931,11 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "languageLabels": {},
    "systemPresence": "",
    "deactivated": true,
    "createdBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11116,15 +10954,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11143,14 +10978,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function create(body){
@@ -11202,13 +11034,11 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "languageLabels": {},
    "systemPresence": "",
    "deactivated": true,
    "createdBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11227,15 +11057,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11254,14 +11081,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function updatePresence(presenceId, body){
@@ -11383,10 +11207,8 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11405,15 +11227,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "source": "",
    "presenceDefinition": {
-      "id": "",
       "name": "",
       "languageLabels": {},
       "systemPresence": "",
@@ -11421,12 +11240,10 @@ var PresenceApi = function (pureCloudSession) {
       "createdBy": {},
       "createdDate": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "message": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11445,14 +11262,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function updateUserPresencesBySource(userId, source, body){
@@ -11495,10 +11309,8 @@ var PresenceApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11517,15 +11329,12 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "source": "",
    "presenceDefinition": {
-      "id": "",
       "name": "",
       "languageLabels": {},
       "systemPresence": "",
@@ -11533,12 +11342,10 @@ var PresenceApi = function (pureCloudSession) {
       "createdBy": {},
       "createdDate": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "message": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11557,14 +11364,11 @@ var PresenceApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function patchUserPresencesBySource(userId, source, body){
@@ -11737,7 +11541,6 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversationId": "",
    "path": "",
@@ -11759,8 +11562,7 @@ var QualityApi = function (pureCloudSession) {
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": "",
-   "selfUri": ""
+   "recordingId": ""
 }
 	*/
 	function updateConversationRecordingsByRecordingId(conversationId, recordingId, body, restoreDays){
@@ -11808,7 +11610,6 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversationId": "",
    "path": "",
@@ -11830,8 +11631,7 @@ var QualityApi = function (pureCloudSession) {
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": "",
-   "selfUri": ""
+   "recordingId": ""
 }
 	*/
 	function patchConversationRecordingsByRecordingId(conversationId, recordingId, body){
@@ -11899,13 +11699,11 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "location": 0,
    "durationMs": 0,
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -11924,14 +11722,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "description": "",
-   "selfUri": ""
+   "description": ""
 }
 	*/
 	function createConversationRecordingsByRecordingIdAnnotations(conversationId, recordingId, body){
@@ -12007,13 +11802,11 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "location": 0,
    "durationMs": 0,
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12032,14 +11825,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
-   "description": "",
-   "selfUri": ""
+   "description": ""
 }
 	*/
 	function updateConversationRecordingsByRecordingIdAnnotationsByAnnotationId(conversationId, recordingId, annotationId, body){
@@ -12119,8 +11909,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
-	* @param {string} startTime - Start time of agent activity
-	* @param {string} endTime - End time of agent activity
+	* @param {string} startTime - Start time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - End time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {array} agentUserId - user id of agent requested
 	* @param {string} evaluatorUserId - user id of the evaluator
 	* @param {string} name - name
@@ -12189,8 +11979,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
 	* @param {string} conversationId - conversation id
-	* @param {string} startTime - Beginning of the calibration query
-	* @param {string} endTime - end of the calibration query
+	* @param {string} startTime - Beginning of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - end of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} calibratorId - user id of calibrator
 	*/
 	function getCalibrations(pageSize, pageNumber, sortBy, expand, conversationId, startTime, endTime, calibratorId){
@@ -12252,10 +12042,8 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "calibrator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12274,14 +12062,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12300,33 +12085,27 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "contextId": "",
    "averageScore": 0,
@@ -12336,7 +12115,6 @@ var QualityApi = function (pureCloudSession) {
    "evaluations": [],
    "evaluators": [],
    "scoringIndex": {
-      "id": "",
       "name": "",
       "conversation": {},
       "evaluationForm": {},
@@ -12350,11 +12128,9 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
-      "isScoringIndex": true,
-      "selfUri": ""
+      "isScoringIndex": true
    },
    "expertEvaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12373,13 +12149,10 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
-   },
-   "selfUri": ""
+      "stationUri": ""
+   }
 }
 	*/
 	function createCalibrations(body, expand){
@@ -12438,10 +12211,8 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "calibrator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12460,14 +12231,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12486,33 +12254,27 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "contextId": "",
    "averageScore": 0,
@@ -12522,7 +12284,6 @@ var QualityApi = function (pureCloudSession) {
    "evaluations": [],
    "evaluators": [],
    "scoringIndex": {
-      "id": "",
       "name": "",
       "conversation": {},
       "evaluationForm": {},
@@ -12536,11 +12297,9 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
-      "isScoringIndex": true,
-      "selfUri": ""
+      "isScoringIndex": true
    },
    "expertEvaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12559,13 +12318,10 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
-   },
-   "selfUri": ""
+      "stationUri": ""
+   }
 }
 	*/
 	function updateCalibration(calibrationId, body){
@@ -12684,32 +12440,26 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "evaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12728,14 +12478,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12754,14 +12501,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "calibration": {
-      "id": "",
       "name": "",
       "calibrator": {},
       "agent": {},
@@ -12775,8 +12519,7 @@ var QualityApi = function (pureCloudSession) {
       "evaluations": [],
       "evaluators": [],
       "scoringIndex": {},
-      "expertEvaluator": {},
-      "selfUri": ""
+      "expertEvaluator": {}
    },
    "status": "",
    "answers": {
@@ -12792,7 +12535,6 @@ var QualityApi = function (pureCloudSession) {
    "assignedDate": "",
    "changedDate": "",
    "queue": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -12812,11 +12554,9 @@ var QualityApi = function (pureCloudSession) {
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
-      "memberCount": 0,
-      "selfUri": ""
+      "memberCount": 0
    },
-   "isScoringIndex": true,
-   "selfUri": ""
+   "isScoringIndex": true
 }
 	*/
 	function createConversationEvaluations(conversationId, body, expand){
@@ -12890,32 +12630,26 @@ var QualityApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "evaluator": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12934,14 +12668,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -12960,14 +12691,11 @@ var QualityApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "calibration": {
-      "id": "",
       "name": "",
       "calibrator": {},
       "agent": {},
@@ -12981,8 +12709,7 @@ var QualityApi = function (pureCloudSession) {
       "evaluations": [],
       "evaluators": [],
       "scoringIndex": {},
-      "expertEvaluator": {},
-      "selfUri": ""
+      "expertEvaluator": {}
    },
    "status": "",
    "answers": {
@@ -12998,7 +12725,6 @@ var QualityApi = function (pureCloudSession) {
    "assignedDate": "",
    "changedDate": "",
    "queue": {
-      "id": "",
       "name": "",
       "description": "",
       "version": 0,
@@ -13018,11 +12744,9 @@ var QualityApi = function (pureCloudSession) {
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
-      "memberCount": 0,
-      "selfUri": ""
+      "memberCount": 0
    },
-   "isScoringIndex": true,
-   "selfUri": ""
+   "isScoringIndex": true
 }
 	*/
 	function updateConversationEvaluationsByEvaluationId(conversationId, evaluationId, body, expand){
@@ -13247,15 +12971,13 @@ var QualityApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "evaluationForm": {
-      "id": "",
       "name": "",
       "type": "",
       "modifiedDate": "",
       "published": true,
       "contextId": "",
       "questionGroups": [],
-      "publishedVersions": {},
-      "selfUri": ""
+      "publishedVersions": {}
    },
    "answers": {
       "totalScore": {},
@@ -13289,8 +13011,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
-	* @param {string} startTime - The start time specified
-	* @param {string} endTime - The end time specified
+	* @param {string} startTime - The start time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - The end time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} name - Evaluator name
 	* @param {array} permission - permission strings
 	*/
@@ -13377,10 +13099,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "mxRecordStatus": "",
-   "selfUri": ""
+   "mxRecordStatus": ""
 }
 	*/
 	function createEmailDomains(body){
@@ -13428,7 +13148,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "pattern": "",
    "queue": {
@@ -13445,8 +13164,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "fromName": "",
    "fromEmail": "",
-   "spamThreshold": {},
-   "selfUri": ""
+   "spamThreshold": {}
 }
 	*/
 	function createEmailDomainRoutes(domain, body){
@@ -13508,7 +13226,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "pattern": "",
    "queue": {
@@ -13525,8 +13242,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "fromName": "",
    "fromEmail": "",
-   "spamThreshold": {},
-   "selfUri": ""
+   "spamThreshold": {}
 }
 	*/
 	function updateEmailDomainRoutesById(domain, id, body){
@@ -13682,7 +13398,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -13711,8 +13426,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
-   "memberCount": 0,
-   "selfUri": ""
+   "memberCount": 0
 }
 	*/
 	function createQueues(QueueId, body){
@@ -13766,7 +13480,6 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -13795,8 +13508,7 @@ var RoutingApi = function (pureCloudSession) {
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
-   "memberCount": 0,
-   "selfUri": ""
+   "memberCount": 0
 }
 	*/
 	function updateQueue(queueId, body){
@@ -13911,10 +13623,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -13933,11 +13643,9 @@ var RoutingApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -13946,8 +13654,7 @@ var RoutingApi = function (pureCloudSession) {
       "userId": "",
       "status": "",
       "startTime": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateQueueMembersByMemberId(queueId, memberId, body){
@@ -14127,10 +13834,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -14149,11 +13854,9 @@ var RoutingApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -14162,8 +13865,7 @@ var RoutingApi = function (pureCloudSession) {
       "userId": "",
       "status": "",
       "startTime": ""
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function patchQueueUsersByMemberId(queueId, memberId, body){
@@ -14346,10 +14048,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "utilization": {},
-   "selfUri": ""
+   "utilization": {}
 }
 	*/
 	function updateUtilization(body){
@@ -14422,13 +14122,11 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "createdBy": ""
 }
 	*/
 	function createWrapupcodes(body){
@@ -14476,13 +14174,11 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "createdBy": ""
 }
 	*/
 	function updateWrapupcodesCode(codeId, body){
@@ -14584,7 +14280,6 @@ var ScriptsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -14596,14 +14291,13 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createForms(body){
@@ -14651,7 +14345,6 @@ var ScriptsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -14663,14 +14356,13 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateForm(formId, body){
@@ -14790,7 +14482,6 @@ var ScriptsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -14802,14 +14493,13 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createPublishedforms(body){
@@ -14956,6 +14646,1100 @@ var SearchApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.createChats = createChats;
+
+    return self;
+};
+
+/**
+* @class
+* @example
+* var api = new SocializeApi(pureCloudSession);
+*/
+var SocializeApi = function (pureCloudSession) {
+	/**
+     * @summary Get all published expressions.
+	 * @memberOf SocializeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getExpressionsPublished(pageSize, pageNumber){
+		var apipath = '/api/v1/socialize/expressions/published';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getExpressionsPublished = getExpressionsPublished;
+	/**
+     * @summary Create published expression.
+	 * @memberOf SocializeApi#
+	* @param {} body - PublishedExpression
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "socialHub": "",
+   "twitterExpression": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "isDispositioned": true,
+      "isNoise": true,
+      "gistener": {},
+      "tweetId": "",
+      "text": "",
+      "tweetCreated": "",
+      "isReply": true,
+      "isRetweet": true,
+      "retweetParentId": "",
+      "retweetCount": 0,
+      "isQuotedTweet": true,
+      "quotedParentId": "",
+      "userId": "",
+      "userName": "",
+      "userScreenName": "",
+      "userTweetCount": 0,
+      "userFollowersCount": 0,
+      "groupTags": [],
+      "routed": true
+   },
+   "publicationParentId": "",
+   "scheduleDate": "",
+   "publishedDate": "",
+   "socialAccount": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "enabled": true,
+      "authorized": true,
+      "socialHub": "",
+      "access_token": "",
+      "access_token_secret": "",
+      "twitterId": "",
+      "streamingEnabled": true
+   },
+   "twitterId": "",
+   "retweets": 0,
+   "replies": []
+}
+	*/
+	function createExpressionsPublished(body){
+		var apipath = '/api/v1/socialize/expressions/published';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createExpressionsPublished = createExpressionsPublished;
+	/**
+     * @summary Get published expression
+	 * @memberOf SocializeApi#
+	* @param {string} publishedExpressionId - Published TwitterExpression ID
+	*/
+	function getExpressionsPublishedPublishedExpression(publishedExpressionId){
+		var apipath = '/api/v1/socialize/expressions/published/{publishedExpressionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{publishedExpressionId}', publishedExpressionId);
+
+        if(publishedExpressionId === undefined && publishedExpressionId !== null){
+			throw 'Missing required  parameter: publishedExpressionId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getExpressionsPublishedPublishedExpression = getExpressionsPublishedPublishedExpression;
+	/**
+     * @summary Update published expression.
+	 * @memberOf SocializeApi#
+	* @param {string} publishedExpressionId - Published TwitterExpression ID
+	* @param {} body - PublishedExpression
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "socialHub": "",
+   "twitterExpression": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "isDispositioned": true,
+      "isNoise": true,
+      "gistener": {},
+      "tweetId": "",
+      "text": "",
+      "tweetCreated": "",
+      "isReply": true,
+      "isRetweet": true,
+      "retweetParentId": "",
+      "retweetCount": 0,
+      "isQuotedTweet": true,
+      "quotedParentId": "",
+      "userId": "",
+      "userName": "",
+      "userScreenName": "",
+      "userTweetCount": 0,
+      "userFollowersCount": 0,
+      "groupTags": [],
+      "routed": true
+   },
+   "publicationParentId": "",
+   "scheduleDate": "",
+   "publishedDate": "",
+   "socialAccount": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "enabled": true,
+      "authorized": true,
+      "socialHub": "",
+      "access_token": "",
+      "access_token_secret": "",
+      "twitterId": "",
+      "streamingEnabled": true
+   },
+   "twitterId": "",
+   "retweets": 0,
+   "replies": []
+}
+	*/
+	function updateExpressionsPublishedPublishedExpression(publishedExpressionId, body){
+		var apipath = '/api/v1/socialize/expressions/published/{publishedExpressionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{publishedExpressionId}', publishedExpressionId);
+
+        if(publishedExpressionId === undefined && publishedExpressionId !== null){
+			throw 'Missing required  parameter: publishedExpressionId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateExpressionsPublishedPublishedExpression = updateExpressionsPublishedPublishedExpression;
+	/**
+     * @summary Delete published expression.
+	 * @memberOf SocializeApi#
+	* @param {string} publishedExpressionId - Published TwitterExpression ID
+	*/
+	function deleteExpressionsPublishedPublishedExpression(publishedExpressionId){
+		var apipath = '/api/v1/socialize/expressions/published/{publishedExpressionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{publishedExpressionId}', publishedExpressionId);
+
+        if(publishedExpressionId === undefined && publishedExpressionId !== null){
+			throw 'Missing required  parameter: publishedExpressionId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteExpressionsPublishedPublishedExpression = deleteExpressionsPublishedPublishedExpression;
+	/**
+     * @summary Get all configured expressions.
+	 * @memberOf SocializeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getExpressionsTwitter(pageSize, pageNumber){
+		var apipath = '/api/v1/socialize/expressions/twitter';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getExpressionsTwitter = getExpressionsTwitter;
+	/**
+     * @summary Create twitter expression.
+	 * @memberOf SocializeApi#
+	* @param {} body - TwitterExpression
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "isDispositioned": true,
+   "isNoise": true,
+   "gistener": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "enabled": true,
+      "anyWords": "",
+      "allWords": "",
+      "excludeWords": "",
+      "exactPhrase": "",
+      "groupTags": [],
+      "socialAccount": {}
+   },
+   "tweetId": "",
+   "text": "",
+   "tweetCreated": "",
+   "isReply": true,
+   "isRetweet": true,
+   "retweetParentId": "",
+   "retweetCount": 0,
+   "isQuotedTweet": true,
+   "quotedParentId": "",
+   "userId": "",
+   "userName": "",
+   "userScreenName": "",
+   "userTweetCount": 0,
+   "userFollowersCount": 0,
+   "groupTags": [],
+   "routed": true
+}
+	*/
+	function createExpressionsTwitter(body){
+		var apipath = '/api/v1/socialize/expressions/twitter';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createExpressionsTwitter = createExpressionsTwitter;
+	/**
+     * @summary Get TwitterExpression.
+	 * @memberOf SocializeApi#
+	* @param {string} expressionId - TwitterExpression ID
+	*/
+	function getExpressionsTwitterExpression(expressionId){
+		var apipath = '/api/v1/socialize/expressions/twitter/{expressionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{expressionId}', expressionId);
+
+        if(expressionId === undefined && expressionId !== null){
+			throw 'Missing required  parameter: expressionId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getExpressionsTwitterExpression = getExpressionsTwitterExpression;
+	/**
+     * @summary Update TwitterExpression.
+	 * @memberOf SocializeApi#
+	* @param {string} expressionId - TwitterExpression ID
+	* @param {} body - TwitterExpression
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "isDispositioned": true,
+   "isNoise": true,
+   "gistener": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "enabled": true,
+      "anyWords": "",
+      "allWords": "",
+      "excludeWords": "",
+      "exactPhrase": "",
+      "groupTags": [],
+      "socialAccount": {}
+   },
+   "tweetId": "",
+   "text": "",
+   "tweetCreated": "",
+   "isReply": true,
+   "isRetweet": true,
+   "retweetParentId": "",
+   "retweetCount": 0,
+   "isQuotedTweet": true,
+   "quotedParentId": "",
+   "userId": "",
+   "userName": "",
+   "userScreenName": "",
+   "userTweetCount": 0,
+   "userFollowersCount": 0,
+   "groupTags": [],
+   "routed": true
+}
+	*/
+	function updateExpressionsTwitterExpression(expressionId, body){
+		var apipath = '/api/v1/socialize/expressions/twitter/{expressionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{expressionId}', expressionId);
+
+        if(expressionId === undefined && expressionId !== null){
+			throw 'Missing required  parameter: expressionId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateExpressionsTwitterExpression = updateExpressionsTwitterExpression;
+	/**
+     * @summary Delete TwitterExpression.
+	 * @memberOf SocializeApi#
+	* @param {string} expressionId - TwitterExpression ID
+	*/
+	function deleteExpressionsTwitterExpression(expressionId){
+		var apipath = '/api/v1/socialize/expressions/twitter/{expressionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{expressionId}', expressionId);
+
+        if(expressionId === undefined && expressionId !== null){
+			throw 'Missing required  parameter: expressionId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteExpressionsTwitterExpression = deleteExpressionsTwitterExpression;
+	/**
+     * @summary Get all configured gisteners.
+	 * @memberOf SocializeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {boolean} enabled - Enabled Only
+	*/
+	function getGisteners(pageSize, pageNumber, enabled){
+		var apipath = '/api/v1/socialize/gisteners';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGisteners = getGisteners;
+	/**
+     * @summary Create gistener.
+	 * @memberOf SocializeApi#
+	* @param {} body - Gistener
+	* @param {boolean} preview - Preview Only
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "enabled": true,
+   "anyWords": "",
+   "allWords": "",
+   "excludeWords": "",
+   "exactPhrase": "",
+   "groupTags": [],
+   "socialAccount": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "enabled": true,
+      "authorized": true,
+      "socialHub": "",
+      "access_token": "",
+      "access_token_secret": "",
+      "twitterId": "",
+      "streamingEnabled": true
+   }
+}
+	*/
+	function createGisteners(body, preview){
+		var apipath = '/api/v1/socialize/gisteners';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		if(preview !== undefined && preview !== null){
+			queryParameters.preview = preview;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createGisteners = createGisteners;
+	/**
+     * @summary Get gistener.
+	 * @memberOf SocializeApi#
+	* @param {string} gistenerId - Gistener ID
+	*/
+	function getGistener(gistenerId){
+		var apipath = '/api/v1/socialize/gisteners/{gistenerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{gistenerId}', gistenerId);
+
+        if(gistenerId === undefined && gistenerId !== null){
+			throw 'Missing required  parameter: gistenerId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGistener = getGistener;
+	/**
+     * @summary Update gistener.
+	 * @memberOf SocializeApi#
+	* @param {string} gistenerId - Gistener ID
+	* @param {} body - Gistener
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "enabled": true,
+   "anyWords": "",
+   "allWords": "",
+   "excludeWords": "",
+   "exactPhrase": "",
+   "groupTags": [],
+   "socialAccount": {
+      "name": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "enabled": true,
+      "authorized": true,
+      "socialHub": "",
+      "access_token": "",
+      "access_token_secret": "",
+      "twitterId": "",
+      "streamingEnabled": true
+   }
+}
+	*/
+	function updateGistener(gistenerId, body){
+		var apipath = '/api/v1/socialize/gisteners/{gistenerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{gistenerId}', gistenerId);
+
+        if(gistenerId === undefined && gistenerId !== null){
+			throw 'Missing required  parameter: gistenerId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateGistener = updateGistener;
+	/**
+     * @summary Delete gistener.
+	 * @memberOf SocializeApi#
+	* @param {string} gistenerId - Gistener ID
+	*/
+	function deleteGistener(gistenerId){
+		var apipath = '/api/v1/socialize/gisteners/{gistenerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{gistenerId}', gistenerId);
+
+        if(gistenerId === undefined && gistenerId !== null){
+			throw 'Missing required  parameter: gistenerId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteGistener = deleteGistener;
+	/**
+     * @summary Get all configured groupTags.
+	 * @memberOf SocializeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {boolean} enabled - Enabled Only
+	*/
+	function getGrouptags(pageSize, pageNumber, enabled){
+		var apipath = '/api/v1/socialize/grouptags';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGrouptags = getGrouptags;
+	/**
+     * @summary Create grouptag.
+	 * @memberOf SocializeApi#
+	* @param {} body - grouptag
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "type": "",
+   "enabled": true
+}
+	*/
+	function createGrouptags(body){
+		var apipath = '/api/v1/socialize/grouptags';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createGrouptags = createGrouptags;
+	/**
+     * @summary Get grouptag.
+	 * @memberOf SocializeApi#
+	* @param {string} groupTagId - grouptag ID
+	*/
+	function getGroupTag(groupTagId){
+		var apipath = '/api/v1/socialize/grouptags/{groupTagId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupTagId}', groupTagId);
+
+        if(groupTagId === undefined && groupTagId !== null){
+			throw 'Missing required  parameter: groupTagId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGroupTag = getGroupTag;
+	/**
+     * @summary Update grouptag.
+	 * @memberOf SocializeApi#
+	* @param {string} groupTagId - grouptag ID
+	* @param {} body - grouptag
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "type": "",
+   "enabled": true
+}
+	*/
+	function updateGroupTag(groupTagId, body){
+		var apipath = '/api/v1/socialize/grouptags/{groupTagId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupTagId}', groupTagId);
+
+        if(groupTagId === undefined && groupTagId !== null){
+			throw 'Missing required  parameter: groupTagId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateGroupTag = updateGroupTag;
+	/**
+     * @summary Delete grouptag.
+	 * @memberOf SocializeApi#
+	* @param {string} groupTagId - grouptag ID
+	*/
+	function deleteGroupTag(groupTagId){
+		var apipath = '/api/v1/socialize/grouptags/{groupTagId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupTagId}', groupTagId);
+
+        if(groupTagId === undefined && groupTagId !== null){
+			throw 'Missing required  parameter: groupTagId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteGroupTag = deleteGroupTag;
+	/**
+     * @summary Get all configured publications.
+	 * @memberOf SocializeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getPublications(pageSize, pageNumber){
+		var apipath = '/api/v1/socialize/publications';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPublications = getPublications;
+	/**
+     * @summary Create publication.
+	 * @memberOf SocializeApi#
+	* @param {} body - Publication
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "tweetText": "",
+   "rawTweetText": "",
+   "approved": true
+}
+	*/
+	function createPublications(body){
+		var apipath = '/api/v1/socialize/publications';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createPublications = createPublications;
+	/**
+     * @summary Get publication.
+	 * @memberOf SocializeApi#
+	* @param {string} publicationId - Publication ID
+	*/
+	function getPublication(publicationId){
+		var apipath = '/api/v1/socialize/publications/{publicationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{publicationId}', publicationId);
+
+        if(publicationId === undefined && publicationId !== null){
+			throw 'Missing required  parameter: publicationId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPublication = getPublication;
+	/**
+     * @summary Update publication.
+	 * @memberOf SocializeApi#
+	* @param {string} publicationId - Publication ID
+	* @param {} body - Publication
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "tweetText": "",
+   "rawTweetText": "",
+   "approved": true
+}
+	*/
+	function updatePublication(publicationId, body){
+		var apipath = '/api/v1/socialize/publications/{publicationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{publicationId}', publicationId);
+
+        if(publicationId === undefined && publicationId !== null){
+			throw 'Missing required  parameter: publicationId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updatePublication = updatePublication;
+	/**
+     * @summary Delete publication.
+	 * @memberOf SocializeApi#
+	* @param {string} publicationId - Publication ID
+	*/
+	function deletePublication(publicationId){
+		var apipath = '/api/v1/socialize/publications/{publicationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{publicationId}', publicationId);
+
+        if(publicationId === undefined && publicationId !== null){
+			throw 'Missing required  parameter: publicationId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deletePublication = deletePublication;
+	/**
+     * @summary Get all social accounts.
+	 * @memberOf SocializeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {boolean} enabled - Enabled Only
+	*/
+	function getSocialaccounts(pageSize, pageNumber, enabled){
+		var apipath = '/api/v1/socialize/socialaccounts';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSocialaccounts = getSocialaccounts;
+	/**
+     * @summary Create social account.
+	 * @memberOf SocializeApi#
+	* @param {} body - SocialAccount
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "enabled": true,
+   "authorized": true,
+   "socialHub": "",
+   "access_token": "",
+   "access_token_secret": "",
+   "twitterId": "",
+   "streamingEnabled": true
+}
+	*/
+	function createSocialaccounts(body){
+		var apipath = '/api/v1/socialize/socialaccounts';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createSocialaccounts = createSocialaccounts;
+	/**
+     * @summary Get social account
+	 * @memberOf SocializeApi#
+	* @param {string} socialAccountId - Social Account ID
+	* @param {boolean} enabled - Streaming Enabled
+	*/
+	function getSocialAccount(socialAccountId, enabled){
+		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{socialAccountId}', socialAccountId);
+
+        if(socialAccountId === undefined && socialAccountId !== null){
+			throw 'Missing required  parameter: socialAccountId';
+        }
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+        if(enabled === undefined && enabled !== null){
+			throw 'Missing required  parameter: enabled';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSocialAccount = getSocialAccount;
+	/**
+     * @summary Update social account.
+	 * @memberOf SocializeApi#
+	* @param {string} socialAccountId - Social Account ID
+	* @param {boolean} enabled - Streaming Enabled
+	* @param {} body - SocialAccount
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "enabled": true,
+   "authorized": true,
+   "socialHub": "",
+   "access_token": "",
+   "access_token_secret": "",
+   "twitterId": "",
+   "streamingEnabled": true
+}
+	*/
+	function updateSocialAccount(socialAccountId, enabled, body){
+		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{socialAccountId}', socialAccountId);
+
+        if(socialAccountId === undefined && socialAccountId !== null){
+			throw 'Missing required  parameter: socialAccountId';
+        }
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+        if(enabled === undefined && enabled !== null){
+			throw 'Missing required  parameter: enabled';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateSocialAccount = updateSocialAccount;
+	/**
+     * @summary Delete social account.
+	 * @memberOf SocializeApi#
+	* @param {string} socialAccountId - Social Account ID
+	* @param {boolean} enabled - Streaming Enabled
+	*/
+	function deleteSocialAccount(socialAccountId, enabled){
+		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{socialAccountId}', socialAccountId);
+
+        if(socialAccountId === undefined && socialAccountId !== null){
+			throw 'Missing required  parameter: socialAccountId';
+        }
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+        if(enabled === undefined && enabled !== null){
+			throw 'Missing required  parameter: enabled';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSocialAccount = deleteSocialAccount;
+	/**
+     * @summary Enabled/Disable feed for social account.
+	 * @memberOf SocializeApi#
+	* @param {string} socialAccountId - Social Account ID
+	* @param {boolean} enabled - Streaming Enabled
+	*/
+	function patchSocialAccount(socialAccountId, enabled){
+		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{socialAccountId}', socialAccountId);
+
+        if(socialAccountId === undefined && socialAccountId !== null){
+			throw 'Missing required  parameter: socialAccountId';
+        }
+
+
+		if(enabled !== undefined && enabled !== null){
+			queryParameters.enabled = enabled;
+		}
+
+        if(enabled === undefined && enabled !== null){
+			throw 'Missing required  parameter: enabled';
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchSocialAccount = patchSocialAccount;
 
     return self;
 };
@@ -15258,7 +16042,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "phoneMetaBase": {
       "id": "",
@@ -15295,8 +16078,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createProvidersEdgePhonebasesettings(body){
@@ -15396,7 +16178,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "phoneMetaBase": {
       "id": "",
@@ -15433,8 +16214,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateProvidersEdgePhonebasesettingsPhoneBase(phoneBaseId, body){
@@ -15556,7 +16336,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -15594,26 +16373,22 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    },
    "lines": [],
    "status": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "secondaryStatus": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "properties": {
       "nodeType": "",
@@ -15644,8 +16419,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function createProvidersEdgePhones(body){
@@ -15743,7 +16517,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -15781,26 +16554,22 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    },
    "lines": [],
    "status": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "secondaryStatus": {
-      "id": "",
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
-      "edge": {},
-      "selfUri": ""
+      "edge": {}
    },
    "properties": {
       "nodeType": "",
@@ -15831,8 +16600,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "dualRegisters": true,
       "hardwareIdType": "",
       "allowReboot": true
-   },
-   "selfUri": ""
+   }
 }
 	*/
 	function updateProvidersEdgePhone(phoneId, body){
@@ -15973,7 +16741,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "trunkMetabase": {
       "id": "",
@@ -16003,7 +16770,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "array": true,
       "null": true
    },
-   "selfUri": ""
+   "trunkType": ""
 }
 	*/
 	function createProvidersEdgeTrunkbasesettings(body){
@@ -16112,7 +16879,6 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "trunkMetabase": {
       "id": "",
@@ -16142,7 +16908,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "array": true,
       "null": true
    },
-   "selfUri": ""
+   "trunkType": ""
 }
 	*/
 	function updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings(trunkBaseSettingsId, body){
@@ -16283,7 +17049,6 @@ var UserRecordingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -16299,21 +17064,18 @@ var UserRecordingsApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "contentLength": 0,
    "durationMilliseconds": 0,
    "thumbnails": [],
-   "read": true,
-   "selfUri": ""
+   "read": true
 }
 	*/
 	function updateRecording(recordingId, body, expand){
@@ -16480,7 +17242,6 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "username": "",
    "email": "",
@@ -16501,15 +17262,13 @@ var UsersApi = function (pureCloudSession) {
    },
    "password": "",
    "primaryPresence": {
-      "id": "",
       "name": "",
       "user": {},
       "source": "",
       "presenceDefinition": {},
       "message": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "conversations": {
       "userId": "",
@@ -16526,27 +17285,21 @@ var UsersApi = function (pureCloudSession) {
       "socialExpression": {}
    },
    "outOfOffice": {
-      "id": "",
       "name": "",
       "user": {},
       "startDate": "",
       "endDate": "",
-      "active": true,
-      "selfUri": ""
+      "active": true
    },
    "permissions": [],
-   "selfUri": "",
    "requestedStatus": {
-      "id": "",
       "name": "",
       "alertable": true,
       "dateModified": "",
-      "type": "",
-      "selfUri": ""
+      "type": ""
    },
    "defaultStationUri": "",
-   "stationUri": "",
-   "lastStationUri": ""
+   "stationUri": ""
 }
 	*/
 	function create(body){
@@ -16621,7 +17374,6 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "username": "",
    "email": "",
@@ -16642,15 +17394,13 @@ var UsersApi = function (pureCloudSession) {
    },
    "password": "",
    "primaryPresence": {
-      "id": "",
       "name": "",
       "user": {},
       "source": "",
       "presenceDefinition": {},
       "message": "",
       "modifiedBy": {},
-      "modifiedDate": "",
-      "selfUri": ""
+      "modifiedDate": ""
    },
    "conversations": {
       "userId": "",
@@ -16667,27 +17417,21 @@ var UsersApi = function (pureCloudSession) {
       "socialExpression": {}
    },
    "outOfOffice": {
-      "id": "",
       "name": "",
       "user": {},
       "startDate": "",
       "endDate": "",
-      "active": true,
-      "selfUri": ""
+      "active": true
    },
    "permissions": [],
-   "selfUri": "",
    "requestedStatus": {
-      "id": "",
       "name": "",
       "alertable": true,
       "dateModified": "",
-      "type": "",
-      "selfUri": ""
+      "type": ""
    },
    "defaultStationUri": "",
-   "stationUri": "",
-   "lastStationUri": ""
+   "stationUri": ""
 }
 	*/
 	function updateUser(userId, body){
@@ -16745,10 +17489,8 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -16767,16 +17509,13 @@ var UsersApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function updateUserCallforwarding(userId, body){
@@ -16808,10 +17547,8 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -16830,16 +17567,13 @@ var UsersApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
-   "modifiedDate": "",
-   "selfUri": ""
+   "modifiedDate": ""
 }
 	*/
 	function patchUserCallforwarding(userId, body){
@@ -16893,10 +17627,8 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -16915,16 +17647,13 @@ var UsersApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "startDate": "",
    "endDate": "",
-   "active": true,
-   "selfUri": ""
+   "active": true
 }
 	*/
 	function updateUserOutofoffice(userId, body){
@@ -16952,6 +17681,84 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.updateUserOutofoffice = updateUserOutofoffice;
+	/**
+     * @summary Get a user's PrimaryUserPresenceSource
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function getUserPrimarypresencesource(userId){
+		var apipath = '/api/v1/users/{userId}/primarypresencesource';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserPrimarypresencesource = getUserPrimarypresencesource;
+	/**
+     * @summary Update a user's PrimaryUserPresenceSource
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "user": {
+      "name": "",
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
+   },
+   "primarySource": ""
+}
+	*/
+	function updateUserPrimarypresencesource(userId, body){
+		var apipath = '/api/v1/users/{userId}/primarypresencesource';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateUserPrimarypresencesource = updateUserPrimarypresencesource;
 	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
@@ -17022,7 +17829,6 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "description": "",
    "version": 0,
@@ -17052,8 +17858,7 @@ var UsersApi = function (pureCloudSession) {
    "callingPartyName": "",
    "callingPartyNumber": "",
    "joined": true,
-   "memberCount": 0,
-   "selfUri": ""
+   "memberCount": 0
 }
 	*/
 	function patchUserQueuesByQueueId(queueId, userId, body){
@@ -17226,14 +18031,12 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "country": "",
-      "A1": "",
-      "A3": "",
-      "RD": "",
-      "HNO": "",
-      "LOC": "",
-      "NAM": "",
-      "PC": ""
+      "name": "",
+      "street": "",
+      "city": "",
+      "countryName": "",
+      "stateName": "",
+      "postalCode": ""
    }
 }
 	*/
@@ -17504,17 +18307,14 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "read": true,
    "audioRecordingDurationSeconds": 0,
@@ -17524,7 +18324,6 @@ var VoicemailApi = function (pureCloudSession) {
    "callerAddress": "",
    "callerName": "",
    "callerUser": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -17543,13 +18342,10 @@ var VoicemailApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
-   },
-   "selfUri": ""
+      "stationUri": ""
+   }
 }
 	*/
 	function updateMessage(messageId, body){

@@ -204,17 +204,14 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "conversation": {
-      "id": "",
       "name": "",
       "startTime": "",
       "endTime": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": "",
-      "selfUri": ""
+      "recordingState": ""
    },
    "read": true,
    "audioRecordingDurationSeconds": 0,
@@ -224,7 +221,6 @@ var VoicemailApi = function (pureCloudSession) {
    "callerAddress": "",
    "callerName": "",
    "callerUser": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -243,13 +239,10 @@ var VoicemailApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
-   },
-   "selfUri": ""
+      "stationUri": ""
+   }
 }
 	*/
 	function updateMessage(messageId, body){

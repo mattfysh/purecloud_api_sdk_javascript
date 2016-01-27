@@ -626,15 +626,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "members": []
 }
@@ -904,7 +900,6 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "isCurrentUserWorkspace": true,
@@ -919,8 +914,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "summary": {
       "totalDocumentCount": 0
    },
-   "acl": [],
-   "selfUri": ""
+   "acl": []
 }
 	*/
 	function updateWorkspace(workspaceId, body){
@@ -1058,7 +1052,6 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "workspace": {
       "id": "",
@@ -1072,7 +1065,6 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "user": {
-      "id": "",
       "name": "",
       "username": "",
       "email": "",
@@ -1091,29 +1083,22 @@ var ContentManagementApi = function (pureCloudSession) {
       "conversationSummary": {},
       "outOfOffice": {},
       "permissions": [],
-      "selfUri": "",
       "requestedStatus": {},
       "defaultStationUri": "",
-      "stationUri": "",
-      "lastStationUri": ""
+      "stationUri": ""
    },
    "group": {
-      "id": "",
       "name": "",
       "description": "",
       "memberCount": 0,
       "groupType": "",
       "groupImages": {},
-      "groupState": "",
-      "selfUri": ""
+      "groupState": ""
    },
    "securityProfile": {
-      "id": "",
       "name": "",
-      "permissions": [],
-      "selfUri": ""
-   },
-   "selfUri": ""
+      "permissions": []
+   }
 }
 	*/
 	function updateWorkspaceMembersByMemberId(workspaceId, memberId, body){
@@ -1227,11 +1212,9 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "inUse": true,
-   "acl": [],
-   "selfUri": ""
+   "acl": []
 }
 	*/
 	function createWorkspaceTagvalues(workspaceId, body){
@@ -1341,11 +1324,9 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "inUse": true,
-   "acl": [],
-   "selfUri": ""
+   "acl": []
 }
 	*/
 	function updateWorkspaceTagvaluesByTagId(workspaceId, tagId, body){

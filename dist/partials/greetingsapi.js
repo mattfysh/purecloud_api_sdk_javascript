@@ -38,14 +38,11 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "ownerType": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "audioFile": {
       "durationMilliseconds": 0,
@@ -56,8 +53,7 @@ var GreetingsApi = function (pureCloudSession) {
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function create(body){
@@ -101,20 +97,16 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "ownerType": "",
    "greetings": {},
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function updateDefaults(body){
@@ -166,14 +158,11 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "ownerType": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "audioFile": {
       "durationMilliseconds": 0,
@@ -184,8 +173,7 @@ var GreetingsApi = function (pureCloudSession) {
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function updateGreeting(greetingId, body){
@@ -306,14 +294,11 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "type": "",
    "ownerType": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "audioFile": {
       "durationMilliseconds": 0,
@@ -324,8 +309,7 @@ var GreetingsApi = function (pureCloudSession) {
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function createUserGreetings(userId, body){
@@ -383,20 +367,16 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
    "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "ownerType": "",
    "greetings": {},
    "createdDate": "",
    "createdBy": "",
    "modifiedDate": "",
-   "modifiedBy": "",
-   "selfUri": ""
+   "modifiedBy": ""
 }
 	*/
 	function updateUserGreetingsDefaults(userId, body){
