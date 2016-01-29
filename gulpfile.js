@@ -333,14 +333,13 @@ gulp.task('jenkins', function(callback){
 
     pclib.updateSwaggerAndVersion('swagger.json', 'version.json', 'mypurecloud.com', function(hasChanges){
         if(hasChanges){
-            runSequence('default',
-             'doc',
-             callback);
-
              fs.writeFileSync("newVersion.md", "true");
         }else{
             console.log("no changes")
-
         }
+
+        runSequence('default',
+         'doc',
+         callback);
     });
 });
