@@ -894,22 +894,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function createContactlists(body){
@@ -989,22 +975,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function updateContactList(contactListId, body){

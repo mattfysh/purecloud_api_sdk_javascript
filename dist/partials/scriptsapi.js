@@ -61,11 +61,11 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
+      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "selfUri": "",
       "pageCount": 0
    }
 }
@@ -126,11 +126,11 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
+      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "selfUri": "",
       "pageCount": 0
    }
 }
@@ -263,11 +263,11 @@ var ScriptsApi = function (pureCloudSession) {
       "pageNumber": 0,
       "total": 0,
       "entities": [],
+      "selfUri": "",
       "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "selfUri": "",
       "pageCount": 0
    }
 }

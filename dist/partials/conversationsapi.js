@@ -255,9 +255,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -267,6 +265,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -321,9 +321,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -333,6 +331,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/

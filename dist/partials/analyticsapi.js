@@ -93,7 +93,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "metric": "",
    "metricThresholds": [],

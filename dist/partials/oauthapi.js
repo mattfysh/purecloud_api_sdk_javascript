@@ -43,8 +43,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "issuerURI": ""
 }
 	*/
 	function updateOnelogin(body){
