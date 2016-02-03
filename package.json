@@ -29,7 +29,7 @@
     "gulp-rimraf": "~0.1.1",
     "phantomjs" :"^1.9.19",
     "express":"*",
-    "PureCloudApiLibraries":"git://github.com/MyPureCloud/PureCloudApiLibraries.git",
+    "PureCloudApiLibraries":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
     "run-sequence" : "1.1.5"
   },
   "scripts": {
