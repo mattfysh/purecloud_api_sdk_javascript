@@ -93,10 +93,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -197,12 +196,24 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "order": 0,
-   "category": "",
-   "conditions": [],
-   "actions": []
+   "title": "",
+   "description": "",
+   "enabled": true,
+   "metric": "",
+   "entity": {
+      "kind": "",
+      "id": "",
+      "name": ""
+   },
+   "metricThresholds": [],
+   "inAlarm": true,
+   "occurrence": {
+      "limit": 0,
+      "type": ""
+   },
+   "mediaType": "",
+   "statistic": ""
 }
 	*/
 	function createAlertingRules(body){
@@ -250,12 +261,24 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "order": 0,
-   "category": "",
-   "conditions": [],
-   "actions": []
+   "title": "",
+   "description": "",
+   "enabled": true,
+   "metric": "",
+   "entity": {
+      "kind": "",
+      "id": "",
+      "name": ""
+   },
+   "metricThresholds": [],
+   "inAlarm": true,
+   "occurrence": {
+      "limit": 0,
+      "type": ""
+   },
+   "mediaType": "",
+   "statistic": ""
 }
 	*/
 	function updateAlertingRule(ruleId, body){
@@ -416,8 +439,13 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
+      "end": "",
       "start": "",
-      "end": ""
+      "chronology": {},
+      "endMillis": 0,
+      "startMillis": 0,
+      "beforeNow": true,
+      "afterNow": true
    },
    "reportFormat": "",
    "locale": "",
@@ -491,8 +519,13 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
+      "end": "",
       "start": "",
-      "end": ""
+      "chronology": {},
+      "endMillis": 0,
+      "startMillis": 0,
+      "beforeNow": true,
+      "afterNow": true
    },
    "reportFormat": "",
    "locale": "",

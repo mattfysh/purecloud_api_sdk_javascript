@@ -100,13 +100,13 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getConversationRecordingsByRecordingId = getConversationRecordingsByRecordingId;
 	/**
-     * @summary Sets the restore state on a recording.
-	 * @description It is not currently possible to force something into long term storage, so this can only be used to request a restoration. In addition, a restoration takes some time, and so it is not guaranteed to be completed for several hours.
+     * @summary Updates the retention records on a recording.
+	 * @description Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. Use of the query parameter 'restoreDays' is deprecated and will be removed in the next major version release. If 'restoreDays' is provided, no attempt at updating other retention data will be made. To migrate to the new usage, issuing a request with restoreDays=10 would instead set the archiveDate's time stamp in the PUT body to 10 days in the future.
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
 	* @param {} body - recording
-	* @param {integer} restoreDays - The number of days the recording will be available before it is re-archived.
+	* @param {integer} restoreDays - The number of days the recording will be available before it is re-archived. Deprecated.
 	Any integer greater than or equal to 1.,
 	 * @example
 	 * Body Example:
@@ -172,66 +172,6 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.updateConversationRecordingsByRecordingId = updateConversationRecordingsByRecordingId;
 	/**
-     * @summary Updates the recording retention durations
-	 * @memberOf QualityApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {} body - recording
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "conversationId": "",
-   "path": "",
-   "startTime": "",
-   "endTime": "",
-   "media": "",
-   "mediaUri": "",
-   "waveUri": "",
-   "annotations": [],
-   "transcript": [],
-   "emailTranscript": [],
-   "fileState": "",
-   "restoreExpirationTime": "",
-   "mediaUris": {},
-   "estimatedTranscodeTimeMs": 0,
-   "actualTranscodeTimeMs": 0,
-   "archiveDate": "",
-   "archiveMedium": "",
-   "deleteDate": "",
-   "maxAllowedRestorationsForOrg": 0,
-   "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": ""
-}
-	*/
-	function patchConversationRecordingsByRecordingId(conversationId, recordingId, body){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{conversationId}', conversationId);
-
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
-
-        apipath = apipath.replace('{recordingId}', recordingId);
-
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchConversationRecordingsByRecordingId = patchConversationRecordingsByRecordingId;
-	/**
      * @summary Get annotations for recording
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - Conversation ID
@@ -291,6 +231,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -394,6 +335,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -484,8 +426,9 @@ var QualityApi = function (pureCloudSession) {
 	* @param {array} agentUserId - user id of agent requested
 	* @param {string} evaluatorUserId - user id of the evaluator
 	* @param {string} name - name
+	* @param {string} group - group id
 	*/
-	function getAgentsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, agentUserId, evaluatorUserId, name){
+	function getAgentsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, agentUserId, evaluatorUserId, name, group){
 		var apipath = '/api/v1/quality/agents/activity';
 	    var requestBody;
 	    var queryParameters = {};
@@ -535,6 +478,11 @@ var QualityApi = function (pureCloudSession) {
 
 		if(name !== undefined && name !== null){
 			queryParameters.name = name;
+		}
+
+
+		if(group !== undefined && group !== null){
+			queryParameters.group = group;
 		}
 
 
@@ -631,6 +579,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -654,6 +603,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -698,6 +648,7 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "redacted": true,
       "isScoringIndex": true
    },
    "expertEvaluator": {
@@ -718,6 +669,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -800,6 +752,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -823,6 +776,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -867,6 +821,7 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "redacted": true,
       "isScoringIndex": true
    },
    "expertEvaluator": {
@@ -887,6 +842,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -1047,6 +1003,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -1070,6 +1027,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -1126,6 +1084,7 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "redacted": true,
    "isScoringIndex": true
 }
 	*/
@@ -1237,6 +1196,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -1260,6 +1220,7 @@ var QualityApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -1316,6 +1277,7 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "redacted": true,
    "isScoringIndex": true
 }
 	*/
@@ -1585,8 +1547,9 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} endTime - The end time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} name - Evaluator name
 	* @param {array} permission - permission strings
+	* @param {string} group - group id
 	*/
-	function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, name, permission){
+	function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, name, permission, group){
 		var apipath = '/api/v1/quality/evaluators/activity';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1631,6 +1594,11 @@ var QualityApi = function (pureCloudSession) {
 
 		if(permission !== undefined && permission !== null){
 			queryParameters.permission = permission;
+		}
+
+
+		if(group !== undefined && group !== null){
+			queryParameters.group = group;
 		}
 
 

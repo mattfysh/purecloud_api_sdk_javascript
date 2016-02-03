@@ -27,7 +27,8 @@ var RoutingApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "mxRecordStatus": ""
+   "mxRecordStatus": "",
+   "subDomain": true
 }
 	*/
 	function createEmailDomains(body){
@@ -90,8 +91,7 @@ var RoutingApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "fromName": "",
-   "fromEmail": "",
-   "spamThreshold": {}
+   "fromEmail": ""
 }
 	*/
 	function createEmailDomainRoutes(domain, body){
@@ -168,8 +168,7 @@ var RoutingApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "fromName": "",
-   "fromEmail": "",
-   "spamThreshold": {}
+   "fromEmail": ""
 }
 	*/
 	function updateEmailDomainRoutesById(domain, id, body){
@@ -569,6 +568,7 @@ var RoutingApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",
@@ -780,6 +780,7 @@ var RoutingApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",

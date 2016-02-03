@@ -88,6 +88,49 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.create = create;
 	/**
+     * @summary Create Fax Conversation
+	 * @memberOf ConversationsApi#
+	* @param {} body - Fax
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "addresses": [],
+   "originalFilename": "",
+   "contentType": "",
+   "workspace": {
+      "name": "",
+      "type": "",
+      "isCurrentUserWorkspace": true,
+      "user": {},
+      "bucket": "",
+      "dateCreated": "",
+      "dateModified": "",
+      "summary": {},
+      "acl": []
+   },
+   "coverSheet": {
+      "notes": "",
+      "locale": ""
+   }
+}
+	*/
+	function createFax(body){
+		var apipath = '/api/v1/conversations/fax';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createFax = createFax;
+	/**
      * @summary Get the maximum number of participants that this user can have on a conference
 	 * @memberOf ConversationsApi#
 	*/

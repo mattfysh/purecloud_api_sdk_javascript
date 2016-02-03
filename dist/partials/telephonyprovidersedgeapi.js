@@ -5,6 +5,176 @@
 */
 var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	/**
+     * @summary Get the list of edge groups.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdgeEdgegroups(pageSize, pageNumber, name, sortBy){
+		var apipath = '/api/v1/telephony/providers/edge/edgegroups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgeEdgegroups = getProvidersEdgeEdgegroups;
+	/**
+     * @summary Create an edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - EdgeGroup
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "managed": true,
+   "edgeTrunkBaseAssignment": {
+      "family": 0,
+      "trunkBase": {}
+   },
+   "phoneTrunkBaseAssignments": []
+}
+	*/
+	function createProvidersEdgeEdgegroups(body){
+		var apipath = '/api/v1/telephony/providers/edge/edgegroups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createProvidersEdgeEdgegroups = createProvidersEdgeEdgegroups;
+	/**
+     * @summary Get edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeGroupId - Edge group ID
+	*/
+	function getProvidersEdgeEdgeGroup(edgeGroupId){
+		var apipath = '/api/v1/telephony/providers/edge/edgegroups/{edgeGroupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
+
+        if(edgeGroupId === undefined && edgeGroupId !== null){
+			throw 'Missing required  parameter: edgeGroupId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgeEdgeGroup = getProvidersEdgeEdgeGroup;
+	/**
+     * @summary Update an edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeGroupId - Edge group ID
+	* @param {} body - EdgeGroup
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "managed": true,
+   "edgeTrunkBaseAssignment": {
+      "family": 0,
+      "trunkBase": {}
+   },
+   "phoneTrunkBaseAssignments": []
+}
+	*/
+	function updateProvidersEdgeEdgeGroup(edgeGroupId, body){
+		var apipath = '/api/v1/telephony/providers/edge/edgegroups/{edgeGroupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
+
+        if(edgeGroupId === undefined && edgeGroupId !== null){
+			throw 'Missing required  parameter: edgeGroupId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateProvidersEdgeEdgeGroup = updateProvidersEdgeEdgeGroup;
+	/**
+     * @summary Delete an edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeGroupId - Edge group ID
+	*/
+	function deleteProvidersEdgeEdgeGroup(edgeGroupId){
+		var apipath = '/api/v1/telephony/providers/edge/edgegroups/{edgeGroupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
+
+        if(edgeGroupId === undefined && edgeGroupId !== null){
+			throw 'Missing required  parameter: edgeGroupId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgeEdgeGroup = deleteProvidersEdgeEdgeGroup;
+	/**
      * @summary Get a listing of line base settings objects
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {integer} pageNumber - Page number
@@ -158,6 +328,222 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgeLine = getProvidersEdgeLine;
 	/**
+     * @summary Get outbound routes
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} siteid - Filter by site.id
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdgeOutboundroutes(pageSize, pageNumber, name, siteid, sortBy){
+		var apipath = '/api/v1/telephony/providers/edge/outboundroutes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(siteid !== undefined && siteid !== null){
+			queryParameters.site.id = siteid;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgeOutboundroutes = getProvidersEdgeOutboundroutes;
+	/**
+     * @summary Create outbound rule
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - OutboundRoute
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "site": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true
+   },
+   "classificationTypes": [],
+   "enabled": true,
+   "distribution": "",
+   "managed": true,
+   "externalTrunkBases": []
+}
+	*/
+	function createProvidersEdgeOutboundroutes(body){
+		var apipath = '/api/v1/telephony/providers/edge/outboundroutes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createProvidersEdgeOutboundroutes = createProvidersEdgeOutboundroutes;
+	/**
+     * @summary Get outbound route
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} outboundRouteId - Outbound route ID
+	*/
+	function getProvidersEdgeOutboundRoute(outboundRouteId){
+		var apipath = '/api/v1/telephony/providers/edge/outboundroutes/{outboundRouteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
+
+        if(outboundRouteId === undefined && outboundRouteId !== null){
+			throw 'Missing required  parameter: outboundRouteId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgeOutboundRoute = getProvidersEdgeOutboundRoute;
+	/**
+     * @summary Update outbound route
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} outboundRouteId - Outbound route ID
+	* @param {} body - OutboundRoute
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "site": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true
+   },
+   "classificationTypes": [],
+   "enabled": true,
+   "distribution": "",
+   "managed": true,
+   "externalTrunkBases": []
+}
+	*/
+	function updateProvidersEdgeOutboundRoute(outboundRouteId, body){
+		var apipath = '/api/v1/telephony/providers/edge/outboundroutes/{outboundRouteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
+
+        if(outboundRouteId === undefined && outboundRouteId !== null){
+			throw 'Missing required  parameter: outboundRouteId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateProvidersEdgeOutboundRoute = updateProvidersEdgeOutboundRoute;
+	/**
+     * @summary Delete Outbound Route
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} outboundRouteId - Outbound route ID
+	*/
+	function deleteProvidersEdgeOutboundRoute(outboundRouteId){
+		var apipath = '/api/v1/telephony/providers/edge/outboundroutes/{outboundRouteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
+
+        if(outboundRouteId === undefined && outboundRouteId !== null){
+			throw 'Missing required  parameter: outboundRouteId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgeOutboundRoute = deleteProvidersEdgeOutboundRoute;
+	/**
      * @summary Get a list of Phone Base Settings objects
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {integer} pageNumber - Page number
@@ -210,29 +596,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "lines": [],
-   "properties": {
-      "nodeType": "",
-      "object": true,
-      "pojo": true,
-      "number": true,
-      "integralNumber": true,
-      "floatingPointNumber": true,
-      "short": true,
-      "int": true,
-      "long": true,
-      "float": true,
-      "double": true,
-      "bigDecimal": true,
-      "bigInteger": true,
-      "textual": true,
-      "boolean": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "array": true,
-      "null": true
-   },
+   "properties": {},
    "capabilities": {
       "provisions": true,
       "registers": true,
@@ -346,29 +710,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "lines": [],
-   "properties": {
-      "nodeType": "",
-      "object": true,
-      "pojo": true,
-      "number": true,
-      "integralNumber": true,
-      "floatingPointNumber": true,
-      "short": true,
-      "int": true,
-      "long": true,
-      "float": true,
-      "double": true,
-      "bigDecimal": true,
-      "bigInteger": true,
-      "textual": true,
-      "boolean": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "array": true,
-      "null": true
-   },
+   "properties": {},
    "capabilities": {
       "provisions": true,
       "registers": true,
@@ -551,29 +893,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "phoneAssignmentToEdgeType": "",
       "edge": {}
    },
-   "properties": {
-      "nodeType": "",
-      "object": true,
-      "pojo": true,
-      "number": true,
-      "integralNumber": true,
-      "floatingPointNumber": true,
-      "short": true,
-      "int": true,
-      "long": true,
-      "float": true,
-      "double": true,
-      "bigDecimal": true,
-      "bigInteger": true,
-      "textual": true,
-      "boolean": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "array": true,
-      "null": true
-   },
+   "properties": {},
    "capabilities": {
       "provisions": true,
       "registers": true,
@@ -732,29 +1052,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "phoneAssignmentToEdgeType": "",
       "edge": {}
    },
-   "properties": {
-      "nodeType": "",
-      "object": true,
-      "pojo": true,
-      "number": true,
-      "integralNumber": true,
-      "floatingPointNumber": true,
-      "short": true,
-      "int": true,
-      "long": true,
-      "float": true,
-      "double": true,
-      "bigDecimal": true,
-      "bigInteger": true,
-      "textual": true,
-      "boolean": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "array": true,
-      "null": true
-   },
+   "properties": {},
    "capabilities": {
       "provisions": true,
       "registers": true,
@@ -903,35 +1201,23 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
    "trunkMetabase": {
       "id": "",
       "name": "",
       "selfUri": ""
    },
-   "properties": {
-      "nodeType": "",
-      "object": true,
-      "pojo": true,
-      "number": true,
-      "integralNumber": true,
-      "floatingPointNumber": true,
-      "short": true,
-      "int": true,
-      "long": true,
-      "float": true,
-      "double": true,
-      "bigDecimal": true,
-      "bigInteger": true,
-      "textual": true,
-      "boolean": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "array": true,
-      "null": true
-   },
-   "trunkType": ""
+   "properties": {},
+   "trunkType": "",
+   "managed": true
 }
 	*/
 	function createProvidersEdgeTrunkbasesettings(body){
@@ -1041,35 +1327,23 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
    "trunkMetabase": {
       "id": "",
       "name": "",
       "selfUri": ""
    },
-   "properties": {
-      "nodeType": "",
-      "object": true,
-      "pojo": true,
-      "number": true,
-      "integralNumber": true,
-      "floatingPointNumber": true,
-      "short": true,
-      "int": true,
-      "long": true,
-      "float": true,
-      "double": true,
-      "bigDecimal": true,
-      "bigInteger": true,
-      "textual": true,
-      "boolean": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "array": true,
-      "null": true
-   },
-   "trunkType": ""
+   "properties": {},
+   "trunkType": "",
+   "managed": true
 }
 	*/
 	function updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings(trunkBaseSettingsId, body){

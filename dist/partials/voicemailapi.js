@@ -238,6 +238,7 @@ var VoicemailApi = function (pureCloudSession) {
       "conversations": {},
       "conversationSummary": {},
       "outOfOffice": {},
+      "geolocation": {},
       "permissions": [],
       "requestedStatus": {},
       "defaultStationUri": "",

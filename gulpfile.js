@@ -120,6 +120,10 @@ function parseJsonSchema(opts, type){
 
             };
 
+            if(method.methodName === "delete"){
+                method.methodName = "performDelete"
+            }
+
             if(relativePath.join('.') != ''){
                 method.relativePath= relativePath.join('.');
 
@@ -175,10 +179,7 @@ function parseJsonSchema(opts, type){
                 if(method.method != "HEAD"){
                     data.methods[tag].push(method);
                 }
-
             }
-
-
         });
     });
 

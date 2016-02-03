@@ -60,6 +60,22 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.getPermissions = getPermissions;
 	/**
+     * @summary Get the list of enabled products
+	 * @description Gets the list of enabled products. Some example product names are: collaborateFree, collaboratePro, communicate, and engage.
+	 * @memberOf AuthorizationApi#
+	*/
+	function getProducts(){
+		var apipath = '/api/v1/authorization/products';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProducts = getProducts;
+	/**
      * @summary Retrieve a list of all roles defined for the organization
 	 * @memberOf AuthorizationApi#
 	* @param {integer} pageSize - The total page size requested

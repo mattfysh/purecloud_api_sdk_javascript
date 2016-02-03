@@ -154,6 +154,38 @@ var ArchitectApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.create = create;
+	/**
+     * @summary Batch-delete a list of flows
+	 * @description Multiple IDs can be specified, in which case all specified flows will be deleted.
+	 * @memberOf ArchitectApi#
+	* @param {array} id - List of Flow IDs
+	* @param {boolean} ignoreDependencies - Ignore Dependencies
+	*/
+	function performDelete(id, ignoreDependencies){
+		var apipath = '/api/v1/flows';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(id !== undefined && id !== null){
+			queryParameters.id = id;
+		}
+
+        if(id === undefined && id !== null){
+			throw 'Missing required  parameter: id';
+        }
+
+
+		if(ignoreDependencies !== undefined && ignoreDependencies !== null){
+			queryParameters.ignoreDependencies = ignoreDependencies;
+		}
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.performDelete = performDelete;
 
     return self;
 };

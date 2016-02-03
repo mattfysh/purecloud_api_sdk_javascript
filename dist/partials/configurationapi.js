@@ -285,166 +285,6 @@ var ConfigurationApi = function (pureCloudSession) {
 	}
 	self.updateDId = updateDId;
 	/**
-     * @summary Get the list of edge groups.
-	 * @memberOf ConfigurationApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {string} name - Name
-	* @param {string} sortBy - Sort by
-	*/
-	function getEdgegroups(pageSize, pageNumber, name, sortBy){
-		var apipath = '/api/v1/configuration/edgegroups';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(name !== undefined && name !== null){
-			queryParameters.name = name;
-		}
-
-
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getEdgegroups = getEdgegroups;
-	/**
-     * @summary Create an edge group.
-	 * @memberOf ConfigurationApi#
-	* @param {} body - EdgeGroup
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "managed": true
-}
-	*/
-	function createEdgegroups(body){
-		var apipath = '/api/v1/configuration/edgegroups';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createEdgegroups = createEdgegroups;
-	/**
-     * @summary Get edge group.
-	 * @memberOf ConfigurationApi#
-	* @param {string} edgeGroupId - Edge group ID
-	*/
-	function getEdgeGroup(edgeGroupId){
-		var apipath = '/api/v1/configuration/edgegroups/{edgeGroupId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
-
-        if(edgeGroupId === undefined && edgeGroupId !== null){
-			throw 'Missing required  parameter: edgeGroupId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getEdgeGroup = getEdgeGroup;
-	/**
-     * @summary Update an edge group.
-	 * @memberOf ConfigurationApi#
-	* @param {string} edgeGroupId - Edge group ID
-	* @param {} body - EdgeGroup
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "managed": true
-}
-	*/
-	function updateEdgeGroup(edgeGroupId, body){
-		var apipath = '/api/v1/configuration/edgegroups/{edgeGroupId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
-
-        if(edgeGroupId === undefined && edgeGroupId !== null){
-			throw 'Missing required  parameter: edgeGroupId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateEdgeGroup = updateEdgeGroup;
-	/**
-     * @summary Delete an edge group.
-	 * @memberOf ConfigurationApi#
-	* @param {string} edgeGroupId - Edge group ID
-	*/
-	function deleteEdgeGroup(edgeGroupId){
-		var apipath = '/api/v1/configuration/edgegroups/{edgeGroupId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
-
-        if(edgeGroupId === undefined && edgeGroupId !== null){
-			throw 'Missing required  parameter: edgeGroupId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteEdgeGroup = deleteEdgeGroup;
-	/**
      * @summary Get the list of edges.
 	 * @memberOf ConfigurationApi#
 	* @param {integer} pageSize - Page size
@@ -539,7 +379,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "managed": true
+      "managed": true,
+      "edgeTrunkBaseAssignment": {},
+      "phoneTrunkBaseAssignments": []
    },
    "site": {
       "id": "",
@@ -787,7 +629,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "managed": true
+      "managed": true,
+      "edgeTrunkBaseAssignment": {},
+      "phoneTrunkBaseAssignments": []
    },
    "site": {
       "id": "",
@@ -979,7 +823,9 @@ var ConfigurationApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "managed": true
+      "managed": true,
+      "edgeTrunkBaseAssignment": {},
+      "phoneTrunkBaseAssignments": []
    },
    "lineType": "",
    "endpoint": {
@@ -1972,16 +1818,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "adminUsername": "",
-   "adminPassword": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
+   "id": "",
+   "maxIdleToken": 0
 }
 	*/
 	function updateOrganization(body){
@@ -2060,16 +1898,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "adminUsername": "",
-   "adminPassword": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
+   "id": "",
+   "maxIdleToken": 0
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
@@ -2115,222 +1945,6 @@ var ConfigurationApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deleteOrganizationsOrg = deleteOrganizationsOrg;
-	/**
-     * @summary Get outbound routes
-	 * @memberOf ConfigurationApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {string} name - Name
-	* @param {string} siteid - Filter by site.id
-	* @param {string} sortBy - Sort by
-	*/
-	function getOutboundroutes(pageSize, pageNumber, name, siteid, sortBy){
-		var apipath = '/api/v1/configuration/outboundroutes';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(name !== undefined && name !== null){
-			queryParameters.name = name;
-		}
-
-
-		if(siteid !== undefined && siteid !== null){
-			queryParameters.site.id = siteid;
-		}
-
-
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOutboundroutes = getOutboundroutes;
-	/**
-     * @summary Create outbound rule
-	 * @memberOf ConfigurationApi#
-	* @param {} body - OutboundRoute
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "site": {
-      "name": "",
-      "description": "",
-      "version": 0,
-      "dateCreated": "",
-      "dateModified": "",
-      "modifiedBy": "",
-      "createdBy": "",
-      "state": "",
-      "modifiedByApp": "",
-      "createdByApp": "",
-      "primarySites": [],
-      "secondarySites": [],
-      "primaryEdges": [],
-      "secondaryEdges": [],
-      "addresses": [],
-      "edges": [],
-      "edgeAutoUpdateConfig": {},
-      "location": {},
-      "managed": true
-   },
-   "classificationTypes": [],
-   "enabled": true,
-   "endpoints": [],
-   "distribution": "",
-   "managed": true
-}
-	*/
-	function createOutboundroutes(body){
-		var apipath = '/api/v1/configuration/outboundroutes';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createOutboundroutes = createOutboundroutes;
-	/**
-     * @summary Get outbound route
-	 * @memberOf ConfigurationApi#
-	* @param {string} outboundRouteId - Outbound route ID
-	*/
-	function getOutboundRoute(outboundRouteId){
-		var apipath = '/api/v1/configuration/outboundroutes/{outboundRouteId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
-
-        if(outboundRouteId === undefined && outboundRouteId !== null){
-			throw 'Missing required  parameter: outboundRouteId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOutboundRoute = getOutboundRoute;
-	/**
-     * @summary Update outbound route
-	 * @memberOf ConfigurationApi#
-	* @param {string} outboundRouteId - Outbound route ID
-	* @param {} body - OutboundRoute
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "site": {
-      "name": "",
-      "description": "",
-      "version": 0,
-      "dateCreated": "",
-      "dateModified": "",
-      "modifiedBy": "",
-      "createdBy": "",
-      "state": "",
-      "modifiedByApp": "",
-      "createdByApp": "",
-      "primarySites": [],
-      "secondarySites": [],
-      "primaryEdges": [],
-      "secondaryEdges": [],
-      "addresses": [],
-      "edges": [],
-      "edgeAutoUpdateConfig": {},
-      "location": {},
-      "managed": true
-   },
-   "classificationTypes": [],
-   "enabled": true,
-   "endpoints": [],
-   "distribution": "",
-   "managed": true
-}
-	*/
-	function updateOutboundRoute(outboundRouteId, body){
-		var apipath = '/api/v1/configuration/outboundroutes/{outboundRouteId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
-
-        if(outboundRouteId === undefined && outboundRouteId !== null){
-			throw 'Missing required  parameter: outboundRouteId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateOutboundRoute = updateOutboundRoute;
-	/**
-     * @summary Delete Outbound Route
-	 * @memberOf ConfigurationApi#
-	* @param {string} outboundRouteId - Outbound route ID
-	*/
-	function deleteOutboundRoute(outboundRouteId){
-		var apipath = '/api/v1/configuration/outboundroutes/{outboundRouteId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
-
-        if(outboundRouteId === undefined && outboundRouteId !== null){
-			throw 'Missing required  parameter: outboundRouteId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteOutboundRoute = deleteOutboundRoute;
 	/**
      * @summary Get encryption key list
 	 * @memberOf ConfigurationApi#
