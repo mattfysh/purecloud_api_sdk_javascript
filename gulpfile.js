@@ -215,10 +215,12 @@ gulp.task('doc', function() {
     require('shelljs/global');
     exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc/conf.json --readme README.md -d doc_out_temp', {silent:false}).output;
 
-    return gulp.src('./doc_out_temp/*.html').pipe(rename(function (path) {
-      path.extname = path.extname + ".erb"
-    }))
-    .pipe(gulp.dest("./doc_out"));
+    return gulp.src('./doc_out_temp/*.html')
+                .pipe(rename(function (path) {
+                  path.extname = path.extname + ".erb"
+                }))
+                .pipe(replace(/(title: \w+):(.*)/g, '$1 - $2'))
+                .pipe(gulp.dest("./doc_out"));
 });
 
 gulp.task('movegen', function(){

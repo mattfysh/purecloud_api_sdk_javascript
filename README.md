@@ -2,7 +2,7 @@
 
 # Platform API Javascript Client
 
-Docs can be found at [http://mypurecloud.github.io/purecloud_javascript_client](http://mypurecloud.github.io/purecloud_javascript_client)
+Docs can be found at [http://localhost:4567/api/rest/client-libraries/javascript/latest/](http://localhost:4567/api/rest/client-libraries/javascript/latest/)
 
 * Install with [Bower](http://bower.io):
 ```

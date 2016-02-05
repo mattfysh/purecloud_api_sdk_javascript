@@ -440,10 +440,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "timePeriod": "",
    "interval": {
       "end": "",
-      "chronology": {},
-      "startMillis": 0,
-      "endMillis": 0,
       "start": "",
+      "chronology": {},
+      "endMillis": 0,
+      "startMillis": 0,
       "beforeNow": true,
       "afterNow": true
    },
@@ -520,10 +520,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "timePeriod": "",
    "interval": {
       "end": "",
-      "chronology": {},
-      "startMillis": 0,
-      "endMillis": 0,
       "start": "",
+      "chronology": {},
+      "endMillis": 0,
+      "startMillis": 0,
       "beforeNow": true,
       "afterNow": true
    },
