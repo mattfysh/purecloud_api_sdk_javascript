@@ -1,11 +1,8 @@
 {
-  "name": "platform_javascript_client",
+  "name": "purecloud_api_sdk_javascript",
   "version": "0.0.0",
   "description": "",
   "main": "test.js",
-  "directories": {
-    "example": "examples"
-  },
   "dependencies": {
     "jsdoc": "~3.3.3",
     "mustache": "~2.2.0",
@@ -27,7 +24,6 @@
   "devDependencies": {
     "rifraf": "~2.0.2",
     "gulp-rimraf": "~0.1.1",
-    "phantomjs" :"^1.9.19",
     "express":"*",
     "PureCloudApiLibraries":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
     "run-sequence" : "1.1.5"
