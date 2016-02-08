@@ -25,7 +25,7 @@
     "rifraf": "~2.0.2",
     "gulp-rimraf": "~0.1.1",
     "express":"*",
-    "PureCloudApiLibraries":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
+    "purecloud-api-sdk-common":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
     "run-sequence" : "1.1.5"
   },
   "scripts": {

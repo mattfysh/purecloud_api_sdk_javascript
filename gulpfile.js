@@ -12,9 +12,9 @@ var Mustache = require('mustache');
 var _ = require('lodash');
 var replace = require('gulp-replace');
 var rimraf = require('gulp-rimraf');
-var pclibSwaggerGen = require('PureCloudApiLibraries').swaggerGen();
-var pclibSwaggerVersion = require('PureCloudApiLibraries').swaggerVersioning();
-var pclib = require('PureCloudApiLibraries');
+var pclibSwaggerGen = require('purecloud-api-sdk-common').swaggerGen();
+var pclibSwaggerVersion = require('purecloud-api-sdk-common').swaggerVersioning();
+var pclib = require('purecloud-api-sdk-common');
 var runSequence = require('run-sequence');
 
 
