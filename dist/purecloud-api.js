@@ -443,12 +443,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "timePeriod": "",
    "interval": {
       "start": "",
-      "end": "",
-      "endMillis": 0,
-      "chronology": {},
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -523,12 +518,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "timePeriod": "",
    "interval": {
       "start": "",
-      "end": "",
-      "endMillis": 0,
-      "chronology": {},
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -6142,7 +6132,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6152,8 +6144,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -6208,7 +6198,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6218,8 +6210,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -16294,15 +16284,7 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "state": "",
-      "id": "",
-      "roomId": "",
-      "recordingId": "",
-      "segments": [],
-      "held": true,
-      "direction": "",
-      "disconnectType": "",
-      "startHoldTime": ""
+      "jabberId": ""
    },
    "roles": [],
    "voicemailEnabled": true,
@@ -16446,15 +16428,7 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "state": "",
-      "id": "",
-      "roomId": "",
-      "recordingId": "",
-      "segments": [],
-      "held": true,
-      "direction": "",
-      "disconnectType": "",
-      "startHoldTime": ""
+      "jabberId": ""
    },
    "roles": [],
    "voicemailEnabled": true,
@@ -17196,12 +17170,14 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "country": "",
+      "A1": "",
+      "A3": "",
+      "RD": "",
+      "HNO": "",
+      "LOC": "",
+      "NAM": "",
+      "PC": ""
    }
 }
 	*/
