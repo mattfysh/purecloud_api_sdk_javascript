@@ -626,11 +626,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }

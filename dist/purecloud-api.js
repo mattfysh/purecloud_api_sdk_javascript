@@ -93,7 +93,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -200,7 +203,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -263,7 +269,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -434,7 +443,12 @@ var AnalyticsApi = function (pureCloudSession) {
    "timePeriod": "",
    "interval": {
       "start": "",
-      "end": ""
+      "end": "",
+      "endMillis": 0,
+      "chronology": {},
+      "startMillis": 0,
+      "beforeNow": true,
+      "afterNow": true
    },
    "reportFormat": "",
    "locale": "",
@@ -509,7 +523,12 @@ var AnalyticsApi = function (pureCloudSession) {
    "timePeriod": "",
    "interval": {
       "start": "",
-      "end": ""
+      "end": "",
+      "endMillis": 0,
+      "chronology": {},
+      "startMillis": 0,
+      "beforeNow": true,
+      "afterNow": true
    },
    "reportFormat": "",
    "locale": "",
@@ -3372,16 +3391,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "adminUsername": "",
-   "adminPassword": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
+   "id": "",
+   "maxIdleToken": 0
 }
 	*/
 	function updateOrganization(body){
@@ -3460,16 +3471,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "adminUsername": "",
-   "adminPassword": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
+   "id": "",
+   "maxIdleToken": 0
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
@@ -5059,11 +5062,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "id": ""
+      "type": "",
+      "id": "",
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }
@@ -6133,9 +6142,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6145,6 +6152,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -6199,9 +6208,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6211,6 +6218,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -9290,8 +9299,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function createContactlists(body){
@@ -9377,8 +9400,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function updateContactList(contactListId, body){
@@ -16257,7 +16294,15 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "jabberId": ""
+      "state": "",
+      "id": "",
+      "roomId": "",
+      "recordingId": "",
+      "segments": [],
+      "held": true,
+      "direction": "",
+      "disconnectType": "",
+      "startHoldTime": ""
    },
    "roles": [],
    "voicemailEnabled": true,
@@ -16401,7 +16446,15 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "jabberId": ""
+      "state": "",
+      "id": "",
+      "roomId": "",
+      "recordingId": "",
+      "segments": [],
+      "held": true,
+      "direction": "",
+      "disconnectType": "",
+      "startHoldTime": ""
    },
    "roles": [],
    "voicemailEnabled": true,

@@ -1826,16 +1826,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "adminUsername": "",
-   "adminPassword": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
+   "id": "",
+   "maxIdleToken": 0
 }
 	*/
 	function updateOrganization(body){
@@ -1914,16 +1906,8 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "adminUsername": "",
-   "adminPassword": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
+   "id": "",
+   "maxIdleToken": 0
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
