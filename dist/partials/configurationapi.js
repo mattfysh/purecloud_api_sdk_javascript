@@ -945,7 +945,11 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": []
+   "commandResponses": [],
+   "inheritPhoneTrunkBases": true,
+   "useForInternalEdgeCommunication": true,
+   "externalTrunkBaseAssignments": [],
+   "phoneTrunkBaseAssignments": []
 }
 	*/
 	function createEdgeLogicalinterfaces(edgeId, body){
@@ -1043,7 +1047,11 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": []
+   "commandResponses": [],
+   "inheritPhoneTrunkBases": true,
+   "useForInternalEdgeCommunication": true,
+   "externalTrunkBaseAssignments": [],
+   "phoneTrunkBaseAssignments": []
 }
 	*/
 	function updateEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId, body){
@@ -1818,8 +1826,16 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "id": "",
-   "maxIdleToken": 0
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "adminUsername": "",
+   "adminPassword": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true
 }
 	*/
 	function updateOrganization(body){
@@ -1898,8 +1914,16 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "id": "",
-   "maxIdleToken": 0
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "adminUsername": "",
+   "adminPassword": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){

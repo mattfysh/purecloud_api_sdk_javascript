@@ -148,7 +148,7 @@ var ConversationsApi = function (pureCloudSession) {
 	/**
      * @summary Query historical conversations
 	 * @memberOf ConversationsApi#
-	* @param {} body - 
+	* @param {} body - Query parameters
 	 * @example
 	 * Body Example:
 	 * {
@@ -169,6 +169,10 @@ var ConversationsApi = function (pureCloudSession) {
             requestBody = body;
         }
 
+        if(body === undefined && body !== null){
+			throw 'Missing required  parameter: body';
+        }
+
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
@@ -176,8 +180,8 @@ var ConversationsApi = function (pureCloudSession) {
 	/**
      * @summary Query historical conversations with a date/time anchor
 	 * @memberOf ConversationsApi#
-	* @param {string} anchor - Anchor
-	* @param {} body - 
+	* @param {string} anchor - A point in time within the interval for the query that bounds the query. In the form of YYYYMMDDHHmmssSSSZX where YYYY is the 4-digit year, MM is the 2-digit month, DD is the 2-digit day-of-month, HH is the 2-digit hour-of-day (00-23), mm is the 2-digit minute, ss is the 2-digit second, SSS is the 3-digit millisecond, Z is the UTC offset expressed as 'Z', '+nnnn', '-nnnn', '+nn:nn', '-nn:nn', and X is either 'A' (for the anchor point being at the earliest point in the query) or 'D' (for the anchor point being the latest point in the query
+	* @param {} body - Query parameters
 	 * @example
 	 * Body Example:
 	 * {
@@ -202,6 +206,10 @@ var ConversationsApi = function (pureCloudSession) {
 
         if(body !== undefined && body !== null){
             requestBody = body;
+        }
+
+        if(body === undefined && body !== null){
+			throw 'Missing required  parameter: body';
         }
 
 
@@ -241,6 +249,7 @@ var ConversationsApi = function (pureCloudSession) {
    "name": "",
    "startTime": "",
    "endTime": "",
+   "address": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
@@ -298,7 +307,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -308,8 +319,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -364,7 +373,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -374,8 +385,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -469,6 +478,7 @@ var ConversationsApi = function (pureCloudSession) {
    "name": "",
    "startTime": "",
    "endTime": "",
+   "address": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,

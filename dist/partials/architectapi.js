@@ -18,9 +18,11 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} description - Description
 	* @param {string} nameOrDescription - Name or description
 	* @param {string} publishVersionId - Publish version ID
+	* @param {string} editableBy - Editable by
 	* @param {string} lockedBy - Locked by
+	* @param {boolean} doDeleted - Include deleted
 	*/
-	function get(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, lockedBy){
+	function get(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -78,8 +80,18 @@ var ArchitectApi = function (pureCloudSession) {
 		}
 
 
+		if(editableBy !== undefined && editableBy !== null){
+			queryParameters.editableBy = editableBy;
+		}
+
+
 		if(lockedBy !== undefined && lockedBy !== null){
 			queryParameters.lockedBy = lockedBy;
+		}
+
+
+		if(doDeleted !== undefined && doDeleted !== null){
+			queryParameters.deleted = doDeleted;
 		}
 
 

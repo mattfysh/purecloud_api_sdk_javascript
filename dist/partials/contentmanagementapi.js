@@ -626,15 +626,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }
@@ -1069,28 +1071,9 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "user": {
+      "id": "",
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "display": ""
    },
    "group": {
       "name": "",

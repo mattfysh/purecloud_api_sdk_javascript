@@ -551,28 +551,9 @@ var RoutingApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
+      "id": "",
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "display": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -763,28 +744,9 @@ var RoutingApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
+      "id": "",
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "display": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -1050,11 +1012,12 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": ""
+   "id": "",
+   "code": 0,
+   "label": "",
+   "notes": "",
+   "tags": [],
+   "duration": 0
 }
 	*/
 	function createWrapupcodes(body){
@@ -1102,11 +1065,12 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": ""
+   "id": "",
+   "code": 0,
+   "label": "",
+   "notes": "",
+   "tags": [],
+   "duration": 0
 }
 	*/
 	function updateWrapupcodesCode(codeId, body){

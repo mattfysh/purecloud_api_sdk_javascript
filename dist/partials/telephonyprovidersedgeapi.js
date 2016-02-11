@@ -602,7 +602,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -716,7 +717,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -899,7 +901,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -1058,7 +1061,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
