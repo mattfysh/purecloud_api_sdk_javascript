@@ -313,6 +313,7 @@ gulp.task('jshint', function(){
                 .pipe(jshint.extract('always'))
                 .pipe(jshint())
                 .pipe(jshint.reporter('default'))
+                .pipe(jshint.reporter('fail'))
 
 });
 
@@ -333,13 +334,19 @@ gulp.task('default', function (callback) {
 gulp.task('jenkins', function(callback){
 
     var oldSwagger = JSON.parse(fs.readFileSync('swagger.json', 'UTF-8'));
+    var oldVersion = pclibSwaggerVersion.getVersionString("version.json");
+    console.log("old version: " + oldVersion);
 
     pclib.updateSwaggerAndVersion('swagger.json', 'version.json', 'mypurecloud.com', function(hasChanges){
         var version = pclibSwaggerVersion.getVersionString("version.json");
-        console.log(version);
+        console.log("new version: " + version);
 
         if(hasChanges){
-             fs.writeFileSync("newVersion.md", version);
+            console.log("has changes")
+            fs.writeFileSync("newVersion.md", version);
+
+            var versionData = JSON.parse(fs.readFileSync('version.json', 'UTF-8'));
+            console.log(pclibSwaggerVersion.getChangeReadmeText(versionData.changelog[version]));
         }else{
             console.log("no changes")
         }
