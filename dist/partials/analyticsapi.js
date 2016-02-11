@@ -93,10 +93,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -203,10 +200,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -269,10 +263,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
