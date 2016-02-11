@@ -222,28 +222,9 @@ var VoicemailApi = function (pureCloudSession) {
    "callerAddress": "",
    "callerName": "",
    "callerUser": {
+      "id": "",
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "display": ""
    }
 }
 	*/
