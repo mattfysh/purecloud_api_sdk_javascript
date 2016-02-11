@@ -93,10 +93,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -203,10 +200,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -269,10 +263,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -5068,17 +5059,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "memberType": "",
    "member": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
+      "id": ""
    },
    "members": []
 }
@@ -5513,9 +5498,28 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "group": {
       "name": "",
@@ -8974,53 +8978,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function createCampaigns(body){
@@ -9068,53 +9031,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function updateCampaign(campaignId, body){
@@ -10811,15 +10733,53 @@ var PresenceApi = function (pureCloudSession) {
    "systemPresence": "",
    "deactivated": true,
    "createdBy": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "modifiedDate": ""
 }
@@ -10878,15 +10838,53 @@ var PresenceApi = function (pureCloudSession) {
    "systemPresence": "",
    "deactivated": true,
    "createdBy": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "createdDate": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "modifiedDate": ""
 }
@@ -11012,9 +11010,28 @@ var PresenceApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -11029,9 +11046,28 @@ var PresenceApi = function (pureCloudSession) {
    },
    "message": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "modifiedDate": ""
 }
@@ -11078,9 +11114,28 @@ var PresenceApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "source": "",
    "presenceDefinition": {
@@ -11095,9 +11150,28 @@ var PresenceApi = function (pureCloudSession) {
    },
    "message": "",
    "modifiedBy": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "modifiedDate": ""
 }
@@ -11375,9 +11449,28 @@ var QualityApi = function (pureCloudSession) {
    "location": 0,
    "durationMs": 0,
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "description": ""
 }
@@ -11460,9 +11553,28 @@ var QualityApi = function (pureCloudSession) {
    "location": 0,
    "durationMs": 0,
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "description": ""
 }
@@ -11685,14 +11797,52 @@ var QualityApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "calibrator": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "conversation": {
       "name": "",
@@ -11740,9 +11890,28 @@ var QualityApi = function (pureCloudSession) {
       "isScoringIndex": true
    },
    "expertEvaluator": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    }
 }
 	*/
@@ -11804,14 +11973,52 @@ var QualityApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "calibrator": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "conversation": {
       "name": "",
@@ -11859,9 +12066,28 @@ var QualityApi = function (pureCloudSession) {
       "isScoringIndex": true
    },
    "expertEvaluator": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    }
 }
 	*/
@@ -12002,14 +12228,52 @@ var QualityApi = function (pureCloudSession) {
       "publishedVersions": {}
    },
    "evaluator": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "calibration": {
       "name": "",
@@ -12160,14 +12424,52 @@ var QualityApi = function (pureCloudSession) {
       "publishedVersions": {}
    },
    "evaluator": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "agent": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "calibration": {
       "name": "",
@@ -13107,9 +13409,28 @@ var RoutingApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -13300,9 +13621,28 @@ var RoutingApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "ringNumber": 0,
    "joined": true,
@@ -13568,12 +13908,11 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "code": 0,
-   "label": "",
-   "notes": "",
-   "tags": [],
-   "duration": 0
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": ""
 }
 	*/
 	function createWrapupcodes(body){
@@ -13621,12 +13960,11 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "code": 0,
-   "label": "",
-   "notes": "",
-   "tags": [],
-   "duration": 0
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": ""
 }
 	*/
 	function updateWrapupcodesCode(codeId, body){
@@ -15912,9 +16250,76 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "display": ""
+   "username": "",
+   "email": "",
+   "displayName": "",
+   "phoneNumber": "",
+   "userImages": [],
+   "chat": {
+      "jabberId": ""
+   },
+   "roles": [],
+   "voicemailEnabled": true,
+   "department": "",
+   "title": "",
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "password": "",
+   "primaryPresence": {
+      "name": "",
+      "user": {},
+      "source": "",
+      "presenceDefinition": {},
+      "message": "",
+      "modifiedBy": {},
+      "modifiedDate": ""
+   },
+   "conversations": {
+      "userId": "",
+      "call": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "conversationSummary": {
+      "userId": "",
+      "call": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "outOfOffice": {
+      "name": "",
+      "user": {},
+      "startDate": "",
+      "endDate": "",
+      "active": true
+   },
+   "geolocation": {
+      "name": "",
+      "type": "",
+      "primary": true,
+      "latitude": {},
+      "longitude": {},
+      "country": "",
+      "region": "",
+      "city": ""
+   },
+   "permissions": [],
+   "requestedStatus": {
+      "name": "",
+      "alertable": true,
+      "dateModified": "",
+      "type": ""
+   },
+   "defaultStationUri": "",
+   "stationUri": ""
 }
 	*/
 	function create(body){
@@ -15989,9 +16394,76 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "display": ""
+   "username": "",
+   "email": "",
+   "displayName": "",
+   "phoneNumber": "",
+   "userImages": [],
+   "chat": {
+      "jabberId": ""
+   },
+   "roles": [],
+   "voicemailEnabled": true,
+   "department": "",
+   "title": "",
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "password": "",
+   "primaryPresence": {
+      "name": "",
+      "user": {},
+      "source": "",
+      "presenceDefinition": {},
+      "message": "",
+      "modifiedBy": {},
+      "modifiedDate": ""
+   },
+   "conversations": {
+      "userId": "",
+      "call": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "conversationSummary": {
+      "userId": "",
+      "call": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "outOfOffice": {
+      "name": "",
+      "user": {},
+      "startDate": "",
+      "endDate": "",
+      "active": true
+   },
+   "geolocation": {
+      "name": "",
+      "type": "",
+      "primary": true,
+      "latitude": {},
+      "longitude": {},
+      "country": "",
+      "region": "",
+      "city": ""
+   },
+   "permissions": [],
+   "requestedStatus": {
+      "name": "",
+      "alertable": true,
+      "dateModified": "",
+      "type": ""
+   },
+   "defaultStationUri": "",
+   "stationUri": ""
 }
 	*/
 	function updateUser(userId, body){
@@ -16051,9 +16523,28 @@ var UsersApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -16091,9 +16582,28 @@ var UsersApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "enabled": true,
    "phoneNumber": "",
@@ -16229,9 +16739,28 @@ var UsersApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "startDate": "",
    "endDate": "",
@@ -16295,9 +16824,28 @@ var UsersApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "user": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    },
    "primarySource": ""
 }
@@ -16889,9 +17437,28 @@ var VoicemailApi = function (pureCloudSession) {
    "callerAddress": "",
    "callerName": "",
    "callerUser": {
-      "id": "",
       "name": "",
-      "display": ""
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
    }
 }
 	*/
