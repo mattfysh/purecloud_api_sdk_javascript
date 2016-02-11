@@ -613,6 +613,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -648,6 +649,8 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "resourceId": "",
+      "resourceType": "",
       "redacted": true,
       "isScoringIndex": true
    },
@@ -786,6 +789,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -821,6 +825,8 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "resourceId": "",
+      "resourceType": "",
       "redacted": true,
       "isScoringIndex": true
    },
@@ -971,6 +977,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -1084,6 +1091,8 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "resourceId": "",
+   "resourceType": "",
    "redacted": true,
    "isScoringIndex": true
 }
@@ -1164,6 +1173,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -1277,6 +1287,8 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "resourceId": "",
+   "resourceType": "",
    "redacted": true,
    "isScoringIndex": true
 }

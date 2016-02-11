@@ -93,9 +93,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -202,9 +200,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -267,9 +263,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -439,13 +433,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "endMillis": 0,
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -519,13 +508,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "endMillis": 0,
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -784,9 +768,11 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} description - Description
 	* @param {string} nameOrDescription - Name or description
 	* @param {string} publishVersionId - Publish version ID
+	* @param {string} editableBy - Editable by
 	* @param {string} lockedBy - Locked by
+	* @param {boolean} doDeleted - Include deleted
 	*/
-	function get(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, lockedBy){
+	function get(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -844,8 +830,18 @@ var ArchitectApi = function (pureCloudSession) {
 		}
 
 
+		if(editableBy !== undefined && editableBy !== null){
+			queryParameters.editableBy = editableBy;
+		}
+
+
 		if(lockedBy !== undefined && lockedBy !== null){
 			queryParameters.lockedBy = lockedBy;
+		}
+
+
+		if(doDeleted !== undefined && doDeleted !== null){
+			queryParameters.deleted = doDeleted;
 		}
 
 
@@ -2495,7 +2491,11 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": []
+   "commandResponses": [],
+   "inheritPhoneTrunkBases": true,
+   "useForInternalEdgeCommunication": true,
+   "externalTrunkBaseAssignments": [],
+   "phoneTrunkBaseAssignments": []
 }
 	*/
 	function createEdgeLogicalinterfaces(edgeId, body){
@@ -2593,7 +2593,11 @@ var ConfigurationApi = function (pureCloudSession) {
    "currentState": "",
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
-   "commandResponses": []
+   "commandResponses": [],
+   "inheritPhoneTrunkBases": true,
+   "useForInternalEdgeCommunication": true,
+   "externalTrunkBaseAssignments": [],
+   "phoneTrunkBaseAssignments": []
 }
 	*/
 	function updateEdgeLogicalinterfacesByInterfaceId(edgeId, interfaceId, body){
@@ -3368,8 +3372,16 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "id": "",
-   "maxIdleToken": 0
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "adminUsername": "",
+   "adminPassword": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true
 }
 	*/
 	function updateOrganization(body){
@@ -3448,8 +3460,16 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "id": "",
-   "maxIdleToken": 0
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "adminUsername": "",
+   "adminPassword": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
@@ -5039,15 +5059,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "members": []
 }
@@ -5958,7 +5974,7 @@ var ConversationsApi = function (pureCloudSession) {
 	/**
      * @summary Query historical conversations
 	 * @memberOf ConversationsApi#
-	* @param {} body - 
+	* @param {} body - Query parameters
 	 * @example
 	 * Body Example:
 	 * {
@@ -5979,6 +5995,10 @@ var ConversationsApi = function (pureCloudSession) {
             requestBody = body;
         }
 
+        if(body === undefined && body !== null){
+			throw 'Missing required  parameter: body';
+        }
+
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
@@ -5986,8 +6006,8 @@ var ConversationsApi = function (pureCloudSession) {
 	/**
      * @summary Query historical conversations with a date/time anchor
 	 * @memberOf ConversationsApi#
-	* @param {string} anchor - Anchor
-	* @param {} body - 
+	* @param {string} anchor - A point in time within the interval for the query that bounds the query. In the form of YYYYMMDDHHmmssSSSZX where YYYY is the 4-digit year, MM is the 2-digit month, DD is the 2-digit day-of-month, HH is the 2-digit hour-of-day (00-23), mm is the 2-digit minute, ss is the 2-digit second, SSS is the 3-digit millisecond, Z is the UTC offset expressed as 'Z', '+nnnn', '-nnnn', '+nn:nn', '-nn:nn', and X is either 'A' (for the anchor point being at the earliest point in the query) or 'D' (for the anchor point being the latest point in the query
+	* @param {} body - Query parameters
 	 * @example
 	 * Body Example:
 	 * {
@@ -6012,6 +6032,10 @@ var ConversationsApi = function (pureCloudSession) {
 
         if(body !== undefined && body !== null){
             requestBody = body;
+        }
+
+        if(body === undefined && body !== null){
+			throw 'Missing required  parameter: body';
         }
 
 
@@ -6051,6 +6075,7 @@ var ConversationsApi = function (pureCloudSession) {
    "name": "",
    "startTime": "",
    "endTime": "",
+   "address": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
@@ -6108,7 +6133,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6118,8 +6145,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -6174,7 +6199,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6184,8 +6211,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -6279,6 +6304,7 @@ var ConversationsApi = function (pureCloudSession) {
    "name": "",
    "startTime": "",
    "endTime": "",
+   "address": "",
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
@@ -6950,6 +6976,133 @@ var FaxApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getSummary = getSummary;
+
+    return self;
+};
+
+/**
+* @class
+* @example
+* var api = new GeolocationApi(pureCloudSession);
+*/
+var GeolocationApi = function (pureCloudSession) {
+	/**
+     * @summary Get a organization's GeolocationSettings
+	 * @memberOf GeolocationApi#
+	*/
+	function getSettings(){
+		var apipath = '/api/v1/geolocations/settings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSettings = getSettings;
+	/**
+     * @summary Patch a organization's GeolocationSettings
+	 * @memberOf GeolocationApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "enabled": true
+}
+	*/
+	function patchSettings(body){
+		var apipath = '/api/v1/geolocations/settings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchSettings = patchSettings;
+	/**
+     * @summary Get a user's Geolocation
+	 * @memberOf GeolocationApi#
+	* @param {string} userId - user Id
+	* @param {string} clientId - client Id
+	*/
+	function getUserGeolocationsByClientId(userId, clientId){
+		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{clientId}', clientId);
+
+        if(clientId === undefined && clientId !== null){
+			throw 'Missing required  parameter: clientId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserGeolocationsByClientId = getUserGeolocationsByClientId;
+	/**
+     * @summary Patch a user's Geolocation
+	 * @description The geolocation object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the client as the user's primary geolocation source.  Option 2: Provide the 'latitude' and 'longitude' values.  This will enqueue an asynchronous update of the 'city', 'region', and 'country', generating a notification. A subsequent GET operation will include the new values for 'city', 'region' and 'country'.  Option 3:  Provide the 'city', 'region', 'country' values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
+	 * @memberOf GeolocationApi#
+	* @param {string} userId - user Id
+	* @param {string} clientId - client Id
+	* @param {} body - The geolocation object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the client as the user's primary geolocation source.  Option 2: Provide the 'latitude' and 'longitude' values.  This will enqueue an asynchronous update of the 'city', 'region', and 'country', generating a notification. A subsequent GET operation will include the new values for 'city', 'region' and 'country'.  Option 3:  Provide the 'city', 'region', 'country' values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "type": "",
+   "primary": true,
+   "latitude": {},
+   "longitude": {},
+   "country": "",
+   "region": "",
+   "city": ""
+}
+	*/
+	function patchUserGeolocationsByClientId(userId, clientId, body){
+		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{clientId}', clientId);
+
+        if(clientId === undefined && clientId !== null){
+			throw 'Missing required  parameter: clientId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchUserGeolocationsByClientId = patchUserGeolocationsByClientId;
 
     return self;
 };
@@ -9052,6 +9205,7 @@ var OutboundApi = function (pureCloudSession) {
 	/**
      * @summary Query a list of contact lists.
 	 * @memberOf OutboundApi#
+	* @param {boolean} includeImportStatus - Include import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	* @param {integer} pageSize - Page size
@@ -9073,12 +9227,17 @@ var OutboundApi = function (pureCloudSession) {
 	ascending,
 	descending,
 	*/
-	function getContactlists(importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+	function getContactlists(includeImportStatus, importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
 		var apipath = '/api/v1/outbound/contactlists';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -9131,22 +9290,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function createContactlists(body){
@@ -9188,10 +9333,11 @@ var OutboundApi = function (pureCloudSession) {
      * @summary Get dialer contactList.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
+	* @param {boolean} includeImportStatus - Import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	*/
-	function getContactList(contactListId, importStatus, includeSize){
+	function getContactList(contactListId, includeImportStatus, importStatus, includeSize){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -9203,6 +9349,11 @@ var OutboundApi = function (pureCloudSession) {
         if(contactListId === undefined && contactListId !== null){
 			throw 'Missing required  parameter: contactListId';
         }
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -9226,22 +9377,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function updateContactList(contactListId, body){
@@ -9522,6 +9659,7 @@ var OutboundApi = function (pureCloudSession) {
 	/**
      * @summary Query dialer DNC lists
 	 * @memberOf OutboundApi#
+	* @param {boolean} includeImportStatus - Import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	* @param {integer} pageSize - Page size
@@ -9543,12 +9681,17 @@ var OutboundApi = function (pureCloudSession) {
 	ascending,
 	descending,
 	*/
-	function getDnclists(importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+	function getDnclists(includeImportStatus, importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
 		var apipath = '/api/v1/outbound/dnclists';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -9636,10 +9779,11 @@ var OutboundApi = function (pureCloudSession) {
      * @summary Get dialer DNC list
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
+	* @param {boolean} includeImportStatus - Import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	*/
-	function getDncList(dncListId, importStatus, includeSize){
+	function getDncList(dncListId, includeImportStatus, importStatus, includeSize){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -9651,6 +9795,11 @@ var OutboundApi = function (pureCloudSession) {
         if(dncListId === undefined && dncListId !== null){
 			throw 'Missing required  parameter: dncListId';
         }
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -10387,7 +10536,8 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": ""
+   "stopMessage": "",
+   "repeat": true
 }
 	*/
 	function createSequences(body){
@@ -10442,7 +10592,8 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": ""
+   "stopMessage": "",
+   "repeat": true
 }
 	*/
 	function updateSequence(sequenceId, body){
@@ -11697,6 +11848,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -11732,6 +11884,8 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "resourceId": "",
+      "resourceType": "",
       "redacted": true,
       "isScoringIndex": true
    },
@@ -11870,6 +12024,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -11905,6 +12060,8 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "resourceId": "",
+      "resourceType": "",
       "redacted": true,
       "isScoringIndex": true
    },
@@ -12055,6 +12212,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -12168,6 +12326,8 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "resourceId": "",
+   "resourceType": "",
    "redacted": true,
    "isScoringIndex": true
 }
@@ -12248,6 +12408,7 @@ var QualityApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -12361,6 +12522,8 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "resourceId": "",
+   "resourceType": "",
    "redacted": true,
    "isScoringIndex": true
 }
@@ -13860,12 +14023,14 @@ var ScriptsApi = function (pureCloudSession) {
 	/**
      * @summary Get the list of evaluation forms
 	 * @memberOf ScriptsApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
 	* @param {string} expand - Expand
 	* @param {string} name - Name
 	*/
-	function getForms(pageSize, pageNumber, expand, name){
+	function getForms(pageSize, pageNumber, sortBy, expand, expand, name){
 		var apipath = '/api/v1/quality/forms';
 	    var requestBody;
 	    var queryParameters = {};
@@ -13880,6 +14045,16 @@ var ScriptsApi = function (pureCloudSession) {
 
 		if(pageNumber !== undefined && pageNumber !== null){
 			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
 		}
 
 
@@ -13915,8 +14090,8 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -13980,8 +14155,8 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -14117,8 +14292,8 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -14269,1100 +14444,6 @@ var SearchApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.createChats = createChats;
-
-    return self;
-};
-
-/**
-* @class
-* @example
-* var api = new SocializeApi(pureCloudSession);
-*/
-var SocializeApi = function (pureCloudSession) {
-	/**
-     * @summary Get all published expressions.
-	 * @memberOf SocializeApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	*/
-	function getExpressionsPublished(pageSize, pageNumber){
-		var apipath = '/api/v1/socialize/expressions/published';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getExpressionsPublished = getExpressionsPublished;
-	/**
-     * @summary Create published expression.
-	 * @memberOf SocializeApi#
-	* @param {} body - PublishedExpression
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "socialHub": "",
-   "twitterExpression": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "isDispositioned": true,
-      "isNoise": true,
-      "gistener": {},
-      "tweetId": "",
-      "text": "",
-      "tweetCreated": "",
-      "isReply": true,
-      "isRetweet": true,
-      "retweetParentId": "",
-      "retweetCount": 0,
-      "isQuotedTweet": true,
-      "quotedParentId": "",
-      "userId": "",
-      "userName": "",
-      "userScreenName": "",
-      "userTweetCount": 0,
-      "userFollowersCount": 0,
-      "groupTags": [],
-      "routed": true
-   },
-   "publicationParentId": "",
-   "scheduleDate": "",
-   "publishedDate": "",
-   "socialAccount": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "enabled": true,
-      "authorized": true,
-      "socialHub": "",
-      "access_token": "",
-      "access_token_secret": "",
-      "twitterId": "",
-      "streamingEnabled": true
-   },
-   "twitterId": "",
-   "retweets": 0,
-   "replies": []
-}
-	*/
-	function createExpressionsPublished(body){
-		var apipath = '/api/v1/socialize/expressions/published';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createExpressionsPublished = createExpressionsPublished;
-	/**
-     * @summary Get published expression
-	 * @memberOf SocializeApi#
-	* @param {string} publishedExpressionId - Published TwitterExpression ID
-	*/
-	function getExpressionsPublishedPublishedExpression(publishedExpressionId){
-		var apipath = '/api/v1/socialize/expressions/published/{publishedExpressionId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{publishedExpressionId}', publishedExpressionId);
-
-        if(publishedExpressionId === undefined && publishedExpressionId !== null){
-			throw 'Missing required  parameter: publishedExpressionId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getExpressionsPublishedPublishedExpression = getExpressionsPublishedPublishedExpression;
-	/**
-     * @summary Update published expression.
-	 * @memberOf SocializeApi#
-	* @param {string} publishedExpressionId - Published TwitterExpression ID
-	* @param {} body - PublishedExpression
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "socialHub": "",
-   "twitterExpression": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "isDispositioned": true,
-      "isNoise": true,
-      "gistener": {},
-      "tweetId": "",
-      "text": "",
-      "tweetCreated": "",
-      "isReply": true,
-      "isRetweet": true,
-      "retweetParentId": "",
-      "retweetCount": 0,
-      "isQuotedTweet": true,
-      "quotedParentId": "",
-      "userId": "",
-      "userName": "",
-      "userScreenName": "",
-      "userTweetCount": 0,
-      "userFollowersCount": 0,
-      "groupTags": [],
-      "routed": true
-   },
-   "publicationParentId": "",
-   "scheduleDate": "",
-   "publishedDate": "",
-   "socialAccount": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "enabled": true,
-      "authorized": true,
-      "socialHub": "",
-      "access_token": "",
-      "access_token_secret": "",
-      "twitterId": "",
-      "streamingEnabled": true
-   },
-   "twitterId": "",
-   "retweets": 0,
-   "replies": []
-}
-	*/
-	function updateExpressionsPublishedPublishedExpression(publishedExpressionId, body){
-		var apipath = '/api/v1/socialize/expressions/published/{publishedExpressionId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{publishedExpressionId}', publishedExpressionId);
-
-        if(publishedExpressionId === undefined && publishedExpressionId !== null){
-			throw 'Missing required  parameter: publishedExpressionId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateExpressionsPublishedPublishedExpression = updateExpressionsPublishedPublishedExpression;
-	/**
-     * @summary Delete published expression.
-	 * @memberOf SocializeApi#
-	* @param {string} publishedExpressionId - Published TwitterExpression ID
-	*/
-	function deleteExpressionsPublishedPublishedExpression(publishedExpressionId){
-		var apipath = '/api/v1/socialize/expressions/published/{publishedExpressionId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{publishedExpressionId}', publishedExpressionId);
-
-        if(publishedExpressionId === undefined && publishedExpressionId !== null){
-			throw 'Missing required  parameter: publishedExpressionId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteExpressionsPublishedPublishedExpression = deleteExpressionsPublishedPublishedExpression;
-	/**
-     * @summary Get all configured expressions.
-	 * @memberOf SocializeApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	*/
-	function getExpressionsTwitter(pageSize, pageNumber){
-		var apipath = '/api/v1/socialize/expressions/twitter';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getExpressionsTwitter = getExpressionsTwitter;
-	/**
-     * @summary Create twitter expression.
-	 * @memberOf SocializeApi#
-	* @param {} body - TwitterExpression
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "isDispositioned": true,
-   "isNoise": true,
-   "gistener": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "enabled": true,
-      "anyWords": "",
-      "allWords": "",
-      "excludeWords": "",
-      "exactPhrase": "",
-      "groupTags": [],
-      "socialAccount": {}
-   },
-   "tweetId": "",
-   "text": "",
-   "tweetCreated": "",
-   "isReply": true,
-   "isRetweet": true,
-   "retweetParentId": "",
-   "retweetCount": 0,
-   "isQuotedTweet": true,
-   "quotedParentId": "",
-   "userId": "",
-   "userName": "",
-   "userScreenName": "",
-   "userTweetCount": 0,
-   "userFollowersCount": 0,
-   "groupTags": [],
-   "routed": true
-}
-	*/
-	function createExpressionsTwitter(body){
-		var apipath = '/api/v1/socialize/expressions/twitter';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createExpressionsTwitter = createExpressionsTwitter;
-	/**
-     * @summary Get TwitterExpression.
-	 * @memberOf SocializeApi#
-	* @param {string} expressionId - TwitterExpression ID
-	*/
-	function getExpressionsTwitterExpression(expressionId){
-		var apipath = '/api/v1/socialize/expressions/twitter/{expressionId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{expressionId}', expressionId);
-
-        if(expressionId === undefined && expressionId !== null){
-			throw 'Missing required  parameter: expressionId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getExpressionsTwitterExpression = getExpressionsTwitterExpression;
-	/**
-     * @summary Update TwitterExpression.
-	 * @memberOf SocializeApi#
-	* @param {string} expressionId - TwitterExpression ID
-	* @param {} body - TwitterExpression
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "isDispositioned": true,
-   "isNoise": true,
-   "gistener": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "enabled": true,
-      "anyWords": "",
-      "allWords": "",
-      "excludeWords": "",
-      "exactPhrase": "",
-      "groupTags": [],
-      "socialAccount": {}
-   },
-   "tweetId": "",
-   "text": "",
-   "tweetCreated": "",
-   "isReply": true,
-   "isRetweet": true,
-   "retweetParentId": "",
-   "retweetCount": 0,
-   "isQuotedTweet": true,
-   "quotedParentId": "",
-   "userId": "",
-   "userName": "",
-   "userScreenName": "",
-   "userTweetCount": 0,
-   "userFollowersCount": 0,
-   "groupTags": [],
-   "routed": true
-}
-	*/
-	function updateExpressionsTwitterExpression(expressionId, body){
-		var apipath = '/api/v1/socialize/expressions/twitter/{expressionId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{expressionId}', expressionId);
-
-        if(expressionId === undefined && expressionId !== null){
-			throw 'Missing required  parameter: expressionId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateExpressionsTwitterExpression = updateExpressionsTwitterExpression;
-	/**
-     * @summary Delete TwitterExpression.
-	 * @memberOf SocializeApi#
-	* @param {string} expressionId - TwitterExpression ID
-	*/
-	function deleteExpressionsTwitterExpression(expressionId){
-		var apipath = '/api/v1/socialize/expressions/twitter/{expressionId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{expressionId}', expressionId);
-
-        if(expressionId === undefined && expressionId !== null){
-			throw 'Missing required  parameter: expressionId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteExpressionsTwitterExpression = deleteExpressionsTwitterExpression;
-	/**
-     * @summary Get all configured gisteners.
-	 * @memberOf SocializeApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {boolean} enabled - Enabled Only
-	*/
-	function getGisteners(pageSize, pageNumber, enabled){
-		var apipath = '/api/v1/socialize/gisteners';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getGisteners = getGisteners;
-	/**
-     * @summary Create gistener.
-	 * @memberOf SocializeApi#
-	* @param {} body - Gistener
-	* @param {boolean} preview - Preview Only
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "enabled": true,
-   "anyWords": "",
-   "allWords": "",
-   "excludeWords": "",
-   "exactPhrase": "",
-   "groupTags": [],
-   "socialAccount": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "enabled": true,
-      "authorized": true,
-      "socialHub": "",
-      "access_token": "",
-      "access_token_secret": "",
-      "twitterId": "",
-      "streamingEnabled": true
-   }
-}
-	*/
-	function createGisteners(body, preview){
-		var apipath = '/api/v1/socialize/gisteners';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		if(preview !== undefined && preview !== null){
-			queryParameters.preview = preview;
-		}
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createGisteners = createGisteners;
-	/**
-     * @summary Get gistener.
-	 * @memberOf SocializeApi#
-	* @param {string} gistenerId - Gistener ID
-	*/
-	function getGistener(gistenerId){
-		var apipath = '/api/v1/socialize/gisteners/{gistenerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{gistenerId}', gistenerId);
-
-        if(gistenerId === undefined && gistenerId !== null){
-			throw 'Missing required  parameter: gistenerId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getGistener = getGistener;
-	/**
-     * @summary Update gistener.
-	 * @memberOf SocializeApi#
-	* @param {string} gistenerId - Gistener ID
-	* @param {} body - Gistener
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "enabled": true,
-   "anyWords": "",
-   "allWords": "",
-   "excludeWords": "",
-   "exactPhrase": "",
-   "groupTags": [],
-   "socialAccount": {
-      "name": "",
-      "dateCreated": "",
-      "dateModified": "",
-      "enabled": true,
-      "authorized": true,
-      "socialHub": "",
-      "access_token": "",
-      "access_token_secret": "",
-      "twitterId": "",
-      "streamingEnabled": true
-   }
-}
-	*/
-	function updateGistener(gistenerId, body){
-		var apipath = '/api/v1/socialize/gisteners/{gistenerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{gistenerId}', gistenerId);
-
-        if(gistenerId === undefined && gistenerId !== null){
-			throw 'Missing required  parameter: gistenerId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateGistener = updateGistener;
-	/**
-     * @summary Delete gistener.
-	 * @memberOf SocializeApi#
-	* @param {string} gistenerId - Gistener ID
-	*/
-	function deleteGistener(gistenerId){
-		var apipath = '/api/v1/socialize/gisteners/{gistenerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{gistenerId}', gistenerId);
-
-        if(gistenerId === undefined && gistenerId !== null){
-			throw 'Missing required  parameter: gistenerId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteGistener = deleteGistener;
-	/**
-     * @summary Get all configured groupTags.
-	 * @memberOf SocializeApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {boolean} enabled - Enabled Only
-	*/
-	function getGrouptags(pageSize, pageNumber, enabled){
-		var apipath = '/api/v1/socialize/grouptags';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getGrouptags = getGrouptags;
-	/**
-     * @summary Create grouptag.
-	 * @memberOf SocializeApi#
-	* @param {} body - grouptag
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "type": "",
-   "enabled": true
-}
-	*/
-	function createGrouptags(body){
-		var apipath = '/api/v1/socialize/grouptags';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createGrouptags = createGrouptags;
-	/**
-     * @summary Get grouptag.
-	 * @memberOf SocializeApi#
-	* @param {string} groupTagId - grouptag ID
-	*/
-	function getGroupTag(groupTagId){
-		var apipath = '/api/v1/socialize/grouptags/{groupTagId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{groupTagId}', groupTagId);
-
-        if(groupTagId === undefined && groupTagId !== null){
-			throw 'Missing required  parameter: groupTagId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getGroupTag = getGroupTag;
-	/**
-     * @summary Update grouptag.
-	 * @memberOf SocializeApi#
-	* @param {string} groupTagId - grouptag ID
-	* @param {} body - grouptag
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "type": "",
-   "enabled": true
-}
-	*/
-	function updateGroupTag(groupTagId, body){
-		var apipath = '/api/v1/socialize/grouptags/{groupTagId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{groupTagId}', groupTagId);
-
-        if(groupTagId === undefined && groupTagId !== null){
-			throw 'Missing required  parameter: groupTagId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateGroupTag = updateGroupTag;
-	/**
-     * @summary Delete grouptag.
-	 * @memberOf SocializeApi#
-	* @param {string} groupTagId - grouptag ID
-	*/
-	function deleteGroupTag(groupTagId){
-		var apipath = '/api/v1/socialize/grouptags/{groupTagId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{groupTagId}', groupTagId);
-
-        if(groupTagId === undefined && groupTagId !== null){
-			throw 'Missing required  parameter: groupTagId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteGroupTag = deleteGroupTag;
-	/**
-     * @summary Get all configured publications.
-	 * @memberOf SocializeApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	*/
-	function getPublications(pageSize, pageNumber){
-		var apipath = '/api/v1/socialize/publications';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getPublications = getPublications;
-	/**
-     * @summary Create publication.
-	 * @memberOf SocializeApi#
-	* @param {} body - Publication
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "tweetText": "",
-   "rawTweetText": "",
-   "approved": true
-}
-	*/
-	function createPublications(body){
-		var apipath = '/api/v1/socialize/publications';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createPublications = createPublications;
-	/**
-     * @summary Get publication.
-	 * @memberOf SocializeApi#
-	* @param {string} publicationId - Publication ID
-	*/
-	function getPublication(publicationId){
-		var apipath = '/api/v1/socialize/publications/{publicationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{publicationId}', publicationId);
-
-        if(publicationId === undefined && publicationId !== null){
-			throw 'Missing required  parameter: publicationId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getPublication = getPublication;
-	/**
-     * @summary Update publication.
-	 * @memberOf SocializeApi#
-	* @param {string} publicationId - Publication ID
-	* @param {} body - Publication
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "tweetText": "",
-   "rawTweetText": "",
-   "approved": true
-}
-	*/
-	function updatePublication(publicationId, body){
-		var apipath = '/api/v1/socialize/publications/{publicationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{publicationId}', publicationId);
-
-        if(publicationId === undefined && publicationId !== null){
-			throw 'Missing required  parameter: publicationId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updatePublication = updatePublication;
-	/**
-     * @summary Delete publication.
-	 * @memberOf SocializeApi#
-	* @param {string} publicationId - Publication ID
-	*/
-	function deletePublication(publicationId){
-		var apipath = '/api/v1/socialize/publications/{publicationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{publicationId}', publicationId);
-
-        if(publicationId === undefined && publicationId !== null){
-			throw 'Missing required  parameter: publicationId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deletePublication = deletePublication;
-	/**
-     * @summary Get all social accounts.
-	 * @memberOf SocializeApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {boolean} enabled - Enabled Only
-	*/
-	function getSocialaccounts(pageSize, pageNumber, enabled){
-		var apipath = '/api/v1/socialize/socialaccounts';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSocialaccounts = getSocialaccounts;
-	/**
-     * @summary Create social account.
-	 * @memberOf SocializeApi#
-	* @param {} body - SocialAccount
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "enabled": true,
-   "authorized": true,
-   "socialHub": "",
-   "access_token": "",
-   "access_token_secret": "",
-   "twitterId": "",
-   "streamingEnabled": true
-}
-	*/
-	function createSocialaccounts(body){
-		var apipath = '/api/v1/socialize/socialaccounts';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.createSocialaccounts = createSocialaccounts;
-	/**
-     * @summary Get social account
-	 * @memberOf SocializeApi#
-	* @param {string} socialAccountId - Social Account ID
-	* @param {boolean} enabled - Streaming Enabled
-	*/
-	function getSocialAccount(socialAccountId, enabled){
-		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{socialAccountId}', socialAccountId);
-
-        if(socialAccountId === undefined && socialAccountId !== null){
-			throw 'Missing required  parameter: socialAccountId';
-        }
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-        if(enabled === undefined && enabled !== null){
-			throw 'Missing required  parameter: enabled';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSocialAccount = getSocialAccount;
-	/**
-     * @summary Update social account.
-	 * @memberOf SocializeApi#
-	* @param {string} socialAccountId - Social Account ID
-	* @param {boolean} enabled - Streaming Enabled
-	* @param {} body - SocialAccount
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "enabled": true,
-   "authorized": true,
-   "socialHub": "",
-   "access_token": "",
-   "access_token_secret": "",
-   "twitterId": "",
-   "streamingEnabled": true
-}
-	*/
-	function updateSocialAccount(socialAccountId, enabled, body){
-		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{socialAccountId}', socialAccountId);
-
-        if(socialAccountId === undefined && socialAccountId !== null){
-			throw 'Missing required  parameter: socialAccountId';
-        }
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-        if(enabled === undefined && enabled !== null){
-			throw 'Missing required  parameter: enabled';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.updateSocialAccount = updateSocialAccount;
-	/**
-     * @summary Delete social account.
-	 * @memberOf SocializeApi#
-	* @param {string} socialAccountId - Social Account ID
-	* @param {boolean} enabled - Streaming Enabled
-	*/
-	function deleteSocialAccount(socialAccountId, enabled){
-		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{socialAccountId}', socialAccountId);
-
-        if(socialAccountId === undefined && socialAccountId !== null){
-			throw 'Missing required  parameter: socialAccountId';
-        }
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-        if(enabled === undefined && enabled !== null){
-			throw 'Missing required  parameter: enabled';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteSocialAccount = deleteSocialAccount;
-	/**
-     * @summary Enabled/Disable feed for social account.
-	 * @memberOf SocializeApi#
-	* @param {string} socialAccountId - Social Account ID
-	* @param {boolean} enabled - Streaming Enabled
-	*/
-	function patchSocialAccount(socialAccountId, enabled){
-		var apipath = '/api/v1/socialize/socialaccounts/{socialAccountId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{socialAccountId}', socialAccountId);
-
-        if(socialAccountId === undefined && socialAccountId !== null){
-			throw 'Missing required  parameter: socialAccountId';
-        }
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-        if(enabled === undefined && enabled !== null){
-			throw 'Missing required  parameter: enabled';
-        }
-
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchSocialAccount = patchSocialAccount;
 
     return self;
 };
@@ -16064,7 +15145,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -16178,7 +15260,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -16361,7 +15444,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -16520,7 +15604,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "registers": true,
       "dualRegisters": true,
       "hardwareIdType": "",
-      "allowReboot": true
+      "allowReboot": true,
+      "noRebalance": true
    }
 }
 	*/
@@ -16989,6 +16074,7 @@ var UserRecordingsApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
@@ -18337,6 +17423,7 @@ var VoicemailApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,

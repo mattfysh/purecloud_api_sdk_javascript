@@ -7,12 +7,14 @@ var ScriptsApi = function (pureCloudSession) {
 	/**
      * @summary Get the list of evaluation forms
 	 * @memberOf ScriptsApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
 	* @param {string} expand - Expand
 	* @param {string} name - Name
 	*/
-	function getForms(pageSize, pageNumber, expand, name){
+	function getForms(pageSize, pageNumber, sortBy, expand, expand, name){
 		var apipath = '/api/v1/quality/forms';
 	    var requestBody;
 	    var queryParameters = {};
@@ -27,6 +29,16 @@ var ScriptsApi = function (pureCloudSession) {
 
 		if(pageNumber !== undefined && pageNumber !== null){
 			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
 		}
 
 
@@ -62,8 +74,8 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -127,8 +139,8 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -264,8 +276,8 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0

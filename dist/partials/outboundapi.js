@@ -733,6 +733,7 @@ var OutboundApi = function (pureCloudSession) {
 	/**
      * @summary Query a list of contact lists.
 	 * @memberOf OutboundApi#
+	* @param {boolean} includeImportStatus - Include import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	* @param {integer} pageSize - Page size
@@ -754,12 +755,17 @@ var OutboundApi = function (pureCloudSession) {
 	ascending,
 	descending,
 	*/
-	function getContactlists(importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+	function getContactlists(includeImportStatus, importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
 		var apipath = '/api/v1/outbound/contactlists';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -812,22 +818,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function createContactlists(body){
@@ -869,10 +861,11 @@ var OutboundApi = function (pureCloudSession) {
      * @summary Get dialer contactList.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
+	* @param {boolean} includeImportStatus - Import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	*/
-	function getContactList(contactListId, importStatus, includeSize){
+	function getContactList(contactListId, includeImportStatus, importStatus, includeSize){
 		var apipath = '/api/v1/outbound/contactlists/{contactListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -884,6 +877,11 @@ var OutboundApi = function (pureCloudSession) {
         if(contactListId === undefined && contactListId !== null){
 			throw 'Missing required  parameter: contactListId';
         }
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -907,22 +905,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function updateContactList(contactListId, body){
@@ -1203,6 +1187,7 @@ var OutboundApi = function (pureCloudSession) {
 	/**
      * @summary Query dialer DNC lists
 	 * @memberOf OutboundApi#
+	* @param {boolean} includeImportStatus - Import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	* @param {integer} pageSize - Page size
@@ -1224,12 +1209,17 @@ var OutboundApi = function (pureCloudSession) {
 	ascending,
 	descending,
 	*/
-	function getDnclists(importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+	function getDnclists(includeImportStatus, importStatus, includeSize, pageSize, pageNumber, filterType, name, sortBy, sortOrder){
 		var apipath = '/api/v1/outbound/dnclists';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -1317,10 +1307,11 @@ var OutboundApi = function (pureCloudSession) {
      * @summary Get dialer DNC list
 	 * @memberOf OutboundApi#
 	* @param {string} dncListId - DncList ID
+	* @param {boolean} includeImportStatus - Import status
 	* @param {boolean} importStatus - Import status
 	* @param {boolean} includeSize - Include size
 	*/
-	function getDncList(dncListId, importStatus, includeSize){
+	function getDncList(dncListId, includeImportStatus, importStatus, includeSize){
 		var apipath = '/api/v1/outbound/dnclists/{dncListId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1332,6 +1323,11 @@ var OutboundApi = function (pureCloudSession) {
         if(dncListId === undefined && dncListId !== null){
 			throw 'Missing required  parameter: dncListId';
         }
+
+
+		if(includeImportStatus !== undefined && includeImportStatus !== null){
+			queryParameters.includeImportStatus = includeImportStatus;
+		}
 
 
 		if(importStatus !== undefined && importStatus !== null){
@@ -2068,7 +2064,8 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": ""
+   "stopMessage": "",
+   "repeat": true
 }
 	*/
 	function createSequences(body){
@@ -2123,7 +2120,8 @@ var OutboundApi = function (pureCloudSession) {
    "campaigns": [],
    "currentCampaign": 0,
    "status": "",
-   "stopMessage": ""
+   "stopMessage": "",
+   "repeat": true
 }
 	*/
 	function updateSequence(sequenceId, body){

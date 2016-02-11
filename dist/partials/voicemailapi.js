@@ -208,6 +208,7 @@ var VoicemailApi = function (pureCloudSession) {
       "name": "",
       "startTime": "",
       "endTime": "",
+      "address": "",
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,

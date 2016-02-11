@@ -93,9 +93,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -202,9 +200,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -267,9 +263,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -439,13 +433,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "endMillis": 0,
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
@@ -519,13 +508,8 @@ var AnalyticsApi = function (pureCloudSession) {
    "timeZone": "",
    "timePeriod": "",
    "interval": {
-      "end": "",
       "start": "",
-      "chronology": {},
-      "endMillis": 0,
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
+      "end": ""
    },
    "reportFormat": "",
    "locale": "",
