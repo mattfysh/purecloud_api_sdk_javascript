@@ -87,15 +87,7 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "state": "",
-      "id": "",
-      "roomId": "",
-      "recordingId": "",
-      "segments": [],
-      "held": true,
-      "direction": "",
-      "disconnectType": "",
-      "startHoldTime": ""
+      "jabberId": ""
    },
    "roles": [],
    "voicemailEnabled": true,
@@ -239,15 +231,7 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "state": "",
-      "id": "",
-      "roomId": "",
-      "recordingId": "",
-      "segments": [],
-      "held": true,
-      "direction": "",
-      "disconnectType": "",
-      "startHoldTime": ""
+      "jabberId": ""
    },
    "roles": [],
    "voicemailEnabled": true,

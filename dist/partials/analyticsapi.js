@@ -441,15 +441,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "timeZone": "",
    "timePeriod": "",
-   "interval": {
-      "start": "",
-      "end": "",
-      "endMillis": 0,
-      "chronology": {},
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
-   },
+   "interval": {},
    "reportFormat": "",
    "locale": "",
    "enabled": true,
@@ -521,15 +513,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "timeZone": "",
    "timePeriod": "",
-   "interval": {
-      "start": "",
-      "end": "",
-      "endMillis": 0,
-      "chronology": {},
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
-   },
+   "interval": {},
    "reportFormat": "",
    "locale": "",
    "enabled": true,

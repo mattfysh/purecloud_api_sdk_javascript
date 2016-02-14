@@ -84,6 +84,38 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getPermissions = getPermissions;
 	/**
+     * @summary Get Licenses required per permission.
+	 * @memberOf LicensingApi#
+	* @param {array} id - ID
+	* @param {} body - The permissions details
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "ids": []
+}
+	*/
+	function createPermissions(id, body){
+		var apipath = '/api/v1/licensing/permissions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(id !== undefined && id !== null){
+			queryParameters.id = id;
+		}
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createPermissions = createPermissions;
+	/**
      * @summary Get user license assignments.
 	 * @memberOf LicensingApi#
 	*/

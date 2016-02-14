@@ -119,8 +119,7 @@ var ContentManagementApi = function (pureCloudSession) {
    },
    "tags": [],
    "tagIds": [],
-   "attributes": [],
-   "attributeGroupInstances": []
+   "attributes": []
 }
 	*/
 	function createDocuments(body, copySource, moveSource, override){
@@ -198,14 +197,11 @@ var ContentManagementApi = function (pureCloudSession) {
    "changeNumber": 0,
    "name": "",
    "read": true,
-   "updateAttributes": [],
    "removeAttributes": [],
    "addTags": [],
    "removeTags": [],
    "addTagIds": [],
-   "removeTagIds": [],
-   "addAttributeGroupInstanceIds": [],
-   "removeAttributeGroupInstanceIds": []
+   "removeTagIds": []
 }
 	*/
 	function createDocument(documentId, body, expand, override){
@@ -332,8 +328,9 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} disposition - Request how the content will be downloaded: attached as a file or inline. Default is attachment.
 	attachment,
 	inline,
+	* @param {} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	*/
-	function getDocumentContent(documentId, disposition){
+	function getDocumentContent(documentId, disposition, contentType){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -350,6 +347,10 @@ var ContentManagementApi = function (pureCloudSession) {
 		if(disposition !== undefined && disposition !== null){
 			queryParameters.disposition = disposition;
 		}
+
+        if(contentType !== undefined && contentType !== null){
+            requestBody = contentType;
+        }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -541,10 +542,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	attachment,
 	inline,
 	none,
+	* @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	* @param {string} expand - Expand some document fields
 	document.acl,
 	*/
-	function getSharedShared(sharedId, redirect, disposition, expand){
+	function getSharedShared(sharedId, redirect, disposition, contentType, expand){
 		var apipath = '/api/v1/contentmanagement/shared/{sharedId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -565,6 +567,11 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		if(disposition !== undefined && disposition !== null){
 			queryParameters.disposition = disposition;
+		}
+
+
+		if(contentType !== undefined && contentType !== null){
+			queryParameters.contentType = contentType;
 		}
 
 

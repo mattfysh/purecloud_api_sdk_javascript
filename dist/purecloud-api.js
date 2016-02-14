@@ -441,15 +441,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "timeZone": "",
    "timePeriod": "",
-   "interval": {
-      "start": "",
-      "end": "",
-      "endMillis": 0,
-      "chronology": {},
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
-   },
+   "interval": {},
    "reportFormat": "",
    "locale": "",
    "enabled": true,
@@ -521,15 +513,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "timeZone": "",
    "timePeriod": "",
-   "interval": {
-      "start": "",
-      "end": "",
-      "endMillis": 0,
-      "chronology": {},
-      "startMillis": 0,
-      "beforeNow": true,
-      "afterNow": true
-   },
+   "interval": {},
    "reportFormat": "",
    "locale": "",
    "enabled": true,
@@ -3391,8 +3375,16 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "id": "",
-   "maxIdleToken": 0
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "adminUsername": "",
+   "adminPassword": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true
 }
 	*/
 	function updateOrganization(body){
@@ -3471,8 +3463,16 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "id": "",
-   "maxIdleToken": 0
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "adminUsername": "",
+   "adminPassword": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true
 }
 	*/
 	function updateOrganizationsOrg(orgId, body){
@@ -4555,8 +4555,7 @@ var ContentManagementApi = function (pureCloudSession) {
    },
    "tags": [],
    "tagIds": [],
-   "attributes": [],
-   "attributeGroupInstances": []
+   "attributes": []
 }
 	*/
 	function createDocuments(body, copySource, moveSource, override){
@@ -4634,14 +4633,11 @@ var ContentManagementApi = function (pureCloudSession) {
    "changeNumber": 0,
    "name": "",
    "read": true,
-   "updateAttributes": [],
    "removeAttributes": [],
    "addTags": [],
    "removeTags": [],
    "addTagIds": [],
-   "removeTagIds": [],
-   "addAttributeGroupInstanceIds": [],
-   "removeAttributeGroupInstanceIds": []
+   "removeTagIds": []
 }
 	*/
 	function createDocument(documentId, body, expand, override){
@@ -4768,8 +4764,9 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} disposition - Request how the content will be downloaded: attached as a file or inline. Default is attachment.
 	attachment,
 	inline,
+	* @param {} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	*/
-	function getDocumentContent(documentId, disposition){
+	function getDocumentContent(documentId, disposition, contentType){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -4786,6 +4783,10 @@ var ContentManagementApi = function (pureCloudSession) {
 		if(disposition !== undefined && disposition !== null){
 			queryParameters.disposition = disposition;
 		}
+
+        if(contentType !== undefined && contentType !== null){
+            requestBody = contentType;
+        }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -4977,10 +4978,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	attachment,
 	inline,
 	none,
+	* @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	* @param {string} expand - Expand some document fields
 	document.acl,
 	*/
-	function getSharedShared(sharedId, redirect, disposition, expand){
+	function getSharedShared(sharedId, redirect, disposition, contentType, expand){
 		var apipath = '/api/v1/contentmanagement/shared/{sharedId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -5001,6 +5003,11 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		if(disposition !== undefined && disposition !== null){
 			queryParameters.disposition = disposition;
+		}
+
+
+		if(contentType !== undefined && contentType !== null){
+			queryParameters.contentType = contentType;
 		}
 
 
@@ -6142,7 +6149,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6152,8 +6161,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -6208,7 +6215,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -6218,8 +6227,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -7770,6 +7777,38 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getPermissions = getPermissions;
 	/**
+     * @summary Get Licenses required per permission.
+	 * @memberOf LicensingApi#
+	* @param {array} id - ID
+	* @param {} body - The permissions details
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "ids": []
+}
+	*/
+	function createPermissions(id, body){
+		var apipath = '/api/v1/licensing/permissions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(id !== undefined && id !== null){
+			queryParameters.id = id;
+		}
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.createPermissions = createPermissions;
+	/**
      * @summary Get user license assignments.
 	 * @memberOf LicensingApi#
 	*/
@@ -9299,22 +9338,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function createContactlists(body){
@@ -9400,22 +9425,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function updateContactList(contactListId, body){
@@ -16294,15 +16305,7 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "state": "",
-      "id": "",
-      "roomId": "",
-      "recordingId": "",
-      "segments": [],
-      "held": true,
-      "direction": "",
-      "disconnectType": "",
-      "startHoldTime": ""
+      "jabberId": ""
    },
    "roles": [],
    "voicemailEnabled": true,
@@ -16446,15 +16449,7 @@ var UsersApi = function (pureCloudSession) {
    "phoneNumber": "",
    "userImages": [],
    "chat": {
-      "state": "",
-      "id": "",
-      "roomId": "",
-      "recordingId": "",
-      "segments": [],
-      "held": true,
-      "direction": "",
-      "disconnectType": "",
-      "startHoldTime": ""
+      "jabberId": ""
    },
    "roles": [],
    "voicemailEnabled": true,
@@ -17196,12 +17191,14 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "country": "",
+      "A1": "",
+      "A3": "",
+      "RD": "",
+      "HNO": "",
+      "LOC": "",
+      "NAM": "",
+      "PC": ""
    }
 }
 	*/
