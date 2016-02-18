@@ -93,10 +93,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -197,25 +196,12 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "title": "",
-   "description": "",
-   "enabled": true,
-   "metric": "",
-   "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "metricThresholds": [],
-   "inAlarm": true,
-   "occurrence": {
-      "limit": 0,
-      "type": ""
-   },
-   "mediaType": "",
-   "statistic": ""
+   "order": 0,
+   "category": "",
+   "conditions": [],
+   "actions": []
 }
 	*/
 	function createAlertingRules(body){
@@ -263,25 +249,12 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "title": "",
-   "description": "",
-   "enabled": true,
-   "metric": "",
-   "entity": {
-      "type": "",
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "metricThresholds": [],
-   "inAlarm": true,
-   "occurrence": {
-      "limit": 0,
-      "type": ""
-   },
-   "mediaType": "",
-   "statistic": ""
+   "order": 0,
+   "category": "",
+   "conditions": [],
+   "actions": []
 }
 	*/
 	function updateAlertingRule(ruleId, body){

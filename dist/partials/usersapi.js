@@ -111,6 +111,7 @@ var UsersApi = function (pureCloudSession) {
    "conversations": {
       "userId": "",
       "call": {},
+      "callback": {},
       "email": {},
       "chat": {},
       "socialExpression": {},
@@ -119,6 +120,7 @@ var UsersApi = function (pureCloudSession) {
    "conversationSummary": {
       "userId": "",
       "call": {},
+      "callback": {},
       "email": {},
       "chat": {},
       "socialExpression": {},
@@ -255,6 +257,7 @@ var UsersApi = function (pureCloudSession) {
    "conversations": {
       "userId": "",
       "call": {},
+      "callback": {},
       "email": {},
       "chat": {},
       "socialExpression": {},
@@ -263,6 +266,7 @@ var UsersApi = function (pureCloudSession) {
    "conversationSummary": {
       "userId": "",
       "call": {},
+      "callback": {},
       "email": {},
       "chat": {},
       "socialExpression": {},

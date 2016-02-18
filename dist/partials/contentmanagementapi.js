@@ -328,7 +328,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} disposition - Request how the content will be downloaded: attached as a file or inline. Default is attachment.
 	attachment,
 	inline,
-	* @param {} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
+	* @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	*/
 	function getDocumentContent(documentId, disposition, contentType){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
@@ -348,9 +348,10 @@ var ContentManagementApi = function (pureCloudSession) {
 			queryParameters.disposition = disposition;
 		}
 
-        if(contentType !== undefined && contentType !== null){
-            requestBody = contentType;
-        }
+
+		if(contentType !== undefined && contentType !== null){
+			queryParameters.contentType = contentType;
+		}
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -633,17 +634,15 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "memberType": "",
    "member": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "members": []
 }

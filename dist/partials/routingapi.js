@@ -462,8 +462,9 @@ var RoutingApi = function (pureCloudSession) {
      * @summary Delete a queue
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
+	* @param {boolean} forceDelete - 
 	*/
-	function deleteQueue(queueId){
+	function deleteQueue(queueId, forceDelete){
 		var apipath = '/api/v1/routing/queues/{queueId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -475,6 +476,11 @@ var RoutingApi = function (pureCloudSession) {
         if(queueId === undefined && queueId !== null){
 			throw 'Missing required  parameter: queueId';
         }
+
+
+		if(forceDelete !== undefined && forceDelete !== null){
+			queryParameters.forceDelete = forceDelete;
+		}
 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);

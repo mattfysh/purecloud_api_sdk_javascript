@@ -20,6 +20,64 @@ var OAuthApi = function (pureCloudSession) {
 	}
 	self.get = get;
 	/**
+     * @summary Get Okta Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function getOkta(){
+		var apipath = '/api/v1/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getOkta = getOkta;
+	/**
+     * @summary Update/Create Okta Identity Provider
+	 * @memberOf OAuthApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": ""
+}
+	*/
+	function updateOkta(body){
+		var apipath = '/api/v1/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateOkta = updateOkta;
+	/**
+     * @summary Delete Okta Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function deleteOkta(){
+		var apipath = '/api/v1/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteOkta = deleteOkta;
+	/**
      * @summary Get OneLogin Identity Provider
 	 * @memberOf OAuthApi#
 	*/
@@ -132,6 +190,64 @@ var OAuthApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deletePurecloud = deletePurecloud;
+	/**
+     * @summary Get Salesforce Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function getSalesforce(){
+		var apipath = '/api/v1/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSalesforce = getSalesforce;
+	/**
+     * @summary Update/Create Salesforce Identity Provider
+	 * @memberOf OAuthApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": ""
+}
+	*/
+	function updateSalesforce(body){
+		var apipath = '/api/v1/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.updateSalesforce = updateSalesforce;
+	/**
+     * @summary Delete Salesforce Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function deleteSalesforce(){
+		var apipath = '/api/v1/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSalesforce = deleteSalesforce;
 	/**
      * @summary Get an identity provider
 	 * @memberOf OAuthApi#
