@@ -87,7 +87,7 @@ var FaxApi = function (pureCloudSession) {
    "downloadSharingUri": ""
 }
 	*/
-	function updateDocument(documentId, body){
+	function putDocument(documentId, body){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -107,7 +107,7 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateDocument = updateDocument;
+	self.putDocument = putDocument;
 	/**
      * @summary Delete a fax document.
 	 * @memberOf FaxApi#

@@ -30,7 +30,7 @@ var ComplianceApi = function (pureCloudSession) {
    "enableIdleTokenTimeout": true
 }
 	*/
-	function updateHipaa(body){
+	function putHipaa(body){
 		var apipath = '/api/v1/compliance/hipaa';
 	    var requestBody;
 	    var queryParameters = {};
@@ -44,7 +44,7 @@ var ComplianceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateHipaa = updateHipaa;
+	self.putHipaa = putHipaa;
 
     return self;
 };

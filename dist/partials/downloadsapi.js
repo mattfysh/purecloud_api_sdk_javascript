@@ -38,7 +38,7 @@ var DownloadsApi = function (pureCloudSession) {
 	* @param {string} downloadId - Download ID
 	* @param {string} contentDisposition - this method will issue a redirect to the url to the content
 	*/
-	function getDownload(downloadId, contentDisposition){
+	function get(downloadId, contentDisposition){
 		var apipath = '/api/v1/downloads/{downloadId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -59,7 +59,7 @@ var DownloadsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDownload = getDownload;
+	self.get = get;
 
     return self;
 };

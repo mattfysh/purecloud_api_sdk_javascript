@@ -11,7 +11,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} expand - conversation
 	*/
-	function get(pageSize, pageNumber, expand){
+	function getUserrecordings(pageSize, pageNumber, expand){
 		var apipath = '/api/v1/userrecordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -36,12 +36,12 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getUserrecordings = getUserrecordings;
 	/**
      * @summary Get user recording summary
 	 * @memberOf UserRecordingsApi#
 	*/
-	function getSummary(){
+	function getUserrecordingsSummary(){
 		var apipath = '/api/v1/userrecordings/summary';
 	    var requestBody;
 	    var queryParameters = {};
@@ -51,14 +51,14 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSummary = getSummary;
+	self.getUserrecordingsSummary = getUserrecordingsSummary;
 	/**
      * @summary Get a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	* @param {string} expand - conversation
 	*/
-	function getRecording(recordingId, expand){
+	function getUserrecording(recordingId, expand){
 		var apipath = '/api/v1/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -79,7 +79,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRecording = getRecording;
+	self.getUserrecording = getUserrecording;
 	/**
      * @summary Update a user recording.
 	 * @memberOf UserRecordingsApi#
@@ -119,7 +119,7 @@ var UserRecordingsApi = function (pureCloudSession) {
    "read": true
 }
 	*/
-	function updateRecording(recordingId, body, expand){
+	function putUserrecording(recordingId, body, expand){
 		var apipath = '/api/v1/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -144,13 +144,13 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRecording = updateRecording;
+	self.putUserrecording = putUserrecording;
 	/**
      * @summary Delete a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	*/
-	function deleteRecording(recordingId){
+	function deleteUserrecording(recordingId){
 		var apipath = '/api/v1/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -166,7 +166,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteRecording = deleteRecording;
+	self.deleteUserrecording = deleteUserrecording;
 	/**
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
@@ -175,7 +175,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	WEBM,
 	WAV,
 	*/
-	function getRecordingMedia(recordingId, formatId){
+	function getUserrecordingMedia(recordingId, formatId){
 		var apipath = '/api/v1/userrecordings/{recordingId}/media';
 	    var requestBody;
 	    var queryParameters = {};
@@ -196,7 +196,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRecordingMedia = getRecordingMedia;
+	self.getUserrecordingMedia = getUserrecordingMedia;
 
     return self;
 };

@@ -9,7 +9,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	* @param {string} userId - User ID
 	*/
-	function getUservoicemailpoliciesUser(userId){
+	function getConfigurationUservoicemailpolicie(userId){
 		var apipath = '/api/v1/configuration/uservoicemailpolicies/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -25,7 +25,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUservoicemailpoliciesUser = getUservoicemailpoliciesUser;
+	self.getConfigurationUservoicemailpolicie = getConfigurationUservoicemailpolicie;
 	/**
      * @summary Update a user's voicemail policy
 	 * @memberOf VoicemailApi#
@@ -47,7 +47,7 @@ var VoicemailApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function patchUservoicemailpoliciesUser(userId, body){
+	function patchConfigurationUservoicemailpolicie(userId, body){
 		var apipath = '/api/v1/configuration/uservoicemailpolicies/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -71,12 +71,12 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchUservoicemailpoliciesUser = patchUservoicemailpoliciesUser;
+	self.patchConfigurationUservoicemailpolicie = patchConfigurationUservoicemailpolicie;
 	/**
      * @summary Get a policy
 	 * @memberOf VoicemailApi#
 	*/
-	function getVoicemailpolicy(){
+	function getConfigurationVoicemailpolicy(){
 		var apipath = '/api/v1/configuration/voicemailpolicy';
 	    var requestBody;
 	    var queryParameters = {};
@@ -86,7 +86,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getVoicemailpolicy = getVoicemailpolicy;
+	self.getConfigurationVoicemailpolicy = getConfigurationVoicemailpolicy;
 	/**
      * @summary Update a policy
 	 * @memberOf VoicemailApi#
@@ -114,7 +114,7 @@ var VoicemailApi = function (pureCloudSession) {
    "pinRequired": true
 }
 	*/
-	function updateVoicemailpolicy(body){
+	function putConfigurationVoicemailpolicy(body){
 		var apipath = '/api/v1/configuration/voicemailpolicy';
 	    var requestBody;
 	    var queryParameters = {};
@@ -128,7 +128,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateVoicemailpolicy = updateVoicemailpolicy;
+	self.putConfigurationVoicemailpolicy = putConfigurationVoicemailpolicy;
 	/**
      * @summary Get mailbox information
 	 * @memberOf VoicemailApi#
@@ -247,7 +247,7 @@ var VoicemailApi = function (pureCloudSession) {
    }
 }
 	*/
-	function updateMessage(messageId, body){
+	function putMessage(messageId, body){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -267,7 +267,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateMessage = updateMessage;
+	self.putMessage = putMessage;
 	/**
      * @summary Delete a message.
 	 * @memberOf VoicemailApi#

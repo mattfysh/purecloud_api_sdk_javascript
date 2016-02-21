@@ -39,7 +39,7 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
 	 * @memberOf NotificationsApi#
 	*/
-	function createChannels(){
+	function postChannels(){
 		var apipath = '/api/v1/notifications/channels';
 	    var requestBody;
 	    var queryParameters = {};
@@ -49,7 +49,7 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createChannels = createChannels;
+	self.postChannels = postChannels;
 	/**
      * @summary The list of all subscriptions for this channel
 	 * @memberOf NotificationsApi#
@@ -78,7 +78,7 @@ var NotificationsApi = function (pureCloudSession) {
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
 	*/
-	function createChannelSubscriptions(channelId, body){
+	function postChannelSubscriptions(channelId, body){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -98,14 +98,14 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createChannelSubscriptions = createChannelSubscriptions;
+	self.postChannelSubscriptions = postChannelSubscriptions;
 	/**
      * @summary Replace the current list of subscriptions with a new list.
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
 	*/
-	function updateChannelSubscriptions(channelId, body){
+	function putChannelSubscriptions(channelId, body){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -125,7 +125,7 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateChannelSubscriptions = updateChannelSubscriptions;
+	self.putChannelSubscriptions = putChannelSubscriptions;
 	/**
      * @summary Remove all subscriptions
 	 * @memberOf NotificationsApi#

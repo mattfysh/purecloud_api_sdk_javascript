@@ -12,7 +12,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} name - Name
 	* @param {string} sortBy - Sort by
 	*/
-	function getProvidersEdgeEdgegroups(pageSize, pageNumber, name, sortBy){
+	function getTelephonyProvidersEdgeEdgegroups(pageSize, pageNumber, name, sortBy){
 		var apipath = '/api/v1/telephony/providers/edge/edgegroups';
 	    var requestBody;
 	    var queryParameters = {};
@@ -42,7 +42,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeEdgegroups = getProvidersEdgeEdgegroups;
+	self.getTelephonyProvidersEdgeEdgegroups = getTelephonyProvidersEdgeEdgegroups;
 	/**
      * @summary Create an edge group.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -68,7 +68,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "phoneTrunkBaseAssignments": []
 }
 	*/
-	function createProvidersEdgeEdgegroups(body){
+	function postTelephonyProvidersEdgeEdgegroups(body){
 		var apipath = '/api/v1/telephony/providers/edge/edgegroups';
 	    var requestBody;
 	    var queryParameters = {};
@@ -82,13 +82,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgeEdgegroups = createProvidersEdgeEdgegroups;
+	self.postTelephonyProvidersEdgeEdgegroups = postTelephonyProvidersEdgeEdgegroups;
 	/**
      * @summary Get edge group.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} edgeGroupId - Edge group ID
 	*/
-	function getProvidersEdgeEdgeGroup(edgeGroupId){
+	function getTelephonyProvidersEdgeEdgegroup(edgeGroupId){
 		var apipath = '/api/v1/telephony/providers/edge/edgegroups/{edgeGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -104,7 +104,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeEdgeGroup = getProvidersEdgeEdgeGroup;
+	self.getTelephonyProvidersEdgeEdgegroup = getTelephonyProvidersEdgeEdgegroup;
 	/**
      * @summary Update an edge group.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -131,7 +131,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "phoneTrunkBaseAssignments": []
 }
 	*/
-	function updateProvidersEdgeEdgeGroup(edgeGroupId, body){
+	function putTelephonyProvidersEdgeEdgegroup(edgeGroupId, body){
 		var apipath = '/api/v1/telephony/providers/edge/edgegroups/{edgeGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -151,13 +151,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateProvidersEdgeEdgeGroup = updateProvidersEdgeEdgeGroup;
+	self.putTelephonyProvidersEdgeEdgegroup = putTelephonyProvidersEdgeEdgegroup;
 	/**
      * @summary Delete an edge group.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} edgeGroupId - Edge group ID
 	*/
-	function deleteProvidersEdgeEdgeGroup(edgeGroupId){
+	function deleteTelephonyProvidersEdgeEdgegroup(edgeGroupId){
 		var apipath = '/api/v1/telephony/providers/edge/edgegroups/{edgeGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -173,7 +173,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteProvidersEdgeEdgeGroup = deleteProvidersEdgeEdgeGroup;
+	self.deleteTelephonyProvidersEdgeEdgegroup = deleteTelephonyProvidersEdgeEdgegroup;
 	/**
      * @summary Get a listing of line base settings objects
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -182,7 +182,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
 	*/
-	function getProvidersEdgeLinebasesettings(pageNumber, pageSize, sortBy, sortOrder){
+	function getTelephonyProvidersEdgeLinebasesettings(pageNumber, pageSize, sortBy, sortOrder){
 		var apipath = '/api/v1/telephony/providers/edge/linebasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -212,13 +212,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeLinebasesettings = getProvidersEdgeLinebasesettings;
+	self.getTelephonyProvidersEdgeLinebasesettings = getTelephonyProvidersEdgeLinebasesettings;
 	/**
      * @summary Get a line base settings object by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} lineBaseId - Line base ID
 	*/
-	function getProvidersEdgeLinebasesettingsLineBase(lineBaseId){
+	function getTelephonyProvidersEdgeLinebasesetting(lineBaseId){
 		var apipath = '/api/v1/telephony/providers/edge/linebasesettings/{lineBaseId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -234,7 +234,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeLinebasesettingsLineBase = getProvidersEdgeLinebasesettingsLineBase;
+	self.getTelephonyProvidersEdgeLinebasesetting = getTelephonyProvidersEdgeLinebasesetting;
 	/**
      * @summary Get a list of Lines
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -244,7 +244,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} sortBy - Value by which to sort
 	* @param {array} expand - Fields to expand in the response, comma-separated
 	*/
-	function getProvidersEdgeLines(pageSize, pageNumber, name, sortBy, expand){
+	function getTelephonyProvidersEdgeLines(pageSize, pageNumber, name, sortBy, expand){
 		var apipath = '/api/v1/telephony/providers/edge/lines';
 	    var requestBody;
 	    var queryParameters = {};
@@ -279,13 +279,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeLines = getProvidersEdgeLines;
+	self.getTelephonyProvidersEdgeLines = getTelephonyProvidersEdgeLines;
 	/**
      * @summary Get a Line instance template based on a Line Base Settings object. This object can then be modified and saved as a new Line instance
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} lineBaseSettingsId - The id of a Line Base Settings object upon which to base this Line
 	*/
-	function getProvidersEdgeLinesTemplate(lineBaseSettingsId){
+	function getTelephonyProvidersEdgeLinesTemplate(lineBaseSettingsId){
 		var apipath = '/api/v1/telephony/providers/edge/lines/template';
 	    var requestBody;
 	    var queryParameters = {};
@@ -304,13 +304,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeLinesTemplate = getProvidersEdgeLinesTemplate;
+	self.getTelephonyProvidersEdgeLinesTemplate = getTelephonyProvidersEdgeLinesTemplate;
 	/**
      * @summary Get a Line by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} lineId - Line ID
 	*/
-	function getProvidersEdgeLine(lineId){
+	function getTelephonyProvidersEdgeLine(lineId){
 		var apipath = '/api/v1/telephony/providers/edge/lines/{lineId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -326,7 +326,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeLine = getProvidersEdgeLine;
+	self.getTelephonyProvidersEdgeLine = getTelephonyProvidersEdgeLine;
 	/**
      * @summary Get outbound routes
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -336,7 +336,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} siteid - Filter by site.id
 	* @param {string} sortBy - Sort by
 	*/
-	function getProvidersEdgeOutboundroutes(pageSize, pageNumber, name, siteid, sortBy){
+	function getTelephonyProvidersEdgeOutboundroutes(pageSize, pageNumber, name, siteid, sortBy){
 		var apipath = '/api/v1/telephony/providers/edge/outboundroutes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -371,7 +371,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeOutboundroutes = getProvidersEdgeOutboundroutes;
+	self.getTelephonyProvidersEdgeOutboundroutes = getTelephonyProvidersEdgeOutboundroutes;
 	/**
      * @summary Create outbound rule
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -417,7 +417,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "externalTrunkBases": []
 }
 	*/
-	function createProvidersEdgeOutboundroutes(body){
+	function postTelephonyProvidersEdgeOutboundroutes(body){
 		var apipath = '/api/v1/telephony/providers/edge/outboundroutes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -431,13 +431,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgeOutboundroutes = createProvidersEdgeOutboundroutes;
+	self.postTelephonyProvidersEdgeOutboundroutes = postTelephonyProvidersEdgeOutboundroutes;
 	/**
      * @summary Get outbound route
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} outboundRouteId - Outbound route ID
 	*/
-	function getProvidersEdgeOutboundRoute(outboundRouteId){
+	function getTelephonyProvidersEdgeOutboundroute(outboundRouteId){
 		var apipath = '/api/v1/telephony/providers/edge/outboundroutes/{outboundRouteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -453,7 +453,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeOutboundRoute = getProvidersEdgeOutboundRoute;
+	self.getTelephonyProvidersEdgeOutboundroute = getTelephonyProvidersEdgeOutboundroute;
 	/**
      * @summary Update outbound route
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -500,7 +500,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "externalTrunkBases": []
 }
 	*/
-	function updateProvidersEdgeOutboundRoute(outboundRouteId, body){
+	function putTelephonyProvidersEdgeOutboundroute(outboundRouteId, body){
 		var apipath = '/api/v1/telephony/providers/edge/outboundroutes/{outboundRouteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -520,13 +520,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateProvidersEdgeOutboundRoute = updateProvidersEdgeOutboundRoute;
+	self.putTelephonyProvidersEdgeOutboundroute = putTelephonyProvidersEdgeOutboundroute;
 	/**
      * @summary Delete Outbound Route
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} outboundRouteId - Outbound route ID
 	*/
-	function deleteProvidersEdgeOutboundRoute(outboundRouteId){
+	function deleteTelephonyProvidersEdgeOutboundroute(outboundRouteId){
 		var apipath = '/api/v1/telephony/providers/edge/outboundroutes/{outboundRouteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -542,7 +542,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteProvidersEdgeOutboundRoute = deleteProvidersEdgeOutboundRoute;
+	self.deleteTelephonyProvidersEdgeOutboundroute = deleteTelephonyProvidersEdgeOutboundroute;
 	/**
      * @summary Get a list of Phone Base Settings objects
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -551,7 +551,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
 	*/
-	function getProvidersEdgePhonebasesettings(pageNumber, pageSize, sortBy, sortOrder){
+	function getTelephonyProvidersEdgePhonebasesettings(pageNumber, pageSize, sortBy, sortOrder){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -581,7 +581,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhonebasesettings = getProvidersEdgePhonebasesettings;
+	self.getTelephonyProvidersEdgePhonebasesettings = getTelephonyProvidersEdgePhonebasesettings;
 	/**
      * @summary Create a new Phone Base Settings object
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -607,7 +607,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    }
 }
 	*/
-	function createProvidersEdgePhonebasesettings(body){
+	function postTelephonyProvidersEdgePhonebasesettings(body){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -621,14 +621,14 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgePhonebasesettings = createProvidersEdgePhonebasesettings;
+	self.postTelephonyProvidersEdgePhonebasesettings = postTelephonyProvidersEdgePhonebasesettings;
 	/**
      * @summary Get a list of available makes and models to create a new Phone Base Settings
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getProvidersEdgePhonebasesettingsAvailablemetabases(pageSize, pageNumber){
+	function getTelephonyProvidersEdgePhonebasesettingsAvailablemetabases(pageSize, pageNumber){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings/availablemetabases';
 	    var requestBody;
 	    var queryParameters = {};
@@ -648,13 +648,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhonebasesettingsAvailablemetabases = getProvidersEdgePhonebasesettingsAvailablemetabases;
+	self.getTelephonyProvidersEdgePhonebasesettingsAvailablemetabases = getTelephonyProvidersEdgePhonebasesettingsAvailablemetabases;
 	/**
      * @summary Get a Phone Base Settings instance template from a given make and model. This object can then be modified and saved as a new Phone Base Settings instance
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneMetabaseId - The id of a metabase object upon which to base this Phone Base Settings
 	*/
-	function getProvidersEdgePhonebasesettingsTemplate(phoneMetabaseId){
+	function getTelephonyProvidersEdgePhonebasesettingsTemplate(phoneMetabaseId){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings/template';
 	    var requestBody;
 	    var queryParameters = {};
@@ -673,13 +673,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhonebasesettingsTemplate = getProvidersEdgePhonebasesettingsTemplate;
+	self.getTelephonyProvidersEdgePhonebasesettingsTemplate = getTelephonyProvidersEdgePhonebasesettingsTemplate;
 	/**
      * @summary Get a Phone Base Settings object by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneBaseId - Phone base ID
 	*/
-	function getProvidersEdgePhonebasesettingsPhoneBase(phoneBaseId){
+	function getTelephonyProvidersEdgePhonebasesetting(phoneBaseId){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings/{phoneBaseId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -695,7 +695,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhonebasesettingsPhoneBase = getProvidersEdgePhonebasesettingsPhoneBase;
+	self.getTelephonyProvidersEdgePhonebasesetting = getTelephonyProvidersEdgePhonebasesetting;
 	/**
      * @summary Update a Phone Base Settings by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -722,7 +722,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    }
 }
 	*/
-	function updateProvidersEdgePhonebasesettingsPhoneBase(phoneBaseId, body){
+	function putTelephonyProvidersEdgePhonebasesetting(phoneBaseId, body){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings/{phoneBaseId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -742,13 +742,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateProvidersEdgePhonebasesettingsPhoneBase = updateProvidersEdgePhonebasesettingsPhoneBase;
+	self.putTelephonyProvidersEdgePhonebasesetting = putTelephonyProvidersEdgePhonebasesetting;
 	/**
      * @summary Delete a Phone Base Settings by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneBaseId - Phone base ID
 	*/
-	function deleteProvidersEdgePhonebasesettingsPhoneBase(phoneBaseId){
+	function deleteTelephonyProvidersEdgePhonebasesetting(phoneBaseId){
 		var apipath = '/api/v1/telephony/providers/edge/phonebasesettings/{phoneBaseId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -764,7 +764,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteProvidersEdgePhonebasesettingsPhoneBase = deleteProvidersEdgePhonebasesettingsPhoneBase;
+	self.deleteTelephonyProvidersEdgePhonebasesetting = deleteTelephonyProvidersEdgePhonebasesetting;
 	/**
      * @summary Get a list of Phone Instances
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -778,7 +778,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {array} expand - Fields to expand in the response, comma-separated
 	* @param {array} fields - Fields under properties to get, comma-separated
 	*/
-	function getProvidersEdgePhones(pageNumber, pageSize, sortBy, sortOrder, siteid, phoneBaseSettingsid, phone_hardwareId, expand, fields){
+	function getTelephonyProvidersEdgePhones(pageNumber, pageSize, sortBy, sortOrder, siteid, phoneBaseSettingsid, phone_hardwareId, expand, fields){
 		var apipath = '/api/v1/telephony/providers/edge/phones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -833,7 +833,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhones = getProvidersEdgePhones;
+	self.getTelephonyProvidersEdgePhones = getTelephonyProvidersEdgePhones;
 	/**
      * @summary Create a new Phone
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -906,7 +906,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    }
 }
 	*/
-	function createProvidersEdgePhones(body){
+	function postTelephonyProvidersEdgePhones(body){
 		var apipath = '/api/v1/telephony/providers/edge/phones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -920,7 +920,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgePhones = createProvidersEdgePhones;
+	self.postTelephonyProvidersEdgePhones = postTelephonyProvidersEdgePhones;
 	/**
      * @summary Reboot Multiple Phones
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -931,7 +931,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "phoneIds": []
 }
 	*/
-	function createProvidersEdgePhonesReboot(body){
+	function postTelephonyProvidersEdgePhonesReboot(body){
 		var apipath = '/api/v1/telephony/providers/edge/phones/reboot';
 	    var requestBody;
 	    var queryParameters = {};
@@ -945,13 +945,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgePhonesReboot = createProvidersEdgePhonesReboot;
+	self.postTelephonyProvidersEdgePhonesReboot = postTelephonyProvidersEdgePhonesReboot;
 	/**
      * @summary Get a Phone instance template based on a Phone Base Settings object. This object can then be modified and saved as a new Phone instance
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneBaseSettingsId - The id of a Phone Base Settings object upon which to base this Phone
 	*/
-	function getProvidersEdgePhonesTemplate(phoneBaseSettingsId){
+	function getTelephonyProvidersEdgePhonesTemplate(phoneBaseSettingsId){
 		var apipath = '/api/v1/telephony/providers/edge/phones/template';
 	    var requestBody;
 	    var queryParameters = {};
@@ -970,13 +970,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhonesTemplate = getProvidersEdgePhonesTemplate;
+	self.getTelephonyProvidersEdgePhonesTemplate = getTelephonyProvidersEdgePhonesTemplate;
 	/**
      * @summary Get a Phone by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneId - Phone ID
 	*/
-	function getProvidersEdgePhone(phoneId){
+	function getTelephonyProvidersEdgePhone(phoneId){
 		var apipath = '/api/v1/telephony/providers/edge/phones/{phoneId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -992,7 +992,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgePhone = getProvidersEdgePhone;
+	self.getTelephonyProvidersEdgePhone = getTelephonyProvidersEdgePhone;
 	/**
      * @summary Update a Phone by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -1066,7 +1066,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    }
 }
 	*/
-	function updateProvidersEdgePhone(phoneId, body){
+	function putTelephonyProvidersEdgePhone(phoneId, body){
 		var apipath = '/api/v1/telephony/providers/edge/phones/{phoneId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1086,13 +1086,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateProvidersEdgePhone = updateProvidersEdgePhone;
+	self.putTelephonyProvidersEdgePhone = putTelephonyProvidersEdgePhone;
 	/**
      * @summary Delete a Phone by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneId - Phone ID
 	*/
-	function deleteProvidersEdgePhone(phoneId){
+	function deleteTelephonyProvidersEdgePhone(phoneId){
 		var apipath = '/api/v1/telephony/providers/edge/phones/{phoneId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1108,13 +1108,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteProvidersEdgePhone = deleteProvidersEdgePhone;
+	self.deleteTelephonyProvidersEdgePhone = deleteTelephonyProvidersEdgePhone;
 	/**
      * @summary Reboot a Phone
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} phoneId - Phone Id
 	*/
-	function createProvidersEdgePhoneReboot(phoneId){
+	function postTelephonyProvidersEdgePhoneReboot(phoneId){
 		var apipath = '/api/v1/telephony/providers/edge/phones/{phoneId}/reboot';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1130,14 +1130,14 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgePhoneReboot = createProvidersEdgePhoneReboot;
+	self.postTelephonyProvidersEdgePhoneReboot = postTelephonyProvidersEdgePhoneReboot;
 	/**
      * @summary Get a list of Edge-compatible time zones
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getProvidersEdgeTimezones(pageSize, pageNumber){
+	function getTelephonyProvidersEdgeTimezones(pageSize, pageNumber){
 		var apipath = '/api/v1/telephony/providers/edge/timezones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1157,7 +1157,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeTimezones = getProvidersEdgeTimezones;
+	self.getTelephonyProvidersEdgeTimezones = getTelephonyProvidersEdgeTimezones;
 	/**
      * @summary Get Trunk Base Settings listing
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -1166,7 +1166,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
 	*/
-	function getProvidersEdgeTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder){
+	function getTelephonyProvidersEdgeTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1196,7 +1196,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeTrunkbasesettings = getProvidersEdgeTrunkbasesettings;
+	self.getTelephonyProvidersEdgeTrunkbasesettings = getTelephonyProvidersEdgeTrunkbasesettings;
 	/**
      * @summary Create a Trunk Base Settings object
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -1224,7 +1224,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "managed": true
 }
 	*/
-	function createProvidersEdgeTrunkbasesettings(body){
+	function postTelephonyProvidersEdgeTrunkbasesettings(body){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1238,7 +1238,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createProvidersEdgeTrunkbasesettings = createProvidersEdgeTrunkbasesettings;
+	self.postTelephonyProvidersEdgeTrunkbasesettings = postTelephonyProvidersEdgeTrunkbasesettings;
 	/**
      * @summary Get a list of available makes and models to create a new Trunk Base Settings
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -1249,7 +1249,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {integer} pageSize - 
 	* @param {integer} pageNumber - 
 	*/
-	function getProvidersEdgeTrunkbasesettingsAvailablemetabases(type, pageSize, pageNumber){
+	function getTelephonyProvidersEdgeTrunkbasesettingsAvailablemetabases(type, pageSize, pageNumber){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings/availablemetabases';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1274,13 +1274,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeTrunkbasesettingsAvailablemetabases = getProvidersEdgeTrunkbasesettingsAvailablemetabases;
+	self.getTelephonyProvidersEdgeTrunkbasesettingsAvailablemetabases = getTelephonyProvidersEdgeTrunkbasesettingsAvailablemetabases;
 	/**
      * @summary Get a Trunk Base Settings instance template from a given make and model. This object can then be modified and saved as a new Trunk Base Settings instance
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} trunkMetabaseId - The id of a metabase object upon which to base this Trunk Base Settings
 	*/
-	function getProvidersEdgeTrunkbasesettingsTemplate(trunkMetabaseId){
+	function getTelephonyProvidersEdgeTrunkbasesettingsTemplate(trunkMetabaseId){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings/template';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1299,13 +1299,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeTrunkbasesettingsTemplate = getProvidersEdgeTrunkbasesettingsTemplate;
+	self.getTelephonyProvidersEdgeTrunkbasesettingsTemplate = getTelephonyProvidersEdgeTrunkbasesettingsTemplate;
 	/**
      * @summary Get a Trunk Base Settings object by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} trunkBaseSettingsId - Trunk Base ID
 	*/
-	function getProvidersEdgeTrunkbasesettingsTrunkBaseSettings(trunkBaseSettingsId){
+	function getTelephonyProvidersEdgeTrunkbasesetting(trunkBaseSettingsId){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings/{trunkBaseSettingsId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1321,7 +1321,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProvidersEdgeTrunkbasesettingsTrunkBaseSettings = getProvidersEdgeTrunkbasesettingsTrunkBaseSettings;
+	self.getTelephonyProvidersEdgeTrunkbasesetting = getTelephonyProvidersEdgeTrunkbasesetting;
 	/**
      * @summary Update a Trunk Base Settings object by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -1350,7 +1350,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
    "managed": true
 }
 	*/
-	function updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings(trunkBaseSettingsId, body){
+	function putTelephonyProvidersEdgeTrunkbasesetting(trunkBaseSettingsId, body){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings/{trunkBaseSettingsId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1370,13 +1370,13 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings = updateProvidersEdgeTrunkbasesettingsTrunkBaseSettings;
+	self.putTelephonyProvidersEdgeTrunkbasesetting = putTelephonyProvidersEdgeTrunkbasesetting;
 	/**
      * @summary Delete a Trunk Base Settings object by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} trunkBaseSettingsId - Trunk Base ID
 	*/
-	function deleteProvidersEdgeTrunkbasesettingsTrunkBaseSettings(trunkBaseSettingsId){
+	function deleteTelephonyProvidersEdgeTrunkbasesetting(trunkBaseSettingsId){
 		var apipath = '/api/v1/telephony/providers/edge/trunkbasesettings/{trunkBaseSettingsId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1392,7 +1392,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteProvidersEdgeTrunkbasesettingsTrunkBaseSettings = deleteProvidersEdgeTrunkbasesettingsTrunkBaseSettings;
+	self.deleteTelephonyProvidersEdgeTrunkbasesetting = deleteTelephonyProvidersEdgeTrunkbasesetting;
 
     return self;
 };
