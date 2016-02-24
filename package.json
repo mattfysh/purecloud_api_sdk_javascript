@@ -2,8 +2,18 @@
   "name": "purecloud_api_sdk_javascript",
   "version": "0.0.0",
   "description": "",
-  "main": "test.js",
+  "main": "dist/purecloud-api-node.js",
   "dependencies": {
+    "jquery": "*",
+    "jsdom": "3.1.2",
+    "request" : "*"
+  },
+  "devDependencies": {
+    "rifraf": "~2.0.2",
+    "gulp-rimraf": "~0.1.1",
+    "express":"*",
+    "purecloud-api-sdk-common":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
+    "run-sequence" : "1.1.5",
     "jsdoc": "~3.3.3",
     "mustache": "~2.2.0",
     "lodash": "~3.10.1",
@@ -21,15 +31,8 @@
     "del": "~2.1.0",
     "wgetjs":"*"
   },
-  "devDependencies": {
-    "rifraf": "~2.0.2",
-    "gulp-rimraf": "~0.1.1",
-    "express":"*",
-    "purecloud-api-sdk-common":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
-    "run-sequence" : "1.1.5"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "author": "",
   "license": "MIT"

@@ -200,7 +200,7 @@ function parseJsonSchema(opts, type){
     return data;
 }
 
-var build = function(env) {
+var build = function() {
     return gulp.src('./gen/*core.js')
                 .pipe(addsrc('./gen/*[^core].js'))
                 .pipe(concat('purecloud-api.js'))
@@ -209,6 +209,16 @@ var build = function(env) {
                 .pipe(gulp.dest('./dist/'))
                 .pipe(minify())
                 .pipe(gulp.dest('./dist'));
+};
+
+var buildNode = function() {
+    return gulp.src('./gen/*.js')
+                .pipe(addsrc.prepend('./templates/node_pre.js'))
+                .pipe(addsrc.append('./nodegen/*.js'))
+                .pipe(concat('purecloud-api-node.js'))
+                .pipe(jshint())
+                .pipe(jshint.reporter('default'))
+                .pipe(gulp.dest('./dist/'));
 };
 
 gulp.task('doc', function() {
@@ -284,6 +294,10 @@ gulp.task('build', ['clean'], function() {
         fs.mkdirSync('gen');
     }
 
+    if (!fileExists("nodegen")) {
+        fs.mkdirSync('nodegen');
+    }
+
     var file = 'swagger.json';
     var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
 
@@ -301,6 +315,12 @@ gulp.task('build', ['clean'], function() {
     //Write the core file
     var source = Mustache.render(fs.readFileSync('templates/purecloudsession.mustache', 'utf-8'), swagger);
     fs.writeFileSync("gen/purecloudsession.js", source);
+
+    //write the node templates
+    var source = Mustache.render(fs.readFileSync('templates/node.mustache', 'utf-8'), data);
+    fs.writeFileSync("nodegen/purecloud_node.js", source);
+
+    buildNode();
 
     return build();
 

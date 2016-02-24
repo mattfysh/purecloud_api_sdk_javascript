@@ -5,7 +5,11 @@
         "Interactive Intelligence"
     ],
     "description": "A wrapper for the Public API made out of JavaScript",
-    "main": "dist/purecloud-api.js",
+    "main": [
+        "dist/purecloud-api.js",
+        "dist/purecloud-api-min.js",
+        "dist/partials/*"
+    ],
     "moduleType": [
         "globals"
     ],
@@ -13,12 +17,10 @@
     "ignore": [
         ".*",
         "src",
-        "gulp-tasks",
-        "examples",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests",
+        "doc",
+        "spec",
+        "templates",
+        "tutorials"
         "*.*"
     ]
 }
