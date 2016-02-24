@@ -367,6 +367,12 @@ gulp.task('jenkins', function(callback){
 
             var versionData = JSON.parse(fs.readFileSync('version.json', 'UTF-8'));
             console.log(pclibSwaggerVersion.getChangeReadmeText(versionData.changelog[version]));
+
+
+            var npmpackage = JSON.parse(fs.readFileSync('package.json', 'UTF-8'));
+            npmpackage.vesion = version;
+            fs.writeFileSync('package.json', JSON.stringify(npmpackage, null, "  "));
+
         }else{
             console.log("no changes")
         }
