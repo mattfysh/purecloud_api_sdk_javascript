@@ -4,6 +4,7 @@
 * var api = new PresenceApi(pureCloudSession);
 */
 var PresenceApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get an Organization's list of Presences
 	 * @memberOf PresenceApi#

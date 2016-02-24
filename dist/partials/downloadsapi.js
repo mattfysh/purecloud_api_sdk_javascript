@@ -4,6 +4,7 @@
 * var api = new DownloadsApi(pureCloudSession);
 */
 var DownloadsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary OAuth Callback used during code authorization grant flow.
 	 * @memberOf DownloadsApi#

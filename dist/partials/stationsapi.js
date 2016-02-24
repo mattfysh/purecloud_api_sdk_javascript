@@ -4,6 +4,7 @@
 * var api = new StationsApi(pureCloudSession);
 */
 var StationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of available stations.
 	 * @memberOf StationsApi#

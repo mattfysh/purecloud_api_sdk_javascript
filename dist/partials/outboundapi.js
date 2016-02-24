@@ -4,6 +4,7 @@
 * var api = new OutboundApi(pureCloudSession);
 */
 var OutboundApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Retrieves audits for dialer.
 	 * @memberOf OutboundApi#

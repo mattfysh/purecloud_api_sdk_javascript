@@ -4,6 +4,7 @@
 * var api = new ConfigurationApi(pureCloudSession);
 */
 var ConfigurationApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a listing of DID Pools
 	 * @memberOf ConfigurationApi#
@@ -1110,6 +1111,108 @@ var ConfigurationApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deleteEdgeLogicalinterface = deleteEdgeLogicalinterface;
+	/**
+     * @summary Create a job to upload a list of Edge logs.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - EdgeLogsJobRequest
+	 * @example
+	 * Body Example:
+	 * {
+   "path": "",
+   "query": "",
+   "recurse": true
+}
+	*/
+	function postEdgeLogsJobs(edgeId, body){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEdgeLogsJobs = postEdgeLogsJobs;
+	/**
+     * @summary Get an Edge logs job.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - 
+	*/
+	function getEdgeLogsJob(edgeId, jobId){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEdgeLogsJob = getEdgeLogsJob;
+	/**
+     * @summary Request that the specified fileIds be uploaded from the Edge.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "fileIds": []
+}
+	*/
+	function postEdgeLogsJobUpload(edgeId, jobId, body){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}/upload';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEdgeLogsJobUpload = postEdgeLogsJobUpload;
 	/**
      * @summary Retrieve a list of all configured physical interfaces from a specific edge.
 	 * @memberOf ConfigurationApi#

@@ -4,6 +4,7 @@
 * var api = new ConversationsApi(pureCloudSession);
 */
 var ConversationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get conversations
 	 * @memberOf ConversationsApi#

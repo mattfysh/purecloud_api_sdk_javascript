@@ -4,6 +4,7 @@
 * var api = new AnalyticsApi(pureCloudSession);
 */
 var AnalyticsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a list of alerts.
 	 * @memberOf AnalyticsApi#
@@ -93,9 +94,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -202,9 +204,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -267,9 +270,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,

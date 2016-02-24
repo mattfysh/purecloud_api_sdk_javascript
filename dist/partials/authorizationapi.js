@@ -4,6 +4,7 @@
 * var api = new AuthorizationApi(pureCloudSession);
 */
 var AuthorizationApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Retrieve a list of all licenses defined in the system
 	 * @memberOf AuthorizationApi#

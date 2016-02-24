@@ -4,6 +4,7 @@
 * var api = new SearchApi(pureCloudSession);
 */
 var SearchApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Search chat history
 	 * @memberOf SearchApi#

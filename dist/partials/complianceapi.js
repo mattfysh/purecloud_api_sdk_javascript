@@ -4,6 +4,7 @@
 * var api = new ComplianceApi(pureCloudSession);
 */
 var ComplianceApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get information about HIPAA compliance
 	 * @memberOf ComplianceApi#

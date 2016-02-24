@@ -4,6 +4,7 @@
 * var api = new GreetingsApi(pureCloudSession);
 */
 var GreetingsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Gets an Organization's Greetings
 	 * @memberOf GreetingsApi#

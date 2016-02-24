@@ -4,6 +4,7 @@
 * var api = new TokensApi(pureCloudSession);
 */
 var TokensApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Delete  auth token used to make the request.
 	 * @memberOf TokensApi#

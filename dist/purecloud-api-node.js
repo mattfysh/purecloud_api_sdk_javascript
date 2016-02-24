@@ -101,9 +101,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -210,9 +211,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -275,9 +277,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -2865,6 +2868,108 @@ var ConfigurationApi = function (pureCloudSession) {
 	}
 	self.deleteEdgeLogicalinterface = deleteEdgeLogicalinterface;
 	/**
+     * @summary Create a job to upload a list of Edge logs.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - EdgeLogsJobRequest
+	 * @example
+	 * Body Example:
+	 * {
+   "path": "",
+   "query": "",
+   "recurse": true
+}
+	*/
+	function postEdgeLogsJobs(edgeId, body){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEdgeLogsJobs = postEdgeLogsJobs;
+	/**
+     * @summary Get an Edge logs job.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - 
+	*/
+	function getEdgeLogsJob(edgeId, jobId){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEdgeLogsJob = getEdgeLogsJob;
+	/**
+     * @summary Request that the specified fileIds be uploaded from the Edge.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "fileIds": []
+}
+	*/
+	function postEdgeLogsJobUpload(edgeId, jobId, body){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}/upload';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEdgeLogsJobUpload = postEdgeLogsJobUpload;
+	/**
      * @summary Retrieve a list of all configured physical interfaces from a specific edge.
 	 * @memberOf ConfigurationApi#
 	* @param {string} edgeId - Edge ID
@@ -4658,7 +4763,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0,
    "facetNameRequests": [],
    "sort": [],
-   "filters": []
+   "filters": [],
+   "attributeFilters": []
 }
 	*/
 	function postContentmanagementAuditquery(body){
@@ -4760,8 +4866,7 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "tags": [],
-   "tagIds": [],
-   "attributes": []
+   "tagIds": []
 }
 	*/
 	function postContentmanagementDocuments(body, copySource, moveSource, override){
@@ -4839,11 +4944,12 @@ var ContentManagementApi = function (pureCloudSession) {
    "changeNumber": 0,
    "name": "",
    "read": true,
-   "removeAttributes": [],
    "addTags": [],
    "removeTags": [],
    "addTagIds": [],
-   "removeTagIds": []
+   "removeTagIds": [],
+   "updateAttributes": [],
+   "removeAttributes": []
 }
 	*/
 	function postContentmanagementDocument(documentId, body, expand, override){
@@ -5111,7 +5217,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0,
    "facetNameRequests": [],
    "sort": [],
-   "filters": []
+   "filters": [],
+   "attributeFilters": []
 }
 	*/
 	function postContentmanagementQuery(body, expand){
@@ -5276,15 +5383,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }
@@ -13620,25 +13729,18 @@ var RoutingApi = function (pureCloudSession) {
 	/**
      * @summary Get list of queues.
 	 * @memberOf RoutingApi#
-	* @param {string} QueueId - Queue ID
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
 	* @param {boolean} active - Active
 	*/
-	function getQueues(QueueId, pageSize, pageNumber, sortBy, name, active){
+	function getQueues(pageSize, pageNumber, sortBy, name, active){
 		var apipath = '/api/v1/routing/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
-
-        apipath = apipath.replace('{QueueId}', QueueId);
-
-        if(QueueId === undefined && QueueId !== null){
-			throw 'Missing required  parameter: QueueId';
-        }
 
 
 		if(pageSize !== undefined && pageSize !== null){
@@ -13672,7 +13774,6 @@ var RoutingApi = function (pureCloudSession) {
 	/**
      * @summary Create queue
 	 * @memberOf RoutingApi#
-	* @param {string} QueueId - Queue ID
 	* @param {} body - Queue
 	 * @example
 	 * Body Example:
@@ -13708,18 +13809,12 @@ var RoutingApi = function (pureCloudSession) {
    "memberCount": 0
 }
 	*/
-	function postQueues(QueueId, body){
+	function postQueues(body){
 		var apipath = '/api/v1/routing/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
-
-        apipath = apipath.replace('{QueueId}', QueueId);
-
-        if(QueueId === undefined && QueueId !== null){
-			throw 'Missing required  parameter: QueueId';
-        }
 
         if(body !== undefined && body !== null){
             requestBody = body;
@@ -17656,12 +17751,14 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "country": "",
+      "A1": "",
+      "A3": "",
+      "RD": "",
+      "HNO": "",
+      "LOC": "",
+      "NAM": "",
+      "PC": ""
    }
 }
 	*/
@@ -18117,7 +18214,7 @@ var PureCloudSession =  function (environment) {
     self.getState = getState;
 
     /**
-	 * Initiates a redirect to authorize the client using oauth
+	 * Initiates a redirect to authorize the client using oauth.  This is not a valid operation in NodeJS usage.
      * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
@@ -18321,7 +18418,7 @@ var PureCloudSession =  function (environment) {
          if(_debug){
              console.log(method + " " + url);
          }
-         
+
          var request = $.ajax(requestParams);
 
          return request;

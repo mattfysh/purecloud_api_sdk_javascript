@@ -4,6 +4,7 @@
 * var api = new RoutingApi(pureCloudSession);
 */
 var RoutingApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get domains
 	 * @memberOf RoutingApi#
@@ -267,25 +268,18 @@ var RoutingApi = function (pureCloudSession) {
 	/**
      * @summary Get list of queues.
 	 * @memberOf RoutingApi#
-	* @param {string} QueueId - Queue ID
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
 	* @param {boolean} active - Active
 	*/
-	function getQueues(QueueId, pageSize, pageNumber, sortBy, name, active){
+	function getQueues(pageSize, pageNumber, sortBy, name, active){
 		var apipath = '/api/v1/routing/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
-
-        apipath = apipath.replace('{QueueId}', QueueId);
-
-        if(QueueId === undefined && QueueId !== null){
-			throw 'Missing required  parameter: QueueId';
-        }
 
 
 		if(pageSize !== undefined && pageSize !== null){
@@ -319,7 +313,6 @@ var RoutingApi = function (pureCloudSession) {
 	/**
      * @summary Create queue
 	 * @memberOf RoutingApi#
-	* @param {string} QueueId - Queue ID
 	* @param {} body - Queue
 	 * @example
 	 * Body Example:
@@ -355,18 +348,12 @@ var RoutingApi = function (pureCloudSession) {
    "memberCount": 0
 }
 	*/
-	function postQueues(QueueId, body){
+	function postQueues(body){
 		var apipath = '/api/v1/routing/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
-
-        apipath = apipath.replace('{QueueId}', QueueId);
-
-        if(QueueId === undefined && QueueId !== null){
-			throw 'Missing required  parameter: QueueId';
-        }
 
         if(body !== undefined && body !== null){
             requestBody = body;

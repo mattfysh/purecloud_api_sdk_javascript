@@ -4,6 +4,7 @@
 * var api = new UtilitiesApi(pureCloudSession);
 */
 var UtilitiesApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
 	 * @memberOf UtilitiesApi#
@@ -37,12 +38,14 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "country": "",
+      "A1": "",
+      "A3": "",
+      "RD": "",
+      "HNO": "",
+      "LOC": "",
+      "NAM": "",
+      "PC": ""
    }
 }
 	*/
