@@ -1,4 +1,7 @@
+Javascript wrapper round the PureCloud Platform API
+
 ![Bower version](https://img.shields.io/bower/v/purecloud-api.svg)
+[![npm](https://img.shields.io/npm/v/purecloud.svg)](https://www.npmjs.com/package/purecloud)
 
 # Platform API Javascript Client
 

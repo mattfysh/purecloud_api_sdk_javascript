@@ -7,3 +7,4 @@ doc_out_temp/
 doc.zip
 newVersion.md
 .npmrc
+*.log
