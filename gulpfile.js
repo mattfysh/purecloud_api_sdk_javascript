@@ -370,7 +370,7 @@ gulp.task('jenkins', function(callback){
 
 
             var npmpackage = JSON.parse(fs.readFileSync('package.json', 'UTF-8'));
-            npmpackage.vesion = version;
+            npmpackage.version = version;
             fs.writeFileSync('package.json', JSON.stringify(npmpackage, null, "  "));
 
         }else{
