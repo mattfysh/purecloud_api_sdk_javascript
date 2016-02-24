@@ -5,7 +5,6 @@
 */
 var AttributesApi = function (pureCloudSession) {
 	var self = this;
-
 	/**
      * @summary Gets a list of existing attributes.
 	 * @memberOf AttributesApi#

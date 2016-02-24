@@ -4,6 +4,7 @@
 * var api = new LanguagesApi(pureCloudSession);
 */
 var LanguagesApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of supported languages.
 	 * @memberOf LanguagesApi#

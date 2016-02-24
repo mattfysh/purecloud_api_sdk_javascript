@@ -4,6 +4,7 @@
 * var api = new FaxApi(pureCloudSession);
 */
 var FaxApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a list of fax documents.
 	 * @memberOf FaxApi#

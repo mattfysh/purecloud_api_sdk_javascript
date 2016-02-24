@@ -4,6 +4,7 @@
 * var api = new GroupsApi(pureCloudSession);
 */
 var GroupsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a group list
 	 * @memberOf GroupsApi#

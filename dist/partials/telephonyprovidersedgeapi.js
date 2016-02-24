@@ -4,6 +4,7 @@
 * var api = new TelephonyProvidersEdgeApi(pureCloudSession);
 */
 var TelephonyProvidersEdgeApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of edge groups.
 	 * @memberOf TelephonyProvidersEdgeApi#

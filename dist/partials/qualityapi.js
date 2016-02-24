@@ -4,6 +4,7 @@
 * var api = new QualityApi(pureCloudSession);
 */
 var QualityApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf QualityApi#

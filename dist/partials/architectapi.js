@@ -4,6 +4,7 @@
 * var api = new ArchitectApi(pureCloudSession);
 */
 var ArchitectApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a pageable list of flows, filtered by query parameters
 	 * @description Multiple IDs can be specified, in which case all matching flows will be returned, and no other parameters will be evaluated.

@@ -4,6 +4,7 @@
 * var api = new LocationsApi(pureCloudSession);
 */
 var LocationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of locations.
 	 * @memberOf LocationsApi#

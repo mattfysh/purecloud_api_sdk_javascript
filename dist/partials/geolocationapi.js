@@ -4,6 +4,7 @@
 * var api = new GeolocationApi(pureCloudSession);
 */
 var GeolocationApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a organization's GeolocationSettings
 	 * @memberOf GeolocationApi#

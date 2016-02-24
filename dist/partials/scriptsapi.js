@@ -4,6 +4,7 @@
 * var api = new ScriptsApi(pureCloudSession);
 */
 var ScriptsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of evaluation forms
 	 * @memberOf ScriptsApi#

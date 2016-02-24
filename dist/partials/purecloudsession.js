@@ -11,8 +11,9 @@ var PureCloudSession =  function (environment) {
     var _token = null;
     var _state = null;
     var self = {};
+    var _debug = false;
 
-    if(window.location.hash) {
+    if((typeof window !== 'undefined') && window.location.hash) {
         //Parse out the hash values of the URL to get the token
         var hash_array = location.hash.substring(1).split('&');
         var hash_key_val = new Array(hash_array.length);
@@ -38,6 +39,20 @@ var PureCloudSession =  function (environment) {
     }
 
     /**
+     * @description Gets or sets the debugging flag.  When debugging is on, Ajax requests are logged to the console.
+     * @param {boolean} debugOn Should debug or not.
+     * @memberOf PureCloudSession#
+     */
+    function debug (debugOn){
+        if(typeof debugOn !== 'undefined') {
+            _debug = debugOn === true;
+        }
+
+        return _debug;
+    }
+    self.debug = debug;
+
+    /**
 	 * @description Gets the value of State that was passed into the .authorize method
      * @memberOf PureCloudSession#
      */
@@ -47,7 +62,7 @@ var PureCloudSession =  function (environment) {
     self.getState = getState;
 
     /**
-	 * Initiates a redirect to authorize the client using oauth
+	 * Initiates a redirect to authorize the client using oauth.  This is not a valid operation in NodeJS usage.
      * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
@@ -126,6 +141,57 @@ var PureCloudSession =  function (environment) {
     self.authorize = authorize;
 
     /**
+	 * Gets an authentication token for a client credentials grant.
+     * @memberof PureCloudSession#
+     * @param  {string} clientId    The application's Client ID
+	 * @param  {string} clientSecret The application's Client Secret
+     * @param  {string} environment (Optional) The PureCloud environment to connect to (eg. mypurecloud.com, mypurecloud.ie)
+	 * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'SECRET').done(function(){
+         //this method will be called once we have a valid authorization token
+     }).error(function(err){
+         //This method is called if there is an error getting the authorization token.
+     });
+     */
+    function authorizeWithClientCredentialsGrant(clientId, clientSecret, environment){
+        var _doneCallback = function(){console.error("callback not set");};
+        var _errorCallback = function(){console.error("callback not set");};
+
+        environment = environment || _environment;
+        _host = 'api.'+ environment;
+
+        var defer = {
+            done: function(callback){
+                _doneCallback = callback;
+                return this;
+            },
+            error: function(callback){
+                _errorCallback = callback;
+                return this;
+            }
+        };
+
+        _auth_url = 'https://login.'+environment;
+        setTimeout(function(){
+            $.ajax
+                ({
+                  type: "POST",
+                  url: _auth_url +"/token",
+                  async: false,
+                  username:clientId,
+                  password: clientSecret,
+                  data: {grant_type:'client_credentials'}
+                }).fail(function(err){
+                    _errorCallback(err);
+                } ).done(function(data){
+                    _token = data.access_token;
+                    _doneCallback();
+                });
+        },10);
+        return defer;
+    }
+    self.authorizeWithClientCredentialsGrant = authorizeWithClientCredentialsGrant;
+
+    /**
      * Sets the authorization token, this is only needed if not using .authorize(...)
      * @memberof PureCloudSession#
      * @param  {string} token Authorization token
@@ -195,6 +261,10 @@ var PureCloudSession =  function (environment) {
 
          if(body){
              requestParams.data = JSON.stringify(body);
+         }
+
+         if(_debug){
+             console.log(method + " " + url);
          }
 
          var request = $.ajax(requestParams);

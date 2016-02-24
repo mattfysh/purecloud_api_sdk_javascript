@@ -4,6 +4,7 @@
 * var api = new OAuthApi(pureCloudSession);
 */
 var OAuthApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary The list of identity providers
 	 * @memberOf OAuthApi#

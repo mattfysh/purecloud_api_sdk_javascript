@@ -4,6 +4,7 @@
 * var api = new AnalyticsApi(pureCloudSession);
 */
 var AnalyticsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a list of alerts.
 	 * @memberOf AnalyticsApi#
@@ -93,9 +94,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -202,9 +204,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -267,9 +270,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -754,6 +758,7 @@ var AnalyticsApi = function (pureCloudSession) {
 * var api = new ArchitectApi(pureCloudSession);
 */
 var ArchitectApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a pageable list of flows, filtered by query parameters
 	 * @description Multiple IDs can be specified, in which case all matching flows will be returned, and no other parameters will be evaluated.
@@ -958,6 +963,7 @@ var ArchitectApi = function (pureCloudSession) {
 * var api = new AttributesApi(pureCloudSession);
 */
 var AttributesApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Gets a list of existing attributes.
 	 * @memberOf AttributesApi#
@@ -1153,6 +1159,7 @@ var AttributesApi = function (pureCloudSession) {
 * var api = new AuthorizationApi(pureCloudSession);
 */
 var AuthorizationApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Retrieve a list of all licenses defined in the system
 	 * @memberOf AuthorizationApi#
@@ -1694,6 +1701,7 @@ var AuthorizationApi = function (pureCloudSession) {
 * var api = new ComplianceApi(pureCloudSession);
 */
 var ComplianceApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get information about HIPAA compliance
 	 * @memberOf ComplianceApi#
@@ -1745,6 +1753,7 @@ var ComplianceApi = function (pureCloudSession) {
 * var api = new ConfigurationApi(pureCloudSession);
 */
 var ConfigurationApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a listing of DID Pools
 	 * @memberOf ConfigurationApi#
@@ -2851,6 +2860,108 @@ var ConfigurationApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deleteEdgeLogicalinterface = deleteEdgeLogicalinterface;
+	/**
+     * @summary Create a job to upload a list of Edge logs.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - EdgeLogsJobRequest
+	 * @example
+	 * Body Example:
+	 * {
+   "path": "",
+   "query": "",
+   "recurse": true
+}
+	*/
+	function postEdgeLogsJobs(edgeId, body){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEdgeLogsJobs = postEdgeLogsJobs;
+	/**
+     * @summary Get an Edge logs job.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - 
+	*/
+	function getEdgeLogsJob(edgeId, jobId){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEdgeLogsJob = getEdgeLogsJob;
+	/**
+     * @summary Request that the specified fileIds be uploaded from the Edge.
+	 * @memberOf ConfigurationApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "fileIds": []
+}
+	*/
+	function postEdgeLogsJobUpload(edgeId, jobId, body){
+		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}/upload';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEdgeLogsJobUpload = postEdgeLogsJobUpload;
 	/**
      * @summary Retrieve a list of all configured physical interfaces from a specific edge.
 	 * @memberOf ConfigurationApi#
@@ -4632,6 +4743,7 @@ var ConfigurationApi = function (pureCloudSession) {
 * var api = new ContentManagementApi(pureCloudSession);
 */
 var ContentManagementApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Query audits
 	 * @memberOf ContentManagementApi#
@@ -4644,7 +4756,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0,
    "facetNameRequests": [],
    "sort": [],
-   "filters": []
+   "filters": [],
+   "attributeFilters": []
 }
 	*/
 	function postContentmanagementAuditquery(body){
@@ -4746,8 +4859,7 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "tags": [],
-   "tagIds": [],
-   "attributes": []
+   "tagIds": []
 }
 	*/
 	function postContentmanagementDocuments(body, copySource, moveSource, override){
@@ -4825,11 +4937,12 @@ var ContentManagementApi = function (pureCloudSession) {
    "changeNumber": 0,
    "name": "",
    "read": true,
-   "removeAttributes": [],
    "addTags": [],
    "removeTags": [],
    "addTagIds": [],
-   "removeTagIds": []
+   "removeTagIds": [],
+   "updateAttributes": [],
+   "removeAttributes": []
 }
 	*/
 	function postContentmanagementDocument(documentId, body, expand, override){
@@ -5097,7 +5210,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0,
    "facetNameRequests": [],
    "sort": [],
-   "filters": []
+   "filters": [],
+   "attributeFilters": []
 }
 	*/
 	function postContentmanagementQuery(body, expand){
@@ -5262,15 +5376,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }
@@ -6037,6 +6153,7 @@ var ContentManagementApi = function (pureCloudSession) {
 * var api = new ConversationsApi(pureCloudSession);
 */
 var ConversationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get conversations
 	 * @memberOf ConversationsApi#
@@ -6954,6 +7071,7 @@ var ConversationsApi = function (pureCloudSession) {
 * var api = new DownloadsApi(pureCloudSession);
 */
 var DownloadsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary OAuth Callback used during code authorization grant flow.
 	 * @memberOf DownloadsApi#
@@ -7020,6 +7138,7 @@ var DownloadsApi = function (pureCloudSession) {
 * var api = new FaxApi(pureCloudSession);
 */
 var FaxApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a list of fax documents.
 	 * @memberOf FaxApi#
@@ -7193,6 +7312,7 @@ var FaxApi = function (pureCloudSession) {
 * var api = new GeolocationApi(pureCloudSession);
 */
 var GeolocationApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a organization's GeolocationSettings
 	 * @memberOf GeolocationApi#
@@ -7320,6 +7440,7 @@ var GeolocationApi = function (pureCloudSession) {
 * var api = new GreetingsApi(pureCloudSession);
 */
 var GreetingsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Gets an Organization's Greetings
 	 * @memberOf GreetingsApi#
@@ -7730,6 +7851,7 @@ var GreetingsApi = function (pureCloudSession) {
 * var api = new GroupsApi(pureCloudSession);
 */
 var GroupsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a group list
 	 * @memberOf GroupsApi#
@@ -7829,6 +7951,7 @@ var GroupsApi = function (pureCloudSession) {
 * var api = new LanguagesApi(pureCloudSession);
 */
 var LanguagesApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of supported languages.
 	 * @memberOf LanguagesApi#
@@ -7888,6 +8011,7 @@ var LanguagesApi = function (pureCloudSession) {
 * var api = new LicensingApi(pureCloudSession);
 */
 var LicensingApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get Licenses required for a set of permissions.
 	 * @memberOf LicensingApi#
@@ -8046,6 +8170,7 @@ var LicensingApi = function (pureCloudSession) {
 * var api = new LocationsApi(pureCloudSession);
 */
 var LocationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of locations.
 	 * @memberOf LocationsApi#
@@ -8119,6 +8244,7 @@ var LocationsApi = function (pureCloudSession) {
 * var api = new NotificationsApi(pureCloudSession);
 */
 var NotificationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get available notification topics.
 	 * @memberOf NotificationsApi#
@@ -8273,6 +8399,7 @@ var NotificationsApi = function (pureCloudSession) {
 * var api = new OAuthApi(pureCloudSession);
 */
 var OAuthApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary The list of identity providers
 	 * @memberOf OAuthApi#
@@ -8738,6 +8865,7 @@ via the 'roleIds' field.
 * var api = new OrphanedRecordingsApi(pureCloudSession);
 */
 var OrphanedRecordingsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Gets all orphan recordings
 	 * @memberOf OrphanedRecordingsApi#
@@ -8831,6 +8959,7 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 * var api = new OutboundApi(pureCloudSession);
 */
 var OutboundApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Retrieves audits for dialer.
 	 * @memberOf OutboundApi#
@@ -11159,6 +11288,7 @@ var OutboundApi = function (pureCloudSession) {
 * var api = new PresenceApi(pureCloudSession);
 */
 var PresenceApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get an Organization's list of Presences
 	 * @memberOf PresenceApi#
@@ -11704,6 +11834,7 @@ var PresenceApi = function (pureCloudSession) {
 * var api = new QualityApi(pureCloudSession);
 */
 var QualityApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf QualityApi#
@@ -13327,6 +13458,7 @@ var QualityApi = function (pureCloudSession) {
 * var api = new RoutingApi(pureCloudSession);
 */
 var RoutingApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get domains
 	 * @memberOf RoutingApi#
@@ -13590,25 +13722,18 @@ var RoutingApi = function (pureCloudSession) {
 	/**
      * @summary Get list of queues.
 	 * @memberOf RoutingApi#
-	* @param {string} QueueId - Queue ID
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
 	* @param {boolean} active - Active
 	*/
-	function getQueues(QueueId, pageSize, pageNumber, sortBy, name, active){
+	function getQueues(pageSize, pageNumber, sortBy, name, active){
 		var apipath = '/api/v1/routing/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
-
-        apipath = apipath.replace('{QueueId}', QueueId);
-
-        if(QueueId === undefined && QueueId !== null){
-			throw 'Missing required  parameter: QueueId';
-        }
 
 
 		if(pageSize !== undefined && pageSize !== null){
@@ -13642,7 +13767,6 @@ var RoutingApi = function (pureCloudSession) {
 	/**
      * @summary Create queue
 	 * @memberOf RoutingApi#
-	* @param {string} QueueId - Queue ID
 	* @param {} body - Queue
 	 * @example
 	 * Body Example:
@@ -13678,18 +13802,12 @@ var RoutingApi = function (pureCloudSession) {
    "memberCount": 0
 }
 	*/
-	function postQueues(QueueId, body){
+	function postQueues(body){
 		var apipath = '/api/v1/routing/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
-
-        apipath = apipath.replace('{QueueId}', QueueId);
-
-        if(QueueId === undefined && QueueId !== null){
-			throw 'Missing required  parameter: QueueId';
-        }
 
         if(body !== undefined && body !== null){
             requestBody = body;
@@ -14491,6 +14609,7 @@ var RoutingApi = function (pureCloudSession) {
 * var api = new ScriptsApi(pureCloudSession);
 */
 var ScriptsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of evaluation forms
 	 * @memberOf ScriptsApi#
@@ -14883,6 +15002,7 @@ var ScriptsApi = function (pureCloudSession) {
 * var api = new SearchApi(pureCloudSession);
 */
 var SearchApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Search chat history
 	 * @memberOf SearchApi#
@@ -14925,6 +15045,7 @@ var SearchApi = function (pureCloudSession) {
 * var api = new StationsApi(pureCloudSession);
 */
 var StationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of available stations.
 	 * @memberOf StationsApi#
@@ -15018,6 +15139,7 @@ var StationsApi = function (pureCloudSession) {
 * var api = new TelephonyProvidersEdgeApi(pureCloudSession);
 */
 var TelephonyProvidersEdgeApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of edge groups.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -16417,6 +16539,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 * var api = new TokensApi(pureCloudSession);
 */
 var TokensApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Delete  auth token used to make the request.
 	 * @memberOf TokensApi#
@@ -16442,6 +16565,7 @@ var TokensApi = function (pureCloudSession) {
 * var api = new UserRecordingsApi(pureCloudSession);
 */
 var UserRecordingsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a list of user recordings.
 	 * @memberOf UserRecordingsApi#
@@ -16645,6 +16769,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 * var api = new UsersApi(pureCloudSession);
 */
 var UsersApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of available users.
 	 * @memberOf UsersApi#
@@ -17585,6 +17710,7 @@ var UsersApi = function (pureCloudSession) {
 * var api = new UtilitiesApi(pureCloudSession);
 */
 var UtilitiesApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
 	 * @memberOf UtilitiesApi#
@@ -17618,12 +17744,14 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "country": "",
+      "A1": "",
+      "A3": "",
+      "RD": "",
+      "HNO": "",
+      "LOC": "",
+      "NAM": "",
+      "PC": ""
    }
 }
 	*/
@@ -17694,6 +17822,7 @@ var UtilitiesApi = function (pureCloudSession) {
 * var api = new VoicemailApi(pureCloudSession);
 */
 var VoicemailApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a user's voicemail policy
 	 * @memberOf VoicemailApi#
@@ -18027,8 +18156,9 @@ var PureCloudSession =  function (environment) {
     var _token = null;
     var _state = null;
     var self = {};
+    var _debug = false;
 
-    if(window.location.hash) {
+    if((typeof window !== 'undefined') && window.location.hash) {
         //Parse out the hash values of the URL to get the token
         var hash_array = location.hash.substring(1).split('&');
         var hash_key_val = new Array(hash_array.length);
@@ -18054,6 +18184,20 @@ var PureCloudSession =  function (environment) {
     }
 
     /**
+     * @description Gets or sets the debugging flag.  When debugging is on, Ajax requests are logged to the console.
+     * @param {boolean} debugOn Should debug or not.
+     * @memberOf PureCloudSession#
+     */
+    function debug (debugOn){
+        if(typeof debugOn !== 'undefined') {
+            _debug = debugOn === true;
+        }
+
+        return _debug;
+    }
+    self.debug = debug;
+
+    /**
 	 * @description Gets the value of State that was passed into the .authorize method
      * @memberOf PureCloudSession#
      */
@@ -18063,7 +18207,7 @@ var PureCloudSession =  function (environment) {
     self.getState = getState;
 
     /**
-	 * Initiates a redirect to authorize the client using oauth
+	 * Initiates a redirect to authorize the client using oauth.  This is not a valid operation in NodeJS usage.
      * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
@@ -18142,6 +18286,57 @@ var PureCloudSession =  function (environment) {
     self.authorize = authorize;
 
     /**
+	 * Gets an authentication token for a client credentials grant.
+     * @memberof PureCloudSession#
+     * @param  {string} clientId    The application's Client ID
+	 * @param  {string} clientSecret The application's Client Secret
+     * @param  {string} environment (Optional) The PureCloud environment to connect to (eg. mypurecloud.com, mypurecloud.ie)
+	 * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'SECRET').done(function(){
+         //this method will be called once we have a valid authorization token
+     }).error(function(err){
+         //This method is called if there is an error getting the authorization token.
+     });
+     */
+    function authorizeWithClientCredentialsGrant(clientId, clientSecret, environment){
+        var _doneCallback = function(){console.error("callback not set");};
+        var _errorCallback = function(){console.error("callback not set");};
+
+        environment = environment || _environment;
+        _host = 'api.'+ environment;
+
+        var defer = {
+            done: function(callback){
+                _doneCallback = callback;
+                return this;
+            },
+            error: function(callback){
+                _errorCallback = callback;
+                return this;
+            }
+        };
+
+        _auth_url = 'https://login.'+environment;
+        setTimeout(function(){
+            $.ajax
+                ({
+                  type: "POST",
+                  url: _auth_url +"/token",
+                  async: false,
+                  username:clientId,
+                  password: clientSecret,
+                  data: {grant_type:'client_credentials'}
+                }).fail(function(err){
+                    _errorCallback(err);
+                } ).done(function(data){
+                    _token = data.access_token;
+                    _doneCallback();
+                });
+        },10);
+        return defer;
+    }
+    self.authorizeWithClientCredentialsGrant = authorizeWithClientCredentialsGrant;
+
+    /**
      * Sets the authorization token, this is only needed if not using .authorize(...)
      * @memberof PureCloudSession#
      * @param  {string} token Authorization token
@@ -18211,6 +18406,10 @@ var PureCloudSession =  function (environment) {
 
          if(body){
              requestParams.data = JSON.stringify(body);
+         }
+
+         if(_debug){
+             console.log(method + " " + url);
          }
 
          var request = $.ajax(requestParams);

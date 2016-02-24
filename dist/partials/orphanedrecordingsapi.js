@@ -4,6 +4,7 @@
 * var api = new OrphanedRecordingsApi(pureCloudSession);
 */
 var OrphanedRecordingsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Gets all orphan recordings
 	 * @memberOf OrphanedRecordingsApi#

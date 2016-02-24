@@ -4,6 +4,7 @@
 * var api = new VoicemailApi(pureCloudSession);
 */
 var VoicemailApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a user's voicemail policy
 	 * @memberOf VoicemailApi#

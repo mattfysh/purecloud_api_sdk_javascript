@@ -4,6 +4,7 @@
 * var api = new LicensingApi(pureCloudSession);
 */
 var LicensingApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get Licenses required for a set of permissions.
 	 * @memberOf LicensingApi#

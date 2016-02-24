@@ -4,6 +4,7 @@
 * var api = new UserRecordingsApi(pureCloudSession);
 */
 var UserRecordingsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get a list of user recordings.
 	 * @memberOf UserRecordingsApi#

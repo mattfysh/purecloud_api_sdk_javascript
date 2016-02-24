@@ -4,6 +4,7 @@
 * var api = new ContentManagementApi(pureCloudSession);
 */
 var ContentManagementApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Query audits
 	 * @memberOf ContentManagementApi#
@@ -16,7 +17,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0,
    "facetNameRequests": [],
    "sort": [],
-   "filters": []
+   "filters": [],
+   "attributeFilters": []
 }
 	*/
 	function postContentmanagementAuditquery(body){
@@ -118,8 +120,7 @@ var ContentManagementApi = function (pureCloudSession) {
       "selfUri": ""
    },
    "tags": [],
-   "tagIds": [],
-   "attributes": []
+   "tagIds": []
 }
 	*/
 	function postContentmanagementDocuments(body, copySource, moveSource, override){
@@ -197,11 +198,12 @@ var ContentManagementApi = function (pureCloudSession) {
    "changeNumber": 0,
    "name": "",
    "read": true,
-   "removeAttributes": [],
    "addTags": [],
    "removeTags": [],
    "addTagIds": [],
-   "removeTagIds": []
+   "removeTagIds": [],
+   "updateAttributes": [],
+   "removeAttributes": []
 }
 	*/
 	function postContentmanagementDocument(documentId, body, expand, override){
@@ -469,7 +471,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0,
    "facetNameRequests": [],
    "sort": [],
-   "filters": []
+   "filters": [],
+   "attributeFilters": []
 }
 	*/
 	function postContentmanagementQuery(body, expand){
@@ -634,15 +637,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }

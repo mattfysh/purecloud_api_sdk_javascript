@@ -4,6 +4,7 @@
 * var api = new NotificationsApi(pureCloudSession);
 */
 var NotificationsApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get available notification topics.
 	 * @memberOf NotificationsApi#

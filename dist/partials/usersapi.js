@@ -4,6 +4,7 @@
 * var api = new UsersApi(pureCloudSession);
 */
 var UsersApi = function (pureCloudSession) {
+	var self = this;
 	/**
      * @summary Get the list of available users.
 	 * @memberOf UsersApi#
