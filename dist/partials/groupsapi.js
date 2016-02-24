@@ -11,7 +11,7 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} name - Name
 	*/
-	function get(pageSize, pageNumber, name){
+	function getGroups(pageSize, pageNumber, name){
 		var apipath = '/api/v1/groups';
 	    var requestBody;
 	    var queryParameters = {};
@@ -36,13 +36,13 @@ var GroupsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getGroups = getGroups;
 	/**
      * @summary Get group
 	 * @memberOf GroupsApi#
 	* @param {string} groupId - Group ID
 	*/
-	function getGroup(groupId){
+	function get(groupId){
 		var apipath = '/api/v1/groups/{groupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -58,7 +58,7 @@ var GroupsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getGroup = getGroup;
+	self.get = get;
 	/**
      * @summary Get group members
 	 * @memberOf GroupsApi#
@@ -66,7 +66,7 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getGroupMembers(groupId, pageSize, pageNumber){
+	function getMembers(groupId, pageSize, pageNumber){
 		var apipath = '/api/v1/groups/{groupId}/members';
 	    var requestBody;
 	    var queryParameters = {};
@@ -92,7 +92,7 @@ var GroupsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getGroupMembers = getGroupMembers;
+	self.getMembers = getMembers;
 
     return self;
 };

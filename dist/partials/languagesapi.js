@@ -10,7 +10,7 @@ var LanguagesApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function get(pageSize, pageNumber){
+	function getLanguages(pageSize, pageNumber){
 		var apipath = '/api/v1/languages';
 	    var requestBody;
 	    var queryParameters = {};
@@ -30,13 +30,13 @@ var LanguagesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getLanguages = getLanguages;
 	/**
      * @summary Get language
 	 * @memberOf LanguagesApi#
 	* @param {string} languageId - Language ID
 	*/
-	function getLanguage(languageId){
+	function get(languageId){
 		var apipath = '/api/v1/languages/{languageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -52,7 +52,7 @@ var LanguagesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getLanguage = getLanguage;
+	self.get = get;
 
     return self;
 };

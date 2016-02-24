@@ -10,7 +10,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
 	*/
-	function get(pageNumber, pageSize){
+	function getPresencedefinitions(pageNumber, pageSize){
 		var apipath = '/api/v1/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -30,7 +30,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getPresencedefinitions = getPresencedefinitions;
 	/**
      * @summary Create an OrganizationPresence
 	 * @memberOf PresenceApi#
@@ -94,7 +94,7 @@ var PresenceApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function create(body){
+	function postPresencedefinitions(body){
 		var apipath = '/api/v1/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -112,13 +112,13 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.create = create;
+	self.postPresencedefinitions = postPresencedefinitions;
 	/**
      * @summary Get an OrganizationPresence
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
-	function getPresence(presenceId){
+	function getPresencedefinition(presenceId){
 		var apipath = '/api/v1/presencedefinitions/{presenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -134,7 +134,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPresence = getPresence;
+	self.getPresencedefinition = getPresencedefinition;
 	/**
      * @summary Update an OrganizationPresence
 	 * @memberOf PresenceApi#
@@ -199,7 +199,7 @@ var PresenceApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function updatePresence(presenceId, body){
+	function putPresencedefinition(presenceId, body){
 		var apipath = '/api/v1/presencedefinitions/{presenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -223,13 +223,13 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updatePresence = updatePresence;
+	self.putPresencedefinition = putPresencedefinition;
 	/**
      * @summary Delete an OrganizationPresence
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
-	function deletePresence(presenceId){
+	function deletePresencedefinition(presenceId){
 		var apipath = '/api/v1/presencedefinitions/{presenceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -245,7 +245,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deletePresence = deletePresence;
+	self.deletePresencedefinition = deletePresencedefinition;
 	/**
      * @summary Get an User's list of Presences
 	 * @memberOf PresenceApi#
@@ -286,7 +286,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	* @param {string} source - Source
 	*/
-	function getUserPresencesBySource(userId, source){
+	function getUserPresences(userId, source){
 		var apipath = '/api/v1/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -308,7 +308,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserPresencesBySource = getUserPresencesBySource;
+	self.getUserPresences = getUserPresences;
 	/**
      * @summary Update a UserPresence
 	 * @memberOf PresenceApi#
@@ -382,7 +382,7 @@ var PresenceApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function updateUserPresencesBySource(userId, source, body){
+	function putUserPresences(userId, source, body){
 		var apipath = '/api/v1/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -412,7 +412,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateUserPresencesBySource = updateUserPresencesBySource;
+	self.putUserPresences = putUserPresences;
 	/**
      * @summary Patch a UserPresence
 	 * @memberOf PresenceApi#
@@ -486,7 +486,7 @@ var PresenceApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function patchUserPresencesBySource(userId, source, body){
+	function patchUserPresences(userId, source, body){
 		var apipath = '/api/v1/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -516,7 +516,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchUserPresencesBySource = patchUserPresencesBySource;
+	self.patchUserPresences = patchUserPresences;
 	/**
      * @summary Get a user's Primary UserPresence
 	 * @memberOf PresenceApi#

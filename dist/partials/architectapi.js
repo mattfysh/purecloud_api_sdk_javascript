@@ -22,7 +22,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} lockedBy - Locked by
 	* @param {boolean} doDeleted - Include deleted
 	*/
-	function get(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
+	function getFlows(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -97,7 +97,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getFlows = getFlows;
 	/**
      * @summary Create flow
 	 * @memberOf ArchitectApi#
@@ -151,7 +151,7 @@ var ArchitectApi = function (pureCloudSession) {
    "system": true
 }
 	*/
-	function create(body){
+	function postFlows(body){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -165,7 +165,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.create = create;
+	self.postFlows = postFlows;
 	/**
      * @summary Batch-delete a list of flows
 	 * @description Multiple IDs can be specified, in which case all specified flows will be deleted.
@@ -173,7 +173,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {array} id - List of Flow IDs
 	* @param {boolean} ignoreDependencies - Ignore Dependencies
 	*/
-	function performDelete(id, ignoreDependencies){
+	function deleteFlows(id, ignoreDependencies){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -197,7 +197,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.performDelete = performDelete;
+	self.deleteFlows = deleteFlows;
 
     return self;
 };

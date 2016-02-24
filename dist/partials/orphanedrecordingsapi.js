@@ -12,7 +12,7 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
 	*/
-	function get(pageSize, pageNumber, sortBy, expand){
+	function getOrphanrecordings(pageSize, pageNumber, sortBy, expand){
 		var apipath = '/api/v1/orphanrecordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -42,13 +42,13 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getOrphanrecordings = getOrphanrecordings;
 	/**
      * @summary Gets a single orphan recording
 	 * @memberOf OrphanedRecordingsApi#
 	* @param {string} orphanId - Orphan ID
 	*/
-	function getOrphan(orphanId){
+	function getOrphanrecording(orphanId){
 		var apipath = '/api/v1/orphanrecordings/{orphanId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -64,13 +64,13 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOrphan = getOrphan;
+	self.getOrphanrecording = getOrphanrecording;
 	/**
      * @summary  deletes a single orphan recording
 	 * @memberOf OrphanedRecordingsApi#
 	* @param {string} orphanId - Orphan ID
 	*/
-	function deleteOrphan(orphanId){
+	function deleteOrphanrecording(orphanId){
 		var apipath = '/api/v1/orphanrecordings/{orphanId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -86,7 +86,7 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteOrphan = deleteOrphan;
+	self.deleteOrphanrecording = deleteOrphanrecording;
 
     return self;
 };

@@ -45,7 +45,7 @@ var LicensingApi = function (pureCloudSession) {
 	 * @memberOf LicensingApi#
 	* @param {string} id - ID
 	*/
-	function getOrgassignmentsId(id){
+	function getOrgassignments(id){
 		var apipath = '/api/v1/licensing/orgassignments/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -61,7 +61,7 @@ var LicensingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOrgassignmentsId = getOrgassignmentsId;
+	self.getOrgassignments = getOrgassignments;
 	/**
      * @summary Get Licenses required per permission.
 	 * @memberOf LicensingApi#
@@ -84,6 +84,38 @@ var LicensingApi = function (pureCloudSession) {
 	}
 	self.getPermissions = getPermissions;
 	/**
+     * @summary Get Licenses required per permission.
+	 * @memberOf LicensingApi#
+	* @param {array} id - ID
+	* @param {} body - The permissions details
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "ids": []
+}
+	*/
+	function postPermissions(id, body){
+		var apipath = '/api/v1/licensing/permissions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(id !== undefined && id !== null){
+			queryParameters.id = id;
+		}
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postPermissions = postPermissions;
+	/**
      * @summary Get user license assignments.
 	 * @memberOf LicensingApi#
 	*/
@@ -103,7 +135,7 @@ var LicensingApi = function (pureCloudSession) {
 	 * @memberOf LicensingApi#
 	* @param {string} id - ID
 	*/
-	function getUserassignmentsId(id){
+	function getUserassignments(id){
 		var apipath = '/api/v1/licensing/userassignments/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -119,7 +151,7 @@ var LicensingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserassignmentsId = getUserassignmentsId;
+	self.getUserassignments = getUserassignments;
 
     return self;
 };

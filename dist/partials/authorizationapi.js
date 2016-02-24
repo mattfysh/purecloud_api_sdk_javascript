@@ -145,7 +145,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "default": true
 }
 	*/
-	function createRoles(body){
+	function postRoles(body){
 		var apipath = '/api/v1/authorization/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -159,14 +159,14 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createRoles = createRoles;
+	self.postRoles = postRoles;
 	/**
      * @summary Restores all default roles
 	 * @description This endpoint serves several purposes. 1. It provides the org with default roles. This is important for default roles that will be added after go-live (they can retroactively add the new default-role). Note: When not using a query param of force=true, it only adds the default roles not configured for the org; it does not overwrite roles. 2. Using the query param force=true, you can restore all default roles. Note: This does not have an effect on custom roles.
 	 * @memberOf AuthorizationApi#
 	* @param {boolean} force - Restore default roles
 	*/
-	function createRolesDefault(force){
+	function postRolesDefault(force){
 		var apipath = '/api/v1/authorization/roles/default';
 	    var requestBody;
 	    var queryParameters = {};
@@ -181,13 +181,13 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createRolesDefault = createRolesDefault;
+	self.postRolesDefault = postRolesDefault;
 	/**
      * @summary Restore specified default roles
 	 * @memberOf AuthorizationApi#
 	* @param {} body - 
 	*/
-	function updateRolesDefault(body){
+	function putRolesDefault(body){
 		var apipath = '/api/v1/authorization/roles/default';
 	    var requestBody;
 	    var queryParameters = {};
@@ -201,7 +201,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRolesDefault = updateRolesDefault;
+	self.putRolesDefault = putRolesDefault;
 	/**
      * @summary Get an org role to default role comparison comparison
 	 * @description Compares any organization role to a default role id and show differences
@@ -209,7 +209,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {string} leftRoleId - Left Role ID
 	* @param {string} rightRoleId - Right Role id
 	*/
-	function getRolesLeftRoleComparedefaultByRightRoleId(leftRoleId, rightRoleId){
+	function getRoleComparedefault(leftRoleId, rightRoleId){
 		var apipath = '/api/v1/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -231,7 +231,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRolesLeftRoleComparedefaultByRightRoleId = getRolesLeftRoleComparedefaultByRightRoleId;
+	self.getRoleComparedefault = getRoleComparedefault;
 	/**
      * @summary  Get an unsaved org role to default role comparison
 	 * @description Allows users to compare their existing roles in an unsaved state to its default role
@@ -254,7 +254,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "default": true
 }
 	*/
-	function createRolesLeftRoleComparedefaultByRightRoleId(leftRoleId, rightRoleId, body){
+	function postRoleComparedefault(leftRoleId, rightRoleId, body){
 		var apipath = '/api/v1/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -280,7 +280,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createRolesLeftRoleComparedefaultByRightRoleId = createRolesLeftRoleComparedefaultByRightRoleId;
+	self.postRoleComparedefault = postRoleComparedefault;
 	/**
      * @summary Get a single organization role.
 	 * @description Get the organization role specified by its ID.
@@ -325,7 +325,7 @@ var AuthorizationApi = function (pureCloudSession) {
    "default": true
 }
 	*/
-	function updateRole(roleId, body){
+	function putRole(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -345,7 +345,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRole = updateRole;
+	self.putRole = putRole;
 	/**
      * @summary Delete an organization role.
 	 * @memberOf AuthorizationApi#
@@ -416,7 +416,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {string} roleId - Role ID
 	* @param {} body - 
 	*/
-	function updateRoleUsersAdd(roleId, body){
+	function putRoleUsersAdd(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}/users/add';
 	    var requestBody;
 	    var queryParameters = {};
@@ -436,14 +436,14 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRoleUsersAdd = updateRoleUsersAdd;
+	self.putRoleUsersAdd = putRoleUsersAdd;
 	/**
      * @summary Removes the users from the role
 	 * @memberOf AuthorizationApi#
 	* @param {string} roleId - Role ID
 	* @param {} body - 
 	*/
-	function updateRoleUsersRemove(roleId, body){
+	function putRoleUsersRemove(roleId, body){
 		var apipath = '/api/v1/authorization/roles/{roleId}/users/remove';
 	    var requestBody;
 	    var queryParameters = {};
@@ -463,7 +463,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateRoleUsersRemove = updateRoleUsersRemove;
+	self.putRoleUsersRemove = putRoleUsersRemove;
 	/**
      * @summary Get the list of roles for a user.
 	 * @memberOf AuthorizationApi#
@@ -492,7 +492,7 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	* @param {} body - 
 	*/
-	function updateUserRoles(userId, body){
+	function putUserRoles(userId, body){
 		var apipath = '/api/v1/authorization/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -512,7 +512,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateUserRoles = updateUserRoles;
+	self.putUserRoles = putUserRoles;
 	/**
      * @summary Removes all the roles from the user.
 	 * @memberOf AuthorizationApi#

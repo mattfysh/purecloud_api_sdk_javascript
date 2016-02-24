@@ -21,7 +21,7 @@ var SearchApi = function (pureCloudSession) {
    "expand": ""
 }
 	*/
-	function createChats(body){
+	function postChats(body){
 		var apipath = '/api/v1/search/chats';
 	    var requestBody;
 	    var queryParameters = {};
@@ -35,7 +35,7 @@ var SearchApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createChats = createChats;
+	self.postChats = postChats;
 
     return self;
 };

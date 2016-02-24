@@ -93,7 +93,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "id": ""
+      "kind": "",
+      "id": "",
+      "name": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -105,7 +107,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "ruleUri": ""
 }
 	*/
-	function updateAlertingAlert(alertId, body){
+	function putAlertingAlert(alertId, body){
 		var apipath = '/api/v1/analytics/alerting/alerts/{alertId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -125,7 +127,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateAlertingAlert = updateAlertingAlert;
+	self.putAlertingAlert = putAlertingAlert;
 	/**
      * @summary Delete an alert.
 	 * @memberOf AnalyticsApi#
@@ -200,7 +202,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "id": ""
+      "kind": "",
+      "id": "",
+      "name": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -212,7 +216,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "statistic": ""
 }
 	*/
-	function createAlertingRules(body){
+	function postAlertingRules(body){
 		var apipath = '/api/v1/analytics/alerting/rules';
 	    var requestBody;
 	    var queryParameters = {};
@@ -226,7 +230,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createAlertingRules = createAlertingRules;
+	self.postAlertingRules = postAlertingRules;
 	/**
      * @summary Get an alerting rule.
 	 * @memberOf AnalyticsApi#
@@ -263,7 +267,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "id": ""
+      "kind": "",
+      "id": "",
+      "name": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -275,7 +281,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "statistic": ""
 }
 	*/
-	function updateAlertingRule(ruleId, body){
+	function putAlertingRule(ruleId, body){
 		var apipath = '/api/v1/analytics/alerting/rules/{ruleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -295,7 +301,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateAlertingRule = updateAlertingRule;
+	self.putAlertingRule = putAlertingRule;
 	/**
      * @summary Delete an alerting rule.
 	 * @memberOf AnalyticsApi#
@@ -323,7 +329,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @memberOf AnalyticsApi#
 	* @param {} body - queryObject
 	*/
-	function createMetricsQuery(body){
+	function postMetricsQuery(body){
 		var apipath = '/api/v1/analytics/metrics/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -337,7 +343,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createMetricsQuery = createMetricsQuery;
+	self.postMetricsQuery = postMetricsQuery;
 	/**
      * @summary Get list of reporting metadata.
 	 * @memberOf AnalyticsApi#
@@ -432,10 +438,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "timeZone": "",
    "timePeriod": "",
-   "interval": {
-      "start": "",
-      "end": ""
-   },
+   "interval": {},
    "reportFormat": "",
    "locale": "",
    "enabled": true,
@@ -454,7 +457,7 @@ var AnalyticsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function createReportingSchedules(body){
+	function postReportingSchedules(body){
 		var apipath = '/api/v1/analytics/reporting/schedules';
 	    var requestBody;
 	    var queryParameters = {};
@@ -468,7 +471,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createReportingSchedules = createReportingSchedules;
+	self.postReportingSchedules = postReportingSchedules;
 	/**
      * @summary Get a scheduled report job.
 	 * @memberOf AnalyticsApi#
@@ -507,10 +510,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "timeZone": "",
    "timePeriod": "",
-   "interval": {
-      "start": "",
-      "end": ""
-   },
+   "interval": {},
    "reportFormat": "",
    "locale": "",
    "enabled": true,
@@ -529,7 +529,7 @@ var AnalyticsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function updateReportingSchedule(scheduleId, body){
+	function putReportingSchedule(scheduleId, body){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -549,7 +549,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateReportingSchedule = updateReportingSchedule;
+	self.putReportingSchedule = putReportingSchedule;
 	/**
      * @summary Delete a scheduled report job.
 	 * @memberOf AnalyticsApi#
@@ -635,7 +635,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	* @param {string} runId - Run ID
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function getReportingScheduleHistoryByRunId(runId, scheduleId){
+	function getReportingScheduleHistory(runId, scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}/history/{runId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -657,13 +657,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingScheduleHistoryByRunId = getReportingScheduleHistoryByRunId;
+	self.getReportingScheduleHistory = getReportingScheduleHistory;
 	/**
      * @summary Place a scheduled report immediately into the reporting queue
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function createReportingScheduleRunreport(scheduleId){
+	function postReportingScheduleRunreport(scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}/runreport';
 	    var requestBody;
 	    var queryParameters = {};
@@ -679,7 +679,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createReportingScheduleRunreport = createReportingScheduleRunreport;
+	self.postReportingScheduleRunreport = postReportingScheduleRunreport;
 	/**
      * @summary Get a list of report time periods.
 	 * @memberOf AnalyticsApi#
@@ -702,7 +702,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	* @param {string} acceptLanguage - Accepted language
 	* @param {string} locale - Locale
 	*/
-	function getReportingReportMetadata(reportId, acceptLanguage, locale){
+	function getReportingMetadata(reportId, acceptLanguage, locale){
 		var apipath = '/api/v1/analytics/reporting/{reportId}/metadata';
 	    var requestBody;
 	    var queryParameters = {};
@@ -723,13 +723,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingReportMetadata = getReportingReportMetadata;
+	self.getReportingMetadata = getReportingMetadata;
 	/**
      * @summary Executes a segments query against the analytics service
 	 * @memberOf AnalyticsApi#
 	* @param {} body - queryObject
 	*/
-	function createSegmentsQuery(body){
+	function postSegmentsQuery(body){
 		var apipath = '/api/v1/analytics/segments/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -743,7 +743,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createSegmentsQuery = createSegmentsQuery;
+	self.postSegmentsQuery = postSegmentsQuery;
 
     return self;
 };

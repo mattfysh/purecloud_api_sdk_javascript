@@ -8,7 +8,7 @@ var OAuthApi = function (pureCloudSession) {
      * @summary The list of identity providers
 	 * @memberOf OAuthApi#
 	*/
-	function get(){
+	function getIdentityproviders(){
 		var apipath = '/api/v1/identityproviders';
 	    var requestBody;
 	    var queryParameters = {};
@@ -18,12 +18,70 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getIdentityproviders = getIdentityproviders;
+	/**
+     * @summary Get Okta Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function getIdentityprovidersOkta(){
+		var apipath = '/api/v1/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getIdentityprovidersOkta = getIdentityprovidersOkta;
+	/**
+     * @summary Update/Create Okta Identity Provider
+	 * @memberOf OAuthApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": ""
+}
+	*/
+	function putIdentityprovidersOkta(body){
+		var apipath = '/api/v1/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putIdentityprovidersOkta = putIdentityprovidersOkta;
+	/**
+     * @summary Delete Okta Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function deleteIdentityprovidersOkta(){
+		var apipath = '/api/v1/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteIdentityprovidersOkta = deleteIdentityprovidersOkta;
 	/**
      * @summary Get OneLogin Identity Provider
 	 * @memberOf OAuthApi#
 	*/
-	function getOnelogin(){
+	function getIdentityprovidersOnelogin(){
 		var apipath = '/api/v1/identityproviders/onelogin';
 	    var requestBody;
 	    var queryParameters = {};
@@ -33,7 +91,7 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOnelogin = getOnelogin;
+	self.getIdentityprovidersOnelogin = getIdentityprovidersOnelogin;
 	/**
      * @summary Update/Create OneLogin Identity Provider
 	 * @memberOf OAuthApi#
@@ -47,7 +105,7 @@ var OAuthApi = function (pureCloudSession) {
    "ssoTargetURI": ""
 }
 	*/
-	function updateOnelogin(body){
+	function putIdentityprovidersOnelogin(body){
 		var apipath = '/api/v1/identityproviders/onelogin';
 	    var requestBody;
 	    var queryParameters = {};
@@ -61,12 +119,12 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateOnelogin = updateOnelogin;
+	self.putIdentityprovidersOnelogin = putIdentityprovidersOnelogin;
 	/**
      * @summary Delete OneLogin Identity Provider
 	 * @memberOf OAuthApi#
 	*/
-	function deleteOnelogin(){
+	function deleteIdentityprovidersOnelogin(){
 		var apipath = '/api/v1/identityproviders/onelogin';
 	    var requestBody;
 	    var queryParameters = {};
@@ -76,12 +134,12 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteOnelogin = deleteOnelogin;
+	self.deleteIdentityprovidersOnelogin = deleteIdentityprovidersOnelogin;
 	/**
      * @summary Get PureCloud Identity Provider
 	 * @memberOf OAuthApi#
 	*/
-	function getPurecloud(){
+	function getIdentityprovidersPurecloud(){
 		var apipath = '/api/v1/identityproviders/purecloud';
 	    var requestBody;
 	    var queryParameters = {};
@@ -91,7 +149,7 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPurecloud = getPurecloud;
+	self.getIdentityprovidersPurecloud = getIdentityprovidersPurecloud;
 	/**
      * @summary Update/Create PureCloud Identity Provider
 	 * @memberOf OAuthApi#
@@ -102,7 +160,7 @@ var OAuthApi = function (pureCloudSession) {
    "name": ""
 }
 	*/
-	function updatePurecloud(body){
+	function putIdentityprovidersPurecloud(body){
 		var apipath = '/api/v1/identityproviders/purecloud';
 	    var requestBody;
 	    var queryParameters = {};
@@ -116,12 +174,12 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updatePurecloud = updatePurecloud;
+	self.putIdentityprovidersPurecloud = putIdentityprovidersPurecloud;
 	/**
      * @summary Delete PureCloud Identity Provider
 	 * @memberOf OAuthApi#
 	*/
-	function deletePurecloud(){
+	function deleteIdentityprovidersPurecloud(){
 		var apipath = '/api/v1/identityproviders/purecloud';
 	    var requestBody;
 	    var queryParameters = {};
@@ -131,12 +189,70 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deletePurecloud = deletePurecloud;
+	self.deleteIdentityprovidersPurecloud = deleteIdentityprovidersPurecloud;
+	/**
+     * @summary Get Salesforce Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function getIdentityprovidersSalesforce(){
+		var apipath = '/api/v1/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getIdentityprovidersSalesforce = getIdentityprovidersSalesforce;
+	/**
+     * @summary Update/Create Salesforce Identity Provider
+	 * @memberOf OAuthApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": ""
+}
+	*/
+	function putIdentityprovidersSalesforce(body){
+		var apipath = '/api/v1/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putIdentityprovidersSalesforce = putIdentityprovidersSalesforce;
+	/**
+     * @summary Delete Salesforce Identity Provider
+	 * @memberOf OAuthApi#
+	*/
+	function deleteIdentityprovidersSalesforce(){
+		var apipath = '/api/v1/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteIdentityprovidersSalesforce = deleteIdentityprovidersSalesforce;
 	/**
      * @summary Get an identity provider
 	 * @memberOf OAuthApi#
 	*/
-	function getProverId(){
+	function getIdentityprovider(){
 		var apipath = '/api/v1/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -146,7 +262,7 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getProverId = getProverId;
+	self.getIdentityprovider = getIdentityprovider;
 	/**
      * @summary Update an identity provider
 	 * @memberOf OAuthApi#
@@ -157,7 +273,7 @@ var OAuthApi = function (pureCloudSession) {
    "name": ""
 }
 	*/
-	function updateProverId(body){
+	function putIdentityprovider(body){
 		var apipath = '/api/v1/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -171,12 +287,12 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateProverId = updateProverId;
+	self.putIdentityprovider = putIdentityprovider;
 	/**
      * @summary Delete an identity provider
 	 * @memberOf OAuthApi#
 	*/
-	function deleteProverId(){
+	function deleteIdentityprovider(){
 		var apipath = '/api/v1/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -186,7 +302,7 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteProverId = deleteProverId;
+	self.deleteIdentityprovider = deleteIdentityprovider;
 	/**
      * @summary The list of OAuth clients
 	 * @memberOf OAuthApi#
@@ -223,7 +339,7 @@ via the 'roleIds' field.
    "roleIds": []
 }
 	*/
-	function createClients(body){
+	function postClients(body){
 		var apipath = '/api/v1/oauth/clients';
 	    var requestBody;
 	    var queryParameters = {};
@@ -237,7 +353,7 @@ via the 'roleIds' field.
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createClients = createClients;
+	self.postClients = postClients;
 	/**
      * @summary Get OAuth Client
 	 * @memberOf OAuthApi#
@@ -277,7 +393,7 @@ via the 'roleIds' field.
    "roleIds": []
 }
 	*/
-	function updateClient(clientId, body){
+	function putClient(clientId, body){
 		var apipath = '/api/v1/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -297,7 +413,7 @@ via the 'roleIds' field.
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.updateClient = updateClient;
+	self.putClient = putClient;
 	/**
      * @summary Delete OAuth Client
 	 * @memberOf OAuthApi#
@@ -326,7 +442,7 @@ via the 'roleIds' field.
 	 * @memberOf OAuthApi#
 	* @param {string} clientId - Client ID
 	*/
-	function createClientSecret(clientId){
+	function postClientSecret(clientId){
 		var apipath = '/api/v1/oauth/clients/{clientId}/secret';
 	    var requestBody;
 	    var queryParameters = {};
@@ -342,7 +458,7 @@ via the 'roleIds' field.
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.createClientSecret = createClientSecret;
+	self.postClientSecret = postClientSecret;
 
     return self;
 };
