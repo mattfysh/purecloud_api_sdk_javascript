@@ -1,12 +1,13 @@
 /**
 * @description {{&info.description}}
 * @class
-* @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
+* @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.com.au, etc.
 **/
-var PureCloudSession =  function (environment) {
-    var _host = '{{&host}}';
+var PureCloudSession =  function (purecloudEnvironment) {
+
+    var _environment = purecloudEnvironment || "mypurecloud.com";
+    var _host = 'api.'+ _environment;
     var _auth_url = '';
-    var _environment = environment || "mypurecloud.com";
 
     var _token = null;
     var _state = null;
@@ -66,8 +67,7 @@ var PureCloudSession =  function (environment) {
      * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
-	 * @param  {string} state (Optional) State variable that is returned to the application after authentication.  This can be grabbed from the .getState() method.
-     * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
+	 * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
          //this method will be called once we have a valid authorization token
          // if we don't have one a redirect to login will be called and then after redirecting back here,
          // the done method will be called.
@@ -75,11 +75,8 @@ var PureCloudSession =  function (environment) {
      *
      * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/', "State Value");
      */
-    function authorize(clientId, redirectUrl, state, environment){
+    function authorize(clientId, redirectUrl, state){
         var _doneCallback = function(){console.error("callback not set");};
-
-        environment = environment || _environment;
-        _host = 'api.'+ environment;
 
         var defer = {
             done: function(callback){
@@ -98,7 +95,7 @@ var PureCloudSession =  function (environment) {
         }
 
         function authRedirect(){
-            _auth_url = 'https://login.'+environment;
+            _auth_url = 'https://login.'+_environment;
 
             var url = _auth_url + '/authorize' +
                 '?response_type=token' +
@@ -145,19 +142,15 @@ var PureCloudSession =  function (environment) {
      * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} clientSecret The application's Client Secret
-     * @param  {string} environment (Optional) The PureCloud environment to connect to (eg. mypurecloud.com, mypurecloud.ie)
-	 * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'SECRET').done(function(){
+     * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'SECRET').done(function(){
          //this method will be called once we have a valid authorization token
      }).error(function(err){
          //This method is called if there is an error getting the authorization token.
      });
      */
-    function authorizeWithClientCredentialsGrant(clientId, clientSecret, environment){
+    function authorizeWithClientCredentialsGrant(clientId, clientSecret){
         var _doneCallback = function(){console.error("callback not set");};
         var _errorCallback = function(){console.error("callback not set");};
-
-        environment = environment || _environment;
-        _host = 'api.'+ environment;
 
         var defer = {
             done: function(callback){
@@ -170,7 +163,7 @@ var PureCloudSession =  function (environment) {
             }
         };
 
-        _auth_url = 'https://login.'+environment;
+        _auth_url = 'https://login.'+_environment;
         setTimeout(function(){
             $.ajax
                 ({
@@ -192,27 +185,24 @@ var PureCloudSession =  function (environment) {
     self.authorizeWithClientCredentialsGrant = authorizeWithClientCredentialsGrant;
 
     /**
-     * Sets the authorization token, this is only needed if not using .authorize(...)
+     * Gets or sets the authorization token.  Setting is only needed if not using .authorize(...)
      * @memberof PureCloudSession#
      * @param  {string} token Authorization token
+     * @example
+     * var token = pureCloudSession.authToken();
+     * @example
+     * pureCloudSession.authToken(token);
      */
-    function setAuthToken(token){
-        _token = token;
-    }
-    self.setAuthToken = setAuthToken;
-
-    /**
-     * Gets the authorization token
-     * @memberof PureCloudSession#
-     */
-    function getAuthToken(){
+    function authToken(token){
+        if(token){
+            _token = token;
+        }
         return _token;
     }
-
-    self.getAuthToken = getAuthToken;
+    self.authToken = authToken;
 
     /**
-     * Returns if the authorization token is set
+     * Returns true if the authorization token is set
      * @memberof PureCloudSession#
      */
     function hasAuthorizationToken(){
@@ -236,16 +226,24 @@ var PureCloudSession =  function (environment) {
     self.logout = logout;
 
     /**
-    * The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc.
+    * Gets or Sets environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.com.au, etc.
     * @memberof PureCloudSession#
     * @param  {string} environment PureCloud environment (mypurecloud.com, mypurecloud.ie, mypurecloud.au, etc)
+    * @example
+    * var environment = pureCloudSession.environment();
+    * @example
+    * pureCloudSession.authToken("mypurecloud.ie");
     **/
-    function setEnvironment(environment){
-        _environment = environment;
-        _host = 'api.'+ environment;
-        _auth_url = 'https://login.'+environment;
+    function environment(environment){
+        if(environment){
+            _environment = environment;
+            _host = 'api.'+ environment;
+            _auth_url = 'https://login.'+environment;
+        }
+
+        return _environment;
     }
-    self.setEnvironment = setEnvironment;
+    self.environment = environment;
 
     function sendRestRequest(method, url, body){
         var requestParams = {
