@@ -1,19 +1,19 @@
 {
   "name": "purecloud_api_sdk_javascript",
-  "version": "0.0.0",
+  "version": "0.23.0",
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "dependencies": {
     "jquery": "*",
     "jsdom": "3.1.2",
-    "request" : "*"
+    "request": "*"
   },
   "devDependencies": {
     "rifraf": "~2.0.2",
-    "gulp-rimraf": "~0.1.1",
-    "express":"*",
-    "purecloud-api-sdk-common":"git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
-    "run-sequence" : "1.1.5",
+    "gulp-rimraf": "^0.1.1",
+    "express": "*",
+    "purecloud-api-sdk-common": "git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
+    "run-sequence": "1.1.5",
     "jsdoc": "~3.3.3",
     "mustache": "~2.2.0",
     "lodash": "~3.10.1",
@@ -21,15 +21,13 @@
     "concat-files": "*",
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rimraf": "^0.1.1",
     "gulp-minify": "^0.0.5",
     "gulp-concat": "^2.6.0",
     "gulp-add-src": "^0.2.0",
     "gulp-jshint": "^1.12.0",
     "gulp-replace": "*",
-    "gulp-rename": "^1.2.2",
     "del": "~2.1.0",
-    "wgetjs":"*"
+    "wgetjs": "*"
   },
   "scripts": {
     "test": "jasmine"
