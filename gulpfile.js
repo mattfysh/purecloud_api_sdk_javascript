@@ -312,6 +312,13 @@ gulp.task('build', ['clean'], function() {
         fs.writeFileSync("gen/" + moduledata.moduleName + ".js", source);
     });
 
+    var version = process.env.SDK_VERSION;
+
+    if(!version){
+        version = pclibSwaggerVersion.getVersionString("version.json");
+    }
+    swagger.info.version = version;
+
     //Write the core file
     var source = Mustache.render(fs.readFileSync('templates/purecloudsession.mustache', 'utf-8'), swagger);
     fs.writeFileSync("gen/purecloudsession.js", source);

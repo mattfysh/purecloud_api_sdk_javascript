@@ -252,6 +252,8 @@ var PureCloudSession =  function (purecloudEnvironment) {
              headers: {
                  'Accept': 'application/json',
                  'Content-Type': 'application/json',
+                 'User-Agent' : "PureCloud SDK/Javascript {{&info.version}}",
+                 'X-User-Agent' : "PureCloud SDK/Javascript {{&info.version}}"
              },
              beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + _token);},
              timeout: 2000
