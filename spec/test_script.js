@@ -1,4 +1,12 @@
 #!/usr/bin/env node
+
+var environment = "mypurecloud.com";
+
+if (process.argv.length >= 2){
+    environment = process.argv[2];
+}
+
+
 var pureCloud = require("../dist/purecloud-api-node.js");
 
 var secret = process.env.PURECLOUD_SECRET;
