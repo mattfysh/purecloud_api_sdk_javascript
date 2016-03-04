@@ -12,7 +12,7 @@ var pureCloud = require("../dist/purecloud-api-node.js");
 var secret = process.env.PURECLOUD_SECRET;
 var id = process.env.PURECLOUD_CLIENT_ID;
 
-var pureCloudSession = new pureCloud.PureCloudSession();
+var pureCloudSession = new pureCloud.PureCloudSession(environment);
 pureCloudSession.debug(true);
 
 console.log(" RUNNING TEST SCRIPT ")
