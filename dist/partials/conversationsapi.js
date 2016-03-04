@@ -1,16 +1,21 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ConversationsApi(pureCloudSession);
 */
 var ConversationsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get conversations
 	 * @memberOf ConversationsApi#
 	* @param {string} communicationType - Call or Chat communication filtering
 	*/
-	function getConversations(communicationType){
+	function get(communicationType){
 		var apipath = '/api/v1/conversations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -25,7 +30,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversations = getConversations;
+	self.get = get;
 	/**
      * @summary Create conversation
 	 * @memberOf ConversationsApi#
@@ -38,7 +43,7 @@ var ConversationsApi = function (pureCloudSession) {
 	* @param {array} skillIds - Skill ids to use for routing when calling a queue
 	* @param {} body - 
 	*/
-	function postConversations(call, callFrom, callQueueId, callUserId, priority, languageId, skillIds, body){
+	function post(call, callFrom, callQueueId, callUserId, priority, languageId, skillIds, body){
 		var apipath = '/api/v1/conversations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -87,7 +92,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postConversations = postConversations;
+	self.post = post;
 	/**
      * @summary Create Fax Conversation
 	 * @memberOf ConversationsApi#
@@ -192,7 +197,7 @@ var ConversationsApi = function (pureCloudSession) {
    "facets": []
 }
 	*/
-	function postQuery(anchor, body){
+	function postQueryAnchor(anchor, body){
 		var apipath = '/api/v1/conversations/query/{anchor}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -216,13 +221,13 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postQuery = postQuery;
+	self.postQueryAnchor = postQueryAnchor;
 	/**
      * @summary Get conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
-	function get(conversationId){
+	function getConversationId(conversationId){
 		var apipath = '/api/v1/conversations/{conversationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -238,7 +243,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getConversationId = getConversationId;
 	/**
      * @summary Update conversation
 	 * @memberOf ConversationsApi#
@@ -257,7 +262,7 @@ var ConversationsApi = function (pureCloudSession) {
    "recordingState": ""
 }
 	*/
-	function put(conversationId, body){
+	function putConversationId(conversationId, body){
 		var apipath = '/api/v1/conversations/{conversationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -277,13 +282,45 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.put = put;
+	self.putConversationId = putConversationId;
+	/**
+     * @summary Add a new call to a conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {} body - Conversation
+	 * @example
+	 * Body Example:
+	 * {
+   "callNumber": ""
+}
+	*/
+	function postConversationIdCalls(conversationId, body){
+		var apipath = '/api/v1/conversations/{conversationId}/calls';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationIdCalls = postConversationIdCalls;
 	/**
      * @summary Get conversation messages
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
-	function getMessages(conversationId){
+	function getConversationIdMessages(conversationId){
 		var apipath = '/api/v1/conversations/{conversationId}/messages';
 	    var requestBody;
 	    var queryParameters = {};
@@ -299,7 +336,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessages = getMessages;
+	self.getConversationIdMessages = getConversationIdMessages;
 	/**
      * @summary Send an email reply
 	 * @memberOf ConversationsApi#
@@ -308,9 +345,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -320,10 +355,12 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
-	function postMessages(conversationId, body){
+	function postConversationIdMessages(conversationId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/messages';
 	    var requestBody;
 	    var queryParameters = {};
@@ -343,13 +380,13 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postMessages = postMessages;
+	self.postConversationIdMessages = postConversationIdMessages;
 	/**
      * @summary Get conversation draft reply
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
-	function getMessagesDraft(conversationId){
+	function getConversationIdMessagesDraft(conversationId){
 		var apipath = '/api/v1/conversations/{conversationId}/messages/draft';
 	    var requestBody;
 	    var queryParameters = {};
@@ -365,7 +402,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessagesDraft = getMessagesDraft;
+	self.getConversationIdMessagesDraft = getConversationIdMessagesDraft;
 	/**
      * @summary Update conversation draft reply
 	 * @memberOf ConversationsApi#
@@ -374,9 +411,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -386,10 +421,12 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
-	function putMessagesDraft(conversationId, body){
+	function putConversationIdMessagesDraft(conversationId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/messages/draft';
 	    var requestBody;
 	    var queryParameters = {};
@@ -409,14 +446,14 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putMessagesDraft = putMessagesDraft;
+	self.putConversationIdMessagesDraft = putConversationIdMessagesDraft;
 	/**
      * @summary Delete attachment from draft
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} attachmentId - attachment ID
 	*/
-	function deleteMessagesDraftAttachment(conversationId, attachmentId){
+	function deleteConversationIdMessagesDraftAttachmentsAttachmentId(conversationId, attachmentId){
 		var apipath = '/api/v1/conversations/{conversationId}/messages/draft/attachments/{attachmentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -438,14 +475,14 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteMessagesDraftAttachment = deleteMessagesDraftAttachment;
+	self.deleteConversationIdMessagesDraftAttachmentsAttachmentId = deleteConversationIdMessagesDraftAttachmentsAttachmentId;
 	/**
      * @summary Get conversation message
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} id - message ID
 	*/
-	function getMessages(conversationId, id){
+	function getConversationIdMessagesId(conversationId, id){
 		var apipath = '/api/v1/conversations/{conversationId}/messages/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -467,7 +504,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessages = getMessages;
+	self.getConversationIdMessagesId = getConversationIdMessagesId;
 	/**
      * @summary Add participants to a conversation
 	 * @memberOf ConversationsApi#
@@ -486,7 +523,7 @@ var ConversationsApi = function (pureCloudSession) {
    "recordingState": ""
 }
 	*/
-	function postParticipants(conversationId, body){
+	function postConversationIdParticipants(conversationId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/participants';
 	    var requestBody;
 	    var queryParameters = {};
@@ -506,7 +543,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postParticipants = postParticipants;
+	self.postConversationIdParticipants = postConversationIdParticipants;
 	/**
      * @summary Update a participant.
 	 * @description Specify the state as CONNECTED, DISCONNECTED. You can specify a wrap-up code.
@@ -535,7 +572,7 @@ var ConversationsApi = function (pureCloudSession) {
    "wrapupSkipped": true
 }
 	*/
-	function putParticipant(conversationId, participantId, body){
+	function putConversationIdParticipantsParticipantId(conversationId, participantId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -561,7 +598,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putParticipant = putParticipant;
+	self.putConversationIdParticipantsParticipantId = putConversationIdParticipantsParticipantId;
 	/**
      * @summary Update the attributes on a conversation participant.
 	 * @memberOf ConversationsApi#
@@ -574,7 +611,7 @@ var ConversationsApi = function (pureCloudSession) {
    "attributes": {}
 }
 	*/
-	function putParticipantAttributes(conversationId, participantId, body){
+	function putConversationIdParticipantsParticipantIdAttributes(conversationId, participantId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/attributes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -600,7 +637,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putParticipantAttributes = putParticipantAttributes;
+	self.putConversationIdParticipantsParticipantIdAttributes = putConversationIdParticipantsParticipantIdAttributes;
 	/**
      * @summary Initiate and update consult transfer
 	 * @memberOf ConversationsApi#
@@ -621,7 +658,7 @@ var ConversationsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function postParticipantConsult(conversationId, participantId, body){
+	function postConversationIdParticipantsParticipantIdConsult(conversationId, participantId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/consult';
 	    var requestBody;
 	    var queryParameters = {};
@@ -647,7 +684,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postParticipantConsult = postParticipantConsult;
+	self.postConversationIdParticipantsParticipantIdConsult = postConversationIdParticipantsParticipantIdConsult;
 	/**
      * @summary Change who can speak
 	 * @memberOf ConversationsApi#
@@ -660,7 +697,7 @@ var ConversationsApi = function (pureCloudSession) {
    "speakTo": ""
 }
 	*/
-	function putParticipantConsult(conversationId, participantId, body){
+	function putConversationIdParticipantsParticipantIdConsult(conversationId, participantId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/consult';
 	    var requestBody;
 	    var queryParameters = {};
@@ -686,14 +723,14 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putParticipantConsult = putParticipantConsult;
+	self.putConversationIdParticipantsParticipantIdConsult = putConversationIdParticipantsParticipantIdConsult;
 	/**
      * @summary Cancel the transfer
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - The object of the transfer
 	*/
-	function deleteParticipantConsult(conversationId, participantId){
+	function deleteConversationIdParticipantsParticipantIdConsult(conversationId, participantId){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/consult';
 	    var requestBody;
 	    var queryParameters = {};
@@ -715,14 +752,14 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteParticipantConsult = deleteParticipantConsult;
+	self.deleteConversationIdParticipantsParticipantIdConsult = deleteConversationIdParticipantsParticipantIdConsult;
 	/**
      * @summary Listen in on the conversation from the point of view of a given participant.
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
 	*/
-	function postParticipantMonitor(conversationId, participantId){
+	function postConversationIdParticipantsParticipantIdMonitor(conversationId, participantId){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/monitor';
 	    var requestBody;
 	    var queryParameters = {};
@@ -744,7 +781,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postParticipantMonitor = postParticipantMonitor;
+	self.postConversationIdParticipantsParticipantIdMonitor = postConversationIdParticipantsParticipantIdMonitor;
 	/**
      * @summary Replace this participant with the specified user and/or address
 	 * @memberOf ConversationsApi#
@@ -756,7 +793,7 @@ var ConversationsApi = function (pureCloudSession) {
 	* @param {string} queueId - The id of the queue that will replace this participant.
 	* @param {boolean} voicemail - Indicates this participant will be replaced by the voicemail inbox of the participant.
 	*/
-	function postParticipantReplace(conversationId, participantId, userId, address, username, queueId, voicemail){
+	function postConversationIdParticipantsParticipantIdReplace(conversationId, participantId, userId, address, username, queueId, voicemail){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/replace';
 	    var requestBody;
 	    var queryParameters = {};
@@ -803,7 +840,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postParticipantReplace = postParticipantReplace;
+	self.postConversationIdParticipantsParticipantIdReplace = postConversationIdParticipantsParticipantIdReplace;
 	/**
      * @summary Get the wrap-up for this conversation participant. 
 	 * @memberOf ConversationsApi#
@@ -811,7 +848,7 @@ var ConversationsApi = function (pureCloudSession) {
 	* @param {string} participantId - participant ID
 	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
 	*/
-	function getParticipantWrapup(conversationId, participantId, provisional){
+	function getConversationIdParticipantsParticipantIdWrapup(conversationId, participantId, provisional){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/wrapup';
 	    var requestBody;
 	    var queryParameters = {};
@@ -838,14 +875,14 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getParticipantWrapup = getParticipantWrapup;
+	self.getConversationIdParticipantsParticipantIdWrapup = getConversationIdParticipantsParticipantIdWrapup;
 	/**
      * @summary Get list of wrapup codes for this conversation participant
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	* @param {string} participantId - participant ID
 	*/
-	function getParticipantWrapupcodes(conversationId, participantId){
+	function getConversationIdParticipantsParticipantIdWrapupcodes(conversationId, participantId){
 		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/wrapupcodes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -867,13 +904,13 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getParticipantWrapupcodes = getParticipantWrapupcodes;
+	self.getConversationIdParticipantsParticipantIdWrapupcodes = getConversationIdParticipantsParticipantIdWrapupcodes;
 	/**
      * @summary Get possible tags for Conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
-	function getTags(conversationId){
+	function getConversationIdTags(conversationId){
 		var apipath = '/api/v1/conversations/{conversationId}/tags';
 	    var requestBody;
 	    var queryParameters = {};
@@ -889,13 +926,13 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getTags = getTags;
+	self.getConversationIdTags = getConversationIdTags;
 	/**
      * @summary Get possible wrap-up codes for Conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
 	*/
-	function getWrapupcodes(conversationId){
+	function getConversationIdWrapupcodes(conversationId){
 		var apipath = '/api/v1/conversations/{conversationId}/wrapupcodes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -911,7 +948,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWrapupcodes = getWrapupcodes;
+	self.getConversationIdWrapupcodes = getConversationIdWrapupcodes;
 
     return self;
 };

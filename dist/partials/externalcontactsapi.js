@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ExternalContactsApi(pureCloudSession);
 */
 var ExternalContactsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Search for External Contacts
@@ -13,7 +18,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} q - User supplied search keywords (no special syntax is currently supported)
 	* @param {string} sortOrder - Sort order
 	*/
-	function getExternalcontactsContacts(pageSize, pageNumber, q, sortOrder){
+	function getContacts(pageSize, pageNumber, q, sortOrder){
 		var apipath = '/api/v1/externalcontacts/contacts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -43,7 +48,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsContacts = getExternalcontactsContacts;
+	self.getContacts = getContacts;
 	/**
      * @summary Create an ExternalContact
 	 * @memberOf ExternalContactsApi#
@@ -119,7 +124,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function postExternalcontactsContacts(body){
+	function postContacts(body){
 		var apipath = '/api/v1/externalcontacts/contacts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -133,13 +138,13 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postExternalcontactsContacts = postExternalcontactsContacts;
+	self.postContacts = postContacts;
 	/**
      * @summary Fetch a ExternalContact
 	 * @memberOf ExternalContactsApi#
 	* @param {string} contactId - ExternalContact ID
 	*/
-	function getExternalcontactsContact(contactId){
+	function getContactsContactId(contactId){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -155,7 +160,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsContact = getExternalcontactsContact;
+	self.getContactsContactId = getContactsContactId;
 	/**
      * @summary Update a externalContact
 	 * @memberOf ExternalContactsApi#
@@ -232,7 +237,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putExternalcontactsContact(contactId, body){
+	function putContactsContactId(contactId, body){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -252,13 +257,13 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putExternalcontactsContact = putExternalcontactsContact;
+	self.putContactsContactId = putContactsContactId;
 	/**
      * @summary Delete a contact
 	 * @memberOf ExternalContactsApi#
 	* @param {string} contactId - ExternalContact ID
 	*/
-	function deleteExternalcontactsContact(contactId){
+	function deleteContactsContactId(contactId){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -274,7 +279,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteExternalcontactsContact = deleteExternalcontactsContact;
+	self.deleteContactsContactId = deleteContactsContactId;
 	/**
      * @summary List Notes for an ExternalContact
 	 * @memberOf ExternalContactsApi#
@@ -283,7 +288,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Sort order
 	*/
-	function getExternalcontactsContactNotes(contactId, pageSize, pageNumber, sortOrder){
+	function getContactsContactIdNotes(contactId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -314,7 +319,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsContactNotes = getExternalcontactsContactNotes;
+	self.getContactsContactIdNotes = getContactsContactIdNotes;
 	/**
      * @summary Create a Note for an ExternalContact
 	 * @memberOf ExternalContactsApi#
@@ -329,7 +334,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "createDate": ""
 }
 	*/
-	function postExternalcontactsContactNotes(contactId, body){
+	function postContactsContactIdNotes(contactId, body){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -349,14 +354,14 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postExternalcontactsContactNotes = postExternalcontactsContactNotes;
+	self.postContactsContactIdNotes = postContactsContactIdNotes;
 	/**
      * @summary Fetch a note for a contact
 	 * @memberOf ExternalContactsApi#
 	* @param {string} contactId - ExternalContact Id
 	* @param {string} noteId - Note Id
 	*/
-	function getExternalcontactsContactNote(contactId, noteId){
+	function getContactsContactIdNotesNoteId(contactId, noteId){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -378,7 +383,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsContactNote = getExternalcontactsContactNote;
+	self.getContactsContactIdNotesNoteId = getContactsContactIdNotesNoteId;
 	/**
      * @summary Update a note for a contact
 	 * @memberOf ExternalContactsApi#
@@ -394,7 +399,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "createDate": ""
 }
 	*/
-	function putExternalcontactsContactNote(contactId, noteId, body){
+	function putContactsContactIdNotesNoteId(contactId, noteId, body){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -420,14 +425,14 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putExternalcontactsContactNote = putExternalcontactsContactNote;
+	self.putContactsContactIdNotesNoteId = putContactsContactIdNotesNoteId;
 	/**
      * @summary Delete a note for a contact
 	 * @memberOf ExternalContactsApi#
 	* @param {string} contactId - ExternalContact Id
 	* @param {string} noteId - Note Id
 	*/
-	function deleteExternalcontactsContactNote(contactId, noteId){
+	function deleteContactsContactIdNotesNoteId(contactId, noteId){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -449,7 +454,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteExternalcontactsContactNote = deleteExternalcontactsContactNote;
+	self.deleteContactsContactIdNotesNoteId = deleteContactsContactIdNotesNoteId;
 	/**
      * @summary Search for External Organizations
 	 * @memberOf ExternalContactsApi#
@@ -458,7 +463,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} q - Search query
 	* @param {string} sortOrder - Sort order
 	*/
-	function getExternalcontactsOrganizations(pageSize, pageNumber, q, sortOrder){
+	function getOrganizations(pageSize, pageNumber, q, sortOrder){
 		var apipath = '/api/v1/externalcontacts/organizations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -488,7 +493,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsOrganizations = getExternalcontactsOrganizations;
+	self.getOrganizations = getOrganizations;
 	/**
      * @summary Create an External Organization
 	 * @memberOf ExternalContactsApi#
@@ -533,7 +538,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "createDate": ""
 }
 	*/
-	function postExternalcontactsOrganizations(body){
+	function postOrganizations(body){
 		var apipath = '/api/v1/externalcontacts/organizations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -547,13 +552,13 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postExternalcontactsOrganizations = postExternalcontactsOrganizations;
+	self.postOrganizations = postOrganizations;
 	/**
      * @summary Fetch an External Organization
 	 * @memberOf ExternalContactsApi#
 	* @param {string} externalOrganizationId - External Organization ID
 	*/
-	function getExternalcontactsOrganization(externalOrganizationId){
+	function getOrganizationsExternalorganizationId(externalOrganizationId){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -569,7 +574,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsOrganization = getExternalcontactsOrganization;
+	self.getOrganizationsExternalorganizationId = getOrganizationsExternalorganizationId;
 	/**
      * @summary Update an External Organization
 	 * @memberOf ExternalContactsApi#
@@ -615,7 +620,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "createDate": ""
 }
 	*/
-	function putExternalcontactsOrganization(externalOrganizationId, body){
+	function putOrganizationsExternalorganizationId(externalOrganizationId, body){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -635,13 +640,13 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putExternalcontactsOrganization = putExternalcontactsOrganization;
+	self.putOrganizationsExternalorganizationId = putOrganizationsExternalorganizationId;
 	/**
      * @summary Delete an External Organization
 	 * @memberOf ExternalContactsApi#
 	* @param {string} externalOrganizationId - External Organization ID
 	*/
-	function deleteExternalcontactsOrganization(externalOrganizationId){
+	function deleteOrganizationsExternalorganizationId(externalOrganizationId){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -657,7 +662,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteExternalcontactsOrganization = deleteExternalcontactsOrganization;
+	self.deleteOrganizationsExternalorganizationId = deleteOrganizationsExternalorganizationId;
 	/**
      * @summary Search for External Contacts
 	 * @memberOf ExternalContactsApi#
@@ -667,7 +672,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} q - User supplied search keywords (no special syntax is currently supported)
 	* @param {string} sortOrder - Sort order
 	*/
-	function getExternalcontactsOrganizationContacts(externalOrganizationId, pageSize, pageNumber, q, sortOrder){
+	function getOrganizationsExternalorganizationIdContacts(externalOrganizationId, pageSize, pageNumber, q, sortOrder){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/contacts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -703,7 +708,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsOrganizationContacts = getExternalcontactsOrganizationContacts;
+	self.getOrganizationsExternalorganizationIdContacts = getOrganizationsExternalorganizationIdContacts;
 	/**
      * @summary List Notes for an External Organization
 	 * @memberOf ExternalContactsApi#
@@ -712,7 +717,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Sort order
 	*/
-	function getExternalcontactsOrganizationNotes(externalOrganizationId, pageSize, pageNumber, sortOrder){
+	function getOrganizationsExternalorganizationIdNotes(externalOrganizationId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -743,7 +748,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsOrganizationNotes = getExternalcontactsOrganizationNotes;
+	self.getOrganizationsExternalorganizationIdNotes = getOrganizationsExternalorganizationIdNotes;
 	/**
      * @summary Create a Note for an External Organization
 	 * @memberOf ExternalContactsApi#
@@ -758,7 +763,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "createDate": ""
 }
 	*/
-	function postExternalcontactsOrganizationNotes(externalOrganizationId, body){
+	function postOrganizationsExternalorganizationIdNotes(externalOrganizationId, body){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -778,14 +783,14 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postExternalcontactsOrganizationNotes = postExternalcontactsOrganizationNotes;
+	self.postOrganizationsExternalorganizationIdNotes = postOrganizationsExternalorganizationIdNotes;
 	/**
      * @summary Fetch a note
 	 * @memberOf ExternalContactsApi#
 	* @param {string} externalOrganizationId - External Organization Id
 	* @param {string} noteId - Note Id
 	*/
-	function getExternalcontactsOrganizationNote(externalOrganizationId, noteId){
+	function getOrganizationsExternalorganizationIdNotesNoteId(externalOrganizationId, noteId){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -807,7 +812,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsOrganizationNote = getExternalcontactsOrganizationNote;
+	self.getOrganizationsExternalorganizationIdNotesNoteId = getOrganizationsExternalorganizationIdNotesNoteId;
 	/**
      * @summary Update a note
 	 * @memberOf ExternalContactsApi#
@@ -823,7 +828,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "createDate": ""
 }
 	*/
-	function putExternalcontactsOrganizationNote(externalOrganizationId, noteId, body){
+	function putOrganizationsExternalorganizationIdNotesNoteId(externalOrganizationId, noteId, body){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -849,14 +854,14 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putExternalcontactsOrganizationNote = putExternalcontactsOrganizationNote;
+	self.putOrganizationsExternalorganizationIdNotesNoteId = putOrganizationsExternalorganizationIdNotesNoteId;
 	/**
      * @summary Delete a note
 	 * @memberOf ExternalContactsApi#
 	* @param {string} externalOrganizationId - External Organization Id
 	* @param {string} noteId - Note Id
 	*/
-	function deleteExternalcontactsOrganizationNote(externalOrganizationId, noteId){
+	function deleteOrganizationsExternalorganizationIdNotesNoteId(externalOrganizationId, noteId){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -878,7 +883,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteExternalcontactsOrganizationNote = deleteExternalcontactsOrganizationNote;
+	self.deleteOrganizationsExternalorganizationIdNotesNoteId = deleteOrganizationsExternalorganizationIdNotesNoteId;
 	/**
      * @summary Fetch an External Organization
 	 * @memberOf ExternalContactsApi#
@@ -887,7 +892,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Sort order
 	*/
-	function getExternalcontactsOrganizationRelationships(externalOrganizationId, pageSize, pageNumber, sortOrder){
+	function getOrganizationsExternalorganizationIdRelationships(externalOrganizationId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/relationships';
 	    var requestBody;
 	    var queryParameters = {};
@@ -918,7 +923,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsOrganizationRelationships = getExternalcontactsOrganizationRelationships;
+	self.getOrganizationsExternalorganizationIdRelationships = getOrganizationsExternalorganizationIdRelationships;
 	/**
      * @summary Create a relationship
 	 * @memberOf ExternalContactsApi#
@@ -970,7 +975,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "relationship": ""
 }
 	*/
-	function postExternalcontactsRelationships(body){
+	function postRelationships(body){
 		var apipath = '/api/v1/externalcontacts/relationships';
 	    var requestBody;
 	    var queryParameters = {};
@@ -984,13 +989,13 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postExternalcontactsRelationships = postExternalcontactsRelationships;
+	self.postRelationships = postRelationships;
 	/**
      * @summary Fetch a relationship
 	 * @memberOf ExternalContactsApi#
 	* @param {string} relationshipId - Relationship Id
 	*/
-	function getExternalcontactsRelationship(relationshipId){
+	function getRelationshipsRelationshipId(relationshipId){
 		var apipath = '/api/v1/externalcontacts/relationships/{relationshipId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1006,7 +1011,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getExternalcontactsRelationship = getExternalcontactsRelationship;
+	self.getRelationshipsRelationshipId = getRelationshipsRelationshipId;
 	/**
      * @summary Fetch a relationship
 	 * @memberOf ExternalContactsApi#
@@ -1059,7 +1064,7 @@ var ExternalContactsApi = function (pureCloudSession) {
    "relationship": ""
 }
 	*/
-	function putExternalcontactsRelationship(relationshipId, body){
+	function putRelationshipsRelationshipId(relationshipId, body){
 		var apipath = '/api/v1/externalcontacts/relationships/{relationshipId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1079,13 +1084,13 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putExternalcontactsRelationship = putExternalcontactsRelationship;
+	self.putRelationshipsRelationshipId = putRelationshipsRelationshipId;
 	/**
      * @summary Delete a relationship
 	 * @memberOf ExternalContactsApi#
 	* @param {string} relationshipId - Relationship Id
 	*/
-	function deleteExternalcontactsRelationship(relationshipId){
+	function deleteRelationshipsRelationshipId(relationshipId){
 		var apipath = '/api/v1/externalcontacts/relationships/{relationshipId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1101,7 +1106,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteExternalcontactsRelationship = deleteExternalcontactsRelationship;
+	self.deleteRelationshipsRelationshipId = deleteRelationshipsRelationshipId;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new UtilitiesApi(pureCloudSession);
 */
 var UtilitiesApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
@@ -15,7 +20,7 @@ var UtilitiesApi = function (pureCloudSession) {
    "certificate": ""
 }
 	*/
-	function postCertificateDetails(body){
+	function postDetails(body){
 		var apipath = '/api/v1/certificate/details';
 	    var requestBody;
 	    var queryParameters = {};
@@ -29,7 +34,7 @@ var UtilitiesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postCertificateDetails = postCertificateDetails;
+	self.postDetails = postDetails;
 	/**
      * @summary Validates a street address
 	 * @memberOf UtilitiesApi#
@@ -47,7 +52,7 @@ var UtilitiesApi = function (pureCloudSession) {
    }
 }
 	*/
-	function postConfigurationAddressvalidation(body){
+	function postAddressvalidation(body){
 		var apipath = '/api/v1/configuration/addressvalidation';
 	    var requestBody;
 	    var queryParameters = {};
@@ -61,12 +66,12 @@ var UtilitiesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postConfigurationAddressvalidation = postConfigurationAddressvalidation;
+	self.postAddressvalidation = postAddressvalidation;
 	/**
      * @summary Get the current system date/time
 	 * @memberOf UtilitiesApi#
 	*/
-	function getDate(){
+	function get(){
 		var apipath = '/api/v1/date';
 	    var requestBody;
 	    var queryParameters = {};
@@ -76,14 +81,29 @@ var UtilitiesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDate = getDate;
+	self.get = get;
+	/**
+     * @summary Get health.
+	 * @memberOf UtilitiesApi#
+	*/
+	function getCheck(){
+		var apipath = '/api/v1/health/check';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCheck = getCheck;
 	/**
      * @summary Get time zones list
 	 * @memberOf UtilitiesApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getTimezones(pageSize, pageNumber){
+	function get(pageSize, pageNumber){
 		var apipath = '/api/v1/timezones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -103,7 +123,7 @@ var UtilitiesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getTimezones = getTimezones;
+	self.get = get;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new AttributesApi(pureCloudSession);
 */
 var AttributesApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Gets a list of existing attributes.
@@ -11,7 +16,7 @@ var AttributesApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
 	*/
-	function getAttributes(pageNumber, pageSize){
+	function get(pageNumber, pageSize){
 		var apipath = '/api/v1/attributes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -31,7 +36,7 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getAttributes = getAttributes;
+	self.get = get;
 	/**
      * @summary Create an attribute.
 	 * @memberOf AttributesApi#
@@ -56,7 +61,7 @@ var AttributesApi = function (pureCloudSession) {
    "dateModified": ""
 }
 	*/
-	function postAttributes(body){
+	function post(body){
 		var apipath = '/api/v1/attributes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -70,7 +75,7 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postAttributes = postAttributes;
+	self.post = post;
 	/**
      * @summary Query attributes
 	 * @memberOf AttributesApi#
@@ -103,7 +108,7 @@ var AttributesApi = function (pureCloudSession) {
 	 * @memberOf AttributesApi#
 	* @param {string} attributeId - Attribute ID
 	*/
-	function get(attributeId){
+	function getAttributeId(attributeId){
 		var apipath = '/api/v1/attributes/{attributeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -119,7 +124,7 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getAttributeId = getAttributeId;
 	/**
      * @summary Update an existing attribute.
 	 * @description Fields that can be updated: name, description. The most recent version is required for updates.
@@ -146,7 +151,7 @@ var AttributesApi = function (pureCloudSession) {
    "dateModified": ""
 }
 	*/
-	function put(attributeId, body){
+	function putAttributeId(attributeId, body){
 		var apipath = '/api/v1/attributes/{attributeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -166,14 +171,14 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.put = put;
+	self.putAttributeId = putAttributeId;
 	/**
      * @summary Delete an existing Attribute.
 	 * @description This will remove attribute.
 	 * @memberOf AttributesApi#
 	* @param {string} attributeId - Attribute ID
 	*/
-	function performDelete(attributeId){
+	function deleteAttributeId(attributeId){
 		var apipath = '/api/v1/attributes/{attributeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -189,7 +194,7 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.performDelete = performDelete;
+	self.deleteAttributeId = deleteAttributeId;
 
     return self;
 };

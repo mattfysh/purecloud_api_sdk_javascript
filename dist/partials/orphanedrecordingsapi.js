@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new OrphanedRecordingsApi(pureCloudSession);
 */
 var OrphanedRecordingsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Gets all orphan recordings
@@ -13,7 +18,7 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
 	*/
-	function getOrphanrecordings(pageSize, pageNumber, sortBy, expand){
+	function get(pageSize, pageNumber, sortBy, expand){
 		var apipath = '/api/v1/orphanrecordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -43,13 +48,13 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOrphanrecordings = getOrphanrecordings;
+	self.get = get;
 	/**
      * @summary Gets a single orphan recording
 	 * @memberOf OrphanedRecordingsApi#
 	* @param {string} orphanId - Orphan ID
 	*/
-	function getOrphanrecording(orphanId){
+	function getOrphanId(orphanId){
 		var apipath = '/api/v1/orphanrecordings/{orphanId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -65,13 +70,13 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOrphanrecording = getOrphanrecording;
+	self.getOrphanId = getOrphanId;
 	/**
      * @summary  deletes a single orphan recording
 	 * @memberOf OrphanedRecordingsApi#
 	* @param {string} orphanId - Orphan ID
 	*/
-	function deleteOrphanrecording(orphanId){
+	function deleteOrphanId(orphanId){
 		var apipath = '/api/v1/orphanrecordings/{orphanId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -87,7 +92,7 @@ var OrphanedRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteOrphanrecording = deleteOrphanrecording;
+	self.deleteOrphanId = deleteOrphanId;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new QualityApi(pureCloudSession);
 */
 var QualityApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get all of a Conversation's Recordings.
@@ -15,7 +20,7 @@ var QualityApi = function (pureCloudSession) {
 	WEBM,
 	WAV,
 	*/
-	function getConversationRecordings(conversationId, maxWaitMs, formatId){
+	function getConversationIdRecordings(conversationId, maxWaitMs, formatId){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -41,7 +46,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationRecordings = getConversationRecordings;
+	self.getConversationIdRecordings = getConversationIdRecordings;
 	/**
      * @summary Gets a specific recording.
 	 * @memberOf QualityApi#
@@ -57,7 +62,7 @@ var QualityApi = function (pureCloudSession) {
 	false,
 	* @param {string} fileName - the name of the downloaded fileName
 	*/
-	function getConversationRecording(conversationId, recordingId, maxWaitMs, formatId, download, fileName){
+	function getConversationIdRecordingsRecordingId(conversationId, recordingId, maxWaitMs, formatId, download, fileName){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -99,7 +104,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationRecording = getConversationRecording;
+	self.getConversationIdRecordingsRecordingId = getConversationIdRecordingsRecordingId;
 	/**
      * @summary Updates the retention records on a recording.
 	 * @description Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. Use of the query parameter 'restoreDays' is deprecated and will be removed in the next major version release. If 'restoreDays' is provided, no attempt at updating other retention data will be made. To migrate to the new usage, issuing a request with restoreDays=10 would instead set the archiveDate's time stamp in the PUT body to 10 days in the future.
@@ -136,7 +141,7 @@ var QualityApi = function (pureCloudSession) {
    "recordingId": ""
 }
 	*/
-	function putConversationRecording(conversationId, recordingId, body, restoreDays){
+	function putConversationIdRecordingsRecordingId(conversationId, recordingId, body, restoreDays){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -171,14 +176,14 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putConversationRecording = putConversationRecording;
+	self.putConversationIdRecordingsRecordingId = putConversationIdRecordingsRecordingId;
 	/**
      * @summary Get annotations for recording
 	 * @memberOf QualityApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
 	*/
-	function getConversationRecordingAnnotations(conversationId, recordingId){
+	function getConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -200,7 +205,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationRecordingAnnotations = getConversationRecordingAnnotations;
+	self.getConversationIdRecordingsRecordingIdAnnotations = getConversationIdRecordingsRecordingIdAnnotations;
 	/**
      * @summary Create annotation
 	 * @memberOf QualityApi#
@@ -241,7 +246,7 @@ var QualityApi = function (pureCloudSession) {
    "description": ""
 }
 	*/
-	function postConversationRecordingAnnotations(conversationId, recordingId, body){
+	function postConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -267,7 +272,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postConversationRecordingAnnotations = postConversationRecordingAnnotations;
+	self.postConversationIdRecordingsRecordingIdAnnotations = postConversationIdRecordingsRecordingIdAnnotations;
 	/**
      * @summary Get annotation
 	 * @memberOf QualityApi#
@@ -275,7 +280,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} recordingId - Recording ID
 	* @param {string} annotationId - Annotation ID
 	*/
-	function getConversationRecordingAnnotation(conversationId, recordingId, annotationId){
+	function getConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -303,7 +308,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationRecordingAnnotation = getConversationRecordingAnnotation;
+	self.getConversationIdRecordingsRecordingIdAnnotationsAnnotationId = getConversationIdRecordingsRecordingIdAnnotationsAnnotationId;
 	/**
      * @summary Update annotation
 	 * @memberOf QualityApi#
@@ -345,7 +350,7 @@ var QualityApi = function (pureCloudSession) {
    "description": ""
 }
 	*/
-	function putConversationRecordingAnnotation(conversationId, recordingId, annotationId, body){
+	function putConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId, body){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -377,7 +382,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putConversationRecordingAnnotation = putConversationRecordingAnnotation;
+	self.putConversationIdRecordingsRecordingIdAnnotationsAnnotationId = putConversationIdRecordingsRecordingIdAnnotationsAnnotationId;
 	/**
      * @summary Delete annotation
 	 * @memberOf QualityApi#
@@ -385,7 +390,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} recordingId - Recording ID
 	* @param {string} annotationId - Annotation ID
 	*/
-	function deleteConversationRecordingAnnotation(conversationId, recordingId, annotationId){
+	function deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
 		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -413,7 +418,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteConversationRecordingAnnotation = deleteConversationRecordingAnnotation;
+	self.deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId = deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId;
 	/**
      * @summary Gets a list of Agent Activities
 	 * @description Including the number of evaluations and average evaluation score
@@ -707,7 +712,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} calibrationId - Calibration ID
 	* @param {string} calibratorId - calibratorId
 	*/
-	function getCalibration(calibrationId, calibratorId){
+	function getCalibrationsCalibrationId(calibrationId, calibratorId){
 		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -728,7 +733,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCalibration = getCalibration;
+	self.getCalibrationsCalibrationId = getCalibrationsCalibrationId;
 	/**
      * @summary Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
 	 * @memberOf QualityApi#
@@ -857,7 +862,7 @@ var QualityApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putCalibration(calibrationId, body){
+	function putCalibrationsCalibrationId(calibrationId, body){
 		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -877,14 +882,14 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putCalibration = putCalibration;
+	self.putCalibrationsCalibrationId = putCalibrationsCalibrationId;
 	/**
      * @summary Delete a calibration by id.
 	 * @memberOf QualityApi#
 	* @param {string} calibrationId - Calibration ID
 	* @param {string} calibratorId - calibratorId
 	*/
-	function deleteCalibration(calibrationId, calibratorId){
+	function deleteCalibrationsCalibrationId(calibrationId, calibratorId){
 		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -905,7 +910,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteCalibration = deleteCalibration;
+	self.deleteCalibrationsCalibrationId = deleteCalibrationsCalibrationId;
 	/**
      * @summary Get audits for conversation or recording
 	 * @memberOf QualityApi#
@@ -917,7 +922,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} recordingId - id of the recording
 	* @param {string} entityType - entity type options: Recording, Calibration, Evaluation, Annotation
 	*/
-	function getConversationAudits(conversationId, pageSize, pageNumber, sortBy, expand, recordingId, entityType){
+	function getConversationsConversationIdAudits(conversationId, pageSize, pageNumber, sortBy, expand, recordingId, entityType){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
@@ -963,7 +968,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationAudits = getConversationAudits;
+	self.getConversationsConversationIdAudits = getConversationsConversationIdAudits;
 	/**
      * @summary Create an evaluation
 	 * @memberOf QualityApi#
@@ -1098,7 +1103,7 @@ var QualityApi = function (pureCloudSession) {
    "isScoringIndex": true
 }
 	*/
-	function postConversationEvaluations(conversationId, body, expand){
+	function postConversationsConversationIdEvaluations(conversationId, body, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1123,7 +1128,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postConversationEvaluations = postConversationEvaluations;
+	self.postConversationsConversationIdEvaluations = postConversationsConversationIdEvaluations;
 	/**
      * @summary Get an evaluation
 	 * @memberOf QualityApi#
@@ -1131,7 +1136,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} evaluationId - 
 	* @param {string} expand - agent, evaluator, evaluationForm
 	*/
-	function getConversationEvaluation(conversationId, evaluationId, expand){
+	function getConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1158,7 +1163,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConversationEvaluation = getConversationEvaluation;
+	self.getConversationsConversationIdEvaluationsEvaluationId = getConversationsConversationIdEvaluationsEvaluationId;
 	/**
      * @summary Update an evaluation
 	 * @memberOf QualityApi#
@@ -1294,7 +1299,7 @@ var QualityApi = function (pureCloudSession) {
    "isScoringIndex": true
 }
 	*/
-	function putConversationEvaluation(conversationId, evaluationId, body, expand){
+	function putConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, body, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1325,7 +1330,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putConversationEvaluation = putConversationEvaluation;
+	self.putConversationsConversationIdEvaluationsEvaluationId = putConversationsConversationIdEvaluationsEvaluationId;
 	/**
      * @summary Delete an evaluation
 	 * @memberOf QualityApi#
@@ -1333,7 +1338,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} evaluationId - 
 	* @param {string} expand - evaluatorId
 	*/
-	function deleteConversationEvaluation(conversationId, evaluationId, expand){
+	function deleteConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
 		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1360,7 +1365,7 @@ var QualityApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteConversationEvaluation = deleteConversationEvaluation;
+	self.deleteConversationsConversationIdEvaluationsEvaluationId = deleteConversationsConversationIdEvaluationsEvaluationId;
 	/**
      * @summary Queries Evaluations and returns a paged list
 	 * @description Query params must include one of conversationId, evaluatorUserId, or agentUserId

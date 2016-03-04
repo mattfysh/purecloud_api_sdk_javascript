@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new UserRecordingsApi(pureCloudSession);
 */
 var UserRecordingsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get a list of user recordings.
@@ -12,7 +17,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} expand - conversation
 	*/
-	function getUserrecordings(pageSize, pageNumber, expand){
+	function get(pageSize, pageNumber, expand){
 		var apipath = '/api/v1/userrecordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -37,12 +42,12 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserrecordings = getUserrecordings;
+	self.get = get;
 	/**
      * @summary Get user recording summary
 	 * @memberOf UserRecordingsApi#
 	*/
-	function getUserrecordingsSummary(){
+	function getSummary(){
 		var apipath = '/api/v1/userrecordings/summary';
 	    var requestBody;
 	    var queryParameters = {};
@@ -52,14 +57,14 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserrecordingsSummary = getUserrecordingsSummary;
+	self.getSummary = getSummary;
 	/**
      * @summary Get a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	* @param {string} expand - conversation
 	*/
-	function getUserrecording(recordingId, expand){
+	function getRecordingId(recordingId, expand){
 		var apipath = '/api/v1/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -80,7 +85,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserrecording = getUserrecording;
+	self.getRecordingId = getRecordingId;
 	/**
      * @summary Update a user recording.
 	 * @memberOf UserRecordingsApi#
@@ -120,7 +125,7 @@ var UserRecordingsApi = function (pureCloudSession) {
    "read": true
 }
 	*/
-	function putUserrecording(recordingId, body, expand){
+	function putRecordingId(recordingId, body, expand){
 		var apipath = '/api/v1/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -145,13 +150,13 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putUserrecording = putUserrecording;
+	self.putRecordingId = putRecordingId;
 	/**
      * @summary Delete a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
 	*/
-	function deleteUserrecording(recordingId){
+	function deleteRecordingId(recordingId){
 		var apipath = '/api/v1/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -167,7 +172,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteUserrecording = deleteUserrecording;
+	self.deleteRecordingId = deleteRecordingId;
 	/**
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
@@ -176,7 +181,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	WEBM,
 	WAV,
 	*/
-	function getUserrecordingMedia(recordingId, formatId){
+	function getRecordingIdMedia(recordingId, formatId){
 		var apipath = '/api/v1/userrecordings/{recordingId}/media';
 	    var requestBody;
 	    var queryParameters = {};
@@ -197,7 +202,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserrecordingMedia = getUserrecordingMedia;
+	self.getRecordingIdMedia = getRecordingIdMedia;
 
     return self;
 };

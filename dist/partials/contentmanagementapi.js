@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ContentManagementApi(pureCloudSession);
 */
 var ContentManagementApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Query audits
@@ -21,7 +26,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "attributeFilters": []
 }
 	*/
-	function postContentmanagementAuditquery(body){
+	function postAuditquery(body){
 		var apipath = '/api/v1/contentmanagement/auditquery';
 	    var requestBody;
 	    var queryParameters = {};
@@ -39,7 +44,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementAuditquery = postContentmanagementAuditquery;
+	self.postAuditquery = postAuditquery;
 	/**
      * @summary Get a list of documents.
 	 * @memberOf ContentManagementApi#
@@ -53,7 +58,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} sortBy - name or dateCreated
 	* @param {string} sortOrder - ascending or descending
 	*/
-	function getContentmanagementDocuments(workspaceId, name, expand, pageSize, pageNumber, sortBy, sortOrder){
+	function getDocuments(workspaceId, name, expand, pageSize, pageNumber, sortBy, sortOrder){
 		var apipath = '/api/v1/contentmanagement/documents';
 	    var requestBody;
 	    var queryParameters = {};
@@ -102,7 +107,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementDocuments = getContentmanagementDocuments;
+	self.getDocuments = getDocuments;
 	/**
      * @summary Add a document.
 	 * @memberOf ContentManagementApi#
@@ -123,7 +128,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "tagIds": []
 }
 	*/
-	function postContentmanagementDocuments(body, copySource, moveSource, override){
+	function postDocuments(body, copySource, moveSource, override){
 		var apipath = '/api/v1/contentmanagement/documents';
 	    var requestBody;
 	    var queryParameters = {};
@@ -152,7 +157,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementDocuments = postContentmanagementDocuments;
+	self.postDocuments = postDocuments;
 	/**
      * @summary Get a document.
 	 * @memberOf ContentManagementApi#
@@ -162,7 +167,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	acl,
 	workspace,
 	*/
-	function getContentmanagementDocument(documentId, expand){
+	function getDocumentsDocumentId(documentId, expand){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -183,7 +188,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementDocument = getContentmanagementDocument;
+	self.getDocumentsDocumentId = getDocumentsDocumentId;
 	/**
      * @summary Update a document.
 	 * @memberOf ContentManagementApi#
@@ -206,7 +211,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "removeAttributes": []
 }
 	*/
-	function postContentmanagementDocument(documentId, body, expand, override){
+	function postDocumentsDocumentId(documentId, body, expand, override){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -236,14 +241,14 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementDocument = postContentmanagementDocument;
+	self.postDocumentsDocumentId = postDocumentsDocumentId;
 	/**
      * @summary Delete a document.
 	 * @memberOf ContentManagementApi#
 	* @param {string} documentId - Document ID
 	* @param {boolean} override - Override any lock on the document
 	*/
-	function deleteContentmanagementDocument(documentId, override){
+	function deleteDocumentsDocumentId(documentId, override){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -264,7 +269,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContentmanagementDocument = deleteContentmanagementDocument;
+	self.deleteDocumentsDocumentId = deleteDocumentsDocumentId;
 	/**
      * @summary Get a list of audits for a document.
 	 * @memberOf ContentManagementApi#
@@ -276,7 +281,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	* @param {string} sortOrder - Sort order
 	*/
-	function getContentmanagementDocumentAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder){
+	function getDocumentsDocumentIdAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
@@ -322,7 +327,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementDocumentAudits = getContentmanagementDocumentAudits;
+	self.getDocumentsDocumentIdAudits = getDocumentsDocumentIdAudits;
 	/**
      * @summary Download a document.
 	 * @memberOf ContentManagementApi#
@@ -332,7 +337,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	inline,
 	* @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	*/
-	function getContentmanagementDocumentContent(documentId, disposition, contentType){
+	function getDocumentsDocumentIdContent(documentId, disposition, contentType){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -358,7 +363,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementDocumentContent = getContentmanagementDocumentContent;
+	self.getDocumentsDocumentIdContent = getDocumentsDocumentIdContent;
 	/**
      * @summary Replace the contents of a document.
 	 * @memberOf ContentManagementApi#
@@ -373,7 +378,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "authToken": ""
 }
 	*/
-	function postContentmanagementDocumentContent(documentId, body, override){
+	function postDocumentsDocumentIdContent(documentId, body, override){
 		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -398,7 +403,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementDocumentContent = postContentmanagementDocumentContent;
+	self.postDocumentsDocumentIdContent = postDocumentsDocumentIdContent;
 	/**
      * @summary Query content
 	 * @memberOf ContentManagementApi#
@@ -411,7 +416,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	acl,
 	workspace,
 	*/
-	function getContentmanagementQuery(pageSize, pageNumber, sortBy, sortOrder, queryPhrase, expand){
+	function getQuery(pageSize, pageNumber, sortBy, sortOrder, queryPhrase, expand){
 		var apipath = '/api/v1/contentmanagement/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -455,7 +460,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementQuery = getContentmanagementQuery;
+	self.getQuery = getQuery;
 	/**
      * @summary Query content
 	 * @memberOf ContentManagementApi#
@@ -475,7 +480,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "attributeFilters": []
 }
 	*/
-	function postContentmanagementQuery(body, expand){
+	function postQuery(body, expand){
 		var apipath = '/api/v1/contentmanagement/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -498,12 +503,12 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementQuery = postContentmanagementQuery;
+	self.postQuery = postQuery;
 	/**
      * @summary Get a List of Security Profiles
 	 * @memberOf ContentManagementApi#
 	*/
-	function getContentmanagementSecurityprofiles(){
+	function getSecurityprofiles(){
 		var apipath = '/api/v1/contentmanagement/securityprofiles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -513,13 +518,13 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementSecurityprofiles = getContentmanagementSecurityprofiles;
+	self.getSecurityprofiles = getSecurityprofiles;
 	/**
      * @summary Get a Security Profile
 	 * @memberOf ContentManagementApi#
 	* @param {string} securityProfileId - Security Profile Id
 	*/
-	function getContentmanagementSecurityprofile(securityProfileId){
+	function getSecurityprofilesSecurityprofileId(securityProfileId){
 		var apipath = '/api/v1/contentmanagement/securityprofiles/{securityProfileId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -535,7 +540,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementSecurityprofile = getContentmanagementSecurityprofile;
+	self.getSecurityprofilesSecurityprofileId = getSecurityprofilesSecurityprofileId;
 	/**
      * @summary Get shared documents. Securely download a shared document.
 	 * @description This method requires the download sharing URI obtained in the get document response (downloadSharingUri). Documents may be shared between users in the same workspace. Documents may also be shared between any user by creating a content management share.
@@ -550,7 +555,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand some document fields
 	document.acl,
 	*/
-	function getContentmanagementShared(sharedId, redirect, disposition, contentType, expand){
+	function getSharedSharedId(sharedId, redirect, disposition, contentType, expand){
 		var apipath = '/api/v1/contentmanagement/shared/{sharedId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -586,7 +591,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementShared = getContentmanagementShared;
+	self.getSharedSharedId = getSharedSharedId;
 	/**
      * @summary Gets a list of shares.  You must specify at least one filter (e.g. entityId).
 	 * @description Failing to specify a filter will return 400.
@@ -597,7 +602,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getContentmanagementShares(entityId, expand, pageSize, pageNumber){
+	function getShares(entityId, expand, pageSize, pageNumber){
 		var apipath = '/api/v1/contentmanagement/shares';
 	    var requestBody;
 	    var queryParameters = {};
@@ -627,7 +632,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementShares = getContentmanagementShares;
+	self.getShares = getShares;
 	/**
      * @summary Creates a new share or updates an existing share if the entity has already been shared
 	 * @memberOf ContentManagementApi#
@@ -637,22 +642,20 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "memberType": "",
    "member": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "members": []
 }
 	*/
-	function postContentmanagementShares(body){
+	function postShares(body){
 		var apipath = '/api/v1/contentmanagement/shares';
 	    var requestBody;
 	    var queryParameters = {};
@@ -666,7 +669,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementShares = postContentmanagementShares;
+	self.postShares = postShares;
 	/**
      * @summary Retrieve details about an existing share.
 	 * @memberOf ContentManagementApi#
@@ -674,7 +677,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand share fields
 	member,
 	*/
-	function getContentmanagementShare(shareId, expand){
+	function getSharesShareId(shareId, expand){
 		var apipath = '/api/v1/contentmanagement/shares/{shareId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -695,14 +698,14 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementShare = getContentmanagementShare;
+	self.getSharesShareId = getSharesShareId;
 	/**
      * @summary Deletes an existing share.
 	 * @description This revokes sharing rights specified in the share record
 	 * @memberOf ContentManagementApi#
 	* @param {string} shareId - Share ID
 	*/
-	function deleteContentmanagementShare(shareId){
+	function deleteSharesShareId(shareId){
 		var apipath = '/api/v1/contentmanagement/shares/{shareId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -718,14 +721,14 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContentmanagementShare = deleteContentmanagementShare;
+	self.deleteSharesShareId = deleteSharesShareId;
 	/**
      * @summary Get a list of statuses for pending operations
 	 * @memberOf ContentManagementApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getContentmanagementStatus(pageSize, pageNumber){
+	function getStatus(pageSize, pageNumber){
 		var apipath = '/api/v1/contentmanagement/status';
 	    var requestBody;
 	    var queryParameters = {};
@@ -745,13 +748,13 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementStatus = getContentmanagementStatus;
+	self.getStatus = getStatus;
 	/**
      * @summary Get a status.
 	 * @memberOf ContentManagementApi#
 	* @param {string} statusId - Status ID
 	*/
-	function getContentmanagementStatu(statusId){
+	function getStatusStatusId(statusId){
 		var apipath = '/api/v1/contentmanagement/status/{statusId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -767,13 +770,13 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementStatu = getContentmanagementStatu;
+	self.getStatusStatusId = getStatusStatusId;
 	/**
      * @summary Cancel the command for this status
 	 * @memberOf ContentManagementApi#
 	* @param {string} statusId - Status ID
 	*/
-	function deleteContentmanagementStatu(statusId){
+	function deleteStatusStatusId(statusId){
 		var apipath = '/api/v1/contentmanagement/status/{statusId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -789,7 +792,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContentmanagementStatu = deleteContentmanagementStatu;
+	self.deleteStatusStatusId = deleteStatusStatusId;
 	/**
      * @summary Get a list of workspaces.
 	 * @description Specifying 'content' access will return all workspaces the user has document access to, while 'admin' access will return all group workspaces the user has administrative rights to.
@@ -822,7 +825,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	summary,
 	acl,
 	*/
-	function getContentmanagementWorkspaces(pageSize, pageNumber, access, expand){
+	function getWorkspaces(pageSize, pageNumber, access, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces';
 	    var requestBody;
 	    var queryParameters = {};
@@ -852,7 +855,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementWorkspaces = getContentmanagementWorkspaces;
+	self.getWorkspaces = getWorkspaces;
 	/**
      * @summary Create a group workspace
 	 * @memberOf ContentManagementApi#
@@ -864,7 +867,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "bucket": ""
 }
 	*/
-	function postContentmanagementWorkspaces(body){
+	function postWorkspaces(body){
 		var apipath = '/api/v1/contentmanagement/workspaces';
 	    var requestBody;
 	    var queryParameters = {};
@@ -878,7 +881,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementWorkspaces = postContentmanagementWorkspaces;
+	self.postWorkspaces = postWorkspaces;
 	/**
      * @summary Get a workspace.
 	 * @memberOf ContentManagementApi#
@@ -887,7 +890,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	summary,
 	acl,
 	*/
-	function getContentmanagementWorkspace(workspaceId, expand){
+	function getWorkspacesWorkspaceId(workspaceId, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -908,7 +911,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementWorkspace = getContentmanagementWorkspace;
+	self.getWorkspacesWorkspaceId = getWorkspacesWorkspaceId;
 	/**
      * @summary Update a workspace
 	 * @memberOf ContentManagementApi#
@@ -934,7 +937,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "acl": []
 }
 	*/
-	function putContentmanagementWorkspace(workspaceId, body){
+	function putWorkspacesWorkspaceId(workspaceId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -954,14 +957,14 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putContentmanagementWorkspace = putContentmanagementWorkspace;
+	self.putWorkspacesWorkspaceId = putWorkspacesWorkspaceId;
 	/**
      * @summary Delete a workspace
 	 * @memberOf ContentManagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} moveChildrenToWorkspaceId - New location for objects in deleted workspace.
 	*/
-	function deleteContentmanagementWorkspace(workspaceId, moveChildrenToWorkspaceId){
+	function deleteWorkspacesWorkspaceId(workspaceId, moveChildrenToWorkspaceId){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -982,7 +985,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContentmanagementWorkspace = deleteContentmanagementWorkspace;
+	self.deleteWorkspacesWorkspaceId = deleteWorkspacesWorkspaceId;
 	/**
      * @summary Get a list workspace members
 	 * @memberOf ContentManagementApi#
@@ -992,7 +995,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand workspace member fields
 	member,
 	*/
-	function getContentmanagementWorkspaceMembers(workspaceId, pageSize, pageNumber, expand){
+	function getWorkspacesWorkspaceIdMembers(workspaceId, pageSize, pageNumber, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1023,7 +1026,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementWorkspaceMembers = getContentmanagementWorkspaceMembers;
+	self.getWorkspacesWorkspaceIdMembers = getWorkspacesWorkspaceIdMembers;
 	/**
      * @summary Get a workspace member
 	 * @memberOf ContentManagementApi#
@@ -1032,7 +1035,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand workspace member fields
 	member,
 	*/
-	function getContentmanagementWorkspaceMember(workspaceId, memberId, expand){
+	function getWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1059,7 +1062,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementWorkspaceMember = getContentmanagementWorkspaceMember;
+	self.getWorkspacesWorkspaceIdMembersMemberId = getWorkspacesWorkspaceIdMembersMemberId;
 	/**
      * @summary Add a member to a workspace
 	 * @memberOf ContentManagementApi#
@@ -1119,7 +1122,7 @@ var ContentManagementApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putContentmanagementWorkspaceMember(workspaceId, memberId, body){
+	function putWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1145,14 +1148,14 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putContentmanagementWorkspaceMember = putContentmanagementWorkspaceMember;
+	self.putWorkspacesWorkspaceIdMembersMemberId = putWorkspacesWorkspaceIdMembersMemberId;
 	/**
      * @summary Delete a member from a workspace
 	 * @memberOf ContentManagementApi#
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} memberId - Member ID
 	*/
-	function deleteContentmanagementWorkspaceMember(workspaceId, memberId){
+	function deleteWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1174,7 +1177,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContentmanagementWorkspaceMember = deleteContentmanagementWorkspaceMember;
+	self.deleteWorkspacesWorkspaceIdMembersMemberId = deleteWorkspacesWorkspaceIdMembersMemberId;
 	/**
      * @summary Get a list of workspace tags
 	 * @memberOf ContentManagementApi#
@@ -1185,7 +1188,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand some document fields
 	acl,
 	*/
-	function getContentmanagementWorkspaceTagvalues(workspaceId, value, pageSize, pageNumber, expand){
+	function getWorkspacesWorkspaceIdTagvalues(workspaceId, value, pageSize, pageNumber, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1221,7 +1224,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementWorkspaceTagvalues = getContentmanagementWorkspaceTagvalues;
+	self.getWorkspacesWorkspaceIdTagvalues = getWorkspacesWorkspaceIdTagvalues;
 	/**
      * @summary Create a workspace tag
 	 * @memberOf ContentManagementApi#
@@ -1235,7 +1238,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "acl": []
 }
 	*/
-	function postContentmanagementWorkspaceTagvalues(workspaceId, body){
+	function postWorkspacesWorkspaceIdTagvalues(workspaceId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1255,7 +1258,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementWorkspaceTagvalues = postContentmanagementWorkspaceTagvalues;
+	self.postWorkspacesWorkspaceIdTagvalues = postWorkspacesWorkspaceIdTagvalues;
 	/**
      * @summary Perform a prefix query on tags in the workspace
 	 * @memberOf ContentManagementApi#
@@ -1271,7 +1274,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "pageSize": 0
 }
 	*/
-	function postContentmanagementWorkspaceTagvaluesQuery(workspaceId, body, expand){
+	function postWorkspacesWorkspaceIdTagvaluesQuery(workspaceId, body, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1296,7 +1299,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postContentmanagementWorkspaceTagvaluesQuery = postContentmanagementWorkspaceTagvaluesQuery;
+	self.postWorkspacesWorkspaceIdTagvaluesQuery = postWorkspacesWorkspaceIdTagvaluesQuery;
 	/**
      * @summary Get a workspace tag
 	 * @memberOf ContentManagementApi#
@@ -1305,7 +1308,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} expand - Expand some document fields
 	acl,
 	*/
-	function getContentmanagementWorkspaceTagvalue(workspaceId, tagId, expand){
+	function getWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId, expand){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1332,7 +1335,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getContentmanagementWorkspaceTagvalue = getContentmanagementWorkspaceTagvalue;
+	self.getWorkspacesWorkspaceIdTagvaluesTagId = getWorkspacesWorkspaceIdTagvaluesTagId;
 	/**
      * @summary Update a workspace tag. Will update all documents with the new tag value.
 	 * @memberOf ContentManagementApi#
@@ -1347,7 +1350,7 @@ var ContentManagementApi = function (pureCloudSession) {
    "acl": []
 }
 	*/
-	function putContentmanagementWorkspaceTagvalue(workspaceId, tagId, body){
+	function putWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId, body){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1373,7 +1376,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putContentmanagementWorkspaceTagvalue = putContentmanagementWorkspaceTagvalue;
+	self.putWorkspacesWorkspaceIdTagvaluesTagId = putWorkspacesWorkspaceIdTagvaluesTagId;
 	/**
      * @summary Delete workspace tag
 	 * @description Delete a tag from a workspace. Will remove this tag from all documents.
@@ -1381,7 +1384,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} workspaceId - Workspace ID
 	* @param {string} tagId - Tag ID
 	*/
-	function deleteContentmanagementWorkspaceTagvalue(workspaceId, tagId){
+	function deleteWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId){
 		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1403,7 +1406,7 @@ var ContentManagementApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteContentmanagementWorkspaceTagvalue = deleteContentmanagementWorkspaceTagvalue;
+	self.deleteWorkspacesWorkspaceIdTagvaluesTagId = deleteWorkspacesWorkspaceIdTagvaluesTagId;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ScriptsApi(pureCloudSession);
 */
 var ScriptsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get the list of evaluation forms
@@ -15,7 +20,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} expand - Expand
 	* @param {string} name - Name
 	*/
-	function getQualityForms(pageSize, pageNumber, sortBy, expand, expand, name){
+	function getForms(pageSize, pageNumber, sortBy, expand, expand, name){
 		var apipath = '/api/v1/quality/forms';
 	    var requestBody;
 	    var queryParameters = {};
@@ -55,7 +60,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQualityForms = getQualityForms;
+	self.getForms = getForms;
 	/**
      * @summary Create an evaluation form.
 	 * @memberOf ScriptsApi#
@@ -83,7 +88,7 @@ var ScriptsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function postQualityForms(body){
+	function postForms(body){
 		var apipath = '/api/v1/quality/forms';
 	    var requestBody;
 	    var queryParameters = {};
@@ -97,13 +102,13 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postQualityForms = postQualityForms;
+	self.postForms = postForms;
 	/**
      * @summary Get an evaluation form
 	 * @memberOf ScriptsApi#
 	* @param {string} formId - Form ID
 	*/
-	function getQualityForm(formId){
+	function getFormsFormId(formId){
 		var apipath = '/api/v1/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -119,7 +124,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQualityForm = getQualityForm;
+	self.getFormsFormId = getFormsFormId;
 	/**
      * @summary Update an evaluation form.
 	 * @memberOf ScriptsApi#
@@ -148,7 +153,7 @@ var ScriptsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putQualityForm(formId, body){
+	function putFormsFormId(formId, body){
 		var apipath = '/api/v1/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -168,13 +173,13 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putQualityForm = putQualityForm;
+	self.putFormsFormId = putFormsFormId;
 	/**
      * @summary Delete an evaluation form.
 	 * @memberOf ScriptsApi#
 	* @param {string} formId - Form ID
 	*/
-	function deleteQualityForm(formId){
+	function deleteFormsFormId(formId){
 		var apipath = '/api/v1/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -190,7 +195,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteQualityForm = deleteQualityForm;
+	self.deleteFormsFormId = deleteFormsFormId;
 	/**
      * @summary Gets all the revisions for a specific evaluation.
 	 * @memberOf ScriptsApi#
@@ -198,7 +203,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getQualityFormVersions(formId, pageSize, pageNumber){
+	function getFormsFormIdVersions(formId, pageSize, pageNumber){
 		var apipath = '/api/v1/quality/forms/{formId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -224,7 +229,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQualityFormVersions = getQualityFormVersions;
+	self.getFormsFormIdVersions = getFormsFormIdVersions;
 	/**
      * @summary Get the published evaluation forms.
 	 * @memberOf ScriptsApi#
@@ -232,7 +237,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} name - Name
 	*/
-	function getQualityPublishedforms(pageSize, pageNumber, name){
+	function getPublishedforms(pageSize, pageNumber, name){
 		var apipath = '/api/v1/quality/publishedforms';
 	    var requestBody;
 	    var queryParameters = {};
@@ -257,7 +262,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQualityPublishedforms = getQualityPublishedforms;
+	self.getPublishedforms = getPublishedforms;
 	/**
      * @summary Publish an evaluation form.
 	 * @memberOf ScriptsApi#
@@ -285,7 +290,7 @@ var ScriptsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function postQualityPublishedforms(body){
+	function postPublishedforms(body){
 		var apipath = '/api/v1/quality/publishedforms';
 	    var requestBody;
 	    var queryParameters = {};
@@ -299,13 +304,13 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postQualityPublishedforms = postQualityPublishedforms;
+	self.postPublishedforms = postPublishedforms;
 	/**
      * @summary Get the published evaluation forms.
 	 * @memberOf ScriptsApi#
 	* @param {string} formId - Form ID
 	*/
-	function getQualityPublishedform(formId){
+	function getPublishedformsFormId(formId){
 		var apipath = '/api/v1/quality/publishedforms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -321,7 +326,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQualityPublishedform = getQualityPublishedform;
+	self.getPublishedformsFormId = getPublishedformsFormId;
 	/**
      * @summary Get the list of scripts
 	 * @memberOf ScriptsApi#
@@ -331,7 +336,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} name - Name
 	* @param {string} feature - Feature
 	*/
-	function getScripts(pageSize, pageNumber, expand, name, feature){
+	function get(pageSize, pageNumber, expand, name, feature){
 		var apipath = '/api/v1/scripts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -366,13 +371,13 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getScripts = getScripts;
+	self.get = get;
 	/**
      * @summary Create a script.
 	 * @memberOf ScriptsApi#
 	* @param {} body - 
 	*/
-	function postScripts(body){
+	function post(body){
 		var apipath = '/api/v1/scripts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -386,7 +391,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postScripts = postScripts;
+	self.post = post;
 
     return self;
 };

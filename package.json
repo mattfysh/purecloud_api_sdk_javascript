@@ -1,6 +1,6 @@
 {
   "name": "purecloud_api_sdk_javascript",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "dependencies": {
@@ -28,8 +28,7 @@
     "rifraf": "~2.0.2",
     "run-sequence": "1.1.5",
     "shelljs": "~0.5.3",
-    "wgetjs": "*",
-    "jasmine" : "^2.4.1"
+    "wgetjs": "*"
   },
   "scripts": {
     "test": "jasmine"

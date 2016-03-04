@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new NotificationsApi(pureCloudSession);
 */
 var NotificationsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get available notification topics.
@@ -56,7 +61,7 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	*/
-	function getChannelSubscriptions(channelId){
+	function getChannelsChannelIdSubscriptions(channelId){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -72,14 +77,14 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getChannelSubscriptions = getChannelSubscriptions;
+	self.getChannelsChannelIdSubscriptions = getChannelsChannelIdSubscriptions;
 	/**
      * @summary Add a list of subscriptions to the existing list of subscriptions
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
 	*/
-	function postChannelSubscriptions(channelId, body){
+	function postChannelsChannelIdSubscriptions(channelId, body){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -99,14 +104,14 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postChannelSubscriptions = postChannelSubscriptions;
+	self.postChannelsChannelIdSubscriptions = postChannelsChannelIdSubscriptions;
 	/**
      * @summary Replace the current list of subscriptions with a new list.
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
 	*/
-	function putChannelSubscriptions(channelId, body){
+	function putChannelsChannelIdSubscriptions(channelId, body){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -126,13 +131,13 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putChannelSubscriptions = putChannelSubscriptions;
+	self.putChannelsChannelIdSubscriptions = putChannelsChannelIdSubscriptions;
 	/**
      * @summary Remove all subscriptions
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	*/
-	function deleteChannelSubscriptions(channelId){
+	function deleteChannelsChannelIdSubscriptions(channelId){
 		var apipath = '/api/v1/notifications/channels/{channelId}/subscriptions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -148,7 +153,7 @@ var NotificationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteChannelSubscriptions = deleteChannelSubscriptions;
+	self.deleteChannelsChannelIdSubscriptions = deleteChannelsChannelIdSubscriptions;
 
     return self;
 };
