@@ -276,18 +276,6 @@ gulp.task('clean:dist', function(){
 
 gulp.task('clean', ['clean:doc', 'clean:dist', 'clean:gen']);
 
-gulp.task('download', function(){
-    var url = "https://api.mypurecloud.com/api/v1/docs/swagger  ";
-
-    var download = require("gulp-download");
-
-    return download(url)
-        .pipe(rename(function (path) {
-          path.basename = path.basename + ".json"
-        }))
-        .pipe(gulp.dest("."));
-});
-
 gulp.task('build', ['clean'], function() {
 
     if (!fileExists("gen")) {
@@ -306,13 +294,14 @@ gulp.task('build', ['clean'], function() {
         swagger: swagger,
     });
 
+    var version = process.env.SDK_VERSION;
+    
     _.forEach(data.methods, function(moduledata){
+        moduledata.version = version;
         var source = Mustache.render(fs.readFileSync('templates/module.mustache', 'utf-8'), moduledata);
         source = source.replace(/&#x2F;/g,'/')
         fs.writeFileSync("gen/" + moduledata.moduleName + ".js", source);
     });
-
-    var version = process.env.SDK_VERSION;
 
     if(!version){
         version = pclibSwaggerVersion.getVersionString("version.json");
