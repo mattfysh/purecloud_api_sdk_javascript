@@ -18,6 +18,7 @@ function assert(condition, message){
 
 function fail(message){
     console.log(message);
+    console.log("UNIT TESTS DID NOT PASS")
     process.exit(1);
 }
 
@@ -42,7 +43,7 @@ function test_users_and_status(){
     var presenceApi = new pureCloud.PresenceApi(pureCloudSession);
     var presenceMap = {};
 
-    usersApi.getUsers().done(function(users){
+    usersApi.get().done(function(users){
         var user = users.entities[0];
         var userId = user.id;
         var userStatusName = user.status.name;
@@ -50,7 +51,7 @@ function test_users_and_status(){
 
         var newStatus = (userStatusName == "Offline" || userStatusName == "Available") ? "AWAY" : "AVAILABLE"
 
-        presenceApi.getPresencedefinitions().done(function(presenceData){
+        presenceApi.get().done(function(presenceData){
             for (var x=0; x< Object.keys(presenceData.entities).length; x++){
                 var presence = presenceData.entities[x];
                 presenceMap[presence.systemPresence] = presence.id;
@@ -64,9 +65,9 @@ function test_users_and_status(){
 
             console.log("updating status to " + newStatus);
 
-            presenceApi.putUserPresences(userId, "PURECLOUD", setPresence).done(function(){
+            presenceApi.patchUserIdPresencesSource(userId, "PURECLOUD", setPresence).done(function(){
                 setTimeout(function(){
-                    usersApi.get(userId).done(function(updatedUser){
+                    usersApi.getUserId(userId).done(function(updatedUser){
 
                         var newUserStatusName = updatedUser.status.name;
 
