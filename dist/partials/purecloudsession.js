@@ -1,3 +1,4 @@
+//API VERSION - 0.24.0
 /**
 * @description PureCloud API
 * @class
@@ -252,6 +253,8 @@ var PureCloudSession =  function (purecloudEnvironment) {
              headers: {
                  'Accept': 'application/json',
                  'Content-Type': 'application/json',
+                 'User-Agent' : "PureCloud SDK/Javascript 0.24.0",
+                 'X-User-Agent' : "PureCloud SDK/Javascript 0.24.0"
              },
              beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + _token);},
              timeout: 2000
@@ -263,6 +266,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
          if(_debug){
              console.log(method + " " + url);
+             console.log(requestParams);
          }
 
          var request = $.ajax(requestParams);

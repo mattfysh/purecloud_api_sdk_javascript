@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ArchitectApi(pureCloudSession);
 */
 var ArchitectApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Gets architect-data-service audit entries.
@@ -158,7 +163,7 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @memberOf ArchitectApi#
 	* @param {string} ivrId - IVR id
 	*/
-	function getIvr(ivrId){
+	function getIvrsIvrId(ivrId){
 		var apipath = '/api/v1/architect/ivrs/{ivrId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -174,7 +179,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getIvr = getIvr;
+	self.getIvrsIvrId = getIvrsIvrId;
 	/**
      * @summary Update an IVR Config.
 	 * @memberOf ArchitectApi#
@@ -214,7 +219,7 @@ var ArchitectApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putIvr(ivrId, body){
+	function putIvrsIvrId(ivrId, body){
 		var apipath = '/api/v1/architect/ivrs/{ivrId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -234,13 +239,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putIvr = putIvr;
+	self.putIvrsIvrId = putIvrsIvrId;
 	/**
      * @summary Delete an IVR Config.
 	 * @memberOf ArchitectApi#
 	* @param {string} ivrId - IVR id
 	*/
-	function deleteIvr(ivrId){
+	function deleteIvrsIvrId(ivrId){
 		var apipath = '/api/v1/architect/ivrs/{ivrId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -256,7 +261,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteIvr = deleteIvr;
+	self.deleteIvrsIvrId = deleteIvrsIvrId;
 	/**
      * @summary Get a pageable list of user prompts
 	 * @description The returned list is pageable, and query parameters can be used for filtering.  Multiple names can be specified, in which case all matching prompts will be returned, and no other filters will be evaluated.
@@ -367,7 +372,7 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - Prompt ID
 	*/
-	function getPrompt(promptId){
+	function getPromptsPromptId(promptId){
 		var apipath = '/api/v1/architect/prompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -383,7 +388,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPrompt = getPrompt;
+	self.getPromptsPromptId = getPromptsPromptId;
 	/**
      * @summary Update specified user prompt
 	 * @memberOf ArchitectApi#
@@ -397,7 +402,7 @@ var ArchitectApi = function (pureCloudSession) {
    "resources": []
 }
 	*/
-	function putPrompt(promptId, body){
+	function putPromptsPromptId(promptId, body){
 		var apipath = '/api/v1/architect/prompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -417,13 +422,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putPrompt = putPrompt;
+	self.putPromptsPromptId = putPromptsPromptId;
 	/**
      * @summary Delete specified user prompt
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - Prompt ID
 	*/
-	function deletePrompt(promptId){
+	function deletePromptsPromptId(promptId){
 		var apipath = '/api/v1/architect/prompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -439,7 +444,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deletePrompt = deletePrompt;
+	self.deletePromptsPromptId = deletePromptsPromptId;
 	/**
      * @summary Get a pageable list of user prompt resources
 	 * @description The returned list is pageable, and query paramaters can be used for filtering.
@@ -448,7 +453,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
 	*/
-	function getPromptResources(promptId, pageNumber, pageSize){
+	function getPromptsPromptIdResources(promptId, pageNumber, pageSize){
 		var apipath = '/api/v1/architect/prompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
@@ -474,7 +479,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPromptResources = getPromptResources;
+	self.getPromptsPromptIdResources = getPromptsPromptIdResources;
 	/**
      * @summary Create a new user prompt resource.
 	 * @memberOf ArchitectApi#
@@ -493,7 +498,7 @@ var ArchitectApi = function (pureCloudSession) {
    "durationSeconds": {}
 }
 	*/
-	function postPromptResources(promptId, body){
+	function postPromptsPromptIdResources(promptId, body){
 		var apipath = '/api/v1/architect/prompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
@@ -513,14 +518,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postPromptResources = postPromptResources;
+	self.postPromptsPromptIdResources = postPromptsPromptIdResources;
 	/**
      * @summary Get specified user prompt resource
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - Prompt ID
 	* @param {string} language - Language
 	*/
-	function getPromptResources(promptId, language){
+	function getPromptsPromptIdResourcesLanguage(promptId, language){
 		var apipath = '/api/v1/architect/prompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -542,7 +547,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPromptResources = getPromptResources;
+	self.getPromptsPromptIdResourcesLanguage = getPromptsPromptIdResourcesLanguage;
 	/**
      * @summary Update specified user prompt resource
 	 * @memberOf ArchitectApi#
@@ -562,7 +567,7 @@ var ArchitectApi = function (pureCloudSession) {
    "durationSeconds": {}
 }
 	*/
-	function putPromptResources(promptId, language, body){
+	function putPromptsPromptIdResourcesLanguage(promptId, language, body){
 		var apipath = '/api/v1/architect/prompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -588,14 +593,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putPromptResources = putPromptResources;
+	self.putPromptsPromptIdResourcesLanguage = putPromptsPromptIdResourcesLanguage;
 	/**
      * @summary Delete specified user prompt resource
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - Prompt ID
 	* @param {string} language - Language
 	*/
-	function deletePromptResources(promptId, language){
+	function deletePromptsPromptIdResourcesLanguage(promptId, language){
 		var apipath = '/api/v1/architect/prompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -617,7 +622,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deletePromptResources = deletePromptResources;
+	self.deletePromptsPromptIdResourcesLanguage = deletePromptsPromptIdResourcesLanguage;
 	/**
      * @summary Get a list of schedule groups.
 	 * @memberOf ArchitectApi#
@@ -699,7 +704,7 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @memberOf ArchitectApi#
 	* @param {string} scheduleGroupId - Schedule group ID
 	*/
-	function getSchedulegroup(scheduleGroupId){
+	function getSchedulegroupsSchedulegroupId(scheduleGroupId){
 		var apipath = '/api/v1/architect/schedulegroups/{scheduleGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -715,7 +720,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSchedulegroup = getSchedulegroup;
+	self.getSchedulegroupsSchedulegroupId = getSchedulegroupsSchedulegroupId;
 	/**
      * @summary Updates a schedule group by ID
 	 * @memberOf ArchitectApi#
@@ -739,7 +744,7 @@ var ArchitectApi = function (pureCloudSession) {
    "closedSchedules": []
 }
 	*/
-	function putSchedulegroup(scheduleGroupId, body){
+	function putSchedulegroupsSchedulegroupId(scheduleGroupId, body){
 		var apipath = '/api/v1/architect/schedulegroups/{scheduleGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -759,13 +764,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putSchedulegroup = putSchedulegroup;
+	self.putSchedulegroupsSchedulegroupId = putSchedulegroupsSchedulegroupId;
 	/**
      * @summary Deletes a schedule group by ID
 	 * @memberOf ArchitectApi#
 	* @param {string} scheduleGroupId - Schedule group ID
 	*/
-	function deleteSchedulegroup(scheduleGroupId){
+	function deleteSchedulegroupsSchedulegroupId(scheduleGroupId){
 		var apipath = '/api/v1/architect/schedulegroups/{scheduleGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -781,7 +786,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSchedulegroup = deleteSchedulegroup;
+	self.deleteSchedulegroupsSchedulegroupId = deleteSchedulegroupsSchedulegroupId;
 	/**
      * @summary Get a list of schedules.
 	 * @memberOf ArchitectApi#
@@ -864,7 +869,7 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @memberOf ArchitectApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function getSchedule(scheduleId){
+	function getSchedulesScheduleId(scheduleId){
 		var apipath = '/api/v1/architect/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -880,7 +885,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSchedule = getSchedule;
+	self.getSchedulesScheduleId = getSchedulesScheduleId;
 	/**
      * @summary Update schedule by ID
 	 * @memberOf ArchitectApi#
@@ -905,7 +910,7 @@ var ArchitectApi = function (pureCloudSession) {
    "keywords": []
 }
 	*/
-	function putSchedule(scheduleId, body){
+	function putSchedulesScheduleId(scheduleId, body){
 		var apipath = '/api/v1/architect/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -925,13 +930,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putSchedule = putSchedule;
+	self.putSchedulesScheduleId = putSchedulesScheduleId;
 	/**
      * @summary Delete a schedule by id
 	 * @memberOf ArchitectApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function deleteSchedule(scheduleId){
+	function deleteSchedulesScheduleId(scheduleId){
 		var apipath = '/api/v1/architect/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -947,7 +952,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSchedule = deleteSchedule;
+	self.deleteSchedulesScheduleId = deleteSchedulesScheduleId;
 	/**
      * @summary Get System Prompts.
 	 * @memberOf ArchitectApi#
@@ -1010,7 +1015,7 @@ var ArchitectApi = function (pureCloudSession) {
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - 
 	*/
-	function getSystemprompt(promptId){
+	function getSystempromptsPromptId(promptId){
 		var apipath = '/api/v1/architect/systemprompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1026,7 +1031,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSystemprompt = getSystemprompt;
+	self.getSystempromptsPromptId = getSystempromptsPromptId;
 	/**
      * @summary Get IVR System Prompt resources.
 	 * @memberOf ArchitectApi#
@@ -1036,7 +1041,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	* @param {string} sortOrder - Sort order
 	*/
-	function getSystempromptResources(promptId, pageNumber, pageSize, sortBy, sortOrder){
+	function getSystempromptsPromptIdResources(promptId, pageNumber, pageSize, sortBy, sortOrder){
 		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1072,7 +1077,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSystempromptResources = getSystempromptResources;
+	self.getSystempromptsPromptIdResources = getSystempromptsPromptIdResources;
 	/**
      * @summary Create system prompt resource override.
 	 * @memberOf ArchitectApi#
@@ -1092,7 +1097,7 @@ var ArchitectApi = function (pureCloudSession) {
    "hasDefault": true
 }
 	*/
-	function postSystempromptResources(promptId, body){
+	function postSystempromptsPromptIdResources(promptId, body){
 		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1112,14 +1117,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postSystempromptResources = postSystempromptResources;
+	self.postSystempromptsPromptIdResources = postSystempromptsPromptIdResources;
 	/**
      * @summary Get a system prompt resource.
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - Prompt ID
 	* @param {string} language - Language
 	*/
-	function getSystempromptResources(promptId, language){
+	function getSystempromptsPromptIdResourcesLanguage(promptId, language){
 		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1141,14 +1146,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSystempromptResources = getSystempromptResources;
+	self.getSystempromptsPromptIdResourcesLanguage = getSystempromptsPromptIdResourcesLanguage;
 	/**
      * @summary Delete a system prompt resource override.
 	 * @memberOf ArchitectApi#
 	* @param {string} promptId - Prompt ID
 	* @param {string} language - Language
 	*/
-	function deleteSystempromptResources(promptId, language){
+	function deleteSystempromptsPromptIdResourcesLanguage(promptId, language){
 		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1170,7 +1175,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteSystempromptResources = deleteSystempromptResources;
+	self.deleteSystempromptsPromptIdResourcesLanguage = deleteSystempromptsPromptIdResourcesLanguage;
 	/**
      * @summary Get a pageable list of flows, filtered by query parameters
 	 * @description Multiple IDs can be specified, in which case all matching flows will be returned, and no other parameters will be evaluated.
@@ -1189,7 +1194,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} lockedBy - Locked by
 	* @param {boolean} doDeleted - Include deleted
 	*/
-	function getFlows(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
+	function get(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1264,7 +1269,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlows = getFlows;
+	self.get = get;
 	/**
      * @summary Create flow
 	 * @memberOf ArchitectApi#
@@ -1318,7 +1323,7 @@ var ArchitectApi = function (pureCloudSession) {
    "system": true
 }
 	*/
-	function postFlows(body){
+	function post(body){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1332,7 +1337,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlows = postFlows;
+	self.post = post;
 	/**
      * @summary Batch-delete a list of flows
 	 * @description Multiple IDs can be specified, in which case all specified flows will be deleted.
@@ -1340,7 +1345,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {array} id - List of Flow IDs
 	* @param {boolean} ignoreDependencies - Ignore Dependencies
 	*/
-	function deleteFlows(id, ignoreDependencies){
+	function performDelete(id, ignoreDependencies){
 		var apipath = '/api/v1/flows';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1364,13 +1369,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteFlows = deleteFlows;
+	self.performDelete = performDelete;
 	/**
      * @summary Check-in flow
 	 * @memberOf ArchitectApi#
 	* @param {string} flow - Flow
 	*/
-	function postFlowsActionsCheckin(flow){
+	function postActionsCheckin(flow){
 		var apipath = '/api/v1/flows/actions/checkin';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1385,13 +1390,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlowsActionsCheckin = postFlowsActionsCheckin;
+	self.postActionsCheckin = postActionsCheckin;
 	/**
      * @summary Check-out flow
 	 * @memberOf ArchitectApi#
 	* @param {string} flow - Flow
 	*/
-	function postFlowsActionsCheckout(flow){
+	function postActionsCheckout(flow){
 		var apipath = '/api/v1/flows/actions/checkout';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1406,13 +1411,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlowsActionsCheckout = postFlowsActionsCheckout;
+	self.postActionsCheckout = postActionsCheckout;
 	/**
      * @summary Deactivate flow
 	 * @memberOf ArchitectApi#
 	* @param {string} flow - Flow
 	*/
-	function postFlowsActionsDeactivate(flow){
+	function postActionsDeactivate(flow){
 		var apipath = '/api/v1/flows/actions/deactivate';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1427,14 +1432,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlowsActionsDeactivate = postFlowsActionsDeactivate;
+	self.postActionsDeactivate = postActionsDeactivate;
 	/**
      * @summary Debug flow
 	 * @memberOf ArchitectApi#
 	* @param {string} flow - Flow
 	* @param {string} version - 
 	*/
-	function postFlowsActionsDebug(flow, version){
+	function postActionsDebug(flow, version){
 		var apipath = '/api/v1/flows/actions/debug';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1458,13 +1463,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlowsActionsDebug = postFlowsActionsDebug;
+	self.postActionsDebug = postActionsDebug;
 	/**
      * @summary Revert flow
 	 * @memberOf ArchitectApi#
 	* @param {string} flow - Flow
 	*/
-	function postFlowsActionsRevert(flow){
+	function postActionsRevert(flow){
 		var apipath = '/api/v1/flows/actions/revert';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1479,14 +1484,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlowsActionsRevert = postFlowsActionsRevert;
+	self.postActionsRevert = postActionsRevert;
 	/**
      * @summary Get flow.
 	 * @memberOf ArchitectApi#
 	* @param {string} flowId - Flow ID
 	* @param {string} doDeleted - Deleted
 	*/
-	function getFlow(flowId, doDeleted){
+	function getFlowId(flowId, doDeleted){
 		var apipath = '/api/v1/flows/{flowId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1507,7 +1512,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlow = getFlow;
+	self.getFlowId = getFlowId;
 	/**
      * @summary Update flow.
 	 * @memberOf ArchitectApi#
@@ -1562,7 +1567,7 @@ var ArchitectApi = function (pureCloudSession) {
    "system": true
 }
 	*/
-	function putFlow(flowId, body){
+	function putFlowId(flowId, body){
 		var apipath = '/api/v1/flows/{flowId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1582,13 +1587,13 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putFlow = putFlow;
+	self.putFlowId = putFlowId;
 	/**
      * @summary Delete flow.
 	 * @memberOf ArchitectApi#
 	* @param {string} flowId - Flow ID
 	*/
-	function deleteFlow(flowId){
+	function deleteFlowId(flowId){
 		var apipath = '/api/v1/flows/{flowId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1604,14 +1609,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteFlow = deleteFlow;
+	self.deleteFlowId = deleteFlowId;
 	/**
      * @summary Get the latest configuration for flow.
 	 * @memberOf ArchitectApi#
 	* @param {string} flowId - Flow ID
 	* @param {string} doDeleted - Deleted
 	*/
-	function getFlowLatestconfiguration(flowId, doDeleted){
+	function getFlowIdLatestconfiguration(flowId, doDeleted){
 		var apipath = '/api/v1/flows/{flowId}/latestconfiguration';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1632,14 +1637,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlowLatestconfiguration = getFlowLatestconfiguration;
+	self.getFlowIdLatestconfiguration = getFlowIdLatestconfiguration;
 	/**
      * @summary Get generation result.
 	 * @memberOf ArchitectApi#
 	* @param {string} flowId - Flow ID
 	* @param {string} id - Publish Result ID
 	*/
-	function getFlowPublishedresults(flowId, id){
+	function getFlowIdPublishedresultsId(flowId, id){
 		var apipath = '/api/v1/flows/{flowId}/publishedresults/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1661,7 +1666,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlowPublishedresults = getFlowPublishedresults;
+	self.getFlowIdPublishedresultsId = getFlowIdPublishedresultsId;
 	/**
      * @summary Get flow version list
 	 * @memberOf ArchitectApi#
@@ -1670,7 +1675,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {string} doDeleted - Deleted
 	*/
-	function getFlowVersions(flowId, pageNumber, pageSize, doDeleted){
+	function getFlowIdVersions(flowId, pageNumber, pageSize, doDeleted){
 		var apipath = '/api/v1/flows/{flowId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1701,14 +1706,14 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlowVersions = getFlowVersions;
+	self.getFlowIdVersions = getFlowIdVersions;
 	/**
      * @summary Create flow version
 	 * @memberOf ArchitectApi#
 	* @param {string} flowId - Flow ID
 	* @param {} body - 
 	*/
-	function postFlowVersions(flowId, body){
+	function postFlowIdVersions(flowId, body){
 		var apipath = '/api/v1/flows/{flowId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1728,7 +1733,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postFlowVersions = postFlowVersions;
+	self.postFlowIdVersions = postFlowIdVersions;
 	/**
      * @summary Get flow version
 	 * @memberOf ArchitectApi#
@@ -1736,7 +1741,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} versionId - Version ID
 	* @param {string} doDeleted - Deleted
 	*/
-	function getFlowVersion(flowId, versionId, doDeleted){
+	function getFlowIdVersionsVersionId(flowId, versionId, doDeleted){
 		var apipath = '/api/v1/flows/{flowId}/versions/{versionId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1763,7 +1768,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlowVersion = getFlowVersion;
+	self.getFlowIdVersionsVersionId = getFlowIdVersionsVersionId;
 	/**
      * @summary Create flow version configuration
 	 * @memberOf ArchitectApi#
@@ -1771,7 +1776,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} versionId - Version ID
 	* @param {string} doDeleted - Deleted
 	*/
-	function getFlowVersionConfiguration(flowId, versionId, doDeleted){
+	function getFlowIdVersionsVersionIdConfiguration(flowId, versionId, doDeleted){
 		var apipath = '/api/v1/flows/{flowId}/versions/{versionId}/configuration';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1798,7 +1803,7 @@ var ArchitectApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getFlowVersionConfiguration = getFlowVersionConfiguration;
+	self.getFlowIdVersionsVersionIdConfiguration = getFlowIdVersionsVersionIdConfiguration;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new AnalyticsApi(pureCloudSession);
 */
 var AnalyticsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get a list of alerts.
@@ -64,7 +69,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @memberOf AnalyticsApi#
 	* @param {string} alertId - Alert ID
 	*/
-	function getAlertingAlert(alertId){
+	function getAlertingAlertsAlertId(alertId){
 		var apipath = '/api/v1/analytics/alerting/alerts/{alertId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -80,7 +85,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getAlertingAlert = getAlertingAlert;
+	self.getAlertingAlertsAlertId = getAlertingAlertsAlertId;
 	/**
      * @summary Update an alerts unread status.
 	 * @memberOf AnalyticsApi#
@@ -94,10 +99,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -109,7 +113,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "ruleUri": ""
 }
 	*/
-	function putAlertingAlert(alertId, body){
+	function putAlertingAlertsAlertId(alertId, body){
 		var apipath = '/api/v1/analytics/alerting/alerts/{alertId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -129,13 +133,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putAlertingAlert = putAlertingAlert;
+	self.putAlertingAlertsAlertId = putAlertingAlertsAlertId;
 	/**
      * @summary Delete an alert.
 	 * @memberOf AnalyticsApi#
 	* @param {string} alertId - Alert ID
 	*/
-	function deleteAlertingAlert(alertId){
+	function deleteAlertingAlertsAlertId(alertId){
 		var apipath = '/api/v1/analytics/alerting/alerts/{alertId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -151,7 +155,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteAlertingAlert = deleteAlertingAlert;
+	self.deleteAlertingAlertsAlertId = deleteAlertingAlertsAlertId;
 	/**
      * @summary Get a list of rules.
 	 * @memberOf AnalyticsApi#
@@ -204,10 +208,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -239,7 +242,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @memberOf AnalyticsApi#
 	* @param {string} ruleId - Rule ID
 	*/
-	function getAlertingRule(ruleId){
+	function getAlertingRulesRuleId(ruleId){
 		var apipath = '/api/v1/analytics/alerting/rules/{ruleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -255,7 +258,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getAlertingRule = getAlertingRule;
+	self.getAlertingRulesRuleId = getAlertingRulesRuleId;
 	/**
      * @summary Update an alerting rule.
 	 * @memberOf AnalyticsApi#
@@ -270,10 +273,9 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -285,7 +287,7 @@ var AnalyticsApi = function (pureCloudSession) {
    "statistic": ""
 }
 	*/
-	function putAlertingRule(ruleId, body){
+	function putAlertingRulesRuleId(ruleId, body){
 		var apipath = '/api/v1/analytics/alerting/rules/{ruleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -305,13 +307,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putAlertingRule = putAlertingRule;
+	self.putAlertingRulesRuleId = putAlertingRulesRuleId;
 	/**
      * @summary Delete an alerting rule.
 	 * @memberOf AnalyticsApi#
 	* @param {string} ruleId - Rule ID
 	*/
-	function deleteAlertingRule(ruleId){
+	function deleteAlertingRulesRuleId(ruleId){
 		var apipath = '/api/v1/analytics/alerting/rules/{ruleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -327,7 +329,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteAlertingRule = deleteAlertingRule;
+	self.deleteAlertingRulesRuleId = deleteAlertingRulesRuleId;
 	/**
      * @summary Executes a metrics query against the analytics service
 	 * @memberOf AnalyticsApi#
@@ -481,7 +483,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function getReportingSchedule(scheduleId){
+	function getReportingSchedulesScheduleId(scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -497,7 +499,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingSchedule = getReportingSchedule;
+	self.getReportingSchedulesScheduleId = getReportingSchedulesScheduleId;
 	/**
      * @summary Update a scheduled report job.
 	 * @memberOf AnalyticsApi#
@@ -533,7 +535,7 @@ var AnalyticsApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putReportingSchedule(scheduleId, body){
+	function putReportingSchedulesScheduleId(scheduleId, body){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -553,13 +555,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putReportingSchedule = putReportingSchedule;
+	self.putReportingSchedulesScheduleId = putReportingSchedulesScheduleId;
 	/**
      * @summary Delete a scheduled report job.
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function deleteReportingSchedule(scheduleId){
+	function deleteReportingSchedulesScheduleId(scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -575,7 +577,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteReportingSchedule = deleteReportingSchedule;
+	self.deleteReportingSchedulesScheduleId = deleteReportingSchedulesScheduleId;
 	/**
      * @summary Get list of completed scheduled report jobs.
 	 * @memberOf AnalyticsApi#
@@ -583,7 +585,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - 
 	* @param {integer} pageSize - 
 	*/
-	function getReportingScheduleHistory(scheduleId, pageNumber, pageSize){
+	function getReportingSchedulesScheduleIdHistory(scheduleId, pageNumber, pageSize){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}/history';
 	    var requestBody;
 	    var queryParameters = {};
@@ -609,13 +611,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingScheduleHistory = getReportingScheduleHistory;
+	self.getReportingSchedulesScheduleIdHistory = getReportingSchedulesScheduleIdHistory;
 	/**
      * @summary Get most recently completed scheduled report job.
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function getReportingScheduleHistoryLatest(scheduleId){
+	function getReportingSchedulesScheduleIdHistoryLatest(scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}/history/latest';
 	    var requestBody;
 	    var queryParameters = {};
@@ -631,7 +633,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingScheduleHistoryLatest = getReportingScheduleHistoryLatest;
+	self.getReportingSchedulesScheduleIdHistoryLatest = getReportingSchedulesScheduleIdHistoryLatest;
 	/**
      * @summary A completed scheduled report job
 	 * @description A completed scheduled report job.
@@ -639,7 +641,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	* @param {string} runId - Run ID
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function getReportingScheduleHistory(runId, scheduleId){
+	function getReportingSchedulesScheduleIdHistoryRunId(runId, scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}/history/{runId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -661,13 +663,13 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingScheduleHistory = getReportingScheduleHistory;
+	self.getReportingSchedulesScheduleIdHistoryRunId = getReportingSchedulesScheduleIdHistoryRunId;
 	/**
      * @summary Place a scheduled report immediately into the reporting queue
 	 * @memberOf AnalyticsApi#
 	* @param {string} scheduleId - Schedule ID
 	*/
-	function postReportingScheduleRunreport(scheduleId){
+	function postReportingSchedulesScheduleIdRunreport(scheduleId){
 		var apipath = '/api/v1/analytics/reporting/schedules/{scheduleId}/runreport';
 	    var requestBody;
 	    var queryParameters = {};
@@ -683,7 +685,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postReportingScheduleRunreport = postReportingScheduleRunreport;
+	self.postReportingSchedulesScheduleIdRunreport = postReportingSchedulesScheduleIdRunreport;
 	/**
      * @summary Get a list of report time periods.
 	 * @memberOf AnalyticsApi#
@@ -706,7 +708,7 @@ var AnalyticsApi = function (pureCloudSession) {
 	* @param {string} acceptLanguage - Accepted language
 	* @param {string} locale - Locale
 	*/
-	function getReportingMetadata(reportId, acceptLanguage, locale){
+	function getReportingReportIdMetadata(reportId, acceptLanguage, locale){
 		var apipath = '/api/v1/analytics/reporting/{reportId}/metadata';
 	    var requestBody;
 	    var queryParameters = {};
@@ -727,7 +729,7 @@ var AnalyticsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getReportingMetadata = getReportingMetadata;
+	self.getReportingReportIdMetadata = getReportingReportIdMetadata;
 	/**
      * @summary Executes a segments query against the analytics service
 	 * @memberOf AnalyticsApi#

@@ -1,16 +1,21 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new VoicemailApi(pureCloudSession);
 */
 var VoicemailApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get a user's voicemail policy
 	 * @memberOf VoicemailApi#
 	* @param {string} userId - User ID
 	*/
-	function getConfigurationUservoicemailpolicie(userId){
+	function getUservoicemailpoliciesUserId(userId){
 		var apipath = '/api/v1/configuration/uservoicemailpolicies/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -26,7 +31,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConfigurationUservoicemailpolicie = getConfigurationUservoicemailpolicie;
+	self.getUservoicemailpoliciesUserId = getUservoicemailpoliciesUserId;
 	/**
      * @summary Update a user's voicemail policy
 	 * @memberOf VoicemailApi#
@@ -48,7 +53,7 @@ var VoicemailApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function patchConfigurationUservoicemailpolicie(userId, body){
+	function patchUservoicemailpoliciesUserId(userId, body){
 		var apipath = '/api/v1/configuration/uservoicemailpolicies/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -72,12 +77,12 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchConfigurationUservoicemailpolicie = patchConfigurationUservoicemailpolicie;
+	self.patchUservoicemailpoliciesUserId = patchUservoicemailpoliciesUserId;
 	/**
      * @summary Get a policy
 	 * @memberOf VoicemailApi#
 	*/
-	function getConfigurationVoicemailpolicy(){
+	function getVoicemailpolicy(){
 		var apipath = '/api/v1/configuration/voicemailpolicy';
 	    var requestBody;
 	    var queryParameters = {};
@@ -87,7 +92,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getConfigurationVoicemailpolicy = getConfigurationVoicemailpolicy;
+	self.getVoicemailpolicy = getVoicemailpolicy;
 	/**
      * @summary Update a policy
 	 * @memberOf VoicemailApi#
@@ -115,7 +120,7 @@ var VoicemailApi = function (pureCloudSession) {
    "pinRequired": true
 }
 	*/
-	function putConfigurationVoicemailpolicy(body){
+	function putVoicemailpolicy(body){
 		var apipath = '/api/v1/configuration/voicemailpolicy';
 	    var requestBody;
 	    var queryParameters = {};
@@ -129,7 +134,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putConfigurationVoicemailpolicy = putConfigurationVoicemailpolicy;
+	self.putVoicemailpolicy = putVoicemailpolicy;
 	/**
      * @summary Get mailbox information
 	 * @memberOf VoicemailApi#
@@ -180,7 +185,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	*/
-	function getMessage(messageId){
+	function getMessagesMessageId(messageId){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -196,7 +201,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessage = getMessage;
+	self.getMessagesMessageId = getMessagesMessageId;
 	/**
      * @summary Update a message.
 	 * @memberOf VoicemailApi#
@@ -248,7 +253,7 @@ var VoicemailApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putMessage(messageId, body){
+	function putMessagesMessageId(messageId, body){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -268,13 +273,13 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putMessage = putMessage;
+	self.putMessagesMessageId = putMessagesMessageId;
 	/**
      * @summary Delete a message.
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
 	*/
-	function deleteMessage(messageId){
+	function deleteMessagesMessageId(messageId){
 		var apipath = '/api/v1/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -290,7 +295,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteMessage = deleteMessage;
+	self.deleteMessagesMessageId = deleteMessagesMessageId;
 	/**
      * @summary Get media playback URI for this message
 	 * @memberOf VoicemailApi#
@@ -299,7 +304,7 @@ var VoicemailApi = function (pureCloudSession) {
 	WEBM,
 	WAV,
 	*/
-	function getMessageMedia(messageId, formatId){
+	function getMessagesMessageIdMedia(messageId, formatId){
 		var apipath = '/api/v1/voicemail/messages/{messageId}/media';
 	    var requestBody;
 	    var queryParameters = {};
@@ -320,7 +325,7 @@ var VoicemailApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMessageMedia = getMessageMedia;
+	self.getMessagesMessageIdMedia = getMessagesMessageIdMedia;
 
     return self;
 };

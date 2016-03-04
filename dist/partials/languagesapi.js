@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new LanguagesApi(pureCloudSession);
 */
 var LanguagesApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get the list of supported languages.
@@ -11,7 +16,7 @@ var LanguagesApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getLanguages(pageSize, pageNumber){
+	function get(pageSize, pageNumber){
 		var apipath = '/api/v1/languages';
 	    var requestBody;
 	    var queryParameters = {};
@@ -31,13 +36,13 @@ var LanguagesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getLanguages = getLanguages;
+	self.get = get;
 	/**
      * @summary Get language
 	 * @memberOf LanguagesApi#
 	* @param {string} languageId - Language ID
 	*/
-	function get(languageId){
+	function getLanguageId(languageId){
 		var apipath = '/api/v1/languages/{languageId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -53,7 +58,7 @@ var LanguagesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getLanguageId = getLanguageId;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new LicensingApi(pureCloudSession);
 */
 var LicensingApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get Licenses required for a set of permissions.
@@ -46,7 +51,7 @@ var LicensingApi = function (pureCloudSession) {
 	 * @memberOf LicensingApi#
 	* @param {string} id - ID
 	*/
-	function getOrgassignments(id){
+	function getOrgassignmentsId(id){
 		var apipath = '/api/v1/licensing/orgassignments/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -62,7 +67,7 @@ var LicensingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOrgassignments = getOrgassignments;
+	self.getOrgassignmentsId = getOrgassignmentsId;
 	/**
      * @summary Get Licenses required per permission.
 	 * @memberOf LicensingApi#
@@ -136,7 +141,7 @@ var LicensingApi = function (pureCloudSession) {
 	 * @memberOf LicensingApi#
 	* @param {string} id - ID
 	*/
-	function getUserassignments(id){
+	function getUserassignmentsId(id){
 		var apipath = '/api/v1/licensing/userassignments/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -152,7 +157,7 @@ var LicensingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserassignments = getUserassignments;
+	self.getUserassignmentsId = getUserassignmentsId;
 
     return self;
 };

@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new RoutingApi(pureCloudSession);
 */
 var RoutingApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get domains
@@ -52,7 +57,7 @@ var RoutingApi = function (pureCloudSession) {
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	*/
-	function getEmailDomainsRoutes(domain){
+	function getEmailDomainsDomainRoutes(domain){
 		var apipath = '/api/v1/routing/email/domains/{domain}/routes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -68,7 +73,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEmailDomainsRoutes = getEmailDomainsRoutes;
+	self.getEmailDomainsDomainRoutes = getEmailDomainsDomainRoutes;
 	/**
      * @summary Create a route
 	 * @memberOf RoutingApi#
@@ -95,7 +100,7 @@ var RoutingApi = function (pureCloudSession) {
    "fromEmail": ""
 }
 	*/
-	function postEmailDomainsRoutes(domain, body){
+	function postEmailDomainsDomainRoutes(domain, body){
 		var apipath = '/api/v1/routing/email/domains/{domain}/routes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -115,14 +120,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postEmailDomainsRoutes = postEmailDomainsRoutes;
+	self.postEmailDomainsDomainRoutes = postEmailDomainsDomainRoutes;
 	/**
      * @summary Get a route
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	* @param {string} id - route ID
 	*/
-	function getEmailDomainsRoutes(domain, id){
+	function getEmailDomainsDomainRoutesId(domain, id){
 		var apipath = '/api/v1/routing/email/domains/{domain}/routes/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -144,7 +149,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEmailDomainsRoutes = getEmailDomainsRoutes;
+	self.getEmailDomainsDomainRoutesId = getEmailDomainsDomainRoutesId;
 	/**
      * @summary Update a route
 	 * @memberOf RoutingApi#
@@ -172,7 +177,7 @@ var RoutingApi = function (pureCloudSession) {
    "fromEmail": ""
 }
 	*/
-	function putEmailDomainsRoutes(domain, id, body){
+	function putEmailDomainsDomainRoutesId(domain, id, body){
 		var apipath = '/api/v1/routing/email/domains/{domain}/routes/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -198,14 +203,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putEmailDomainsRoutes = putEmailDomainsRoutes;
+	self.putEmailDomainsDomainRoutesId = putEmailDomainsDomainRoutesId;
 	/**
      * @summary Delete a route
 	 * @memberOf RoutingApi#
 	* @param {string} domain - email domain
 	* @param {string} id - route ID
 	*/
-	function deleteEmailDomainsRoutes(domain, id){
+	function deleteEmailDomainsDomainRoutesId(domain, id){
 		var apipath = '/api/v1/routing/email/domains/{domain}/routes/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -227,13 +232,13 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEmailDomainsRoutes = deleteEmailDomainsRoutes;
+	self.deleteEmailDomainsDomainRoutesId = deleteEmailDomainsDomainRoutesId;
 	/**
      * @summary Delete a domain
 	 * @memberOf RoutingApi#
 	* @param {string} id - domain ID
 	*/
-	function deleteEmailDomains(id){
+	function deleteEmailDomainsId(id){
 		var apipath = '/api/v1/routing/email/domains/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -249,7 +254,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEmailDomains = deleteEmailDomains;
+	self.deleteEmailDomainsId = deleteEmailDomainsId;
 	/**
      * @summary Get email setup
 	 * @memberOf RoutingApi#
@@ -368,7 +373,7 @@ var RoutingApi = function (pureCloudSession) {
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	*/
-	function getQueue(queueId){
+	function getQueuesQueueId(queueId){
 		var apipath = '/api/v1/routing/queues/{queueId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -384,7 +389,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQueue = getQueue;
+	self.getQueuesQueueId = getQueuesQueueId;
 	/**
      * @summary Update a queue
 	 * @memberOf RoutingApi#
@@ -424,7 +429,7 @@ var RoutingApi = function (pureCloudSession) {
    "memberCount": 0
 }
 	*/
-	function putQueue(queueId, body){
+	function putQueuesQueueId(queueId, body){
 		var apipath = '/api/v1/routing/queues/{queueId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -444,14 +449,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putQueue = putQueue;
+	self.putQueuesQueueId = putQueuesQueueId;
 	/**
      * @summary Delete a queue
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {boolean} forceDelete - 
 	*/
-	function deleteQueue(queueId, forceDelete){
+	function deleteQueuesQueueId(queueId, forceDelete){
 		var apipath = '/api/v1/routing/queues/{queueId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -472,7 +477,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteQueue = deleteQueue;
+	self.deleteQueuesQueueId = deleteQueuesQueueId;
 	/**
      * @summary Get members in a queue
 	 * @description Get the list of members of a queue
@@ -486,7 +491,7 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} expand - expand
 	routingStatus,
 	*/
-	function getQueueMembers(queueId, pageSize, pageNumber, userId, statusId, joined, expand){
+	function getQueuesQueueIdMembers(queueId, pageSize, pageNumber, userId, statusId, joined, expand){
 		var apipath = '/api/v1/routing/queues/{queueId}/members';
 	    var requestBody;
 	    var queryParameters = {};
@@ -532,7 +537,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQueueMembers = getQueueMembers;
+	self.getQueuesQueueIdMembers = getQueuesQueueIdMembers;
 	/**
      * @summary Join or unjoin a user to the queue.
 	 * @memberOf RoutingApi#
@@ -577,7 +582,7 @@ var RoutingApi = function (pureCloudSession) {
    }
 }
 	*/
-	function putQueueMember(queueId, memberId, body){
+	function putQueuesQueueIdMembersMemberId(queueId, memberId, body){
 		var apipath = '/api/v1/routing/queues/{queueId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -603,7 +608,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putQueueMember = putQueueMember;
+	self.putQueuesQueueIdMembersMemberId = putQueuesQueueIdMembersMemberId;
 	/**
      * @summary Get the members of this queue
 	 * @memberOf RoutingApi#
@@ -614,7 +619,7 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} expand - expand
 	* @param {boolean} directMembers - Only get users that are direct members of the queue
 	*/
-	function getQueueUsers(queueId, pageSize, pageNumber, sortBy, expand, directMembers){
+	function getQueuesQueueIdUsers(queueId, pageSize, pageNumber, sortBy, expand, directMembers){
 		var apipath = '/api/v1/routing/queues/{queueId}/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -655,7 +660,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQueueUsers = getQueueUsers;
+	self.getQueuesQueueIdUsers = getQueuesQueueIdUsers;
 	/**
      * @summary Bulk add or delete up to 100 queue members
 	 * @memberOf RoutingApi#
@@ -663,7 +668,7 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {} body - Queue Members
 	* @param {boolean} doDelete - True to delete queue members
 	*/
-	function postQueueUsers(queueId, body, doDelete){
+	function postQueuesQueueIdUsers(queueId, body, doDelete){
 		var apipath = '/api/v1/routing/queues/{queueId}/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -688,14 +693,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postQueueUsers = postQueueUsers;
+	self.postQueuesQueueIdUsers = postQueuesQueueIdUsers;
 	/**
      * @summary Join or unjoin a set of users for a queue
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
 	*/
-	function patchQueueUsers(queueId, body){
+	function patchQueuesQueueIdUsers(queueId, body){
 		var apipath = '/api/v1/routing/queues/{queueId}/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -715,14 +720,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchQueueUsers = patchQueueUsers;
+	self.patchQueuesQueueIdUsers = patchQueuesQueueIdUsers;
 	/**
      * @summary Delete queue member
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} memberId - Member ID
 	*/
-	function deleteQueueUser(queueId, memberId){
+	function deleteQueuesQueueIdUsersMemberId(queueId, memberId){
 		var apipath = '/api/v1/routing/queues/{queueId}/users/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -744,7 +749,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteQueueUser = deleteQueueUser;
+	self.deleteQueuesQueueIdUsersMemberId = deleteQueuesQueueIdUsersMemberId;
 	/**
      * @summary Update the ring number of joined status for a User in a Queue
 	 * @memberOf RoutingApi#
@@ -789,7 +794,7 @@ var RoutingApi = function (pureCloudSession) {
    }
 }
 	*/
-	function patchQueueUser(queueId, memberId, body){
+	function patchQueuesQueueIdUsersMemberId(queueId, memberId, body){
 		var apipath = '/api/v1/routing/queues/{queueId}/users/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -815,14 +820,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchQueueUser = patchQueueUser;
+	self.patchQueuesQueueIdUsersMemberId = patchQueuesQueueIdUsersMemberId;
 	/**
      * @summary Get the wrap-up codes for a queue
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
 	*/
-	function getQueueWrapupcodes(queueId, codeId){
+	function getQueuesQueueIdWrapupcodes(queueId, codeId){
 		var apipath = '/api/v1/routing/queues/{queueId}/wrapupcodes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -844,7 +849,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQueueWrapupcodes = getQueueWrapupcodes;
+	self.getQueuesQueueIdWrapupcodes = getQueuesQueueIdWrapupcodes;
 	/**
      * @summary Add up to 100 wrap-up codes to a queue
 	 * @memberOf RoutingApi#
@@ -852,7 +857,7 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} codeId - Code ID
 	* @param {} body - 
 	*/
-	function postQueueWrapupcodes(queueId, codeId, body){
+	function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
 		var apipath = '/api/v1/routing/queues/{queueId}/wrapupcodes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -878,14 +883,14 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postQueueWrapupcodes = postQueueWrapupcodes;
+	self.postQueuesQueueIdWrapupcodes = postQueuesQueueIdWrapupcodes;
 	/**
      * @summary Delete a wrap-up code from a queue
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
 	*/
-	function deleteQueueWrapupcode(queueId, codeId){
+	function deleteQueuesQueueIdWrapupcodesCodeId(queueId, codeId){
 		var apipath = '/api/v1/routing/queues/{queueId}/wrapupcodes/{codeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -907,7 +912,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteQueueWrapupcode = deleteQueueWrapupcode;
+	self.deleteQueuesQueueIdWrapupcodesCodeId = deleteQueuesQueueIdWrapupcodesCodeId;
 	/**
      * @summary Get the list of skills.
 	 * @memberOf RoutingApi#
@@ -1070,7 +1075,7 @@ var RoutingApi = function (pureCloudSession) {
 	 * @memberOf RoutingApi#
 	* @param {string} codeId - Wrapup Code ID
 	*/
-	function getWrapupcode(codeId){
+	function getWrapupcodesCodeId(codeId){
 		var apipath = '/api/v1/routing/wrapupcodes/{codeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1086,7 +1091,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getWrapupcode = getWrapupcode;
+	self.getWrapupcodesCodeId = getWrapupcodesCodeId;
 	/**
      * @summary Update wrap-up code
 	 * @memberOf RoutingApi#
@@ -1102,7 +1107,7 @@ var RoutingApi = function (pureCloudSession) {
    "createdBy": ""
 }
 	*/
-	function putWrapupcode(codeId, body){
+	function putWrapupcodesCodeId(codeId, body){
 		var apipath = '/api/v1/routing/wrapupcodes/{codeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1122,13 +1127,13 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putWrapupcode = putWrapupcode;
+	self.putWrapupcodesCodeId = putWrapupcodesCodeId;
 	/**
      * @summary Delete wrap-up code
 	 * @memberOf RoutingApi#
 	* @param {string} codeId - Wrapup Code ID
 	*/
-	function deleteWrapupcode(codeId){
+	function deleteWrapupcodesCodeId(codeId){
 		var apipath = '/api/v1/routing/wrapupcodes/{codeId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1144,7 +1149,7 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteWrapupcode = deleteWrapupcode;
+	self.deleteWrapupcodesCodeId = deleteWrapupcodesCodeId;
 
     return self;
 };

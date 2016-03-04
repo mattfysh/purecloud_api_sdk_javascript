@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new FaxApi(pureCloudSession);
 */
 var FaxApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get a list of fax documents.
@@ -37,7 +42,7 @@ var FaxApi = function (pureCloudSession) {
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
-	function getDocument(documentId){
+	function getDocumentsDocumentId(documentId){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -53,7 +58,7 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocument = getDocument;
+	self.getDocumentsDocumentId = getDocumentsDocumentId;
 	/**
      * @summary Update a fax document.
 	 * @memberOf FaxApi#
@@ -88,7 +93,7 @@ var FaxApi = function (pureCloudSession) {
    "downloadSharingUri": ""
 }
 	*/
-	function putDocument(documentId, body){
+	function putDocumentsDocumentId(documentId, body){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -108,13 +113,13 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putDocument = putDocument;
+	self.putDocumentsDocumentId = putDocumentsDocumentId;
 	/**
      * @summary Delete a fax document.
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
-	function deleteDocument(documentId){
+	function deleteDocumentsDocumentId(documentId){
 		var apipath = '/api/v1/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -130,13 +135,13 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteDocument = deleteDocument;
+	self.deleteDocumentsDocumentId = deleteDocumentsDocumentId;
 	/**
      * @summary Download a fax document.
 	 * @memberOf FaxApi#
 	* @param {string} documentId - Document ID
 	*/
-	function getDocumentContent(documentId){
+	function getDocumentsDocumentIdContent(documentId){
 		var apipath = '/api/v1/fax/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
@@ -152,7 +157,7 @@ var FaxApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getDocumentContent = getDocumentContent;
+	self.getDocumentsDocumentIdContent = getDocumentsDocumentIdContent;
 	/**
      * @summary Get fax summary
 	 * @memberOf FaxApi#

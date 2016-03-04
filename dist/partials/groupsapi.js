@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new GroupsApi(pureCloudSession);
 */
 var GroupsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get a group list
@@ -12,7 +17,7 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} name - Name
 	*/
-	function getGroups(pageSize, pageNumber, name){
+	function get(pageSize, pageNumber, name){
 		var apipath = '/api/v1/groups';
 	    var requestBody;
 	    var queryParameters = {};
@@ -37,13 +42,13 @@ var GroupsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getGroups = getGroups;
+	self.get = get;
 	/**
      * @summary Get group
 	 * @memberOf GroupsApi#
 	* @param {string} groupId - Group ID
 	*/
-	function get(groupId){
+	function getGroupId(groupId){
 		var apipath = '/api/v1/groups/{groupId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -59,7 +64,7 @@ var GroupsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getGroupId = getGroupId;
 	/**
      * @summary Get group members
 	 * @memberOf GroupsApi#
@@ -67,7 +72,7 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getMembers(groupId, pageSize, pageNumber){
+	function getGroupIdMembers(groupId, pageSize, pageNumber){
 		var apipath = '/api/v1/groups/{groupId}/members';
 	    var requestBody;
 	    var queryParameters = {};
@@ -93,7 +98,7 @@ var GroupsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMembers = getMembers;
+	self.getGroupIdMembers = getGroupIdMembers;
 
     return self;
 };

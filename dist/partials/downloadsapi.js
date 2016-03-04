@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new DownloadsApi(pureCloudSession);
 */
 var DownloadsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary OAuth Callback used during code authorization grant flow.
@@ -39,7 +44,7 @@ var DownloadsApi = function (pureCloudSession) {
 	* @param {string} downloadId - Download ID
 	* @param {string} contentDisposition - this method will issue a redirect to the url to the content
 	*/
-	function get(downloadId, contentDisposition){
+	function getDownloadId(downloadId, contentDisposition){
 		var apipath = '/api/v1/downloads/{downloadId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -60,7 +65,7 @@ var DownloadsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getDownloadId = getDownloadId;
 
     return self;
 };

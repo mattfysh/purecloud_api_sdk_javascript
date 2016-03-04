@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new GreetingsApi(pureCloudSession);
 */
 var GreetingsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Gets an Organization's Greetings
@@ -11,7 +16,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getGreetings(pageSize, pageNumber){
+	function get(pageSize, pageNumber){
 		var apipath = '/api/v1/greetings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -31,7 +36,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getGreetings = getGreetings;
+	self.get = get;
 	/**
      * @summary Create a Greeting for an Organization
 	 * @memberOf GreetingsApi#
@@ -57,7 +62,7 @@ var GreetingsApi = function (pureCloudSession) {
    "modifiedBy": ""
 }
 	*/
-	function postGreetings(body){
+	function post(body){
 		var apipath = '/api/v1/greetings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -75,7 +80,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postGreetings = postGreetings;
+	self.post = post;
 	/**
      * @summary Get an Organization's DefaultGreetingList
 	 * @memberOf GreetingsApi#
@@ -134,7 +139,7 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
 	*/
-	function get(greetingId){
+	function getGreetingId(greetingId){
 		var apipath = '/api/v1/greetings/{greetingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -150,7 +155,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getGreetingId = getGreetingId;
 	/**
      * @summary Updates the Greeting with the given GreetingId
 	 * @memberOf GreetingsApi#
@@ -177,7 +182,7 @@ var GreetingsApi = function (pureCloudSession) {
    "modifiedBy": ""
 }
 	*/
-	function put(greetingId, body){
+	function putGreetingId(greetingId, body){
 		var apipath = '/api/v1/greetings/{greetingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -201,13 +206,13 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.put = put;
+	self.putGreetingId = putGreetingId;
 	/**
      * @summary Deletes a Greeting with the given GreetingId
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
 	*/
-	function performDelete(greetingId){
+	function deleteGreetingId(greetingId){
 		var apipath = '/api/v1/greetings/{greetingId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -223,7 +228,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.performDelete = performDelete;
+	self.deleteGreetingId = deleteGreetingId;
 	/**
      * @summary Get media playback URI for this greeting
 	 * @memberOf GreetingsApi#
@@ -231,7 +236,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {string} formatId - The desired format (WAV, etc.)
 	WAV,
 	*/
-	function getMedia(greetingId, formatId){
+	function getGreetingIdMedia(greetingId, formatId){
 		var apipath = '/api/v1/greetings/{greetingId}/media';
 	    var requestBody;
 	    var queryParameters = {};
@@ -252,7 +257,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getMedia = getMedia;
+	self.getGreetingIdMedia = getGreetingIdMedia;
 	/**
      * @summary Get a list of the User's Greetings
 	 * @memberOf GreetingsApi#
@@ -260,7 +265,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getUserGreetings(userId, pageSize, pageNumber){
+	function getUserIdGreetings(userId, pageSize, pageNumber){
 		var apipath = '/api/v1/users/{userId}/greetings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -286,7 +291,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserGreetings = getUserGreetings;
+	self.getUserIdGreetings = getUserIdGreetings;
 	/**
      * @summary Creates a Greeting for a User
 	 * @memberOf GreetingsApi#
@@ -313,7 +318,7 @@ var GreetingsApi = function (pureCloudSession) {
    "modifiedBy": ""
 }
 	*/
-	function postUserGreetings(userId, body){
+	function postUserIdGreetings(userId, body){
 		var apipath = '/api/v1/users/{userId}/greetings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -337,13 +342,13 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postUserGreetings = postUserGreetings;
+	self.postUserIdGreetings = postUserIdGreetings;
 	/**
      * @summary Grabs the list of Default Greetings given a User's ID
 	 * @memberOf GreetingsApi#
 	* @param {string} userId - User ID
 	*/
-	function getUserGreetingsDefaults(userId){
+	function getUserIdGreetingsDefaults(userId){
 		var apipath = '/api/v1/users/{userId}/greetings/defaults';
 	    var requestBody;
 	    var queryParameters = {};
@@ -359,7 +364,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserGreetingsDefaults = getUserGreetingsDefaults;
+	self.getUserIdGreetingsDefaults = getUserIdGreetingsDefaults;
 	/**
      * @summary Updates the DefaultGreetingList of the specified User
 	 * @memberOf GreetingsApi#
@@ -380,7 +385,7 @@ var GreetingsApi = function (pureCloudSession) {
    "modifiedBy": ""
 }
 	*/
-	function putUserGreetingsDefaults(userId, body){
+	function putUserIdGreetingsDefaults(userId, body){
 		var apipath = '/api/v1/users/{userId}/greetings/defaults';
 	    var requestBody;
 	    var queryParameters = {};
@@ -404,7 +409,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putUserGreetingsDefaults = putUserGreetingsDefaults;
+	self.putUserIdGreetingsDefaults = putUserIdGreetingsDefaults;
 
     return self;
 };

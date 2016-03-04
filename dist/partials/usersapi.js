@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new UsersApi(pureCloudSession);
 */
 var UsersApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get the list of available users.
@@ -18,7 +23,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {array} skill - Skill
 	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function getUsers(pageSize, pageNumber, id, sortBy, role, name, username, skill, expand){
+	function get(pageSize, pageNumber, id, sortBy, role, name, username, skill, expand){
 		var apipath = '/api/v1/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -73,7 +78,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUsers = getUsers;
+	self.get = get;
 	/**
      * @summary Create a configuration service user.
 	 * @memberOf UsersApi#
@@ -155,7 +160,7 @@ var UsersApi = function (pureCloudSession) {
    "stationUri": ""
 }
 	*/
-	function postUsers(body){
+	function post(body){
 		var apipath = '/api/v1/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -169,7 +174,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postUsers = postUsers;
+	self.post = post;
 	/**
      * @summary Get user.
 	 * @memberOf UsersApi#
@@ -197,7 +202,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function get(userId, expand){
+	function getUserId(userId, expand){
 		var apipath = '/api/v1/users/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -218,7 +223,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getUserId = getUserId;
 	/**
      * @summary Set user station
 	 * @memberOf UsersApi#
@@ -301,7 +306,7 @@ var UsersApi = function (pureCloudSession) {
    "stationUri": ""
 }
 	*/
-	function put(userId, body){
+	function putUserId(userId, body){
 		var apipath = '/api/v1/users/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -325,13 +330,13 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.put = put;
+	self.putUserId = putUserId;
 	/**
      * @summary Get a user's CallForwarding
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
-	function getCallforwarding(userId){
+	function getUserIdCallforwarding(userId){
 		var apipath = '/api/v1/users/{userId}/callforwarding';
 	    var requestBody;
 	    var queryParameters = {};
@@ -347,7 +352,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getCallforwarding = getCallforwarding;
+	self.getUserIdCallforwarding = getUserIdCallforwarding;
 	/**
      * @summary Update a user's CallForwarding
 	 * @memberOf UsersApi#
@@ -386,7 +391,7 @@ var UsersApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function putCallforwarding(userId, body){
+	function putUserIdCallforwarding(userId, body){
 		var apipath = '/api/v1/users/{userId}/callforwarding';
 	    var requestBody;
 	    var queryParameters = {};
@@ -406,7 +411,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putCallforwarding = putCallforwarding;
+	self.putUserIdCallforwarding = putUserIdCallforwarding;
 	/**
      * @summary Patch a user's CallForwarding
 	 * @memberOf UsersApi#
@@ -445,7 +450,7 @@ var UsersApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function patchCallforwarding(userId, body){
+	function patchUserIdCallforwarding(userId, body){
 		var apipath = '/api/v1/users/{userId}/callforwarding';
 	    var requestBody;
 	    var queryParameters = {};
@@ -465,14 +470,14 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchCallforwarding = patchCallforwarding;
+	self.patchUserIdCallforwarding = patchUserIdCallforwarding;
 	/**
      * @summary Get a user's Geolocation
 	 * @memberOf UsersApi#
 	* @param {string} userId - user Id
 	* @param {string} clientId - client Id
 	*/
-	function getGeolocation(userId, clientId){
+	function getUserIdGeolocationsClientId(userId, clientId){
 		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -494,7 +499,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getGeolocation = getGeolocation;
+	self.getUserIdGeolocationsClientId = getUserIdGeolocationsClientId;
 	/**
      * @summary Patch a user's Geolocation
 	 * @description The geolocation object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the client as the user's primary geolocation source.  Option 2: Provide the 'latitude' and 'longitude' values.  This will enqueue an asynchronous update of the 'city', 'region', and 'country', generating a notification. A subsequent GET operation will include the new values for 'city', 'region' and 'country'.  Option 3:  Provide the 'city', 'region', 'country' values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
@@ -515,7 +520,7 @@ var UsersApi = function (pureCloudSession) {
    "city": ""
 }
 	*/
-	function patchGeolocation(userId, clientId, body){
+	function patchUserIdGeolocationsClientId(userId, clientId, body){
 		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -541,13 +546,13 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchGeolocation = patchGeolocation;
+	self.patchUserIdGeolocationsClientId = patchUserIdGeolocationsClientId;
 	/**
      * @summary Get a OutOfOffice
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
-	function getOutofoffice(userId){
+	function getUserIdOutofoffice(userId){
 		var apipath = '/api/v1/users/{userId}/outofoffice';
 	    var requestBody;
 	    var queryParameters = {};
@@ -563,7 +568,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getOutofoffice = getOutofoffice;
+	self.getUserIdOutofoffice = getUserIdOutofoffice;
 	/**
      * @summary Update an OutOfOffice
 	 * @memberOf UsersApi#
@@ -602,7 +607,7 @@ var UsersApi = function (pureCloudSession) {
    "active": true
 }
 	*/
-	function putOutofoffice(userId, body){
+	function putUserIdOutofoffice(userId, body){
 		var apipath = '/api/v1/users/{userId}/outofoffice';
 	    var requestBody;
 	    var queryParameters = {};
@@ -626,13 +631,13 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putOutofoffice = putOutofoffice;
+	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
      * @summary Get a user's PrimaryUserPresenceSource
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
-	function getPrimarypresencesource(userId){
+	function getUserIdPrimarypresencesource(userId){
 		var apipath = '/api/v1/users/{userId}/primarypresencesource';
 	    var requestBody;
 	    var queryParameters = {};
@@ -648,7 +653,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getPrimarypresencesource = getPrimarypresencesource;
+	self.getUserIdPrimarypresencesource = getUserIdPrimarypresencesource;
 	/**
      * @summary Update a user's PrimaryUserPresenceSource
 	 * @memberOf UsersApi#
@@ -685,7 +690,7 @@ var UsersApi = function (pureCloudSession) {
    "primarySource": ""
 }
 	*/
-	function putPrimarypresencesource(userId, body){
+	function putUserIdPrimarypresencesource(userId, body){
 		var apipath = '/api/v1/users/{userId}/primarypresencesource';
 	    var requestBody;
 	    var queryParameters = {};
@@ -705,7 +710,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putPrimarypresencesource = putPrimarypresencesource;
+	self.putUserIdPrimarypresencesource = putUserIdPrimarypresencesource;
 	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
@@ -713,7 +718,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function getQueues(userId, pageSize, pageNumber){
+	function getUserIdQueues(userId, pageSize, pageNumber){
 		var apipath = '/api/v1/users/{userId}/queues';
 	    var requestBody;
 	    var queryParameters = {};
@@ -739,14 +744,14 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getQueues = getQueues;
+	self.getUserIdQueues = getUserIdQueues;
 	/**
      * @summary Join or unjoin a set of queues for a user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - User Queues
 	*/
-	function patchQueues(userId, body){
+	function patchUserIdQueues(userId, body){
 		var apipath = '/api/v1/users/{userId}/queues';
 	    var requestBody;
 	    var queryParameters = {};
@@ -766,7 +771,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchQueues = patchQueues;
+	self.patchUserIdQueues = patchUserIdQueues;
 	/**
      * @summary Join or unjoin a queue for a user
 	 * @memberOf UsersApi#
@@ -808,7 +813,7 @@ var UsersApi = function (pureCloudSession) {
    "memberCount": 0
 }
 	*/
-	function patchQueue(queueId, userId, body){
+	function patchUserIdQueuesQueueId(queueId, userId, body){
 		var apipath = '/api/v1/users/{userId}/queues/{queueId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -834,13 +839,13 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchQueue = patchQueue;
+	self.patchUserIdQueuesQueueId = patchUserIdQueuesQueueId;
 	/**
      * @summary List roles for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
-	function getRoles(userId){
+	function getUserIdRoles(userId){
 		var apipath = '/api/v1/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -856,13 +861,13 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRoles = getRoles;
+	self.getUserIdRoles = getUserIdRoles;
 	/**
      * @summary Fetch the routing status of a user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
-	function getRoutingstatus(userId){
+	function getUserIdRoutingstatus(userId){
 		var apipath = '/api/v1/users/{userId}/routingstatus';
 	    var requestBody;
 	    var queryParameters = {};
@@ -878,7 +883,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getRoutingstatus = getRoutingstatus;
+	self.getUserIdRoutingstatus = getUserIdRoutingstatus;
 	/**
      * @summary Update the routing status of a user
 	 * @memberOf UsersApi#
@@ -892,7 +897,7 @@ var UsersApi = function (pureCloudSession) {
    "startTime": ""
 }
 	*/
-	function putRoutingstatus(userId, body){
+	function putUserIdRoutingstatus(userId, body){
 		var apipath = '/api/v1/users/{userId}/routingstatus';
 	    var requestBody;
 	    var queryParameters = {};
@@ -912,13 +917,13 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putRoutingstatus = putRoutingstatus;
+	self.putUserIdRoutingstatus = putUserIdRoutingstatus;
 	/**
      * @summary List skills for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
-	function getSkills(userId){
+	function getUserIdSkills(userId){
 		var apipath = '/api/v1/users/{userId}/skills';
 	    var requestBody;
 	    var queryParameters = {};
@@ -934,7 +939,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSkills = getSkills;
+	self.getUserIdSkills = getUserIdSkills;
 
     return self;
 };

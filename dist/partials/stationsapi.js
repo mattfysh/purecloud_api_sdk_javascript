@@ -1,9 +1,14 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new StationsApi(pureCloudSession);
 */
 var StationsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	/**
      * @summary Get the list of available stations.
@@ -13,7 +18,7 @@ var StationsApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
 	*/
-	function getStations(pageSize, pageNumber, sortBy, name){
+	function get(pageSize, pageNumber, sortBy, name){
 		var apipath = '/api/v1/stations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -43,13 +48,13 @@ var StationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getStations = getStations;
+	self.get = get;
 	/**
      * @summary Get station.
 	 * @memberOf StationsApi#
 	* @param {string} id - Station ID
 	*/
-	function get(id){
+	function getId(id){
 		var apipath = '/api/v1/stations/{id}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -65,13 +70,13 @@ var StationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getId = getId;
 	/**
      * @summary Unassigns the user assigned to this station
 	 * @memberOf StationsApi#
 	* @param {string} id - Station ID
 	*/
-	function deleteAssociateduser(id){
+	function deleteIdAssociateduser(id){
 		var apipath = '/api/v1/stations/{id}/associateduser';
 	    var requestBody;
 	    var queryParameters = {};
@@ -87,7 +92,7 @@ var StationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteAssociateduser = deleteAssociateduser;
+	self.deleteIdAssociateduser = deleteIdAssociateduser;
 
     return self;
 };
