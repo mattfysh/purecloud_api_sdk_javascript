@@ -5,6 +5,10 @@
 * var api = new {{&moduleName}}(pureCloudSession);
 */
 var {{&moduleName}} = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+	}
+
 	var self = this;
 	{{#value}}
 	/**

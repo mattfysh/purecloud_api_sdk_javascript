@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var pureCloud = require("../dist/purecloud-api-node.js");
 
 var secret = process.env.PURECLOUD_SECRET;
@@ -6,7 +7,7 @@ var id = process.env.PURECLOUD_CLIENT_ID;
 var pureCloudSession = new pureCloud.PureCloudSession();
 pureCloudSession.debug(true);
 
-console.log(" starting login ")
+console.log(" RUNNING TEST SCRIPT ")
 
 function assert(condition, message){
     if(condition === false){
@@ -36,9 +37,83 @@ function test_oauth(){
     }).fail(fail);
 }
 
-function runTests(){
-    test_roles();
-    test_oauth();
+function test_users_and_status(){
+    var usersApi = new pureCloud.UsersApi(pureCloudSession);
+    var presenceApi = new pureCloud.PresenceApi(pureCloudSession);
+    var presenceMap = {};
+
+    usersApi.getUsers().done(function(users){
+        var user = users.entities[0];
+        var userId = user.id;
+        var userStatusName = user.status.name;
+        console.log(userStatusName);
+
+        var newStatus = (userStatusName == "Offline" || userStatusName == "Available") ? "AWAY" : "AVAILABLE"
+
+        presenceApi.getPresencedefinitions().done(function(presenceData){
+            for (var x=0; x< Object.keys(presenceData.entities).length; x++){
+                var presence = presenceData.entities[x];
+                presenceMap[presence.systemPresence] = presence.id;
+            }
+
+            var setPresence ={
+                "presenceDefinition" : {
+                    "id": presenceMap[newStatus]
+                }
+            };
+
+            console.log("updating status to " + newStatus);
+
+            presenceApi.putUserPresences(userId, "PURECLOUD", setPresence).done(function(){
+                setTimeout(function(){
+                    usersApi.get(userId).done(function(updatedUser){
+
+                        var newUserStatusName = updatedUser.status.name;
+
+                        if(newUserStatusName === userStatusName){
+                            fail("ERROR: STATUS NOT UPDATED");
+                        }
+
+                    }).fail(fail);
+                }, 500);
+            }).fail(fail);
+        }).fail(fail);
+    });
 }
 
-pureCloudSession.authorizeWithClientCredentialsGrant(id, secret).done(runTests);
+function test_invalid_session(){
+    try{
+        var authApi = new pureCloud.AuthorizationApi();
+        fail("exception should have been thrown");
+    }
+    catch(ex)
+    {
+
+    }
+}
+
+function test_fail(){
+    var nonSession = new pureCloud.PureCloudSession();
+    var authApi = new pureCloud.AuthorizationApi(nonSession);
+
+    authApi.getRoles().done(fail).fail(function(){
+        console.log("fail successfully called");
+    });
+}
+
+function test_invalid_client_credentials(){
+    var session =  new pureCloud.PureCloudSession();
+    session.authorizeWithClientCredentialsGrant("id", "secret").done(fail).error(function(err){
+        console.log("invalid client credentials handled");
+    });
+}
+
+function runTests(){
+    test_invalid_client_credentials();
+    test_fail();
+    test_roles();
+    test_oauth();
+    test_users_and_status();
+}
+
+pureCloudSession.authorizeWithClientCredentialsGrant(id, secret).done(runTests).error(fail);
