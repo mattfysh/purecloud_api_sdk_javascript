@@ -20,6 +20,7 @@ console.log(" RUNNING TEST SCRIPT ")
 function assert(condition, message){
     if(condition === false){
         console.log(message);
+        console.log("UNIT TESTS FAILED ASSERT")
         process.exit(1);
     }
 }
@@ -31,6 +32,7 @@ function fail(message){
 }
 
 function test_roles(){
+    console.log("test_roles");
     var authApi = new pureCloud.AuthorizationApi(pureCloudSession);
     roleCount = 0;
     authApi.getRoles().done(function(roles){
@@ -39,6 +41,7 @@ function test_roles(){
 }
 
 function test_oauth(){
+    console.log("test_oauth");
     var oauthApi = new pureCloud.OAuthApi(pureCloudSession);
 
     oauthApi.getClients().done(function(clients){
@@ -47,50 +50,59 @@ function test_oauth(){
 }
 
 function test_users_and_status(){
+    console.log("test_users_and_status");
     var usersApi = new pureCloud.UsersApi(pureCloudSession);
     var presenceApi = new pureCloud.PresenceApi(pureCloudSession);
-    var presenceMap = {};
+    var presenceNameToIdMap = {};
+    var presenceIdToNameMap = {};
 
     usersApi.get().done(function(users){
         var user = users.entities[0];
         var userId = user.id;
-        var userStatusName = user.status.name;
-        console.log(userStatusName);
-
-        var newStatus = (userStatusName == "Offline" || userStatusName == "Available") ? "AWAY" : "AVAILABLE"
 
         presenceApi.get().done(function(presenceData){
             for (var x=0; x< Object.keys(presenceData.entities).length; x++){
                 var presence = presenceData.entities[x];
-                presenceMap[presence.systemPresence] = presence.id;
+                presenceNameToIdMap[presence.systemPresence] = presence.id;
+                presenceIdToNameMap[presence.id] = presence.systemPresence;
             }
 
-            var setPresence ={
-                "presenceDefinition" : {
-                    "id": presenceMap[newStatus]
-                }
-            };
+            console.log(presenceData)
+            presenceApi.getUserIdPresencesSource(userId, "PURECLOUD").done(function(presence){
+                var userStatusName = presenceIdToNameMap[presence.presenceDefinition.id];
+                var newStatus = (userStatusName == "OFFLINE" || userStatusName == "AVAILABLE") ? "AWAY" : "AVAILABLE"
 
-            console.log("updating status to " + newStatus);
+                var setPresence ={
+                    "presenceDefinition" : {
+                        "id": presenceNameToIdMap[newStatus]
+                    }
+                };
 
-            presenceApi.patchUserIdPresencesSource(userId, "PURECLOUD", setPresence).done(function(){
-                setTimeout(function(){
-                    usersApi.getUserId(userId).done(function(updatedUser){
+                console.log("updating status to " + newStatus);
 
-                        var newUserStatusName = updatedUser.status.name;
+                presenceApi.patchUserIdPresencesSource(userId, "PURECLOUD", setPresence).done(function(){
+                    setTimeout(function(){
+                        presenceApi.getUserIdPresencesSource(userId, "PURECLOUD").done(function(updatedPresence){
 
-                        if(newUserStatusName === userStatusName){
-                            fail("ERROR: STATUS NOT UPDATED");
-                        }
+                            var newUserStatusName = presenceIdToNameMap[updatedPresence.presenceDefinition.id];
 
-                    }).fail(fail);
-                }, 500);
-            }).fail(fail);
+                            if(newUserStatusName === userStatusName){
+                                fail("ERROR: STATUS NOT UPDATED");
+                            }
+
+                        }).fail(fail);
+                    }, 500);
+                }).fail(fail);
+
+            })
+            /*
+            */
         }).fail(fail);
     });
 }
 
 function test_invalid_session(){
+    console.log("test_invalid_session");
     try{
         var authApi = new pureCloud.AuthorizationApi();
         fail("exception should have been thrown");
@@ -102,6 +114,7 @@ function test_invalid_session(){
 }
 
 function test_fail(){
+    console.log("test_fail");
     var nonSession = new pureCloud.PureCloudSession();
     var authApi = new pureCloud.AuthorizationApi(nonSession);
 
@@ -111,6 +124,7 @@ function test_fail(){
 }
 
 function test_invalid_client_credentials(){
+    console.log("test_invalid_client_credentials");
     var session =  new pureCloud.PureCloudSession();
     session.authorizeWithClientCredentialsGrant("id", "secret").done(fail).error(function(err){
         console.log("invalid client credentials handled");
