@@ -259,7 +259,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] : "PureCloud SDK/Javascript {{&info.version}}",
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript {{&info.version}}";
          }
 
          if(body){
