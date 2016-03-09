@@ -106,9 +106,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "description": "",
    "unread": true,
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metric": "",
    "metricThresholds": [],
@@ -215,9 +216,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -280,9 +282,10 @@ var AnalyticsApi = function (pureCloudSession) {
    "enabled": true,
    "metric": "",
    "entity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "metricThresholds": [],
    "inAlarm": true,
@@ -7346,15 +7349,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }
@@ -9241,12 +9246,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -9354,12 +9359,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -9650,12 +9655,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -9732,12 +9737,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -13034,22 +13039,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function postContactlists(body){
@@ -13135,22 +13126,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function putContactlistsContactlistId(contactListId, body){
@@ -21460,12 +21437,12 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    }
 }
 	*/
@@ -21877,7 +21854,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.24.0
+//API VERSION - 0.25.0
 /**
 * @description PureCloud API
 * @class
@@ -22131,13 +22108,15 @@ var PureCloudSession =  function (purecloudEnvironment) {
              url: url,
              headers: {
                  'Accept': 'application/json',
-                 'Content-Type': 'application/json',
-                 'User-Agent' : "PureCloud SDK/Javascript 0.24.0",
-                 'X-User-Agent' : "PureCloud SDK/Javascript 0.24.0"
+                 'Content-Type': 'application/json'
              },
              beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + _token);},
              timeout: 2000
          };
+
+         if (typeof jsdom !== "undefined") {
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.25.0";
+         }
 
          if(body){
              requestParams.data = JSON.stringify(body);

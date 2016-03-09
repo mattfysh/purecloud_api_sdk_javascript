@@ -43,12 +43,12 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    }
 }
 	*/
