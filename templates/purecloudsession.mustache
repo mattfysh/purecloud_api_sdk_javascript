@@ -15,30 +15,39 @@ var PureCloudSession =  function (purecloudEnvironment) {
     var self = {};
     var _debug = false;
 
-    if((typeof window !== 'undefined') && window.location.hash) {
-        //Parse out the hash values of the URL to get the token
-        var hash_array = location.hash.substring(1).split('&');
-        var hash_key_val = new Array(hash_array.length);
-        for (var i = 0; i < hash_array.length; i++) {
-            hash_key_val[i] = hash_array[i].split('=');
+    if(typeof window !== 'undefined') {
+		if(window && window.localStorage && window.localStorage.authtoken){
+            _token = window.localStorage.authtoken;
         }
 
-        hash_key_val.forEach(function (pair) {
-            if (pair[0] == "access_token") {
+		if(window.location.hash)
+		{
+	        //Parse out the hash values of the URL to get the token
+	        var hash_array = location.hash.substring(1).split('&');
+	        var hash_key_val = new Array(hash_array.length);
+	        for (var i = 0; i < hash_array.length; i++) {
+	            hash_key_val[i] = hash_array[i].split('=');
+	        }
 
-                // Store token
-                _token = pair[1];
+	        hash_key_val.forEach(function (pair) {
+	            if (pair[0] == "access_token") {
 
-                // Clear hash from URL
-                location.hash = '';
-            }
+	                // Store token
+	                _token = pair[1];
 
-            if (pair[0] == "state") {
-                // Store token
-                _state = pair[1];
-            }
-        });
+	                // Clear hash from URL
+	                location.hash = '';
+	            }
+
+	            if (pair[0] == "state") {
+	                // Store token
+	                _state = pair[1];
+	            }
+	        });
+		}
     }
+
+
 
     /**
      * @description Gets or sets the debugging flag.  When debugging is on, Ajax requests are logged to the console.
