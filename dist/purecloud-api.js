@@ -6267,15 +6267,17 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
+      "type": "",
       "id": "",
-      "name": ""
+      "name": "",
+      "selfUri": ""
    },
    "members": []
 }
@@ -7384,9 +7386,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -7396,6 +7396,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -7450,9 +7452,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -7462,6 +7462,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -8213,14 +8215,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "country": "",
-      "A1": "",
-      "A3": "",
-      "RD": "",
-      "HNO": "",
-      "LOC": "",
-      "NAM": "",
-      "PC": ""
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -8334,14 +8334,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "country": "",
-      "A1": "",
-      "A3": "",
-      "RD": "",
-      "HNO": "",
-      "LOC": "",
-      "NAM": "",
-      "PC": ""
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -8632,14 +8630,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "country": "",
-      "A1": "",
-      "A3": "",
-      "RD": "",
-      "HNO": "",
-      "LOC": "",
-      "NAM": "",
-      "PC": ""
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -8716,14 +8712,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "country": "",
-      "A1": "",
-      "A3": "",
-      "RD": "",
-      "HNO": "",
-      "LOC": "",
-      "NAM": "",
-      "PC": ""
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -11551,53 +11545,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function postCampaigns(body){
@@ -11665,53 +11618,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){
@@ -12009,22 +11921,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function postContactlists(body){
@@ -12110,22 +12008,8 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "columnNames": [],
-   "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "id": "",
+   "selfUri": ""
 }
 	*/
 	function putContactlistsContactlistId(contactListId, body){
@@ -16314,8 +16198,35 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "messageReturned": [],
-   "status": ""
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "name": "",
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
+   },
+   "dateCreated": ""
 }
 	*/
 	function postResponses(body){
@@ -16391,8 +16302,35 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "messageReturned": [],
-   "status": ""
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "name": "",
+      "username": "",
+      "email": "",
+      "displayName": "",
+      "phoneNumber": "",
+      "userImages": [],
+      "chat": {},
+      "roles": [],
+      "voicemailEnabled": true,
+      "department": "",
+      "title": "",
+      "routingStatus": {},
+      "password": "",
+      "primaryPresence": {},
+      "conversations": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "permissions": [],
+      "requestedStatus": {},
+      "defaultStationUri": "",
+      "stationUri": ""
+   },
+   "dateCreated": ""
 }
 	*/
 	function putResponsesResponseId(responseId, body){
@@ -20809,14 +20747,12 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "country": "",
-      "A1": "",
-      "A3": "",
-      "RD": "",
-      "HNO": "",
-      "LOC": "",
-      "NAM": "",
-      "PC": ""
+      "address1": "",
+      "address2": "",
+      "city": "",
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    }
 }
 	*/
@@ -21228,7 +21164,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.26.0
+//API VERSION - 0.27.0
 /**
 * @description PureCloud API
 * @class
@@ -21498,7 +21434,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.26.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.27.0";
          }
 
          if(body){
