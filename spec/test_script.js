@@ -56,11 +56,11 @@ function test_users_and_status(){
     var presenceNameToIdMap = {};
     var presenceIdToNameMap = {};
 
-    usersApi.get().done(function(users){
+    usersApi.getUsers().done(function(users){
         var user = users.entities[0];
         var userId = user.id;
 
-        presenceApi.get().done(function(presenceData){
+        presenceApi.getPresencedefinitions().done(function(presenceData){
             for (var x=0; x< Object.keys(presenceData.entities).length; x++){
                 var presence = presenceData.entities[x];
                 presenceNameToIdMap[presence.systemPresence] = presence.id;
