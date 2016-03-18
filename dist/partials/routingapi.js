@@ -479,6 +479,34 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.deleteQueuesQueueId = deleteQueuesQueueId;
 	/**
+     * @summary Get Estimated Wait Time
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - queueId
+	* @param {string} conversationId - conversationId
+	*/
+	function getQueuesQueueIdEstimatedwaittime(queueId, conversationId){
+		var apipath = '/api/v1/routing/queues/{queueId}/estimatedwaittime';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+
+		if(conversationId !== undefined && conversationId !== null){
+			queryParameters.conversationId = conversationId;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getQueuesQueueIdEstimatedwaittime = getQueuesQueueIdEstimatedwaittime;
+	/**
      * @summary Get members in a queue
 	 * @description Get the list of members of a queue
 	 * @memberOf RoutingApi#

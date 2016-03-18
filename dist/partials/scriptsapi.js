@@ -336,7 +336,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} name - Name
 	* @param {string} feature - Feature
 	*/
-	function get(pageSize, pageNumber, expand, name, feature){
+	function getScripts(pageSize, pageNumber, expand, name, feature){
 		var apipath = '/api/v1/scripts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -371,13 +371,13 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getScripts = getScripts;
 	/**
      * @summary Create a script.
 	 * @memberOf ScriptsApi#
 	* @param {} body - 
 	*/
-	function post(body){
+	function postScripts(body){
 		var apipath = '/api/v1/scripts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -391,7 +391,7 @@ var ScriptsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.post = post;
+	self.postScripts = postScripts;
 
     return self;
 };

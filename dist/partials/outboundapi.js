@@ -577,6 +577,26 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.postCampaigns = postCampaigns;
 	/**
+     * @summary Get progress for a list of campaigns
+	 * @memberOf OutboundApi#
+	* @param {} body - Campaign IDs
+	*/
+	function postCampaignsProgress(body){
+		var apipath = '/api/v1/outbound/campaigns/progress';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCampaignsProgress = postCampaignsProgress;
+	/**
      * @summary Get dialer campaign.
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
@@ -797,6 +817,50 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.getCampaignsCampaignIdDiagnostics = getCampaignsCampaignIdDiagnostics;
 	/**
+     * @summary Get campaign progress
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function getCampaignsCampaignIdProgress(campaignId){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}/progress';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined && campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCampaignsCampaignIdProgress = getCampaignsCampaignIdProgress;
+	/**
+     * @summary Reset campaign progress and recycle the campaign
+	 * @memberOf OutboundApi#
+	* @param {string} campaignId - Campaign ID
+	*/
+	function deleteCampaignsCampaignIdProgress(campaignId){
+		var apipath = '/api/v1/outbound/campaigns/{campaignId}/progress';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{campaignId}', campaignId);
+
+        if(campaignId === undefined && campaignId !== null){
+			throw 'Missing required  parameter: campaignId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCampaignsCampaignIdProgress = deleteCampaignsCampaignIdProgress;
+	/**
      * @summary Get statistics about a Dialer Campaign
 	 * @memberOf OutboundApi#
 	* @param {string} campaignId - Campaign ID
@@ -906,8 +970,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function postContactlists(body){
@@ -993,8 +1071,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function putContactlistsContactlistId(contactListId, body){

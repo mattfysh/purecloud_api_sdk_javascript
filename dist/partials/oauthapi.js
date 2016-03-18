@@ -14,7 +14,7 @@ var OAuthApi = function (pureCloudSession) {
      * @summary The list of identity providers
 	 * @memberOf OAuthApi#
 	*/
-	function get(){
+	function getIdentityproviders(){
 		var apipath = '/api/v1/identityproviders';
 	    var requestBody;
 	    var queryParameters = {};
@@ -24,7 +24,7 @@ var OAuthApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getIdentityproviders = getIdentityproviders;
 	/**
      * @summary Get Okta Identity Provider
 	 * @memberOf OAuthApi#

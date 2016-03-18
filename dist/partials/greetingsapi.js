@@ -16,7 +16,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function get(pageSize, pageNumber){
+	function getGreetings(pageSize, pageNumber){
 		var apipath = '/api/v1/greetings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -36,7 +36,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getGreetings = getGreetings;
 	/**
      * @summary Create a Greeting for an Organization
 	 * @memberOf GreetingsApi#
@@ -62,7 +62,7 @@ var GreetingsApi = function (pureCloudSession) {
    "modifiedBy": ""
 }
 	*/
-	function post(body){
+	function postGreetings(body){
 		var apipath = '/api/v1/greetings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -80,7 +80,7 @@ var GreetingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.post = post;
+	self.postGreetings = postGreetings;
 	/**
      * @summary Get an Organization's DefaultGreetingList
 	 * @memberOf GreetingsApi#

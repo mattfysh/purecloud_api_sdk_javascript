@@ -15,8 +15,11 @@ var LanguagesApi = function (pureCloudSession) {
 	 * @memberOf LanguagesApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
+	* @param {string} sortOrder - Ascending or descending sort order
+	[ascending,
+	descending],
 	*/
-	function get(pageSize, pageNumber){
+	function getLanguages(pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v1/languages';
 	    var requestBody;
 	    var queryParameters = {};
@@ -34,9 +37,14 @@ var LanguagesApi = function (pureCloudSession) {
 		}
 
 
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getLanguages = getLanguages;
 	/**
      * @summary Get language
 	 * @memberOf LanguagesApi#

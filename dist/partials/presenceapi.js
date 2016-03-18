@@ -16,7 +16,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
 	*/
-	function get(pageNumber, pageSize){
+	function getPresencedefinitions(pageNumber, pageSize){
 		var apipath = '/api/v1/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -36,7 +36,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getPresencedefinitions = getPresencedefinitions;
 	/**
      * @summary Create an OrganizationPresence
 	 * @memberOf PresenceApi#
@@ -100,7 +100,7 @@ var PresenceApi = function (pureCloudSession) {
    "modifiedDate": ""
 }
 	*/
-	function post(body){
+	function postPresencedefinitions(body){
 		var apipath = '/api/v1/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -118,7 +118,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.post = post;
+	self.postPresencedefinitions = postPresencedefinitions;
 	/**
      * @summary Get an OrganizationPresence
 	 * @memberOf PresenceApi#

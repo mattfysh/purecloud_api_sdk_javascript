@@ -16,7 +16,7 @@ var AttributesApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
 	*/
-	function get(pageNumber, pageSize){
+	function getAttributes(pageNumber, pageSize){
 		var apipath = '/api/v1/attributes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -36,7 +36,7 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getAttributes = getAttributes;
 	/**
      * @summary Create an attribute.
 	 * @memberOf AttributesApi#
@@ -61,7 +61,7 @@ var AttributesApi = function (pureCloudSession) {
    "dateModified": ""
 }
 	*/
-	function post(body){
+	function postAttributes(body){
 		var apipath = '/api/v1/attributes';
 	    var requestBody;
 	    var queryParameters = {};
@@ -75,7 +75,7 @@ var AttributesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.post = post;
+	self.postAttributes = postAttributes;
 	/**
      * @summary Query attributes
 	 * @memberOf AttributesApi#

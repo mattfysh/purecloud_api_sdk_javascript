@@ -17,7 +17,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} expand - conversation
 	*/
-	function get(pageSize, pageNumber, expand){
+	function getUserrecordings(pageSize, pageNumber, expand){
 		var apipath = '/api/v1/userrecordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -42,7 +42,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getUserrecordings = getUserrecordings;
 	/**
      * @summary Get user recording summary
 	 * @memberOf UserRecordingsApi#

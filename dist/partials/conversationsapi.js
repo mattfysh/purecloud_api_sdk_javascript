@@ -15,7 +15,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @memberOf ConversationsApi#
 	* @param {string} communicationType - Call or Chat communication filtering
 	*/
-	function get(communicationType){
+	function getConversations(communicationType){
 		var apipath = '/api/v1/conversations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -30,7 +30,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getConversations = getConversations;
 	/**
      * @summary Create conversation
 	 * @memberOf ConversationsApi#
@@ -43,7 +43,7 @@ var ConversationsApi = function (pureCloudSession) {
 	* @param {array} skillIds - Skill ids to use for routing when calling a queue
 	* @param {} body - 
 	*/
-	function post(call, callFrom, callQueueId, callUserId, priority, languageId, skillIds, body){
+	function postConversations(call, callFrom, callQueueId, callUserId, priority, languageId, skillIds, body){
 		var apipath = '/api/v1/conversations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -92,7 +92,7 @@ var ConversationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.post = post;
+	self.postConversations = postConversations;
 	/**
      * @summary Create Fax Conversation
 	 * @memberOf ConversationsApi#
@@ -345,7 +345,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -355,8 +357,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -411,7 +411,9 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
+   "htmlBody": "",
+   "textBody": "",
+   "id": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -421,8 +423,6 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
-   "textBody": "",
-   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -638,6 +638,50 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.putConversationIdParticipantsParticipantIdAttributes = putConversationIdParticipantsParticipantIdAttributes;
+	/**
+     * @summary Create a new callback for the specified participant on the conversation.
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "scriptId": "",
+   "queueId": "",
+   "callbackUserName": "",
+   "callbackNumbers": [],
+   "countryCode": "",
+   "skipEnabled": true
+}
+	*/
+	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
+		var apipath = '/api/v1/conversations/{conversationId}/participants/{participantId}/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationIdParticipantsParticipantIdCallbacks = postConversationIdParticipantsParticipantIdCallbacks;
 	/**
      * @summary Initiate and update consult transfer
 	 * @memberOf ConversationsApi#

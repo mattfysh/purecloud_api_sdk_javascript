@@ -236,35 +236,8 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "version": 0,
-   "libraries": [],
-   "texts": [],
-   "createdBy": {
-      "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
-   },
-   "dateCreated": ""
+   "messageReturned": [],
+   "status": ""
 }
 	*/
 	function postResponses(body){
@@ -340,35 +313,8 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "version": 0,
-   "libraries": [],
-   "texts": [],
-   "createdBy": {
-      "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
-   },
-   "dateCreated": ""
+   "messageReturned": [],
+   "status": ""
 }
 	*/
 	function putResponsesResponseId(responseId, body){

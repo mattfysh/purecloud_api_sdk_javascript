@@ -934,7 +934,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "phoneIds": []
+   "phoneIds": [],
+   "siteId": ""
 }
 	*/
 	function postProvidersEdgePhonesReboot(body){
