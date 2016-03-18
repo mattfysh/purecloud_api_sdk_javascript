@@ -512,53 +512,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function postCampaigns(body){
@@ -626,53 +585,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){

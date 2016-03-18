@@ -7386,9 +7386,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -7398,6 +7396,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -7452,9 +7452,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "htmlBody": "",
-   "textBody": "",
-   "id": "",
+   "name": "",
    "to": [],
    "cc": [],
    "bcc": [],
@@ -7464,6 +7462,8 @@ var ConversationsApi = function (pureCloudSession) {
    },
    "subject": "",
    "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
    "time": ""
 }
 	*/
@@ -10611,8 +10611,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putOkta(body){
@@ -10669,8 +10669,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putOnelogin(body){
@@ -10782,8 +10782,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putSalesforce(body){
@@ -11545,53 +11545,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function postCampaigns(body){
@@ -11659,53 +11618,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
+   "id": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "version": 0,
-   "contactList": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "queue": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "dialingMode": "",
-   "script": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "campaignStatus": "",
-   "phoneColumns": [],
-   "abandonRate": {},
-   "dncLists": [],
-   "callableTimeSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "callAnalysisResponseSet": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "errors": [],
-   "callerName": "",
-   "callerAddress": "",
-   "outboundLineCount": 0,
-   "ruleSets": [],
+   "selfUri": "",
+   "phoneNumberColumns": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "previewTimeOutSeconds": 0
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){
@@ -21246,7 +21164,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.28.0
+//API VERSION - 0.29.0
 /**
 * @description PureCloud API
 * @class
@@ -21516,7 +21434,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.28.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.29.0";
          }
 
          if(body){
