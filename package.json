@@ -16,7 +16,7 @@
     "gulp-add-src": "^0.2.0",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^1.12.0",
-    "gulp-minify": "^0.0.5",
+    "gulp-minify": "0.0.5",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "*",
     "gulp-rimraf": "^0.1.1",
