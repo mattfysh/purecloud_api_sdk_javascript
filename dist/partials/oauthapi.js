@@ -49,8 +49,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "issuerURI": ""
 }
 	*/
 	function putOkta(body){
@@ -107,8 +107,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "issuerURI": ""
 }
 	*/
 	function putOnelogin(body){
@@ -220,8 +220,8 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "issuerURI": ""
 }
 	*/
 	function putSalesforce(body){
