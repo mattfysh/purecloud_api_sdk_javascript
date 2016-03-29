@@ -23,7 +23,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {array} skill - Skill
 	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function get(pageSize, pageNumber, id, sortBy, role, name, username, skill, expand){
+	function getUsers(pageSize, pageNumber, id, sortBy, role, name, username, skill, expand){
 		var apipath = '/api/v1/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -78,7 +78,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getUsers = getUsers;
 	/**
      * @summary Create a configuration service user.
 	 * @memberOf UsersApi#
@@ -160,7 +160,7 @@ var UsersApi = function (pureCloudSession) {
    "stationUri": ""
 }
 	*/
-	function post(body){
+	function postUsers(body){
 		var apipath = '/api/v1/users';
 	    var requestBody;
 	    var queryParameters = {};
@@ -174,7 +174,7 @@ var UsersApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.post = post;
+	self.postUsers = postUsers;
 	/**
      * @summary Get user.
 	 * @memberOf UsersApi#

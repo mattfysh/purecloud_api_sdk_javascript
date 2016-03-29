@@ -18,7 +18,7 @@ var StationsApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
 	*/
-	function get(pageSize, pageNumber, sortBy, name){
+	function getStations(pageSize, pageNumber, sortBy, name){
 		var apipath = '/api/v1/stations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -48,7 +48,7 @@ var StationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getStations = getStations;
 	/**
      * @summary Get station.
 	 * @memberOf StationsApi#

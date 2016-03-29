@@ -20,7 +20,7 @@ var LocationsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function get(state, name, pageSize, pageNumber){
+	function getLocations(state, name, pageSize, pageNumber){
 		var apipath = '/api/v1/locations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -50,7 +50,7 @@ var LocationsApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getLocations = getLocations;
 	/**
      * @summary Get Location by ID.
 	 * @memberOf LocationsApi#

@@ -71,7 +71,7 @@ var UtilitiesApi = function (pureCloudSession) {
      * @summary Get the current system date/time
 	 * @memberOf UtilitiesApi#
 	*/
-	function get(){
+	function getDate(){
 		var apipath = '/api/v1/date';
 	    var requestBody;
 	    var queryParameters = {};
@@ -81,7 +81,7 @@ var UtilitiesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getDate = getDate;
 	/**
      * @summary Get health.
 	 * @memberOf UtilitiesApi#
@@ -103,7 +103,7 @@ var UtilitiesApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
-	function get(pageSize, pageNumber){
+	function getTimezones(pageSize, pageNumber){
 		var apipath = '/api/v1/timezones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -123,7 +123,7 @@ var UtilitiesApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.get = get;
+	self.getTimezones = getTimezones;
 
     return self;
 };

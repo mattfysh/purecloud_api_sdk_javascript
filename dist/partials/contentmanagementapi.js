@@ -1116,7 +1116,8 @@ var ContentManagementApi = function (pureCloudSession) {
       "memberCount": 0,
       "groupType": "",
       "groupImages": {},
-      "groupState": ""
+      "groupState": "",
+      "version": {}
    },
    "securityProfile": {
       "name": "",

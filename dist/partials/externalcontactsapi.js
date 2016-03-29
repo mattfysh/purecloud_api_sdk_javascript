@@ -17,8 +17,9 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} q - User supplied search keywords (no special syntax is currently supported)
 	* @param {string} sortOrder - Sort order
+	* @param {array} expand - which fields, if any, to expand
 	*/
-	function getContacts(pageSize, pageNumber, q, sortOrder){
+	function getContacts(pageSize, pageNumber, q, sortOrder, expand){
 		var apipath = '/api/v1/externalcontacts/contacts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -43,6 +44,11 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		if(sortOrder !== undefined && sortOrder !== null){
 			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
 		}
 
 
@@ -143,8 +149,9 @@ var ExternalContactsApi = function (pureCloudSession) {
      * @summary Fetch a ExternalContact
 	 * @memberOf ExternalContactsApi#
 	* @param {string} contactId - ExternalContact ID
+	* @param {array} expand - which fields, if any, to expand
 	*/
-	function getContactsContactId(contactId){
+	function getContactsContactId(contactId, expand){
 		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
@@ -156,6 +163,11 @@ var ExternalContactsApi = function (pureCloudSession) {
         if(contactId === undefined && contactId !== null){
 			throw 'Missing required  parameter: contactId';
         }
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -671,8 +683,9 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} q - User supplied search keywords (no special syntax is currently supported)
 	* @param {string} sortOrder - Sort order
+	* @param {array} expand - which fields, if any, to expand
 	*/
-	function getOrganizationsExternalorganizationIdContacts(externalOrganizationId, pageSize, pageNumber, q, sortOrder){
+	function getOrganizationsExternalorganizationIdContacts(externalOrganizationId, pageSize, pageNumber, q, sortOrder, expand){
 		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/contacts';
 	    var requestBody;
 	    var queryParameters = {};
@@ -703,6 +716,11 @@ var ExternalContactsApi = function (pureCloudSession) {
 
 		if(sortOrder !== undefined && sortOrder !== null){
 			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
 		}
 
 
@@ -1013,7 +1031,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	}
 	self.getRelationshipsRelationshipId = getRelationshipsRelationshipId;
 	/**
-     * @summary Fetch a relationship
+     * @summary Update a relationship
 	 * @memberOf ExternalContactsApi#
 	* @param {string} relationshipId - Relationship Id
 	* @param {} body - Relationship
