@@ -171,7 +171,7 @@ function parseJsonSchema(opts, type){
             }
 
             for(var tagIndex =0; tagIndex < op.tags.length; tagIndex++){
-                var tag = op.tags[tagIndex].replace(/ /g, "");
+                var tag = op.tags[tagIndex].replace(/[ -]/g, "");
 
                 if (data.methods[tag] == null){
                     data.methods[tag] = [];
@@ -203,8 +203,8 @@ function parseJsonSchema(opts, type){
 var build = function() {
     return gulp.src('./gen/*core.js')
                 .pipe(addsrc('./gen/*[^core].js'))
-                .pipe(concat('purecloud-api.js'))
                 .pipe(jshint())
+                .pipe(concat('purecloud-api.js'))
                 .pipe(jshint.reporter('default'))
                 .pipe(gulp.dest('./dist/'))
                 .pipe(minify())
@@ -215,8 +215,8 @@ var buildNode = function() {
     return gulp.src('./gen/*.js')
                 .pipe(addsrc.prepend('./templates/node_pre.js'))
                 .pipe(addsrc.append('./nodegen/*.js'))
-                .pipe(concat('purecloud-api-node.js'))
                 .pipe(jshint())
+                .pipe(concat('purecloud-api-node.js'))
                 .pipe(jshint.reporter('default'))
                 .pipe(gulp.dest('./dist/'));
 };
@@ -295,7 +295,7 @@ gulp.task('build', ['clean'], function() {
     });
 
     var version = process.env.SDK_VERSION;
-    
+
     _.forEach(data.methods, function(moduledata){
         moduledata.version = version;
         var source = Mustache.render(fs.readFileSync('templates/module.mustache', 'utf-8'), moduledata);
@@ -325,7 +325,6 @@ gulp.task('build', ['clean'], function() {
 gulp.task('jshint', function(){
     return gulp.src('./gen/*core.js')
                 .pipe(addsrc('./gen/*[^core].js'))
-                .pipe(addsrc('./examples/*.html'))
                 .pipe(jshint.extract('always'))
                 .pipe(jshint())
                 .pipe(jshint.reporter('default'))
