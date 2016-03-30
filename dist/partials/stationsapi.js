@@ -7,7 +7,7 @@
 var StationsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -19,7 +19,7 @@ var StationsApi = function (pureCloudSession) {
 	* @param {string} name - Name
 	*/
 	function getStations(pageSize, pageNumber, sortBy, name){
-		var apipath = '/api/v1/stations';
+		var apipath = '/api/v2/stations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -55,7 +55,7 @@ var StationsApi = function (pureCloudSession) {
 	* @param {string} id - Station ID
 	*/
 	function getId(id){
-		var apipath = '/api/v1/stations/{id}';
+		var apipath = '/api/v2/stations/{id}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -77,7 +77,7 @@ var StationsApi = function (pureCloudSession) {
 	* @param {string} id - Station ID
 	*/
 	function deleteIdAssociateduser(id){
-		var apipath = '/api/v1/stations/{id}/associateduser';
+		var apipath = '/api/v2/stations/{id}/associateduser';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

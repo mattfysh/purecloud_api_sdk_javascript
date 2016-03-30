@@ -7,7 +7,7 @@
 var ConfigurationApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -18,7 +18,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	*/
 	function getDidpools(pageSize, pageNumber, sortBy){
-		var apipath = '/api/v1/configuration/didpools';
+		var apipath = '/api/v2/configuration/didpools';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -67,7 +67,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postDidpools(body){
-		var apipath = '/api/v1/configuration/didpools';
+		var apipath = '/api/v2/configuration/didpools';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -87,7 +87,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} didPoolId - DID pool ID
 	*/
 	function getDidpoolsDidpoolId(didPoolId){
-		var apipath = '/api/v1/configuration/didpools/{didPoolId}';
+		var apipath = '/api/v2/configuration/didpools/{didPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -128,7 +128,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putDidpoolsDidpoolId(didPoolId, body){
-		var apipath = '/api/v1/configuration/didpools/{didPoolId}';
+		var apipath = '/api/v2/configuration/didpools/{didPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -154,7 +154,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} didPoolId - DID pool ID
 	*/
 	function deleteDidpoolsDidpoolId(didPoolId){
-		var apipath = '/api/v1/configuration/didpools/{didPoolId}';
+		var apipath = '/api/v2/configuration/didpools/{didPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -180,7 +180,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} phoneNumber - Filter by phoneNumber
 	*/
 	function getDids(pageSize, pageNumber, sortBy, sortOrder, phoneNumber){
-		var apipath = '/api/v1/configuration/dids';
+		var apipath = '/api/v2/configuration/dids';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -221,7 +221,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} didId - DID ID
 	*/
 	function getDidsDidId(didId){
-		var apipath = '/api/v1/configuration/dids/{didId}';
+		var apipath = '/api/v2/configuration/dids/{didId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -270,7 +270,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putDidsDidId(didId, body){
-		var apipath = '/api/v1/configuration/dids/{didId}';
+		var apipath = '/api/v2/configuration/dids/{didId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -301,7 +301,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	*/
 	function getEdges(pageSize, pageNumber, name, siteid, edgeGroupid, sortBy){
-		var apipath = '/api/v1/configuration/edges';
+		var apipath = '/api/v2/configuration/edges';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -412,7 +412,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEdges(body){
-		var apipath = '/api/v1/configuration/edges';
+		var apipath = '/api/v2/configuration/edges';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -431,7 +431,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	*/
 	function getEdgesCertificateauthorities(){
-		var apipath = '/api/v1/configuration/edges/certificateauthorities';
+		var apipath = '/api/v2/configuration/edges/certificateauthorities';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -465,7 +465,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEdgesCertificateauthorities(body){
-		var apipath = '/api/v1/configuration/edges/certificateauthorities';
+		var apipath = '/api/v2/configuration/edges/certificateauthorities';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -485,7 +485,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} certificateId - Certificate ID
 	*/
 	function getEdgesCertificateauthoritiesCertificateId(certificateId){
-		var apipath = '/api/v1/configuration/edges/certificateauthorities/{certificateId}';
+		var apipath = '/api/v2/configuration/edges/certificateauthorities/{certificateId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -526,7 +526,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putEdgesCertificateauthoritiesCertificateId(certificateId, body){
-		var apipath = '/api/v1/configuration/edges/certificateauthorities/{certificateId}';
+		var apipath = '/api/v2/configuration/edges/certificateauthorities/{certificateId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -552,7 +552,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} certificateId - Certificate ID
 	*/
 	function deleteEdgesCertificateauthoritiesCertificateId(certificateId){
-		var apipath = '/api/v1/configuration/edges/certificateauthorities/{certificateId}';
+		var apipath = '/api/v2/configuration/edges/certificateauthorities/{certificateId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -574,7 +574,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function getEdgesEdgeId(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -662,7 +662,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putEdgesEdgeId(edgeId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -688,7 +688,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function deleteEdgesEdgeId(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -712,7 +712,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getEdgesEdgeIdLines(edgeId, pageSize, pageNumber){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/lines';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/lines';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -745,7 +745,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} lineId - Line ID
 	*/
 	function getEdgesEdgeIdLinesLineId(edgeId, lineId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/lines/{lineId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/lines/{lineId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -857,7 +857,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putEdgesEdgeIdLinesLineId(edgeId, lineId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/lines/{lineId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/lines/{lineId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -890,7 +890,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function getEdgesEdgeIdLogicalinterfaces(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logicalinterfaces';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -959,7 +959,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEdgesEdgeIdLogicalinterfaces(edgeId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logicalinterfaces';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -986,7 +986,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} interfaceId - Interface ID
 	*/
 	function getEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1061,7 +1061,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1094,7 +1094,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} interfaceId - Interface ID
 	*/
 	function deleteEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1130,7 +1130,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEdgesEdgeIdLogsJobs(edgeId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logs/jobs';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1157,7 +1157,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} jobId - Job ID
 	*/
 	function getEdgesEdgeIdLogsJobsJobId(edgeId, jobId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logs/jobs/{jobId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1192,7 +1192,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEdgesEdgeIdLogsJobsJobIdUpload(edgeId, jobId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/logs/jobs/{jobId}/upload';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/logs/jobs/{jobId}/upload';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1224,7 +1224,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function getEdgesEdgeIdPhysicalinterfaces(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/physicalinterfaces';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/physicalinterfaces';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1248,7 +1248,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} interfaceId - Interface ID
 	*/
 	function getEdgesEdgeIdPhysicalinterfacesInterfaceId(edgeId, interfaceId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/physicalinterfaces/{interfaceId}';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/physicalinterfaces/{interfaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1276,7 +1276,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function postEdgesEdgeIdReboot(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/reboot';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/reboot';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1298,7 +1298,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function getEdgesEdgeIdSoftwareupdate(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareupdate';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/softwareupdate';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1341,7 +1341,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEdgesEdgeIdSoftwareupdate(edgeId, body){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareupdate';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/softwareupdate';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1367,7 +1367,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function deleteEdgesEdgeIdSoftwareupdate(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareupdate';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/softwareupdate';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1389,7 +1389,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge ID
 	*/
 	function getEdgesEdgeIdSoftwareversions(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/softwareversions';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/softwareversions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1411,7 +1411,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} edgeId - Edge Id
 	*/
 	function postEdgesEdgeIdUnpair(edgeId){
-		var apipath = '/api/v1/configuration/edges/{edgeId}/unpair';
+		var apipath = '/api/v2/configuration/edges/{edgeId}/unpair';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1433,7 +1433,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	*/
 	function getEdgeversionreport(){
-		var apipath = '/api/v1/configuration/edgeversionreport';
+		var apipath = '/api/v2/configuration/edgeversionreport';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1452,7 +1452,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} sortBy - Sort by
 	*/
 	function getEndpoints(pageSize, pageNumber, name, sortBy){
-		var apipath = '/api/v1/configuration/endpoints';
+		var apipath = '/api/v2/configuration/endpoints';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1516,7 +1516,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postEndpoints(body){
-		var apipath = '/api/v1/configuration/endpoints';
+		var apipath = '/api/v2/configuration/endpoints';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1536,7 +1536,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} endpointId - Endpoint ID
 	*/
 	function getEndpointsEndpointId(endpointId){
-		var apipath = '/api/v1/configuration/endpoints/{endpointId}';
+		var apipath = '/api/v2/configuration/endpoints/{endpointId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1587,7 +1587,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putEndpointsEndpointId(endpointId, body){
-		var apipath = '/api/v1/configuration/endpoints/{endpointId}';
+		var apipath = '/api/v2/configuration/endpoints/{endpointId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1613,7 +1613,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} endpointId - Endpoint ID
 	*/
 	function deleteEndpointsEndpointId(endpointId){
-		var apipath = '/api/v1/configuration/endpoints/{endpointId}';
+		var apipath = '/api/v2/configuration/endpoints/{endpointId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1638,7 +1638,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} number - Number
 	*/
 	function getExtensionpools(pageSize, pageNumber, sortBy, number){
-		var apipath = '/api/v1/configuration/extensionpools';
+		var apipath = '/api/v2/configuration/extensionpools';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1690,7 +1690,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postExtensionpools(body){
-		var apipath = '/api/v1/configuration/extensionpools';
+		var apipath = '/api/v2/configuration/extensionpools';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1710,7 +1710,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} extensionPoolId - Extension pool ID
 	*/
 	function getExtensionpoolsExtensionpoolId(extensionPoolId){
-		var apipath = '/api/v1/configuration/extensionpools/{extensionPoolId}';
+		var apipath = '/api/v2/configuration/extensionpools/{extensionPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1749,7 +1749,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putExtensionpoolsExtensionpoolId(extensionPoolId, body){
-		var apipath = '/api/v1/configuration/extensionpools/{extensionPoolId}';
+		var apipath = '/api/v2/configuration/extensionpools/{extensionPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1775,7 +1775,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} extensionPoolId - Extension pool ID
 	*/
 	function deleteExtensionpoolsExtensionpoolId(extensionPoolId){
-		var apipath = '/api/v1/configuration/extensionpools/{extensionPoolId}';
+		var apipath = '/api/v2/configuration/extensionpools/{extensionPoolId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1801,7 +1801,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} number - Filter by number
 	*/
 	function getExtensions(pageSize, pageNumber, sortBy, sortOrder, number){
-		var apipath = '/api/v1/configuration/extensions';
+		var apipath = '/api/v2/configuration/extensions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1842,7 +1842,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} extensionId - Extension ID
 	*/
 	function getExtensionsExtensionId(extensionId){
-		var apipath = '/api/v1/configuration/extensions/{extensionId}';
+		var apipath = '/api/v2/configuration/extensions/{extensionId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1891,7 +1891,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putExtensionsExtensionId(extensionId, body){
-		var apipath = '/api/v1/configuration/extensions/{extensionId}';
+		var apipath = '/api/v2/configuration/extensions/{extensionId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1916,7 +1916,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	*/
 	function getOrganization(){
-		var apipath = '/api/v1/configuration/organization';
+		var apipath = '/api/v2/configuration/organization';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1947,7 +1947,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putOrganization(body){
-		var apipath = '/api/v1/configuration/organization';
+		var apipath = '/api/v2/configuration/organization';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1977,7 +1977,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postOrganizations(body){
-		var apipath = '/api/v1/configuration/organizations';
+		var apipath = '/api/v2/configuration/organizations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1997,7 +1997,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} orgId - Organization ID
 	*/
 	function getOrganizationsOrgId(orgId){
-		var apipath = '/api/v1/configuration/organizations/{orgId}';
+		var apipath = '/api/v2/configuration/organizations/{orgId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2035,7 +2035,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putOrganizationsOrgId(orgId, body){
-		var apipath = '/api/v1/configuration/organizations/{orgId}';
+		var apipath = '/api/v2/configuration/organizations/{orgId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2061,7 +2061,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} orgId - Organization ID
 	*/
 	function deleteOrganizationsOrgId(orgId){
-		var apipath = '/api/v1/configuration/organizations/{orgId}';
+		var apipath = '/api/v2/configuration/organizations/{orgId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2084,7 +2084,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getRecordingkeys(pageSize, pageNumber){
-		var apipath = '/api/v1/configuration/recordingkeys';
+		var apipath = '/api/v2/configuration/recordingkeys';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2109,7 +2109,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	*/
 	function postRecordingkeys(){
-		var apipath = '/api/v1/configuration/recordingkeys';
+		var apipath = '/api/v2/configuration/recordingkeys';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2124,7 +2124,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	 * @memberOf ConfigurationApi#
 	*/
 	function getRecordingkeysRotationschedule(){
-		var apipath = '/api/v1/configuration/recordingkeys/rotationschedule';
+		var apipath = '/api/v2/configuration/recordingkeys/rotationschedule';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2146,7 +2146,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putRecordingkeysRotationschedule(body){
-		var apipath = '/api/v1/configuration/recordingkeys/rotationschedule';
+		var apipath = '/api/v2/configuration/recordingkeys/rotationschedule';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2174,7 +2174,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {boolean} hasErrors - provides a way to fetch all policies with errors or policies that do not have errors
 	*/
 	function getRetentionpolicies(pageSize, pageNumber, sortBy, expand, name, enabled, summary, hasErrors){
-		var apipath = '/api/v1/configuration/retentionpolicies';
+		var apipath = '/api/v2/configuration/retentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2266,7 +2266,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postRetentionpolicies(body){
-		var apipath = '/api/v1/configuration/retentionpolicies';
+		var apipath = '/api/v2/configuration/retentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2287,7 +2287,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} ids - Bulk delete of Rules from specified rule set, this will only delete the rules that match the ids specified in the query param.
 	*/
 	function deleteRetentionpolicies(ids){
-		var apipath = '/api/v1/configuration/retentionpolicies';
+		var apipath = '/api/v2/configuration/retentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2312,7 +2312,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} policyId - Policy ID
 	*/
 	function getRetentionpoliciesPolicyId(policyId){
-		var apipath = '/api/v1/configuration/retentionpolicies/{policyId}';
+		var apipath = '/api/v2/configuration/retentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2371,7 +2371,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putRetentionpoliciesPolicyId(policyId, body){
-		var apipath = '/api/v1/configuration/retentionpolicies/{policyId}';
+		var apipath = '/api/v2/configuration/retentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2397,7 +2397,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} policyId - Policy ID
 	*/
 	function deleteRetentionpoliciesPolicyId(policyId){
-		var apipath = '/api/v1/configuration/retentionpolicies/{policyId}';
+		var apipath = '/api/v2/configuration/retentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2456,7 +2456,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function patchRetentionpoliciesPolicyId(policyId, body){
-		var apipath = '/api/v1/configuration/retentionpolicies/{policyId}';
+		var apipath = '/api/v2/configuration/retentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2483,7 +2483,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getSchemasEdgesVnext(pageSize, pageNumber){
-		var apipath = '/api/v1/configuration/schemas/edges/vnext';
+		var apipath = '/api/v2/configuration/schemas/edges/vnext';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2511,7 +2511,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getSchemasEdgesVnextSchemacategory(schemaCategory, pageSize, pageNumber){
-		var apipath = '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}';
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2546,7 +2546,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getSchemasEdgesVnextSchemacategorySchematype(schemaCategory, schemaType, pageSize, pageNumber){
-		var apipath = '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}';
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2586,7 +2586,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} schemaId - Schema ID
 	*/
 	function getSchemasEdgesVnextSchemacategorySchematypeSchemaId(schemaCategory, schemaType, schemaId){
-		var apipath = '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}';
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2625,7 +2625,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} type - Type
 	*/
 	function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId(schemaCategory, schemaType, schemaId, extension, metadataId, type){
-		var apipath = '/api/v1/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extension}/{metadataId}';
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extension}/{metadataId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2681,7 +2681,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} locationid - Location Id
 	*/
 	function getSites(pageSize, pageNumber, sortBy, sortOrder, name, locationid){
-		var apipath = '/api/v1/configuration/sites';
+		var apipath = '/api/v2/configuration/sites';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2759,7 +2759,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function postSites(body){
-		var apipath = '/api/v1/configuration/sites';
+		var apipath = '/api/v2/configuration/sites';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2779,7 +2779,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	*/
 	function getSitesSiteId(siteId){
-		var apipath = '/api/v1/configuration/sites/{siteId}';
+		var apipath = '/api/v2/configuration/sites/{siteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2834,7 +2834,7 @@ var ConfigurationApi = function (pureCloudSession) {
 }
 	*/
 	function putSitesSiteId(siteId, body){
-		var apipath = '/api/v1/configuration/sites/{siteId}';
+		var apipath = '/api/v2/configuration/sites/{siteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2860,7 +2860,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	*/
 	function deleteSitesSiteId(siteId){
-		var apipath = '/api/v1/configuration/sites/{siteId}';
+		var apipath = '/api/v2/configuration/sites/{siteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2882,7 +2882,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	*/
 	function getSitesSiteIdNumberplans(siteId){
-		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans';
+		var apipath = '/api/v2/configuration/sites/{siteId}/numberplans';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2905,7 +2905,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {} body - 
 	*/
 	function putSitesSiteIdNumberplans(siteId, body){
-		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans';
+		var apipath = '/api/v2/configuration/sites/{siteId}/numberplans';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2932,7 +2932,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} classification - Classification
 	*/
 	function getSitesSiteIdNumberplansClassifications(siteId, classification){
-		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans/classifications';
+		var apipath = '/api/v2/configuration/sites/{siteId}/numberplans/classifications';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2960,7 +2960,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} numberPlanId - Number Plan ID
 	*/
 	function getSitesSiteIdNumberplansNumberplanId(siteId, numberPlanId){
-		var apipath = '/api/v1/configuration/sites/{siteId}/numberplans/{numberPlanId}';
+		var apipath = '/api/v2/configuration/sites/{siteId}/numberplans/{numberPlanId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -2988,7 +2988,7 @@ var ConfigurationApi = function (pureCloudSession) {
 	* @param {string} siteId - Site ID
 	*/
 	function postSitesSiteIdRebalance(siteId){
-		var apipath = '/api/v1/configuration/sites/{siteId}/rebalance';
+		var apipath = '/api/v2/configuration/sites/{siteId}/rebalance';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

@@ -7,7 +7,7 @@
 var AttributesApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -17,7 +17,7 @@ var AttributesApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	*/
 	function getAttributes(pageNumber, pageSize){
-		var apipath = '/api/v1/attributes';
+		var apipath = '/api/v2/attributes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -62,7 +62,7 @@ var AttributesApi = function (pureCloudSession) {
 }
 	*/
 	function postAttributes(body){
-		var apipath = '/api/v1/attributes';
+		var apipath = '/api/v2/attributes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -89,7 +89,7 @@ var AttributesApi = function (pureCloudSession) {
 }
 	*/
 	function postQuery(body){
-		var apipath = '/api/v1/attributes/query';
+		var apipath = '/api/v2/attributes/query';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -109,7 +109,7 @@ var AttributesApi = function (pureCloudSession) {
 	* @param {string} attributeId - Attribute ID
 	*/
 	function getAttributeId(attributeId){
-		var apipath = '/api/v1/attributes/{attributeId}';
+		var apipath = '/api/v2/attributes/{attributeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -152,7 +152,7 @@ var AttributesApi = function (pureCloudSession) {
 }
 	*/
 	function putAttributeId(attributeId, body){
-		var apipath = '/api/v1/attributes/{attributeId}';
+		var apipath = '/api/v2/attributes/{attributeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -179,7 +179,7 @@ var AttributesApi = function (pureCloudSession) {
 	* @param {string} attributeId - Attribute ID
 	*/
 	function deleteAttributeId(attributeId){
-		var apipath = '/api/v1/attributes/{attributeId}';
+		var apipath = '/api/v2/attributes/{attributeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

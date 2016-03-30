@@ -7,7 +7,7 @@
 var TokensApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -15,7 +15,7 @@ var TokensApi = function (pureCloudSession) {
 	 * @memberOf TokensApi#
 	*/
 	function deleteMe(){
-		var apipath = '/api/v1/tokens/me';
+		var apipath = '/api/v2/tokens/me';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

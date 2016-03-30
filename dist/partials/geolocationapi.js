@@ -7,7 +7,7 @@
 var GeolocationApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -15,7 +15,7 @@ var GeolocationApi = function (pureCloudSession) {
 	 * @memberOf GeolocationApi#
 	*/
 	function getSettings(){
-		var apipath = '/api/v1/geolocations/settings';
+		var apipath = '/api/v2/geolocations/settings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -37,7 +37,7 @@ var GeolocationApi = function (pureCloudSession) {
 }
 	*/
 	function patchSettings(body){
-		var apipath = '/api/v1/geolocations/settings';
+		var apipath = '/api/v2/geolocations/settings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -58,7 +58,7 @@ var GeolocationApi = function (pureCloudSession) {
 	* @param {string} clientId - client Id
 	*/
 	function getUserIdGeolocationsClientId(userId, clientId){
-		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
+		var apipath = '/api/v2/users/{userId}/geolocations/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -101,7 +101,7 @@ var GeolocationApi = function (pureCloudSession) {
 }
 	*/
 	function patchUserIdGeolocationsClientId(userId, clientId, body){
-		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
+		var apipath = '/api/v2/users/{userId}/geolocations/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

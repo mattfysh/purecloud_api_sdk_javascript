@@ -7,7 +7,7 @@
 var UserRecordingsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -18,7 +18,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	* @param {string} expand - conversation
 	*/
 	function getUserrecordings(pageSize, pageNumber, expand){
-		var apipath = '/api/v1/userrecordings';
+		var apipath = '/api/v2/userrecordings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -48,7 +48,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	 * @memberOf UserRecordingsApi#
 	*/
 	function getSummary(){
-		var apipath = '/api/v1/userrecordings/summary';
+		var apipath = '/api/v2/userrecordings/summary';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -65,7 +65,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	* @param {string} expand - conversation
 	*/
 	function getRecordingId(recordingId, expand){
-		var apipath = '/api/v1/userrecordings/{recordingId}';
+		var apipath = '/api/v2/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -126,7 +126,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 }
 	*/
 	function putRecordingId(recordingId, body, expand){
-		var apipath = '/api/v1/userrecordings/{recordingId}';
+		var apipath = '/api/v2/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -157,7 +157,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	* @param {string} recordingId - User Recording ID
 	*/
 	function deleteRecordingId(recordingId){
-		var apipath = '/api/v1/userrecordings/{recordingId}';
+		var apipath = '/api/v2/userrecordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -182,7 +182,7 @@ var UserRecordingsApi = function (pureCloudSession) {
 	WAV,
 	*/
 	function getRecordingIdMedia(recordingId, formatId){
-		var apipath = '/api/v1/userrecordings/{recordingId}/media';
+		var apipath = '/api/v2/userrecordings/{recordingId}/media';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

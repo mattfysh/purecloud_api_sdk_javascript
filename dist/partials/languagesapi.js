@@ -7,7 +7,7 @@
 var LanguagesApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -20,7 +20,7 @@ var LanguagesApi = function (pureCloudSession) {
 	descending],
 	*/
 	function getLanguages(pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v1/languages';
+		var apipath = '/api/v2/languages';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -51,7 +51,7 @@ var LanguagesApi = function (pureCloudSession) {
 	* @param {string} languageId - Language ID
 	*/
 	function getLanguageId(languageId){
-		var apipath = '/api/v1/languages/{languageId}';
+		var apipath = '/api/v2/languages/{languageId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

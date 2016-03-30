@@ -7,7 +7,7 @@
 var ExternalContactsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -20,7 +20,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {array} expand - which fields, if any, to expand
 	*/
 	function getContacts(pageSize, pageNumber, q, sortOrder, expand){
-		var apipath = '/api/v1/externalcontacts/contacts';
+		var apipath = '/api/v2/externalcontacts/contacts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -103,12 +103,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "address1": "",
-      "address2": "",
+      "name": "",
+      "street": "",
       "city": "",
-      "state": "",
-      "postalCode": "",
-      "countryCode": ""
+      "countryName": "",
+      "stateName": "",
+      "postalCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -131,7 +131,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function postContacts(body){
-		var apipath = '/api/v1/externalcontacts/contacts';
+		var apipath = '/api/v2/externalcontacts/contacts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -152,7 +152,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {array} expand - which fields, if any, to expand
 	*/
 	function getContactsContactId(contactId, expand){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -222,12 +222,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "address1": "",
-      "address2": "",
+      "name": "",
+      "street": "",
       "city": "",
-      "state": "",
-      "postalCode": "",
-      "countryCode": ""
+      "countryName": "",
+      "stateName": "",
+      "postalCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -250,7 +250,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function putContactsContactId(contactId, body){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -276,7 +276,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} contactId - ExternalContact ID
 	*/
 	function deleteContactsContactId(contactId){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -301,7 +301,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getContactsContactIdNotes(contactId, pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -347,7 +347,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function postContactsContactIdNotes(contactId, body){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -374,7 +374,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} noteId - Note Id
 	*/
 	function getContactsContactIdNotesNoteId(contactId, noteId){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes/{noteId}';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -412,7 +412,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function putContactsContactIdNotesNoteId(contactId, noteId, body){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes/{noteId}';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -445,7 +445,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} noteId - Note Id
 	*/
 	function deleteContactsContactIdNotesNoteId(contactId, noteId){
-		var apipath = '/api/v1/externalcontacts/contacts/{contactId}/notes/{noteId}';
+		var apipath = '/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -476,7 +476,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getOrganizations(pageSize, pageNumber, q, sortOrder){
-		var apipath = '/api/v1/externalcontacts/organizations';
+		var apipath = '/api/v2/externalcontacts/organizations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -518,12 +518,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "address1": "",
-      "address2": "",
+      "name": "",
+      "street": "",
       "city": "",
-      "state": "",
-      "postalCode": "",
-      "countryCode": ""
+      "countryName": "",
+      "stateName": "",
+      "postalCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -551,7 +551,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function postOrganizations(body){
-		var apipath = '/api/v1/externalcontacts/organizations';
+		var apipath = '/api/v2/externalcontacts/organizations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -571,7 +571,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} externalOrganizationId - External Organization ID
 	*/
 	function getOrganizationsExternalorganizationId(externalOrganizationId){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -600,12 +600,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "address1": "",
-      "address2": "",
+      "name": "",
+      "street": "",
       "city": "",
-      "state": "",
-      "postalCode": "",
-      "countryCode": ""
+      "countryName": "",
+      "stateName": "",
+      "postalCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -633,7 +633,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function putOrganizationsExternalorganizationId(externalOrganizationId, body){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -659,7 +659,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} externalOrganizationId - External Organization ID
 	*/
 	function deleteOrganizationsExternalorganizationId(externalOrganizationId){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -686,7 +686,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {array} expand - which fields, if any, to expand
 	*/
 	function getOrganizationsExternalorganizationIdContacts(externalOrganizationId, pageSize, pageNumber, q, sortOrder, expand){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/contacts';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/contacts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -736,7 +736,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getOrganizationsExternalorganizationIdNotes(externalOrganizationId, pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -782,7 +782,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function postOrganizationsExternalorganizationIdNotes(externalOrganizationId, body){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -809,7 +809,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} noteId - Note Id
 	*/
 	function getOrganizationsExternalorganizationIdNotesNoteId(externalOrganizationId, noteId){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -847,7 +847,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function putOrganizationsExternalorganizationIdNotesNoteId(externalOrganizationId, noteId, body){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -880,7 +880,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} noteId - Note Id
 	*/
 	function deleteOrganizationsExternalorganizationIdNotesNoteId(externalOrganizationId, noteId){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -911,7 +911,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getOrganizationsExternalorganizationIdRelationships(externalOrganizationId, pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v1/externalcontacts/organizations/{externalOrganizationId}/relationships';
+		var apipath = '/api/v2/externalcontacts/organizations/{externalOrganizationId}/relationships';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -952,27 +952,13 @@ var ExternalContactsApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "externalOrganization": {
       "name": "",
@@ -994,7 +980,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function postRelationships(body){
-		var apipath = '/api/v1/externalcontacts/relationships';
+		var apipath = '/api/v2/externalcontacts/relationships';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1014,7 +1000,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} relationshipId - Relationship Id
 	*/
 	function getRelationshipsRelationshipId(relationshipId){
-		var apipath = '/api/v1/externalcontacts/relationships/{relationshipId}';
+		var apipath = '/api/v2/externalcontacts/relationships/{relationshipId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1041,27 +1027,13 @@ var ExternalContactsApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "externalOrganization": {
       "name": "",
@@ -1083,7 +1055,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 }
 	*/
 	function putRelationshipsRelationshipId(relationshipId, body){
-		var apipath = '/api/v1/externalcontacts/relationships/{relationshipId}';
+		var apipath = '/api/v2/externalcontacts/relationships/{relationshipId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1109,7 +1081,7 @@ var ExternalContactsApi = function (pureCloudSession) {
 	* @param {string} relationshipId - Relationship Id
 	*/
 	function deleteRelationshipsRelationshipId(relationshipId){
-		var apipath = '/api/v1/externalcontacts/relationships/{relationshipId}';
+		var apipath = '/api/v2/externalcontacts/relationships/{relationshipId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

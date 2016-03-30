@@ -7,7 +7,7 @@
 var LicensingApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -16,7 +16,7 @@ var LicensingApi = function (pureCloudSession) {
 	* @param {array} permission - Permission
 	*/
 	function getLicenses(permission){
-		var apipath = '/api/v1/licensing/licenses';
+		var apipath = '/api/v2/licensing/licenses';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -36,7 +36,7 @@ var LicensingApi = function (pureCloudSession) {
 	 * @memberOf LicensingApi#
 	*/
 	function getOrgassignments(){
-		var apipath = '/api/v1/licensing/orgassignments';
+		var apipath = '/api/v2/licensing/orgassignments';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -52,7 +52,7 @@ var LicensingApi = function (pureCloudSession) {
 	* @param {string} id - ID
 	*/
 	function getOrgassignmentsId(id){
-		var apipath = '/api/v1/licensing/orgassignments/{id}';
+		var apipath = '/api/v2/licensing/orgassignments/{id}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -74,7 +74,7 @@ var LicensingApi = function (pureCloudSession) {
 	* @param {array} id - ID
 	*/
 	function getPermissions(id){
-		var apipath = '/api/v1/licensing/permissions';
+		var apipath = '/api/v2/licensing/permissions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -102,7 +102,7 @@ var LicensingApi = function (pureCloudSession) {
 }
 	*/
 	function postPermissions(id, body){
-		var apipath = '/api/v1/licensing/permissions';
+		var apipath = '/api/v2/licensing/permissions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -126,7 +126,7 @@ var LicensingApi = function (pureCloudSession) {
 	 * @memberOf LicensingApi#
 	*/
 	function getUserassignments(){
-		var apipath = '/api/v1/licensing/userassignments';
+		var apipath = '/api/v2/licensing/userassignments';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -142,7 +142,7 @@ var LicensingApi = function (pureCloudSession) {
 	* @param {string} id - ID
 	*/
 	function getUserassignmentsId(id){
-		var apipath = '/api/v1/licensing/userassignments/{id}';
+		var apipath = '/api/v2/licensing/userassignments/{id}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

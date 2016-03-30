@@ -7,7 +7,7 @@
 var PresenceApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -17,7 +17,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	*/
 	function getPresencedefinitions(pageNumber, pageSize){
-		var apipath = '/api/v1/presencedefinitions';
+		var apipath = '/api/v2/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -50,58 +50,30 @@ var PresenceApi = function (pureCloudSession) {
    "deactivated": true,
    "createdBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "createdDate": "",
    "modifiedBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "modifiedDate": ""
 }
 	*/
 	function postPresencedefinitions(body){
-		var apipath = '/api/v1/presencedefinitions';
+		var apipath = '/api/v2/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -125,7 +97,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {string} presenceId - Organization Presence ID
 	*/
 	function getPresenceId(presenceId){
-		var apipath = '/api/v1/presencedefinitions/{presenceId}';
+		var apipath = '/api/v2/presencedefinitions/{presenceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -155,58 +127,30 @@ var PresenceApi = function (pureCloudSession) {
    "deactivated": true,
    "createdBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "createdDate": "",
    "modifiedBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "modifiedDate": ""
 }
 	*/
 	function putPresenceId(presenceId, body){
-		var apipath = '/api/v1/presencedefinitions/{presenceId}';
+		var apipath = '/api/v2/presencedefinitions/{presenceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -236,7 +180,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {string} presenceId - Organization Presence ID
 	*/
 	function deletePresenceId(presenceId){
-		var apipath = '/api/v1/presencedefinitions/{presenceId}';
+		var apipath = '/api/v2/presencedefinitions/{presenceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -260,7 +204,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	*/
 	function getUserIdPresences(userId, pageNumber, pageSize){
-		var apipath = '/api/v1/users/{userId}/presences';
+		var apipath = '/api/v2/users/{userId}/presences';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -293,7 +237,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {string} source - Source
 	*/
 	function getUserIdPresencesSource(userId, source){
-		var apipath = '/api/v1/users/{userId}/presences/{source}';
+		var apipath = '/api/v2/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -327,27 +271,13 @@ var PresenceApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "source": "",
    "presenceDefinition": {
@@ -363,33 +293,19 @@ var PresenceApi = function (pureCloudSession) {
    "message": "",
    "modifiedBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "modifiedDate": ""
 }
 	*/
 	function putUserIdPresencesSource(userId, source, body){
-		var apipath = '/api/v1/users/{userId}/presences/{source}';
+		var apipath = '/api/v2/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -431,27 +347,13 @@ var PresenceApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "source": "",
    "presenceDefinition": {
@@ -467,33 +369,19 @@ var PresenceApi = function (pureCloudSession) {
    "message": "",
    "modifiedBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "modifiedDate": ""
 }
 	*/
 	function patchUserIdPresencesSource(userId, source, body){
-		var apipath = '/api/v1/users/{userId}/presences/{source}';
+		var apipath = '/api/v2/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -529,7 +417,7 @@ var PresenceApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	*/
 	function getUserIdPrimarypresence(userId){
-		var apipath = '/api/v1/users/{userId}/primarypresence';
+		var apipath = '/api/v2/users/{userId}/primarypresence';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

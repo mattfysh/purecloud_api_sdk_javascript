@@ -7,7 +7,7 @@
 var LocationsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -21,7 +21,7 @@ var LocationsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getLocations(state, name, pageSize, pageNumber){
-		var apipath = '/api/v1/locations';
+		var apipath = '/api/v2/locations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -57,7 +57,7 @@ var LocationsApi = function (pureCloudSession) {
 	* @param {string} locationId - Location ID
 	*/
 	function getLocationId(locationId){
-		var apipath = '/api/v1/locations/{locationId}';
+		var apipath = '/api/v2/locations/{locationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

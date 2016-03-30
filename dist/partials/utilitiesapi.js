@@ -7,7 +7,7 @@
 var UtilitiesApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -21,7 +21,7 @@ var UtilitiesApi = function (pureCloudSession) {
 }
 	*/
 	function postDetails(body){
-		var apipath = '/api/v1/certificate/details';
+		var apipath = '/api/v2/certificate/details';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -43,17 +43,17 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "address": {
-      "address1": "",
-      "address2": "",
+      "name": "",
+      "street": "",
       "city": "",
-      "state": "",
-      "postalCode": "",
-      "countryCode": ""
+      "countryName": "",
+      "stateName": "",
+      "postalCode": ""
    }
 }
 	*/
 	function postAddressvalidation(body){
-		var apipath = '/api/v1/configuration/addressvalidation';
+		var apipath = '/api/v2/configuration/addressvalidation';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -72,7 +72,7 @@ var UtilitiesApi = function (pureCloudSession) {
 	 * @memberOf UtilitiesApi#
 	*/
 	function getDate(){
-		var apipath = '/api/v1/date';
+		var apipath = '/api/v2/date';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -83,28 +83,13 @@ var UtilitiesApi = function (pureCloudSession) {
 	}
 	self.getDate = getDate;
 	/**
-     * @summary Get health.
-	 * @memberOf UtilitiesApi#
-	*/
-	function getCheck(){
-		var apipath = '/api/v1/health/check';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getCheck = getCheck;
-	/**
      * @summary Get time zones list
 	 * @memberOf UtilitiesApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	*/
 	function getTimezones(pageSize, pageNumber){
-		var apipath = '/api/v1/timezones';
+		var apipath = '/api/v2/timezones';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

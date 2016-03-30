@@ -7,7 +7,7 @@
 var ContentManagementApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -27,7 +27,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postAuditquery(body){
-		var apipath = '/api/v1/contentmanagement/auditquery';
+		var apipath = '/api/v2/contentmanagement/auditquery';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -59,7 +59,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} sortOrder - ascending or descending
 	*/
 	function getDocuments(workspaceId, name, expand, pageSize, pageNumber, sortBy, sortOrder){
-		var apipath = '/api/v1/contentmanagement/documents';
+		var apipath = '/api/v2/contentmanagement/documents';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -129,7 +129,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postDocuments(body, copySource, moveSource, override){
-		var apipath = '/api/v1/contentmanagement/documents';
+		var apipath = '/api/v2/contentmanagement/documents';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -168,7 +168,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	workspace,
 	*/
 	function getDocumentsDocumentId(documentId, expand){
-		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
+		var apipath = '/api/v2/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -212,7 +212,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postDocumentsDocumentId(documentId, body, expand, override){
-		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
+		var apipath = '/api/v2/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -249,7 +249,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {boolean} override - Override any lock on the document
 	*/
 	function deleteDocumentsDocumentId(documentId, override){
-		var apipath = '/api/v1/contentmanagement/documents/{documentId}';
+		var apipath = '/api/v2/contentmanagement/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -282,7 +282,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getDocumentsDocumentIdAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder){
-		var apipath = '/api/v1/contentmanagement/documents/{documentId}/audits';
+		var apipath = '/api/v2/contentmanagement/documents/{documentId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -338,7 +338,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
 	*/
 	function getDocumentsDocumentIdContent(documentId, disposition, contentType){
-		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
+		var apipath = '/api/v2/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -379,7 +379,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postDocumentsDocumentIdContent(documentId, body, override){
-		var apipath = '/api/v1/contentmanagement/documents/{documentId}/content';
+		var apipath = '/api/v2/contentmanagement/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -417,7 +417,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	workspace,
 	*/
 	function getQuery(pageSize, pageNumber, sortBy, sortOrder, queryPhrase, expand){
-		var apipath = '/api/v1/contentmanagement/query';
+		var apipath = '/api/v2/contentmanagement/query';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -481,7 +481,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postQuery(body, expand){
-		var apipath = '/api/v1/contentmanagement/query';
+		var apipath = '/api/v2/contentmanagement/query';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -509,7 +509,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * @memberOf ContentManagementApi#
 	*/
 	function getSecurityprofiles(){
-		var apipath = '/api/v1/contentmanagement/securityprofiles';
+		var apipath = '/api/v2/contentmanagement/securityprofiles';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -525,7 +525,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} securityProfileId - Security Profile Id
 	*/
 	function getSecurityprofilesSecurityprofileId(securityProfileId){
-		var apipath = '/api/v1/contentmanagement/securityprofiles/{securityProfileId}';
+		var apipath = '/api/v2/contentmanagement/securityprofiles/{securityProfileId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -556,7 +556,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	document.acl,
 	*/
 	function getSharedSharedId(sharedId, redirect, disposition, contentType, expand){
-		var apipath = '/api/v1/contentmanagement/shared/{sharedId}';
+		var apipath = '/api/v2/contentmanagement/shared/{sharedId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -603,7 +603,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getShares(entityId, expand, pageSize, pageNumber){
-		var apipath = '/api/v1/contentmanagement/shares';
+		var apipath = '/api/v2/contentmanagement/shares';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -642,23 +642,21 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "memberType": "",
    "member": {
-      "type": "",
+      "kind": "",
       "id": "",
-      "name": "",
-      "selfUri": ""
+      "name": ""
    },
    "members": []
 }
 	*/
 	function postShares(body){
-		var apipath = '/api/v1/contentmanagement/shares';
+		var apipath = '/api/v2/contentmanagement/shares';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -680,7 +678,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	member,
 	*/
 	function getSharesShareId(shareId, expand){
-		var apipath = '/api/v1/contentmanagement/shares/{shareId}';
+		var apipath = '/api/v2/contentmanagement/shares/{shareId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -708,7 +706,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} shareId - Share ID
 	*/
 	function deleteSharesShareId(shareId){
-		var apipath = '/api/v1/contentmanagement/shares/{shareId}';
+		var apipath = '/api/v2/contentmanagement/shares/{shareId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -731,7 +729,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getStatus(pageSize, pageNumber){
-		var apipath = '/api/v1/contentmanagement/status';
+		var apipath = '/api/v2/contentmanagement/status';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -757,7 +755,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} statusId - Status ID
 	*/
 	function getStatusStatusId(statusId){
-		var apipath = '/api/v1/contentmanagement/status/{statusId}';
+		var apipath = '/api/v2/contentmanagement/status/{statusId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -779,7 +777,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} statusId - Status ID
 	*/
 	function deleteStatusStatusId(statusId){
-		var apipath = '/api/v1/contentmanagement/status/{statusId}';
+		var apipath = '/api/v2/contentmanagement/status/{statusId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -828,7 +826,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	acl,
 	*/
 	function getWorkspaces(pageSize, pageNumber, access, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces';
+		var apipath = '/api/v2/contentmanagement/workspaces';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -870,7 +868,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postWorkspaces(body){
-		var apipath = '/api/v1/contentmanagement/workspaces';
+		var apipath = '/api/v2/contentmanagement/workspaces';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -893,7 +891,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	acl,
 	*/
 	function getWorkspacesWorkspaceId(workspaceId, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -940,7 +938,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function putWorkspacesWorkspaceId(workspaceId, body){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -967,7 +965,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} moveChildrenToWorkspaceId - New location for objects in deleted workspace.
 	*/
 	function deleteWorkspacesWorkspaceId(workspaceId, moveChildrenToWorkspaceId){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -998,7 +996,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	member,
 	*/
 	function getWorkspacesWorkspaceIdMembers(workspaceId, pageSize, pageNumber, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1038,7 +1036,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	member,
 	*/
 	function getWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1088,27 +1086,13 @@ var ContentManagementApi = function (pureCloudSession) {
    },
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "group": {
       "name": "",
@@ -1126,7 +1110,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function putWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId, body){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1159,7 +1143,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} memberId - Member ID
 	*/
 	function deleteWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1192,7 +1176,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	acl,
 	*/
 	function getWorkspacesWorkspaceIdTagvalues(workspaceId, value, pageSize, pageNumber, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1242,7 +1226,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postWorkspacesWorkspaceIdTagvalues(workspaceId, body){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1278,7 +1262,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postWorkspacesWorkspaceIdTagvaluesQuery(workspaceId, body, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/query';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/query';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1312,7 +1296,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	acl,
 	*/
 	function getWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId, expand){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1354,7 +1338,7 @@ var ContentManagementApi = function (pureCloudSession) {
 }
 	*/
 	function putWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId, body){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1388,7 +1372,7 @@ var ContentManagementApi = function (pureCloudSession) {
 	* @param {string} tagId - Tag ID
 	*/
 	function deleteWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId){
-		var apipath = '/api/v1/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
+		var apipath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

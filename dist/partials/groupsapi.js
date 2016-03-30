@@ -7,7 +7,7 @@
 var GroupsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -20,7 +20,7 @@ var GroupsApi = function (pureCloudSession) {
 	descending],
 	*/
 	function getGroups(pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v1/groups';
+		var apipath = '/api/v2/groups';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -51,7 +51,7 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {string} groupId - Group ID
 	*/
 	function getGroupId(groupId){
-		var apipath = '/api/v1/groups/{groupId}';
+		var apipath = '/api/v2/groups/{groupId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -78,7 +78,7 @@ var GroupsApi = function (pureCloudSession) {
 	descending],
 	*/
 	function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v1/groups/{groupId}/members';
+		var apipath = '/api/v2/groups/{groupId}/members';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

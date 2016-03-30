@@ -7,21 +7,19 @@
 var RecordingApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
-	Any integer greater than or equal to 0.,
 	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
 	WEBM,
 	WAV,
 	*/
-	function getConversationIdRecordings(conversationId, maxWaitMs, formatId){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings';
+	function getConversationIdRecordings(conversationId, formatId){
+		var apipath = '/api/v2/conversations/{conversationId}/recordings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -32,11 +30,6 @@ var RecordingApi = function (pureCloudSession) {
         if(conversationId === undefined && conversationId !== null){
 			throw 'Missing required  parameter: conversationId';
         }
-
-
-		if(maxWaitMs !== undefined && maxWaitMs !== null){
-			queryParameters.maxWaitMs = maxWaitMs;
-		}
 
 
 		if(formatId !== undefined && formatId !== null){
@@ -52,8 +45,6 @@ var RecordingApi = function (pureCloudSession) {
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
-	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for completion.
-	Any integer greater than or equal to 0.,
 	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
 	WEBM,
 	WAV,
@@ -62,8 +53,8 @@ var RecordingApi = function (pureCloudSession) {
 	false,
 	* @param {string} fileName - the name of the downloaded fileName
 	*/
-	function getConversationIdRecordingsRecordingId(conversationId, recordingId, maxWaitMs, formatId, download, fileName){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}';
+	function getConversationIdRecordingsRecordingId(conversationId, recordingId, formatId, download, fileName){
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -80,11 +71,6 @@ var RecordingApi = function (pureCloudSession) {
         if(recordingId === undefined && recordingId !== null){
 			throw 'Missing required  parameter: recordingId';
         }
-
-
-		if(maxWaitMs !== undefined && maxWaitMs !== null){
-			queryParameters.maxWaitMs = maxWaitMs;
-		}
 
 
 		if(formatId !== undefined && formatId !== null){
@@ -112,8 +98,6 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
 	* @param {} body - recording
-	* @param {integer} restoreDays - The number of days the recording will be available before it is re-archived. Deprecated.
-	Any integer greater than or equal to 1.,
 	 * @example
 	 * Body Example:
 	 * {
@@ -123,8 +107,6 @@ var RecordingApi = function (pureCloudSession) {
    "startTime": "",
    "endTime": "",
    "media": "",
-   "mediaUri": "",
-   "waveUri": "",
    "annotations": [],
    "transcript": [],
    "emailTranscript": [],
@@ -137,12 +119,11 @@ var RecordingApi = function (pureCloudSession) {
    "archiveMedium": "",
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
-   "remainingRestorationsAllowedForOrg": 0,
-   "recordingId": ""
+   "remainingRestorationsAllowedForOrg": 0
 }
 	*/
-	function putConversationIdRecordingsRecordingId(conversationId, recordingId, body, restoreDays){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}';
+	function putConversationIdRecordingsRecordingId(conversationId, recordingId, body){
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -169,11 +150,6 @@ var RecordingApi = function (pureCloudSession) {
         }
 
 
-		if(restoreDays !== undefined && restoreDays !== null){
-			queryParameters.restoreDays = restoreDays;
-		}
-
-
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.putConversationIdRecordingsRecordingId = putConversationIdRecordingsRecordingId;
@@ -184,7 +160,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} recordingId - Recording ID
 	*/
 	function getConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations';
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -221,33 +197,19 @@ var RecordingApi = function (pureCloudSession) {
    "durationMs": 0,
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "description": ""
 }
 	*/
 	function postConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId, body){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations';
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -281,7 +243,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} annotationId - Annotation ID
 	*/
 	function getConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -325,33 +287,19 @@ var RecordingApi = function (pureCloudSession) {
    "durationMs": 0,
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "description": ""
 }
 	*/
 	function putConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId, body){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -391,7 +339,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} annotationId - Annotation ID
 	*/
 	function deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
-		var apipath = '/api/v1/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
+		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -428,7 +376,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {array} expand - variable name requested by expand list
 	*/
 	function getOrphanrecordings(pageSize, pageNumber, sortBy, expand){
-		var apipath = '/api/v1/orphanrecordings';
+		var apipath = '/api/v2/orphanrecordings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -464,7 +412,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} orphanId - Orphan ID
 	*/
 	function getOrphanId(orphanId){
-		var apipath = '/api/v1/orphanrecordings/{orphanId}';
+		var apipath = '/api/v2/orphanrecordings/{orphanId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -486,7 +434,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} orphanId - Orphan ID
 	*/
 	function deleteOrphanId(orphanId){
-		var apipath = '/api/v1/orphanrecordings/{orphanId}';
+		var apipath = '/api/v2/orphanrecordings/{orphanId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -516,7 +464,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {boolean} hasErrors - provides a way to fetch all policies with errors or policies that do not have errors
 	*/
 	function getMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, name, enabled, summary, hasErrors){
-		var apipath = '/api/v1/recording/mediaretentionpolicies';
+		var apipath = '/api/v2/recording/mediaretentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -608,7 +556,7 @@ var RecordingApi = function (pureCloudSession) {
 }
 	*/
 	function postMediaretentionpolicies(body){
-		var apipath = '/api/v1/recording/mediaretentionpolicies';
+		var apipath = '/api/v2/recording/mediaretentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -629,7 +577,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} ids - Bulk delete of media retention policies, this will only delete the polices that match the ids specified in the query param.
 	*/
 	function deleteMediaretentionpolicies(ids){
-		var apipath = '/api/v1/recording/mediaretentionpolicies';
+		var apipath = '/api/v2/recording/mediaretentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -654,7 +602,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} policyId - Policy ID
 	*/
 	function getMediaretentionpoliciesPolicyId(policyId){
-		var apipath = '/api/v1/recording/mediaretentionpolicies/{policyId}';
+		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -713,7 +661,7 @@ var RecordingApi = function (pureCloudSession) {
 }
 	*/
 	function putMediaretentionpoliciesPolicyId(policyId, body){
-		var apipath = '/api/v1/recording/mediaretentionpolicies/{policyId}';
+		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -739,7 +687,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {string} policyId - Policy ID
 	*/
 	function deleteMediaretentionpoliciesPolicyId(policyId){
-		var apipath = '/api/v1/recording/mediaretentionpolicies/{policyId}';
+		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -798,7 +746,7 @@ var RecordingApi = function (pureCloudSession) {
 }
 	*/
 	function patchMediaretentionpoliciesPolicyId(policyId, body){
-		var apipath = '/api/v1/recording/mediaretentionpolicies/{policyId}';
+		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -824,7 +772,7 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {boolean} createDefault - If no settings are found, a new one is created with default values
 	*/
 	function getSettings(createDefault){
-		var apipath = '/api/v1/recording/settings';
+		var apipath = '/api/v2/recording/settings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -850,7 +798,7 @@ var RecordingApi = function (pureCloudSession) {
 }
 	*/
 	function putSettings(body){
-		var apipath = '/api/v1/recording/settings';
+		var apipath = '/api/v2/recording/settings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

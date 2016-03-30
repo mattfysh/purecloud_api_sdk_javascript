@@ -7,7 +7,7 @@
 var QualityApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -26,7 +26,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} group - group id
 	*/
 	function getAgentsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, agentUserId, evaluatorUserId, name, group){
-		var apipath = '/api/v1/quality/agents/activity';
+		var apipath = '/api/v2/quality/agents/activity';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -99,7 +99,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} calibratorId - user id of calibrator
 	*/
 	function getCalibrations(pageSize, pageNumber, sortBy, expand, conversationId, startTime, endTime, calibratorId){
-		var apipath = '/api/v1/quality/calibrations';
+		var apipath = '/api/v2/quality/calibrations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -145,6 +145,10 @@ var QualityApi = function (pureCloudSession) {
 			queryParameters.calibratorId = calibratorId;
 		}
 
+        if(calibratorId === undefined && calibratorId !== null){
+			throw 'Missing required  parameter: calibratorId';
+        }
+
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
@@ -160,51 +164,23 @@ var QualityApi = function (pureCloudSession) {
    "name": "",
    "calibrator": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "agent": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "conversation": {
       "name": "",
@@ -253,32 +229,18 @@ var QualityApi = function (pureCloudSession) {
    },
    "expertEvaluator": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    }
 }
 	*/
 	function postCalibrations(body, expand){
-		var apipath = '/api/v1/quality/calibrations';
+		var apipath = '/api/v2/quality/calibrations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -304,7 +266,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} calibratorId - calibratorId
 	*/
 	function getCalibrationsCalibrationId(calibrationId, calibratorId){
-		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
+		var apipath = '/api/v2/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -321,6 +283,10 @@ var QualityApi = function (pureCloudSession) {
 			queryParameters.calibratorId = calibratorId;
 		}
 
+        if(calibratorId === undefined && calibratorId !== null){
+			throw 'Missing required  parameter: calibratorId';
+        }
+
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
@@ -336,51 +302,23 @@ var QualityApi = function (pureCloudSession) {
    "name": "",
    "calibrator": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "agent": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "conversation": {
       "name": "",
@@ -429,32 +367,18 @@ var QualityApi = function (pureCloudSession) {
    },
    "expertEvaluator": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    }
 }
 	*/
 	function putCalibrationsCalibrationId(calibrationId, body){
-		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
+		var apipath = '/api/v2/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -481,7 +405,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} calibratorId - calibratorId
 	*/
 	function deleteCalibrationsCalibrationId(calibrationId, calibratorId){
-		var apipath = '/api/v1/quality/calibrations/{calibrationId}';
+		var apipath = '/api/v2/quality/calibrations/{calibrationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -497,6 +421,10 @@ var QualityApi = function (pureCloudSession) {
 		if(calibratorId !== undefined && calibratorId !== null){
 			queryParameters.calibratorId = calibratorId;
 		}
+
+        if(calibratorId === undefined && calibratorId !== null){
+			throw 'Missing required  parameter: calibratorId';
+        }
 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
@@ -514,7 +442,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} entityType - entity type options: Recording, Calibration, Evaluation, Annotation
 	*/
 	function getConversationsConversationIdAudits(conversationId, pageSize, pageNumber, sortBy, expand, recordingId, entityType){
-		var apipath = '/api/v1/quality/conversations/{conversationId}/audits';
+		var apipath = '/api/v2/quality/conversations/{conversationId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -591,51 +519,23 @@ var QualityApi = function (pureCloudSession) {
    },
    "evaluator": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "agent": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "calibration": {
       "name": "",
@@ -677,11 +577,9 @@ var QualityApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "wrapupCodes": [],
       "mediaSettings": {},
       "bullseye": {},
       "acwSettings": {},
-      "phoneNumber": "",
       "skillEvaluationMethod": "",
       "queueFlow": {},
       "callingPartyName": "",
@@ -695,7 +593,7 @@ var QualityApi = function (pureCloudSession) {
 }
 	*/
 	function postConversationsConversationIdEvaluations(conversationId, body, expand){
-		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations';
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -728,7 +626,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} expand - agent, evaluator, evaluationForm
 	*/
 	function getConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
-		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -787,51 +685,23 @@ var QualityApi = function (pureCloudSession) {
    },
    "evaluator": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "agent": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "calibration": {
       "name": "",
@@ -873,11 +743,9 @@ var QualityApi = function (pureCloudSession) {
       "state": "",
       "modifiedByApp": "",
       "createdByApp": "",
-      "wrapupCodes": [],
       "mediaSettings": {},
       "bullseye": {},
       "acwSettings": {},
-      "phoneNumber": "",
       "skillEvaluationMethod": "",
       "queueFlow": {},
       "callingPartyName": "",
@@ -891,7 +759,7 @@ var QualityApi = function (pureCloudSession) {
 }
 	*/
 	function putConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, body, expand){
-		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -930,7 +798,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} expand - evaluatorId
 	*/
 	function deleteConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
-		var apipath = '/api/v1/quality/conversations/{conversationId}/evaluations/{evaluationId}';
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -978,7 +846,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} maximum - maximum
 	*/
 	function getEvaluationsQuery(pageSize, pageNumber, sortBy, expand, conversationId, agentUserId, evaluatorUserId, queueId, startTime, endTime, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum){
-		var apipath = '/api/v1/quality/evaluations/query';
+		var apipath = '/api/v2/quality/evaluations/query';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1064,47 +932,6 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getEvaluationsQuery = getEvaluationsQuery;
 	/**
-     * @summary Query evaluations
-	 * @memberOf QualityApi#
-	* @param {} body - query
-	* @param {string} expand - evaluator,agent
-	 * @example
-	 * Body Example:
-	 * {
-   "conversationId": "",
-   "userType": "",
-   "currentUserId": "",
-   "agentId": "",
-   "queueId": "",
-   "interval": "",
-   "evaluationState": [],
-   "isReleased": true,
-   "agentHasRead": true,
-   "expandAnswerTotalScores": true,
-   "maximum": 0
-}
-	*/
-	function postEvaluationsQuery(body, expand){
-		var apipath = '/api/v1/quality/evaluations/query';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postEvaluationsQuery = postEvaluationsQuery;
-	/**
      * @summary Score evaluation
 	 * @memberOf QualityApi#
 	* @param {} body - evaluationAndScoringSet
@@ -1131,7 +958,7 @@ var QualityApi = function (pureCloudSession) {
 }
 	*/
 	function postEvaluationsScoring(body){
-		var apipath = '/api/v1/quality/evaluations/scoring';
+		var apipath = '/api/v2/quality/evaluations/scoring';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1159,7 +986,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} group - group id
 	*/
 	function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, name, permission, group){
-		var apipath = '/api/v1/quality/evaluators/activity';
+		var apipath = '/api/v2/quality/evaluators/activity';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

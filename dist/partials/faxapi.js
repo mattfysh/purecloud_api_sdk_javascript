@@ -7,7 +7,7 @@
 var FaxApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -17,7 +17,7 @@ var FaxApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getDocuments(pageSize, pageNumber){
-		var apipath = '/api/v1/fax/documents';
+		var apipath = '/api/v2/fax/documents';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -43,7 +43,7 @@ var FaxApi = function (pureCloudSession) {
 	* @param {string} documentId - Document ID
 	*/
 	function getDocumentsDocumentId(documentId){
-		var apipath = '/api/v1/fax/documents/{documentId}';
+		var apipath = '/api/v2/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -94,7 +94,7 @@ var FaxApi = function (pureCloudSession) {
 }
 	*/
 	function putDocumentsDocumentId(documentId, body){
-		var apipath = '/api/v1/fax/documents/{documentId}';
+		var apipath = '/api/v2/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -120,7 +120,7 @@ var FaxApi = function (pureCloudSession) {
 	* @param {string} documentId - Document ID
 	*/
 	function deleteDocumentsDocumentId(documentId){
-		var apipath = '/api/v1/fax/documents/{documentId}';
+		var apipath = '/api/v2/fax/documents/{documentId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -142,7 +142,7 @@ var FaxApi = function (pureCloudSession) {
 	* @param {string} documentId - Document ID
 	*/
 	function getDocumentsDocumentIdContent(documentId){
-		var apipath = '/api/v1/fax/documents/{documentId}/content';
+		var apipath = '/api/v2/fax/documents/{documentId}/content';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -163,7 +163,7 @@ var FaxApi = function (pureCloudSession) {
 	 * @memberOf FaxApi#
 	*/
 	function getSummary(){
-		var apipath = '/api/v1/fax/summary';
+		var apipath = '/api/v2/fax/summary';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

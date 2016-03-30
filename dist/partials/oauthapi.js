@@ -7,7 +7,7 @@
 var OAuthApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -15,7 +15,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getIdentityproviders(){
-		var apipath = '/api/v1/identityproviders';
+		var apipath = '/api/v2/identityproviders';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -30,7 +30,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getOkta(){
-		var apipath = '/api/v1/identityproviders/okta';
+		var apipath = '/api/v2/identityproviders/okta';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -49,12 +49,12 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putOkta(body){
-		var apipath = '/api/v1/identityproviders/okta';
+		var apipath = '/api/v2/identityproviders/okta';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -73,7 +73,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function deleteOkta(){
-		var apipath = '/api/v1/identityproviders/okta';
+		var apipath = '/api/v2/identityproviders/okta';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -88,7 +88,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getOnelogin(){
-		var apipath = '/api/v1/identityproviders/onelogin';
+		var apipath = '/api/v2/identityproviders/onelogin';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -107,12 +107,12 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putOnelogin(body){
-		var apipath = '/api/v1/identityproviders/onelogin';
+		var apipath = '/api/v2/identityproviders/onelogin';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -131,7 +131,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function deleteOnelogin(){
-		var apipath = '/api/v1/identityproviders/onelogin';
+		var apipath = '/api/v2/identityproviders/onelogin';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -146,7 +146,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getPurecloud(){
-		var apipath = '/api/v1/identityproviders/purecloud';
+		var apipath = '/api/v2/identityproviders/purecloud';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -167,7 +167,7 @@ var OAuthApi = function (pureCloudSession) {
 }
 	*/
 	function putPurecloud(body){
-		var apipath = '/api/v1/identityproviders/purecloud';
+		var apipath = '/api/v2/identityproviders/purecloud';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -186,7 +186,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function deletePurecloud(){
-		var apipath = '/api/v1/identityproviders/purecloud';
+		var apipath = '/api/v2/identityproviders/purecloud';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -201,7 +201,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getSalesforce(){
-		var apipath = '/api/v1/identityproviders/salesforce';
+		var apipath = '/api/v2/identityproviders/salesforce';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -220,12 +220,12 @@ var OAuthApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putSalesforce(body){
-		var apipath = '/api/v1/identityproviders/salesforce';
+		var apipath = '/api/v2/identityproviders/salesforce';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -244,7 +244,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function deleteSalesforce(){
-		var apipath = '/api/v1/identityproviders/salesforce';
+		var apipath = '/api/v2/identityproviders/salesforce';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -259,7 +259,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getProviderId(){
-		var apipath = '/api/v1/identityproviders/{providerId}';
+		var apipath = '/api/v2/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -280,7 +280,7 @@ var OAuthApi = function (pureCloudSession) {
 }
 	*/
 	function putProviderId(body){
-		var apipath = '/api/v1/identityproviders/{providerId}';
+		var apipath = '/api/v2/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -299,7 +299,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function deleteProviderId(){
-		var apipath = '/api/v1/identityproviders/{providerId}';
+		var apipath = '/api/v2/identityproviders/{providerId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -314,7 +314,7 @@ var OAuthApi = function (pureCloudSession) {
 	 * @memberOf OAuthApi#
 	*/
 	function getClients(){
-		var apipath = '/api/v1/oauth/clients';
+		var apipath = '/api/v2/oauth/clients';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -338,15 +338,15 @@ via the 'roleIds' field.
 	 * {
    "name": "",
    "accessTokenValiditySeconds": 0,
-   "authorizedGrantTypes": [],
    "description": "",
    "registeredRedirectUri": [],
    "secret": "",
-   "roleIds": []
+   "roleIds": [],
+   "authorizedGrantType": ""
 }
 	*/
 	function postClients(body){
-		var apipath = '/api/v1/oauth/clients';
+		var apipath = '/api/v2/oauth/clients';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -366,7 +366,7 @@ via the 'roleIds' field.
 	* @param {string} clientId - Client ID
 	*/
 	function getClientsClientId(clientId){
-		var apipath = '/api/v1/oauth/clients/{clientId}';
+		var apipath = '/api/v2/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -392,15 +392,15 @@ via the 'roleIds' field.
 	 * {
    "name": "",
    "accessTokenValiditySeconds": 0,
-   "authorizedGrantTypes": [],
    "description": "",
    "registeredRedirectUri": [],
    "secret": "",
-   "roleIds": []
+   "roleIds": [],
+   "authorizedGrantType": ""
 }
 	*/
 	function putClientsClientId(clientId, body){
-		var apipath = '/api/v1/oauth/clients/{clientId}';
+		var apipath = '/api/v2/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -426,7 +426,7 @@ via the 'roleIds' field.
 	* @param {string} clientId - Client ID
 	*/
 	function deleteClientsClientId(clientId){
-		var apipath = '/api/v1/oauth/clients/{clientId}';
+		var apipath = '/api/v2/oauth/clients/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -449,7 +449,7 @@ via the 'roleIds' field.
 	* @param {string} clientId - Client ID
 	*/
 	function postClientsClientIdSecret(clientId){
-		var apipath = '/api/v1/oauth/clients/{clientId}/secret';
+		var apipath = '/api/v2/oauth/clients/{clientId}/secret';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

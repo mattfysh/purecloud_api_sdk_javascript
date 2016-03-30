@@ -7,7 +7,7 @@
 var ResponseManagementApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -17,7 +17,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	*/
 	function getLibraries(pageNumber, pageSize){
-		var apipath = '/api/v1/responsemanagement/libraries';
+		var apipath = '/api/v2/responsemanagement/libraries';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -48,33 +48,19 @@ var ResponseManagementApi = function (pureCloudSession) {
    "version": 0,
    "createdBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "dateCreated": ""
 }
 	*/
 	function postLibraries(body){
-		var apipath = '/api/v1/responsemanagement/libraries';
+		var apipath = '/api/v2/responsemanagement/libraries';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -94,7 +80,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 	* @param {string} libraryId - Library ID
 	*/
 	function getLibrariesLibraryId(libraryId){
-		var apipath = '/api/v1/responsemanagement/libraries/{libraryId}';
+		var apipath = '/api/v2/responsemanagement/libraries/{libraryId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -123,33 +109,19 @@ var ResponseManagementApi = function (pureCloudSession) {
    "version": 0,
    "createdBy": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "dateCreated": ""
 }
 	*/
 	function putLibrariesLibraryId(libraryId, body){
-		var apipath = '/api/v1/responsemanagement/libraries/{libraryId}';
+		var apipath = '/api/v2/responsemanagement/libraries/{libraryId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -176,7 +148,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 	* @param {string} libraryId - Library ID
 	*/
 	function deleteLibrariesLibraryId(libraryId){
-		var apipath = '/api/v1/responsemanagement/libraries/{libraryId}';
+		var apipath = '/api/v2/responsemanagement/libraries/{libraryId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -200,7 +172,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	*/
 	function getResponses(libraryId, pageNumber, pageSize){
-		var apipath = '/api/v1/responsemanagement/responses';
+		var apipath = '/api/v2/responsemanagement/responses';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -236,39 +208,12 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "version": 0,
-   "libraries": [],
-   "texts": [],
-   "createdBy": {
-      "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
-   },
-   "dateCreated": ""
+   "messageReturned": [],
+   "status": ""
 }
 	*/
 	function postResponses(body){
-		var apipath = '/api/v1/responsemanagement/responses';
+		var apipath = '/api/v2/responsemanagement/responses';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -295,7 +240,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 }
 	*/
 	function postResponsesQuery(body){
-		var apipath = '/api/v1/responsemanagement/responses/query';
+		var apipath = '/api/v2/responsemanagement/responses/query';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -315,7 +260,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 	* @param {string} responseId - Response ID
 	*/
 	function getResponsesResponseId(responseId){
-		var apipath = '/api/v1/responsemanagement/responses/{responseId}';
+		var apipath = '/api/v2/responsemanagement/responses/{responseId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -340,39 +285,12 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "version": 0,
-   "libraries": [],
-   "texts": [],
-   "createdBy": {
-      "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
-      "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
-      "department": "",
-      "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
-   },
-   "dateCreated": ""
+   "messageReturned": [],
+   "status": ""
 }
 	*/
 	function putResponsesResponseId(responseId, body){
-		var apipath = '/api/v1/responsemanagement/responses/{responseId}';
+		var apipath = '/api/v2/responsemanagement/responses/{responseId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -399,7 +317,7 @@ var ResponseManagementApi = function (pureCloudSession) {
 	* @param {string} responseId - Response ID
 	*/
 	function deleteResponsesResponseId(responseId){
-		var apipath = '/api/v1/responsemanagement/responses/{responseId}';
+		var apipath = '/api/v2/responsemanagement/responses/{responseId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

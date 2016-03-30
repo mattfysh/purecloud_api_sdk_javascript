@@ -7,24 +7,86 @@
 var UsersApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
+	/**
+     * @summary Query for user aggregates
+	 * @memberOf UsersApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
+   "interval": "",
+   "granularity": "",
+   "groupBy": [],
+   "filter": {
+      "type": "",
+      "clauses": [],
+      "predicates": []
+   },
+   "metrics": [],
+   "flattenMultivaluedDimensions": true
+}
+	*/
+	function postUsersAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/users/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postUsersAggregatesQuery = postUsersAggregatesQuery;
+	/**
+     * @summary Query for user observations
+	 * @memberOf UsersApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
+   "filter": {
+      "type": "",
+      "clauses": [],
+      "predicates": []
+   },
+   "metrics": []
+}
+	*/
+	function postUsersObservationsQuery(body){
+		var apipath = '/api/v2/analytics/users/observations/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postUsersObservationsQuery = postUsersObservationsQuery;
 	/**
      * @summary Get the list of available users.
 	 * @memberOf UsersApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
-	* @param {array} id - id
-	* @param {string} sortBy - Sort by
-	* @param {string} role - Role
-	* @param {string} name - Name
-	* @param {string} username - Username
-	* @param {array} skill - Skill
+	* @param {array} id - The list of user ids to get. Paging is ignored if ids are specified
+	* @param {string} sortOrder - Ascending or descending sort order
+	[ascending,
+	descending],
 	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function getUsers(pageSize, pageNumber, id, sortBy, role, name, username, skill, expand){
-		var apipath = '/api/v1/users';
+	function getUsers(pageSize, pageNumber, id, sortOrder, expand){
+		var apipath = '/api/v2/users';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -46,28 +108,8 @@ var UsersApi = function (pureCloudSession) {
 		}
 
 
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
-		}
-
-
-		if(role !== undefined && role !== null){
-			queryParameters.role = role;
-		}
-
-
-		if(name !== undefined && name !== null){
-			queryParameters.name = name;
-		}
-
-
-		if(username !== undefined && username !== null){
-			queryParameters.username = username;
-		}
-
-
-		if(skill !== undefined && skill !== null){
-			queryParameters.skill = skill;
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
 		}
 
 
@@ -80,88 +122,24 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUsers = getUsers;
 	/**
-     * @summary Create a configuration service user.
+     * @summary Create user
 	 * @memberOf UsersApi#
 	* @param {} body - User
 	 * @example
 	 * Body Example:
 	 * {
    "name": "",
-   "username": "",
-   "email": "",
-   "displayName": "",
-   "phoneNumber": "",
-   "userImages": [],
-   "chat": {
-      "jabberId": ""
-   },
-   "roles": [],
-   "voicemailEnabled": true,
    "department": "",
+   "email": "",
+   "addresses": [],
    "title": "",
-   "routingStatus": {
-      "userId": "",
-      "status": "",
-      "startTime": ""
-   },
+   "username": "",
    "password": "",
-   "primaryPresence": {
-      "name": "",
-      "user": {},
-      "source": "",
-      "presenceDefinition": {},
-      "message": "",
-      "modifiedBy": {},
-      "modifiedDate": ""
-   },
-   "conversations": {
-      "userId": "",
-      "call": {},
-      "callback": {},
-      "email": {},
-      "chat": {},
-      "socialExpression": {},
-      "video": {}
-   },
-   "conversationSummary": {
-      "userId": "",
-      "call": {},
-      "callback": {},
-      "email": {},
-      "chat": {},
-      "socialExpression": {},
-      "video": {}
-   },
-   "outOfOffice": {
-      "name": "",
-      "user": {},
-      "startDate": "",
-      "endDate": "",
-      "active": true
-   },
-   "geolocation": {
-      "name": "",
-      "type": "",
-      "primary": true,
-      "latitude": {},
-      "longitude": {},
-      "country": "",
-      "region": "",
-      "city": ""
-   },
-   "permissions": [],
-   "requestedStatus": {
-      "name": "",
-      "alertable": true,
-      "dateModified": "",
-      "type": ""
-   },
-   "defaultStationUri": "",
-   "stationUri": ""
+   "version": ""
 }
 	*/
 	function postUsers(body){
-		var apipath = '/api/v1/users';
+		var apipath = '/api/v2/users';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -181,7 +159,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {array} expand - Which fields, if any, to expand
 	*/
 	function getMe(expand){
-		var apipath = '/api/v1/users/me';
+		var apipath = '/api/v2/users/me';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -197,13 +175,13 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getMe = getMe;
 	/**
-     * @summary Get user.
+     * @summary Get user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {array} expand - Which fields, if any, to expand
 	*/
 	function getUserId(userId, expand){
-		var apipath = '/api/v1/users/{userId}';
+		var apipath = '/api/v2/users/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -225,89 +203,49 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserId = getUserId;
 	/**
-     * @summary Set user station
+     * @summary Delete user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
-	* @param {} body - stationUri
+	*/
+	function deleteUserId(userId){
+		var apipath = '/api/v2/users/{userId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUserId = deleteUserId;
+	/**
+     * @summary Update user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - 
 	 * @example
 	 * Body Example:
 	 * {
    "name": "",
-   "username": "",
-   "email": "",
-   "displayName": "",
-   "phoneNumber": "",
-   "userImages": [],
    "chat": {
       "jabberId": ""
    },
-   "roles": [],
-   "voicemailEnabled": true,
    "department": "",
+   "email": "",
+   "addresses": [],
    "title": "",
-   "routingStatus": {
-      "userId": "",
-      "status": "",
-      "startTime": ""
-   },
-   "password": "",
-   "primaryPresence": {
-      "name": "",
-      "user": {},
-      "source": "",
-      "presenceDefinition": {},
-      "message": "",
-      "modifiedBy": {},
-      "modifiedDate": ""
-   },
-   "conversations": {
-      "userId": "",
-      "call": {},
-      "callback": {},
-      "email": {},
-      "chat": {},
-      "socialExpression": {},
-      "video": {}
-   },
-   "conversationSummary": {
-      "userId": "",
-      "call": {},
-      "callback": {},
-      "email": {},
-      "chat": {},
-      "socialExpression": {},
-      "video": {}
-   },
-   "outOfOffice": {
-      "name": "",
-      "user": {},
-      "startDate": "",
-      "endDate": "",
-      "active": true
-   },
-   "geolocation": {
-      "name": "",
-      "type": "",
-      "primary": true,
-      "latitude": {},
-      "longitude": {},
-      "country": "",
-      "region": "",
-      "city": ""
-   },
-   "permissions": [],
-   "requestedStatus": {
-      "name": "",
-      "alertable": true,
-      "dateModified": "",
-      "type": ""
-   },
-   "defaultStationUri": "",
-   "stationUri": ""
+   "username": "",
+   "images": []
 }
 	*/
-	function putUserId(userId, body){
-		var apipath = '/api/v1/users/{userId}';
+	function patchUserId(userId, body){
+		var apipath = '/api/v2/users/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -323,21 +261,17 @@ var UsersApi = function (pureCloudSession) {
             requestBody = body;
         }
 
-        if(body === undefined && body !== null){
-			throw 'Missing required  parameter: body';
-        }
 
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putUserId = putUserId;
+	self.patchUserId = patchUserId;
 	/**
      * @summary Get a user's CallForwarding
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
 	function getUserIdCallforwarding(userId){
-		var apipath = '/api/v1/users/{userId}/callforwarding';
+		var apipath = '/api/v2/users/{userId}/callforwarding';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -364,27 +298,13 @@ var UsersApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "enabled": true,
    "phoneNumber": "",
@@ -392,7 +312,7 @@ var UsersApi = function (pureCloudSession) {
 }
 	*/
 	function putUserIdCallforwarding(userId, body){
-		var apipath = '/api/v1/users/{userId}/callforwarding';
+		var apipath = '/api/v2/users/{userId}/callforwarding';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -423,27 +343,13 @@ var UsersApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "enabled": true,
    "phoneNumber": "",
@@ -451,7 +357,7 @@ var UsersApi = function (pureCloudSession) {
 }
 	*/
 	function patchUserIdCallforwarding(userId, body){
-		var apipath = '/api/v1/users/{userId}/callforwarding';
+		var apipath = '/api/v2/users/{userId}/callforwarding';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -478,7 +384,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {string} clientId - client Id
 	*/
 	function getUserIdGeolocationsClientId(userId, clientId){
-		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
+		var apipath = '/api/v2/users/{userId}/geolocations/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -521,7 +427,7 @@ var UsersApi = function (pureCloudSession) {
 }
 	*/
 	function patchUserIdGeolocationsClientId(userId, clientId, body){
-		var apipath = '/api/v1/users/{userId}/geolocations/{clientId}';
+		var apipath = '/api/v2/users/{userId}/geolocations/{clientId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -553,7 +459,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	*/
 	function getUserIdOutofoffice(userId){
-		var apipath = '/api/v1/users/{userId}/outofoffice';
+		var apipath = '/api/v2/users/{userId}/outofoffice';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -580,27 +486,13 @@ var UsersApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "startDate": "",
    "endDate": "",
@@ -608,7 +500,7 @@ var UsersApi = function (pureCloudSession) {
 }
 	*/
 	function putUserIdOutofoffice(userId, body){
-		var apipath = '/api/v1/users/{userId}/outofoffice';
+		var apipath = '/api/v2/users/{userId}/outofoffice';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -638,7 +530,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	*/
 	function getUserIdPrimarypresencesource(userId){
-		var apipath = '/api/v1/users/{userId}/primarypresencesource';
+		var apipath = '/api/v2/users/{userId}/primarypresencesource';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -665,33 +557,19 @@ var UsersApi = function (pureCloudSession) {
    "name": "",
    "user": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    },
    "primarySource": ""
 }
 	*/
 	function putUserIdPrimarypresencesource(userId, body){
-		var apipath = '/api/v1/users/{userId}/primarypresencesource';
+		var apipath = '/api/v2/users/{userId}/primarypresencesource';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -719,7 +597,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getUserIdQueues(userId, pageSize, pageNumber){
-		var apipath = '/api/v1/users/{userId}/queues';
+		var apipath = '/api/v2/users/{userId}/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -752,7 +630,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {} body - User Queues
 	*/
 	function patchUserIdQueues(userId, body){
-		var apipath = '/api/v1/users/{userId}/queues';
+		var apipath = '/api/v2/users/{userId}/queues';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -791,7 +669,6 @@ var UsersApi = function (pureCloudSession) {
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "wrapupCodes": [],
    "mediaSettings": {},
    "bullseye": {
       "rings": []
@@ -800,7 +677,6 @@ var UsersApi = function (pureCloudSession) {
       "wrapupPrompt": "",
       "timeoutMs": 0
    },
-   "phoneNumber": "",
    "skillEvaluationMethod": "",
    "queueFlow": {
       "id": "",
@@ -814,7 +690,7 @@ var UsersApi = function (pureCloudSession) {
 }
 	*/
 	function patchUserIdQueuesQueueId(queueId, userId, body){
-		var apipath = '/api/v1/users/{userId}/queues/{queueId}';
+		var apipath = '/api/v2/users/{userId}/queues/{queueId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -846,7 +722,7 @@ var UsersApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	*/
 	function getUserIdRoles(userId){
-		var apipath = '/api/v1/users/{userId}/roles';
+		var apipath = '/api/v2/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -863,12 +739,115 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.getUserIdRoles = getUserIdRoles;
 	/**
+     * @summary List routing skills for user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortOrder - Ascending or descending sort order
+	[ascending,
+	descending],
+	*/
+	function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
+		var apipath = '/api/v2/users/{userId}/routingskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserIdRoutingskills = getUserIdRoutingskills;
+	/**
+     * @summary Add routing skill to user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
+   "name": ""
+}
+	*/
+	function postUserIdRoutingskills(userId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postUserIdRoutingskills = postUserIdRoutingskills;
+	/**
+     * @summary Remove routing skill from user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	*/
+	function deleteUserIdRoutingskillsSkillId(userId, skillId){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUserIdRoutingskillsSkillId = deleteUserIdRoutingskillsSkillId;
+	/**
      * @summary Fetch the routing status of a user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
 	function getUserIdRoutingstatus(userId){
-		var apipath = '/api/v1/users/{userId}/routingstatus';
+		var apipath = '/api/v2/users/{userId}/routingstatus';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -898,7 +877,7 @@ var UsersApi = function (pureCloudSession) {
 }
 	*/
 	function putUserIdRoutingstatus(userId, body){
-		var apipath = '/api/v1/users/{userId}/routingstatus';
+		var apipath = '/api/v2/users/{userId}/routingstatus';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -918,28 +897,6 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.putUserIdRoutingstatus = putUserIdRoutingstatus;
-	/**
-     * @summary List skills for user
-	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	*/
-	function getUserIdSkills(userId){
-		var apipath = '/api/v1/users/{userId}/skills';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserIdSkills = getUserIdSkills;
 
     return self;
 };

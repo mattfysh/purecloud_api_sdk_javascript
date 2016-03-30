@@ -7,7 +7,7 @@
 var ScriptsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -21,7 +21,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} name - Name
 	*/
 	function getForms(pageSize, pageNumber, sortBy, expand, expand, name){
-		var apipath = '/api/v1/quality/forms';
+		var apipath = '/api/v2/quality/forms';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -80,16 +80,16 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
 }
 	*/
 	function postForms(body){
-		var apipath = '/api/v1/quality/forms';
+		var apipath = '/api/v2/quality/forms';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -109,7 +109,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} formId - Form ID
 	*/
 	function getFormsFormId(formId){
-		var apipath = '/api/v1/quality/forms/{formId}';
+		var apipath = '/api/v2/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -145,16 +145,16 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
 }
 	*/
 	function putFormsFormId(formId, body){
-		var apipath = '/api/v1/quality/forms/{formId}';
+		var apipath = '/api/v2/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -180,7 +180,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} formId - Form ID
 	*/
 	function deleteFormsFormId(formId){
-		var apipath = '/api/v1/quality/forms/{formId}';
+		var apipath = '/api/v2/quality/forms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -204,7 +204,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getFormsFormIdVersions(formId, pageSize, pageNumber){
-		var apipath = '/api/v1/quality/forms/{formId}/versions';
+		var apipath = '/api/v2/quality/forms/{formId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -238,7 +238,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} name - Name
 	*/
 	function getPublishedforms(pageSize, pageNumber, name){
-		var apipath = '/api/v1/quality/publishedforms';
+		var apipath = '/api/v2/quality/publishedforms';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -282,16 +282,16 @@ var ScriptsApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
 }
 	*/
 	function postPublishedforms(body){
-		var apipath = '/api/v1/quality/publishedforms';
+		var apipath = '/api/v2/quality/publishedforms';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -311,7 +311,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} formId - Form ID
 	*/
 	function getPublishedformsFormId(formId){
-		var apipath = '/api/v1/quality/publishedforms/{formId}';
+		var apipath = '/api/v2/quality/publishedforms/{formId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -337,7 +337,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {string} feature - Feature
 	*/
 	function getScripts(pageSize, pageNumber, expand, name, feature){
-		var apipath = '/api/v1/scripts';
+		var apipath = '/api/v2/scripts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -378,7 +378,7 @@ var ScriptsApi = function (pureCloudSession) {
 	* @param {} body - 
 	*/
 	function postScripts(body){
-		var apipath = '/api/v1/scripts';
+		var apipath = '/api/v2/scripts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

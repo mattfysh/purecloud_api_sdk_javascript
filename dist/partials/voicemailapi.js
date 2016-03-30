@@ -7,7 +7,7 @@
 var VoicemailApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -16,7 +16,7 @@ var VoicemailApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	*/
 	function getUservoicemailpoliciesUserId(userId){
-		var apipath = '/api/v1/configuration/uservoicemailpolicies/{userId}';
+		var apipath = '/api/v2/configuration/uservoicemailpolicies/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -54,7 +54,7 @@ var VoicemailApi = function (pureCloudSession) {
 }
 	*/
 	function patchUservoicemailpoliciesUserId(userId, body){
-		var apipath = '/api/v1/configuration/uservoicemailpolicies/{userId}';
+		var apipath = '/api/v2/configuration/uservoicemailpolicies/{userId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -83,7 +83,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	*/
 	function getVoicemailpolicy(){
-		var apipath = '/api/v1/configuration/voicemailpolicy';
+		var apipath = '/api/v2/configuration/voicemailpolicy';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -121,7 +121,7 @@ var VoicemailApi = function (pureCloudSession) {
 }
 	*/
 	function putVoicemailpolicy(body){
-		var apipath = '/api/v1/configuration/voicemailpolicy';
+		var apipath = '/api/v2/configuration/voicemailpolicy';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -140,7 +140,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	*/
 	function getMailbox(){
-		var apipath = '/api/v1/voicemail/mailbox';
+		var apipath = '/api/v2/voicemail/mailbox';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -155,7 +155,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	*/
 	function getMessages(){
-		var apipath = '/api/v1/voicemail/messages';
+		var apipath = '/api/v2/voicemail/messages';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -170,7 +170,7 @@ var VoicemailApi = function (pureCloudSession) {
 	 * @memberOf VoicemailApi#
 	*/
 	function deleteMessages(){
-		var apipath = '/api/v1/voicemail/messages';
+		var apipath = '/api/v2/voicemail/messages';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -186,7 +186,7 @@ var VoicemailApi = function (pureCloudSession) {
 	* @param {string} messageId - Message ID
 	*/
 	function getMessagesMessageId(messageId){
-		var apipath = '/api/v1/voicemail/messages/{messageId}';
+		var apipath = '/api/v2/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -229,32 +229,18 @@ var VoicemailApi = function (pureCloudSession) {
    "callerName": "",
    "callerUser": {
       "name": "",
-      "username": "",
-      "email": "",
-      "displayName": "",
-      "phoneNumber": "",
-      "userImages": [],
       "chat": {},
-      "roles": [],
-      "voicemailEnabled": true,
       "department": "",
+      "email": "",
+      "addresses": [],
       "title": "",
-      "routingStatus": {},
-      "password": "",
-      "primaryPresence": {},
-      "conversations": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "permissions": [],
-      "requestedStatus": {},
-      "defaultStationUri": "",
-      "stationUri": ""
+      "username": "",
+      "images": []
    }
 }
 	*/
 	function putMessagesMessageId(messageId, body){
-		var apipath = '/api/v1/voicemail/messages/{messageId}';
+		var apipath = '/api/v2/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -280,7 +266,7 @@ var VoicemailApi = function (pureCloudSession) {
 	* @param {string} messageId - Message ID
 	*/
 	function deleteMessagesMessageId(messageId){
-		var apipath = '/api/v1/voicemail/messages/{messageId}';
+		var apipath = '/api/v2/voicemail/messages/{messageId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -305,7 +291,7 @@ var VoicemailApi = function (pureCloudSession) {
 	WAV,
 	*/
 	function getMessagesMessageIdMedia(messageId, formatId){
-		var apipath = '/api/v1/voicemail/messages/{messageId}/media';
+		var apipath = '/api/v2/voicemail/messages/{messageId}/media';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

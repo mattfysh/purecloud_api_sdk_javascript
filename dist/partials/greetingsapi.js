@@ -7,7 +7,7 @@
 var GreetingsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -17,7 +17,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getGreetings(pageSize, pageNumber){
-		var apipath = '/api/v1/greetings';
+		var apipath = '/api/v2/greetings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -63,7 +63,7 @@ var GreetingsApi = function (pureCloudSession) {
 }
 	*/
 	function postGreetings(body){
-		var apipath = '/api/v1/greetings';
+		var apipath = '/api/v2/greetings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -86,7 +86,7 @@ var GreetingsApi = function (pureCloudSession) {
 	 * @memberOf GreetingsApi#
 	*/
 	function getDefaults(){
-		var apipath = '/api/v1/greetings/defaults';
+		var apipath = '/api/v2/greetings/defaults';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -116,7 +116,7 @@ var GreetingsApi = function (pureCloudSession) {
 }
 	*/
 	function putDefaults(body){
-		var apipath = '/api/v1/greetings/defaults';
+		var apipath = '/api/v2/greetings/defaults';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -140,7 +140,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {string} greetingId - Greeting ID
 	*/
 	function getGreetingId(greetingId){
-		var apipath = '/api/v1/greetings/{greetingId}';
+		var apipath = '/api/v2/greetings/{greetingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -183,7 +183,7 @@ var GreetingsApi = function (pureCloudSession) {
 }
 	*/
 	function putGreetingId(greetingId, body){
-		var apipath = '/api/v1/greetings/{greetingId}';
+		var apipath = '/api/v2/greetings/{greetingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -213,7 +213,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {string} greetingId - Greeting ID
 	*/
 	function deleteGreetingId(greetingId){
-		var apipath = '/api/v1/greetings/{greetingId}';
+		var apipath = '/api/v2/greetings/{greetingId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -237,7 +237,7 @@ var GreetingsApi = function (pureCloudSession) {
 	WAV,
 	*/
 	function getGreetingIdMedia(greetingId, formatId){
-		var apipath = '/api/v1/greetings/{greetingId}/media';
+		var apipath = '/api/v2/greetings/{greetingId}/media';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -266,7 +266,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	*/
 	function getUserIdGreetings(userId, pageSize, pageNumber){
-		var apipath = '/api/v1/users/{userId}/greetings';
+		var apipath = '/api/v2/users/{userId}/greetings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -319,7 +319,7 @@ var GreetingsApi = function (pureCloudSession) {
 }
 	*/
 	function postUserIdGreetings(userId, body){
-		var apipath = '/api/v1/users/{userId}/greetings';
+		var apipath = '/api/v2/users/{userId}/greetings';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -349,7 +349,7 @@ var GreetingsApi = function (pureCloudSession) {
 	* @param {string} userId - User ID
 	*/
 	function getUserIdGreetingsDefaults(userId){
-		var apipath = '/api/v1/users/{userId}/greetings/defaults';
+		var apipath = '/api/v2/users/{userId}/greetings/defaults';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -386,7 +386,7 @@ var GreetingsApi = function (pureCloudSession) {
 }
 	*/
 	function putUserIdGreetingsDefaults(userId, body){
-		var apipath = '/api/v1/users/{userId}/greetings/defaults';
+		var apipath = '/api/v2/users/{userId}/greetings/defaults';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

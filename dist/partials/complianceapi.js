@@ -7,7 +7,7 @@
 var ComplianceApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -15,7 +15,7 @@ var ComplianceApi = function (pureCloudSession) {
 	 * @memberOf ComplianceApi#
 	*/
 	function getHipaa(){
-		var apipath = '/api/v1/compliance/hipaa';
+		var apipath = '/api/v2/compliance/hipaa';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -37,7 +37,7 @@ var ComplianceApi = function (pureCloudSession) {
 }
 	*/
 	function putHipaa(body){
-		var apipath = '/api/v1/compliance/hipaa';
+		var apipath = '/api/v2/compliance/hipaa';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

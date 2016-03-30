@@ -7,7 +7,7 @@
 var DownloadsApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -17,7 +17,7 @@ var DownloadsApi = function (pureCloudSession) {
 	* @param {string} state - 
 	*/
 	function getCallback(code, state){
-		var apipath = '/api/v1/downloads/callback';
+		var apipath = '/api/v2/downloads/callback';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -45,7 +45,7 @@ var DownloadsApi = function (pureCloudSession) {
 	* @param {string} contentDisposition - this method will issue a redirect to the url to the content
 	*/
 	function getDownloadId(downloadId, contentDisposition){
-		var apipath = '/api/v1/downloads/{downloadId}';
+		var apipath = '/api/v2/downloads/{downloadId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

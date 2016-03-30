@@ -7,7 +7,7 @@
 var SearchApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -28,7 +28,7 @@ var SearchApi = function (pureCloudSession) {
 }
 	*/
 	function postChats(body){
-		var apipath = '/api/v1/search/chats';
+		var apipath = '/api/v2/search/chats';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};

@@ -7,7 +7,7 @@
 var ArchitectApi = function (pureCloudSession) {
 	if(!pureCloudSession){
 		throw "PureCloudSession is not valid.";
-	}
+    }
 
 	var self = this;
 	/**
@@ -27,7 +27,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postAudits(body){
-		var apipath = '/api/v1/architect/audits';
+		var apipath = '/api/v2/architect/audits';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -50,7 +50,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getIvrs(pageNumber, pageSize, sortBy, sortOrder){
-		var apipath = '/api/v1/architect/ivrs';
+		var apipath = '/api/v2/architect/ivrs';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -119,7 +119,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postIvrs(body){
-		var apipath = '/api/v1/architect/ivrs';
+		var apipath = '/api/v2/architect/ivrs';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -139,7 +139,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} id - 
 	*/
 	function postIvrsActionsPublish(id){
-		var apipath = '/api/v1/architect/ivrs/actions/publish';
+		var apipath = '/api/v2/architect/ivrs/actions/publish';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -164,7 +164,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} ivrId - IVR id
 	*/
 	function getIvrsIvrId(ivrId){
-		var apipath = '/api/v1/architect/ivrs/{ivrId}';
+		var apipath = '/api/v2/architect/ivrs/{ivrId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -220,7 +220,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function putIvrsIvrId(ivrId, body){
-		var apipath = '/api/v1/architect/ivrs/{ivrId}';
+		var apipath = '/api/v2/architect/ivrs/{ivrId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -246,7 +246,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} ivrId - IVR id
 	*/
 	function deleteIvrsIvrId(ivrId){
-		var apipath = '/api/v1/architect/ivrs/{ivrId}';
+		var apipath = '/api/v2/architect/ivrs/{ivrId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -273,7 +273,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} nameOrDescription - Name or description
 	*/
 	function getPrompts(pageNumber, pageSize, name, description, nameOrDescription){
-		var apipath = '/api/v1/architect/prompts';
+		var apipath = '/api/v2/architect/prompts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -321,7 +321,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postPrompts(body){
-		var apipath = '/api/v1/architect/prompts';
+		var apipath = '/api/v2/architect/prompts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -343,7 +343,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {boolean} ignoreDependencies - Ignore Dependencies
 	*/
 	function deletePrompts(id, ignoreDependencies){
-		var apipath = '/api/v1/architect/prompts';
+		var apipath = '/api/v2/architect/prompts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -373,7 +373,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} promptId - Prompt ID
 	*/
 	function getPromptsPromptId(promptId){
-		var apipath = '/api/v1/architect/prompts/{promptId}';
+		var apipath = '/api/v2/architect/prompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -403,7 +403,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function putPromptsPromptId(promptId, body){
-		var apipath = '/api/v1/architect/prompts/{promptId}';
+		var apipath = '/api/v2/architect/prompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -429,7 +429,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} promptId - Prompt ID
 	*/
 	function deletePromptsPromptId(promptId){
-		var apipath = '/api/v1/architect/prompts/{promptId}';
+		var apipath = '/api/v2/architect/prompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -454,7 +454,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	*/
 	function getPromptsPromptIdResources(promptId, pageNumber, pageSize){
-		var apipath = '/api/v1/architect/prompts/{promptId}/resources';
+		var apipath = '/api/v2/architect/prompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -499,7 +499,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postPromptsPromptIdResources(promptId, body){
-		var apipath = '/api/v1/architect/prompts/{promptId}/resources';
+		var apipath = '/api/v2/architect/prompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -526,7 +526,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} language - Language
 	*/
 	function getPromptsPromptIdResourcesLanguage(promptId, language){
-		var apipath = '/api/v1/architect/prompts/{promptId}/resources/{language}';
+		var apipath = '/api/v2/architect/prompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -568,7 +568,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function putPromptsPromptIdResourcesLanguage(promptId, language, body){
-		var apipath = '/api/v1/architect/prompts/{promptId}/resources/{language}';
+		var apipath = '/api/v2/architect/prompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -601,7 +601,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} language - Language
 	*/
 	function deletePromptsPromptIdResourcesLanguage(promptId, language){
-		var apipath = '/api/v1/architect/prompts/{promptId}/resources/{language}';
+		var apipath = '/api/v2/architect/prompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -632,7 +632,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getSchedulegroups(pageNumber, pageSize, sortBy, sortOrder){
-		var apipath = '/api/v1/architect/schedulegroups';
+		var apipath = '/api/v2/architect/schedulegroups';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -685,7 +685,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postSchedulegroups(body){
-		var apipath = '/api/v1/architect/schedulegroups';
+		var apipath = '/api/v2/architect/schedulegroups';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -705,7 +705,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} scheduleGroupId - Schedule group ID
 	*/
 	function getSchedulegroupsSchedulegroupId(scheduleGroupId){
-		var apipath = '/api/v1/architect/schedulegroups/{scheduleGroupId}';
+		var apipath = '/api/v2/architect/schedulegroups/{scheduleGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -745,7 +745,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function putSchedulegroupsSchedulegroupId(scheduleGroupId, body){
-		var apipath = '/api/v1/architect/schedulegroups/{scheduleGroupId}';
+		var apipath = '/api/v2/architect/schedulegroups/{scheduleGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -771,7 +771,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} scheduleGroupId - Schedule group ID
 	*/
 	function deleteSchedulegroupsSchedulegroupId(scheduleGroupId){
-		var apipath = '/api/v1/architect/schedulegroups/{scheduleGroupId}';
+		var apipath = '/api/v2/architect/schedulegroups/{scheduleGroupId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -796,7 +796,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getSchedules(pageNumber, pageSize, sortBy, sortOrder){
-		var apipath = '/api/v1/architect/schedules';
+		var apipath = '/api/v2/architect/schedules';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -850,7 +850,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postSchedules(body){
-		var apipath = '/api/v1/architect/schedules';
+		var apipath = '/api/v2/architect/schedules';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -870,7 +870,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} scheduleId - Schedule ID
 	*/
 	function getSchedulesScheduleId(scheduleId){
-		var apipath = '/api/v1/architect/schedules/{scheduleId}';
+		var apipath = '/api/v2/architect/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -911,7 +911,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function putSchedulesScheduleId(scheduleId, body){
-		var apipath = '/api/v1/architect/schedules/{scheduleId}';
+		var apipath = '/api/v2/architect/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -937,7 +937,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} scheduleId - Schedule ID
 	*/
 	function deleteSchedulesScheduleId(scheduleId){
-		var apipath = '/api/v1/architect/schedules/{scheduleId}';
+		var apipath = '/api/v2/architect/schedules/{scheduleId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -965,7 +965,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} nameOrDescription - Name or description
 	*/
 	function getSystemprompts(pageNumber, pageSize, sortBy, sortOrder, name, description, nameOrDescription){
-		var apipath = '/api/v1/architect/systemprompts';
+		var apipath = '/api/v2/architect/systemprompts';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1016,7 +1016,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} promptId - 
 	*/
 	function getSystempromptsPromptId(promptId){
-		var apipath = '/api/v1/architect/systemprompts/{promptId}';
+		var apipath = '/api/v2/architect/systemprompts/{promptId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1042,7 +1042,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} sortOrder - Sort order
 	*/
 	function getSystempromptsPromptIdResources(promptId, pageNumber, pageSize, sortBy, sortOrder){
-		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources';
+		var apipath = '/api/v2/architect/systemprompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1098,7 +1098,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postSystempromptsPromptIdResources(promptId, body){
-		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources';
+		var apipath = '/api/v2/architect/systemprompts/{promptId}/resources';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1125,7 +1125,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} language - Language
 	*/
 	function getSystempromptsPromptIdResourcesLanguage(promptId, language){
-		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources/{language}';
+		var apipath = '/api/v2/architect/systemprompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1154,7 +1154,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} language - Language
 	*/
 	function deleteSystempromptsPromptIdResourcesLanguage(promptId, language){
-		var apipath = '/api/v1/architect/systemprompts/{promptId}/resources/{language}';
+		var apipath = '/api/v2/architect/systemprompts/{promptId}/resources/{language}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1195,7 +1195,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {boolean} doDeleted - Include deleted
 	*/
 	function getFlows(type, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, doDeleted){
-		var apipath = '/api/v1/flows';
+		var apipath = '/api/v2/flows';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1324,7 +1324,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function postFlows(body){
-		var apipath = '/api/v1/flows';
+		var apipath = '/api/v2/flows';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1346,7 +1346,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {boolean} ignoreDependencies - Ignore Dependencies
 	*/
 	function deleteFlows(id, ignoreDependencies){
-		var apipath = '/api/v1/flows';
+		var apipath = '/api/v2/flows';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1376,7 +1376,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} flow - Flow
 	*/
 	function postActionsCheckin(flow){
-		var apipath = '/api/v1/flows/actions/checkin';
+		var apipath = '/api/v2/flows/actions/checkin';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1397,7 +1397,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} flow - Flow
 	*/
 	function postActionsCheckout(flow){
-		var apipath = '/api/v1/flows/actions/checkout';
+		var apipath = '/api/v2/flows/actions/checkout';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1418,7 +1418,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} flow - Flow
 	*/
 	function postActionsDeactivate(flow){
-		var apipath = '/api/v1/flows/actions/deactivate';
+		var apipath = '/api/v2/flows/actions/deactivate';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1440,7 +1440,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} version - 
 	*/
 	function postActionsDebug(flow, version){
-		var apipath = '/api/v1/flows/actions/debug';
+		var apipath = '/api/v2/flows/actions/debug';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1470,7 +1470,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} flow - Flow
 	*/
 	function postActionsRevert(flow){
-		var apipath = '/api/v1/flows/actions/revert';
+		var apipath = '/api/v2/flows/actions/revert';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1492,7 +1492,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} doDeleted - Deleted
 	*/
 	function getFlowId(flowId, doDeleted){
-		var apipath = '/api/v1/flows/{flowId}';
+		var apipath = '/api/v2/flows/{flowId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1568,7 +1568,7 @@ var ArchitectApi = function (pureCloudSession) {
 }
 	*/
 	function putFlowId(flowId, body){
-		var apipath = '/api/v1/flows/{flowId}';
+		var apipath = '/api/v2/flows/{flowId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1594,7 +1594,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} flowId - Flow ID
 	*/
 	function deleteFlowId(flowId){
-		var apipath = '/api/v1/flows/{flowId}';
+		var apipath = '/api/v2/flows/{flowId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1617,7 +1617,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} doDeleted - Deleted
 	*/
 	function getFlowIdLatestconfiguration(flowId, doDeleted){
-		var apipath = '/api/v1/flows/{flowId}/latestconfiguration';
+		var apipath = '/api/v2/flows/{flowId}/latestconfiguration';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1645,7 +1645,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} id - Publish Result ID
 	*/
 	function getFlowIdPublishedresultsId(flowId, id){
-		var apipath = '/api/v1/flows/{flowId}/publishedresults/{id}';
+		var apipath = '/api/v2/flows/{flowId}/publishedresults/{id}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1676,7 +1676,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} doDeleted - Deleted
 	*/
 	function getFlowIdVersions(flowId, pageNumber, pageSize, doDeleted){
-		var apipath = '/api/v1/flows/{flowId}/versions';
+		var apipath = '/api/v2/flows/{flowId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1714,7 +1714,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {} body - 
 	*/
 	function postFlowIdVersions(flowId, body){
-		var apipath = '/api/v1/flows/{flowId}/versions';
+		var apipath = '/api/v2/flows/{flowId}/versions';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1742,7 +1742,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} doDeleted - Deleted
 	*/
 	function getFlowIdVersionsVersionId(flowId, versionId, doDeleted){
-		var apipath = '/api/v1/flows/{flowId}/versions/{versionId}';
+		var apipath = '/api/v2/flows/{flowId}/versions/{versionId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -1777,7 +1777,7 @@ var ArchitectApi = function (pureCloudSession) {
 	* @param {string} doDeleted - Deleted
 	*/
 	function getFlowIdVersionsVersionIdConfiguration(flowId, versionId, doDeleted){
-		var apipath = '/api/v1/flows/{flowId}/versions/{versionId}/configuration';
+		var apipath = '/api/v2/flows/{flowId}/versions/{versionId}/configuration';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
