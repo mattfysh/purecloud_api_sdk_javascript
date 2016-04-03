@@ -36,38 +36,6 @@ var UtilitiesApi = function (pureCloudSession) {
 	}
 	self.postDetails = postDetails;
 	/**
-     * @summary Validates a street address
-	 * @memberOf UtilitiesApi#
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
-   "address": {
-      "name": "",
-      "street": "",
-      "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
-   }
-}
-	*/
-	function postAddressvalidation(body){
-		var apipath = '/api/v2/configuration/addressvalidation';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postAddressvalidation = postAddressvalidation;
-	/**
      * @summary Get the current system date/time
 	 * @memberOf UtilitiesApi#
 	*/

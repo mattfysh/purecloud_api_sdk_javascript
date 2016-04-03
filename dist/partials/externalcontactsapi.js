@@ -103,12 +103,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -222,12 +222,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "personalEmail": "",
    "otherEmail": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "modifyDate": "",
    "createDate": "",
@@ -518,12 +518,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "phoneNumber": {
       "display": "",
@@ -600,12 +600,12 @@ var ExternalContactsApi = function (pureCloudSession) {
    "industry": "",
    "primaryContactId": "",
    "address": {
-      "name": "",
-      "street": "",
+      "address1": "",
+      "address2": "",
       "city": "",
-      "countryName": "",
-      "stateName": "",
-      "postalCode": ""
+      "state": "",
+      "postalCode": "",
+      "countryCode": ""
    },
    "phoneNumber": {
       "display": "",

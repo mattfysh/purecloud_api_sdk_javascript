@@ -512,12 +512,53 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "selfUri": "",
-   "phoneNumberColumns": [],
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true
 }
 	*/
 	function postCampaigns(body){
@@ -585,12 +626,53 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
    "name": "",
-   "selfUri": "",
-   "phoneNumberColumns": [],
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "contactList": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dialingMode": "",
+   "script": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "edgeGroup": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "campaignStatus": "",
+   "phoneColumns": [],
+   "abandonRate": {},
+   "dncLists": [],
+   "callableTimeSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callAnalysisResponseSet": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "errors": [],
+   "callerName": "",
+   "callerAddress": "",
+   "outboundLineCount": 0,
+   "ruleSets": [],
    "skipPreviewDisabled": true,
-   "previewTimeOutSeconds": 0
+   "previewTimeOutSeconds": 0,
+   "singleNumberPreview": true
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){
@@ -882,8 +964,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function postContactlists(body){
@@ -901,26 +997,6 @@ var OutboundApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postContactlists = postContactlists;
-	/**
-     * @summary Get penetration rates for a list of penetration rate identifiers (contact list id and qualifier id)
-	 * @memberOf OutboundApi#
-	* @param {} body - PenetrationRateIdentifierList
-	*/
-	function postContactlistsPenetrationrates(body){
-		var apipath = '/api/v2/outbound/contactlists/penetrationrates';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postContactlistsPenetrationrates = postContactlistsPenetrationrates;
 	/**
      * @summary Get dialer contactList.
 	 * @memberOf OutboundApi#
@@ -963,8 +1039,22 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "id": "",
-   "selfUri": ""
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "columnNames": [],
+   "phoneColumns": [],
+   "importStatus": {
+      "state": "",
+      "totalRecords": 0,
+      "completedRecords": 0,
+      "percentComplete": 0,
+      "failureReason": ""
+   },
+   "previewModeColumnName": "",
+   "previewModeAcceptedValues": [],
+   "size": 0
 }
 	*/
 	function putContactlistsContactlistId(contactListId, body){
@@ -1081,10 +1171,12 @@ var OutboundApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "address": "",
-   "display": "",
-   "mediaType": "",
-   "type": ""
+   "name": "",
+   "contactListId": "",
+   "data": {},
+   "callRecords": {},
+   "callable": true,
+   "phoneNumberStatus": {}
 }
 	*/
 	function putContactlistsContactlistIdContactsContactId(contactListId, contactId, body){
@@ -1188,36 +1280,6 @@ var OutboundApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getContactlistsContactlistIdImportstatus = getContactlistsContactlistIdImportstatus;
-	/**
-     * @summary Get Dialer campaign's penetration rate
-	 * @description Get dialer campaign's penetration rate.
-	 * @memberOf OutboundApi#
-	* @param {string} contactListId - ContactList ID
-	* @param {string} campaignId - Campaign ID
-	*/
-	function getContactlistsContactlistIdCampaignIdPenetrationrate(contactListId, campaignId){
-		var apipath = '/api/v2/outbound/contactlists/{contactListId}/{campaignId}/penetrationrate';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{contactListId}', contactListId);
-
-        if(contactListId === undefined && contactListId !== null){
-			throw 'Missing required  parameter: contactListId';
-        }
-
-        apipath = apipath.replace('{campaignId}', campaignId);
-
-        if(campaignId === undefined && campaignId !== null){
-			throw 'Missing required  parameter: campaignId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getContactlistsContactlistIdCampaignIdPenetrationrate = getContactlistsContactlistIdCampaignIdPenetrationrate;
 	/**
      * @summary Add phone numbers to a Dialer DNC list.
 	 * @memberOf OutboundApi#
@@ -1526,115 +1588,6 @@ var OutboundApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postDnclistsDnclistIdPhonenumbers = postDnclistsDnclistIdPhonenumbers;
-	/**
-     * @summary Get dialer preview for user
-	 * @memberOf OutboundApi#
-	*/
-	function getPreviews(){
-		var apipath = '/api/v2/outbound/previews';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getPreviews = getPreviews;
-	/**
-     * @summary Get dialer preview
-	 * @memberOf OutboundApi#
-	* @param {string} previewId - preview ID
-	*/
-	function getPreviewsPreviewId(previewId){
-		var apipath = '/api/v2/outbound/previews/{previewId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{previewId}', previewId);
-
-        if(previewId === undefined && previewId !== null){
-			throw 'Missing required  parameter: previewId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getPreviewsPreviewId = getPreviewsPreviewId;
-	/**
-     * @summary Disposition preview call
-	 * @memberOf OutboundApi#
-	* @param {string} previewId - preview ID
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
-   "callId": "",
-   "wrapupCodeId": "",
-   "contact": {
-      "address": "",
-      "display": "",
-      "mediaType": "",
-      "type": ""
-   }
-}
-	*/
-	function postPreviewsPreviewIdDispositioncall(previewId, body){
-		var apipath = '/api/v2/outbound/previews/{previewId}/dispositioncall';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{previewId}', previewId);
-
-        if(previewId === undefined && previewId !== null){
-			throw 'Missing required  parameter: previewId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postPreviewsPreviewIdDispositioncall = postPreviewsPreviewIdDispositioncall;
-	/**
-     * @summary place preview call
-	 * @memberOf OutboundApi#
-	* @param {string} previewId - preview ID
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
-   "callId": "",
-   "phoneNumber": ""
-}
-	*/
-	function postPreviewsPreviewIdPlacecall(previewId, body){
-		var apipath = '/api/v2/outbound/previews/{previewId}/placecall';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{previewId}', previewId);
-
-        if(previewId === undefined && previewId !== null){
-			throw 'Missing required  parameter: previewId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postPreviewsPreviewIdPlacecall = postPreviewsPreviewIdPlacecall;
 	/**
      * @summary Query a list of Rule Sets.
 	 * @memberOf OutboundApi#

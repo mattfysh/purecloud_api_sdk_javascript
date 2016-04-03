@@ -11,131 +11,6 @@ var VoicemailApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
-     * @summary Get a user's voicemail policy
-	 * @memberOf VoicemailApi#
-	* @param {string} userId - User ID
-	*/
-	function getUservoicemailpoliciesUserId(userId){
-		var apipath = '/api/v2/configuration/uservoicemailpolicies/{userId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUservoicemailpoliciesUserId = getUservoicemailpoliciesUserId;
-	/**
-     * @summary Update a user's voicemail policy
-	 * @memberOf VoicemailApi#
-	* @param {string} userId - User ID
-	* @param {} body - The user's voicemail policy
-	 * @example
-	 * Body Example:
-	 * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-	*/
-	function patchUservoicemailpoliciesUserId(userId, body){
-		var apipath = '/api/v2/configuration/uservoicemailpolicies/{userId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-        if(body === undefined && body !== null){
-			throw 'Missing required  parameter: body';
-        }
-
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchUservoicemailpoliciesUserId = patchUservoicemailpoliciesUserId;
-	/**
-     * @summary Get a policy
-	 * @memberOf VoicemailApi#
-	*/
-	function getVoicemailpolicy(){
-		var apipath = '/api/v2/configuration/voicemailpolicy';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getVoicemailpolicy = getVoicemailpolicy;
-	/**
-     * @summary Update a policy
-	 * @memberOf VoicemailApi#
-	* @param {} body - Policy
-	 * @example
-	 * Body Example:
-	 * {
-   "enabled": true,
-   "retentionTimeDays": 0,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "compressSilence": true,
-   "pinConfiguration": {
-      "minimumLength": 0,
-      "maximumLength": 0
-   },
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": "",
-   "voicemailExtension": "",
-   "pinRequired": true
-}
-	*/
-	function putVoicemailpolicy(body){
-		var apipath = '/api/v2/configuration/voicemailpolicy';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putVoicemailpolicy = putVoicemailpolicy;
-	/**
      * @summary Get mailbox information
 	 * @memberOf VoicemailApi#
 	*/
@@ -312,6 +187,131 @@ var VoicemailApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getMessagesMessageIdMedia = getMessagesMessageIdMedia;
+	/**
+     * @summary Get a policy
+	 * @memberOf VoicemailApi#
+	*/
+	function getPolicy(){
+		var apipath = '/api/v2/voicemail/policy';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPolicy = getPolicy;
+	/**
+     * @summary Update a policy
+	 * @memberOf VoicemailApi#
+	* @param {} body - Policy
+	 * @example
+	 * Body Example:
+	 * {
+   "enabled": true,
+   "retentionTimeDays": 0,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "compressSilence": true,
+   "pinConfiguration": {
+      "minimumLength": 0,
+      "maximumLength": 0
+   },
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "voicemailExtension": "",
+   "pinRequired": true
+}
+	*/
+	function putPolicy(body){
+		var apipath = '/api/v2/voicemail/policy';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putPolicy = putPolicy;
+	/**
+     * @summary Get a user's voicemail policy
+	 * @memberOf VoicemailApi#
+	* @param {string} userId - User ID
+	*/
+	function getUserpoliciesUserId(userId){
+		var apipath = '/api/v2/voicemail/userpolicies/{userId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserpoliciesUserId = getUserpoliciesUserId;
+	/**
+     * @summary Update a user's voicemail policy
+	 * @memberOf VoicemailApi#
+	* @param {string} userId - User ID
+	* @param {} body - The user's voicemail policy
+	 * @example
+	 * Body Example:
+	 * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+	*/
+	function patchUserpoliciesUserId(userId, body){
+		var apipath = '/api/v2/voicemail/userpolicies/{userId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+        if(body === undefined && body !== null){
+			throw 'Missing required  parameter: body';
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchUserpoliciesUserId = patchUserpoliciesUserId;
 
     return self;
 };

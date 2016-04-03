@@ -197,44 +197,10 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.deletePresenceId = deletePresenceId;
 	/**
-     * @summary Get an User's list of Presences
+     * @summary Get a user's Presence
 	 * @memberOf PresenceApi#
-	* @param {string} userId - User ID
-	* @param {integer} pageNumber - Page number
-	* @param {integer} pageSize - Page size
-	*/
-	function getUserIdPresences(userId, pageNumber, pageSize){
-		var apipath = '/api/v2/users/{userId}/presences';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserIdPresences = getUserIdPresences;
-	/**
-     * @summary Get a UserPresence
-	 * @memberOf PresenceApi#
-	* @param {string} userId - User ID
-	* @param {string} source - Source
+	* @param {string} userId - user Id
+	* @param {string} source - source
 	*/
 	function getUserIdPresencesSource(userId, source){
 		var apipath = '/api/v2/users/{userId}/presences/{source}';
@@ -260,26 +226,18 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.getUserIdPresencesSource = getUserIdPresencesSource;
 	/**
-     * @summary Update a UserPresence
+     * @summary Patch a user's Presence
+	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @memberOf PresenceApi#
-	* @param {string} userId - User ID
-	* @param {string} source - Source
-	* @param {} body - The updated UserPresence
+	* @param {string} userId - user Id
+	* @param {string} source - source
+	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @example
 	 * Body Example:
 	 * {
    "name": "",
-   "user": {
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "addresses": [],
-      "title": "",
-      "username": "",
-      "images": []
-   },
    "source": "",
+   "primary": true,
    "presenceDefinition": {
       "name": "",
       "languageLabels": {},
@@ -290,94 +248,7 @@ var PresenceApi = function (pureCloudSession) {
       "modifiedBy": {},
       "modifiedDate": ""
    },
-   "message": "",
-   "modifiedBy": {
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "addresses": [],
-      "title": "",
-      "username": "",
-      "images": []
-   },
-   "modifiedDate": ""
-}
-	*/
-	function putUserIdPresencesSource(userId, source, body){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-        apipath = apipath.replace('{source}', source);
-
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-        if(body === undefined && body !== null){
-			throw 'Missing required  parameter: body';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putUserIdPresencesSource = putUserIdPresencesSource;
-	/**
-     * @summary Patch a UserPresence
-	 * @memberOf PresenceApi#
-	* @param {string} userId - User ID
-	* @param {string} source - Source
-	* @param {} body - The patched UserPresence
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "user": {
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "addresses": [],
-      "title": "",
-      "username": "",
-      "images": []
-   },
-   "source": "",
-   "presenceDefinition": {
-      "name": "",
-      "languageLabels": {},
-      "systemPresence": "",
-      "deactivated": true,
-      "createdBy": {},
-      "createdDate": "",
-      "modifiedBy": {},
-      "modifiedDate": ""
-   },
-   "message": "",
-   "modifiedBy": {
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "addresses": [],
-      "title": "",
-      "username": "",
-      "images": []
-   },
-   "modifiedDate": ""
+   "message": ""
 }
 	*/
 	function patchUserIdPresencesSource(userId, source, body){
@@ -403,36 +274,10 @@ var PresenceApi = function (pureCloudSession) {
             requestBody = body;
         }
 
-        if(body === undefined && body !== null){
-			throw 'Missing required  parameter: body';
-        }
-
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.patchUserIdPresencesSource = patchUserIdPresencesSource;
-	/**
-     * @summary Get a user's Primary UserPresence
-	 * @memberOf PresenceApi#
-	* @param {string} userId - User ID
-	*/
-	function getUserIdPrimarypresence(userId){
-		var apipath = '/api/v2/users/{userId}/primarypresence';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserIdPrimarypresence = getUserIdPrimarypresence;
 
     return self;
 };

@@ -46,6 +46,66 @@ var GroupsApi = function (pureCloudSession) {
 	}
 	self.getGroups = getGroups;
 	/**
+     * @summary Search using q64
+	 * @memberOf GroupsApi#
+	* @param {string} q64 - 
+	* @param {array} expand - 
+	*/
+	function getSearch(q64, expand){
+		var apipath = '/api/v2/groups/search';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(q64 !== undefined && q64 !== null){
+			queryParameters.q64 = q64;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSearch = getSearch;
+	/**
+     * @summary Search
+	 * @memberOf GroupsApi#
+	* @param {} body - Search request options
+	 * @example
+	 * Body Example:
+	 * {
+   "types": [],
+   "sortOrder": "",
+   "query": [],
+   "sortBy": "",
+   "pageSize": 0,
+   "pageNumber": 0,
+   "returnFields": [],
+   "aggregations": [],
+   "expand": []
+}
+	*/
+	function postSearch(body){
+		var apipath = '/api/v2/groups/search';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postSearch = postSearch;
+	/**
      * @summary Get group
 	 * @memberOf GroupsApi#
 	* @param {string} groupId - Group ID

@@ -133,7 +133,6 @@ var UsersApi = function (pureCloudSession) {
    "email": "",
    "addresses": [],
    "title": "",
-   "username": "",
    "password": "",
    "version": ""
 }
@@ -157,8 +156,9 @@ var UsersApi = function (pureCloudSession) {
      * @summary Get user.
 	 * @memberOf UsersApi#
 	* @param {array} expand - Which fields, if any, to expand
+	* @param {array} feature - The feature toggles to query.
 	*/
-	function getMe(expand){
+	function getMe(expand, feature){
 		var apipath = '/api/v2/users/me';
 	    var requestBody;
 	    var queryParameters = {};
@@ -171,9 +171,78 @@ var UsersApi = function (pureCloudSession) {
 		}
 
 
+		if(feature !== undefined && feature !== null){
+			queryParameters.feature = feature;
+		}
+
+        if(feature === undefined && feature !== null){
+			throw 'Missing required  parameter: feature';
+        }
+
+
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getMe = getMe;
+	/**
+     * @summary Search using q64
+	 * @memberOf UsersApi#
+	* @param {string} q64 - 
+	* @param {array} expand - 
+	*/
+	function getSearch(q64, expand){
+		var apipath = '/api/v2/users/search';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(q64 !== undefined && q64 !== null){
+			queryParameters.q64 = q64;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSearch = getSearch;
+	/**
+     * @summary Search
+	 * @memberOf UsersApi#
+	* @param {} body - Search request options
+	 * @example
+	 * Body Example:
+	 * {
+   "types": [],
+   "sortOrder": "",
+   "query": [],
+   "sortBy": "",
+   "pageSize": 0,
+   "pageNumber": 0,
+   "returnFields": [],
+   "aggregations": [],
+   "expand": []
+}
+	*/
+	function postSearch(body){
+		var apipath = '/api/v2/users/search';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postSearch = postSearch;
 	/**
      * @summary Get user
 	 * @memberOf UsersApi#
@@ -525,12 +594,13 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
-     * @summary Get a user's PrimaryUserPresenceSource
+     * @summary Get a user's Presence
 	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
+	* @param {string} userId - user Id
+	* @param {string} source - source
 	*/
-	function getUserIdPrimarypresencesource(userId){
-		var apipath = '/api/v2/users/{userId}/primarypresencesource';
+	function getUserIdPresencesSource(userId, source){
+		var apipath = '/api/v2/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -542,34 +612,44 @@ var UsersApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: userId';
         }
 
+        apipath = apipath.replace('{source}', source);
+
+        if(source === undefined && source !== null){
+			throw 'Missing required  parameter: source';
+        }
+
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserIdPrimarypresencesource = getUserIdPrimarypresencesource;
+	self.getUserIdPresencesSource = getUserIdPresencesSource;
 	/**
-     * @summary Update a user's PrimaryUserPresenceSource
+     * @summary Patch a user's Presence
+	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	* @param {} body - 
+	* @param {string} userId - user Id
+	* @param {string} source - source
+	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @example
 	 * Body Example:
 	 * {
    "name": "",
-   "user": {
+   "source": "",
+   "primary": true,
+   "presenceDefinition": {
       "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "addresses": [],
-      "title": "",
-      "username": "",
-      "images": []
+      "languageLabels": {},
+      "systemPresence": "",
+      "deactivated": true,
+      "createdBy": {},
+      "createdDate": "",
+      "modifiedBy": {},
+      "modifiedDate": ""
    },
-   "primarySource": ""
+   "message": ""
 }
 	*/
-	function putUserIdPrimarypresencesource(userId, body){
-		var apipath = '/api/v2/users/{userId}/primarypresencesource';
+	function patchUserIdPresencesSource(userId, source, body){
+		var apipath = '/api/v2/users/{userId}/presences/{source}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -579,6 +659,12 @@ var UsersApi = function (pureCloudSession) {
 
         if(userId === undefined && userId !== null){
 			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{source}', source);
+
+        if(source === undefined && source !== null){
+			throw 'Missing required  parameter: source';
         }
 
         if(body !== undefined && body !== null){
@@ -586,9 +672,9 @@ var UsersApi = function (pureCloudSession) {
         }
 
 
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putUserIdPrimarypresencesource = putUserIdPrimarypresencesource;
+	self.patchUserIdPresencesSource = patchUserIdPresencesSource;
 	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
@@ -717,7 +803,7 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.patchUserIdQueuesQueueId = patchUserIdQueuesQueueId;
 	/**
-     * @summary List roles for user
+     * @summary Returns a listing of roles and permissions for a user.
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	*/
@@ -738,6 +824,55 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getUserIdRoles = getUserIdRoles;
+	/**
+     * @summary Sets the user's roles
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - 
+	*/
+	function putUserIdRoles(userId, body){
+		var apipath = '/api/v2/users/{userId}/roles';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdRoles = putUserIdRoles;
+	/**
+     * @summary Removes all the roles from the user.
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function deleteUserIdRoles(userId){
+		var apipath = '/api/v2/users/{userId}/roles';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUserIdRoles = deleteUserIdRoles;
 	/**
      * @summary List routing skills for user
 	 * @memberOf UsersApi#
@@ -897,6 +1032,130 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.putUserIdRoutingstatus = putUserIdRoutingstatus;
+	/**
+     * @summary Get station information for user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function getUserIdStation(userId){
+		var apipath = '/api/v2/users/{userId}/station';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserIdStation = getUserIdStation;
+	/**
+     * @summary Clear associated station
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function deleteUserIdStationAssociatedstation(userId){
+		var apipath = '/api/v2/users/{userId}/station/associatedstation';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUserIdStationAssociatedstation = deleteUserIdStationAssociatedstation;
+	/**
+     * @summary Set associated station
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {string} stationId - 
+	*/
+	function putUserIdStationAssociatedstationStationId(userId, stationId){
+		var apipath = '/api/v2/users/{userId}/station/associatedstation/{stationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{stationId}', stationId);
+
+        if(stationId === undefined && stationId !== null){
+			throw 'Missing required  parameter: stationId';
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdStationAssociatedstationStationId = putUserIdStationAssociatedstationStationId;
+	/**
+     * @summary Clear default station
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function deleteUserIdStationDefaultstation(userId){
+		var apipath = '/api/v2/users/{userId}/station/defaultstation';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUserIdStationDefaultstation = deleteUserIdStationDefaultstation;
+	/**
+     * @summary Set default station
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {string} stationId - 
+	*/
+	function putUserIdStationDefaultstationStationId(userId, stationId){
+		var apipath = '/api/v2/users/{userId}/station/defaultstation/{stationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{stationId}', stationId);
+
+        if(stationId === undefined && stationId !== null){
+			throw 'Missing required  parameter: stationId';
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdStationDefaultstationStationId = putUserIdStationDefaultstationStationId;
 
     return self;
 };

@@ -61,10 +61,12 @@ var AuthorizationApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {array} permission - 
 	* @param {boolean} userCount - 
 	*/
-	function getRoles(pageSize, pageNumber, sortBy, expand, permission, userCount){
+	function getRoles(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, permission, userCount){
 		var apipath = '/api/v2/authorization/roles';
 	    var requestBody;
 	    var queryParameters = {};
@@ -89,6 +91,16 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -436,12 +448,12 @@ var AuthorizationApi = function (pureCloudSession) {
 	}
 	self.putRolesRoleIdUsersRemove = putRolesRoleIdUsersRemove;
 	/**
-     * @summary Get the list of roles for a user.
+     * @summary Returns a listing of roles and permissions for a user.
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	*/
-	function getUsersUserIdRoles(userId){
-		var apipath = '/api/v2/authorization/users/{userId}/roles';
+	function getUserIdRoles(userId){
+		var apipath = '/api/v2/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -456,15 +468,15 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUsersUserIdRoles = getUsersUserIdRoles;
+	self.getUserIdRoles = getUserIdRoles;
 	/**
      * @summary Sets the user's roles
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	* @param {} body - 
 	*/
-	function putUsersUserIdRoles(userId, body){
-		var apipath = '/api/v2/authorization/users/{userId}/roles';
+	function putUserIdRoles(userId, body){
+		var apipath = '/api/v2/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -483,14 +495,14 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putUsersUserIdRoles = putUsersUserIdRoles;
+	self.putUserIdRoles = putUserIdRoles;
 	/**
      * @summary Removes all the roles from the user.
 	 * @memberOf AuthorizationApi#
 	* @param {string} userId - User ID
 	*/
-	function deleteUsersUserIdRoles(userId){
-		var apipath = '/api/v2/authorization/users/{userId}/roles';
+	function deleteUserIdRoles(userId){
+		var apipath = '/api/v2/users/{userId}/roles';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -505,7 +517,7 @@ var AuthorizationApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteUsersUserIdRoles = deleteUsersUserIdRoles;
+	self.deleteUserIdRoles = deleteUserIdRoles;
 
     return self;
 };

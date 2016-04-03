@@ -11,6 +11,40 @@ var QualityApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
+     * @summary Query for evaluation aggregates
+	 * @memberOf QualityApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
+   "interval": "",
+   "granularity": "",
+   "groupBy": [],
+   "filter": {
+      "type": "",
+      "clauses": [],
+      "predicates": []
+   },
+   "metrics": [],
+   "flattenMultivaluedDimensions": true
+}
+	*/
+	function postEvaluationsAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/evaluations/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEvaluationsAggregatesQuery = postEvaluationsAggregatesQuery;
+	/**
      * @summary Gets a list of Agent Activities
 	 * @description Including the number of evaluations and average evaluation score
 	 * @memberOf QualityApi#
@@ -18,6 +52,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {string} startTime - Start time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} endTime - End time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {array} agentUserId - user id of agent requested
@@ -25,7 +61,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {string} name - name
 	* @param {string} group - group id
 	*/
-	function getAgentsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, agentUserId, evaluatorUserId, name, group){
+	function getAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group){
 		var apipath = '/api/v2/quality/agents/activity';
 	    var requestBody;
 	    var queryParameters = {};
@@ -50,6 +86,16 @@ var QualityApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -93,12 +139,14 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {string} conversationId - conversation id
 	* @param {string} startTime - Beginning of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} endTime - end of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} calibratorId - user id of calibrator
 	*/
-	function getCalibrations(pageSize, pageNumber, sortBy, expand, conversationId, startTime, endTime, calibratorId){
+	function getCalibrations(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, startTime, endTime, calibratorId){
 		var apipath = '/api/v2/quality/calibrations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -123,6 +171,16 @@ var QualityApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -438,10 +496,12 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {string} recordingId - id of the recording
 	* @param {string} entityType - entity type options: Recording, Calibration, Evaluation, Annotation
 	*/
-	function getConversationsConversationIdAudits(conversationId, pageSize, pageNumber, sortBy, expand, recordingId, entityType){
+	function getConversationsConversationIdAudits(conversationId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, recordingId, entityType){
 		var apipath = '/api/v2/quality/conversations/{conversationId}/audits';
 	    var requestBody;
 	    var queryParameters = {};
@@ -472,6 +532,16 @@ var QualityApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -833,6 +903,8 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {string} conversationId - conversationId specified
 	* @param {string} agentUserId - user id of the agent
 	* @param {string} evaluatorUserId - evaluator user id
@@ -845,7 +917,7 @@ var QualityApi = function (pureCloudSession) {
 	* @param {boolean} expandAnswerTotalScores - get the total scores for evaluations
 	* @param {integer} maximum - maximum
 	*/
-	function getEvaluationsQuery(pageSize, pageNumber, sortBy, expand, conversationId, agentUserId, evaluatorUserId, queueId, startTime, endTime, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum){
+	function getEvaluationsQuery(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, agentUserId, evaluatorUserId, queueId, startTime, endTime, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum){
 		var apipath = '/api/v2/quality/evaluations/query';
 	    var requestBody;
 	    var queryParameters = {};
@@ -870,6 +942,16 @@ var QualityApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -979,13 +1061,15 @@ var QualityApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {string} startTime - The start time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} endTime - The end time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	* @param {string} name - Evaluator name
 	* @param {array} permission - permission strings
 	* @param {string} group - group id
 	*/
-	function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, startTime, endTime, name, permission, group){
+	function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, name, permission, group){
 		var apipath = '/api/v2/quality/evaluators/activity';
 	    var requestBody;
 	    var queryParameters = {};
@@ -1010,6 +1094,16 @@ var QualityApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -1041,6 +1135,329 @@ var QualityApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getEvaluatorsActivity = getEvaluatorsActivity;
+	/**
+     * @summary Get the list of evaluation forms
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} expand - Expand
+	* @param {string} name - Name
+	*/
+	function getForms(pageSize, pageNumber, sortBy, nextPage, previousPage, expand, name){
+		var apipath = '/api/v2/quality/forms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getForms = getForms;
+	/**
+     * @summary Create an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "type": "",
+   "modifiedDate": "",
+   "published": true,
+   "contextId": "",
+   "questionGroups": [],
+   "publishedVersions": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "previousUri": "",
+      "firstUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   }
+}
+	*/
+	function postForms(body){
+		var apipath = '/api/v2/quality/forms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postForms = postForms;
+	/**
+     * @summary Get an evaluation form
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	*/
+	function getFormsFormId(formId){
+		var apipath = '/api/v2/quality/forms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getFormsFormId = getFormsFormId;
+	/**
+     * @summary Update an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "type": "",
+   "modifiedDate": "",
+   "published": true,
+   "contextId": "",
+   "questionGroups": [],
+   "publishedVersions": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "previousUri": "",
+      "firstUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   }
+}
+	*/
+	function putFormsFormId(formId, body){
+		var apipath = '/api/v2/quality/forms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putFormsFormId = putFormsFormId;
+	/**
+     * @summary Delete an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	*/
+	function deleteFormsFormId(formId){
+		var apipath = '/api/v2/quality/forms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteFormsFormId = deleteFormsFormId;
+	/**
+     * @summary Gets all the revisions for a specific evaluation.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getFormsFormIdVersions(formId, pageSize, pageNumber){
+		var apipath = '/api/v2/quality/forms/{formId}/versions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getFormsFormIdVersions = getFormsFormIdVersions;
+	/**
+     * @summary Get the published evaluation forms.
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	*/
+	function getPublishedforms(pageSize, pageNumber, name){
+		var apipath = '/api/v2/quality/publishedforms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPublishedforms = getPublishedforms;
+	/**
+     * @summary Publish an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "type": "",
+   "modifiedDate": "",
+   "published": true,
+   "contextId": "",
+   "questionGroups": [],
+   "publishedVersions": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "previousUri": "",
+      "firstUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   }
+}
+	*/
+	function postPublishedforms(body){
+		var apipath = '/api/v2/quality/publishedforms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postPublishedforms = postPublishedforms;
+	/**
+     * @summary Get the published evaluation forms.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	*/
+	function getPublishedformsFormId(formId){
+		var apipath = '/api/v2/quality/publishedforms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPublishedformsFormId = getPublishedformsFormId;
 
     return self;
 };

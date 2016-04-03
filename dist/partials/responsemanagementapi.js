@@ -208,8 +208,21 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "messageReturned": [],
-   "status": ""
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "addresses": [],
+      "title": "",
+      "username": "",
+      "images": []
+   },
+   "dateCreated": ""
 }
 	*/
 	function postResponses(body){
@@ -285,8 +298,21 @@ var ResponseManagementApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "messageReturned": [],
-   "status": ""
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "addresses": [],
+      "title": "",
+      "username": "",
+      "images": []
+   },
+   "dateCreated": ""
 }
 	*/
 	function putResponsesResponseId(responseId, body){

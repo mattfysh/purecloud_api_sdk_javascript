@@ -119,7 +119,8 @@ var RecordingApi = function (pureCloudSession) {
    "archiveMedium": "",
    "deleteDate": "",
    "maxAllowedRestorationsForOrg": 0,
-   "remainingRestorationsAllowedForOrg": 0
+   "remainingRestorationsAllowedForOrg": 0,
+   "sessionId": ""
 }
 	*/
 	function putConversationIdRecordingsRecordingId(conversationId, recordingId, body){
@@ -374,8 +375,10 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	*/
-	function getOrphanrecordings(pageSize, pageNumber, sortBy, expand){
+	function getOrphanrecordings(pageSize, pageNumber, sortBy, expand, nextPage, previousPage){
 		var apipath = '/api/v2/orphanrecordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -400,6 +403,16 @@ var RecordingApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 
@@ -458,12 +471,14 @@ var RecordingApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - The page number requested
 	* @param {string} sortBy - variable name requested to sort by
 	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
 	* @param {string} name - the policy name - used for filtering results in searches.
 	* @param {boolean} enabled - checks to see if policy is enabled - use enabled = true or enabled = false
 	* @param {boolean} summary - provides a less verbose response of policy lists.
 	* @param {boolean} hasErrors - provides a way to fetch all policies with errors or policies that do not have errors
 	*/
-	function getMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, name, enabled, summary, hasErrors){
+	function getMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors){
 		var apipath = '/api/v2/recording/mediaretentionpolicies';
 	    var requestBody;
 	    var queryParameters = {};
@@ -488,6 +503,16 @@ var RecordingApi = function (pureCloudSession) {
 
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
 		}
 
 

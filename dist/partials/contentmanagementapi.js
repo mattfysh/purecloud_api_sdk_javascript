@@ -642,15 +642,11 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * {
    "sharedEntityType": "",
    "sharedEntity": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "memberType": "",
    "member": {
-      "kind": "",
-      "id": "",
-      "name": ""
+      "id": ""
    },
    "members": []
 }
@@ -1097,11 +1093,12 @@ var ContentManagementApi = function (pureCloudSession) {
    "group": {
       "name": "",
       "description": "",
+      "dateModified": "",
       "memberCount": 0,
-      "groupType": "",
-      "groupImages": {},
-      "groupState": "",
-      "version": {}
+      "state": "",
+      "version": {},
+      "images": [],
+      "addresses": []
    },
    "securityProfile": {
       "name": "",
