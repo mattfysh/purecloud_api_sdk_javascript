@@ -156,9 +156,8 @@ var UsersApi = function (pureCloudSession) {
      * @summary Get user.
 	 * @memberOf UsersApi#
 	* @param {array} expand - Which fields, if any, to expand
-	* @param {array} feature - The feature toggles to query.
 	*/
-	function getMe(expand, feature){
+	function getMe(expand){
 		var apipath = '/api/v2/users/me';
 	    var requestBody;
 	    var queryParameters = {};
@@ -169,15 +168,6 @@ var UsersApi = function (pureCloudSession) {
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
 		}
-
-
-		if(feature !== undefined && feature !== null){
-			queryParameters.feature = feature;
-		}
-
-        if(feature === undefined && feature !== null){
-			throw 'Missing required  parameter: feature';
-        }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);

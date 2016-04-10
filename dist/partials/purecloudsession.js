@@ -1,4 +1,4 @@
-//API VERSION - 0.33.0
+//API VERSION - 0.34.0
 /**
 * @description PureCloud API
 * @class
@@ -268,7 +268,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.33.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.34.0";
          }
 
          if(body){
