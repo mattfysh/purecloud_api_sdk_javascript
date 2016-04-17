@@ -558,7 +558,11 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "singleNumberPreview": true,
+   "contactSort": {
+      "fieldName": "",
+      "direction": ""
+   }
 }
 	*/
 	function postCampaigns(body){
@@ -672,7 +676,11 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "singleNumberPreview": true,
+   "contactSort": {
+      "fieldName": "",
+      "direction": ""
+   }
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){

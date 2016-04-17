@@ -7294,13 +7294,19 @@ var NotificationsApi = function (pureCloudSession) {
 	/**
      * @summary Get available notification topics.
 	 * @memberOf NotificationsApi#
+	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function getAvailabletopics(){
+	function getAvailabletopics(expand){
 		var apipath = '/api/v2/notifications/availabletopics';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -8549,7 +8555,11 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "singleNumberPreview": true,
+   "contactSort": {
+      "fieldName": "",
+      "direction": ""
+   }
 }
 	*/
 	function postCampaigns(body){
@@ -8663,7 +8673,11 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "singleNumberPreview": true,
+   "contactSort": {
+      "fieldName": "",
+      "direction": ""
+   }
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){
@@ -11699,8 +11713,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -11764,8 +11778,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -11901,8 +11915,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -11966,7 +11980,7 @@ var RecordingApi = function (pureCloudSession) {
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -11997,7 +12011,7 @@ var RecordingApi = function (pureCloudSession) {
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	* @param {boolean} download - requesting a download format of the recording
@@ -15016,7 +15030,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "site": {
       "id": "",
@@ -15572,7 +15587,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": []
+   "phoneTrunkBaseAssignments": [],
+   "phoneTrunkBases": []
 }
 	*/
 	function postProvidersEdgesEdgegroups(body){
@@ -15635,7 +15651,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": []
+   "phoneTrunkBaseAssignments": [],
+   "phoneTrunkBases": []
 }
 	*/
 	function putProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId, body){
@@ -17788,7 +17805,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "site": {
       "id": "",
@@ -17982,7 +18000,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "lineType": "",
    "endpoint": {
@@ -18796,7 +18815,7 @@ var UserRecordingsApi = function (pureCloudSession) {
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -20224,7 +20243,7 @@ var VoicemailApi = function (pureCloudSession) {
      * @summary Get media playback URI for this message
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -20379,7 +20398,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.34.0
+//API VERSION - 0.35.0
 /**
 * @description PureCloud API
 * @class
@@ -20649,7 +20668,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.34.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.35.0";
          }
 
          if(body){

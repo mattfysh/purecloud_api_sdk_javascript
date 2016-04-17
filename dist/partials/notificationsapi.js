@@ -13,13 +13,19 @@ var NotificationsApi = function (pureCloudSession) {
 	/**
      * @summary Get available notification topics.
 	 * @memberOf NotificationsApi#
+	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function getAvailabletopics(){
+	function getAvailabletopics(expand){
 		var apipath = '/api/v2/notifications/availabletopics';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
