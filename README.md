@@ -1,3 +1,6 @@
+---
+title: Javascript SDK
+---
 Javascript wrapper round the PureCloud Platform API
 
 ![Bower version](https://img.shields.io/bower/v/purecloud-api.svg)
