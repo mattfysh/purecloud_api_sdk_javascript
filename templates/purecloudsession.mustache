@@ -125,7 +125,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         if(existingToken && existingToken !== ''){
             _token = existingToken;
-            sendRestRequest("GET", "https://" + _host + "/api/v1/users/me").done(function(){
+            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me").done(function(){
                 //has good auth token
                 _token = existingToken;
 
