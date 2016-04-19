@@ -4767,242 +4767,6 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.postFaxes = postFaxes;
 	/**
-     * @summary Get recent video conversations
-	 * @memberOf ConversationsApi#
-	*/
-	function getVideos(){
-		var apipath = '/api/v2/conversations/videos';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getVideos = getVideos;
-	/**
-     * @summary Get video conversation
-	 * @memberOf ConversationsApi#
-	* @param {string} videoId - 
-	*/
-	function getVideosVideoId(videoId){
-		var apipath = '/api/v2/conversations/videos/{videoId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{videoId}', videoId);
-
-        if(videoId === undefined && videoId !== null){
-			throw 'Missing required  parameter: videoId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getVideosVideoId = getVideosVideoId;
-	/**
-     * @summary Update conversation participant
-	 * @memberOf ConversationsApi#
-	* @param {string} videoId - 
-	* @param {string} participantId - 
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
-   "wrapup": {
-      "code": "",
-      "name": "",
-      "notes": "",
-      "tags": [],
-      "durationSeconds": 0,
-      "endTime": "",
-      "provisional": true
-   },
-   "state": "",
-   "recording": true,
-   "muted": true,
-   "confined": true,
-   "held": true,
-   "wrapupSkipped": true
-}
-	*/
-	function patchVideosVideoIdParticipantsParticipantId(videoId, participantId, body){
-		var apipath = '/api/v2/conversations/videos/{videoId}/participants/{participantId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{videoId}', videoId);
-
-        if(videoId === undefined && videoId !== null){
-			throw 'Missing required  parameter: videoId';
-        }
-
-        apipath = apipath.replace('{participantId}', participantId);
-
-        if(participantId === undefined && participantId !== null){
-			throw 'Missing required  parameter: participantId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchVideosVideoIdParticipantsParticipantId = patchVideosVideoIdParticipantsParticipantId;
-	/**
-     * @summary Update the attributes on a conversation participant.
-	 * @memberOf ConversationsApi#
-	* @param {string} videoId - 
-	* @param {string} participantId - 
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
-   "attributes": {}
-}
-	*/
-	function patchVideosVideoIdParticipantsParticipantIdAttributes(videoId, participantId, body){
-		var apipath = '/api/v2/conversations/videos/{videoId}/participants/{participantId}/attributes';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{videoId}', videoId);
-
-        if(videoId === undefined && videoId !== null){
-			throw 'Missing required  parameter: videoId';
-        }
-
-        apipath = apipath.replace('{participantId}', participantId);
-
-        if(participantId === undefined && participantId !== null){
-			throw 'Missing required  parameter: participantId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchVideosVideoIdParticipantsParticipantIdAttributes = patchVideosVideoIdParticipantsParticipantIdAttributes;
-	/**
-     * @summary Replace this participant with the specified user and/or address
-	 * @memberOf ConversationsApi#
-	* @param {string} videoId - 
-	* @param {string} participantId - 
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
-   "userId": "",
-   "address": "",
-   "userName": "",
-   "queueId": "",
-   "voicemail": true
-}
-	*/
-	function postVideosVideoIdParticipantsParticipantIdReplace(videoId, participantId, body){
-		var apipath = '/api/v2/conversations/videos/{videoId}/participants/{participantId}/replace';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{videoId}', videoId);
-
-        if(videoId === undefined && videoId !== null){
-			throw 'Missing required  parameter: videoId';
-        }
-
-        apipath = apipath.replace('{participantId}', participantId);
-
-        if(participantId === undefined && participantId !== null){
-			throw 'Missing required  parameter: participantId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postVideosVideoIdParticipantsParticipantIdReplace = postVideosVideoIdParticipantsParticipantIdReplace;
-	/**
-     * @summary Get the wrap-up for this conversation participant. 
-	 * @memberOf ConversationsApi#
-	* @param {string} videoId - 
-	* @param {string} participantId - 
-	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
-	*/
-	function getVideosVideoIdParticipantsParticipantIdWrapup(videoId, participantId, provisional){
-		var apipath = '/api/v2/conversations/videos/{videoId}/participants/{participantId}/wrapup';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{videoId}', videoId);
-
-        if(videoId === undefined && videoId !== null){
-			throw 'Missing required  parameter: videoId';
-        }
-
-        apipath = apipath.replace('{participantId}', participantId);
-
-        if(participantId === undefined && participantId !== null){
-			throw 'Missing required  parameter: participantId';
-        }
-
-
-		if(provisional !== undefined && provisional !== null){
-			queryParameters.provisional = provisional;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getVideosVideoIdParticipantsParticipantIdWrapup = getVideosVideoIdParticipantsParticipantIdWrapup;
-	/**
-     * @summary Get list of wrapup codes for this conversation participant
-	 * @memberOf ConversationsApi#
-	* @param {string} videoId - 
-	* @param {string} participantId - 
-	*/
-	function getVideosVideoIdParticipantsParticipantIdWrapupcodes(videoId, participantId){
-		var apipath = '/api/v2/conversations/videos/{videoId}/participants/{participantId}/wrapupcodes';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{videoId}', videoId);
-
-        if(videoId === undefined && videoId !== null){
-			throw 'Missing required  parameter: videoId';
-        }
-
-        apipath = apipath.replace('{participantId}', participantId);
-
-        if(participantId === undefined && participantId !== null){
-			throw 'Missing required  parameter: participantId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getVideosVideoIdParticipantsParticipantIdWrapupcodes = getVideosVideoIdParticipantsParticipantIdWrapupcodes;
-	/**
      * @summary Get conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} conversationId - conversation ID
@@ -7530,13 +7294,19 @@ var NotificationsApi = function (pureCloudSession) {
 	/**
      * @summary Get available notification topics.
 	 * @memberOf NotificationsApi#
+	* @param {array} expand - Which fields, if any, to expand
 	*/
-	function getAvailabletopics(){
+	function getAvailabletopics(expand){
 		var apipath = '/api/v2/notifications/availabletopics';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -8785,7 +8555,11 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "singleNumberPreview": true,
+   "contactSort": {
+      "fieldName": "",
+      "direction": ""
+   }
 }
 	*/
 	function postCampaigns(body){
@@ -8899,7 +8673,11 @@ var OutboundApi = function (pureCloudSession) {
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true
+   "singleNumberPreview": true,
+   "contactSort": {
+      "fieldName": "",
+      "direction": ""
+   }
 }
 	*/
 	function putCampaignsCampaignId(campaignId, body){
@@ -12202,7 +11980,7 @@ var RecordingApi = function (pureCloudSession) {
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -12233,7 +12011,7 @@ var RecordingApi = function (pureCloudSession) {
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	* @param {boolean} download - requesting a download format of the recording
@@ -15252,7 +15030,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "site": {
       "id": "",
@@ -15808,7 +15587,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": []
+   "phoneTrunkBaseAssignments": [],
+   "phoneTrunkBases": []
 }
 	*/
 	function postProvidersEdgesEdgegroups(body){
@@ -15871,7 +15651,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": []
+   "phoneTrunkBaseAssignments": [],
+   "phoneTrunkBases": []
 }
 	*/
 	function putProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId, body){
@@ -18024,7 +17805,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "site": {
       "id": "",
@@ -18218,7 +18000,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "lineType": "",
    "endpoint": {
@@ -19032,7 +18815,7 @@ var UserRecordingsApi = function (pureCloudSession) {
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -19220,9 +19003,8 @@ var UsersApi = function (pureCloudSession) {
      * @summary Get user.
 	 * @memberOf UsersApi#
 	* @param {array} expand - Which fields, if any, to expand
-	* @param {array} feature - The feature toggles to query.
 	*/
-	function getMe(expand, feature){
+	function getMe(expand){
 		var apipath = '/api/v2/users/me';
 	    var requestBody;
 	    var queryParameters = {};
@@ -19233,15 +19015,6 @@ var UsersApi = function (pureCloudSession) {
 		if(expand !== undefined && expand !== null){
 			queryParameters.expand = expand;
 		}
-
-
-		if(feature !== undefined && feature !== null){
-			queryParameters.feature = feature;
-		}
-
-        if(feature === undefined && feature !== null){
-			throw 'Missing required  parameter: feature';
-        }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
@@ -20470,7 +20243,7 @@ var VoicemailApi = function (pureCloudSession) {
      * @summary Get media playback URI for this message
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -20625,7 +20398,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.33.0
+//API VERSION - 0.35.0
 /**
 * @description PureCloud API
 * @class
@@ -20895,7 +20668,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.33.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.35.0";
          }
 
          if(body){

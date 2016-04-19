@@ -177,7 +177,7 @@ var UserRecordingsApi = function (pureCloudSession) {
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/

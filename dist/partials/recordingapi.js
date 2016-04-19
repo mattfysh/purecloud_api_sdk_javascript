@@ -14,7 +14,7 @@ var RecordingApi = function (pureCloudSession) {
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	*/
@@ -45,7 +45,7 @@ var RecordingApi = function (pureCloudSession) {
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
-	* @param {string} formatId - The desired format (WEBM, WAV, etc.)
+	* @param {string} formatId - The desired media format (WEBM, WAV)
 	WEBM,
 	WAV,
 	* @param {boolean} download - requesting a download format of the recording

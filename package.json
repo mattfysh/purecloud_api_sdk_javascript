@@ -1,6 +1,6 @@
 {
-  "name": "purecloud",
-  "version": "0.33.0",
+  "name": "purecloud_api_sdk_javascript",
+  "version": "0.35.0",
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "dependencies": {

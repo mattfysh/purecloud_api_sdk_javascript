@@ -301,7 +301,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "site": {
       "id": "",
@@ -857,7 +858,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": []
+   "phoneTrunkBaseAssignments": [],
+   "phoneTrunkBases": []
 }
 	*/
 	function postProvidersEdgesEdgegroups(body){
@@ -920,7 +922,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": []
+   "phoneTrunkBaseAssignments": [],
+   "phoneTrunkBases": []
 }
 	*/
 	function putProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId, body){
@@ -3073,7 +3076,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "site": {
       "id": "",
@@ -3267,7 +3271,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": []
+      "phoneTrunkBaseAssignments": [],
+      "phoneTrunkBases": []
    },
    "lineType": "",
    "endpoint": {
