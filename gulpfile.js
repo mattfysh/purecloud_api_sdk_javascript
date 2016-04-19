@@ -94,6 +94,11 @@ function parseJsonSchema(opts, type){
         classes: []
     };
 
+    var swaggerTags = {};
+    _.forEach(swagger.tags, function(tag){
+        swaggerTags[tag["name"]] = tag["description"]
+    });
+
     _.forEach(swagger.paths, function(api, path){
 
         var classPath = "PureCloud" + path.replace(/\/api\/v1/, '').replace(/\//g,'.').replace(/\.\{[A-Za-z]*\}/g, '')
@@ -147,6 +152,7 @@ function parseJsonSchema(opts, type){
                     parameter = swagger.parameters[segments.length === 1 ? segments[0] : segments[2] ];
                 }
                 parameter.camelCaseName = camelCase(parameter.name).replace(/[ \.\/\(\)'-]/g, '').replace('delete','doDelete');
+                parameter.default = getDefaultValue(parameter.type);
 
                 if(parameter.enum && parameter.enum.length === 1) {
                     parameter.isSingleton = true;
@@ -172,7 +178,6 @@ function parseJsonSchema(opts, type){
 
             for(var tagIndex =0; tagIndex < op.tags.length; tagIndex++){
                 var tag = op.tags[tagIndex].replace(/[ -]/g, "");
-
                 if (data.methods[tag] == null){
                     data.methods[tag] = [];
                 }
@@ -192,6 +197,9 @@ function parseJsonSchema(opts, type){
         methodArray.push({
             moduleName: key[0].toUpperCase() + key.substring(1) + "Api",
             value : data.methods[key],
+            description : swaggerTags[key],
+            key: key,
+            keylowercase: key.toLowerCase()
         });
     }
     data.methods = methodArray;
@@ -222,15 +230,9 @@ var buildNode = function() {
 };
 
 gulp.task('doc', function() {
-    require('shelljs/global');
-    exec('node_modules/jsdoc/jsdoc.js dist/partials/*.js -c ./doc/conf.json --readme README.md -d doc_out_temp', {silent:false}).output;
-
-    return gulp.src('./doc_out_temp/*.html')
-                .pipe(rename(function (path) {
-                  path.extname = path.extname + ".erb"
-                }))
-                .pipe(replace(/(title: \w+):(.*)/g, '$1 - $2'))
-                .pipe(gulp.dest("./doc_out"));
+    gulp.src('./README.md')
+            .pipe(rename("index.html.md"))
+            .pipe(gulp.dest('./doc/'));
 });
 
 gulp.task('movegen', function(){
@@ -255,8 +257,8 @@ function fileExists(filePath)
 }
 
 gulp.task('clean:doc', function(){
-    if (fileExists("doc_out")) {
-        return gulp.src('./doc_out', { read: false })
+    if (fileExists("doc")) {
+        return gulp.src('./doc', { read: false })
             .pipe(rimraf());
     }
 });
@@ -266,7 +268,6 @@ gulp.task('clean:gen', function(){
         return gulp.src('./gen', { read: false })
             .pipe(rimraf());
     }
-
 });
 
 gulp.task('clean:dist', function(){
@@ -280,6 +281,10 @@ gulp.task('build', ['clean'], function() {
 
     if (!fileExists("gen")) {
         fs.mkdirSync('gen');
+    }
+
+    if (!fileExists("doc")) {
+        fs.mkdirSync('doc');
     }
 
     if (!fileExists("nodegen")) {
@@ -301,6 +306,11 @@ gulp.task('build', ['clean'], function() {
         var source = Mustache.render(fs.readFileSync('templates/module.mustache', 'utf-8'), moduledata);
         source = source.replace(/&#x2F;/g,'/')
         fs.writeFileSync("gen/" + moduledata.moduleName + ".js", source);
+
+        //console.log(moduledata)
+        var docSource = Mustache.render(fs.readFileSync('templates/api_doc.mustache', 'utf-8'), moduledata);
+        docSource = docSource.replace(/&#x2F;/g,'/')
+        fs.writeFileSync("doc/" + moduledata.moduleName + ".html.md", docSource);
     });
 
     if(!version){

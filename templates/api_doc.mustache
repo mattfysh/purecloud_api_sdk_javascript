@@ -1,0 +1,57 @@
+---
+title: {{&moduleName}}
+---
+
+{{&description}}
+
+REST documentation can be found at [{{&key}}](/api/rest/v2/{{&keylowercase}}/index.html)
+
+|Method | HTTP Request | Description|
+|------------- | ------------- | ------------- |
+{{#value}}
+|[**{{&methodName}}**]({{&moduleName}}.html#{{&methodName}}) | **{{&method}}** {{&path}} | {{&summary}} |
+{{/value}}{: class="table table-striped"}
+
+{{#value}}
+<a name="{{&methodName}}"></a>
+
+## {{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}})
+{{&summary}}
+{{&description}}
+
+### Example
+~~~javascript
+var api = new {{&moduleName}}(pureCloudSession);
+{{#parameters}}
+var {{&camelCaseName}} = {{&default}};
+{{/parameters}}
+
+api.{{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}}).done(function(result){
+    console.log(result);
+}).error(function(error){
+    console.log(error);
+});
+~~~
+
+{{#parameters.length}}
+### Parameters
+
+| Name | Type | Required | Description  |
+|------------- | ------------- | ------------- | ------------- |
+{{#parameters}}
+| **{{&camelCaseName}}** | **{{&type}}** | {{&required}} | {{&description}} {{#enum}}{{.}}{{/enum}} |
+{{/parameters}}{: class="table table-striped"}
+
+{{/parameters.length}}
+
+{{#bodyExample}}
+
+### Body Example
+
+~~~javascript
+{{&bodyExample}}
+~~~
+
+{{/bodyExample}}
+
+{{/value}}
