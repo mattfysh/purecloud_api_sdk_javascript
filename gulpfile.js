@@ -231,7 +231,7 @@ var buildNode = function() {
 
 gulp.task('doc', function() {
     gulp.src('./README.md')
-            .pipe(rename("index.html.md"))
+            .pipe(rename("index.md"))
             .pipe(gulp.dest('./doc/'));
 });
 
@@ -310,7 +310,7 @@ gulp.task('build', ['clean'], function() {
         //console.log(moduledata)
         var docSource = Mustache.render(fs.readFileSync('templates/api_doc.mustache', 'utf-8'), moduledata);
         docSource = docSource.replace(/&#x2F;/g,'/')
-        fs.writeFileSync("doc/" + moduledata.moduleName + ".html.md", docSource);
+        fs.writeFileSync("doc/" + moduledata.moduleName + ".md", docSource);
     });
 
     if(!version){
