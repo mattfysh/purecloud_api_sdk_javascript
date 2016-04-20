@@ -231,7 +231,7 @@ var buildNode = function() {
 
 gulp.task('doc', function() {
     gulp.src('./README.md')
-            .pipe(rename("index.html.md"))
+            .pipe(rename("index.md"))
             .pipe(gulp.dest('./doc/'));
 });
 

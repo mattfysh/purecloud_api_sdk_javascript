@@ -11,11 +11,13 @@ Javascript wrapper round the PureCloud Platform API
 Docs can be found at [http://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/](http://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/)
 
 Install with [Bower](http://bower.io):
+
 ~~~
 bower install purecloud-api
 ~~~
 
 or node
+
 ~~~
 npm install purecloud
 ~~~
@@ -23,12 +25,15 @@ npm install purecloud
 Source code [https://github.com/MyPureCloud/purecloud_api_sdk_javascript](https://github.com/MyPureCloud/purecloud_api_sdk_javascript)
 
 # Using the Library
+
 ## Referencing the modules in a web application
+
 For convenience, all modules are bundled together, but if your application only uses a small subset of features, you can reference those modules directly.
 
 **_Note: JQuery > 1.5 is required_**
 
 Including the full Library:
+
 ~~~~
 <script type="text/javascript" src="purecloud-api.js"></script>
 ~~~~
@@ -41,6 +46,7 @@ Including only a subset.  It is important to note that purecloudsession.js must 
 ~~~~
 
 ## Referencing the modules in a NodeJS application
+
 For NodeJS, helper methods are available for client credential grant authorization, usage is similar to the browser usage except that API classes are under the pureCloud object.
 
 ~~~
