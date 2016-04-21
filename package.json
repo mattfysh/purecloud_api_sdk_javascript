@@ -27,7 +27,8 @@
     "rifraf": "~2.0.2",
     "run-sequence": "1.1.5",
     "shelljs": "~0.5.3",
-    "wgetjs": "*"
+    "wgetjs": "*",
+    "gulp-jsdoc-to-markdown": "*"
   },
   "scripts": {
     "test": "jasmine"

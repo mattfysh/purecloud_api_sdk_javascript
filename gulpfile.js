@@ -16,6 +16,7 @@ var pclibSwaggerGen = require('purecloud-api-sdk-common').swaggerGen();
 var pclibSwaggerVersion = require('purecloud-api-sdk-common').swaggerVersioning();
 var pclib = require('purecloud-api-sdk-common');
 var runSequence = require('run-sequence');
+var gulpJsdoc2md = require('gulp-jsdoc-to-markdown')
 
 
 function getDefaultValue(type){
@@ -233,6 +234,14 @@ gulp.task('doc', function() {
     gulp.src('./README.md')
             .pipe(rename("index.md"))
             .pipe(gulp.dest('./doc/'));
+
+    return gulp.src('dist/partials/purecloudsession.js')
+        .pipe(concat('PurecloudSession.md'))
+        .pipe(gulpJsdoc2md())//{ template: fs.readFileSync('./templates/jsdoc.hbs', 'utf8') })) //
+        .on('error', function (err) {
+          gutil.log('jsdoc2md failed:', err.message)
+        })
+        .pipe(gulp.dest('doc'))
 });
 
 gulp.task('movegen', function(){
