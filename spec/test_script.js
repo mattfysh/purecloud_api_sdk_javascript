@@ -136,7 +136,7 @@ function runTests(){
     test_fail();
     test_roles();
     test_oauth();
-    test_users_and_status();
+    //test_users_and_status();
 }
 
 pureCloudSession.authorizeWithClientCredentialsGrant(id, secret).done(runTests).error(fail);
