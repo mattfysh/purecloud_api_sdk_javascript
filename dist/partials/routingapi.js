@@ -83,31 +83,53 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.postEmailDomains = postEmailDomains;
 	/**
-     * @summary Get routes
+     * @summary Delete a domain
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
+	* @param {string} domainId - domain ID
 	*/
-	function getEmailDomainsDomainRoutes(domain){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes';
+	function deleteEmailDomainsDomainId(domainId){
+		var apipath = '/api/v2/routing/email/domains/{domainId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainId}', domainId);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainId === undefined && domainId !== null){
+			throw 'Missing required  parameter: domainId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteEmailDomainsDomainId = deleteEmailDomainsDomainId;
+	/**
+     * @summary Get routes
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	*/
+	function getEmailDomainsDomainnameRoutes(domainName){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{domainName}', domainName);
+
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEmailDomainsDomainRoutes = getEmailDomainsDomainRoutes;
+	self.getEmailDomainsDomainnameRoutes = getEmailDomainsDomainnameRoutes;
 	/**
      * @summary Create a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
+	* @param {string} domainName - email domain
 	* @param {} body - Route
 	 * @example
 	 * Body Example:
@@ -130,17 +152,17 @@ var RoutingApi = function (pureCloudSession) {
    "fromEmail": ""
 }
 	*/
-	function postEmailDomainsDomainRoutes(domain, body){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes';
+	function postEmailDomainsDomainnameRoutes(domainName, body){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
         if(body !== undefined && body !== null){
@@ -150,41 +172,41 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postEmailDomainsDomainRoutes = postEmailDomainsDomainRoutes;
+	self.postEmailDomainsDomainnameRoutes = postEmailDomainsDomainnameRoutes;
 	/**
      * @summary Get a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
-	* @param {string} id - route ID
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
 	*/
-	function getEmailDomainsDomainRoutesId(domain, id){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes/{id}';
+	function getEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{routeId}', routeId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEmailDomainsDomainRoutesId = getEmailDomainsDomainRoutesId;
+	self.getEmailDomainsDomainnameRoutesRouteId = getEmailDomainsDomainnameRoutesRouteId;
 	/**
      * @summary Update a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
-	* @param {string} id - route ID
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
 	* @param {} body - Route
 	 * @example
 	 * Body Example:
@@ -207,23 +229,23 @@ var RoutingApi = function (pureCloudSession) {
    "fromEmail": ""
 }
 	*/
-	function putEmailDomainsDomainRoutesId(domain, id, body){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes/{id}';
+	function putEmailDomainsDomainnameRoutesRouteId(domainName, routeId, body){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{routeId}', routeId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
         }
 
         if(body !== undefined && body !== null){
@@ -233,58 +255,36 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putEmailDomainsDomainRoutesId = putEmailDomainsDomainRoutesId;
+	self.putEmailDomainsDomainnameRoutesRouteId = putEmailDomainsDomainnameRoutesRouteId;
 	/**
      * @summary Delete a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
-	* @param {string} id - route ID
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
 	*/
-	function deleteEmailDomainsDomainRoutesId(domain, id){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes/{id}';
+	function deleteEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{routeId}', routeId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteEmailDomainsDomainRoutesId = deleteEmailDomainsDomainRoutesId;
-	/**
-     * @summary Delete a domain
-	 * @memberOf RoutingApi#
-	* @param {string} id - domain ID
-	*/
-	function deleteEmailDomainsId(id){
-		var apipath = '/api/v2/routing/email/domains/{id}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
         }
 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEmailDomainsId = deleteEmailDomainsId;
+	self.deleteEmailDomainsDomainnameRoutesRouteId = deleteEmailDomainsDomainnameRoutesRouteId;
 	/**
      * @summary Get email setup
 	 * @memberOf RoutingApi#

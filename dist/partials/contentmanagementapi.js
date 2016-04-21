@@ -1093,12 +1093,11 @@ var ContentManagementApi = function (pureCloudSession) {
    "group": {
       "name": "",
       "description": "",
-      "dateModified": "",
-      "memberCount": 0,
-      "state": "",
-      "version": {},
+      "type": "",
       "images": [],
-      "addresses": []
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": ""
    },
    "securityProfile": {
       "name": "",

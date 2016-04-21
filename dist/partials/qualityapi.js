@@ -280,6 +280,7 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "neverRelease": true,
       "resourceId": "",
       "resourceType": "",
       "redacted": true,
@@ -418,6 +419,7 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "neverRelease": true,
       "resourceId": "",
       "resourceType": "",
       "redacted": true,
@@ -656,6 +658,7 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "neverRelease": true,
    "resourceId": "",
    "resourceType": "",
    "redacted": true,
@@ -822,6 +825,7 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "neverRelease": true,
    "resourceId": "",
    "resourceType": "",
    "redacted": true,
@@ -1211,8 +1215,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
+      "firstUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -1276,8 +1280,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
+      "firstUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -1413,8 +1417,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
+      "firstUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
