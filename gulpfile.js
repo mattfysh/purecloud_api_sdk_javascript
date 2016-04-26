@@ -239,6 +239,7 @@ gulp.task('doc', function() {
         .pipe(concat('PureCloudSession.md'))
         .pipe(gulpJsdoc2md({ plugin: 'dmd-kramdown-plugin', template: fs.readFileSync('./templates/purecloud_session_doc.hbs', 'utf8') })) //
         .pipe(replace(/`/g, '~'))
+        .pipe(replace('[PureCloudSession](#PureCloudSession)', 'PureCloudSession'))
         .on('error', function (err) {
           gutil.log('jsdoc2md failed:', err.message)
         })
