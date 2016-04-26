@@ -1,6 +1,6 @@
-//API VERSION - 0.35.0
+//API VERSION - 0.36.0
 /**
-* @description PureCloud API
+* @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
 * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.com.au, etc.
 **/
@@ -125,7 +125,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         if(existingToken && existingToken !== ''){
             _token = existingToken;
-            sendRestRequest("GET", "https://" + _host + "/api/v1/users/me").done(function(){
+            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me").done(function(){
                 //has good auth token
                 _token = existingToken;
 
@@ -242,7 +242,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
     * @example
     * var environment = pureCloudSession.environment();
     * @example
-    * pureCloudSession.authToken("mypurecloud.ie");
+    * pureCloudSession.environment("mypurecloud.ie");
     **/
     function environment(environment){
         if(environment){
@@ -268,7 +268,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.35.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.36.0";
          }
 
          if(body){
@@ -289,8 +289,8 @@ var PureCloudSession =  function (purecloudEnvironment) {
      * Executes an authenticated GET to PureCloud.  Can be used with paging URIs to get a page that has a defined full url.
      * @memberof PureCloudSession#
      * @param  {string} url The full or relative path URL to get
-     * @example pureCloudSession.get("https://api.mypurecloud.com/api/v1/users/me");
-     * @example pureCloudSession.get("/api/v1/users/me");
+     * @example pureCloudSession.get("https://api.mypurecloud.com/api/v2/users/me");
+     * @example pureCloudSession.get("/api/v2/users/me");
      */
     function get(url){
         if(url[0] === '/'){
@@ -307,7 +307,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
      * @param  {string} method The HTTP method (GET, POST, PUT, DELETE)
      * @param  {uri} path The relative uri path
      * @param  {JSON} body The body to send
-     * @example pureCloudSession.makeRequest("GET", "/api/v1/users/me");
+     * @example pureCloudSession.makeRequest("GET", "/api/v2/users/me");
      */
     function makeRequest (method,path,body){
         return sendRestRequest(method, 'https://'+ _host + path, body);

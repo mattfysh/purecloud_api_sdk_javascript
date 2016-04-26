@@ -2822,12 +2822,11 @@ var ContentManagementApi = function (pureCloudSession) {
    "group": {
       "name": "",
       "description": "",
-      "dateModified": "",
-      "memberCount": 0,
-      "state": "",
-      "version": {},
+      "type": "",
       "images": [],
-      "addresses": []
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": ""
    },
    "securityProfile": {
       "name": "",
@@ -6908,6 +6907,37 @@ var GroupsApi = function (pureCloudSession) {
 	}
 	self.getGroups = getGroups;
 	/**
+     * @summary Create a group
+	 * @memberOf GroupsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "type": "",
+   "images": [],
+   "addresses": [],
+   "rulesVisible": true,
+   "visibility": ""
+}
+	*/
+	function postGroups(body){
+		var apipath = '/api/v2/groups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postGroups = postGroups;
+	/**
      * @summary Search using q64
 	 * @memberOf GroupsApi#
 	* @param {string} q64 - 
@@ -7189,85 +7219,6 @@ var LanguagesApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deleteLanguageId = deleteLanguageId;
-
-    return self;
-};
-
-//API VERSION - 
-/**
-* @class
-* @example
-* var api = new LocationsApi(pureCloudSession);
-*/
-var LocationsApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
-    }
-
-	var self = this;
-	/**
-     * @summary Get the list of locations.
-	 * @memberOf LocationsApi#
-	* @param {string} state - Location state
-	ACTIVE,
-	DELETED,
-	* @param {string} name - Location name
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	*/
-	function getLocations(state, name, pageSize, pageNumber){
-		var apipath = '/api/v2/locations';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(state !== undefined && state !== null){
-			queryParameters.state = state;
-		}
-
-
-		if(name !== undefined && name !== null){
-			queryParameters.name = name;
-		}
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLocations = getLocations;
-	/**
-     * @summary Get Location by ID.
-	 * @memberOf LocationsApi#
-	* @param {string} locationId - Location ID
-	*/
-	function getLocationId(locationId){
-		var apipath = '/api/v2/locations/{locationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{locationId}', locationId);
-
-        if(locationId === undefined && locationId !== null){
-			throw 'Missing required  parameter: locationId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLocationId = getLocationId;
 
     return self;
 };
@@ -7936,54 +7887,6 @@ var OrganizationApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getMe = getMe;
-	/**
-     * @summary Update organization.
-	 * @memberOf OrganizationApi#
-	* @param {} body - Organization
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "thirdPartyOrgId": "",
-   "thirdPartyOrgName": "",
-   "thirdPartyURI": "",
-   "domain": "",
-   "version": 0,
-   "state": "",
-   "defaultSiteId": "",
-   "deletable": true
-}
-	*/
-	function putMe(body){
-		var apipath = '/api/v2/organizations/me';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putMe = putMe;
-	/**
-     * @summary Delete the organization.
-	 * @memberOf OrganizationApi#
-	*/
-	function deleteMe(){
-		var apipath = '/api/v2/organizations/me';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteMe = deleteMe;
 
     return self;
 };
@@ -8129,8 +8032,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "callableTimes": []
 }
@@ -8181,8 +8082,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "callableTimes": []
 }
@@ -8301,8 +8200,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "responses": {}
 }
@@ -8353,8 +8250,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "responses": {}
 }
@@ -8503,8 +8398,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -8541,14 +8434,12 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "errors": [],
    "callerName": "",
    "callerAddress": "",
    "outboundLineCount": 0,
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
    "contactSort": {
       "fieldName": "",
       "direction": ""
@@ -8621,8 +8512,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -8659,14 +8548,12 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "errors": [],
    "callerName": "",
    "callerAddress": "",
    "outboundLineCount": 0,
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
    "contactSort": {
       "fieldName": "",
       "direction": ""
@@ -8963,8 +8850,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
@@ -9038,8 +8923,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
@@ -9383,8 +9266,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "phoneNumberColumns": [],
    "importStatus": {
@@ -9456,8 +9337,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "phoneNumberColumns": [],
    "importStatus": {
@@ -9657,8 +9536,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -9719,8 +9596,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -9824,8 +9699,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "intervals": [],
    "timeZone": "",
@@ -9925,8 +9798,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "intervals": [],
    "timeZone": "",
@@ -10051,8 +9922,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "campaigns": [],
    "currentCampaign": 0,
@@ -10107,8 +9976,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "campaigns": [],
    "currentCampaign": 0,
@@ -10183,8 +10050,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "defaultSet": [],
    "mapping": {}
@@ -10411,10 +10276,10 @@ var PresenceApi = function (pureCloudSession) {
      * @summary Get a user's Presence
 	 * @memberOf PresenceApi#
 	* @param {string} userId - user Id
-	* @param {string} source - source
+	* @param {string} sourceId - Source
 	*/
-	function getUserIdPresencesSource(userId, source){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
+	function getUserIdPresencesSourceId(userId, sourceId){
+		var apipath = '/api/v2/users/{userId}/presences/{sourceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -10426,22 +10291,22 @@ var PresenceApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: userId';
         }
 
-        apipath = apipath.replace('{source}', source);
+        apipath = apipath.replace('{sourceId}', sourceId);
 
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
+        if(sourceId === undefined && sourceId !== null){
+			throw 'Missing required  parameter: sourceId';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserIdPresencesSource = getUserIdPresencesSource;
+	self.getUserIdPresencesSourceId = getUserIdPresencesSourceId;
 	/**
      * @summary Patch a user's Presence
 	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @memberOf PresenceApi#
 	* @param {string} userId - user Id
-	* @param {string} source - source
+	* @param {string} sourceId - Source
 	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @example
 	 * Body Example:
@@ -10462,8 +10327,8 @@ var PresenceApi = function (pureCloudSession) {
    "message": ""
 }
 	*/
-	function patchUserIdPresencesSource(userId, source, body){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
+	function patchUserIdPresencesSourceId(userId, sourceId, body){
+		var apipath = '/api/v2/users/{userId}/presences/{sourceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -10475,10 +10340,10 @@ var PresenceApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: userId';
         }
 
-        apipath = apipath.replace('{source}', source);
+        apipath = apipath.replace('{sourceId}', sourceId);
 
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
+        if(sourceId === undefined && sourceId !== null){
+			throw 'Missing required  parameter: sourceId';
         }
 
         if(body !== undefined && body !== null){
@@ -10488,7 +10353,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchUserIdPresencesSource = patchUserIdPresencesSource;
+	self.patchUserIdPresencesSourceId = patchUserIdPresencesSourceId;
 
     return self;
 };
@@ -10775,6 +10640,7 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "neverRelease": true,
       "resourceId": "",
       "resourceType": "",
       "redacted": true,
@@ -10913,6 +10779,7 @@ var QualityApi = function (pureCloudSession) {
       "assignedDate": "",
       "changedDate": "",
       "queue": {},
+      "neverRelease": true,
       "resourceId": "",
       "resourceType": "",
       "redacted": true,
@@ -11151,6 +11018,7 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "neverRelease": true,
    "resourceId": "",
    "resourceType": "",
    "redacted": true,
@@ -11317,6 +11185,7 @@ var QualityApi = function (pureCloudSession) {
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "neverRelease": true,
    "resourceId": "",
    "resourceType": "",
    "redacted": true,
@@ -11706,8 +11575,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
+      "firstUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -11771,8 +11640,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
+      "firstUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -11908,8 +11777,8 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
+      "firstUri": "",
       "nextUri": "",
       "lastUri": "",
       "pageCount": 0
@@ -13250,31 +13119,53 @@ var RoutingApi = function (pureCloudSession) {
 	}
 	self.postEmailDomains = postEmailDomains;
 	/**
-     * @summary Get routes
+     * @summary Delete a domain
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
+	* @param {string} domainId - domain ID
 	*/
-	function getEmailDomainsDomainRoutes(domain){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes';
+	function deleteEmailDomainsDomainId(domainId){
+		var apipath = '/api/v2/routing/email/domains/{domainId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainId}', domainId);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainId === undefined && domainId !== null){
+			throw 'Missing required  parameter: domainId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteEmailDomainsDomainId = deleteEmailDomainsDomainId;
+	/**
+     * @summary Get routes
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	*/
+	function getEmailDomainsDomainnameRoutes(domainName){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{domainName}', domainName);
+
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEmailDomainsDomainRoutes = getEmailDomainsDomainRoutes;
+	self.getEmailDomainsDomainnameRoutes = getEmailDomainsDomainnameRoutes;
 	/**
      * @summary Create a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
+	* @param {string} domainName - email domain
 	* @param {} body - Route
 	 * @example
 	 * Body Example:
@@ -13297,17 +13188,17 @@ var RoutingApi = function (pureCloudSession) {
    "fromEmail": ""
 }
 	*/
-	function postEmailDomainsDomainRoutes(domain, body){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes';
+	function postEmailDomainsDomainnameRoutes(domainName, body){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
         if(body !== undefined && body !== null){
@@ -13317,41 +13208,41 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.postEmailDomainsDomainRoutes = postEmailDomainsDomainRoutes;
+	self.postEmailDomainsDomainnameRoutes = postEmailDomainsDomainnameRoutes;
 	/**
      * @summary Get a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
-	* @param {string} id - route ID
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
 	*/
-	function getEmailDomainsDomainRoutesId(domain, id){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes/{id}';
+	function getEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{routeId}', routeId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getEmailDomainsDomainRoutesId = getEmailDomainsDomainRoutesId;
+	self.getEmailDomainsDomainnameRoutesRouteId = getEmailDomainsDomainnameRoutesRouteId;
 	/**
      * @summary Update a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
-	* @param {string} id - route ID
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
 	* @param {} body - Route
 	 * @example
 	 * Body Example:
@@ -13374,23 +13265,23 @@ var RoutingApi = function (pureCloudSession) {
    "fromEmail": ""
 }
 	*/
-	function putEmailDomainsDomainRoutesId(domain, id, body){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes/{id}';
+	function putEmailDomainsDomainnameRoutesRouteId(domainName, routeId, body){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{routeId}', routeId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
         }
 
         if(body !== undefined && body !== null){
@@ -13400,58 +13291,36 @@ var RoutingApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.putEmailDomainsDomainRoutesId = putEmailDomainsDomainRoutesId;
+	self.putEmailDomainsDomainnameRoutesRouteId = putEmailDomainsDomainnameRoutesRouteId;
 	/**
      * @summary Delete a route
 	 * @memberOf RoutingApi#
-	* @param {string} domain - email domain
-	* @param {string} id - route ID
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
 	*/
-	function deleteEmailDomainsDomainRoutesId(domain, id){
-		var apipath = '/api/v2/routing/email/domains/{domain}/routes/{id}';
+	function deleteEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{domain}', domain);
+        apipath = apipath.replace('{domainName}', domainName);
 
-        if(domain === undefined && domain !== null){
-			throw 'Missing required  parameter: domain';
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
         }
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{routeId}', routeId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteEmailDomainsDomainRoutesId = deleteEmailDomainsDomainRoutesId;
-	/**
-     * @summary Delete a domain
-	 * @memberOf RoutingApi#
-	* @param {string} id - domain ID
-	*/
-	function deleteEmailDomainsId(id){
-		var apipath = '/api/v2/routing/email/domains/{id}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{id}', id);
-
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
         }
 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteEmailDomainsId = deleteEmailDomainsId;
+	self.deleteEmailDomainsDomainnameRoutesRouteId = deleteEmailDomainsDomainnameRoutesRouteId;
 	/**
      * @summary Get email setup
 	 * @memberOf RoutingApi#
@@ -14675,47 +14544,47 @@ var StationsApi = function (pureCloudSession) {
 	/**
      * @summary Get station.
 	 * @memberOf StationsApi#
-	* @param {string} id - Station ID
+	* @param {string} stationId - Station ID
 	*/
-	function getId(id){
-		var apipath = '/api/v2/stations/{id}';
+	function getStationId(stationId){
+		var apipath = '/api/v2/stations/{stationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{stationId}', stationId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(stationId === undefined && stationId !== null){
+			throw 'Missing required  parameter: stationId';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getId = getId;
+	self.getStationId = getStationId;
 	/**
      * @summary Unassigns the user assigned to this station
 	 * @memberOf StationsApi#
-	* @param {string} id - Station ID
+	* @param {string} stationId - Station ID
 	*/
-	function deleteIdAssociateduser(id){
-		var apipath = '/api/v2/stations/{id}/associateduser';
+	function deleteStationIdAssociateduser(stationId){
+		var apipath = '/api/v2/stations/{stationId}/associateduser';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{stationId}', stationId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(stationId === undefined && stationId !== null){
+			throw 'Missing required  parameter: stationId';
         }
 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteIdAssociateduser = deleteIdAssociateduser;
+	self.deleteStationIdAssociateduser = deleteStationIdAssociateduser;
 
     return self;
 };
@@ -14876,12 +14745,12 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} schemaCategory - Schema category
 	* @param {string} schemaType - Schema type
 	* @param {string} schemaId - Schema ID
-	* @param {string} extension - extension
+	* @param {string} extensionType - extension
 	* @param {string} metadataId - Metadata ID
 	* @param {string} type - Type
 	*/
-	function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId(schemaCategory, schemaType, schemaId, extension, metadataId, type){
-		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extension}/{metadataId}';
+	function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId(schemaCategory, schemaType, schemaId, extensionType, metadataId, type){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extensionType}/{metadataId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -14905,10 +14774,10 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: schemaId';
         }
 
-        apipath = apipath.replace('{extension}', extension);
+        apipath = apipath.replace('{extensionType}', extensionType);
 
-        if(extension === undefined && extension !== null){
-			throw 'Missing required  parameter: extension';
+        if(extensionType === undefined && extensionType !== null){
+			throw 'Missing required  parameter: extensionType';
         }
 
         apipath = apipath.replace('{metadataId}', metadataId);
@@ -14925,7 +14794,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId = getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId;
+	self.getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId = getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId;
 	/**
      * @summary Get the list of edges.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -17730,6 +17599,89 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId;
 	/**
+     * @summary Get the list of available trunks.
+	 * @description Trunks are created by assigning trunk base settings to an Edge or Edge Group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	* @param {string} edgeid - Filter by Edge Ids
+	* @param {string} trunkBaseid - Filter by Trunk Base Ids
+	* @param {string} trunkType - Filter by a Trunk type
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	*/
+	function getProvidersEdgesTrunks(pageNumber, pageSize, sortBy, sortOrder, edgeid, trunkBaseid, trunkType){
+		var apipath = '/api/v2/telephony/providers/edges/trunks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(edgeid !== undefined && edgeid !== null){
+			queryParameters.edge.id = edgeid;
+		}
+
+
+		if(trunkBaseid !== undefined && trunkBaseid !== null){
+			queryParameters.trunkBase.id = trunkBaseid;
+		}
+
+
+		if(trunkType !== undefined && trunkType !== null){
+			queryParameters.trunkType = trunkType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunks = getProvidersEdgesTrunks;
+	/**
+     * @summary Get a Trunk by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkId - Trunk ID
+	*/
+	function getProvidersEdgesTrunksTrunkId(trunkId){
+		var apipath = '/api/v2/telephony/providers/edges/trunks/{trunkId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{trunkId}', trunkId);
+
+        if(trunkId === undefined && trunkId !== null){
+			throw 'Missing required  parameter: trunkId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunksTrunkId = getProvidersEdgesTrunksTrunkId;
+	/**
      * @summary Get edge.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} edgeId - Edge ID
@@ -19424,88 +19376,6 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
-     * @summary Get a user's Presence
-	 * @memberOf UsersApi#
-	* @param {string} userId - user Id
-	* @param {string} source - source
-	*/
-	function getUserIdPresencesSource(userId, source){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-        apipath = apipath.replace('{source}', source);
-
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserIdPresencesSource = getUserIdPresencesSource;
-	/**
-     * @summary Patch a user's Presence
-	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
-	 * @memberOf UsersApi#
-	* @param {string} userId - user Id
-	* @param {string} source - source
-	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "source": "",
-   "primary": true,
-   "presenceDefinition": {
-      "name": "",
-      "languageLabels": {},
-      "systemPresence": "",
-      "deactivated": true,
-      "createdBy": {},
-      "createdDate": "",
-      "modifiedBy": {},
-      "modifiedDate": ""
-   },
-   "message": ""
-}
-	*/
-	function patchUserIdPresencesSource(userId, source, body){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-        apipath = apipath.replace('{source}', source);
-
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchUserIdPresencesSource = patchUserIdPresencesSource;
-	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
@@ -20391,9 +20261,9 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.35.0
+//API VERSION - 0.36.0
 /**
-* @description PureCloud API
+* @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
 * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.com.au, etc.
 **/
@@ -20518,7 +20388,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         if(existingToken && existingToken !== ''){
             _token = existingToken;
-            sendRestRequest("GET", "https://" + _host + "/api/v1/users/me").done(function(){
+            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me").done(function(){
                 //has good auth token
                 _token = existingToken;
 
@@ -20635,7 +20505,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
     * @example
     * var environment = pureCloudSession.environment();
     * @example
-    * pureCloudSession.authToken("mypurecloud.ie");
+    * pureCloudSession.environment("mypurecloud.ie");
     **/
     function environment(environment){
         if(environment){
@@ -20661,7 +20531,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.35.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.36.0";
          }
 
          if(body){
@@ -20682,8 +20552,8 @@ var PureCloudSession =  function (purecloudEnvironment) {
      * Executes an authenticated GET to PureCloud.  Can be used with paging URIs to get a page that has a defined full url.
      * @memberof PureCloudSession#
      * @param  {string} url The full or relative path URL to get
-     * @example pureCloudSession.get("https://api.mypurecloud.com/api/v1/users/me");
-     * @example pureCloudSession.get("/api/v1/users/me");
+     * @example pureCloudSession.get("https://api.mypurecloud.com/api/v2/users/me");
+     * @example pureCloudSession.get("/api/v2/users/me");
      */
     function get(url){
         if(url[0] === '/'){
@@ -20700,7 +20570,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
      * @param  {string} method The HTTP method (GET, POST, PUT, DELETE)
      * @param  {uri} path The relative uri path
      * @param  {JSON} body The body to send
-     * @example pureCloudSession.makeRequest("GET", "/api/v1/users/me");
+     * @example pureCloudSession.makeRequest("GET", "/api/v2/users/me");
      */
     function makeRequest (method,path,body){
         return sendRestRequest(method, 'https://'+ _host + path, body);

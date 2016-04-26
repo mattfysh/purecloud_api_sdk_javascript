@@ -139,8 +139,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "callableTimes": []
 }
@@ -191,8 +189,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "callableTimes": []
 }
@@ -311,8 +307,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "responses": {}
 }
@@ -363,8 +357,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "responses": {}
 }
@@ -513,8 +505,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -551,14 +541,12 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "errors": [],
    "callerName": "",
    "callerAddress": "",
    "outboundLineCount": 0,
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
    "contactSort": {
       "fieldName": "",
       "direction": ""
@@ -631,8 +619,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -669,14 +655,12 @@ var OutboundApi = function (pureCloudSession) {
       "name": "",
       "selfUri": ""
    },
-   "errors": [],
    "callerName": "",
    "callerAddress": "",
    "outboundLineCount": 0,
    "ruleSets": [],
    "skipPreviewDisabled": true,
    "previewTimeOutSeconds": 0,
-   "singleNumberPreview": true,
    "contactSort": {
       "fieldName": "",
       "direction": ""
@@ -973,8 +957,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
@@ -1048,8 +1030,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
@@ -1393,8 +1373,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "phoneNumberColumns": [],
    "importStatus": {
@@ -1466,8 +1444,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "phoneNumberColumns": [],
    "importStatus": {
@@ -1667,8 +1643,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -1729,8 +1703,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "contactList": {
       "id": "",
@@ -1834,8 +1806,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "intervals": [],
    "timeZone": "",
@@ -1935,8 +1905,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "intervals": [],
    "timeZone": "",
@@ -2061,8 +2029,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "campaigns": [],
    "currentCampaign": 0,
@@ -2117,8 +2083,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "campaigns": [],
    "currentCampaign": 0,
@@ -2193,8 +2157,6 @@ var OutboundApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
    "version": 0,
    "defaultSet": [],
    "mapping": {}

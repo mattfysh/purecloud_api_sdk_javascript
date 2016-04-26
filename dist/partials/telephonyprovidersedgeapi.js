@@ -154,12 +154,12 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} schemaCategory - Schema category
 	* @param {string} schemaType - Schema type
 	* @param {string} schemaId - Schema ID
-	* @param {string} extension - extension
+	* @param {string} extensionType - extension
 	* @param {string} metadataId - Metadata ID
 	* @param {string} type - Type
 	*/
-	function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId(schemaCategory, schemaType, schemaId, extension, metadataId, type){
-		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extension}/{metadataId}';
+	function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId(schemaCategory, schemaType, schemaId, extensionType, metadataId, type){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extensionType}/{metadataId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -183,10 +183,10 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: schemaId';
         }
 
-        apipath = apipath.replace('{extension}', extension);
+        apipath = apipath.replace('{extensionType}', extensionType);
 
-        if(extension === undefined && extension !== null){
-			throw 'Missing required  parameter: extension';
+        if(extensionType === undefined && extensionType !== null){
+			throw 'Missing required  parameter: extensionType';
         }
 
         apipath = apipath.replace('{metadataId}', metadataId);
@@ -203,7 +203,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId = getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensionMetadataId;
+	self.getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId = getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId;
 	/**
      * @summary Get the list of edges.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -3007,6 +3007,89 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId;
+	/**
+     * @summary Get the list of available trunks.
+	 * @description Trunks are created by assigning trunk base settings to an Edge or Edge Group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	* @param {string} edgeid - Filter by Edge Ids
+	* @param {string} trunkBaseid - Filter by Trunk Base Ids
+	* @param {string} trunkType - Filter by a Trunk type
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	*/
+	function getProvidersEdgesTrunks(pageNumber, pageSize, sortBy, sortOrder, edgeid, trunkBaseid, trunkType){
+		var apipath = '/api/v2/telephony/providers/edges/trunks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(edgeid !== undefined && edgeid !== null){
+			queryParameters.edge.id = edgeid;
+		}
+
+
+		if(trunkBaseid !== undefined && trunkBaseid !== null){
+			queryParameters.trunkBase.id = trunkBaseid;
+		}
+
+
+		if(trunkType !== undefined && trunkType !== null){
+			queryParameters.trunkType = trunkType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunks = getProvidersEdgesTrunks;
+	/**
+     * @summary Get a Trunk by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkId - Trunk ID
+	*/
+	function getProvidersEdgesTrunksTrunkId(trunkId){
+		var apipath = '/api/v2/telephony/providers/edges/trunks/{trunkId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{trunkId}', trunkId);
+
+        if(trunkId === undefined && trunkId !== null){
+			throw 'Missing required  parameter: trunkId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunksTrunkId = getProvidersEdgesTrunksTrunkId;
 	/**
      * @summary Get edge.
 	 * @memberOf TelephonyProvidersEdgeApi#

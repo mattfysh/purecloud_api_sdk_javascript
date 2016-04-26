@@ -52,47 +52,47 @@ var StationsApi = function (pureCloudSession) {
 	/**
      * @summary Get station.
 	 * @memberOf StationsApi#
-	* @param {string} id - Station ID
+	* @param {string} stationId - Station ID
 	*/
-	function getId(id){
-		var apipath = '/api/v2/stations/{id}';
+	function getStationId(stationId){
+		var apipath = '/api/v2/stations/{stationId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{stationId}', stationId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(stationId === undefined && stationId !== null){
+			throw 'Missing required  parameter: stationId';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getId = getId;
+	self.getStationId = getStationId;
 	/**
      * @summary Unassigns the user assigned to this station
 	 * @memberOf StationsApi#
-	* @param {string} id - Station ID
+	* @param {string} stationId - Station ID
 	*/
-	function deleteIdAssociateduser(id){
-		var apipath = '/api/v2/stations/{id}/associateduser';
+	function deleteStationIdAssociateduser(stationId){
+		var apipath = '/api/v2/stations/{stationId}/associateduser';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
 	    var form = {};
 
-        apipath = apipath.replace('{id}', id);
+        apipath = apipath.replace('{stationId}', stationId);
 
-        if(id === undefined && id !== null){
-			throw 'Missing required  parameter: id';
+        if(stationId === undefined && stationId !== null){
+			throw 'Missing required  parameter: stationId';
         }
 
 
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.deleteIdAssociateduser = deleteIdAssociateduser;
+	self.deleteStationIdAssociateduser = deleteStationIdAssociateduser;
 
     return self;
 };

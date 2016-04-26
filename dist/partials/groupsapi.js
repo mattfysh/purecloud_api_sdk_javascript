@@ -46,6 +46,37 @@ var GroupsApi = function (pureCloudSession) {
 	}
 	self.getGroups = getGroups;
 	/**
+     * @summary Create a group
+	 * @memberOf GroupsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "type": "",
+   "images": [],
+   "addresses": [],
+   "rulesVisible": true,
+   "visibility": ""
+}
+	*/
+	function postGroups(body){
+		var apipath = '/api/v2/groups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postGroups = postGroups;
+	/**
      * @summary Search using q64
 	 * @memberOf GroupsApi#
 	* @param {string} q64 - 

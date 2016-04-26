@@ -200,10 +200,10 @@ var PresenceApi = function (pureCloudSession) {
      * @summary Get a user's Presence
 	 * @memberOf PresenceApi#
 	* @param {string} userId - user Id
-	* @param {string} source - source
+	* @param {string} sourceId - Source
 	*/
-	function getUserIdPresencesSource(userId, source){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
+	function getUserIdPresencesSourceId(userId, sourceId){
+		var apipath = '/api/v2/users/{userId}/presences/{sourceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -215,22 +215,22 @@ var PresenceApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: userId';
         }
 
-        apipath = apipath.replace('{source}', source);
+        apipath = apipath.replace('{sourceId}', sourceId);
 
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
+        if(sourceId === undefined && sourceId !== null){
+			throw 'Missing required  parameter: sourceId';
         }
 
 
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.getUserIdPresencesSource = getUserIdPresencesSource;
+	self.getUserIdPresencesSourceId = getUserIdPresencesSourceId;
 	/**
      * @summary Patch a user's Presence
 	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @memberOf PresenceApi#
 	* @param {string} userId - user Id
-	* @param {string} source - source
+	* @param {string} sourceId - Source
 	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
 	 * @example
 	 * Body Example:
@@ -251,8 +251,8 @@ var PresenceApi = function (pureCloudSession) {
    "message": ""
 }
 	*/
-	function patchUserIdPresencesSource(userId, source, body){
-		var apipath = '/api/v2/users/{userId}/presences/{source}';
+	function patchUserIdPresencesSourceId(userId, sourceId, body){
+		var apipath = '/api/v2/users/{userId}/presences/{sourceId}';
 	    var requestBody;
 	    var queryParameters = {};
 	    var headers = {};
@@ -264,10 +264,10 @@ var PresenceApi = function (pureCloudSession) {
 			throw 'Missing required  parameter: userId';
         }
 
-        apipath = apipath.replace('{source}', source);
+        apipath = apipath.replace('{sourceId}', sourceId);
 
-        if(source === undefined && source !== null){
-			throw 'Missing required  parameter: source';
+        if(sourceId === undefined && sourceId !== null){
+			throw 'Missing required  parameter: sourceId';
         }
 
         if(body !== undefined && body !== null){
@@ -277,7 +277,7 @@ var PresenceApi = function (pureCloudSession) {
 
 		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
 	}
-	self.patchUserIdPresencesSource = patchUserIdPresencesSource;
+	self.patchUserIdPresencesSourceId = patchUserIdPresencesSourceId;
 
     return self;
 };
