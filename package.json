@@ -29,7 +29,8 @@
     "run-sequence": "1.1.5",
     "shelljs": "~0.5.3",
     "wgetjs": "*",
-    "gulp-jsdoc-to-markdown": "*"
+    "gulp-jsdoc-to-markdown": "*",
+    "dmd-kramdown-plugin" : "*"
   },
   "scripts": {
     "test": "jasmine"

@@ -236,8 +236,9 @@ gulp.task('doc', function() {
             .pipe(gulp.dest('./doc/'));
 
     return gulp.src('dist/partials/purecloudsession.js')
-        .pipe(concat('PurecloudSession.md'))
-        .pipe(gulpJsdoc2md())//{ template: fs.readFileSync('./templates/jsdoc.hbs', 'utf8') })) //
+        .pipe(concat('PureCloudSession.md'))
+        .pipe(gulpJsdoc2md({ plugin: 'dmd-kramdown-plugin', template: fs.readFileSync('./templates/purecloud_session_doc.hbs', 'utf8') })) //
+        .pipe(replace(/`/g, '~'))
         .on('error', function (err) {
           gutil.log('jsdoc2md failed:', err.message)
         })
