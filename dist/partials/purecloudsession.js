@@ -1,4 +1,4 @@
-//API VERSION - 0.36.0
+//API VERSION - 0.37.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -268,7 +268,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.36.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.37.0";
          }
 
          if(body){

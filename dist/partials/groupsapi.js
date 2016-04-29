@@ -200,6 +200,71 @@ var GroupsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getGroupIdMembers = getGroupIdMembers;
+	/**
+     * @summary Add members
+	 * @memberOf GroupsApi#
+	* @param {string} groupId - Group ID
+	* @param {} body - Add members
+	 * @example
+	 * Body Example:
+	 * {
+   "memberIds": [],
+   "version": 0
+}
+	*/
+	function postGroupIdMembers(groupId, body){
+		var apipath = '/api/v2/groups/{groupId}/members';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupId}', groupId);
+
+        if(groupId === undefined && groupId !== null){
+			throw 'Missing required  parameter: groupId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postGroupIdMembers = postGroupIdMembers;
+	/**
+     * @summary Remove members
+	 * @memberOf GroupsApi#
+	* @param {string} groupId - Group ID
+	* @param {string} ids - Comma separated list of userIds to remove
+	*/
+	function deleteGroupIdMembers(groupId, ids){
+		var apipath = '/api/v2/groups/{groupId}/members';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupId}', groupId);
+
+        if(groupId === undefined && groupId !== null){
+			throw 'Missing required  parameter: groupId';
+        }
+
+
+		if(ids !== undefined && ids !== null){
+			queryParameters.ids = ids;
+		}
+
+        if(ids === undefined && ids !== null){
+			throw 'Missing required  parameter: ids';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteGroupIdMembers = deleteGroupIdMembers;
 
     return self;
 };

@@ -248,7 +248,8 @@ var PresenceApi = function (pureCloudSession) {
       "modifiedBy": {},
       "modifiedDate": ""
    },
-   "message": ""
+   "message": "",
+   "modifiedDate": ""
 }
 	*/
 	function patchUserIdPresencesSourceId(userId, sourceId, body){

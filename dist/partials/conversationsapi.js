@@ -1599,7 +1599,7 @@ var ConversationsApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "addresses": [],
-   "originalFilename": "",
+   "documentId": "",
    "contentType": "",
    "workspace": {
       "name": "",
