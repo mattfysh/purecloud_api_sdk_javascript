@@ -1,13 +1,15 @@
 {
   "name": "purecloud_api_sdk_javascript",
-  "version": "0.36.0",
+  "version": "0.37.0",
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "dependencies": {
+    "lodash": "4.0.0",
     "jquery": "*",
     "jsdom": "3.1.0",
     "request": "*",
-    "strip-bom":"3.0.0"
+    "strip-bom":"3.0.0",
+    "array-differ": "1.0.0"
   },
   "devDependencies": {
     "concat-files": "*",
@@ -31,8 +33,12 @@
     "shelljs": "~0.5.3",
     "wgetjs": "*",
     "gulp-jsdoc-to-markdown": "*",
+<<<<<<< HEAD
     "dmd-kramdown-plugin" : "*"
 
+=======
+    "dmd-kramdown-plugin": "*"
+>>>>>>> 67e07a5bdaed03fb765dc915f5367730a274157b
   },
   "scripts": {
     "test": "jasmine"

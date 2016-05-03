@@ -11,6 +11,28 @@ var AuthorizationApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
+     * @summary Returns a permission-protected object, showing the permission contexts it belongs to.
+	 * @memberOf AuthorizationApi#
+	* @param {string} objectId - Object ID
+	*/
+	function getObjectsObjectId(objectId){
+		var apipath = '/api/v2/authorization/objects/{objectId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{objectId}', objectId);
+
+        if(objectId === undefined && objectId !== null){
+			throw 'Missing required  parameter: objectId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getObjectsObjectId = getObjectsObjectId;
+	/**
      * @summary Get all permissions.
 	 * @description Retrieve a list of all permission defined in the system.
 	 * @memberOf AuthorizationApi#

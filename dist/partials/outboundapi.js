@@ -1224,6 +1224,34 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.deleteContactlistsContactlistIdContactsContactId = deleteContactlistsContactlistIdContactsContactId;
 	/**
+     * @summary Get the URI of a contact list export.
+	 * @memberOf OutboundApi#
+	* @param {string} contactListId - ContactList ID
+	* @param {string} download - Redirect to download uri
+	*/
+	function getContactlistsContactlistIdExport(contactListId, download){
+		var apipath = '/api/v2/outbound/contactlists/{contactListId}/export';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{contactListId}', contactListId);
+
+        if(contactListId === undefined && contactListId !== null){
+			throw 'Missing required  parameter: contactListId';
+        }
+
+
+		if(download !== undefined && download !== null){
+			queryParameters.download = download;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getContactlistsContactlistIdExport = getContactlistsContactlistIdExport;
+	/**
      * @summary Initiate the export of a contact list.
 	 * @description Returns 200 if received OK.
 	 * @memberOf OutboundApi#
@@ -1500,6 +1528,34 @@ var OutboundApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deleteDnclistsDnclistId = deleteDnclistsDnclistId;
+	/**
+     * @summary Get the URI of a DNC list export.
+	 * @memberOf OutboundApi#
+	* @param {string} dncListId - DncList ID
+	* @param {string} download - Redirect to download uri
+	*/
+	function getDnclistsDnclistIdExport(dncListId, download){
+		var apipath = '/api/v2/outbound/dnclists/{dncListId}/export';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{dncListId}', dncListId);
+
+        if(dncListId === undefined && dncListId !== null){
+			throw 'Missing required  parameter: dncListId';
+        }
+
+
+		if(download !== undefined && download !== null){
+			queryParameters.download = download;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getDnclistsDnclistIdExport = getDnclistsDnclistIdExport;
 	/**
      * @summary Initiate the export of a dnc list.
 	 * @description Returns 200 if received OK.

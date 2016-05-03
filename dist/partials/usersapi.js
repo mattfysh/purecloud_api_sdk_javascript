@@ -133,8 +133,7 @@ var UsersApi = function (pureCloudSession) {
    "email": "",
    "addresses": [],
    "title": "",
-   "password": "",
-   "version": ""
+   "password": ""
 }
 	*/
 	function postUsers(body){
