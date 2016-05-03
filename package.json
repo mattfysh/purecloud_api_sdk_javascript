@@ -6,7 +6,8 @@
   "dependencies": {
     "jquery": "*",
     "jsdom": "3.1.0",
-    "request": "*"
+    "request": "*",
+    "strip-bom":"3.0.0"
   },
   "devDependencies": {
     "concat-files": "*",
@@ -31,6 +32,7 @@
     "wgetjs": "*",
     "gulp-jsdoc-to-markdown": "*",
     "dmd-kramdown-plugin" : "*"
+
   },
   "scripts": {
     "test": "jasmine"
