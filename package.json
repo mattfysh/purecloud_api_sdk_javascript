@@ -33,12 +33,7 @@
     "shelljs": "~0.5.3",
     "wgetjs": "*",
     "gulp-jsdoc-to-markdown": "*",
-<<<<<<< HEAD
     "dmd-kramdown-plugin" : "*"
-
-=======
-    "dmd-kramdown-plugin": "*"
->>>>>>> 67e07a5bdaed03fb765dc915f5367730a274157b
   },
   "scripts": {
     "test": "jasmine"
