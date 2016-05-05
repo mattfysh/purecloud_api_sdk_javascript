@@ -163,6 +163,8 @@ function parseJsonSchema(opts, type){
                     parameter.isBodyParameter = true;
                     if(parameter.schema["$ref"]){
                         method.bodyExample = getModelDefinition(false, swagger, parameter.schema["$ref"], 0);
+                    }else if(parameter.schema.items && parameter.schema.items["$ref"]){
+                        method.bodyExample = JSON.stringify(JSON.parse("[" + getModelDefinition(false, swagger, parameter.schema.items["$ref"], 0) + "]"), null, " ");
                     }
 
                 } else if(parameter.in === 'path'){

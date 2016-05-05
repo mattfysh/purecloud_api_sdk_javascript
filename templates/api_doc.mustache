@@ -39,7 +39,7 @@ api.{{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/para
 | Name | Type | Required | Description  |
 |------------- | ------------- | ------------- | ------------- |
 {{#parameters}}
-| **{{&camelCaseName}}** | **{{&type}}** | {{&required}} | {{&description}} {{#enum}}{{.}}{{/enum}} |
+| **{{&camelCaseName}}** | {{#isBodyParameter}}See below for example {{/isBodyParameter}}{{^isBodyParameter}}**{{&type}}**{{/isBodyParameter}} | {{&required}} | {{&description}} {{#enum}}{{.}}{{/enum}} |
 {{/parameters}}{: class="table table-striped"}
 
 {{/parameters.length}}
