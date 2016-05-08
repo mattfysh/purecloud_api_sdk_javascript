@@ -590,6 +590,31 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
 	* @param {boolean} doDelete - True to delete queue members
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "user": {
+   "name": "",
+   "chat": {},
+   "department": "",
+   "email": "",
+   "addresses": [],
+   "title": "",
+   "username": "",
+   "images": []
+  },
+  "ringNumber": 0,
+  "joined": true,
+  "memberBy": "",
+  "routingStatus": {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+  }
+ }
+]
 	*/
 	function postQueuesQueueIdUsers(queueId, body, doDelete){
 		var apipath = '/api/v2/routing/queues/{queueId}/users';
@@ -622,6 +647,31 @@ var RoutingApi = function (pureCloudSession) {
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "user": {
+   "name": "",
+   "chat": {},
+   "department": "",
+   "email": "",
+   "addresses": [],
+   "title": "",
+   "username": "",
+   "images": []
+  },
+  "ringNumber": 0,
+  "joined": true,
+  "memberBy": "",
+  "routingStatus": {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+  }
+ }
+]
 	*/
 	function patchQueuesQueueIdUsers(queueId, body){
 		var apipath = '/api/v2/routing/queues/{queueId}/users';
@@ -765,6 +815,17 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
 	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": ""
+ }
+]
 	*/
 	function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
 		var apipath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
@@ -856,9 +917,7 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateModified": "",
-   "proficiency": ""
+   "name": ""
 }
 	*/
 	function postSkills(body){
@@ -898,40 +957,6 @@ var RoutingApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getSkillsSkillId = getSkillsSkillId;
-	/**
-     * @summary Update Routing Skill
-	 * @memberOf RoutingApi#
-	* @param {string} skillId - Skill ID
-	* @param {} body - Skill
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateModified": "",
-   "proficiency": ""
-}
-	*/
-	function putSkillsSkillId(skillId, body){
-		var apipath = '/api/v2/routing/skills/{skillId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{skillId}', skillId);
-
-        if(skillId === undefined && skillId !== null){
-			throw 'Missing required  parameter: skillId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putSkillsSkillId = putSkillsSkillId;
 	/**
      * @summary Delete Routing Skill
 	 * @memberOf RoutingApi#
@@ -1201,7 +1226,9 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "proficiency": {},
+   "state": ""
 }
 	*/
 	function postUserIdRoutingskills(userId, body){
@@ -1225,6 +1252,47 @@ var RoutingApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postUserIdRoutingskills = postUserIdRoutingskills;
+	/**
+     * @summary Update routing skill proficiency or state.
+	 * @memberOf RoutingApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "proficiency": {},
+   "state": ""
+}
+	*/
+	function putUserIdRoutingskillsSkillId(userId, skillId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdRoutingskillsSkillId = putUserIdRoutingskillsSkillId;
 	/**
      * @summary Remove routing skill from user
 	 * @memberOf RoutingApi#

@@ -1761,6 +1761,7 @@ var ConversationsApi = function (pureCloudSession) {
    "queueId": "",
    "callbackUserName": "",
    "callbackNumbers": [],
+   "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true
 }

@@ -1117,28 +1117,6 @@ var AuthorizationApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
-     * @summary Returns a permission-protected object, showing the permission contexts it belongs to.
-	 * @memberOf AuthorizationApi#
-	* @param {string} objectId - Object ID
-	*/
-	function getObjectsObjectId(objectId){
-		var apipath = '/api/v2/authorization/objects/{objectId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{objectId}', objectId);
-
-        if(objectId === undefined && objectId !== null){
-			throw 'Missing required  parameter: objectId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getObjectsObjectId = getObjectsObjectId;
-	/**
      * @summary Get all permissions.
 	 * @description Retrieve a list of all permission defined in the system.
 	 * @memberOf AuthorizationApi#
@@ -1303,6 +1281,20 @@ var AuthorizationApi = function (pureCloudSession) {
      * @summary Restore specified default roles
 	 * @memberOf AuthorizationApi#
 	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "description": "",
+  "defaultRoleId": "",
+  "permissions": [],
+  "permissionPolicies": [],
+  "userCount": 0,
+  "roleNeedsUpdate": true,
+  "default": true
+ }
+]
 	*/
 	function putRolesDefault(body){
 		var apipath = '/api/v2/authorization/roles/default';
@@ -4908,6 +4900,7 @@ var ConversationsApi = function (pureCloudSession) {
    "queueId": "",
    "callbackUserName": "",
    "callbackNumbers": [],
+   "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true
 }
@@ -6053,6 +6046,379 @@ var GroupsApi = function (pureCloudSession) {
 /**
 * @class
 * @example
+* var api = new IdentityProviderApi(pureCloudSession);
+*/
+var IdentityProviderApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
+    }
+
+	var self = this;
+	/**
+     * @summary The list of identity providers
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getIdentityproviders(){
+		var apipath = '/api/v2/identityproviders';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getIdentityproviders = getIdentityproviders;
+	/**
+     * @summary Get Customer Interaction Center (CIC) Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getCic(){
+		var apipath = '/api/v2/identityproviders/cic';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCic = getCic;
+	/**
+     * @summary Update/Create Customer Interaction Center (CIC) Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": ""
+}
+	*/
+	function putCic(body){
+		var apipath = '/api/v2/identityproviders/cic';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putCic = putCic;
+	/**
+     * @summary Delete Customer Interaction Center (CIC) Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteCic(){
+		var apipath = '/api/v2/identityproviders/cic';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCic = deleteCic;
+	/**
+     * @summary Get Okta Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getOkta(){
+		var apipath = '/api/v2/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getOkta = getOkta;
+	/**
+     * @summary Update/Create Okta Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": ""
+}
+	*/
+	function putOkta(body){
+		var apipath = '/api/v2/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putOkta = putOkta;
+	/**
+     * @summary Delete Okta Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteOkta(){
+		var apipath = '/api/v2/identityproviders/okta';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteOkta = deleteOkta;
+	/**
+     * @summary Get OneLogin Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getOnelogin(){
+		var apipath = '/api/v2/identityproviders/onelogin';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getOnelogin = getOnelogin;
+	/**
+     * @summary Update/Create OneLogin Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": ""
+}
+	*/
+	function putOnelogin(body){
+		var apipath = '/api/v2/identityproviders/onelogin';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putOnelogin = putOnelogin;
+	/**
+     * @summary Delete OneLogin Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteOnelogin(){
+		var apipath = '/api/v2/identityproviders/onelogin';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteOnelogin = deleteOnelogin;
+	/**
+     * @summary Get PureCloud Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getPurecloud(){
+		var apipath = '/api/v2/identityproviders/purecloud';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPurecloud = getPurecloud;
+	/**
+     * @summary Update/Create PureCloud Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": ""
+}
+	*/
+	function putPurecloud(body){
+		var apipath = '/api/v2/identityproviders/purecloud';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putPurecloud = putPurecloud;
+	/**
+     * @summary Delete PureCloud Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deletePurecloud(){
+		var apipath = '/api/v2/identityproviders/purecloud';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deletePurecloud = deletePurecloud;
+	/**
+     * @summary Get Salesforce Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getSalesforce(){
+		var apipath = '/api/v2/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSalesforce = getSalesforce;
+	/**
+     * @summary Update/Create Salesforce Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": ""
+}
+	*/
+	function putSalesforce(body){
+		var apipath = '/api/v2/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putSalesforce = putSalesforce;
+	/**
+     * @summary Delete Salesforce Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteSalesforce(){
+		var apipath = '/api/v2/identityproviders/salesforce';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSalesforce = deleteSalesforce;
+	/**
+     * @summary Get an identity provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getProviderId(){
+		var apipath = '/api/v2/identityproviders/{providerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProviderId = getProviderId;
+	/**
+     * @summary Update an identity provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": ""
+}
+	*/
+	function putProviderId(body){
+		var apipath = '/api/v2/identityproviders/{providerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProviderId = putProviderId;
+	/**
+     * @summary Delete an identity provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteProviderId(){
+		var apipath = '/api/v2/identityproviders/{providerId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProviderId = deleteProviderId;
+
+    return self;
+};
+
+//API VERSION - 
+/**
+* @class
+* @example
 * var api = new LanguagesApi(pureCloudSession);
 */
 var LanguagesApi = function (pureCloudSession) {
@@ -6431,6 +6797,11 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
+	 * @example
+	 * Body Example:
+	 * [
+ {}
+]
 	*/
 	function postChannelsChannelIdSubscriptions(channelId, body){
 		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
@@ -6458,6 +6829,11 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
+	 * @example
+	 * Body Example:
+	 * [
+ {}
+]
 	*/
 	function putChannelsChannelIdSubscriptions(channelId, body){
 		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
@@ -6518,305 +6894,6 @@ var OAuthApi = function (pureCloudSession) {
     }
 
 	var self = this;
-	/**
-     * @summary The list of identity providers
-	 * @memberOf OAuthApi#
-	*/
-	function getIdentityproviders(){
-		var apipath = '/api/v2/identityproviders';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getIdentityproviders = getIdentityproviders;
-	/**
-     * @summary Get Okta Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function getOkta(){
-		var apipath = '/api/v2/identityproviders/okta';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOkta = getOkta;
-	/**
-     * @summary Update/Create Okta Identity Provider
-	 * @memberOf OAuthApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
-}
-	*/
-	function putOkta(body){
-		var apipath = '/api/v2/identityproviders/okta';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putOkta = putOkta;
-	/**
-     * @summary Delete Okta Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function deleteOkta(){
-		var apipath = '/api/v2/identityproviders/okta';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteOkta = deleteOkta;
-	/**
-     * @summary Get OneLogin Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function getOnelogin(){
-		var apipath = '/api/v2/identityproviders/onelogin';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOnelogin = getOnelogin;
-	/**
-     * @summary Update/Create OneLogin Identity Provider
-	 * @memberOf OAuthApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
-}
-	*/
-	function putOnelogin(body){
-		var apipath = '/api/v2/identityproviders/onelogin';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putOnelogin = putOnelogin;
-	/**
-     * @summary Delete OneLogin Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function deleteOnelogin(){
-		var apipath = '/api/v2/identityproviders/onelogin';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteOnelogin = deleteOnelogin;
-	/**
-     * @summary Get PureCloud Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function getPurecloud(){
-		var apipath = '/api/v2/identityproviders/purecloud';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getPurecloud = getPurecloud;
-	/**
-     * @summary Update/Create PureCloud Identity Provider
-	 * @memberOf OAuthApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": ""
-}
-	*/
-	function putPurecloud(body){
-		var apipath = '/api/v2/identityproviders/purecloud';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putPurecloud = putPurecloud;
-	/**
-     * @summary Delete PureCloud Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function deletePurecloud(){
-		var apipath = '/api/v2/identityproviders/purecloud';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deletePurecloud = deletePurecloud;
-	/**
-     * @summary Get Salesforce Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function getSalesforce(){
-		var apipath = '/api/v2/identityproviders/salesforce';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSalesforce = getSalesforce;
-	/**
-     * @summary Update/Create Salesforce Identity Provider
-	 * @memberOf OAuthApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": ""
-}
-	*/
-	function putSalesforce(body){
-		var apipath = '/api/v2/identityproviders/salesforce';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putSalesforce = putSalesforce;
-	/**
-     * @summary Delete Salesforce Identity Provider
-	 * @memberOf OAuthApi#
-	*/
-	function deleteSalesforce(){
-		var apipath = '/api/v2/identityproviders/salesforce';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteSalesforce = deleteSalesforce;
-	/**
-     * @summary Get an identity provider
-	 * @memberOf OAuthApi#
-	*/
-	function getProviderId(){
-		var apipath = '/api/v2/identityproviders/{providerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getProviderId = getProviderId;
-	/**
-     * @summary Update an identity provider
-	 * @memberOf OAuthApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": ""
-}
-	*/
-	function putProviderId(body){
-		var apipath = '/api/v2/identityproviders/{providerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putProviderId = putProviderId;
-	/**
-     * @summary Delete an identity provider
-	 * @memberOf OAuthApi#
-	*/
-	function deleteProviderId(){
-		var apipath = '/api/v2/identityproviders/{providerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteProviderId = deleteProviderId;
 	/**
      * @summary The list of OAuth clients
 	 * @memberOf OAuthApi#
@@ -6973,44 +7050,6 @@ via the 'roleIds' field.
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postClientsClientIdSecret = postClientsClientIdSecret;
-
-    return self;
-};
-
-//API VERSION - 
-/**
-* @class
-* @example
-* var api = new ObjectsApi(pureCloudSession);
-*/
-var ObjectsApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
-    }
-
-	var self = this;
-	/**
-     * @summary Returns a permission-protected object, showing the permission contexts it belongs to.
-	 * @memberOf ObjectsApi#
-	* @param {string} objectId - Object ID
-	*/
-	function getObjectsObjectId(objectId){
-		var apipath = '/api/v2/authorization/objects/{objectId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{objectId}', objectId);
-
-        if(objectId === undefined && objectId !== null){
-			throw 'Missing required  parameter: objectId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getObjectsObjectId = getObjectsObjectId;
 
     return self;
 };
@@ -8008,16 +8047,8 @@ var OutboundApi = function (pureCloudSession) {
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
    "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "previewModeAcceptedValues": []
 }
 	*/
 	function postContactlists(body){
@@ -8036,7 +8067,7 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.postContactlists = postContactlists;
 	/**
-     * @summary Get dialer contactList.
+     * @summary Get a dialer contact list.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	* @param {boolean} includeImportStatus - Import status
@@ -8081,16 +8112,8 @@ var OutboundApi = function (pureCloudSession) {
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
    "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "previewModeAcceptedValues": []
 }
 	*/
 	function putContactlistsContactlistId(contactListId, body){
@@ -8142,6 +8165,17 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {string} contactListId - Contact List ID
 	* @param {} body - Contact
 	* @param {boolean} priority - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "contactListId": "",
+  "data": {},
+  "callable": true,
+  "phoneNumberStatus": {}
+ }
+]
 	*/
 	function postContactlistsContactlistIdContacts(contactListId, body, priority){
 		var apipath = '/api/v2/outbound/contactlists/{contactListId}/contacts';
@@ -8210,7 +8244,6 @@ var OutboundApi = function (pureCloudSession) {
    "name": "",
    "contactListId": "",
    "data": {},
-   "callRecords": {},
    "callable": true,
    "phoneNumberStatus": {}
 }
@@ -8450,16 +8483,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "version": 0,
-   "phoneNumberColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "fileKey": "",
-   "size": 0
+   "phoneNumberColumns": []
 }
 	*/
 	function postDnclists(body){
@@ -8521,16 +8545,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "version": 0,
-   "phoneNumberColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "fileKey": "",
-   "size": 0
+   "phoneNumberColumns": []
 }
 	*/
 	function putDnclistsDnclistId(dncListId, body){
@@ -9135,9 +9150,7 @@ var OutboundApi = function (pureCloudSession) {
    "name": "",
    "version": 0,
    "campaigns": [],
-   "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
    "repeat": true
 }
 	*/
@@ -9189,9 +9202,7 @@ var OutboundApi = function (pureCloudSession) {
    "name": "",
    "version": 0,
    "campaigns": [],
-   "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
    "repeat": true
 }
 	*/
@@ -9298,7 +9309,7 @@ var PresenceApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
-     * @summary Get an Organization's list of Presences
+     * @summary Get an Organization's list of Presence Definitions
 	 * @memberOf PresenceApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -9325,9 +9336,9 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.getPresencedefinitions = getPresencedefinitions;
 	/**
-     * @summary Create an OrganizationPresence
+     * @summary Create a Presence Definition
 	 * @memberOf PresenceApi#
-	* @param {} body - The OrganizationPresence to create
+	* @param {} body - The Presence Definition to create
 	 * @example
 	 * Body Example:
 	 * {
@@ -9379,7 +9390,7 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.postPresencedefinitions = postPresencedefinitions;
 	/**
-     * @summary Get an OrganizationPresence
+     * @summary Get a Presence Definition
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
@@ -9401,7 +9412,7 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.getPresenceId = getPresenceId;
 	/**
-     * @summary Update an OrganizationPresence
+     * @summary Update a Presence Definition
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	* @param {} body - The OrganizationPresence to update
@@ -9462,7 +9473,7 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.putPresenceId = putPresenceId;
 	/**
-     * @summary Delete an OrganizationPresence
+     * @summary Delete a Presence Definition
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
@@ -9483,6 +9494,21 @@ var PresenceApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deletePresenceId = deletePresenceId;
+	/**
+     * @summary Get the list of SystemPresences
+	 * @memberOf PresenceApi#
+	*/
+	function getSystempresences(){
+		var apipath = '/api/v2/systempresences';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSystempresences = getSystempresences;
 	/**
      * @summary Get a user's Presence
 	 * @memberOf PresenceApi#
@@ -10938,6 +10964,246 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getFormsFormIdVersions = getFormsFormIdVersions;
 	/**
+     * @summary Get the list of keyword sets
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} name - the keyword set name - used for filtering results in searches.
+	*/
+	function getKeywordsets(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getKeywordsets = getKeywordsets;
+	/**
+     * @summary Create a Keyword Set
+	 * @memberOf QualityApi#
+	* @param {} body - keywordSet
+	* @param {string} expand - queueId
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "queue": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "mediaSettings": {},
+      "bullseye": {},
+      "acwSettings": {},
+      "skillEvaluationMethod": "",
+      "queueFlow": {},
+      "callingPartyName": "",
+      "callingPartyNumber": "",
+      "memberCount": 0
+   },
+   "language": "",
+   "agents": [],
+   "keywords": [],
+   "participantPurposes": []
+}
+	*/
+	function postKeywordsets(body, expand){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postKeywordsets = postKeywordsets;
+	/**
+     * @summary Delete keyword sets
+	 * @description Bulk delete of keyword sets; this will only delete the keyword sets that match the ids specified in the query param.
+	 * @memberOf QualityApi#
+	* @param {string} ids - A comma-delimited list of valid KeywordSet ids
+	*/
+	function deleteKeywordsets(ids){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(ids !== undefined && ids !== null){
+			queryParameters.ids = ids;
+		}
+
+        if(ids === undefined && ids !== null){
+			throw 'Missing required  parameter: ids';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteKeywordsets = deleteKeywordsets;
+	/**
+     * @summary Get a keywordSet by id.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	*/
+	function getKeywordsetsKeywordsetId(keywordSetId){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getKeywordsetsKeywordsetId = getKeywordsetsKeywordsetId;
+	/**
+     * @summary Update a keywordSet to the specified keywordSet via PUT.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	* @param {} body - keywordSet
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "queue": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "mediaSettings": {},
+      "bullseye": {},
+      "acwSettings": {},
+      "skillEvaluationMethod": "",
+      "queueFlow": {},
+      "callingPartyName": "",
+      "callingPartyNumber": "",
+      "memberCount": 0
+   },
+   "language": "",
+   "agents": [],
+   "keywords": [],
+   "participantPurposes": []
+}
+	*/
+	function putKeywordsetsKeywordsetId(keywordSetId, body){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putKeywordsetsKeywordsetId = putKeywordsetsKeywordsetId;
+	/**
+     * @summary Delete a keywordSet by id.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	*/
+	function deleteKeywordsetsKeywordsetId(keywordSetId){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteKeywordsetsKeywordsetId = deleteKeywordsetsKeywordsetId;
+	/**
      * @summary Get the published evaluation forms.
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - Page size
@@ -11613,7 +11879,8 @@ var RecordingApi = function (pureCloudSession) {
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
-      "retentionDuration": {}
+      "retentionDuration": {},
+      "initiateScreenRecording": {}
    },
    "policyErrors": {
       "policyErrorMessages": []
@@ -11718,7 +11985,8 @@ var RecordingApi = function (pureCloudSession) {
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
-      "retentionDuration": {}
+      "retentionDuration": {},
+      "initiateScreenRecording": {}
    },
    "policyErrors": {
       "policyErrorMessages": []
@@ -11803,7 +12071,8 @@ var RecordingApi = function (pureCloudSession) {
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
-      "retentionDuration": {}
+      "retentionDuration": {},
+      "initiateScreenRecording": {}
    },
    "policyErrors": {
       "policyErrorMessages": []
@@ -12838,6 +13107,31 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
 	* @param {boolean} doDelete - True to delete queue members
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "user": {
+   "name": "",
+   "chat": {},
+   "department": "",
+   "email": "",
+   "addresses": [],
+   "title": "",
+   "username": "",
+   "images": []
+  },
+  "ringNumber": 0,
+  "joined": true,
+  "memberBy": "",
+  "routingStatus": {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+  }
+ }
+]
 	*/
 	function postQueuesQueueIdUsers(queueId, body, doDelete){
 		var apipath = '/api/v2/routing/queues/{queueId}/users';
@@ -12870,6 +13164,31 @@ var RoutingApi = function (pureCloudSession) {
 	 * @memberOf RoutingApi#
 	* @param {string} queueId - Queue ID
 	* @param {} body - Queue Members
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "user": {
+   "name": "",
+   "chat": {},
+   "department": "",
+   "email": "",
+   "addresses": [],
+   "title": "",
+   "username": "",
+   "images": []
+  },
+  "ringNumber": 0,
+  "joined": true,
+  "memberBy": "",
+  "routingStatus": {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+  }
+ }
+]
 	*/
 	function patchQueuesQueueIdUsers(queueId, body){
 		var apipath = '/api/v2/routing/queues/{queueId}/users';
@@ -13013,6 +13332,17 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {string} queueId - Queue ID
 	* @param {string} codeId - Code ID
 	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": ""
+ }
+]
 	*/
 	function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
 		var apipath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
@@ -13104,9 +13434,7 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": "",
-   "dateModified": "",
-   "proficiency": ""
+   "name": ""
 }
 	*/
 	function postSkills(body){
@@ -13146,40 +13474,6 @@ var RoutingApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getSkillsSkillId = getSkillsSkillId;
-	/**
-     * @summary Update Routing Skill
-	 * @memberOf RoutingApi#
-	* @param {string} skillId - Skill ID
-	* @param {} body - Skill
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateModified": "",
-   "proficiency": ""
-}
-	*/
-	function putSkillsSkillId(skillId, body){
-		var apipath = '/api/v2/routing/skills/{skillId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{skillId}', skillId);
-
-        if(skillId === undefined && skillId !== null){
-			throw 'Missing required  parameter: skillId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putSkillsSkillId = putSkillsSkillId;
 	/**
      * @summary Delete Routing Skill
 	 * @memberOf RoutingApi#
@@ -13449,7 +13743,9 @@ var RoutingApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "proficiency": {},
+   "state": ""
 }
 	*/
 	function postUserIdRoutingskills(userId, body){
@@ -13473,6 +13769,47 @@ var RoutingApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postUserIdRoutingskills = postUserIdRoutingskills;
+	/**
+     * @summary Update routing skill proficiency or state.
+	 * @memberOf RoutingApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "proficiency": {},
+   "state": ""
+}
+	*/
+	function putUserIdRoutingskillsSkillId(userId, skillId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdRoutingskillsSkillId = putUserIdRoutingskillsSkillId;
 	/**
      * @summary Remove routing skill from user
 	 * @memberOf RoutingApi#
@@ -13859,8 +14196,9 @@ var StationsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
+	* @param {string} lineAppearanceId - lineAppearanceId
 	*/
-	function getStations(pageSize, pageNumber, sortBy, name){
+	function getStations(pageSize, pageNumber, sortBy, name, lineAppearanceId){
 		var apipath = '/api/v2/stations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -13885,6 +14223,11 @@ var StationsApi = function (pureCloudSession) {
 
 		if(name !== undefined && name !== null){
 			queryParameters.name = name;
+		}
+
+
+		if(lineAppearanceId !== undefined && lineAppearanceId !== null){
+			queryParameters.lineAppearanceId = lineAppearanceId;
 		}
 
 
@@ -14470,6 +14813,21 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postProvidersEdgesAddressvalidation = postProvidersEdgesAddressvalidation;
+	/**
+     * @summary Get the list of available languages.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	*/
+	function getProvidersEdgesAvailablelanguages(){
+		var apipath = '/api/v2/telephony/providers/edges/availablelanguages';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesAvailablelanguages = getProvidersEdgesAvailablelanguages;
 	/**
      * @summary Get the list of certificate authorities.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -16739,6 +17097,32 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "description": "",
+  "version": 0,
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "state": "",
+  "modifiedByApp": "",
+  "createdByApp": "",
+  "match": "",
+  "normalizedFormat": "",
+  "priority": 0,
+  "numbers": [],
+  "digitLength": {
+   "start": "",
+   "end": ""
+  },
+  "classification": "",
+  "matchType": ""
+ }
+]
 	*/
 	function putProvidersEdgesSitesSiteIdNumberplans(siteId, body){
 		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans';
@@ -16874,8 +17258,9 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
+	* @param {boolean} recordingEnabled - Filter trunks by recording enabled
 	*/
-	function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder){
+	function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled){
 		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -16900,6 +17285,11 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		if(sortOrder !== undefined && sortOrder !== null){
 			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(recordingEnabled !== undefined && recordingEnabled !== null){
+			queryParameters.recordingEnabled = recordingEnabled;
 		}
 
 
@@ -17185,6 +17575,30 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getProvidersEdgesTrunksTrunkId = getProvidersEdgesTrunksTrunkId;
+	/**
+     * @summary Get Counts of trunks that have recording disabled or enabled
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkType - The type of this trunk base.
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	*/
+	function getProvidersEdgesTrunkswithrecording(trunkType){
+		var apipath = '/api/v2/telephony/providers/edges/trunkswithrecording';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(trunkType !== undefined && trunkType !== null){
+			queryParameters.trunkType = trunkType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkswithrecording = getProvidersEdgesTrunkswithrecording;
 	/**
      * @summary Get edge.
 	 * @memberOf TelephonyProvidersEdgeApi#
@@ -18879,6 +19293,55 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
+     * @summary List profile skills for a user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function getUserIdProfileskills(userId){
+		var apipath = '/api/v2/users/{userId}/profileskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserIdProfileskills = getUserIdProfileskills;
+	/**
+     * @summary Update profile skills for a user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - Skills
+	*/
+	function putUserIdProfileskills(userId, body){
+		var apipath = '/api/v2/users/{userId}/profileskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdProfileskills = putUserIdProfileskills;
+	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
@@ -18917,6 +19380,40 @@ var UsersApi = function (pureCloudSession) {
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - User Queues
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "description": "",
+  "version": 0,
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "state": "",
+  "modifiedByApp": "",
+  "createdByApp": "",
+  "mediaSettings": {},
+  "bullseye": {
+   "rings": []
+  },
+  "acwSettings": {
+   "wrapupPrompt": "",
+   "timeoutMs": 0
+  },
+  "skillEvaluationMethod": "",
+  "queueFlow": {
+   "id": "",
+   "name": "",
+   "selfUri": ""
+  },
+  "callingPartyName": "",
+  "callingPartyNumber": "",
+  "joined": true,
+  "memberCount": 0
+ }
+]
 	*/
 	function patchUserIdQueues(userId, body){
 		var apipath = '/api/v2/users/{userId}/queues';
@@ -19126,7 +19623,9 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "proficiency": {},
+   "state": ""
 }
 	*/
 	function postUserIdRoutingskills(userId, body){
@@ -19150,6 +19649,47 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postUserIdRoutingskills = postUserIdRoutingskills;
+	/**
+     * @summary Update routing skill proficiency or state.
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "proficiency": {},
+   "state": ""
+}
+	*/
+	function putUserIdRoutingskillsSkillId(userId, skillId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdRoutingskillsSkillId = putUserIdRoutingskillsSkillId;
 	/**
      * @summary Remove routing skill from user
 	 * @memberOf UsersApi#
@@ -19764,7 +20304,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.37.0
+//API VERSION - 0.38.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20034,7 +20574,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.37.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.38.0";
          }
 
          if(body){

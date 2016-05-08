@@ -583,6 +583,55 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
+     * @summary List profile skills for a user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	*/
+	function getUserIdProfileskills(userId){
+		var apipath = '/api/v2/users/{userId}/profileskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserIdProfileskills = getUserIdProfileskills;
+	/**
+     * @summary Update profile skills for a user
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {} body - Skills
+	*/
+	function putUserIdProfileskills(userId, body){
+		var apipath = '/api/v2/users/{userId}/profileskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdProfileskills = putUserIdProfileskills;
+	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
@@ -621,6 +670,40 @@ var UsersApi = function (pureCloudSession) {
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
 	* @param {} body - User Queues
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "description": "",
+  "version": 0,
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "state": "",
+  "modifiedByApp": "",
+  "createdByApp": "",
+  "mediaSettings": {},
+  "bullseye": {
+   "rings": []
+  },
+  "acwSettings": {
+   "wrapupPrompt": "",
+   "timeoutMs": 0
+  },
+  "skillEvaluationMethod": "",
+  "queueFlow": {
+   "id": "",
+   "name": "",
+   "selfUri": ""
+  },
+  "callingPartyName": "",
+  "callingPartyNumber": "",
+  "joined": true,
+  "memberCount": 0
+ }
+]
 	*/
 	function patchUserIdQueues(userId, body){
 		var apipath = '/api/v2/users/{userId}/queues';
@@ -830,7 +913,9 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "proficiency": {},
+   "state": ""
 }
 	*/
 	function postUserIdRoutingskills(userId, body){
@@ -854,6 +939,47 @@ var UsersApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postUserIdRoutingskills = postUserIdRoutingskills;
+	/**
+     * @summary Update routing skill proficiency or state.
+	 * @memberOf UsersApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "proficiency": {},
+   "state": ""
+}
+	*/
+	function putUserIdRoutingskillsSkillId(userId, skillId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdRoutingskillsSkillId = putUserIdRoutingskillsSkillId;
 	/**
      * @summary Remove routing skill from user
 	 * @memberOf UsersApi#

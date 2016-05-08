@@ -376,6 +376,21 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.postProvidersEdgesAddressvalidation = postProvidersEdgesAddressvalidation;
 	/**
+     * @summary Get the list of available languages.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	*/
+	function getProvidersEdgesAvailablelanguages(){
+		var apipath = '/api/v2/telephony/providers/edges/availablelanguages';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesAvailablelanguages = getProvidersEdgesAvailablelanguages;
+	/**
      * @summary Get the list of certificate authorities.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	*/
@@ -2644,6 +2659,32 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "description": "",
+  "version": 0,
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "state": "",
+  "modifiedByApp": "",
+  "createdByApp": "",
+  "match": "",
+  "normalizedFormat": "",
+  "priority": 0,
+  "numbers": [],
+  "digitLength": {
+   "start": "",
+   "end": ""
+  },
+  "classification": "",
+  "matchType": ""
+ }
+]
 	*/
 	function putProvidersEdgesSitesSiteIdNumberplans(siteId, body){
 		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans';
@@ -2779,8 +2820,9 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
+	* @param {boolean} recordingEnabled - Filter trunks by recording enabled
 	*/
-	function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder){
+	function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled){
 		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2805,6 +2847,11 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 
 		if(sortOrder !== undefined && sortOrder !== null){
 			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(recordingEnabled !== undefined && recordingEnabled !== null){
+			queryParameters.recordingEnabled = recordingEnabled;
 		}
 
 
@@ -3090,6 +3137,30 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.getProvidersEdgesTrunksTrunkId = getProvidersEdgesTrunksTrunkId;
+	/**
+     * @summary Get Counts of trunks that have recording disabled or enabled
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkType - The type of this trunk base.
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	*/
+	function getProvidersEdgesTrunkswithrecording(trunkType){
+		var apipath = '/api/v2/telephony/providers/edges/trunkswithrecording';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(trunkType !== undefined && trunkType !== null){
+			queryParameters.trunkType = trunkType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkswithrecording = getProvidersEdgesTrunkswithrecording;
 	/**
      * @summary Get edge.
 	 * @memberOf TelephonyProvidersEdgeApi#

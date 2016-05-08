@@ -1366,6 +1366,246 @@ var QualityApi = function (pureCloudSession) {
 	}
 	self.getFormsFormIdVersions = getFormsFormIdVersions;
 	/**
+     * @summary Get the list of keyword sets
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} name - the keyword set name - used for filtering results in searches.
+	*/
+	function getKeywordsets(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getKeywordsets = getKeywordsets;
+	/**
+     * @summary Create a Keyword Set
+	 * @memberOf QualityApi#
+	* @param {} body - keywordSet
+	* @param {string} expand - queueId
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "queue": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "mediaSettings": {},
+      "bullseye": {},
+      "acwSettings": {},
+      "skillEvaluationMethod": "",
+      "queueFlow": {},
+      "callingPartyName": "",
+      "callingPartyNumber": "",
+      "memberCount": 0
+   },
+   "language": "",
+   "agents": [],
+   "keywords": [],
+   "participantPurposes": []
+}
+	*/
+	function postKeywordsets(body, expand){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postKeywordsets = postKeywordsets;
+	/**
+     * @summary Delete keyword sets
+	 * @description Bulk delete of keyword sets; this will only delete the keyword sets that match the ids specified in the query param.
+	 * @memberOf QualityApi#
+	* @param {string} ids - A comma-delimited list of valid KeywordSet ids
+	*/
+	function deleteKeywordsets(ids){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(ids !== undefined && ids !== null){
+			queryParameters.ids = ids;
+		}
+
+        if(ids === undefined && ids !== null){
+			throw 'Missing required  parameter: ids';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteKeywordsets = deleteKeywordsets;
+	/**
+     * @summary Get a keywordSet by id.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	*/
+	function getKeywordsetsKeywordsetId(keywordSetId){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getKeywordsetsKeywordsetId = getKeywordsetsKeywordsetId;
+	/**
+     * @summary Update a keywordSet to the specified keywordSet via PUT.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	* @param {} body - keywordSet
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "description": "",
+   "queue": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "mediaSettings": {},
+      "bullseye": {},
+      "acwSettings": {},
+      "skillEvaluationMethod": "",
+      "queueFlow": {},
+      "callingPartyName": "",
+      "callingPartyNumber": "",
+      "memberCount": 0
+   },
+   "language": "",
+   "agents": [],
+   "keywords": [],
+   "participantPurposes": []
+}
+	*/
+	function putKeywordsetsKeywordsetId(keywordSetId, body){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putKeywordsetsKeywordsetId = putKeywordsetsKeywordsetId;
+	/**
+     * @summary Delete a keywordSet by id.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	*/
+	function deleteKeywordsetsKeywordsetId(keywordSetId){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteKeywordsetsKeywordsetId = deleteKeywordsetsKeywordsetId;
+	/**
      * @summary Get the published evaluation forms.
 	 * @memberOf QualityApi#
 	* @param {integer} pageSize - Page size

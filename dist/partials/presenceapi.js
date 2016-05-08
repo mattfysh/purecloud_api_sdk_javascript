@@ -11,7 +11,7 @@ var PresenceApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
-     * @summary Get an Organization's list of Presences
+     * @summary Get an Organization's list of Presence Definitions
 	 * @memberOf PresenceApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
@@ -38,9 +38,9 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.getPresencedefinitions = getPresencedefinitions;
 	/**
-     * @summary Create an OrganizationPresence
+     * @summary Create a Presence Definition
 	 * @memberOf PresenceApi#
-	* @param {} body - The OrganizationPresence to create
+	* @param {} body - The Presence Definition to create
 	 * @example
 	 * Body Example:
 	 * {
@@ -92,7 +92,7 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.postPresencedefinitions = postPresencedefinitions;
 	/**
-     * @summary Get an OrganizationPresence
+     * @summary Get a Presence Definition
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
@@ -114,7 +114,7 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.getPresenceId = getPresenceId;
 	/**
-     * @summary Update an OrganizationPresence
+     * @summary Update a Presence Definition
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	* @param {} body - The OrganizationPresence to update
@@ -175,7 +175,7 @@ var PresenceApi = function (pureCloudSession) {
 	}
 	self.putPresenceId = putPresenceId;
 	/**
-     * @summary Delete an OrganizationPresence
+     * @summary Delete a Presence Definition
 	 * @memberOf PresenceApi#
 	* @param {string} presenceId - Organization Presence ID
 	*/
@@ -196,6 +196,21 @@ var PresenceApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.deletePresenceId = deletePresenceId;
+	/**
+     * @summary Get the list of SystemPresences
+	 * @memberOf PresenceApi#
+	*/
+	function getSystempresences(){
+		var apipath = '/api/v2/systempresences';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSystempresences = getSystempresences;
 	/**
      * @summary Get a user's Presence
 	 * @memberOf PresenceApi#

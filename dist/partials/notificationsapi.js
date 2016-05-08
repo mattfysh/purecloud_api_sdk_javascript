@@ -89,6 +89,11 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
+	 * @example
+	 * Body Example:
+	 * [
+ {}
+]
 	*/
 	function postChannelsChannelIdSubscriptions(channelId, body){
 		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
@@ -116,6 +121,11 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @memberOf NotificationsApi#
 	* @param {string} channelId - Channel ID
 	* @param {} body - Topic
+	 * @example
+	 * Body Example:
+	 * [
+ {}
+]
 	*/
 	function putChannelsChannelIdSubscriptions(channelId, body){
 		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';

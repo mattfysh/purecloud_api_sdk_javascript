@@ -960,16 +960,8 @@ var OutboundApi = function (pureCloudSession) {
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
    "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "previewModeAcceptedValues": []
 }
 	*/
 	function postContactlists(body){
@@ -988,7 +980,7 @@ var OutboundApi = function (pureCloudSession) {
 	}
 	self.postContactlists = postContactlists;
 	/**
-     * @summary Get dialer contactList.
+     * @summary Get a dialer contact list.
 	 * @memberOf OutboundApi#
 	* @param {string} contactListId - ContactList ID
 	* @param {boolean} includeImportStatus - Import status
@@ -1033,16 +1025,8 @@ var OutboundApi = function (pureCloudSession) {
    "version": 0,
    "columnNames": [],
    "phoneColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
    "previewModeColumnName": "",
-   "previewModeAcceptedValues": [],
-   "size": 0
+   "previewModeAcceptedValues": []
 }
 	*/
 	function putContactlistsContactlistId(contactListId, body){
@@ -1094,6 +1078,17 @@ var OutboundApi = function (pureCloudSession) {
 	* @param {string} contactListId - Contact List ID
 	* @param {} body - Contact
 	* @param {boolean} priority - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "contactListId": "",
+  "data": {},
+  "callable": true,
+  "phoneNumberStatus": {}
+ }
+]
 	*/
 	function postContactlistsContactlistIdContacts(contactListId, body, priority){
 		var apipath = '/api/v2/outbound/contactlists/{contactListId}/contacts';
@@ -1162,7 +1157,6 @@ var OutboundApi = function (pureCloudSession) {
    "name": "",
    "contactListId": "",
    "data": {},
-   "callRecords": {},
    "callable": true,
    "phoneNumberStatus": {}
 }
@@ -1402,16 +1396,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "version": 0,
-   "phoneNumberColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "fileKey": "",
-   "size": 0
+   "phoneNumberColumns": []
 }
 	*/
 	function postDnclists(body){
@@ -1473,16 +1458,7 @@ var OutboundApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "version": 0,
-   "phoneNumberColumns": [],
-   "importStatus": {
-      "state": "",
-      "totalRecords": 0,
-      "completedRecords": 0,
-      "percentComplete": 0,
-      "failureReason": ""
-   },
-   "fileKey": "",
-   "size": 0
+   "phoneNumberColumns": []
 }
 	*/
 	function putDnclistsDnclistId(dncListId, body){
@@ -2087,9 +2063,7 @@ var OutboundApi = function (pureCloudSession) {
    "name": "",
    "version": 0,
    "campaigns": [],
-   "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
    "repeat": true
 }
 	*/
@@ -2141,9 +2115,7 @@ var OutboundApi = function (pureCloudSession) {
    "name": "",
    "version": 0,
    "campaigns": [],
-   "currentCampaign": 0,
    "status": "",
-   "stopMessage": "",
    "repeat": true
 }
 	*/

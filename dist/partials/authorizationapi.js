@@ -11,28 +11,6 @@ var AuthorizationApi = function (pureCloudSession) {
 
 	var self = this;
 	/**
-     * @summary Returns a permission-protected object, showing the permission contexts it belongs to.
-	 * @memberOf AuthorizationApi#
-	* @param {string} objectId - Object ID
-	*/
-	function getObjectsObjectId(objectId){
-		var apipath = '/api/v2/authorization/objects/{objectId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{objectId}', objectId);
-
-        if(objectId === undefined && objectId !== null){
-			throw 'Missing required  parameter: objectId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getObjectsObjectId = getObjectsObjectId;
-	/**
      * @summary Get all permissions.
 	 * @description Retrieve a list of all permission defined in the system.
 	 * @memberOf AuthorizationApi#
@@ -197,6 +175,20 @@ var AuthorizationApi = function (pureCloudSession) {
      * @summary Restore specified default roles
 	 * @memberOf AuthorizationApi#
 	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
+ {
+  "name": "",
+  "description": "",
+  "defaultRoleId": "",
+  "permissions": [],
+  "permissionPolicies": [],
+  "userCount": 0,
+  "roleNeedsUpdate": true,
+  "default": true
+ }
+]
 	*/
 	function putRolesDefault(body){
 		var apipath = '/api/v2/authorization/roles/default';
