@@ -17,8 +17,9 @@ var StationsApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortBy - Sort by
 	* @param {string} name - Name
+	* @param {string} lineAppearanceId - lineAppearanceId
 	*/
-	function getStations(pageSize, pageNumber, sortBy, name){
+	function getStations(pageSize, pageNumber, sortBy, name, lineAppearanceId){
 		var apipath = '/api/v2/stations';
 	    var requestBody;
 	    var queryParameters = {};
@@ -43,6 +44,11 @@ var StationsApi = function (pureCloudSession) {
 
 		if(name !== undefined && name !== null){
 			queryParameters.name = name;
+		}
+
+
+		if(lineAppearanceId !== undefined && lineAppearanceId !== null){
+			queryParameters.lineAppearanceId = lineAppearanceId;
 		}
 
 

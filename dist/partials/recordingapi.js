@@ -573,7 +573,8 @@ var RecordingApi = function (pureCloudSession) {
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
-      "retentionDuration": {}
+      "retentionDuration": {},
+      "initiateScreenRecording": {}
    },
    "policyErrors": {
       "policyErrorMessages": []
@@ -678,7 +679,8 @@ var RecordingApi = function (pureCloudSession) {
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
-      "retentionDuration": {}
+      "retentionDuration": {},
+      "initiateScreenRecording": {}
    },
    "policyErrors": {
       "policyErrorMessages": []
@@ -763,7 +765,8 @@ var RecordingApi = function (pureCloudSession) {
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
-      "retentionDuration": {}
+      "retentionDuration": {},
+      "initiateScreenRecording": {}
    },
    "policyErrors": {
       "policyErrorMessages": []
