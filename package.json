@@ -4,18 +4,13 @@
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "dependencies": {
-    "lodash": "4.0.0",
-    "gulp-jshint": "1.12.0",
     "jquery": "*",
     "jsdom": "3.1.0",
-    "request": "*",
-    "strip-bom": "2.0.0",
-    "array-differ": "1.0.0"
+    "request": "*"
   },
   "devDependencies": {
-    "concat-files": "*",
-    "del": "~2.1.0",
-    "express": "*",
+      "lodash": "4.0.0",
+      "gulp-jshint": "1.12.0",
     "gulp": "^3.9.0",
     "gulp-add-src": "^0.2.0",
     "gulp-concat": "^2.6.0",
@@ -24,15 +19,11 @@
     "gulp-replace": "*",
     "gulp-rimraf": "^0.1.1",
     "jasmine": "^2.4.1",
-    "jsdoc": "~3.3.3",
     "mustache": "~2.2.0",
     "purecloud-api-sdk-common": "git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
-    "rifraf": "~2.0.2",
     "run-sequence": "1.1.5",
-    "shelljs": "~0.5.3",
-    "wgetjs": "*",
-    "gulp-jsdoc-to-markdown": "*",
-    "dmd-kramdown-plugin": "*"
+    "gulp-jsdoc-to-markdown": "*"
+
   },
   "scripts": {
     "test": "jasmine"
