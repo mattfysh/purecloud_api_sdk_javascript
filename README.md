@@ -22,6 +22,11 @@ or node
 npm install purecloud
 ~~~
 
+or use the CDN.  Replace 0.38.0 with the version you want to use
+
+~~~
+<script src="https://sdk-cdn.mypurecloud.com/javascript/0.38.0/purecloud-api-min.js"></script>
+~~~
 Source code [https://github.com/MyPureCloud/purecloud_api_sdk_javascript](https://github.com/MyPureCloud/purecloud_api_sdk_javascript)
 
 # Using the Library
