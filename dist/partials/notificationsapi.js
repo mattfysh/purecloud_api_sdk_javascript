@@ -92,7 +92,9 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * [
- {}
+ {
+  "id": ""
+ }
 ]
 	*/
 	function postChannelsChannelIdSubscriptions(channelId, body){
@@ -124,7 +126,9 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * [
- {}
+ {
+  "id": ""
+ }
 ]
 	*/
 	function putChannelsChannelIdSubscriptions(channelId, body){

@@ -177,9 +177,13 @@ var UserRecordingsApi = function (pureCloudSession) {
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getRecordingIdMedia(recordingId, formatId){
 		var apipath = '/api/v2/userrecordings/{recordingId}/media';

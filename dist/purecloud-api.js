@@ -5590,8 +5590,13 @@ var GreetingsApi = function (pureCloudSession) {
      * @summary Get media playback URI for this greeting
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
-	* @param {string} formatId - The desired format (WAV, etc.)
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getGreetingIdMedia(greetingId, formatId){
 		var apipath = '/api/v2/greetings/{greetingId}/media';
@@ -6093,8 +6098,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putCic(body){
@@ -6151,8 +6156,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putOkta(body){
@@ -6209,8 +6214,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putOnelogin(body){
@@ -6322,8 +6327,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
-   "issuerURI": ""
+   "issuerURI": "",
+   "ssoTargetURI": ""
 }
 	*/
 	function putSalesforce(body){
@@ -6800,7 +6805,9 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * [
- {}
+ {
+  "id": ""
+ }
 ]
 	*/
 	function postChannelsChannelIdSubscriptions(channelId, body){
@@ -6832,7 +6839,9 @@ var NotificationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * [
- {}
+ {
+  "id": ""
+ }
 ]
 	*/
 	function putChannelsChannelIdSubscriptions(channelId, body){
@@ -11320,9 +11329,13 @@ var RecordingApi = function (pureCloudSession) {
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getConversationIdRecordings(conversationId, formatId){
 		var apipath = '/api/v2/conversations/{conversationId}/recordings';
@@ -11351,9 +11364,13 @@ var RecordingApi = function (pureCloudSession) {
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	* @param {boolean} download - requesting a download format of the recording
 	true,
 	false,
@@ -18678,9 +18695,13 @@ var UserRecordingsApi = function (pureCloudSession) {
      * @summary Download a user recording.
 	 * @memberOf UserRecordingsApi#
 	* @param {string} recordingId - User Recording ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getRecordingIdMedia(recordingId, formatId){
 		var apipath = '/api/v2/userrecordings/{recordingId}/media';
@@ -20149,9 +20170,13 @@ var VoicemailApi = function (pureCloudSession) {
      * @summary Get media playback URI for this message
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getMessagesMessageIdMedia(messageId, formatId){
 		var apipath = '/api/v2/voicemail/messages/{messageId}/media';
@@ -20304,7 +20329,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.38.0
+//API VERSION - 0.39.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20574,7 +20599,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.38.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.39.0";
          }
 
          if(body){
