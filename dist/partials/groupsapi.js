@@ -16,8 +16,8 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getGroups(pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/groups';
@@ -110,15 +110,13 @@ var GroupsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -165,8 +163,8 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/groups/{groupId}/members';

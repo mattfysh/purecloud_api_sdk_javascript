@@ -441,6 +441,39 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.postCalls = postCalls;
 	/**
+     * @summary Get call history
+	 * @memberOf ConversationsApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} interval - Interval string; format is ISO-8601. Separate start and end times with forward slash '/'
+	*/
+	function getCallsHistory(pageSize, pageNumber, interval){
+		var apipath = '/api/v2/conversations/calls/history';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(interval !== undefined && interval !== null){
+			queryParameters.interval = interval;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsHistory = getCallsHistory;
+	/**
      * @summary Get the maximum number of participants that this user can have on a conference
 	 * @memberOf ConversationsApi#
 	*/
@@ -1610,7 +1643,8 @@ var ConversationsApi = function (pureCloudSession) {
       "dateCreated": "",
       "dateModified": "",
       "summary": {},
-      "acl": []
+      "acl": [],
+      "description": ""
    },
    "coverSheet": {
       "notes": "",

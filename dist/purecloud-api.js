@@ -2533,6 +2533,21 @@ var ContentManagementApi = function (pureCloudSession) {
 	}
 	self.deleteStatusStatusId = deleteStatusStatusId;
 	/**
+     * @summary Get usage details.
+	 * @memberOf ContentManagementApi#
+	*/
+	function getUsage(){
+		var apipath = '/api/v2/contentmanagement/usage';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUsage = getUsage;
+	/**
      * @summary Get a list of workspaces.
 	 * @description Specifying 'content' access will return all workspaces the user has document access to, while 'admin' access will return all group workspaces the user has administrative rights to.
 	 * @memberOf ContentManagementApi#
@@ -2603,7 +2618,8 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "bucket": ""
+   "bucket": "",
+   "description": ""
 }
 	*/
 	function postWorkspaces(body){
@@ -2671,9 +2687,11 @@ var ContentManagementApi = function (pureCloudSession) {
    "dateCreated": "",
    "dateModified": "",
    "summary": {
-      "totalDocumentCount": 0
+      "totalDocumentCount": 0,
+      "totalDocumentByteCount": 0
    },
-   "acl": []
+   "acl": [],
+   "description": ""
 }
 	*/
 	function putWorkspacesWorkspaceId(workspaceId, body){
@@ -3579,6 +3597,39 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postCalls = postCalls;
+	/**
+     * @summary Get call history
+	 * @memberOf ConversationsApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} interval - Interval string; format is ISO-8601. Separate start and end times with forward slash '/'
+	*/
+	function getCallsHistory(pageSize, pageNumber, interval){
+		var apipath = '/api/v2/conversations/calls/history';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(interval !== undefined && interval !== null){
+			queryParameters.interval = interval;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsHistory = getCallsHistory;
 	/**
      * @summary Get the maximum number of participants that this user can have on a conference
 	 * @memberOf ConversationsApi#
@@ -4749,7 +4800,8 @@ var ConversationsApi = function (pureCloudSession) {
       "dateCreated": "",
       "dateModified": "",
       "summary": {},
-      "acl": []
+      "acl": [],
+      "description": ""
    },
    "coverSheet": {
       "notes": "",
@@ -5794,8 +5846,8 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getGroups(pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/groups';
@@ -5888,15 +5940,13 @@ var GroupsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -5943,8 +5993,8 @@ var GroupsApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/groups/{groupId}/members';
@@ -6438,8 +6488,8 @@ var LanguagesApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getLanguages(pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/languages';
@@ -6659,15 +6709,13 @@ var LocationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -10822,10 +10870,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "firstUri": "",
       "pageCount": 0
    }
 }
@@ -10887,10 +10935,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "firstUri": "",
       "pageCount": 0
    }
 }
@@ -11264,10 +11312,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "firstUri": "",
       "pageCount": 0
    }
 }
@@ -11329,7 +11377,9 @@ var RecordingApi = function (pureCloudSession) {
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {string} formatId - The desired media format.
+	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
+	Any integer greater than or equal to 0.,
+	* @param {string} formatId - The desired media format
 	WAV,
 	WEBM,
 	WAV_ULAW,
@@ -11337,7 +11387,7 @@ var RecordingApi = function (pureCloudSession) {
 	OGG_OPUS,
 	NONE,
 	*/
-	function getConversationIdRecordings(conversationId, formatId){
+	function getConversationIdRecordings(conversationId, maxWaitMs, formatId){
 		var apipath = '/api/v2/conversations/{conversationId}/recordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -11349,6 +11399,11 @@ var RecordingApi = function (pureCloudSession) {
         if(conversationId === undefined && conversationId !== null){
 			throw 'Missing required  parameter: conversationId';
         }
+
+
+		if(maxWaitMs !== undefined && maxWaitMs !== null){
+			queryParameters.maxWaitMs = maxWaitMs;
+		}
 
 
 		if(formatId !== undefined && formatId !== null){
@@ -13717,8 +13772,8 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/users/{userId}/routingskills';
@@ -13906,15 +13961,13 @@ var SearchApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -13966,15 +14019,13 @@ var SearchApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -14033,15 +14084,15 @@ var SearchApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "types": [],
+   "query": [],
+   "aggregations": []
 }
 	*/
 	function postSearch(body, profile){
@@ -14100,14 +14151,7 @@ var SearchApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "types": [],
-   "sortOrder": "",
-   "query": [],
-   "sortBy": "",
-   "pageSize": 0,
-   "pageNumber": 0,
-   "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "query": []
 }
 	*/
 	function postSuggest(body, profile){
@@ -14164,15 +14208,13 @@ var SearchApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -14352,15 +14394,15 @@ var SuggestApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "types": [],
+   "query": [],
+   "aggregations": []
 }
 	*/
 	function postSearch(body, profile){
@@ -14419,14 +14461,7 @@ var SuggestApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "types": [],
-   "sortOrder": "",
-   "query": [],
-   "sortBy": "",
-   "pageSize": 0,
-   "pageNumber": 0,
-   "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "query": []
 }
 	*/
 	function postSuggest(body, profile){
@@ -18812,8 +18847,8 @@ var UsersApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {array} id - The list of user ids to get. Paging is ignored if ids are specified
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	* @param {array} expand - Which fields, if any, to expand
 	*/
 	function getUsers(pageSize, pageNumber, id, sortOrder, expand){
@@ -18937,15 +18972,13 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -19314,55 +19347,6 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
-     * @summary List profile skills for a user
-	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	*/
-	function getUserIdProfileskills(userId){
-		var apipath = '/api/v2/users/{userId}/profileskills';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserIdProfileskills = getUserIdProfileskills;
-	/**
-     * @summary Update profile skills for a user
-	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	* @param {} body - Skills
-	*/
-	function putUserIdProfileskills(userId, body){
-		var apipath = '/api/v2/users/{userId}/profileskills';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putUserIdProfileskills = putUserIdProfileskills;
-	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
@@ -19601,8 +19585,8 @@ var UsersApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/users/{userId}/routingskills';
@@ -20329,7 +20313,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.39.0
+//API VERSION - 0.40.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20599,7 +20583,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.39.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.40.0";
          }
 
          if(body){

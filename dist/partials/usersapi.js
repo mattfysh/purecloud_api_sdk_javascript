@@ -81,8 +81,8 @@ var UsersApi = function (pureCloudSession) {
 	* @param {integer} pageNumber - Page number
 	* @param {array} id - The list of user ids to get. Paging is ignored if ids are specified
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	* @param {array} expand - Which fields, if any, to expand
 	*/
 	function getUsers(pageSize, pageNumber, id, sortOrder, expand){
@@ -206,15 +206,13 @@ var UsersApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){
@@ -583,55 +581,6 @@ var UsersApi = function (pureCloudSession) {
 	}
 	self.putUserIdOutofoffice = putUserIdOutofoffice;
 	/**
-     * @summary List profile skills for a user
-	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	*/
-	function getUserIdProfileskills(userId){
-		var apipath = '/api/v2/users/{userId}/profileskills';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getUserIdProfileskills = getUserIdProfileskills;
-	/**
-     * @summary Update profile skills for a user
-	 * @memberOf UsersApi#
-	* @param {string} userId - User ID
-	* @param {} body - Skills
-	*/
-	function putUserIdProfileskills(userId, body){
-		var apipath = '/api/v2/users/{userId}/profileskills';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{userId}', userId);
-
-        if(userId === undefined && userId !== null){
-			throw 'Missing required  parameter: userId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putUserIdProfileskills = putUserIdProfileskills;
-	/**
      * @summary Get queues for user
 	 * @memberOf UsersApi#
 	* @param {string} userId - User ID
@@ -870,8 +819,8 @@ var UsersApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/users/{userId}/routingskills';

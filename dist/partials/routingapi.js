@@ -1183,8 +1183,8 @@ var RoutingApi = function (pureCloudSession) {
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
 	* @param {string} sortOrder - Ascending or descending sort order
-	[ascending,
-	descending],
+	ascending,
+	descending,
 	*/
 	function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
 		var apipath = '/api/v2/users/{userId}/routingskills';

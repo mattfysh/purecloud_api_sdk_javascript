@@ -790,6 +790,21 @@ var ContentManagementApi = function (pureCloudSession) {
 	}
 	self.deleteStatusStatusId = deleteStatusStatusId;
 	/**
+     * @summary Get usage details.
+	 * @memberOf ContentManagementApi#
+	*/
+	function getUsage(){
+		var apipath = '/api/v2/contentmanagement/usage';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUsage = getUsage;
+	/**
      * @summary Get a list of workspaces.
 	 * @description Specifying 'content' access will return all workspaces the user has document access to, while 'admin' access will return all group workspaces the user has administrative rights to.
 	 * @memberOf ContentManagementApi#
@@ -860,7 +875,8 @@ var ContentManagementApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "name": "",
-   "bucket": ""
+   "bucket": "",
+   "description": ""
 }
 	*/
 	function postWorkspaces(body){
@@ -928,9 +944,11 @@ var ContentManagementApi = function (pureCloudSession) {
    "dateCreated": "",
    "dateModified": "",
    "summary": {
-      "totalDocumentCount": 0
+      "totalDocumentCount": 0,
+      "totalDocumentByteCount": 0
    },
-   "acl": []
+   "acl": [],
+   "description": ""
 }
 	*/
 	function putWorkspacesWorkspaceId(workspaceId, body){
