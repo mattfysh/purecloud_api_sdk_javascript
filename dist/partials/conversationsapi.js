@@ -172,6 +172,45 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getCallbacks = getCallbacks;
 	/**
+     * @summary Create a Callback
+	 * @memberOf ConversationsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "scriptId": "",
+   "queueId": "",
+   "routingData": {
+      "queueId": "",
+      "languageId": "",
+      "priority": 0,
+      "skillIds": [],
+      "preferredAgentIds": []
+   },
+   "callbackUserName": "",
+   "callbackNumbers": [],
+   "callbackScheduledTime": "",
+   "countryCode": "",
+   "skipEnabled": true,
+   "additionalInfo": {}
+}
+	*/
+	function postCallbacks(body){
+		var apipath = '/api/v2/conversations/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallbacks = postCallbacks;
+	/**
      * @summary Get callback conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} callbackId - 
@@ -1793,11 +1832,19 @@ var ConversationsApi = function (pureCloudSession) {
 	 * {
    "scriptId": "",
    "queueId": "",
+   "routingData": {
+      "queueId": "",
+      "languageId": "",
+      "priority": 0,
+      "skillIds": [],
+      "preferredAgentIds": []
+   },
    "callbackUserName": "",
    "callbackNumbers": [],
    "callbackScheduledTime": "",
    "countryCode": "",
-   "skipEnabled": true
+   "skipEnabled": true,
+   "additionalInfo": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){

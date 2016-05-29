@@ -3336,6 +3336,45 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getCallbacks = getCallbacks;
 	/**
+     * @summary Create a Callback
+	 * @memberOf ConversationsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "scriptId": "",
+   "queueId": "",
+   "routingData": {
+      "queueId": "",
+      "languageId": "",
+      "priority": 0,
+      "skillIds": [],
+      "preferredAgentIds": []
+   },
+   "callbackUserName": "",
+   "callbackNumbers": [],
+   "callbackScheduledTime": "",
+   "countryCode": "",
+   "skipEnabled": true,
+   "additionalInfo": {}
+}
+	*/
+	function postCallbacks(body){
+		var apipath = '/api/v2/conversations/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallbacks = postCallbacks;
+	/**
      * @summary Get callback conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} callbackId - 
@@ -4957,11 +4996,19 @@ var ConversationsApi = function (pureCloudSession) {
 	 * {
    "scriptId": "",
    "queueId": "",
+   "routingData": {
+      "queueId": "",
+      "languageId": "",
+      "priority": 0,
+      "skillIds": [],
+      "preferredAgentIds": []
+   },
    "callbackUserName": "",
    "callbackNumbers": [],
    "callbackScheduledTime": "",
    "countryCode": "",
-   "skipEnabled": true
+   "skipEnabled": true,
+   "additionalInfo": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
@@ -9604,11 +9651,11 @@ var PresenceApi = function (pureCloudSession) {
 	self.getUserIdPresencesSourceId = getUserIdPresencesSourceId;
 	/**
      * @summary Patch a user's Presence
-	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
+	 * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. The 'id' is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
 	 * @memberOf PresenceApi#
 	* @param {string} userId - user Id
 	* @param {string} sourceId - Source
-	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. Option 3: Provide the message value.  Option 1 can be combined with Option2 and/or Option 3.
+	* @param {} body - The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. The 'id' is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
 	 * @example
 	 * Body Example:
 	 * {
@@ -10877,10 +10924,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "firstUri": "",
       "pageCount": 0
    }
 }
@@ -10942,10 +10989,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "firstUri": "",
       "pageCount": 0
    }
 }
@@ -11319,10 +11366,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "firstUri": "",
       "pageCount": 0
    }
 }
@@ -20320,7 +20367,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.40.0
+//API VERSION - 0.41.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20590,7 +20637,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.40.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.41.0";
          }
 
          if(body){
