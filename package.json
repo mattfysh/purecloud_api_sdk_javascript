@@ -22,6 +22,7 @@
     "jsdoc": "~3.3.3",
     "mustache": "~2.2.0",
     "purecloud-api-sdk-common": "git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
+		"superagent": "1.x",
     "run-sequence": "1.1.5",
     "gulp-jsdoc-to-markdown": "*",
     "dmd-kramdown-plugin": "*"
