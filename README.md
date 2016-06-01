@@ -87,7 +87,7 @@ If you already have a bearer token, you can specify it using
 
 ~~~
 var pureCloudSession = new PureCloudSession();
-pureCloudSession.setAuthToken("MYTOKEN");
+pureCloudSession.authToken("MYTOKEN");
 ~~~
 
 ## Making Requests
