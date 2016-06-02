@@ -1,0 +1,18 @@
+## Common Responses
+{{#responses}}
+### {{&code}}
+{{&description}}
+
+#### Error Codes
+Code | Description
+---- | ----------
+{{#errorCodes}}
+{{&code}} | {{&description}}
+{{/errorCodes}}
+
+{{/responses}}
+
+### Error Response Body
+~~~javascript
+{{&exampleBody}}
+~~~

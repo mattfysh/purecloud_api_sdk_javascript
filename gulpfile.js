@@ -7,6 +7,7 @@ var concat = require('gulp-concat');
 var addsrc = require('gulp-add-src');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
+var insert = require('gulp-insert');
 var fs = require('fs');
 var Mustache = require('mustache');
 var _ = require('lodash');
@@ -175,8 +176,21 @@ function parseJsonSchema(opts, type){
                 method.parameters.push(parameter);
 
             });
+
             if(method.parameters.length > 0){
                 method.parameters[method.parameters.length-1].last = true;
+            }
+
+            if(op.responses['200'] != null){
+                var response = op.responses['200']
+
+                if (response.schema){
+                    if(response.schema["$ref"]){
+                        method.response200 = getModelDefinition(false, swagger, response.schema["$ref"], 0);
+                    }else if(response.schema.items && response.schema.items["$ref"]){
+                        method.response200 = JSON.stringify(JSON.parse("[" + getModelDefinition(false, swagger, response.schema.items["$ref"], 0) + "]"), null, " ");
+                    }
+                }
             }
 
             for(var tagIndex =0; tagIndex < op.tags.length; tagIndex++){
@@ -232,10 +246,44 @@ var buildNode = function() {
                 .pipe(gulp.dest('./dist/'));
 };
 
+function getCommonResponsesDocumentation(){
+    var file = 'swagger.json';
+    var swagger = JSON.parse(fs.readFileSync(file, 'UTF-8'));
+
+    var commonData = {
+        responses: []
+    };
+    commonData.exampleBody = getModelDefinition(true, swagger, "#/definitions/ErrorBody", 0);
+
+
+    _.forEach(swagger.paths["/api/v2/users"].post.responses, function(response, code){
+        if(code !== 200){
+            var newResponse = {
+                code: code,
+                description: response.description
+            }
+            newResponse.errorCodes = [];
+            _.forEach(response['x-inin-error-codes'], function(description, errorcode){
+                newResponse.errorCodes.push({
+                    code: errorcode,
+                    description: description
+                })
+            });
+            commonData.responses.push (newResponse)
+        }
+    });
+    console.log(commonData)
+    var source = Mustache.render(fs.readFileSync('templates/common_responses.mustache', 'utf-8'), commonData);
+    return source;
+
+}
+
 gulp.task('doc', function() {
     gulp.src('./README.md')
             .pipe(rename("index.md"))
+            .pipe(insert.append(getCommonResponsesDocumentation()))
             .pipe(gulp.dest('./doc/'));
+
 
     return gulp.src('dist/partials/purecloudsession.js')
         .pipe(concat('PureCloudSession.md'))
