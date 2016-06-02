@@ -1,6 +1,6 @@
 {
   "name": "purecloud_api_sdk_javascript",
-  "version": "0.38.0",
+  "version": "0.41.0",
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "dependencies": {
@@ -9,8 +9,8 @@
     "request": "*"
   },
   "devDependencies": {
-      "lodash": "4.0.0",
-      "gulp-jshint": "1.12.0",
+    "lodash": "4.0.0",
+    "gulp-jshint": "1.12.0",
     "gulp": "^3.9.0",
     "gulp-add-src": "^0.2.0",
     "gulp-concat": "^2.6.0",
@@ -20,13 +20,13 @@
     "gulp-replace": "*",
     "gulp-rimraf": "^0.1.1",
     "jasmine": "^2.4.1",
-     "jsdoc": "~3.3.3",
+    "jsdoc": "~3.3.3",
     "mustache": "~2.2.0",
     "purecloud-api-sdk-common": "git://github.com/MyPureCloud/purecloud_api_sdk_common.git",
+		"superagent": "1.x",
     "run-sequence": "1.1.5",
     "gulp-jsdoc-to-markdown": "*",
     "dmd-kramdown-plugin": "*"
-
   },
   "scripts": {
     "test": "jasmine"

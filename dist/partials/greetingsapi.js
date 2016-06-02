@@ -233,8 +233,13 @@ var GreetingsApi = function (pureCloudSession) {
      * @summary Get media playback URI for this greeting
 	 * @memberOf GreetingsApi#
 	* @param {string} greetingId - Greeting ID
-	* @param {string} formatId - The desired format (WAV, etc.)
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getGreetingIdMedia(greetingId, formatId){
 		var apipath = '/api/v2/greetings/{greetingId}/media';

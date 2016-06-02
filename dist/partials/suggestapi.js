@@ -51,15 +51,15 @@ var SuggestApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "types": [],
+   "query": [],
+   "aggregations": []
 }
 	*/
 	function postSearch(body, profile){
@@ -118,14 +118,7 @@ var SuggestApi = function (pureCloudSession) {
 	 * Body Example:
 	 * {
    "types": [],
-   "sortOrder": "",
-   "query": [],
-   "sortBy": "",
-   "pageSize": 0,
-   "pageNumber": 0,
-   "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "query": []
 }
 	*/
 	function postSuggest(body, profile){

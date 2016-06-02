@@ -79,15 +79,13 @@ var LocationsApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "types": [],
    "sortOrder": "",
-   "query": [],
    "sortBy": "",
    "pageSize": 0,
    "pageNumber": 0,
    "returnFields": [],
-   "aggregations": [],
-   "expand": []
+   "expand": [],
+   "query": []
 }
 	*/
 	function postSearch(body){

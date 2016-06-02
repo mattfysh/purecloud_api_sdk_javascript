@@ -172,6 +172,45 @@ var ConversationsApi = function (pureCloudSession) {
 	}
 	self.getCallbacks = getCallbacks;
 	/**
+     * @summary Create a Callback
+	 * @memberOf ConversationsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
+   "scriptId": "",
+   "queueId": "",
+   "routingData": {
+      "queueId": "",
+      "languageId": "",
+      "priority": 0,
+      "skillIds": [],
+      "preferredAgentIds": []
+   },
+   "callbackUserName": "",
+   "callbackNumbers": [],
+   "callbackScheduledTime": "",
+   "countryCode": "",
+   "skipEnabled": true,
+   "additionalInfo": {}
+}
+	*/
+	function postCallbacks(body){
+		var apipath = '/api/v2/conversations/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallbacks = postCallbacks;
+	/**
      * @summary Get callback conversation
 	 * @memberOf ConversationsApi#
 	* @param {string} callbackId - 
@@ -440,6 +479,39 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postCalls = postCalls;
+	/**
+     * @summary Get call history
+	 * @memberOf ConversationsApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} interval - Interval string; format is ISO-8601. Separate start and end times with forward slash '/'
+	*/
+	function getCallsHistory(pageSize, pageNumber, interval){
+		var apipath = '/api/v2/conversations/calls/history';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(interval !== undefined && interval !== null){
+			queryParameters.interval = interval;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsHistory = getCallsHistory;
 	/**
      * @summary Get the maximum number of participants that this user can have on a conference
 	 * @memberOf ConversationsApi#
@@ -1610,7 +1682,8 @@ var ConversationsApi = function (pureCloudSession) {
       "dateCreated": "",
       "dateModified": "",
       "summary": {},
-      "acl": []
+      "acl": [],
+      "description": ""
    },
    "coverSheet": {
       "notes": "",
@@ -1759,11 +1832,19 @@ var ConversationsApi = function (pureCloudSession) {
 	 * {
    "scriptId": "",
    "queueId": "",
+   "routingData": {
+      "queueId": "",
+      "languageId": "",
+      "priority": 0,
+      "skillIds": [],
+      "preferredAgentIds": []
+   },
    "callbackUserName": "",
    "callbackNumbers": [],
    "callbackScheduledTime": "",
    "countryCode": "",
-   "skipEnabled": true
+   "skipEnabled": true,
+   "additionalInfo": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){

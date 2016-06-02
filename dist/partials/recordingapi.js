@@ -14,11 +14,17 @@ var RecordingApi = function (pureCloudSession) {
      * @summary Get all of a Conversation's Recordings.
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
+	Any integer greater than or equal to 0.,
+	* @param {string} formatId - The desired media format
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
-	function getConversationIdRecordings(conversationId, formatId){
+	function getConversationIdRecordings(conversationId, maxWaitMs, formatId){
 		var apipath = '/api/v2/conversations/{conversationId}/recordings';
 	    var requestBody;
 	    var queryParameters = {};
@@ -30,6 +36,11 @@ var RecordingApi = function (pureCloudSession) {
         if(conversationId === undefined && conversationId !== null){
 			throw 'Missing required  parameter: conversationId';
         }
+
+
+		if(maxWaitMs !== undefined && maxWaitMs !== null){
+			queryParameters.maxWaitMs = maxWaitMs;
+		}
 
 
 		if(formatId !== undefined && formatId !== null){
@@ -45,9 +56,13 @@ var RecordingApi = function (pureCloudSession) {
 	 * @memberOf RecordingApi#
 	* @param {string} conversationId - Conversation ID
 	* @param {string} recordingId - Recording ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	* @param {boolean} download - requesting a download format of the recording
 	true,
 	false,

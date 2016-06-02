@@ -161,9 +161,13 @@ var VoicemailApi = function (pureCloudSession) {
      * @summary Get media playback URI for this message
 	 * @memberOf VoicemailApi#
 	* @param {string} messageId - Message ID
-	* @param {string} formatId - The desired media format (WEBM, WAV)
-	WEBM,
+	* @param {string} formatId - The desired media format.
 	WAV,
+	WEBM,
+	WAV_ULAW,
+	OGG_VORBIS,
+	OGG_OPUS,
+	NONE,
 	*/
 	function getMessagesMessageIdMedia(messageId, formatId){
 		var apipath = '/api/v2/voicemail/messages/{messageId}/media';
