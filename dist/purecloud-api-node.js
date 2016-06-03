@@ -10994,10 +10994,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
-      "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "previousUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -11059,10 +11059,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
-      "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "previousUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -11436,10 +11436,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
-      "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "previousUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -18545,8 +18545,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
-      "latestRelease": true
+      "latestRelease": true,
+      "current": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -20442,7 +20442,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.43.0
+//API VERSION - 0.44.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20712,7 +20712,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.43.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.44.0";
          }
 
          if(body){
