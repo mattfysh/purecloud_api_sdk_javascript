@@ -20442,7 +20442,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.42.0
+//API VERSION - 0.43.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20517,11 +20517,11 @@ var PureCloudSession =  function (purecloudEnvironment) {
     self.getState = getState;
 
     /**
-	 * Initiates a redirect to authorize the client using oauth.  This is not a valid operation in NodeJS usage.
+	 * Initiates a redirect to authorize the client using oauth.  This is not a valid operation in NodeJS usage. The callback will also pass in the current user's information from the /users/me call.
      * @memberof PureCloudSession#
      * @param  {string} clientId    The application's Client ID
 	 * @param  {string} redirectUrl The redirect URL to return to after authentication. This must be an authorized URL for the client.
-	 * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(){
+	 * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/').done(function(me){
          //this method will be called once we have a valid authorization token
          // if we don't have one a redirect to login will be called and then after redirecting back here,
          // the done method will be called.
@@ -20569,7 +20569,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         if(existingToken && existingToken !== ''){
             _token = existingToken;
-            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me").done(function(){
+            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me").done(function(me){
                 //has good auth token
                 _token = existingToken;
 
@@ -20577,7 +20577,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
                     window.localStorage.authtoken = _token;
                 }
 
-                _doneCallback();
+                _doneCallback(me);
 
             }).error(function(){
                 //don't have an auth token yet
@@ -20712,7 +20712,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.42.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.43.0";
          }
 
          if(body){
