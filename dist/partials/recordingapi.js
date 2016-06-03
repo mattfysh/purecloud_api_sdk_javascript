@@ -585,6 +585,7 @@ var RecordingApi = function (pureCloudSession) {
    "actions": {
       "retainRecording": true,
       "deleteRecording": true,
+      "alwaysDelete": true,
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
@@ -691,6 +692,7 @@ var RecordingApi = function (pureCloudSession) {
    "actions": {
       "retainRecording": true,
       "deleteRecording": true,
+      "alwaysDelete": true,
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
@@ -777,6 +779,7 @@ var RecordingApi = function (pureCloudSession) {
    "actions": {
       "retainRecording": true,
       "deleteRecording": true,
+      "alwaysDelete": true,
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],

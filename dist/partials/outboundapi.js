@@ -549,7 +549,8 @@ var OutboundApi = function (pureCloudSession) {
    "previewTimeOutSeconds": 0,
    "contactSort": {
       "fieldName": "",
-      "direction": ""
+      "direction": "",
+      "numeric": true
    }
 }
 	*/
@@ -663,7 +664,8 @@ var OutboundApi = function (pureCloudSession) {
    "previewTimeOutSeconds": 0,
    "contactSort": {
       "fieldName": "",
-      "direction": ""
+      "direction": "",
+      "numeric": true
    }
 }
 	*/

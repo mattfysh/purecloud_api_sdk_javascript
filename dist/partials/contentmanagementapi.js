@@ -23,7 +23,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "facetNameRequests": [],
    "sort": [],
    "filters": [],
-   "attributeFilters": []
+   "attributeFilters": [],
+   "includeShares": true
 }
 	*/
 	function postAuditquery(body){
@@ -477,7 +478,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "facetNameRequests": [],
    "sort": [],
    "filters": [],
-   "attributeFilters": []
+   "attributeFilters": [],
+   "includeShares": true
 }
 	*/
 	function postQuery(body, expand){

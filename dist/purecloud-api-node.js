@@ -1773,7 +1773,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "facetNameRequests": [],
    "sort": [],
    "filters": [],
-   "attributeFilters": []
+   "attributeFilters": [],
+   "includeShares": true
 }
 	*/
 	function postAuditquery(body){
@@ -2227,7 +2228,8 @@ var ContentManagementApi = function (pureCloudSession) {
    "facetNameRequests": [],
    "sort": [],
    "filters": [],
-   "attributeFilters": []
+   "attributeFilters": [],
+   "includeShares": true
 }
 	*/
 	function postQuery(body, expand){
@@ -3356,7 +3358,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "additionalInfo": {}
+   "data": {}
 }
 	*/
 	function postCallbacks(body){
@@ -5008,7 +5010,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "additionalInfo": {}
+   "data": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
@@ -6179,6 +6181,66 @@ var IdentityProviderApi = function (pureCloudSession) {
 	}
 	self.getIdentityproviders = getIdentityproviders;
 	/**
+     * @summary Get ADFS Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getAdfs(){
+		var apipath = '/api/v2/identityproviders/adfs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getAdfs = getAdfs;
+	/**
+     * @summary Update/Create ADFS Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "relyingPartyIdentifier": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true
+}
+	*/
+	function putAdfs(body){
+		var apipath = '/api/v2/identityproviders/adfs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putAdfs = putAdfs;
+	/**
+     * @summary Delete ADFS Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteAdfs(){
+		var apipath = '/api/v2/identityproviders/adfs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteAdfs = deleteAdfs;
+	/**
      * @summary Get Customer Interaction Center (CIC) Identity Provider
 	 * @memberOf IdentityProviderApi#
 	*/
@@ -6203,7 +6265,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putCic(body){
@@ -6261,7 +6324,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putOkta(body){
@@ -6319,7 +6383,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putOnelogin(body){
@@ -6374,7 +6439,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "disabled": true
 }
 	*/
 	function putPurecloud(body){
@@ -6432,7 +6498,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putSalesforce(body){
@@ -6487,7 +6554,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "disabled": true
 }
 	*/
 	function putProviderId(body){
@@ -7747,7 +7815,8 @@ var OutboundApi = function (pureCloudSession) {
    "previewTimeOutSeconds": 0,
    "contactSort": {
       "fieldName": "",
-      "direction": ""
+      "direction": "",
+      "numeric": true
    }
 }
 	*/
@@ -7861,7 +7930,8 @@ var OutboundApi = function (pureCloudSession) {
    "previewTimeOutSeconds": 0,
    "contactSort": {
       "fieldName": "",
-      "direction": ""
+      "direction": "",
+      "numeric": true
    }
 }
 	*/
@@ -12002,6 +12072,7 @@ var RecordingApi = function (pureCloudSession) {
    "actions": {
       "retainRecording": true,
       "deleteRecording": true,
+      "alwaysDelete": true,
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
@@ -12108,6 +12179,7 @@ var RecordingApi = function (pureCloudSession) {
    "actions": {
       "retainRecording": true,
       "deleteRecording": true,
+      "alwaysDelete": true,
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
@@ -12194,6 +12266,7 @@ var RecordingApi = function (pureCloudSession) {
    "actions": {
       "retainRecording": true,
       "deleteRecording": true,
+      "alwaysDelete": true,
       "assignEvaluations": [],
       "assignMeteredEvaluations": [],
       "assignCalibrations": [],
@@ -12500,7 +12573,8 @@ var ResponseManagementApi = function (pureCloudSession) {
       "username": "",
       "images": []
    },
-   "dateCreated": ""
+   "dateCreated": "",
+   "interactionType": ""
 }
 	*/
 	function postResponses(body){
@@ -12590,7 +12664,8 @@ var ResponseManagementApi = function (pureCloudSession) {
       "username": "",
       "images": []
    },
-   "dateCreated": ""
+   "dateCreated": "",
+   "interactionType": ""
 }
 	*/
 	function putResponsesResponseId(responseId, body){
@@ -16971,7 +17046,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.postProvidersEdgesPhonesPhoneIdReboot = postProvidersEdgesPhonesPhoneIdReboot;
 	/**
-     * @summary Get the list of sites.
+     * @summary Get the list of Sites.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -17022,7 +17097,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgesSites = getProvidersEdgesSites;
 	/**
-     * @summary Create a endpoint.
+     * @summary Create a Site.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {} body - Site
 	 * @example
@@ -17074,7 +17149,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.postProvidersEdgesSites = postProvidersEdgesSites;
 	/**
-     * @summary Get endpoint.
+     * @summary Get a Site by ID.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	*/
@@ -17096,7 +17171,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgesSitesSiteId = getProvidersEdgesSitesSiteId;
 	/**
-     * @summary Update a endpoint.
+     * @summary Update a Site by ID.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	* @param {} body - Site
@@ -17155,7 +17230,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.putProvidersEdgesSitesSiteId = putProvidersEdgesSitesSiteId;
 	/**
-     * @summary Delete an ednpoint
+     * @summary Delete a Site by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	*/
@@ -20367,7 +20442,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.41.0
+//API VERSION - 0.42.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20637,7 +20712,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.41.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.42.0";
          }
 
          if(body){

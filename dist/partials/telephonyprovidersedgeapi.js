@@ -2427,7 +2427,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.postProvidersEdgesPhonesPhoneIdReboot = postProvidersEdgesPhonesPhoneIdReboot;
 	/**
-     * @summary Get the list of sites.
+     * @summary Get the list of Sites.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {integer} pageSize - Page size
 	* @param {integer} pageNumber - Page number
@@ -2478,7 +2478,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgesSites = getProvidersEdgesSites;
 	/**
-     * @summary Create a endpoint.
+     * @summary Create a Site.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {} body - Site
 	 * @example
@@ -2530,7 +2530,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.postProvidersEdgesSites = postProvidersEdgesSites;
 	/**
-     * @summary Get endpoint.
+     * @summary Get a Site by ID.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	*/
@@ -2552,7 +2552,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.getProvidersEdgesSitesSiteId = getProvidersEdgesSitesSiteId;
 	/**
-     * @summary Update a endpoint.
+     * @summary Update a Site by ID.
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	* @param {} body - Site
@@ -2611,7 +2611,7 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	}
 	self.putProvidersEdgesSitesSiteId = putProvidersEdgesSitesSiteId;
 	/**
-     * @summary Delete an ednpoint
+     * @summary Delete a Site by ID
 	 * @memberOf TelephonyProvidersEdgeApi#
 	* @param {string} siteId - Site ID
 	*/
