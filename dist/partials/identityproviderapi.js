@@ -26,6 +26,66 @@ var IdentityProviderApi = function (pureCloudSession) {
 	}
 	self.getIdentityproviders = getIdentityproviders;
 	/**
+     * @summary Get ADFS Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function getAdfs(){
+		var apipath = '/api/v2/identityproviders/adfs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getAdfs = getAdfs;
+	/**
+     * @summary Update/Create ADFS Identity Provider
+	 * @memberOf IdentityProviderApi#
+	* @param {} body - Provider
+	 * @example
+	 * Body Example:
+	 * {
+   "name": "",
+   "relyingPartyIdentifier": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true
+}
+	*/
+	function putAdfs(body){
+		var apipath = '/api/v2/identityproviders/adfs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putAdfs = putAdfs;
+	/**
+     * @summary Delete ADFS Identity Provider
+	 * @memberOf IdentityProviderApi#
+	*/
+	function deleteAdfs(){
+		var apipath = '/api/v2/identityproviders/adfs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteAdfs = deleteAdfs;
+	/**
      * @summary Get Customer Interaction Center (CIC) Identity Provider
 	 * @memberOf IdentityProviderApi#
 	*/
@@ -50,7 +110,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putCic(body){
@@ -108,7 +169,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putOkta(body){
@@ -166,7 +228,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putOnelogin(body){
@@ -221,7 +284,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "disabled": true
 }
 	*/
 	function putPurecloud(body){
@@ -279,7 +343,8 @@ var IdentityProviderApi = function (pureCloudSession) {
    "name": "",
    "certificate": "",
    "issuerURI": "",
-   "ssoTargetURI": ""
+   "ssoTargetURI": "",
+   "disabled": true
 }
 	*/
 	function putSalesforce(body){
@@ -334,7 +399,8 @@ var IdentityProviderApi = function (pureCloudSession) {
 	 * @example
 	 * Body Example:
 	 * {
-   "name": ""
+   "name": "",
+   "disabled": true
 }
 	*/
 	function putProviderId(body){

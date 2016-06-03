@@ -222,7 +222,8 @@ var ResponseManagementApi = function (pureCloudSession) {
       "username": "",
       "images": []
    },
-   "dateCreated": ""
+   "dateCreated": "",
+   "interactionType": ""
 }
 	*/
 	function postResponses(body){
@@ -312,7 +313,8 @@ var ResponseManagementApi = function (pureCloudSession) {
       "username": "",
       "images": []
    },
-   "dateCreated": ""
+   "dateCreated": "",
+   "interactionType": ""
 }
 	*/
 	function putResponsesResponseId(responseId, body){
