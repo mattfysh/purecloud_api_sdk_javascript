@@ -10994,10 +10994,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "lastUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -11059,10 +11059,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "lastUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -11436,10 +11436,10 @@ var QualityApi = function (pureCloudSession) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "lastUri": "",
-      "previousUri": "",
       "firstUri": "",
+      "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -18545,8 +18545,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "latestRelease": true,
-      "current": true
+      "current": true,
+      "latestRelease": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -20442,7 +20442,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.44.0
+//API VERSION - 0.45.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20569,7 +20569,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         if(existingToken && existingToken !== ''){
             _token = existingToken;
-            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me").done(function(me){
+            sendRestRequest("GET", "https://" + _host + "/api/v2/users/me?expand=organization").done(function(me){
                 //has good auth token
                 _token = existingToken;
 
@@ -20712,7 +20712,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.44.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.45.0";
          }
 
          if(body){

@@ -3926,8 +3926,8 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "latestRelease": true,
-      "current": true
+      "current": true,
+      "latestRelease": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
