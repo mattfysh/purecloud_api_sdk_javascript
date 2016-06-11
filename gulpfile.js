@@ -17,8 +17,8 @@ var pclibSwaggerGen = require('purecloud-api-sdk-common').swaggerGen();
 var pclibSwaggerVersion = require('purecloud-api-sdk-common').swaggerVersioning();
 var pclib = require('purecloud-api-sdk-common');
 var runSequence = require('run-sequence');
-var gulpJsdoc2md = require('gulp-jsdoc-to-markdown')
-
+var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
+var openapiModelExample = require('openapi-model-example');
 
 function getDefaultValue(type){
 
@@ -39,34 +39,6 @@ function getDefaultValue(type){
             return "{}";
 
     }
-}
-
-function getModelDefinition(isResponse, swagger, modelName, depth){
-    if(typeof(modelName) === "undefined"){
-        return "";
-    }
-    var modelName = modelName.replace('#/definitions/','');
-    if(depth >1){
-        return "{}";
-    }
-
-    var definition = [];
-
-    var properties = swagger.definitions[modelName].properties;
-    for(var name in properties){
-        var defaultValue = '""';
-        if(properties[name]["$ref"]){
-            defaultValue = getModelDefinition(isResponse, swagger, properties[name]["$ref"], depth + 1);
-        }else{
-            defaultValue = getDefaultValue(properties[name].type);
-        }
-
-        if(isResponse === true || properties[name].readOnly !== true){
-            definition.push('"' + name + '" : ' + defaultValue );
-        }
-    }
-
-    return JSON.stringify(JSON.parse("{" + definition.join(',') + "}"), null, "   ");
 }
 
 var camelCase = function(id) {
@@ -163,9 +135,9 @@ function parseJsonSchema(opts, type){
                 if(parameter.in === 'body'){
                     parameter.isBodyParameter = true;
                     if(parameter.schema["$ref"]){
-                        method.bodyExample = getModelDefinition(false, swagger, parameter.schema["$ref"], 0);
+                        method.bodyExample = openapiModelExample.getModelExample(parameter.schema["$ref"], swagger, false);
                     }else if(parameter.schema.items && parameter.schema.items["$ref"]){
-                        method.bodyExample = JSON.stringify(JSON.parse("[" + getModelDefinition(false, swagger, parameter.schema.items["$ref"], 0) + "]"), null, " ");
+                        method.bodyExample = JSON.stringify(JSON.parse("[" + openapiModelExample.getModelExample(parameter.schema.items["$ref"], swagger, false) + "]"), null, " ");
                     }
 
                 } else if(parameter.in === 'path'){
@@ -186,9 +158,9 @@ function parseJsonSchema(opts, type){
 
                 if (response.schema){
                     if(response.schema["$ref"]){
-                        method.response200 = getModelDefinition(false, swagger, response.schema["$ref"], 0);
+                        method.response200 = openapiModelExample.getModelExample(response.schema["$ref"], swagger, true);
                     }else if(response.schema.items && response.schema.items["$ref"]){
-                        method.response200 = JSON.stringify(JSON.parse("[" + getModelDefinition(false, swagger, response.schema.items["$ref"], 0) + "]"), null, " ");
+                        method.response200 = JSON.stringify(JSON.parse("[" +  openapiModelExample.getModelExample(response.schema.items["$ref"], swagger, true) + "]"), null, " ");
                     }
                 }
             }
@@ -253,7 +225,7 @@ function getCommonResponsesDocumentation(){
     var commonData = {
         responses: []
     };
-    commonData.exampleBody = getModelDefinition(true, swagger, "#/definitions/ErrorBody", 0);
+    commonData.exampleBody = openapiModelExample.getModelDefinition("#/definitions/ErrorBody", swagger, true) ;
 
 
     _.forEach(swagger.paths["/api/v2/users"].post.responses, function(response, code){
