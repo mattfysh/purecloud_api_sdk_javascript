@@ -26,7 +26,8 @@
     "superagent": "1.x",
     "run-sequence": "1.1.5",
     "gulp-jsdoc-to-markdown": "*",
-    "dmd-kramdown-plugin": "*"
+    "dmd-kramdown-plugin": "*",
+    "openapi-model-example": "git://github.com/KevinGlinski/openapi-model-example.git"
   },
   "scripts": {
     "test": "jasmine"
