@@ -90,6 +90,14 @@ var pureCloudSession = new PureCloudSession();
 pureCloudSession.authToken("MYTOKEN");
 ~~~
 
+## Setting the Environment
+
+If connecting to a PureCloud environment other than mypurecloud.com (e.g. mypurecloud.ie), set the new host before constructing any API classes. The host is set in the constructor for _PureCloudSession_.
+
+~~~
+var pureCloudSession = new PureCloudSession('mypurecloud.ie');
+~~~
+
 ## Making Requests
 Requests return the JQuery deferred object https://api.jquery.com/category/deferred-object/ so handlers can be registered to that response.
 
