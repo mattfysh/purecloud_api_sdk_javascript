@@ -225,7 +225,7 @@ function getCommonResponsesDocumentation(){
     var commonData = {
         responses: []
     };
-    commonData.exampleBody = openapiModelExample.getModelDefinition("#/definitions/ErrorBody", swagger, true) ;
+    commonData.exampleBody = openapiModelExample.getModelExample("#/definitions/ErrorBody", swagger, true) ;
 
 
     _.forEach(swagger.paths["/api/v2/users"].post.responses, function(response, code){
