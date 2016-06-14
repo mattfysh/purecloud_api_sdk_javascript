@@ -1,4 +1,4 @@
-//API VERSION - 0.45.0
+//API VERSION - 0.46.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -8,7 +8,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
     var _environment = purecloudEnvironment || "mypurecloud.com";
     var _host = 'api.'+ _environment;
-    var _auth_url = '';
+    var _auth_url = 'https://login.'+_environment;
 
     var _token = null;
     var _state = null;
@@ -86,6 +86,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
      * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/', "State Value");
      */
     function authorize(clientId, redirectUrl, state){
+
         var _doneCallback = function(){console.error("callback not set");};
 
         var defer = {
@@ -105,7 +106,6 @@ var PureCloudSession =  function (purecloudEnvironment) {
         }
 
         function authRedirect(){
-            _auth_url = 'https://login.'+_environment;
 
             var url = _auth_url + '/authorize' +
                 '?response_type=token' +
@@ -268,7 +268,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.45.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.46.0";
          }
 
          if(body){
