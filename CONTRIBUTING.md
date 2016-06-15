@@ -23,7 +23,7 @@ There are a series of integrations tests built using Phantom.js and are located 
 The `authenticationModule` is used to script the login using OAuth in Phantom.js.
 `pageHandlerMondule` is a simple module that handles a lot of the heavy lifting of operating a Phantom.js script, this leaves the actual page test scripts to be as simple as possible.
 
-When creating a new integration test for an example, start off with this basic template, replace the url parameter and fill out the validationCallback function with your asserts and checks.
+When creating a new integration test for an example, start off with this basic template, replace the url parameter and fill out the `validationCallback` function with your asserts and checks.
 
 ```js
 var url = 'http://localhost:8085/user_me.html';

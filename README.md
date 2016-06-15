@@ -8,8 +8,6 @@ Javascript wrapper around the PureCloud Platform API
 
 # Platform API Javascript Client
 
-Docs can be found at [https://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/](https://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/)
-
 Install with [Bower](http://bower.io):
 
 ```sh
@@ -29,6 +27,7 @@ Reference from the CDN:
 <script src="https://sdk-cdn.mypurecloud.com/javascript/0.46.0/purecloud-api-min.js"></script>
 ```
 
+View the documentation on the [Purecloud Developer Center](https://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/).
 View the source code on [Github](https://github.com/MyPureCloud/purecloud_api_sdk_javascript).
 
 # Using the Library
