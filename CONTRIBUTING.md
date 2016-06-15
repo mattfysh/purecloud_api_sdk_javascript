@@ -25,7 +25,7 @@ The `authenticationModule` is used to script the login using OAuth in Phantom.js
 
 When creating a new integration test for an example, start off with this basic template, replace the url parameter and fill out the `validationCallback` function with your asserts and checks.
 
-```js
+~~~js
 var url = 'http://localhost:8085/user_me.html';
 
 function validationCallback() {
@@ -35,4 +35,4 @@ function validationCallback() {
 var pageHandler = require('./pageHandlerModule');
 
 pageHandler.execute(url, validationCallback);
-```
+~~~
