@@ -2067,12 +2067,14 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
 	* @param {string} siteid - Filter by site.id
+	* @param {string} webRtcUserid - Filter by webRtcUser.id
 	* @param {string} phoneBaseSettingsid - Filter by phoneBaseSettings.id
+	* @param {string} linesloggedInUserid - Filter by lines.loggedInUser.id
 	* @param {string} phone_hardwareId - Filter by phone_hardwareId
 	* @param {array} expand - Fields to expand in the response, comma-separated
-	* @param {array} fields - Fields under properties to get, comma-separated
+	* @param {array} fields - Fields and properties to get, comma-separated
 	*/
-	function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, phoneBaseSettingsid, phone_hardwareId, expand, fields){
+	function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, expand, fields){
 		var apipath = '/api/v2/telephony/providers/edges/phones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -2105,8 +2107,18 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 		}
 
 
+		if(webRtcUserid !== undefined && webRtcUserid !== null){
+			queryParameters.webRtcUser.id = webRtcUserid;
+		}
+
+
 		if(phoneBaseSettingsid !== undefined && phoneBaseSettingsid !== null){
 			queryParameters.phoneBaseSettings.id = phoneBaseSettingsid;
+		}
+
+
+		if(linesloggedInUserid !== undefined && linesloggedInUserid !== null){
+			queryParameters.lines.loggedInUser.id = linesloggedInUserid;
 		}
 
 
@@ -2197,6 +2209,11 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "hardwareIdType": "",
       "allowReboot": true,
       "noRebalance": true
+   },
+   "webRtcUser": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
    }
 }
 	*/
@@ -2358,6 +2375,11 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "hardwareIdType": "",
       "allowReboot": true,
       "noRebalance": true
+   },
+   "webRtcUser": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
    }
 }
 	*/

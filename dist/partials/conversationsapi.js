@@ -192,7 +192,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "data": {}
+   "additionalInfo": {}
 }
 	*/
 	function postCallbacks(body){
@@ -1844,7 +1844,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "data": {}
+   "additionalInfo": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
@@ -1874,6 +1874,42 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postConversationIdParticipantsParticipantIdCallbacks = postConversationIdParticipantsParticipantIdCallbacks;
+	/**
+     * @summary Delete a code used to add a communication to this participant
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {string} addCommunicationCode - addCommunicationCode
+	*/
+	function deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode(conversationId, participantId, addCommunicationCode){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/codes/{addCommunicationCode}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        apipath = apipath.replace('{addCommunicationCode}', addCommunicationCode);
+
+        if(addCommunicationCode === undefined && addCommunicationCode !== null){
+			throw 'Missing required  parameter: addCommunicationCode';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode = deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode;
 	/**
      * @summary Replace this participant with the specified user and/or address
 	 * @memberOf ConversationsApi#

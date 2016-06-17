@@ -15,8 +15,9 @@ var PresenceApi = function (pureCloudSession) {
 	 * @memberOf PresenceApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
+	* @param {string} doDeleted - Deleted query can be true, false or all
 	*/
-	function getPresencedefinitions(pageNumber, pageSize){
+	function getPresencedefinitions(pageNumber, pageSize, doDeleted){
 		var apipath = '/api/v2/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -31,6 +32,11 @@ var PresenceApi = function (pureCloudSession) {
 
 		if(pageSize !== undefined && pageSize !== null){
 			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(doDeleted !== undefined && doDeleted !== null){
+			queryParameters.deleted = doDeleted;
 		}
 
 

@@ -3351,7 +3351,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "data": {}
+   "additionalInfo": {}
 }
 	*/
 	function postCallbacks(body){
@@ -5003,7 +5003,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "data": {}
+   "additionalInfo": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
@@ -5033,6 +5033,42 @@ var ConversationsApi = function (pureCloudSession) {
 		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
 	}
 	self.postConversationIdParticipantsParticipantIdCallbacks = postConversationIdParticipantsParticipantIdCallbacks;
+	/**
+     * @summary Delete a code used to add a communication to this participant
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {string} addCommunicationCode - addCommunicationCode
+	*/
+	function deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode(conversationId, participantId, addCommunicationCode){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/codes/{addCommunicationCode}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        apipath = apipath.replace('{addCommunicationCode}', addCommunicationCode);
+
+        if(addCommunicationCode === undefined && addCommunicationCode !== null){
+			throw 'Missing required  parameter: addCommunicationCode';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode = deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode;
 	/**
      * @summary Replace this participant with the specified user and/or address
 	 * @memberOf ConversationsApi#
@@ -9487,8 +9523,9 @@ var PresenceApi = function (pureCloudSession) {
 	 * @memberOf PresenceApi#
 	* @param {integer} pageNumber - Page number
 	* @param {integer} pageSize - Page size
+	* @param {string} doDeleted - Deleted query can be true, false or all
 	*/
-	function getPresencedefinitions(pageNumber, pageSize){
+	function getPresencedefinitions(pageNumber, pageSize, doDeleted){
 		var apipath = '/api/v2/presencedefinitions';
 	    var requestBody;
 	    var queryParameters = {};
@@ -9503,6 +9540,11 @@ var PresenceApi = function (pureCloudSession) {
 
 		if(pageSize !== undefined && pageSize !== null){
 			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(doDeleted !== undefined && doDeleted !== null){
+			queryParameters.deleted = doDeleted;
 		}
 
 
@@ -16679,12 +16721,14 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 	* @param {string} sortBy - Value by which to sort
 	* @param {string} sortOrder - Sort order
 	* @param {string} siteid - Filter by site.id
+	* @param {string} webRtcUserid - Filter by webRtcUser.id
 	* @param {string} phoneBaseSettingsid - Filter by phoneBaseSettings.id
+	* @param {string} linesloggedInUserid - Filter by lines.loggedInUser.id
 	* @param {string} phone_hardwareId - Filter by phone_hardwareId
 	* @param {array} expand - Fields to expand in the response, comma-separated
-	* @param {array} fields - Fields under properties to get, comma-separated
+	* @param {array} fields - Fields and properties to get, comma-separated
 	*/
-	function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, phoneBaseSettingsid, phone_hardwareId, expand, fields){
+	function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, expand, fields){
 		var apipath = '/api/v2/telephony/providers/edges/phones';
 	    var requestBody;
 	    var queryParameters = {};
@@ -16717,8 +16761,18 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
 		}
 
 
+		if(webRtcUserid !== undefined && webRtcUserid !== null){
+			queryParameters.webRtcUser.id = webRtcUserid;
+		}
+
+
 		if(phoneBaseSettingsid !== undefined && phoneBaseSettingsid !== null){
 			queryParameters.phoneBaseSettings.id = phoneBaseSettingsid;
+		}
+
+
+		if(linesloggedInUserid !== undefined && linesloggedInUserid !== null){
+			queryParameters.lines.loggedInUser.id = linesloggedInUserid;
 		}
 
 
@@ -16809,6 +16863,11 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "hardwareIdType": "",
       "allowReboot": true,
       "noRebalance": true
+   },
+   "webRtcUser": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
    }
 }
 	*/
@@ -16970,6 +17029,11 @@ var TelephonyProvidersEdgeApi = function (pureCloudSession) {
       "hardwareIdType": "",
       "allowReboot": true,
       "noRebalance": true
+   },
+   "webRtcUser": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
    }
 }
 	*/
@@ -20435,7 +20499,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.45.0
+//API VERSION - 0.46.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20445,7 +20509,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
     var _environment = purecloudEnvironment || "mypurecloud.com";
     var _host = 'api.'+ _environment;
-    var _auth_url = '';
+    var _auth_url = 'https://login.'+_environment;
 
     var _token = null;
     var _state = null;
@@ -20523,6 +20587,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
      * @example pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', 'http://localhost:8085/examples/', "State Value");
      */
     function authorize(clientId, redirectUrl, state){
+
         var _doneCallback = function(){console.error("callback not set");};
 
         var defer = {
@@ -20542,7 +20607,6 @@ var PureCloudSession =  function (purecloudEnvironment) {
         }
 
         function authRedirect(){
-            _auth_url = 'https://login.'+_environment;
 
             var url = _auth_url + '/authorize' +
                 '?response_type=token' +
@@ -20705,7 +20769,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.45.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.46.0";
          }
 
          if(body){
