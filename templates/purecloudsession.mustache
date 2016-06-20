@@ -16,7 +16,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
     var _debug = false;
 
     if(typeof window !== 'undefined') {
-		if(window && window.localStorage && window.localStorage.authtoken){
+		if(window && window.localStorage && typeof(window.localStorage !== 'undefined)' && window.localStorage.authtoken){
             _token = window.localStorage.authtoken;
         }
 
@@ -97,7 +97,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         var existingToken = null;
 
-        if(window && window.localStorage){
+        if(window && window.localStorage && typeof(window.localStorage !== 'undefined)'){
             existingToken = window.localStorage.authtoken;
         }
 
