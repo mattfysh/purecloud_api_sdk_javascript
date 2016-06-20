@@ -20499,7 +20499,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.48.0
+//API VERSION - 0.48.1
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20769,7 +20769,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.48.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.48.1";
          }
 
          if(body){
