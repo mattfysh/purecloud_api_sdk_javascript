@@ -1216,9 +1216,9 @@ var QualityApi = function (pureCloudSession) {
       "entities": [],
       "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
-      "nextUri": "",
       "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -1281,9 +1281,9 @@ var QualityApi = function (pureCloudSession) {
       "entities": [],
       "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
-      "nextUri": "",
       "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -1658,9 +1658,9 @@ var QualityApi = function (pureCloudSession) {
       "entities": [],
       "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
-      "nextUri": "",
       "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
