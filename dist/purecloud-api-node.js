@@ -3358,7 +3358,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "additionalInfo": {}
+   "data": {}
 }
 	*/
 	function postCallbacks(body){
@@ -5010,7 +5010,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "additionalInfo": {}
+   "data": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
@@ -11037,9 +11037,9 @@ var QualityApi = function (pureCloudSession) {
       "entities": [],
       "selfUri": "",
       "firstUri": "",
-      "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
+      "previousUri": "",
       "pageCount": 0
    }
 }
@@ -11102,9 +11102,9 @@ var QualityApi = function (pureCloudSession) {
       "entities": [],
       "selfUri": "",
       "firstUri": "",
-      "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
+      "previousUri": "",
       "pageCount": 0
    }
 }
@@ -11479,9 +11479,9 @@ var QualityApi = function (pureCloudSession) {
       "entities": [],
       "selfUri": "",
       "firstUri": "",
-      "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
+      "previousUri": "",
       "pageCount": 0
    }
 }
@@ -20506,7 +20506,7 @@ var VoicemailApi = function (pureCloudSession) {
     return self;
 };
 
-//API VERSION - 0.46.0
+//API VERSION - 0.47.0
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -20776,7 +20776,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.46.0";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.47.0";
          }
 
          if(body){
