@@ -1,4 +1,4 @@
-//API VERSION - 0.48.1
+//API VERSION - 0.49.1
 /**
 * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
 * @class
@@ -16,9 +16,13 @@ var PureCloudSession =  function (purecloudEnvironment) {
     var _debug = false;
 
     if(typeof window !== 'undefined') {
-		if(window && window.localStorage && typeof(window.localStorage !== 'undefined') && window.localStorage.authtoken){
-            _token = window.localStorage.authtoken;
-        }
+        try{
+            //if we are sandboxed, we might not have access to localstorage
+            if(window && window.localStorage && typeof(window.localStorage !== 'undefined') && window.localStorage.authtoken){
+                _token = window.localStorage.authtoken;
+            }
+        }catch(ex){}
+
 
 		if(window.location.hash)
 		{
@@ -97,9 +101,12 @@ var PureCloudSession =  function (purecloudEnvironment) {
 
         var existingToken = null;
 
-        if(window && window.localStorage && typeof(window.localStorage !== 'undefined')){
-            existingToken = window.localStorage.authtoken;
-        }
+        try{
+            if(window && window.localStorage && typeof(window.localStorage !== 'undefined')){
+                existingToken = window.localStorage.authtoken;
+            }
+        }catch(ex){}
+
 
         if(_token){
             existingToken = _token;
@@ -129,10 +136,12 @@ var PureCloudSession =  function (purecloudEnvironment) {
                 //has good auth token
                 _token = existingToken;
 
-                if(window && window.localStorage){
-                    window.localStorage.authtoken = _token;
-                }
-
+                try{
+                    if(window && window.localStorage){
+                        window.localStorage.authtoken = _token;
+                    }
+                }catch(ex){}
+                
                 _doneCallback(me);
 
             }).error(function(){
@@ -268,7 +277,7 @@ var PureCloudSession =  function (purecloudEnvironment) {
          };
 
          if (typeof jsdom !== "undefined") {
-             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.48.1";
+             requestParams.headers['User-Agent'] = "PureCloud SDK/Javascript 0.49.1";
          }
 
          if(body){
