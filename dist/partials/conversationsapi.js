@@ -192,7 +192,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "additionalInfo": {}
+   "data": {}
 }
 	*/
 	function postCallbacks(body){
@@ -1844,7 +1844,7 @@ var ConversationsApi = function (pureCloudSession) {
    "callbackScheduledTime": "",
    "countryCode": "",
    "skipEnabled": true,
-   "additionalInfo": {}
+   "data": {}
 }
 	*/
 	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
