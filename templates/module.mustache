@@ -1,62 +1,71 @@
+//API VERSION - {{&version}}
 /**
 * @class
 * @example
 * var api = new {{&moduleName}}(pureCloudSession);
 */
-function {{&moduleName}}(session) {
-    if(!(this instanceof {{&moduleName}})) {
-        return new {{&moduleName}}(session);
+var {{&moduleName}} = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('{{&moduleName}} requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-{{#value}}
-/**
-  * @summary {{&summary}}
-  {{#hasDescription}}
-  * @description {{&description}}
-  {{/hasDescription}}
-  * @memberOf {{&moduleName}}#
-  {{#parameters}}
-  * @param {{=<% %>=}}{<%&type%>}<%={{ }}=%> {{&camelCaseName}} - {{&description}}
-  {{#enum}}
-  {{.}},
-  {{/enum}}
-  {{/parameters}}
-  {{#bodyExample}}
-  * @example
-  * Body Example:
-  * {{&bodyExample}}
-  {{/bodyExample}}
-  */
-{{&moduleName}}.prototype.{{&methodName}} = function {{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}}){
-    var requestPath = '{{&path}}';
-    var requestQuery = {};
-    var requestBody;
-
+	var self = this;
+	{{#value}}
+	/**
+     * @summary {{&summary}}
+	 {{#hasDescription}}
+	 * @description {{&description}}
+	 {{/hasDescription}}
+	 * @memberOf {{&moduleName}}#
     {{#parameters}}
-      {{#required}}
-    if({{&camelCaseName}} === undefined || {{&camelCaseName}} === null){
-      throw new Error('Missing required {{&paramType}} parameter: {{&camelCaseName}}');
-    }
-      {{/required}}
-      {{#isPathParameter}}
-    requestPath = requestPath.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', {{&camelCaseName}});
-      {{/isPathParameter}}
-      {{#isQueryParameter}}
-    requestQuery.{{&name}} = {{&camelCaseName}};
-      {{/isQueryParameter}}
-      {{#isBodyParameter}}
-    if({{&camelCaseName}} !== undefined && {{&camelCaseName}} !== null){
-      requestBody = {{&camelCaseName}};
-    }
-      {{/isBodyParameter}}
+	* @param {{=<% %>=}}{<%&type%>}<%={{ }}=%> {{&camelCaseName}} - {{&description}}
+	{{#enum}}
+	{{.}},
+	{{/enum}}
     {{/parameters}}
-    return this.session.makeRequest('{{&method}}', requestPath, requestQuery, requestBody);
+	{{#bodyExample}}
+	 * @example
+	 * Body Example:
+	 * {{&bodyExample}}
+	{{/bodyExample}}
+	*/
+	function {{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}}){
+		var apipath = '{{&path}}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+	    {{#parameters}}
+        {{#isQueryParameter}}
+
+		if({{&camelCaseName}} !== undefined && {{&camelCaseName}} !== null){
+			queryParameters.{{&name}} = {{&camelCaseName}};
+		}
+
+		{{/isQueryParameter}}
+        {{#isPathParameter}}
+        apipath = apipath.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', {{&camelCaseName}});
+
+		{{/isPathParameter}}
+        {{#isBodyParameter}}
+        if({{&camelCaseName}} !== undefined && {{&camelCaseName}} !== null){
+            requestBody = {{&camelCaseName}};
+        }
+
+		{{/isBodyParameter}}
+        {{#required}}
+        if({{&camelCaseName}} === undefined && {{&camelCaseName}} !== null){
+			throw 'Missing required {{&paramType}} parameter: {{&camelCaseName}}';
+        }
+
+		{{/required}}
+	    {{/parameters}}
+
+		return pureCloudSession.makeRequest('{{&method}}', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.{{&methodName}} = {{&methodName}};
+	{{/value}}
+
+    return self;
 };
-
-{{/value}}
-

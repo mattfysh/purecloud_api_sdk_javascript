@@ -1,25 +1,22 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new RoutingApi(pureCloudSession);
 */
-function RoutingApi(session) {
-    if(!(this instanceof RoutingApi)) {
-        return new RoutingApi(session);
+var RoutingApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('RoutingApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Query for queue observations
-  * @memberOf RoutingApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+	var self = this;
+	/**
+     * @summary Query for queue observations
+	 * @memberOf RoutingApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "filter": {
       "type": "",
       "clauses": [],
@@ -27,95 +24,116 @@ function RoutingApi(session) {
    },
    "metrics": []
 }
-  */
-RoutingApi.prototype.postQueuesObservationsQuery = function postQueuesObservationsQuery(body){
-    var requestPath = '/api/v2/analytics/queues/observations/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postQueuesObservationsQuery(body){
+		var apipath = '/api/v2/analytics/queues/observations/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get domains
-  * @memberOf RoutingApi#
-  */
-RoutingApi.prototype.getEmailDomains = function getEmailDomains(){
-    var requestPath = '/api/v2/routing/email/domains';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postQueuesObservationsQuery = postQueuesObservationsQuery;
+	/**
+     * @summary Get domains
+	 * @memberOf RoutingApi#
+	*/
+	function getEmailDomains(){
+		var apipath = '/api/v2/routing/email/domains';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a domain
-  * @memberOf RoutingApi#
-  * @param {} body - Domain
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailDomains = getEmailDomains;
+	/**
+     * @summary Create a domain
+	 * @memberOf RoutingApi#
+	* @param {} body - Domain
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "mxRecordStatus": "",
    "subDomain": true
 }
-  */
-RoutingApi.prototype.postEmailDomains = function postEmailDomains(body){
-    var requestPath = '/api/v2/routing/email/domains';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEmailDomains(body){
+		var apipath = '/api/v2/routing/email/domains';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Delete a domain
-  * @memberOf RoutingApi#
-  * @param {string} domainId - domain ID
-  */
-RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDomainId(domainId){
-    var requestPath = '/api/v2/routing/email/domains/{domainId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(domainId === undefined || domainId === null){
-      throw new Error('Missing required  parameter: domainId');
-    }
-    requestPath = requestPath.replace('{domainId}', domainId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEmailDomains = postEmailDomains;
+	/**
+     * @summary Delete a domain
+	 * @memberOf RoutingApi#
+	* @param {string} domainId - domain ID
+	*/
+	function deleteEmailDomainsDomainId(domainId){
+		var apipath = '/api/v2/routing/email/domains/{domainId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get routes
-  * @memberOf RoutingApi#
-  * @param {string} domainName - email domain
-  */
-RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsDomainnameRoutes(domainName){
-    var requestPath = '/api/v2/routing/email/domains/{domainName}/routes';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{domainId}', domainId);
 
-    if(domainName === undefined || domainName === null){
-      throw new Error('Missing required  parameter: domainName');
-    }
-    requestPath = requestPath.replace('{domainName}', domainName);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(domainId === undefined && domainId !== null){
+			throw 'Missing required  parameter: domainId';
+        }
 
-/**
-  * @summary Create a route
-  * @memberOf RoutingApi#
-  * @param {string} domainName - email domain
-  * @param {} body - Route
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteEmailDomainsDomainId = deleteEmailDomainsDomainId;
+	/**
+     * @summary Get routes
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	*/
+	function getEmailDomainsDomainnameRoutes(domainName){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{domainName}', domainName);
+
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailDomainsDomainnameRoutes = getEmailDomainsDomainnameRoutes;
+	/**
+     * @summary Create a route
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	* @param {} body - Route
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "pattern": "",
    "queue": {
@@ -133,53 +151,66 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsD
    "fromName": "",
    "fromEmail": ""
 }
-  */
-RoutingApi.prototype.postEmailDomainsDomainnameRoutes = function postEmailDomainsDomainnameRoutes(domainName, body){
-    var requestPath = '/api/v2/routing/email/domains/{domainName}/routes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEmailDomainsDomainnameRoutes(domainName, body){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(domainName === undefined || domainName === null){
-      throw new Error('Missing required  parameter: domainName');
-    }
-    requestPath = requestPath.replace('{domainName}', domainName);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{domainName}', domainName);
 
-/**
-  * @summary Get a route
-  * @memberOf RoutingApi#
-  * @param {string} domainName - email domain
-  * @param {string} routeId - route ID
-  */
-RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
-    var requestPath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
-    var requestQuery = {};
-    var requestBody;
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
+        }
 
-    if(domainName === undefined || domainName === null){
-      throw new Error('Missing required  parameter: domainName');
-    }
-    requestPath = requestPath.replace('{domainName}', domainName);
-    if(routeId === undefined || routeId === null){
-      throw new Error('Missing required  parameter: routeId');
-    }
-    requestPath = requestPath.replace('{routeId}', routeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Update a route
-  * @memberOf RoutingApi#
-  * @param {string} domainName - email domain
-  * @param {string} routeId - route ID
-  * @param {} body - Route
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEmailDomainsDomainnameRoutes = postEmailDomainsDomainnameRoutes;
+	/**
+     * @summary Get a route
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
+	*/
+	function getEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{domainName}', domainName);
+
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
+        }
+
+        apipath = apipath.replace('{routeId}', routeId);
+
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailDomainsDomainnameRoutesRouteId = getEmailDomainsDomainnameRoutesRouteId;
+	/**
+     * @summary Update a route
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
+	* @param {} body - Route
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "pattern": "",
    "queue": {
@@ -197,89 +228,130 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailD
    "fromName": "",
    "fromEmail": ""
 }
-  */
-RoutingApi.prototype.putEmailDomainsDomainnameRoutesRouteId = function putEmailDomainsDomainnameRoutesRouteId(domainName, routeId, body){
-    var requestPath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putEmailDomainsDomainnameRoutesRouteId(domainName, routeId, body){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(domainName === undefined || domainName === null){
-      throw new Error('Missing required  parameter: domainName');
-    }
-    requestPath = requestPath.replace('{domainName}', domainName);
-    if(routeId === undefined || routeId === null){
-      throw new Error('Missing required  parameter: routeId');
-    }
-    requestPath = requestPath.replace('{routeId}', routeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{domainName}', domainName);
 
-/**
-  * @summary Delete a route
-  * @memberOf RoutingApi#
-  * @param {string} domainName - email domain
-  * @param {string} routeId - route ID
-  */
-RoutingApi.prototype.deleteEmailDomainsDomainnameRoutesRouteId = function deleteEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
-    var requestPath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
-    var requestQuery = {};
-    var requestBody;
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
+        }
 
-    if(domainName === undefined || domainName === null){
-      throw new Error('Missing required  parameter: domainName');
-    }
-    requestPath = requestPath.replace('{domainName}', domainName);
-    if(routeId === undefined || routeId === null){
-      throw new Error('Missing required  parameter: routeId');
-    }
-    requestPath = requestPath.replace('{routeId}', routeId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{routeId}', routeId);
 
-/**
-  * @summary Get email setup
-  * @memberOf RoutingApi#
-  */
-RoutingApi.prototype.getEmailSetup = function getEmailSetup(){
-    var requestPath = '/api/v2/routing/email/setup';
-    var requestQuery = {};
-    var requestBody;
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
+        }
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get list of queues.
-  * @memberOf RoutingApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  * @param {string} name - Name
-  * @param {boolean} active - Active
-  */
-RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy, name, active){
-    var requestPath = '/api/v2/routing/queues';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.name = name;
-    requestQuery.active = active;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putEmailDomainsDomainnameRoutesRouteId = putEmailDomainsDomainnameRoutesRouteId;
+	/**
+     * @summary Delete a route
+	 * @memberOf RoutingApi#
+	* @param {string} domainName - email domain
+	* @param {string} routeId - route ID
+	*/
+	function deleteEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
+		var apipath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create queue
-  * @memberOf RoutingApi#
-  * @param {} body - Queue
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{domainName}', domainName);
+
+        if(domainName === undefined && domainName !== null){
+			throw 'Missing required  parameter: domainName';
+        }
+
+        apipath = apipath.replace('{routeId}', routeId);
+
+        if(routeId === undefined && routeId !== null){
+			throw 'Missing required  parameter: routeId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteEmailDomainsDomainnameRoutesRouteId = deleteEmailDomainsDomainnameRoutesRouteId;
+	/**
+     * @summary Get email setup
+	 * @memberOf RoutingApi#
+	*/
+	function getEmailSetup(){
+		var apipath = '/api/v2/routing/email/setup';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailSetup = getEmailSetup;
+	/**
+     * @summary Get list of queues.
+	 * @memberOf RoutingApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} name - Name
+	* @param {boolean} active - Active
+	*/
+	function getQueues(pageSize, pageNumber, sortBy, name, active){
+		var apipath = '/api/v2/routing/queues';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(active !== undefined && active !== null){
+			queryParameters.active = active;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getQueues = getQueues;
+	/**
+     * @summary Create queue
+	 * @memberOf RoutingApi#
+	* @param {} body - Queue
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -308,43 +380,52 @@ RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy
    "callingPartyNumber": "",
    "memberCount": 0
 }
-  */
-RoutingApi.prototype.postQueues = function postQueues(body){
-    var requestPath = '/api/v2/routing/queues';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postQueues(body){
+		var apipath = '/api/v2/routing/queues';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get details about this queue.
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  */
-RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
-    var requestPath = '/api/v2/routing/queues/{queueId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postQueues = postQueues;
+	/**
+     * @summary Get details about this queue.
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	*/
+	function getQueuesQueueId(queueId){
+		var apipath = '/api/v2/routing/queues/{queueId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {} body - Queue
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getQueuesQueueId = getQueuesQueueId;
+	/**
+     * @summary Update a queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {} body - Queue
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -373,96 +454,145 @@ RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
    "callingPartyNumber": "",
    "memberCount": 0
 }
-  */
-RoutingApi.prototype.putQueuesQueueId = function putQueuesQueueId(queueId, body){
-    var requestPath = '/api/v2/routing/queues/{queueId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putQueuesQueueId(queueId, body){
+		var apipath = '/api/v2/routing/queues/{queueId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{queueId}', queueId);
 
-/**
-  * @summary Delete a queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {boolean} forceDelete - 
-  */
-RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId, forceDelete){
-    var requestPath = '/api/v2/routing/queues/{queueId}';
-    var requestQuery = {};
-    var requestBody;
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    requestQuery.forceDelete = forceDelete;
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get Estimated Wait Time
-  * @memberOf RoutingApi#
-  * @param {string} queueId - queueId
-  * @param {string} conversationId - conversationId
-  */
-RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueueIdEstimatedwaittime(queueId, conversationId){
-    var requestPath = '/api/v2/routing/queues/{queueId}/estimatedwaittime';
-    var requestQuery = {};
-    var requestBody;
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    requestQuery.conversationId = conversationId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putQueuesQueueId = putQueuesQueueId;
+	/**
+     * @summary Delete a queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {boolean} forceDelete - 
+	*/
+	function deleteQueuesQueueId(queueId, forceDelete){
+		var apipath = '/api/v2/routing/queues/{queueId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the members of this queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  * @param {string} expand - expand
-  * @param {boolean} directMembers - Only get users that are direct members of the queue
-  */
-RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queueId, pageSize, pageNumber, sortBy, expand, directMembers){
-    var requestPath = '/api/v2/routing/queues/{queueId}/users';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{queueId}', queueId);
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.directMembers = directMembers;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
 
-/**
-  * @summary Bulk add or delete up to 100 queue members
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {} body - Queue Members
-  * @param {boolean} doDelete - True to delete queue members
-  * @example
-  * Body Example:
-  * [
+
+		if(forceDelete !== undefined && forceDelete !== null){
+			queryParameters.forceDelete = forceDelete;
+		}
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteQueuesQueueId = deleteQueuesQueueId;
+	/**
+     * @summary Get Estimated Wait Time
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - queueId
+	* @param {string} conversationId - conversationId
+	*/
+	function getQueuesQueueIdEstimatedwaittime(queueId, conversationId){
+		var apipath = '/api/v2/routing/queues/{queueId}/estimatedwaittime';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+
+		if(conversationId !== undefined && conversationId !== null){
+			queryParameters.conversationId = conversationId;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getQueuesQueueIdEstimatedwaittime = getQueuesQueueIdEstimatedwaittime;
+	/**
+     * @summary Get the members of this queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} expand - expand
+	* @param {boolean} directMembers - Only get users that are direct members of the queue
+	*/
+	function getQueuesQueueIdUsers(queueId, pageSize, pageNumber, sortBy, expand, directMembers){
+		var apipath = '/api/v2/routing/queues/{queueId}/users';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(directMembers !== undefined && directMembers !== null){
+			queryParameters.directMembers = directMembers;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getQueuesQueueIdUsers = getQueuesQueueIdUsers;
+	/**
+     * @summary Bulk add or delete up to 100 queue members
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {} body - Queue Members
+	* @param {boolean} doDelete - True to delete queue members
+	 * @example
+	 * Body Example:
+	 * [
  {
   "name": "",
   "user": {
@@ -485,31 +615,41 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
   }
  }
 ]
-  */
-RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(queueId, body, doDelete){
-    var requestPath = '/api/v2/routing/queues/{queueId}/users';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postQueuesQueueIdUsers(queueId, body, doDelete){
+		var apipath = '/api/v2/routing/queues/{queueId}/users';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    requestQuery.delete = doDelete;
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{queueId}', queueId);
 
-/**
-  * @summary Join or unjoin a set of users for a queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {} body - Queue Members
-  * @example
-  * Body Example:
-  * [
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		if(doDelete !== undefined && doDelete !== null){
+			queryParameters.delete = doDelete;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postQueuesQueueIdUsers = postQueuesQueueIdUsers;
+	/**
+     * @summary Join or unjoin a set of users for a queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {} body - Queue Members
+	 * @example
+	 * Body Example:
+	 * [
  {
   "name": "",
   "user": {
@@ -532,53 +672,66 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
   }
  }
 ]
-  */
-RoutingApi.prototype.patchQueuesQueueIdUsers = function patchQueuesQueueIdUsers(queueId, body){
-    var requestPath = '/api/v2/routing/queues/{queueId}/users';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchQueuesQueueIdUsers(queueId, body){
+		var apipath = '/api/v2/routing/queues/{queueId}/users';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{queueId}', queueId);
 
-/**
-  * @summary Delete queue member
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {string} memberId - Member ID
-  */
-RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQueueIdUsersMemberId(queueId, memberId){
-    var requestPath = '/api/v2/routing/queues/{queueId}/users/{memberId}';
-    var requestQuery = {};
-    var requestBody;
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(memberId === undefined || memberId === null){
-      throw new Error('Missing required  parameter: memberId');
-    }
-    requestPath = requestPath.replace('{memberId}', memberId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Update the ring number of joined status for a User in a Queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {string} memberId - Member ID
-  * @param {} body - Queue Member
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchQueuesQueueIdUsers = patchQueuesQueueIdUsers;
+	/**
+     * @summary Delete queue member
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {string} memberId - Member ID
+	*/
+	function deleteQueuesQueueIdUsersMemberId(queueId, memberId){
+		var apipath = '/api/v2/routing/queues/{queueId}/users/{memberId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+        apipath = apipath.replace('{memberId}', memberId);
+
+        if(memberId === undefined && memberId !== null){
+			throw 'Missing required  parameter: memberId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteQueuesQueueIdUsersMemberId = deleteQueuesQueueIdUsersMemberId;
+	/**
+     * @summary Update the ring number of joined status for a User in a Queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {string} memberId - Member ID
+	* @param {} body - Queue Member
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "user": {
       "name": "",
@@ -599,57 +752,72 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
       "startTime": ""
    }
 }
-  */
-RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueueIdUsersMemberId(queueId, memberId, body){
-    var requestPath = '/api/v2/routing/queues/{queueId}/users/{memberId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchQueuesQueueIdUsersMemberId(queueId, memberId, body){
+		var apipath = '/api/v2/routing/queues/{queueId}/users/{memberId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(memberId === undefined || memberId === null){
-      throw new Error('Missing required  parameter: memberId');
-    }
-    requestPath = requestPath.replace('{memberId}', memberId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{queueId}', queueId);
 
-/**
-  * @summary Get the wrap-up codes for a queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {string} codeId - Code ID
-  */
-RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrapupcodes(queueId, codeId){
-    var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{memberId}', memberId);
 
-/**
-  * @summary Add up to 100 wrap-up codes to a queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {string} codeId - Code ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * [
+        if(memberId === undefined && memberId !== null){
+			throw 'Missing required  parameter: memberId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchQueuesQueueIdUsersMemberId = patchQueuesQueueIdUsersMemberId;
+	/**
+     * @summary Get the wrap-up codes for a queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {string} codeId - Code ID
+	*/
+	function getQueuesQueueIdWrapupcodes(queueId, codeId){
+		var apipath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+        apipath = apipath.replace('{codeId}', codeId);
+
+        if(codeId === undefined && codeId !== null){
+			throw 'Missing required  parameter: codeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getQueuesQueueIdWrapupcodes = getQueuesQueueIdWrapupcodes;
+	/**
+     * @summary Add up to 100 wrap-up codes to a queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {string} codeId - Code ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
  {
   "name": "",
   "dateCreated": "",
@@ -658,377 +826,502 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
   "createdBy": ""
  }
 ]
-  */
-RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
-    var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
+		var apipath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{queueId}', queueId);
 
-/**
-  * @summary Delete a wrap-up code from a queue
-  * @memberOf RoutingApi#
-  * @param {string} queueId - Queue ID
-  * @param {string} codeId - Code ID
-  */
-RoutingApi.prototype.deleteQueuesQueueIdWrapupcodesCodeId = function deleteQueuesQueueIdWrapupcodesCodeId(queueId, codeId){
-    var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes/{codeId}';
-    var requestQuery = {};
-    var requestBody;
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
 
-    if(queueId === undefined || queueId === null){
-      throw new Error('Missing required  parameter: queueId');
-    }
-    requestPath = requestPath.replace('{queueId}', queueId);
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{codeId}', codeId);
 
-/**
-  * @summary Get the list of routing skills.
-  * @memberOf RoutingApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-RoutingApi.prototype.getSkills = function getSkills(pageSize, pageNumber){
-    var requestPath = '/api/v2/routing/skills';
-    var requestQuery = {};
-    var requestBody;
+        if(codeId === undefined && codeId !== null){
+			throw 'Missing required  parameter: codeId';
+        }
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Create Skill
-  * @memberOf RoutingApi#
-  * @param {} body - Skill
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postQueuesQueueIdWrapupcodes = postQueuesQueueIdWrapupcodes;
+	/**
+     * @summary Delete a wrap-up code from a queue
+	 * @memberOf RoutingApi#
+	* @param {string} queueId - Queue ID
+	* @param {string} codeId - Code ID
+	*/
+	function deleteQueuesQueueIdWrapupcodesCodeId(queueId, codeId){
+		var apipath = '/api/v2/routing/queues/{queueId}/wrapupcodes/{codeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{queueId}', queueId);
+
+        if(queueId === undefined && queueId !== null){
+			throw 'Missing required  parameter: queueId';
+        }
+
+        apipath = apipath.replace('{codeId}', codeId);
+
+        if(codeId === undefined && codeId !== null){
+			throw 'Missing required  parameter: codeId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteQueuesQueueIdWrapupcodesCodeId = deleteQueuesQueueIdWrapupcodesCodeId;
+	/**
+     * @summary Get the list of routing skills.
+	 * @memberOf RoutingApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getSkills(pageSize, pageNumber){
+		var apipath = '/api/v2/routing/skills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSkills = getSkills;
+	/**
+     * @summary Create Skill
+	 * @memberOf RoutingApi#
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
    "name": ""
 }
-  */
-RoutingApi.prototype.postSkills = function postSkills(body){
-    var requestPath = '/api/v2/routing/skills';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postSkills(body){
+		var apipath = '/api/v2/routing/skills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get Routing Skill
-  * @memberOf RoutingApi#
-  * @param {string} skillId - Skill ID
-  */
-RoutingApi.prototype.getSkillsSkillId = function getSkillsSkillId(skillId){
-    var requestPath = '/api/v2/routing/skills/{skillId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(skillId === undefined || skillId === null){
-      throw new Error('Missing required  parameter: skillId');
-    }
-    requestPath = requestPath.replace('{skillId}', skillId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postSkills = postSkills;
+	/**
+     * @summary Get Routing Skill
+	 * @memberOf RoutingApi#
+	* @param {string} skillId - Skill ID
+	*/
+	function getSkillsSkillId(skillId){
+		var apipath = '/api/v2/routing/skills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Delete Routing Skill
-  * @memberOf RoutingApi#
-  * @param {string} skillId - Skill ID
-  */
-RoutingApi.prototype.deleteSkillsSkillId = function deleteSkillsSkillId(skillId){
-    var requestPath = '/api/v2/routing/skills/{skillId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{skillId}', skillId);
 
-    if(skillId === undefined || skillId === null){
-      throw new Error('Missing required  parameter: skillId');
-    }
-    requestPath = requestPath.replace('{skillId}', skillId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
 
-/**
-  * @summary Get the utilization settings.
-  * @memberOf RoutingApi#
-  */
-RoutingApi.prototype.getUtilization = function getUtilization(){
-    var requestPath = '/api/v2/routing/utilization';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSkillsSkillId = getSkillsSkillId;
+	/**
+     * @summary Delete Routing Skill
+	 * @memberOf RoutingApi#
+	* @param {string} skillId - Skill ID
+	*/
+	function deleteSkillsSkillId(skillId){
+		var apipath = '/api/v2/routing/skills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update the utilization settings.
-  * @memberOf RoutingApi#
-  * @param {} body - utilization
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteSkillsSkillId = deleteSkillsSkillId;
+	/**
+     * @summary Get the utilization settings.
+	 * @memberOf RoutingApi#
+	*/
+	function getUtilization(){
+		var apipath = '/api/v2/routing/utilization';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUtilization = getUtilization;
+	/**
+     * @summary Update the utilization settings.
+	 * @memberOf RoutingApi#
+	* @param {} body - utilization
+	 * @example
+	 * Body Example:
+	 * {
    "utilization": {}
 }
-  */
-RoutingApi.prototype.putUtilization = function putUtilization(body){
-    var requestPath = '/api/v2/routing/utilization';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putUtilization(body){
+		var apipath = '/api/v2/routing/utilization';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Delete utilization settings and revert to system defaults.
-  * @memberOf RoutingApi#
-  */
-RoutingApi.prototype.deleteUtilization = function deleteUtilization(){
-    var requestPath = '/api/v2/routing/utilization';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUtilization = putUtilization;
+	/**
+     * @summary Delete utilization settings and revert to system defaults.
+	 * @memberOf RoutingApi#
+	*/
+	function deleteUtilization(){
+		var apipath = '/api/v2/routing/utilization';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get list of wrapup codes.
-  * @memberOf RoutingApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  */
-RoutingApi.prototype.getWrapupcodes = function getWrapupcodes(pageSize, pageNumber, sortBy){
-    var requestPath = '/api/v2/routing/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUtilization = deleteUtilization;
+	/**
+     * @summary Get list of wrapup codes.
+	 * @memberOf RoutingApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	*/
+	function getWrapupcodes(pageSize, pageNumber, sortBy){
+		var apipath = '/api/v2/routing/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a wrap-up code
-  * @memberOf RoutingApi#
-  * @param {} body - WrapupCode
-  * @example
-  * Body Example:
-  * {
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getWrapupcodes = getWrapupcodes;
+	/**
+     * @summary Create a wrap-up code
+	 * @memberOf RoutingApi#
+	* @param {} body - WrapupCode
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "modifiedBy": "",
    "createdBy": ""
 }
-  */
-RoutingApi.prototype.postWrapupcodes = function postWrapupcodes(body){
-    var requestPath = '/api/v2/routing/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postWrapupcodes(body){
+		var apipath = '/api/v2/routing/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get details about this wrap-up code.
-  * @memberOf RoutingApi#
-  * @param {string} codeId - Wrapup Code ID
-  */
-RoutingApi.prototype.getWrapupcodesCodeId = function getWrapupcodesCodeId(codeId){
-    var requestPath = '/api/v2/routing/wrapupcodes/{codeId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postWrapupcodes = postWrapupcodes;
+	/**
+     * @summary Get details about this wrap-up code.
+	 * @memberOf RoutingApi#
+	* @param {string} codeId - Wrapup Code ID
+	*/
+	function getWrapupcodesCodeId(codeId){
+		var apipath = '/api/v2/routing/wrapupcodes/{codeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update wrap-up code
-  * @memberOf RoutingApi#
-  * @param {string} codeId - Wrapup Code ID
-  * @param {} body - WrapupCode
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{codeId}', codeId);
+
+        if(codeId === undefined && codeId !== null){
+			throw 'Missing required  parameter: codeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getWrapupcodesCodeId = getWrapupcodesCodeId;
+	/**
+     * @summary Update wrap-up code
+	 * @memberOf RoutingApi#
+	* @param {string} codeId - Wrapup Code ID
+	* @param {} body - WrapupCode
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "dateCreated": "",
    "dateModified": "",
    "modifiedBy": "",
    "createdBy": ""
 }
-  */
-RoutingApi.prototype.putWrapupcodesCodeId = function putWrapupcodesCodeId(codeId, body){
-    var requestPath = '/api/v2/routing/wrapupcodes/{codeId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putWrapupcodesCodeId(codeId, body){
+		var apipath = '/api/v2/routing/wrapupcodes/{codeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{codeId}', codeId);
 
-/**
-  * @summary Delete wrap-up code
-  * @memberOf RoutingApi#
-  * @param {string} codeId - Wrapup Code ID
-  */
-RoutingApi.prototype.deleteWrapupcodesCodeId = function deleteWrapupcodesCodeId(codeId){
-    var requestPath = '/api/v2/routing/wrapupcodes/{codeId}';
-    var requestQuery = {};
-    var requestBody;
+        if(codeId === undefined && codeId !== null){
+			throw 'Missing required  parameter: codeId';
+        }
 
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary List routing skills for user
-  * @memberOf RoutingApi#
-  * @param {string} userId - User ID
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortOrder - Ascending or descending sort order
-  ascending,
-  descending,
-  */
-RoutingApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
-    var requestPath = '/api/v2/users/{userId}/routingskills';
-    var requestQuery = {};
-    var requestBody;
 
-    if(userId === undefined || userId === null){
-      throw new Error('Missing required  parameter: userId');
-    }
-    requestPath = requestPath.replace('{userId}', userId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putWrapupcodesCodeId = putWrapupcodesCodeId;
+	/**
+     * @summary Delete wrap-up code
+	 * @memberOf RoutingApi#
+	* @param {string} codeId - Wrapup Code ID
+	*/
+	function deleteWrapupcodesCodeId(codeId){
+		var apipath = '/api/v2/routing/wrapupcodes/{codeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Add routing skill to user
-  * @memberOf RoutingApi#
-  * @param {string} userId - User ID
-  * @param {} body - Skill
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{codeId}', codeId);
+
+        if(codeId === undefined && codeId !== null){
+			throw 'Missing required  parameter: codeId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteWrapupcodesCodeId = deleteWrapupcodesCodeId;
+	/**
+     * @summary List routing skills for user
+	 * @memberOf RoutingApi#
+	* @param {string} userId - User ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortOrder - Ascending or descending sort order
+	ascending,
+	descending,
+	*/
+	function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
+		var apipath = '/api/v2/users/{userId}/routingskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getUserIdRoutingskills = getUserIdRoutingskills;
+	/**
+     * @summary Add routing skill to user
+	 * @memberOf RoutingApi#
+	* @param {string} userId - User ID
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "proficiency": {},
    "state": ""
 }
-  */
-RoutingApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(userId, body){
-    var requestPath = '/api/v2/users/{userId}/routingskills';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postUserIdRoutingskills(userId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(userId === undefined || userId === null){
-      throw new Error('Missing required  parameter: userId');
-    }
-    requestPath = requestPath.replace('{userId}', userId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{userId}', userId);
 
-/**
-  * @summary Update routing skill proficiency or state.
-  * @memberOf RoutingApi#
-  * @param {string} userId - User ID
-  * @param {string} skillId - 
-  * @param {} body - Skill
-  * @example
-  * Body Example:
-  * {
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postUserIdRoutingskills = postUserIdRoutingskills;
+	/**
+     * @summary Update routing skill proficiency or state.
+	 * @memberOf RoutingApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	* @param {} body - Skill
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "proficiency": {},
    "state": ""
 }
-  */
-RoutingApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingskillsSkillId(userId, skillId, body){
-    var requestPath = '/api/v2/users/{userId}/routingskills/{skillId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putUserIdRoutingskillsSkillId(userId, skillId, body){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(userId === undefined || userId === null){
-      throw new Error('Missing required  parameter: userId');
-    }
-    requestPath = requestPath.replace('{userId}', userId);
-    if(skillId === undefined || skillId === null){
-      throw new Error('Missing required  parameter: skillId');
-    }
-    requestPath = requestPath.replace('{skillId}', skillId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putUserIdRoutingskillsSkillId = putUserIdRoutingskillsSkillId;
+	/**
+     * @summary Remove routing skill from user
+	 * @memberOf RoutingApi#
+	* @param {string} userId - User ID
+	* @param {string} skillId - 
+	*/
+	function deleteUserIdRoutingskillsSkillId(userId, skillId){
+		var apipath = '/api/v2/users/{userId}/routingskills/{skillId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{userId}', userId);
+
+        if(userId === undefined && userId !== null){
+			throw 'Missing required  parameter: userId';
+        }
+
+        apipath = apipath.replace('{skillId}', skillId);
+
+        if(skillId === undefined && skillId !== null){
+			throw 'Missing required  parameter: skillId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteUserIdRoutingskillsSkillId = deleteUserIdRoutingskillsSkillId;
+
+    return self;
 };
-
-/**
-  * @summary Remove routing skill from user
-  * @memberOf RoutingApi#
-  * @param {string} userId - User ID
-  * @param {string} skillId - 
-  */
-RoutingApi.prototype.deleteUserIdRoutingskillsSkillId = function deleteUserIdRoutingskillsSkillId(userId, skillId){
-    var requestPath = '/api/v2/users/{userId}/routingskills/{skillId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(userId === undefined || userId === null){
-      throw new Error('Missing required  parameter: userId');
-    }
-    requestPath = requestPath.replace('{userId}', userId);
-    if(skillId === undefined || skillId === null){
-      throw new Error('Missing required  parameter: skillId');
-    }
-    requestPath = requestPath.replace('{skillId}', skillId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-

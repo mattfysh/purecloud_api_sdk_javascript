@@ -1,17 +1,15 @@
-var assert = require('assert');
-var purecloud = require('../dist/purecloud-api-node');
+var purecloud = require('../dist/purecloud-api-node')
 
-describe("PureCloudSession", function() {
-  describe('constructor(options)', function() {
-    it("should set the environment by default", function() {
-      var session = new purecloud.PureCloudSession();
-      assert.equal(session.options.environment, 'mypurecloud.com');
-    });
+describe("Session tests", function() {
+  it("should set the environment by default", function() {
+    var session = new purecloud.PureCloudSession();
+    expect(session.environment()).toBe("mypurecloud.com");
+  });
 
-    it("should set the environment if specified", function() {
-      var env = 'foo';
-      var session = new purecloud.PureCloudSession({environment: env});
-      assert.equal(session.options.environment, env);
-    });
+  it("should set the environment from the constructor", function() {
+      var environment = "foo";
+      var session = new purecloud.PureCloudSession(environment);
+      session.authToken("bar")
+      expect(session.environment()).toBe(environment);
   });
 });

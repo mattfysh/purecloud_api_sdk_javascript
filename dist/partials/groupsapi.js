@@ -1,45 +1,57 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new GroupsApi(pureCloudSession);
 */
-function GroupsApi(session) {
-    if(!(this instanceof GroupsApi)) {
-        return new GroupsApi(session);
+var GroupsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('GroupsApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Get a group list
-  * @memberOf GroupsApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortOrder - Ascending or descending sort order
-  ascending,
-  descending,
-  */
-GroupsApi.prototype.getGroups = function getGroups(pageSize, pageNumber, sortOrder){
-    var requestPath = '/api/v2/groups';
-    var requestQuery = {};
-    var requestBody;
+	var self = this;
+	/**
+     * @summary Get a group list
+	 * @memberOf GroupsApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortOrder - Ascending or descending sort order
+	ascending,
+	descending,
+	*/
+	function getGroups(pageSize, pageNumber, sortOrder){
+		var apipath = '/api/v2/groups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary Create a group
-  * @memberOf GroupsApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGroups = getGroups;
+	/**
+     * @summary Create a group
+	 * @memberOf GroupsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "type": "",
@@ -48,41 +60,56 @@ GroupsApi.prototype.getGroups = function getGroups(pageSize, pageNumber, sortOrd
    "rulesVisible": true,
    "visibility": ""
 }
-  */
-GroupsApi.prototype.postGroups = function postGroups(body){
-    var requestPath = '/api/v2/groups';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postGroups(body){
+		var apipath = '/api/v2/groups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Search using q64
-  * @memberOf GroupsApi#
-  * @param {string} q64 - 
-  * @param {array} expand - 
-  */
-GroupsApi.prototype.getSearch = function getSearch(q64, expand){
-    var requestPath = '/api/v2/groups/search';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postGroups = postGroups;
+	/**
+     * @summary Search using q64
+	 * @memberOf GroupsApi#
+	* @param {string} q64 - 
+	* @param {array} expand - 
+	*/
+	function getSearch(q64, expand){
+		var apipath = '/api/v2/groups/search';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Search
-  * @memberOf GroupsApi#
-  * @param {} body - Search request options
-  * @example
-  * Body Example:
-  * {
+
+		if(q64 !== undefined && q64 !== null){
+			queryParameters.q64 = q64;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSearch = getSearch;
+	/**
+     * @summary Search
+	 * @memberOf GroupsApi#
+	* @param {} body - Search request options
+	 * @example
+	 * Body Example:
+	 * {
    "sortOrder": "",
    "sortBy": "",
    "pageSize": 0,
@@ -91,107 +118,151 @@ GroupsApi.prototype.getSearch = function getSearch(q64, expand){
    "expand": [],
    "query": []
 }
-  */
-GroupsApi.prototype.postSearch = function postSearch(body){
-    var requestPath = '/api/v2/groups/search';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postSearch(body){
+		var apipath = '/api/v2/groups/search';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get group
-  * @memberOf GroupsApi#
-  * @param {string} groupId - Group ID
-  */
-GroupsApi.prototype.getGroupId = function getGroupId(groupId){
-    var requestPath = '/api/v2/groups/{groupId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postSearch = postSearch;
+	/**
+     * @summary Get group
+	 * @memberOf GroupsApi#
+	* @param {string} groupId - Group ID
+	*/
+	function getGroupId(groupId){
+		var apipath = '/api/v2/groups/{groupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get group members
-  * @memberOf GroupsApi#
-  * @param {string} groupId - Group ID
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortOrder - Ascending or descending sort order
-  ascending,
-  descending,
-  */
-GroupsApi.prototype.getGroupIdMembers = function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
-    var requestPath = '/api/v2/groups/{groupId}/members';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{groupId}', groupId);
 
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(groupId === undefined && groupId !== null){
+			throw 'Missing required  parameter: groupId';
+        }
 
-/**
-  * @summary Add members
-  * @memberOf GroupsApi#
-  * @param {string} groupId - Group ID
-  * @param {} body - Add members
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGroupId = getGroupId;
+	/**
+     * @summary Get group members
+	 * @memberOf GroupsApi#
+	* @param {string} groupId - Group ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortOrder - Ascending or descending sort order
+	ascending,
+	descending,
+	*/
+	function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
+		var apipath = '/api/v2/groups/{groupId}/members';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupId}', groupId);
+
+        if(groupId === undefined && groupId !== null){
+			throw 'Missing required  parameter: groupId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getGroupIdMembers = getGroupIdMembers;
+	/**
+     * @summary Add members
+	 * @memberOf GroupsApi#
+	* @param {string} groupId - Group ID
+	* @param {} body - Add members
+	 * @example
+	 * Body Example:
+	 * {
    "memberIds": [],
    "version": 0
 }
-  */
-GroupsApi.prototype.postGroupIdMembers = function postGroupIdMembers(groupId, body){
-    var requestPath = '/api/v2/groups/{groupId}/members';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postGroupIdMembers(groupId, body){
+		var apipath = '/api/v2/groups/{groupId}/members';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+        apipath = apipath.replace('{groupId}', groupId);
+
+        if(groupId === undefined && groupId !== null){
+			throw 'Missing required  parameter: groupId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postGroupIdMembers = postGroupIdMembers;
+	/**
+     * @summary Remove members
+	 * @memberOf GroupsApi#
+	* @param {string} groupId - Group ID
+	* @param {string} ids - Comma separated list of userIds to remove
+	*/
+	function deleteGroupIdMembers(groupId, ids){
+		var apipath = '/api/v2/groups/{groupId}/members';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{groupId}', groupId);
+
+        if(groupId === undefined && groupId !== null){
+			throw 'Missing required  parameter: groupId';
+        }
+
+
+		if(ids !== undefined && ids !== null){
+			queryParameters.ids = ids;
+		}
+
+        if(ids === undefined && ids !== null){
+			throw 'Missing required  parameter: ids';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteGroupIdMembers = deleteGroupIdMembers;
+
+    return self;
 };
-
-/**
-  * @summary Remove members
-  * @memberOf GroupsApi#
-  * @param {string} groupId - Group ID
-  * @param {string} ids - Comma separated list of userIds to remove
-  */
-GroupsApi.prototype.deleteGroupIdMembers = function deleteGroupIdMembers(groupId, ids){
-    var requestPath = '/api/v2/groups/{groupId}/members';
-    var requestQuery = {};
-    var requestBody;
-
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    if(ids === undefined || ids === null){
-      throw new Error('Missing required  parameter: ids');
-    }
-    requestQuery.ids = ids;
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-

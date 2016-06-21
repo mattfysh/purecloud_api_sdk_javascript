@@ -1,28 +1,30 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new OrganizationApi(pureCloudSession);
 */
-function OrganizationApi(session) {
-    if(!(this instanceof OrganizationApi)) {
-        return new OrganizationApi(session);
+var OrganizationApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('OrganizationApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Get organization.
-  * @memberOf OrganizationApi#
-  */
-OrganizationApi.prototype.getMe = function getMe(){
-    var requestPath = '/api/v2/organizations/me';
-    var requestQuery = {};
-    var requestBody;
+	var self = this;
+	/**
+     * @summary Get organization.
+	 * @memberOf OrganizationApi#
+	*/
+	function getMe(){
+		var apipath = '/api/v2/organizations/me';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getMe = getMe;
+
+    return self;
 };
-
-

@@ -1,25 +1,22 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new QualityApi(pureCloudSession);
 */
-function QualityApi(session) {
-    if(!(this instanceof QualityApi)) {
-        return new QualityApi(session);
+var QualityApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('QualityApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Query for evaluation aggregates
-  * @memberOf QualityApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+	var self = this;
+	/**
+     * @summary Query for evaluation aggregates
+	 * @memberOf QualityApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "granularity": "",
    "groupBy": [],
@@ -31,98 +28,197 @@ function QualityApi(session) {
    "metrics": [],
    "flattenMultivaluedDimensions": true
 }
-  */
-QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAggregatesQuery(body){
-    var requestPath = '/api/v2/analytics/evaluations/aggregates/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEvaluationsAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/evaluations/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Gets a list of Agent Activities
-  * @description Including the number of evaluations and average evaluation score
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {array} expand - variable name requested by expand list
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} startTime - Start time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
-  * @param {string} endTime - End time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
-  * @param {array} agentUserId - user id of agent requested
-  * @param {string} evaluatorUserId - user id of the evaluator
-  * @param {string} name - name
-  * @param {string} group - group id
-  */
-QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group){
-    var requestPath = '/api/v2/quality/agents/activity';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.startTime = startTime;
-    requestQuery.endTime = endTime;
-    requestQuery.agentUserId = agentUserId;
-    requestQuery.evaluatorUserId = evaluatorUserId;
-    requestQuery.name = name;
-    requestQuery.group = group;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEvaluationsAggregatesQuery = postEvaluationsAggregatesQuery;
+	/**
+     * @summary Gets a list of Agent Activities
+	 * @description Including the number of evaluations and average evaluation score
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} startTime - Start time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - End time of agent activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {array} agentUserId - user id of agent requested
+	* @param {string} evaluatorUserId - user id of the evaluator
+	* @param {string} name - name
+	* @param {string} group - group id
+	*/
+	function getAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group){
+		var apipath = '/api/v2/quality/agents/activity';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the list of calibrations
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {array} expand - variable name requested by expand list
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} conversationId - conversation id
-  * @param {string} startTime - Beginning of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
-  * @param {string} endTime - end of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
-  * @param {string} calibratorId - user id of calibrator
-  */
-QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, startTime, endTime, calibratorId){
-    var requestPath = '/api/v2/quality/calibrations';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.conversationId = conversationId;
-    requestQuery.startTime = startTime;
-    requestQuery.endTime = endTime;
-    if(calibratorId === undefined || calibratorId === null){
-      throw new Error('Missing required  parameter: calibratorId');
-    }
-    requestQuery.calibratorId = calibratorId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Create a calibration
-  * @memberOf QualityApi#
-  * @param {} body - calibration
-  * @param {string} expand - calibratorId
-  * @example
-  * Body Example:
-  * {
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(startTime !== undefined && startTime !== null){
+			queryParameters.startTime = startTime;
+		}
+
+
+		if(endTime !== undefined && endTime !== null){
+			queryParameters.endTime = endTime;
+		}
+
+
+		if(agentUserId !== undefined && agentUserId !== null){
+			queryParameters.agentUserId = agentUserId;
+		}
+
+
+		if(evaluatorUserId !== undefined && evaluatorUserId !== null){
+			queryParameters.evaluatorUserId = evaluatorUserId;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(group !== undefined && group !== null){
+			queryParameters.group = group;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getAgentsActivity = getAgentsActivity;
+	/**
+     * @summary Get the list of calibrations
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} conversationId - conversation id
+	* @param {string} startTime - Beginning of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - end of the calibration query. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} calibratorId - user id of calibrator
+	*/
+	function getCalibrations(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, startTime, endTime, calibratorId){
+		var apipath = '/api/v2/quality/calibrations';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(conversationId !== undefined && conversationId !== null){
+			queryParameters.conversationId = conversationId;
+		}
+
+
+		if(startTime !== undefined && startTime !== null){
+			queryParameters.startTime = startTime;
+		}
+
+
+		if(endTime !== undefined && endTime !== null){
+			queryParameters.endTime = endTime;
+		}
+
+
+		if(calibratorId !== undefined && calibratorId !== null){
+			queryParameters.calibratorId = calibratorId;
+		}
+
+        if(calibratorId === undefined && calibratorId !== null){
+			throw 'Missing required  parameter: calibratorId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCalibrations = getCalibrations;
+	/**
+     * @summary Create a calibration
+	 * @memberOf QualityApi#
+	* @param {} body - calibration
+	* @param {string} expand - calibratorId
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "calibrator": {
       "name": "",
@@ -201,49 +297,67 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "images": []
    }
 }
-  */
-QualityApi.prototype.postCalibrations = function postCalibrations(body, expand){
-    var requestPath = '/api/v2/quality/calibrations';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCalibrations(body, expand){
+		var apipath = '/api/v2/quality/calibrations';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    requestQuery.expand = expand;
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a calibration by id.
-  * @memberOf QualityApi#
-  * @param {string} calibrationId - Calibration ID
-  * @param {string} calibratorId - calibratorId
-  */
-QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCalibrationId(calibrationId, calibratorId){
-    var requestPath = '/api/v2/quality/calibrations/{calibrationId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(calibrationId === undefined || calibrationId === null){
-      throw new Error('Missing required  parameter: calibrationId');
-    }
-    requestPath = requestPath.replace('{calibrationId}', calibrationId);
-    if(calibratorId === undefined || calibratorId === null){
-      throw new Error('Missing required  parameter: calibratorId');
-    }
-    requestQuery.calibratorId = calibratorId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
 
-/**
-  * @summary Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
-  * @memberOf QualityApi#
-  * @param {string} calibrationId - Calibration ID
-  * @param {} body - Calibration
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCalibrations = postCalibrations;
+	/**
+     * @summary Get a calibration by id.
+	 * @memberOf QualityApi#
+	* @param {string} calibrationId - Calibration ID
+	* @param {string} calibratorId - calibratorId
+	*/
+	function getCalibrationsCalibrationId(calibrationId, calibratorId){
+		var apipath = '/api/v2/quality/calibrations/{calibrationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{calibrationId}', calibrationId);
+
+        if(calibrationId === undefined && calibrationId !== null){
+			throw 'Missing required  parameter: calibrationId';
+        }
+
+
+		if(calibratorId !== undefined && calibratorId !== null){
+			queryParameters.calibratorId = calibratorId;
+		}
+
+        if(calibratorId === undefined && calibratorId !== null){
+			throw 'Missing required  parameter: calibratorId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCalibrationsCalibrationId = getCalibrationsCalibrationId;
+	/**
+     * @summary Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
+	 * @memberOf QualityApi#
+	* @param {string} calibrationId - Calibration ID
+	* @param {} body - Calibration
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "calibrator": {
       "name": "",
@@ -322,86 +436,139 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "images": []
    }
 }
-  */
-QualityApi.prototype.putCalibrationsCalibrationId = function putCalibrationsCalibrationId(calibrationId, body){
-    var requestPath = '/api/v2/quality/calibrations/{calibrationId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putCalibrationsCalibrationId(calibrationId, body){
+		var apipath = '/api/v2/quality/calibrations/{calibrationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(calibrationId === undefined || calibrationId === null){
-      throw new Error('Missing required  parameter: calibrationId');
-    }
-    requestPath = requestPath.replace('{calibrationId}', calibrationId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{calibrationId}', calibrationId);
 
-/**
-  * @summary Delete a calibration by id.
-  * @memberOf QualityApi#
-  * @param {string} calibrationId - Calibration ID
-  * @param {string} calibratorId - calibratorId
-  */
-QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibrationsCalibrationId(calibrationId, calibratorId){
-    var requestPath = '/api/v2/quality/calibrations/{calibrationId}';
-    var requestQuery = {};
-    var requestBody;
+        if(calibrationId === undefined && calibrationId !== null){
+			throw 'Missing required  parameter: calibrationId';
+        }
 
-    if(calibrationId === undefined || calibrationId === null){
-      throw new Error('Missing required  parameter: calibrationId');
-    }
-    requestPath = requestPath.replace('{calibrationId}', calibrationId);
-    if(calibratorId === undefined || calibratorId === null){
-      throw new Error('Missing required  parameter: calibratorId');
-    }
-    requestQuery.calibratorId = calibratorId;
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get audits for conversation or recording
-  * @memberOf QualityApi#
-  * @param {string} conversationId - Conversation ID
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {array} expand - variable name requested by expand list
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} recordingId - id of the recording
-  * @param {string} entityType - entity type options: Recording, Calibration, Evaluation, Annotation
-  */
-QualityApi.prototype.getConversationsConversationIdAudits = function getConversationsConversationIdAudits(conversationId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, recordingId, entityType){
-    var requestPath = '/api/v2/quality/conversations/{conversationId}/audits';
-    var requestQuery = {};
-    var requestBody;
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.recordingId = recordingId;
-    requestQuery.entityType = entityType;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putCalibrationsCalibrationId = putCalibrationsCalibrationId;
+	/**
+     * @summary Delete a calibration by id.
+	 * @memberOf QualityApi#
+	* @param {string} calibrationId - Calibration ID
+	* @param {string} calibratorId - calibratorId
+	*/
+	function deleteCalibrationsCalibrationId(calibrationId, calibratorId){
+		var apipath = '/api/v2/quality/calibrations/{calibrationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create an evaluation
-  * @memberOf QualityApi#
-  * @param {string} conversationId - 
-  * @param {} body - evaluation
-  * @param {string} expand - evaluatorId
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{calibrationId}', calibrationId);
+
+        if(calibrationId === undefined && calibrationId !== null){
+			throw 'Missing required  parameter: calibrationId';
+        }
+
+
+		if(calibratorId !== undefined && calibratorId !== null){
+			queryParameters.calibratorId = calibratorId;
+		}
+
+        if(calibratorId === undefined && calibratorId !== null){
+			throw 'Missing required  parameter: calibratorId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCalibrationsCalibrationId = deleteCalibrationsCalibrationId;
+	/**
+     * @summary Get audits for conversation or recording
+	 * @memberOf QualityApi#
+	* @param {string} conversationId - Conversation ID
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} recordingId - id of the recording
+	* @param {string} entityType - entity type options: Recording, Calibration, Evaluation, Annotation
+	*/
+	function getConversationsConversationIdAudits(conversationId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, recordingId, entityType){
+		var apipath = '/api/v2/quality/conversations/{conversationId}/audits';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(recordingId !== undefined && recordingId !== null){
+			queryParameters.recordingId = recordingId;
+		}
+
+
+		if(entityType !== undefined && entityType !== null){
+			queryParameters.entityType = entityType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationsConversationIdAudits = getConversationsConversationIdAudits;
+	/**
+     * @summary Create an evaluation
+	 * @memberOf QualityApi#
+	* @param {string} conversationId - 
+	* @param {} body - evaluation
+	* @param {string} expand - evaluatorId
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "conversation": {
       "name": "",
@@ -497,57 +664,78 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
    "redacted": true,
    "isScoringIndex": true
 }
-  */
-QualityApi.prototype.postConversationsConversationIdEvaluations = function postConversationsConversationIdEvaluations(conversationId, body, expand){
-    var requestPath = '/api/v2/quality/conversations/{conversationId}/evaluations';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsConversationIdEvaluations(conversationId, body, expand){
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    requestQuery.expand = expand;
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Get an evaluation
-  * @memberOf QualityApi#
-  * @param {string} conversationId - 
-  * @param {string} evaluationId - 
-  * @param {string} expand - agent, evaluator, evaluationForm
-  */
-QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = function getConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
-    var requestPath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
-    var requestQuery = {};
-    var requestBody;
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(evaluationId === undefined || evaluationId === null){
-      throw new Error('Missing required  parameter: evaluationId');
-    }
-    requestPath = requestPath.replace('{evaluationId}', evaluationId);
-    requestQuery.expand = expand;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Update an evaluation
-  * @memberOf QualityApi#
-  * @param {string} conversationId - 
-  * @param {string} evaluationId - 
-  * @param {} body - evaluation
-  * @param {string} expand - evaluatorId
-  * @example
-  * Body Example:
-  * {
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsConversationIdEvaluations = postConversationsConversationIdEvaluations;
+	/**
+     * @summary Get an evaluation
+	 * @memberOf QualityApi#
+	* @param {string} conversationId - 
+	* @param {string} evaluationId - 
+	* @param {string} expand - agent, evaluator, evaluationForm
+	*/
+	function getConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{evaluationId}', evaluationId);
+
+        if(evaluationId === undefined && evaluationId !== null){
+			throw 'Missing required  parameter: evaluationId';
+        }
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationsConversationIdEvaluationsEvaluationId = getConversationsConversationIdEvaluationsEvaluationId;
+	/**
+     * @summary Update an evaluation
+	 * @memberOf QualityApi#
+	* @param {string} conversationId - 
+	* @param {string} evaluationId - 
+	* @param {} body - evaluation
+	* @param {string} expand - evaluatorId
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "conversation": {
       "name": "",
@@ -643,105 +831,199 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
    "redacted": true,
    "isScoringIndex": true
 }
-  */
-QualityApi.prototype.putConversationsConversationIdEvaluationsEvaluationId = function putConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, body, expand){
-    var requestPath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, body, expand){
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(evaluationId === undefined || evaluationId === null){
-      throw new Error('Missing required  parameter: evaluationId');
-    }
-    requestPath = requestPath.replace('{evaluationId}', evaluationId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    requestQuery.expand = expand;
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Delete an evaluation
-  * @memberOf QualityApi#
-  * @param {string} conversationId - 
-  * @param {string} evaluationId - 
-  * @param {string} expand - evaluatorId
-  */
-QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = function deleteConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
-    var requestPath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
-    var requestQuery = {};
-    var requestBody;
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(evaluationId === undefined || evaluationId === null){
-      throw new Error('Missing required  parameter: evaluationId');
-    }
-    requestPath = requestPath.replace('{evaluationId}', evaluationId);
-    requestQuery.expand = expand;
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{evaluationId}', evaluationId);
 
-/**
-  * @summary Queries Evaluations and returns a paged list
-  * @description Query params must include one of conversationId, evaluatorUserId, or agentUserId
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {array} expand - variable name requested by expand list
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} conversationId - conversationId specified
-  * @param {string} agentUserId - user id of the agent
-  * @param {string} evaluatorUserId - evaluator user id
-  * @param {string} queueId - queue id
-  * @param {string} startTime - start time of the evaluation query
-  * @param {string} endTime - end time of the evaluation query
-  * @param {array} evaluationState - evaluation state options: Pending, InProgress, Finished
-  * @param {boolean} isReleased - the evaluation has been released
-  * @param {boolean} agentHasRead - agent has the evaluation
-  * @param {boolean} expandAnswerTotalScores - get the total scores for evaluations
-  * @param {integer} maximum - maximum
-  */
-QualityApi.prototype.getEvaluationsQuery = function getEvaluationsQuery(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, agentUserId, evaluatorUserId, queueId, startTime, endTime, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum){
-    var requestPath = '/api/v2/quality/evaluations/query';
-    var requestQuery = {};
-    var requestBody;
+        if(evaluationId === undefined && evaluationId !== null){
+			throw 'Missing required  parameter: evaluationId';
+        }
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.conversationId = conversationId;
-    requestQuery.agentUserId = agentUserId;
-    requestQuery.evaluatorUserId = evaluatorUserId;
-    requestQuery.queueId = queueId;
-    requestQuery.startTime = startTime;
-    requestQuery.endTime = endTime;
-    requestQuery.evaluationState = evaluationState;
-    requestQuery.isReleased = isReleased;
-    requestQuery.agentHasRead = agentHasRead;
-    requestQuery.expandAnswerTotalScores = expandAnswerTotalScores;
-    requestQuery.maximum = maximum;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Score evaluation
-  * @memberOf QualityApi#
-  * @param {} body - evaluationAndScoringSet
-  * @example
-  * Body Example:
-  * {
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putConversationsConversationIdEvaluationsEvaluationId = putConversationsConversationIdEvaluationsEvaluationId;
+	/**
+     * @summary Delete an evaluation
+	 * @memberOf QualityApi#
+	* @param {string} conversationId - 
+	* @param {string} evaluationId - 
+	* @param {string} expand - evaluatorId
+	*/
+	function deleteConversationsConversationIdEvaluationsEvaluationId(conversationId, evaluationId, expand){
+		var apipath = '/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{evaluationId}', evaluationId);
+
+        if(evaluationId === undefined && evaluationId !== null){
+			throw 'Missing required  parameter: evaluationId';
+        }
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationsConversationIdEvaluationsEvaluationId = deleteConversationsConversationIdEvaluationsEvaluationId;
+	/**
+     * @summary Queries Evaluations and returns a paged list
+	 * @description Query params must include one of conversationId, evaluatorUserId, or agentUserId
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} conversationId - conversationId specified
+	* @param {string} agentUserId - user id of the agent
+	* @param {string} evaluatorUserId - evaluator user id
+	* @param {string} queueId - queue id
+	* @param {string} startTime - start time of the evaluation query
+	* @param {string} endTime - end time of the evaluation query
+	* @param {array} evaluationState - evaluation state options: Pending, InProgress, Finished
+	* @param {boolean} isReleased - the evaluation has been released
+	* @param {boolean} agentHasRead - agent has the evaluation
+	* @param {boolean} expandAnswerTotalScores - get the total scores for evaluations
+	* @param {integer} maximum - maximum
+	*/
+	function getEvaluationsQuery(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, agentUserId, evaluatorUserId, queueId, startTime, endTime, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum){
+		var apipath = '/api/v2/quality/evaluations/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(conversationId !== undefined && conversationId !== null){
+			queryParameters.conversationId = conversationId;
+		}
+
+
+		if(agentUserId !== undefined && agentUserId !== null){
+			queryParameters.agentUserId = agentUserId;
+		}
+
+
+		if(evaluatorUserId !== undefined && evaluatorUserId !== null){
+			queryParameters.evaluatorUserId = evaluatorUserId;
+		}
+
+
+		if(queueId !== undefined && queueId !== null){
+			queryParameters.queueId = queueId;
+		}
+
+
+		if(startTime !== undefined && startTime !== null){
+			queryParameters.startTime = startTime;
+		}
+
+
+		if(endTime !== undefined && endTime !== null){
+			queryParameters.endTime = endTime;
+		}
+
+
+		if(evaluationState !== undefined && evaluationState !== null){
+			queryParameters.evaluationState = evaluationState;
+		}
+
+
+		if(isReleased !== undefined && isReleased !== null){
+			queryParameters.isReleased = isReleased;
+		}
+
+
+		if(agentHasRead !== undefined && agentHasRead !== null){
+			queryParameters.agentHasRead = agentHasRead;
+		}
+
+
+		if(expandAnswerTotalScores !== undefined && expandAnswerTotalScores !== null){
+			queryParameters.expandAnswerTotalScores = expandAnswerTotalScores;
+		}
+
+
+		if(maximum !== undefined && maximum !== null){
+			queryParameters.maximum = maximum;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEvaluationsQuery = getEvaluationsQuery;
+	/**
+     * @summary Score evaluation
+	 * @memberOf QualityApi#
+	* @param {} body - evaluationAndScoringSet
+	 * @example
+	 * Body Example:
+	 * {
    "evaluationForm": {
       "name": "",
       "type": "",
@@ -760,85 +1042,167 @@ QualityApi.prototype.getEvaluationsQuery = function getEvaluationsQuery(pageSize
       "agentComments": ""
    }
 }
-  */
-QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(body){
-    var requestPath = '/api/v2/quality/evaluations/scoring';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEvaluationsScoring(body){
+		var apipath = '/api/v2/quality/evaluations/scoring';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get an evaluator activity
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {array} expand - variable name requested by expand list
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} startTime - The start time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
-  * @param {string} endTime - The end time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
-  * @param {string} name - Evaluator name
-  * @param {array} permission - permission strings
-  * @param {string} group - group id
-  */
-QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, name, permission, group){
-    var requestPath = '/api/v2/quality/evaluators/activity';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.startTime = startTime;
-    requestQuery.endTime = endTime;
-    requestQuery.name = name;
-    requestQuery.permission = permission;
-    requestQuery.group = group;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEvaluationsScoring = postEvaluationsScoring;
+	/**
+     * @summary Get an evaluator activity
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} startTime - The start time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} endTime - The end time specified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	* @param {string} name - Evaluator name
+	* @param {array} permission - permission strings
+	* @param {string} group - group id
+	*/
+	function getEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, name, permission, group){
+		var apipath = '/api/v2/quality/evaluators/activity';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the list of evaluation forms
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} expand - Expand
-  * @param {string} name - Name
-  */
-QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, nextPage, previousPage, expand, name){
-    var requestPath = '/api/v2/quality/forms';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.expand = expand;
-    requestQuery.name = name;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Create an evaluation form.
-  * @memberOf QualityApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(startTime !== undefined && startTime !== null){
+			queryParameters.startTime = startTime;
+		}
+
+
+		if(endTime !== undefined && endTime !== null){
+			queryParameters.endTime = endTime;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(permission !== undefined && permission !== null){
+			queryParameters.permission = permission;
+		}
+
+
+		if(group !== undefined && group !== null){
+			queryParameters.group = group;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEvaluatorsActivity = getEvaluatorsActivity;
+	/**
+     * @summary Get the list of evaluation forms
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} expand - Expand
+	* @param {string} name - Name
+	*/
+	function getForms(pageSize, pageNumber, sortBy, nextPage, previousPage, expand, name){
+		var apipath = '/api/v2/quality/forms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getForms = getForms;
+	/**
+     * @summary Create an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -858,43 +1222,52 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageCount": 0
    }
 }
-  */
-QualityApi.prototype.postForms = function postForms(body){
-    var requestPath = '/api/v2/quality/forms';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postForms(body){
+		var apipath = '/api/v2/quality/forms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get an evaluation form
-  * @memberOf QualityApi#
-  * @param {string} formId - Form ID
-  */
-QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
-    var requestPath = '/api/v2/quality/forms/{formId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(formId === undefined || formId === null){
-      throw new Error('Missing required  parameter: formId');
-    }
-    requestPath = requestPath.replace('{formId}', formId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postForms = postForms;
+	/**
+     * @summary Get an evaluation form
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	*/
+	function getFormsFormId(formId){
+		var apipath = '/api/v2/quality/forms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update an evaluation form.
-  * @memberOf QualityApi#
-  * @param {string} formId - Form ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getFormsFormId = getFormsFormId;
+	/**
+     * @summary Update an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -914,94 +1287,149 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageCount": 0
    }
 }
-  */
-QualityApi.prototype.putFormsFormId = function putFormsFormId(formId, body){
-    var requestPath = '/api/v2/quality/forms/{formId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putFormsFormId(formId, body){
+		var apipath = '/api/v2/quality/forms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(formId === undefined || formId === null){
-      throw new Error('Missing required  parameter: formId');
-    }
-    requestPath = requestPath.replace('{formId}', formId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{formId}', formId);
 
-/**
-  * @summary Delete an evaluation form.
-  * @memberOf QualityApi#
-  * @param {string} formId - Form ID
-  */
-QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
-    var requestPath = '/api/v2/quality/forms/{formId}';
-    var requestQuery = {};
-    var requestBody;
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
 
-    if(formId === undefined || formId === null){
-      throw new Error('Missing required  parameter: formId');
-    }
-    requestPath = requestPath.replace('{formId}', formId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Gets all the revisions for a specific evaluation.
-  * @memberOf QualityApi#
-  * @param {string} formId - Form ID
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(formId, pageSize, pageNumber){
-    var requestPath = '/api/v2/quality/forms/{formId}/versions';
-    var requestQuery = {};
-    var requestBody;
 
-    if(formId === undefined || formId === null){
-      throw new Error('Missing required  parameter: formId');
-    }
-    requestPath = requestPath.replace('{formId}', formId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putFormsFormId = putFormsFormId;
+	/**
+     * @summary Delete an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	*/
+	function deleteFormsFormId(formId){
+		var apipath = '/api/v2/quality/forms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the list of keyword sets
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - The total page size requested
-  * @param {integer} pageNumber - The page number requested
-  * @param {string} sortBy - variable name requested to sort by
-  * @param {array} expand - variable name requested by expand list
-  * @param {string} nextPage - next page token
-  * @param {string} previousPage - Previous page token
-  * @param {string} name - the keyword set name - used for filtering results in searches.
-  */
-QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name){
-    var requestPath = '/api/v2/quality/keywordsets';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{formId}', formId);
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.name = name;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
 
-/**
-  * @summary Create a Keyword Set
-  * @memberOf QualityApi#
-  * @param {} body - keywordSet
-  * @param {string} expand - queueId
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteFormsFormId = deleteFormsFormId;
+	/**
+     * @summary Gets all the revisions for a specific evaluation.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getFormsFormIdVersions(formId, pageSize, pageNumber){
+		var apipath = '/api/v2/quality/forms/{formId}/versions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getFormsFormIdVersions = getFormsFormIdVersions;
+	/**
+     * @summary Get the list of keyword sets
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - The total page size requested
+	* @param {integer} pageNumber - The page number requested
+	* @param {string} sortBy - variable name requested to sort by
+	* @param {array} expand - variable name requested by expand list
+	* @param {string} nextPage - next page token
+	* @param {string} previousPage - Previous page token
+	* @param {string} name - the keyword set name - used for filtering results in searches.
+	*/
+	function getKeywordsets(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(nextPage !== undefined && nextPage !== null){
+			queryParameters.nextPage = nextPage;
+		}
+
+
+		if(previousPage !== undefined && previousPage !== null){
+			queryParameters.previousPage = previousPage;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getKeywordsets = getKeywordsets;
+	/**
+     * @summary Create a Keyword Set
+	 * @memberOf QualityApi#
+	* @param {} body - keywordSet
+	* @param {string} expand - queueId
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "queue": {
@@ -1029,62 +1457,83 @@ QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumb
    "keywords": [],
    "participantPurposes": []
 }
-  */
-QualityApi.prototype.postKeywordsets = function postKeywordsets(body, expand){
-    var requestPath = '/api/v2/quality/keywordsets';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postKeywordsets(body, expand){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    requestQuery.expand = expand;
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Delete keyword sets
-  * @description Bulk delete of keyword sets; this will only delete the keyword sets that match the ids specified in the query param.
-  * @memberOf QualityApi#
-  * @param {string} ids - A comma-delimited list of valid KeywordSet ids
-  */
-QualityApi.prototype.deleteKeywordsets = function deleteKeywordsets(ids){
-    var requestPath = '/api/v2/quality/keywordsets';
-    var requestQuery = {};
-    var requestBody;
 
-    if(ids === undefined || ids === null){
-      throw new Error('Missing required  parameter: ids');
-    }
-    requestQuery.ids = ids;
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
 
-/**
-  * @summary Get a keywordSet by id.
-  * @memberOf QualityApi#
-  * @param {string} keywordSetId - KeywordSet ID
-  */
-QualityApi.prototype.getKeywordsetsKeywordsetId = function getKeywordsetsKeywordsetId(keywordSetId){
-    var requestPath = '/api/v2/quality/keywordsets/{keywordSetId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(keywordSetId === undefined || keywordSetId === null){
-      throw new Error('Missing required  parameter: keywordSetId');
-    }
-    requestPath = requestPath.replace('{keywordSetId}', keywordSetId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postKeywordsets = postKeywordsets;
+	/**
+     * @summary Delete keyword sets
+	 * @description Bulk delete of keyword sets; this will only delete the keyword sets that match the ids specified in the query param.
+	 * @memberOf QualityApi#
+	* @param {string} ids - A comma-delimited list of valid KeywordSet ids
+	*/
+	function deleteKeywordsets(ids){
+		var apipath = '/api/v2/quality/keywordsets';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a keywordSet to the specified keywordSet via PUT.
-  * @memberOf QualityApi#
-  * @param {string} keywordSetId - KeywordSet ID
-  * @param {} body - keywordSet
-  * @example
-  * Body Example:
-  * {
+
+		if(ids !== undefined && ids !== null){
+			queryParameters.ids = ids;
+		}
+
+        if(ids === undefined && ids !== null){
+			throw 'Missing required  parameter: ids';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteKeywordsets = deleteKeywordsets;
+	/**
+     * @summary Get a keywordSet by id.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	*/
+	function getKeywordsetsKeywordsetId(keywordSetId){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getKeywordsetsKeywordsetId = getKeywordsetsKeywordsetId;
+	/**
+     * @summary Update a keywordSet to the specified keywordSet via PUT.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	* @param {} body - keywordSet
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "queue": {
@@ -1112,64 +1561,90 @@ QualityApi.prototype.getKeywordsetsKeywordsetId = function getKeywordsetsKeyword
    "keywords": [],
    "participantPurposes": []
 }
-  */
-QualityApi.prototype.putKeywordsetsKeywordsetId = function putKeywordsetsKeywordsetId(keywordSetId, body){
-    var requestPath = '/api/v2/quality/keywordsets/{keywordSetId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putKeywordsetsKeywordsetId(keywordSetId, body){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(keywordSetId === undefined || keywordSetId === null){
-      throw new Error('Missing required  parameter: keywordSetId');
-    }
-    requestPath = requestPath.replace('{keywordSetId}', keywordSetId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
 
-/**
-  * @summary Delete a keywordSet by id.
-  * @memberOf QualityApi#
-  * @param {string} keywordSetId - KeywordSet ID
-  */
-QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsKeywordsetId(keywordSetId){
-    var requestPath = '/api/v2/quality/keywordsets/{keywordSetId}';
-    var requestQuery = {};
-    var requestBody;
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
 
-    if(keywordSetId === undefined || keywordSetId === null){
-      throw new Error('Missing required  parameter: keywordSetId');
-    }
-    requestPath = requestPath.replace('{keywordSetId}', keywordSetId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get the published evaluation forms.
-  * @memberOf QualityApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} name - Name
-  */
-QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pageNumber, name){
-    var requestPath = '/api/v2/quality/publishedforms';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.name = name;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putKeywordsetsKeywordsetId = putKeywordsetsKeywordsetId;
+	/**
+     * @summary Delete a keywordSet by id.
+	 * @memberOf QualityApi#
+	* @param {string} keywordSetId - KeywordSet ID
+	*/
+	function deleteKeywordsetsKeywordsetId(keywordSetId){
+		var apipath = '/api/v2/quality/keywordsets/{keywordSetId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Publish an evaluation form.
-  * @memberOf QualityApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{keywordSetId}', keywordSetId);
+
+        if(keywordSetId === undefined && keywordSetId !== null){
+			throw 'Missing required  parameter: keywordSetId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteKeywordsetsKeywordsetId = deleteKeywordsetsKeywordsetId;
+	/**
+     * @summary Get the published evaluation forms.
+	 * @memberOf QualityApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	*/
+	function getPublishedforms(pageSize, pageNumber, name){
+		var apipath = '/api/v2/quality/publishedforms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPublishedforms = getPublishedforms;
+	/**
+     * @summary Publish an evaluation form.
+	 * @memberOf QualityApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "type": "",
    "modifiedDate": "",
@@ -1189,33 +1664,44 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageCount": 0
    }
 }
-  */
-QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
-    var requestPath = '/api/v2/quality/publishedforms';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postPublishedforms(body){
+		var apipath = '/api/v2/quality/publishedforms';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postPublishedforms = postPublishedforms;
+	/**
+     * @summary Get the published evaluation forms.
+	 * @memberOf QualityApi#
+	* @param {string} formId - Form ID
+	*/
+	function getPublishedformsFormId(formId){
+		var apipath = '/api/v2/quality/publishedforms/{formId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{formId}', formId);
+
+        if(formId === undefined && formId !== null){
+			throw 'Missing required  parameter: formId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getPublishedformsFormId = getPublishedformsFormId;
+
+    return self;
 };
-
-/**
-  * @summary Get the published evaluation forms.
-  * @memberOf QualityApi#
-  * @param {string} formId - Form ID
-  */
-QualityApi.prototype.getPublishedformsFormId = function getPublishedformsFormId(formId){
-    var requestPath = '/api/v2/quality/publishedforms/{formId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(formId === undefined || formId === null){
-      throw new Error('Missing required  parameter: formId');
-    }
-    requestPath = requestPath.replace('{formId}', formId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-

@@ -1,42 +1,42 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new OAuthApi(pureCloudSession);
 */
-function OAuthApi(session) {
-    if(!(this instanceof OAuthApi)) {
-        return new OAuthApi(session);
+var OAuthApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('OAuthApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary The list of OAuth clients
-  * @memberOf OAuthApi#
-  */
-OAuthApi.prototype.getClients = function getClients(){
-    var requestPath = '/api/v2/oauth/clients';
-    var requestQuery = {};
-    var requestBody;
+	var self = this;
+	/**
+     * @summary The list of OAuth clients
+	 * @memberOf OAuthApi#
+	*/
+	function getClients(){
+		var apipath = '/api/v2/oauth/clients';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary Create OAuth client
-  * @description The OAuth Grant/Client is required in order to create an authentication token and gain access to PureCloud. 
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getClients = getClients;
+	/**
+     * @summary Create OAuth client
+	 * @description The OAuth Grant/Client is required in order to create an authentication token and gain access to PureCloud. 
 The preferred authorizedGrantTypes is 'CODE' which requires applications to send a client ID and client secret. This is typically a web server. 
 If the client is unable to secure the client secret then the 'TOKEN' grant type aka IMPLICIT should be used. This is would be for browser or mobile apps. 
 If a client is to be used outside of the context of a user then the 'CLIENT-CREDENTIALS' grant may be used. In this case the client must be granted roles 
 via the 'roleIds' field.
-  * @memberOf OAuthApi#
-  * @param {} body - Client
-  * @example
-  * Body Example:
-  * {
+	 * @memberOf OAuthApi#
+	* @param {} body - Client
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "accessTokenValiditySeconds": 0,
    "description": "",
@@ -45,43 +45,52 @@ via the 'roleIds' field.
    "roleIds": [],
    "authorizedGrantType": ""
 }
-  */
-OAuthApi.prototype.postClients = function postClients(body){
-    var requestPath = '/api/v2/oauth/clients';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postClients(body){
+		var apipath = '/api/v2/oauth/clients';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get OAuth Client
-  * @memberOf OAuthApi#
-  * @param {string} clientId - Client ID
-  */
-OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
-    var requestPath = '/api/v2/oauth/clients/{clientId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(clientId === undefined || clientId === null){
-      throw new Error('Missing required  parameter: clientId');
-    }
-    requestPath = requestPath.replace('{clientId}', clientId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postClients = postClients;
+	/**
+     * @summary Get OAuth Client
+	 * @memberOf OAuthApi#
+	* @param {string} clientId - Client ID
+	*/
+	function getClientsClientId(clientId){
+		var apipath = '/api/v2/oauth/clients/{clientId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update OAuth Client
-  * @memberOf OAuthApi#
-  * @param {string} clientId - Client ID
-  * @param {} body - Client
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{clientId}', clientId);
+
+        if(clientId === undefined && clientId !== null){
+			throw 'Missing required  parameter: clientId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getClientsClientId = getClientsClientId;
+	/**
+     * @summary Update OAuth Client
+	 * @memberOf OAuthApi#
+	* @param {string} clientId - Client ID
+	* @param {} body - Client
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "accessTokenValiditySeconds": 0,
    "description": "",
@@ -90,55 +99,73 @@ OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
    "roleIds": [],
    "authorizedGrantType": ""
 }
-  */
-OAuthApi.prototype.putClientsClientId = function putClientsClientId(clientId, body){
-    var requestPath = '/api/v2/oauth/clients/{clientId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putClientsClientId(clientId, body){
+		var apipath = '/api/v2/oauth/clients/{clientId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(clientId === undefined || clientId === null){
-      throw new Error('Missing required  parameter: clientId');
-    }
-    requestPath = requestPath.replace('{clientId}', clientId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+        apipath = apipath.replace('{clientId}', clientId);
+
+        if(clientId === undefined && clientId !== null){
+			throw 'Missing required  parameter: clientId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putClientsClientId = putClientsClientId;
+	/**
+     * @summary Delete OAuth Client
+	 * @memberOf OAuthApi#
+	* @param {string} clientId - Client ID
+	*/
+	function deleteClientsClientId(clientId){
+		var apipath = '/api/v2/oauth/clients/{clientId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{clientId}', clientId);
+
+        if(clientId === undefined && clientId !== null){
+			throw 'Missing required  parameter: clientId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteClientsClientId = deleteClientsClientId;
+	/**
+     * @summary Regenerate Client Secret
+	 * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
+	 * @memberOf OAuthApi#
+	* @param {string} clientId - Client ID
+	*/
+	function postClientsClientIdSecret(clientId){
+		var apipath = '/api/v2/oauth/clients/{clientId}/secret';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{clientId}', clientId);
+
+        if(clientId === undefined && clientId !== null){
+			throw 'Missing required  parameter: clientId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postClientsClientIdSecret = postClientsClientIdSecret;
+
+    return self;
 };
-
-/**
-  * @summary Delete OAuth Client
-  * @memberOf OAuthApi#
-  * @param {string} clientId - Client ID
-  */
-OAuthApi.prototype.deleteClientsClientId = function deleteClientsClientId(clientId){
-    var requestPath = '/api/v2/oauth/clients/{clientId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(clientId === undefined || clientId === null){
-      throw new Error('Missing required  parameter: clientId');
-    }
-    requestPath = requestPath.replace('{clientId}', clientId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Regenerate Client Secret
-  * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
-  * @memberOf OAuthApi#
-  * @param {string} clientId - Client ID
-  */
-OAuthApi.prototype.postClientsClientIdSecret = function postClientsClientIdSecret(clientId){
-    var requestPath = '/api/v2/oauth/clients/{clientId}/secret';
-    var requestQuery = {};
-    var requestBody;
-
-    if(clientId === undefined || clientId === null){
-      throw new Error('Missing required  parameter: clientId');
-    }
-    requestPath = requestPath.replace('{clientId}', clientId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
-
-

@@ -1,178 +1,267 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new TelephonyProvidersEdgeApi(pureCloudSession);
 */
-function TelephonyProvidersEdgeApi(session) {
-    if(!(this instanceof TelephonyProvidersEdgeApi)) {
-        return new TelephonyProvidersEdgeApi(session);
+var TelephonyProvidersEdgeApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('TelephonyProvidersEdgeApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Lists available schema categories
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnext = function getSchemasEdgesVnext(pageSize, pageNumber){
-    var requestPath = '/api/v2/configuration/schemas/edges/vnext';
-    var requestQuery = {};
-    var requestBody;
+	var self = this;
+	/**
+     * @summary Lists available schema categories
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getSchemasEdgesVnext(pageSize, pageNumber){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary List schemas of a specific category
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} schemaCategory - Schema category
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategory = function getSchemasEdgesVnextSchemacategory(schemaCategory, pageSize, pageNumber){
-    var requestPath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}';
-    var requestQuery = {};
-    var requestBody;
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-    if(schemaCategory === undefined || schemaCategory === null){
-      throw new Error('Missing required  parameter: schemaCategory');
-    }
-    requestPath = requestPath.replace('{schemaCategory}', schemaCategory);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary List schemas of a specific category
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} schemaCategory - Schema category
-  * @param {string} schemaType - Schema type
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype = function getSchemasEdgesVnextSchemacategorySchematype(schemaCategory, schemaType, pageSize, pageNumber){
-    var requestPath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}';
-    var requestQuery = {};
-    var requestBody;
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-    if(schemaCategory === undefined || schemaCategory === null){
-      throw new Error('Missing required  parameter: schemaCategory');
-    }
-    requestPath = requestPath.replace('{schemaCategory}', schemaCategory);
-    if(schemaType === undefined || schemaType === null){
-      throw new Error('Missing required  parameter: schemaType');
-    }
-    requestPath = requestPath.replace('{schemaType}', schemaType);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary Get a json schema
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} schemaCategory - Schema category
-  * @param {string} schemaType - Schema type
-  * @param {string} schemaId - Schema ID
-  */
-TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematypeSchemaId = function getSchemasEdgesVnextSchemacategorySchematypeSchemaId(schemaCategory, schemaType, schemaId){
-    var requestPath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}';
-    var requestQuery = {};
-    var requestBody;
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchemasEdgesVnext = getSchemasEdgesVnext;
+	/**
+     * @summary List schemas of a specific category
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} schemaCategory - Schema category
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getSchemasEdgesVnextSchemacategory(schemaCategory, pageSize, pageNumber){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(schemaCategory === undefined || schemaCategory === null){
-      throw new Error('Missing required  parameter: schemaCategory');
-    }
-    requestPath = requestPath.replace('{schemaCategory}', schemaCategory);
-    if(schemaType === undefined || schemaType === null){
-      throw new Error('Missing required  parameter: schemaType');
-    }
-    requestPath = requestPath.replace('{schemaType}', schemaType);
-    if(schemaId === undefined || schemaId === null){
-      throw new Error('Missing required  parameter: schemaId');
-    }
-    requestPath = requestPath.replace('{schemaId}', schemaId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{schemaCategory}', schemaCategory);
 
-/**
-  * @summary Get metadata for a schema
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} schemaCategory - Schema category
-  * @param {string} schemaType - Schema type
-  * @param {string} schemaId - Schema ID
-  * @param {string} extensionType - extension
-  * @param {string} metadataId - Metadata ID
-  * @param {string} type - Type
-  */
-TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId = function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId(schemaCategory, schemaType, schemaId, extensionType, metadataId, type){
-    var requestPath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extensionType}/{metadataId}';
-    var requestQuery = {};
-    var requestBody;
+        if(schemaCategory === undefined && schemaCategory !== null){
+			throw 'Missing required  parameter: schemaCategory';
+        }
 
-    if(schemaCategory === undefined || schemaCategory === null){
-      throw new Error('Missing required  parameter: schemaCategory');
-    }
-    requestPath = requestPath.replace('{schemaCategory}', schemaCategory);
-    if(schemaType === undefined || schemaType === null){
-      throw new Error('Missing required  parameter: schemaType');
-    }
-    requestPath = requestPath.replace('{schemaType}', schemaType);
-    if(schemaId === undefined || schemaId === null){
-      throw new Error('Missing required  parameter: schemaId');
-    }
-    requestPath = requestPath.replace('{schemaId}', schemaId);
-    if(extensionType === undefined || extensionType === null){
-      throw new Error('Missing required  parameter: extensionType');
-    }
-    requestPath = requestPath.replace('{extensionType}', extensionType);
-    if(metadataId === undefined || metadataId === null){
-      throw new Error('Missing required  parameter: metadataId');
-    }
-    requestPath = requestPath.replace('{metadataId}', metadataId);
-    requestQuery.type = type;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary Get the list of edges.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} name - Name
-  * @param {string} siteid - Filter by site.id
-  * @param {string} edgeGroupid - Filter by edgeGroup.id
-  * @param {string} sortBy - Sort by
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdges(pageSize, pageNumber, name, siteid, edgeGroupid, sortBy){
-    var requestPath = '/api/v2/telephony/providers/edges';
-    var requestQuery = {};
-    var requestBody;
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.name = name;
-    requestQuery.site.id = siteid;
-    requestQuery.edgeGroup.id = edgeGroupid;
-    requestQuery.sortBy = sortBy;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
-/**
-  * @summary Create a edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - Edge
-  * @example
-  * Body Example:
-  * {
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchemasEdgesVnextSchemacategory = getSchemasEdgesVnextSchemacategory;
+	/**
+     * @summary List schemas of a specific category
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} schemaCategory - Schema category
+	* @param {string} schemaType - Schema type
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getSchemasEdgesVnextSchemacategorySchematype(schemaCategory, schemaType, pageSize, pageNumber){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{schemaCategory}', schemaCategory);
+
+        if(schemaCategory === undefined && schemaCategory !== null){
+			throw 'Missing required  parameter: schemaCategory';
+        }
+
+        apipath = apipath.replace('{schemaType}', schemaType);
+
+        if(schemaType === undefined && schemaType !== null){
+			throw 'Missing required  parameter: schemaType';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchemasEdgesVnextSchemacategorySchematype = getSchemasEdgesVnextSchemacategorySchematype;
+	/**
+     * @summary Get a json schema
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} schemaCategory - Schema category
+	* @param {string} schemaType - Schema type
+	* @param {string} schemaId - Schema ID
+	*/
+	function getSchemasEdgesVnextSchemacategorySchematypeSchemaId(schemaCategory, schemaType, schemaId){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{schemaCategory}', schemaCategory);
+
+        if(schemaCategory === undefined && schemaCategory !== null){
+			throw 'Missing required  parameter: schemaCategory';
+        }
+
+        apipath = apipath.replace('{schemaType}', schemaType);
+
+        if(schemaType === undefined && schemaType !== null){
+			throw 'Missing required  parameter: schemaType';
+        }
+
+        apipath = apipath.replace('{schemaId}', schemaId);
+
+        if(schemaId === undefined && schemaId !== null){
+			throw 'Missing required  parameter: schemaId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchemasEdgesVnextSchemacategorySchematypeSchemaId = getSchemasEdgesVnextSchemacategorySchematypeSchemaId;
+	/**
+     * @summary Get metadata for a schema
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} schemaCategory - Schema category
+	* @param {string} schemaType - Schema type
+	* @param {string} schemaId - Schema ID
+	* @param {string} extensionType - extension
+	* @param {string} metadataId - Metadata ID
+	* @param {string} type - Type
+	*/
+	function getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId(schemaCategory, schemaType, schemaId, extensionType, metadataId, type){
+		var apipath = '/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extensionType}/{metadataId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{schemaCategory}', schemaCategory);
+
+        if(schemaCategory === undefined && schemaCategory !== null){
+			throw 'Missing required  parameter: schemaCategory';
+        }
+
+        apipath = apipath.replace('{schemaType}', schemaType);
+
+        if(schemaType === undefined && schemaType !== null){
+			throw 'Missing required  parameter: schemaType';
+        }
+
+        apipath = apipath.replace('{schemaId}', schemaId);
+
+        if(schemaId === undefined && schemaId !== null){
+			throw 'Missing required  parameter: schemaId';
+        }
+
+        apipath = apipath.replace('{extensionType}', extensionType);
+
+        if(extensionType === undefined && extensionType !== null){
+			throw 'Missing required  parameter: extensionType';
+        }
+
+        apipath = apipath.replace('{metadataId}', metadataId);
+
+        if(metadataId === undefined && metadataId !== null){
+			throw 'Missing required  parameter: metadataId';
+        }
+
+
+		if(type !== undefined && type !== null){
+			queryParameters.type = type;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId = getSchemasEdgesVnextSchemacategorySchematypeSchemaIdExtensiontypeMetadataId;
+	/**
+     * @summary Get the list of edges.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} siteid - Filter by site.id
+	* @param {string} edgeGroupid - Filter by edgeGroup.id
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdges(pageSize, pageNumber, name, siteid, edgeGroupid, sortBy){
+		var apipath = '/api/v2/telephony/providers/edges';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(siteid !== undefined && siteid !== null){
+			queryParameters.site.id = siteid;
+		}
+
+
+		if(edgeGroupid !== undefined && edgeGroupid !== null){
+			queryParameters.edgeGroup.id = edgeGroupid;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdges = getProvidersEdges;
+	/**
+     * @summary Create a edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - Edge
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -236,25 +325,29 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
    "physicalEdge": true,
    "managed": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdges = function postProvidersEdges(body){
-    var requestPath = '/api/v2/telephony/providers/edges';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdges(body){
+		var apipath = '/api/v2/telephony/providers/edges';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Validates a street address
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdges = postProvidersEdges;
+	/**
+     * @summary Validates a street address
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "address": {
       "country": "",
       "A1": "",
@@ -266,49 +359,59 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdges = function postProvidersE
       "PC": ""
    }
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesAddressvalidation = function postProvidersEdgesAddressvalidation(body){
-    var requestPath = '/api/v2/telephony/providers/edges/addressvalidation';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesAddressvalidation(body){
+		var apipath = '/api/v2/telephony/providers/edges/addressvalidation';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get the list of available languages.
-  * @memberOf TelephonyProvidersEdgeApi#
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesAvailablelanguages = function getProvidersEdgesAvailablelanguages(){
-    var requestPath = '/api/v2/telephony/providers/edges/availablelanguages';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesAddressvalidation = postProvidersEdgesAddressvalidation;
+	/**
+     * @summary Get the list of available languages.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	*/
+	function getProvidersEdgesAvailablelanguages(){
+		var apipath = '/api/v2/telephony/providers/edges/availablelanguages';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the list of certificate authorities.
-  * @memberOf TelephonyProvidersEdgeApi#
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesCertificateauthorities = function getProvidersEdgesCertificateauthorities(){
-    var requestPath = '/api/v2/telephony/providers/edges/certificateauthorities';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesAvailablelanguages = getProvidersEdgesAvailablelanguages;
+	/**
+     * @summary Get the list of certificate authorities.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	*/
+	function getProvidersEdgesCertificateauthorities(){
+		var apipath = '/api/v2/telephony/providers/edges/certificateauthorities';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a certificate authority.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - CertificateAuthority
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesCertificateauthorities = getProvidersEdgesCertificateauthorities;
+	/**
+     * @summary Create a certificate authority.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - CertificateAuthority
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -324,43 +427,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesCertificateauthorities = fu
    "services": [],
    "certificateDetails": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesCertificateauthorities = function postProvidersEdgesCertificateauthorities(body){
-    var requestPath = '/api/v2/telephony/providers/edges/certificateauthorities';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesCertificateauthorities(body){
+		var apipath = '/api/v2/telephony/providers/edges/certificateauthorities';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a certificate authority.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} certificateId - Certificate ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesCertificateauthoritiesCertificateId = function getProvidersEdgesCertificateauthoritiesCertificateId(certificateId){
-    var requestPath = '/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(certificateId === undefined || certificateId === null){
-      throw new Error('Missing required  parameter: certificateId');
-    }
-    requestPath = requestPath.replace('{certificateId}', certificateId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesCertificateauthorities = postProvidersEdgesCertificateauthorities;
+	/**
+     * @summary Get a certificate authority.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} certificateId - Certificate ID
+	*/
+	function getProvidersEdgesCertificateauthoritiesCertificateId(certificateId){
+		var apipath = '/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a certificate authority.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} certificateId - Certificate ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{certificateId}', certificateId);
+
+        if(certificateId === undefined && certificateId !== null){
+			throw 'Missing required  parameter: certificateId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesCertificateauthoritiesCertificateId = getProvidersEdgesCertificateauthoritiesCertificateId;
+	/**
+     * @summary Update a certificate authority.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} certificateId - Certificate ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -376,64 +488,90 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesCertificateauthoritiesCerti
    "services": [],
    "certificateDetails": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesCertificateauthoritiesCertificateId = function putProvidersEdgesCertificateauthoritiesCertificateId(certificateId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesCertificateauthoritiesCertificateId(certificateId, body){
+		var apipath = '/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(certificateId === undefined || certificateId === null){
-      throw new Error('Missing required  parameter: certificateId');
-    }
-    requestPath = requestPath.replace('{certificateId}', certificateId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{certificateId}', certificateId);
 
-/**
-  * @summary Delete a certificate authority.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} certificateId - Certificate ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesCertificateauthoritiesCertificateId = function deleteProvidersEdgesCertificateauthoritiesCertificateId(certificateId){
-    var requestPath = '/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}';
-    var requestQuery = {};
-    var requestBody;
+        if(certificateId === undefined && certificateId !== null){
+			throw 'Missing required  parameter: certificateId';
+        }
 
-    if(certificateId === undefined || certificateId === null){
-      throw new Error('Missing required  parameter: certificateId');
-    }
-    requestPath = requestPath.replace('{certificateId}', certificateId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a listing of DID Pools
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDidpools = function getProvidersEdgesDidpools(pageSize, pageNumber, sortBy){
-    var requestPath = '/api/v2/telephony/providers/edges/didpools';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesCertificateauthoritiesCertificateId = putProvidersEdgesCertificateauthoritiesCertificateId;
+	/**
+     * @summary Delete a certificate authority.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} certificateId - Certificate ID
+	*/
+	function deleteProvidersEdgesCertificateauthoritiesCertificateId(certificateId){
+		var apipath = '/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a new DID pool
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{certificateId}', certificateId);
+
+        if(certificateId === undefined && certificateId !== null){
+			throw 'Missing required  parameter: certificateId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesCertificateauthoritiesCertificateId = deleteProvidersEdgesCertificateauthoritiesCertificateId;
+	/**
+     * @summary Get a listing of DID Pools
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdgesDidpools(pageSize, pageNumber, sortBy){
+		var apipath = '/api/v2/telephony/providers/edges/didpools';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesDidpools = getProvidersEdgesDidpools;
+	/**
+     * @summary Create a new DID pool
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -449,43 +587,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDidpools = function getProv
    "comments": "",
    "provider": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesDidpools = function postProvidersEdgesDidpools(body){
-    var requestPath = '/api/v2/telephony/providers/edges/didpools';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesDidpools(body){
+		var apipath = '/api/v2/telephony/providers/edges/didpools';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a DID Pool by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} didPoolId - DID pool ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDidpoolsDidpoolId = function getProvidersEdgesDidpoolsDidpoolId(didPoolId){
-    var requestPath = '/api/v2/telephony/providers/edges/didpools/{didPoolId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(didPoolId === undefined || didPoolId === null){
-      throw new Error('Missing required  parameter: didPoolId');
-    }
-    requestPath = requestPath.replace('{didPoolId}', didPoolId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesDidpools = postProvidersEdgesDidpools;
+	/**
+     * @summary Get a DID Pool by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} didPoolId - DID pool ID
+	*/
+	function getProvidersEdgesDidpoolsDidpoolId(didPoolId){
+		var apipath = '/api/v2/telephony/providers/edges/didpools/{didPoolId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a DID Pool by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} didPoolId - DID pool ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{didPoolId}', didPoolId);
+
+        if(didPoolId === undefined && didPoolId !== null){
+			throw 'Missing required  parameter: didPoolId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesDidpoolsDidpoolId = getProvidersEdgesDidpoolsDidpoolId;
+	/**
+     * @summary Update a DID Pool by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} didPoolId - DID pool ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -501,86 +648,125 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDidpoolsDidpoolId = functio
    "comments": "",
    "provider": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesDidpoolsDidpoolId = function putProvidersEdgesDidpoolsDidpoolId(didPoolId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/didpools/{didPoolId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesDidpoolsDidpoolId(didPoolId, body){
+		var apipath = '/api/v2/telephony/providers/edges/didpools/{didPoolId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(didPoolId === undefined || didPoolId === null){
-      throw new Error('Missing required  parameter: didPoolId');
-    }
-    requestPath = requestPath.replace('{didPoolId}', didPoolId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{didPoolId}', didPoolId);
 
-/**
-  * @summary Delete a DID Pool by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} didPoolId - DID pool ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesDidpoolsDidpoolId = function deleteProvidersEdgesDidpoolsDidpoolId(didPoolId){
-    var requestPath = '/api/v2/telephony/providers/edges/didpools/{didPoolId}';
-    var requestQuery = {};
-    var requestBody;
+        if(didPoolId === undefined && didPoolId !== null){
+			throw 'Missing required  parameter: didPoolId';
+        }
 
-    if(didPoolId === undefined || didPoolId === null){
-      throw new Error('Missing required  parameter: didPoolId');
-    }
-    requestPath = requestPath.replace('{didPoolId}', didPoolId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a listing of DIDs
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  * @param {string} sortOrder - Sort order
-  * @param {string} phoneNumber - Filter by phoneNumber
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDids = function getProvidersEdgesDids(pageSize, pageNumber, sortBy, sortOrder, phoneNumber){
-    var requestPath = '/api/v2/telephony/providers/edges/dids';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.phoneNumber = phoneNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesDidpoolsDidpoolId = putProvidersEdgesDidpoolsDidpoolId;
+	/**
+     * @summary Delete a DID Pool by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} didPoolId - DID pool ID
+	*/
+	function deleteProvidersEdgesDidpoolsDidpoolId(didPoolId){
+		var apipath = '/api/v2/telephony/providers/edges/didpools/{didPoolId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a DID by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} didId - DID ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDidsDidId = function getProvidersEdgesDidsDidId(didId){
-    var requestPath = '/api/v2/telephony/providers/edges/dids/{didId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{didPoolId}', didPoolId);
 
-    if(didId === undefined || didId === null){
-      throw new Error('Missing required  parameter: didId');
-    }
-    requestPath = requestPath.replace('{didId}', didId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(didPoolId === undefined && didPoolId !== null){
+			throw 'Missing required  parameter: didPoolId';
+        }
 
-/**
-  * @summary Update a DID by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} didId - DID ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesDidpoolsDidpoolId = deleteProvidersEdgesDidpoolsDidpoolId;
+	/**
+     * @summary Get a listing of DIDs
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	* @param {string} phoneNumber - Filter by phoneNumber
+	*/
+	function getProvidersEdgesDids(pageSize, pageNumber, sortBy, sortOrder, phoneNumber){
+		var apipath = '/api/v2/telephony/providers/edges/dids';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(phoneNumber !== undefined && phoneNumber !== null){
+			queryParameters.phoneNumber = phoneNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesDids = getProvidersEdgesDids;
+	/**
+     * @summary Get a DID by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} didId - DID ID
+	*/
+	function getProvidersEdgesDidsDidId(didId){
+		var apipath = '/api/v2/telephony/providers/edges/dids/{didId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{didId}', didId);
+
+        if(didId === undefined && didId !== null){
+			throw 'Missing required  parameter: didId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesDidsDidId = getProvidersEdgesDidsDidId;
+	/**
+     * @summary Update a DID by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} didId - DID ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -604,49 +790,74 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesDidsDidId = function getPro
    },
    "ownerType": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesDidsDidId = function putProvidersEdgesDidsDidId(didId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/dids/{didId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesDidsDidId(didId, body){
+		var apipath = '/api/v2/telephony/providers/edges/dids/{didId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(didId === undefined || didId === null){
-      throw new Error('Missing required  parameter: didId');
-    }
-    requestPath = requestPath.replace('{didId}', didId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{didId}', didId);
 
-/**
-  * @summary Get the list of edge groups.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} name - Name
-  * @param {string} sortBy - Sort by
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getProvidersEdgesEdgegroups(pageSize, pageNumber, name, sortBy){
-    var requestPath = '/api/v2/telephony/providers/edges/edgegroups';
-    var requestQuery = {};
-    var requestBody;
+        if(didId === undefined && didId !== null){
+			throw 'Missing required  parameter: didId';
+        }
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.name = name;
-    requestQuery.sortBy = sortBy;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Create an edge group.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - EdgeGroup
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesDidsDidId = putProvidersEdgesDidsDidId;
+	/**
+     * @summary Get the list of edge groups.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdgesEdgegroups(pageSize, pageNumber, name, sortBy){
+		var apipath = '/api/v2/telephony/providers/edges/edgegroups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgegroups = getProvidersEdgesEdgegroups;
+	/**
+     * @summary Create an edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - EdgeGroup
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -665,43 +876,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getPr
    "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgegroups = function postProvidersEdgesEdgegroups(body){
-    var requestPath = '/api/v2/telephony/providers/edges/edgegroups';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesEdgegroups(body){
+		var apipath = '/api/v2/telephony/providers/edges/edgegroups';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get edge group.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeGroupId - Edge group ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = function getProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId){
-    var requestPath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(edgeGroupId === undefined || edgeGroupId === null){
-      throw new Error('Missing required  parameter: edgeGroupId');
-    }
-    requestPath = requestPath.replace('{edgeGroupId}', edgeGroupId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgegroups = postProvidersEdgesEdgegroups;
+	/**
+     * @summary Get edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeGroupId - Edge group ID
+	*/
+	function getProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId){
+		var apipath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update an edge group.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeGroupId - Edge group ID
-  * @param {} body - EdgeGroup
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
+
+        if(edgeGroupId === undefined && edgeGroupId !== null){
+			throw 'Missing required  parameter: edgeGroupId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgegroupsEdgegroupId = getProvidersEdgesEdgegroupsEdgegroupId;
+	/**
+     * @summary Update an edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeGroupId - Edge group ID
+	* @param {} body - EdgeGroup
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -720,79 +940,112 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = fun
    "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgegroupsEdgegroupId = function putProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId, body){
+		var apipath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeGroupId === undefined || edgeGroupId === null){
-      throw new Error('Missing required  parameter: edgeGroupId');
-    }
-    requestPath = requestPath.replace('{edgeGroupId}', edgeGroupId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
 
-/**
-  * @summary Delete an edge group.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeGroupId - Edge group ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgegroupsEdgegroupId = function deleteProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId){
-    var requestPath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeGroupId === undefined && edgeGroupId !== null){
+			throw 'Missing required  parameter: edgeGroupId';
+        }
 
-    if(edgeGroupId === undefined || edgeGroupId === null){
-      throw new Error('Missing required  parameter: edgeGroupId');
-    }
-    requestPath = requestPath.replace('{edgeGroupId}', edgeGroupId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get the edge version report.
-  * @description The report will not have consistent data about the edge version(s) until all edges have been reset.
-  * @memberOf TelephonyProvidersEdgeApi#
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeversionreport = function getProvidersEdgesEdgeversionreport(){
-    var requestPath = '/api/v2/telephony/providers/edges/edgeversionreport';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesEdgegroupsEdgegroupId = putProvidersEdgesEdgegroupsEdgegroupId;
+	/**
+     * @summary Delete an edge group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeGroupId - Edge group ID
+	*/
+	function deleteProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId){
+		var apipath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get endpoints
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} name - Name
-  * @param {string} sortBy - Sort by
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEndpoints = function getProvidersEdgesEndpoints(pageSize, pageNumber, name, sortBy){
-    var requestPath = '/api/v2/telephony/providers/edges/endpoints';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{edgeGroupId}', edgeGroupId);
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.name = name;
-    requestQuery.sortBy = sortBy;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(edgeGroupId === undefined && edgeGroupId !== null){
+			throw 'Missing required  parameter: edgeGroupId';
+        }
 
-/**
-  * @summary Create endpoint
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - EndpointTemplate
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesEdgegroupsEdgegroupId = deleteProvidersEdgesEdgegroupsEdgegroupId;
+	/**
+     * @summary Get the edge version report.
+	 * @description The report will not have consistent data about the edge version(s) until all edges have been reset.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	*/
+	function getProvidersEdgesEdgeversionreport(){
+		var apipath = '/api/v2/telephony/providers/edges/edgeversionreport';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeversionreport = getProvidersEdgesEdgeversionreport;
+	/**
+     * @summary Get endpoints
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdgesEndpoints(pageSize, pageNumber, name, sortBy){
+		var apipath = '/api/v2/telephony/providers/edges/endpoints';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEndpoints = getProvidersEdgesEndpoints;
+	/**
+     * @summary Create endpoint
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - EndpointTemplate
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -818,43 +1071,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEndpoints = function getPro
    },
    "dids": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEndpoints = function postProvidersEdgesEndpoints(body){
-    var requestPath = '/api/v2/telephony/providers/edges/endpoints';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesEndpoints(body){
+		var apipath = '/api/v2/telephony/providers/edges/endpoints';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get endpoint
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} endpointId - Endpoint ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEndpointsEndpointId = function getProvidersEdgesEndpointsEndpointId(endpointId){
-    var requestPath = '/api/v2/telephony/providers/edges/endpoints/{endpointId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(endpointId === undefined || endpointId === null){
-      throw new Error('Missing required  parameter: endpointId');
-    }
-    requestPath = requestPath.replace('{endpointId}', endpointId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEndpoints = postProvidersEdgesEndpoints;
+	/**
+     * @summary Get endpoint
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} endpointId - Endpoint ID
+	*/
+	function getProvidersEdgesEndpointsEndpointId(endpointId){
+		var apipath = '/api/v2/telephony/providers/edges/endpoints/{endpointId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update endpoint
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} endpointId - Endpoint ID
-  * @param {} body - EndpointTemplate
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{endpointId}', endpointId);
+
+        if(endpointId === undefined && endpointId !== null){
+			throw 'Missing required  parameter: endpointId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEndpointsEndpointId = getProvidersEdgesEndpointsEndpointId;
+	/**
+     * @summary Update endpoint
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} endpointId - Endpoint ID
+	* @param {} body - EndpointTemplate
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -880,66 +1142,96 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEndpointsEndpointId = funct
    },
    "dids": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEndpointsEndpointId = function putProvidersEdgesEndpointsEndpointId(endpointId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/endpoints/{endpointId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesEndpointsEndpointId(endpointId, body){
+		var apipath = '/api/v2/telephony/providers/edges/endpoints/{endpointId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(endpointId === undefined || endpointId === null){
-      throw new Error('Missing required  parameter: endpointId');
-    }
-    requestPath = requestPath.replace('{endpointId}', endpointId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{endpointId}', endpointId);
 
-/**
-  * @summary Delete endpoint
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} endpointId - Endpoint ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEndpointsEndpointId = function deleteProvidersEdgesEndpointsEndpointId(endpointId){
-    var requestPath = '/api/v2/telephony/providers/edges/endpoints/{endpointId}';
-    var requestQuery = {};
-    var requestBody;
+        if(endpointId === undefined && endpointId !== null){
+			throw 'Missing required  parameter: endpointId';
+        }
 
-    if(endpointId === undefined || endpointId === null){
-      throw new Error('Missing required  parameter: endpointId');
-    }
-    requestPath = requestPath.replace('{endpointId}', endpointId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a listing of extension pools
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  * @param {string} number - Number
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionpools = function getProvidersEdgesExtensionpools(pageSize, pageNumber, sortBy, number){
-    var requestPath = '/api/v2/telephony/providers/edges/extensionpools';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.number = number;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesEndpointsEndpointId = putProvidersEdgesEndpointsEndpointId;
+	/**
+     * @summary Delete endpoint
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} endpointId - Endpoint ID
+	*/
+	function deleteProvidersEdgesEndpointsEndpointId(endpointId){
+		var apipath = '/api/v2/telephony/providers/edges/endpoints/{endpointId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a new extension pool
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - ExtensionPool
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{endpointId}', endpointId);
+
+        if(endpointId === undefined && endpointId !== null){
+			throw 'Missing required  parameter: endpointId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesEndpointsEndpointId = deleteProvidersEdgesEndpointsEndpointId;
+	/**
+     * @summary Get a listing of extension pools
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} number - Number
+	*/
+	function getProvidersEdgesExtensionpools(pageSize, pageNumber, sortBy, number){
+		var apipath = '/api/v2/telephony/providers/edges/extensionpools';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(number !== undefined && number !== null){
+			queryParameters.number = number;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesExtensionpools = getProvidersEdgesExtensionpools;
+	/**
+     * @summary Create a new extension pool
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - ExtensionPool
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -953,43 +1245,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionpools = function g
    "startNumber": "",
    "endNumber": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesExtensionpools = function postProvidersEdgesExtensionpools(body){
-    var requestPath = '/api/v2/telephony/providers/edges/extensionpools';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesExtensionpools(body){
+		var apipath = '/api/v2/telephony/providers/edges/extensionpools';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get an extension pool by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} extensionPoolId - Extension pool ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionpoolsExtensionpoolId = function getProvidersEdgesExtensionpoolsExtensionpoolId(extensionPoolId){
-    var requestPath = '/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(extensionPoolId === undefined || extensionPoolId === null){
-      throw new Error('Missing required  parameter: extensionPoolId');
-    }
-    requestPath = requestPath.replace('{extensionPoolId}', extensionPoolId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesExtensionpools = postProvidersEdgesExtensionpools;
+	/**
+     * @summary Get an extension pool by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} extensionPoolId - Extension pool ID
+	*/
+	function getProvidersEdgesExtensionpoolsExtensionpoolId(extensionPoolId){
+		var apipath = '/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update an extension pool by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} extensionPoolId - Extension pool ID
-  * @param {} body - ExtensionPool
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{extensionPoolId}', extensionPoolId);
+
+        if(extensionPoolId === undefined && extensionPoolId !== null){
+			throw 'Missing required  parameter: extensionPoolId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesExtensionpoolsExtensionpoolId = getProvidersEdgesExtensionpoolsExtensionpoolId;
+	/**
+     * @summary Update an extension pool by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} extensionPoolId - Extension pool ID
+	* @param {} body - ExtensionPool
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1003,86 +1304,125 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionpoolsExtensionpool
    "startNumber": "",
    "endNumber": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesExtensionpoolsExtensionpoolId = function putProvidersEdgesExtensionpoolsExtensionpoolId(extensionPoolId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesExtensionpoolsExtensionpoolId(extensionPoolId, body){
+		var apipath = '/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(extensionPoolId === undefined || extensionPoolId === null){
-      throw new Error('Missing required  parameter: extensionPoolId');
-    }
-    requestPath = requestPath.replace('{extensionPoolId}', extensionPoolId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{extensionPoolId}', extensionPoolId);
 
-/**
-  * @summary Delete an extension pool by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} extensionPoolId - Extension pool ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesExtensionpoolsExtensionpoolId = function deleteProvidersEdgesExtensionpoolsExtensionpoolId(extensionPoolId){
-    var requestPath = '/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}';
-    var requestQuery = {};
-    var requestBody;
+        if(extensionPoolId === undefined && extensionPoolId !== null){
+			throw 'Missing required  parameter: extensionPoolId';
+        }
 
-    if(extensionPoolId === undefined || extensionPoolId === null){
-      throw new Error('Missing required  parameter: extensionPoolId');
-    }
-    requestPath = requestPath.replace('{extensionPoolId}', extensionPoolId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a listing of extensions
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  * @param {string} sortOrder - Sort order
-  * @param {string} number - Filter by number
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensions = function getProvidersEdgesExtensions(pageSize, pageNumber, sortBy, sortOrder, number){
-    var requestPath = '/api/v2/telephony/providers/edges/extensions';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.number = number;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesExtensionpoolsExtensionpoolId = putProvidersEdgesExtensionpoolsExtensionpoolId;
+	/**
+     * @summary Delete an extension pool by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} extensionPoolId - Extension pool ID
+	*/
+	function deleteProvidersEdgesExtensionpoolsExtensionpoolId(extensionPoolId){
+		var apipath = '/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get an extension by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} extensionId - Extension ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionsExtensionId = function getProvidersEdgesExtensionsExtensionId(extensionId){
-    var requestPath = '/api/v2/telephony/providers/edges/extensions/{extensionId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{extensionPoolId}', extensionPoolId);
 
-    if(extensionId === undefined || extensionId === null){
-      throw new Error('Missing required  parameter: extensionId');
-    }
-    requestPath = requestPath.replace('{extensionId}', extensionId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(extensionPoolId === undefined && extensionPoolId !== null){
+			throw 'Missing required  parameter: extensionPoolId';
+        }
 
-/**
-  * @summary Update an extension by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} extensionId - Extension ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesExtensionpoolsExtensionpoolId = deleteProvidersEdgesExtensionpoolsExtensionpoolId;
+	/**
+     * @summary Get a listing of extensions
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	* @param {string} number - Filter by number
+	*/
+	function getProvidersEdgesExtensions(pageSize, pageNumber, sortBy, sortOrder, number){
+		var apipath = '/api/v2/telephony/providers/edges/extensions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(number !== undefined && number !== null){
+			queryParameters.number = number;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesExtensions = getProvidersEdgesExtensions;
+	/**
+     * @summary Get an extension by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} extensionId - Extension ID
+	*/
+	function getProvidersEdgesExtensionsExtensionId(extensionId){
+		var apipath = '/api/v2/telephony/providers/edges/extensions/{extensionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{extensionId}', extensionId);
+
+        if(extensionId === undefined && extensionId !== null){
+			throw 'Missing required  parameter: extensionId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesExtensionsExtensionId = getProvidersEdgesExtensionsExtensionId;
+	/**
+     * @summary Update an extension by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} extensionId - Extension ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1106,144 +1446,233 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionsExtensionId = fun
    },
    "ownerType": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesExtensionsExtensionId = function putProvidersEdgesExtensionsExtensionId(extensionId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/extensions/{extensionId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesExtensionsExtensionId(extensionId, body){
+		var apipath = '/api/v2/telephony/providers/edges/extensions/{extensionId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(extensionId === undefined || extensionId === null){
-      throw new Error('Missing required  parameter: extensionId');
-    }
-    requestPath = requestPath.replace('{extensionId}', extensionId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{extensionId}', extensionId);
 
-/**
-  * @summary Get a listing of line base settings objects
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  * @param {string} sortBy - Value by which to sort
-  * @param {string} sortOrder - Sort order
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinebasesettings = function getProvidersEdgesLinebasesettings(pageNumber, pageSize, sortBy, sortOrder){
-    var requestPath = '/api/v2/telephony/providers/edges/linebasesettings';
-    var requestQuery = {};
-    var requestBody;
+        if(extensionId === undefined && extensionId !== null){
+			throw 'Missing required  parameter: extensionId';
+        }
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a line base settings object by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} lineBaseId - Line base ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinebasesettingsLinebaseId = function getProvidersEdgesLinebasesettingsLinebaseId(lineBaseId){
-    var requestPath = '/api/v2/telephony/providers/edges/linebasesettings/{lineBaseId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(lineBaseId === undefined || lineBaseId === null){
-      throw new Error('Missing required  parameter: lineBaseId');
-    }
-    requestPath = requestPath.replace('{lineBaseId}', lineBaseId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesExtensionsExtensionId = putProvidersEdgesExtensionsExtensionId;
+	/**
+     * @summary Get a listing of line base settings objects
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	*/
+	function getProvidersEdgesLinebasesettings(pageNumber, pageSize, sortBy, sortOrder){
+		var apipath = '/api/v2/telephony/providers/edges/linebasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a list of Lines
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} name - Name
-  * @param {string} sortBy - Value by which to sort
-  * @param {array} expand - Fields to expand in the response, comma-separated
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLines = function getProvidersEdgesLines(pageSize, pageNumber, name, sortBy, expand){
-    var requestPath = '/api/v2/telephony/providers/edges/lines';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.name = name;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-/**
-  * @summary Get a Line instance template based on a Line Base Settings object. This object can then be modified and saved as a new Line instance
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} lineBaseSettingsId - The id of a Line Base Settings object upon which to base this Line
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesTemplate = function getProvidersEdgesLinesTemplate(lineBaseSettingsId){
-    var requestPath = '/api/v2/telephony/providers/edges/lines/template';
-    var requestQuery = {};
-    var requestBody;
 
-    if(lineBaseSettingsId === undefined || lineBaseSettingsId === null){
-      throw new Error('Missing required  parameter: lineBaseSettingsId');
-    }
-    requestQuery.lineBaseSettingsId = lineBaseSettingsId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Get a Line by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} lineId - Line ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesLineId = function getProvidersEdgesLinesLineId(lineId){
-    var requestPath = '/api/v2/telephony/providers/edges/lines/{lineId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(lineId === undefined || lineId === null){
-      throw new Error('Missing required  parameter: lineId');
-    }
-    requestPath = requestPath.replace('{lineId}', lineId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
 
-/**
-  * @summary Get outbound routes
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} name - Name
-  * @param {string} siteid - Filter by site.id
-  * @param {string} sortBy - Sort by
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesOutboundroutes = function getProvidersEdgesOutboundroutes(pageSize, pageNumber, name, siteid, sortBy){
-    var requestPath = '/api/v2/telephony/providers/edges/outboundroutes';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.name = name;
-    requestQuery.site.id = siteid;
-    requestQuery.sortBy = sortBy;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
 
-/**
-  * @summary Create outbound rule
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - OutboundRoute
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesLinebasesettings = getProvidersEdgesLinebasesettings;
+	/**
+     * @summary Get a line base settings object by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} lineBaseId - Line base ID
+	*/
+	function getProvidersEdgesLinebasesettingsLinebaseId(lineBaseId){
+		var apipath = '/api/v2/telephony/providers/edges/linebasesettings/{lineBaseId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{lineBaseId}', lineBaseId);
+
+        if(lineBaseId === undefined && lineBaseId !== null){
+			throw 'Missing required  parameter: lineBaseId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesLinebasesettingsLinebaseId = getProvidersEdgesLinebasesettingsLinebaseId;
+	/**
+     * @summary Get a list of Lines
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} sortBy - Value by which to sort
+	* @param {array} expand - Fields to expand in the response, comma-separated
+	*/
+	function getProvidersEdgesLines(pageSize, pageNumber, name, sortBy, expand){
+		var apipath = '/api/v2/telephony/providers/edges/lines';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesLines = getProvidersEdgesLines;
+	/**
+     * @summary Get a Line instance template based on a Line Base Settings object. This object can then be modified and saved as a new Line instance
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} lineBaseSettingsId - The id of a Line Base Settings object upon which to base this Line
+	*/
+	function getProvidersEdgesLinesTemplate(lineBaseSettingsId){
+		var apipath = '/api/v2/telephony/providers/edges/lines/template';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(lineBaseSettingsId !== undefined && lineBaseSettingsId !== null){
+			queryParameters.lineBaseSettingsId = lineBaseSettingsId;
+		}
+
+        if(lineBaseSettingsId === undefined && lineBaseSettingsId !== null){
+			throw 'Missing required  parameter: lineBaseSettingsId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesLinesTemplate = getProvidersEdgesLinesTemplate;
+	/**
+     * @summary Get a Line by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} lineId - Line ID
+	*/
+	function getProvidersEdgesLinesLineId(lineId){
+		var apipath = '/api/v2/telephony/providers/edges/lines/{lineId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{lineId}', lineId);
+
+        if(lineId === undefined && lineId !== null){
+			throw 'Missing required  parameter: lineId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesLinesLineId = getProvidersEdgesLinesLineId;
+	/**
+     * @summary Get outbound routes
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} name - Name
+	* @param {string} siteid - Filter by site.id
+	* @param {string} sortBy - Sort by
+	*/
+	function getProvidersEdgesOutboundroutes(pageSize, pageNumber, name, siteid, sortBy){
+		var apipath = '/api/v2/telephony/providers/edges/outboundroutes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(siteid !== undefined && siteid !== null){
+			queryParameters.site.id = siteid;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesOutboundroutes = getProvidersEdgesOutboundroutes;
+	/**
+     * @summary Create outbound rule
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - OutboundRoute
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1281,43 +1710,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesOutboundroutes = function g
    "managed": true,
    "externalTrunkBases": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesOutboundroutes = function postProvidersEdgesOutboundroutes(body){
-    var requestPath = '/api/v2/telephony/providers/edges/outboundroutes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesOutboundroutes(body){
+		var apipath = '/api/v2/telephony/providers/edges/outboundroutes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get outbound route
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} outboundRouteId - Outbound route ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesOutboundroutesOutboundrouteId = function getProvidersEdgesOutboundroutesOutboundrouteId(outboundRouteId){
-    var requestPath = '/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(outboundRouteId === undefined || outboundRouteId === null){
-      throw new Error('Missing required  parameter: outboundRouteId');
-    }
-    requestPath = requestPath.replace('{outboundRouteId}', outboundRouteId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesOutboundroutes = postProvidersEdgesOutboundroutes;
+	/**
+     * @summary Get outbound route
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} outboundRouteId - Outbound route ID
+	*/
+	function getProvidersEdgesOutboundroutesOutboundrouteId(outboundRouteId){
+		var apipath = '/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update outbound route
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} outboundRouteId - Outbound route ID
-  * @param {} body - OutboundRoute
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
+
+        if(outboundRouteId === undefined && outboundRouteId !== null){
+			throw 'Missing required  parameter: outboundRouteId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesOutboundroutesOutboundrouteId = getProvidersEdgesOutboundroutesOutboundrouteId;
+	/**
+     * @summary Update outbound route
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} outboundRouteId - Outbound route ID
+	* @param {} body - OutboundRoute
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1355,66 +1793,96 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesOutboundroutesOutboundroute
    "managed": true,
    "externalTrunkBases": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesOutboundroutesOutboundrouteId = function putProvidersEdgesOutboundroutesOutboundrouteId(outboundRouteId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesOutboundroutesOutboundrouteId(outboundRouteId, body){
+		var apipath = '/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(outboundRouteId === undefined || outboundRouteId === null){
-      throw new Error('Missing required  parameter: outboundRouteId');
-    }
-    requestPath = requestPath.replace('{outboundRouteId}', outboundRouteId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
 
-/**
-  * @summary Delete Outbound Route
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} outboundRouteId - Outbound route ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesOutboundroutesOutboundrouteId = function deleteProvidersEdgesOutboundroutesOutboundrouteId(outboundRouteId){
-    var requestPath = '/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}';
-    var requestQuery = {};
-    var requestBody;
+        if(outboundRouteId === undefined && outboundRouteId !== null){
+			throw 'Missing required  parameter: outboundRouteId';
+        }
 
-    if(outboundRouteId === undefined || outboundRouteId === null){
-      throw new Error('Missing required  parameter: outboundRouteId');
-    }
-    requestPath = requestPath.replace('{outboundRouteId}', outboundRouteId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a list of Phone Base Settings objects
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  * @param {string} sortBy - Value by which to sort
-  * @param {string} sortOrder - Sort order
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettings = function getProvidersEdgesPhonebasesettings(pageNumber, pageSize, sortBy, sortOrder){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesOutboundroutesOutboundrouteId = putProvidersEdgesOutboundroutesOutboundrouteId;
+	/**
+     * @summary Delete Outbound Route
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} outboundRouteId - Outbound route ID
+	*/
+	function deleteProvidersEdgesOutboundroutesOutboundrouteId(outboundRouteId){
+		var apipath = '/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a new Phone Base Settings object
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{outboundRouteId}', outboundRouteId);
+
+        if(outboundRouteId === undefined && outboundRouteId !== null){
+			throw 'Missing required  parameter: outboundRouteId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesOutboundroutesOutboundrouteId = deleteProvidersEdgesOutboundroutesOutboundrouteId;
+	/**
+     * @summary Get a list of Phone Base Settings objects
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	*/
+	function getProvidersEdgesPhonebasesettings(pageNumber, pageSize, sortBy, sortOrder){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhonebasesettings = getProvidersEdgesPhonebasesettings;
+	/**
+     * @summary Create a new Phone Base Settings object
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "phoneMetaBase": {
       "id": "",
@@ -1432,76 +1900,104 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettings = functio
       "noRebalance": true
    }
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonebasesettings = function postProvidersEdgesPhonebasesettings(body){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesPhonebasesettings(body){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a list of available makes and models to create a new Phone Base Settings
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettingsAvailablemetabases = function getProvidersEdgesPhonebasesettingsAvailablemetabases(pageSize, pageNumber){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings/availablemetabases';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesPhonebasesettings = postProvidersEdgesPhonebasesettings;
+	/**
+     * @summary Get a list of available makes and models to create a new Phone Base Settings
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getProvidersEdgesPhonebasesettingsAvailablemetabases(pageSize, pageNumber){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings/availablemetabases';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a Phone Base Settings instance template from a given make and model. This object can then be modified and saved as a new Phone Base Settings instance
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneMetabaseId - The id of a metabase object upon which to base this Phone Base Settings
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettingsTemplate = function getProvidersEdgesPhonebasesettingsTemplate(phoneMetabaseId){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings/template';
-    var requestQuery = {};
-    var requestBody;
 
-    if(phoneMetabaseId === undefined || phoneMetabaseId === null){
-      throw new Error('Missing required  parameter: phoneMetabaseId');
-    }
-    requestQuery.phoneMetabaseId = phoneMetabaseId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Get a Phone Base Settings object by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneBaseId - Phone base ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettingsPhonebaseId = function getProvidersEdgesPhonebasesettingsPhonebaseId(phoneBaseId){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(phoneBaseId === undefined || phoneBaseId === null){
-      throw new Error('Missing required  parameter: phoneBaseId');
-    }
-    requestPath = requestPath.replace('{phoneBaseId}', phoneBaseId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-/**
-  * @summary Update a Phone Base Settings by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneBaseId - Phone base ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhonebasesettingsAvailablemetabases = getProvidersEdgesPhonebasesettingsAvailablemetabases;
+	/**
+     * @summary Get a Phone Base Settings instance template from a given make and model. This object can then be modified and saved as a new Phone Base Settings instance
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneMetabaseId - The id of a metabase object upon which to base this Phone Base Settings
+	*/
+	function getProvidersEdgesPhonebasesettingsTemplate(phoneMetabaseId){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings/template';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(phoneMetabaseId !== undefined && phoneMetabaseId !== null){
+			queryParameters.phoneMetabaseId = phoneMetabaseId;
+		}
+
+        if(phoneMetabaseId === undefined && phoneMetabaseId !== null){
+			throw 'Missing required  parameter: phoneMetabaseId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhonebasesettingsTemplate = getProvidersEdgesPhonebasesettingsTemplate;
+	/**
+     * @summary Get a Phone Base Settings object by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneBaseId - Phone base ID
+	*/
+	function getProvidersEdgesPhonebasesettingsPhonebaseId(phoneBaseId){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{phoneBaseId}', phoneBaseId);
+
+        if(phoneBaseId === undefined && phoneBaseId !== null){
+			throw 'Missing required  parameter: phoneBaseId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhonebasesettingsPhonebaseId = getProvidersEdgesPhonebasesettingsPhonebaseId;
+	/**
+     * @summary Update a Phone Base Settings by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneBaseId - Phone base ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "phoneMetaBase": {
       "id": "",
@@ -1519,80 +2015,138 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettingsPhonebaseI
       "noRebalance": true
    }
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesPhonebasesettingsPhonebaseId = function putProvidersEdgesPhonebasesettingsPhonebaseId(phoneBaseId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesPhonebasesettingsPhonebaseId(phoneBaseId, body){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(phoneBaseId === undefined || phoneBaseId === null){
-      throw new Error('Missing required  parameter: phoneBaseId');
-    }
-    requestPath = requestPath.replace('{phoneBaseId}', phoneBaseId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{phoneBaseId}', phoneBaseId);
 
-/**
-  * @summary Delete a Phone Base Settings by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneBaseId - Phone base ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhonebaseId = function deleteProvidersEdgesPhonebasesettingsPhonebaseId(phoneBaseId){
-    var requestPath = '/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}';
-    var requestQuery = {};
-    var requestBody;
+        if(phoneBaseId === undefined && phoneBaseId !== null){
+			throw 'Missing required  parameter: phoneBaseId';
+        }
 
-    if(phoneBaseId === undefined || phoneBaseId === null){
-      throw new Error('Missing required  parameter: phoneBaseId');
-    }
-    requestPath = requestPath.replace('{phoneBaseId}', phoneBaseId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a list of Phone Instances
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  * @param {string} sortBy - Value by which to sort
-  * @param {string} sortOrder - Sort order
-  * @param {string} siteid - Filter by site.id
-  * @param {string} webRtcUserid - Filter by webRtcUser.id
-  * @param {string} phoneBaseSettingsid - Filter by phoneBaseSettings.id
-  * @param {string} linesloggedInUserid - Filter by lines.loggedInUser.id
-  * @param {string} phone_hardwareId - Filter by phone_hardwareId
-  * @param {array} expand - Fields to expand in the response, comma-separated
-  * @param {array} fields - Fields and properties to get, comma-separated
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, expand, fields){
-    var requestPath = '/api/v2/telephony/providers/edges/phones';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.site.id = siteid;
-    requestQuery.webRtcUser.id = webRtcUserid;
-    requestQuery.phoneBaseSettings.id = phoneBaseSettingsid;
-    requestQuery.lines.loggedInUser.id = linesloggedInUserid;
-    requestQuery.phone_hardwareId = phone_hardwareId;
-    requestQuery.expand = expand;
-    requestQuery.fields = fields;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesPhonebasesettingsPhonebaseId = putProvidersEdgesPhonebasesettingsPhonebaseId;
+	/**
+     * @summary Delete a Phone Base Settings by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneBaseId - Phone base ID
+	*/
+	function deleteProvidersEdgesPhonebasesettingsPhonebaseId(phoneBaseId){
+		var apipath = '/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a new Phone
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{phoneBaseId}', phoneBaseId);
+
+        if(phoneBaseId === undefined && phoneBaseId !== null){
+			throw 'Missing required  parameter: phoneBaseId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesPhonebasesettingsPhonebaseId = deleteProvidersEdgesPhonebasesettingsPhonebaseId;
+	/**
+     * @summary Get a list of Phone Instances
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	* @param {string} siteid - Filter by site.id
+	* @param {string} webRtcUserid - Filter by webRtcUser.id
+	* @param {string} phoneBaseSettingsid - Filter by phoneBaseSettings.id
+	* @param {string} linesloggedInUserid - Filter by lines.loggedInUser.id
+	* @param {string} phone_hardwareId - Filter by phone_hardwareId
+	* @param {array} expand - Fields to expand in the response, comma-separated
+	* @param {array} fields - Fields and properties to get, comma-separated
+	*/
+	function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, expand, fields){
+		var apipath = '/api/v2/telephony/providers/edges/phones';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(siteid !== undefined && siteid !== null){
+			queryParameters.site.id = siteid;
+		}
+
+
+		if(webRtcUserid !== undefined && webRtcUserid !== null){
+			queryParameters.webRtcUser.id = webRtcUserid;
+		}
+
+
+		if(phoneBaseSettingsid !== undefined && phoneBaseSettingsid !== null){
+			queryParameters.phoneBaseSettings.id = phoneBaseSettingsid;
+		}
+
+
+		if(linesloggedInUserid !== undefined && linesloggedInUserid !== null){
+			queryParameters.lines.loggedInUser.id = linesloggedInUserid;
+		}
+
+
+		if(phone_hardwareId !== undefined && phone_hardwareId !== null){
+			queryParameters.phone_hardwareId = phone_hardwareId;
+		}
+
+
+		if(expand !== undefined && expand !== null){
+			queryParameters.expand = expand;
+		}
+
+
+		if(fields !== undefined && fields !== null){
+			queryParameters.fields = fields;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhones = getProvidersEdgesPhones;
+	/**
+     * @summary Create a new Phone
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1662,82 +2216,103 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
       "selfUri": ""
    }
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhones = function postProvidersEdgesPhones(body){
-    var requestPath = '/api/v2/telephony/providers/edges/phones';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesPhones(body){
+		var apipath = '/api/v2/telephony/providers/edges/phones';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Reboot Multiple Phones
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - body
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesPhones = postProvidersEdgesPhones;
+	/**
+     * @summary Reboot Multiple Phones
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - body
+	 * @example
+	 * Body Example:
+	 * {
    "phoneIds": [],
    "siteId": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesReboot = function postProvidersEdgesPhonesReboot(body){
-    var requestPath = '/api/v2/telephony/providers/edges/phones/reboot';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesPhonesReboot(body){
+		var apipath = '/api/v2/telephony/providers/edges/phones/reboot';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a Phone instance template based on a Phone Base Settings object. This object can then be modified and saved as a new Phone instance
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneBaseSettingsId - The id of a Phone Base Settings object upon which to base this Phone
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesTemplate = function getProvidersEdgesPhonesTemplate(phoneBaseSettingsId){
-    var requestPath = '/api/v2/telephony/providers/edges/phones/template';
-    var requestQuery = {};
-    var requestBody;
 
-    if(phoneBaseSettingsId === undefined || phoneBaseSettingsId === null){
-      throw new Error('Missing required  parameter: phoneBaseSettingsId');
-    }
-    requestQuery.phoneBaseSettingsId = phoneBaseSettingsId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesPhonesReboot = postProvidersEdgesPhonesReboot;
+	/**
+     * @summary Get a Phone instance template based on a Phone Base Settings object. This object can then be modified and saved as a new Phone instance
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneBaseSettingsId - The id of a Phone Base Settings object upon which to base this Phone
+	*/
+	function getProvidersEdgesPhonesTemplate(phoneBaseSettingsId){
+		var apipath = '/api/v2/telephony/providers/edges/phones/template';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a Phone by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneId - Phone ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function getProvidersEdgesPhonesPhoneId(phoneId){
-    var requestPath = '/api/v2/telephony/providers/edges/phones/{phoneId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(phoneId === undefined || phoneId === null){
-      throw new Error('Missing required  parameter: phoneId');
-    }
-    requestPath = requestPath.replace('{phoneId}', phoneId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(phoneBaseSettingsId !== undefined && phoneBaseSettingsId !== null){
+			queryParameters.phoneBaseSettingsId = phoneBaseSettingsId;
+		}
 
-/**
-  * @summary Update a Phone by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneId - Phone ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(phoneBaseSettingsId === undefined && phoneBaseSettingsId !== null){
+			throw 'Missing required  parameter: phoneBaseSettingsId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhonesTemplate = getProvidersEdgesPhonesTemplate;
+	/**
+     * @summary Get a Phone by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneId - Phone ID
+	*/
+	function getProvidersEdgesPhonesPhoneId(phoneId){
+		var apipath = '/api/v2/telephony/providers/edges/phones/{phoneId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{phoneId}', phoneId);
+
+        if(phoneId === undefined && phoneId !== null){
+			throw 'Missing required  parameter: phoneId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesPhonesPhoneId = getProvidersEdgesPhonesPhoneId;
+	/**
+     * @summary Update a Phone by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneId - Phone ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1807,87 +2382,130 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "selfUri": ""
    }
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesPhonesPhoneId = function putProvidersEdgesPhonesPhoneId(phoneId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/phones/{phoneId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesPhonesPhoneId(phoneId, body){
+		var apipath = '/api/v2/telephony/providers/edges/phones/{phoneId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(phoneId === undefined || phoneId === null){
-      throw new Error('Missing required  parameter: phoneId');
-    }
-    requestPath = requestPath.replace('{phoneId}', phoneId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{phoneId}', phoneId);
 
-/**
-  * @summary Delete a Phone by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneId - Phone ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonesPhoneId = function deleteProvidersEdgesPhonesPhoneId(phoneId){
-    var requestPath = '/api/v2/telephony/providers/edges/phones/{phoneId}';
-    var requestQuery = {};
-    var requestBody;
+        if(phoneId === undefined && phoneId !== null){
+			throw 'Missing required  parameter: phoneId';
+        }
 
-    if(phoneId === undefined || phoneId === null){
-      throw new Error('Missing required  parameter: phoneId');
-    }
-    requestPath = requestPath.replace('{phoneId}', phoneId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Reboot a Phone
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} phoneId - Phone Id
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesPhoneIdReboot = function postProvidersEdgesPhonesPhoneIdReboot(phoneId){
-    var requestPath = '/api/v2/telephony/providers/edges/phones/{phoneId}/reboot';
-    var requestQuery = {};
-    var requestBody;
 
-    if(phoneId === undefined || phoneId === null){
-      throw new Error('Missing required  parameter: phoneId');
-    }
-    requestPath = requestPath.replace('{phoneId}', phoneId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesPhonesPhoneId = putProvidersEdgesPhonesPhoneId;
+	/**
+     * @summary Delete a Phone by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneId - Phone ID
+	*/
+	function deleteProvidersEdgesPhonesPhoneId(phoneId){
+		var apipath = '/api/v2/telephony/providers/edges/phones/{phoneId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the list of Sites.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} sortBy - Sort by
-  * @param {string} sortOrder - Sort order
-  * @param {string} name - Name
-  * @param {string} locationid - Location Id
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvidersEdgesSites(pageSize, pageNumber, sortBy, sortOrder, name, locationid){
-    var requestPath = '/api/v2/telephony/providers/edges/sites';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{phoneId}', phoneId);
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.name = name;
-    requestQuery.location.id = locationid;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(phoneId === undefined && phoneId !== null){
+			throw 'Missing required  parameter: phoneId';
+        }
 
-/**
-  * @summary Create a Site.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - Site
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesPhonesPhoneId = deleteProvidersEdgesPhonesPhoneId;
+	/**
+     * @summary Reboot a Phone
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} phoneId - Phone Id
+	*/
+	function postProvidersEdgesPhonesPhoneIdReboot(phoneId){
+		var apipath = '/api/v2/telephony/providers/edges/phones/{phoneId}/reboot';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{phoneId}', phoneId);
+
+        if(phoneId === undefined && phoneId !== null){
+			throw 'Missing required  parameter: phoneId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesPhonesPhoneIdReboot = postProvidersEdgesPhonesPhoneIdReboot;
+	/**
+     * @summary Get the list of Sites.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} sortBy - Sort by
+	* @param {string} sortOrder - Sort order
+	* @param {string} name - Name
+	* @param {string} locationid - Location Id
+	*/
+	function getProvidersEdgesSites(pageSize, pageNumber, sortBy, sortOrder, name, locationid){
+		var apipath = '/api/v2/telephony/providers/edges/sites';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(name !== undefined && name !== null){
+			queryParameters.name = name;
+		}
+
+
+		if(locationid !== undefined && locationid !== null){
+			queryParameters.location.id = locationid;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesSites = getProvidersEdgesSites;
+	/**
+     * @summary Create a Site.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - Site
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1917,43 +2535,52 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvide
    },
    "managed": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesSites = function postProvidersEdgesSites(body){
-    var requestPath = '/api/v2/telephony/providers/edges/sites';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesSites(body){
+		var apipath = '/api/v2/telephony/providers/edges/sites';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a Site by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteId = function getProvidersEdgesSitesSiteId(siteId){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesSites = postProvidersEdgesSites;
+	/**
+     * @summary Get a Site by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	*/
+	function getProvidersEdgesSitesSiteId(siteId){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a Site by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  * @param {} body - Site
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{siteId}', siteId);
+
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesSitesSiteId = getProvidersEdgesSitesSiteId;
+	/**
+     * @summary Update a Site by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	* @param {} body - Site
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -1983,64 +2610,80 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteId = function getP
    },
    "managed": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesSitesSiteId = function putProvidersEdgesSitesSiteId(siteId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesSitesSiteId(siteId, body){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{siteId}', siteId);
 
-/**
-  * @summary Delete a Site by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesSitesSiteId = function deleteProvidersEdgesSitesSiteId(siteId){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}';
-    var requestQuery = {};
-    var requestBody;
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get the list of Number Plans for this Site.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteIdNumberplans = function getProvidersEdgesSitesSiteIdNumberplans(siteId){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans';
-    var requestQuery = {};
-    var requestBody;
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesSitesSiteId = putProvidersEdgesSitesSiteId;
+	/**
+     * @summary Delete a Site by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	*/
+	function deleteProvidersEdgesSitesSiteId(siteId){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update the list of Number Plans.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * [
+        apipath = apipath.replace('{siteId}', siteId);
+
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesSitesSiteId = deleteProvidersEdgesSitesSiteId;
+	/**
+     * @summary Get the list of Number Plans for this Site.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	*/
+	function getProvidersEdgesSitesSiteIdNumberplans(siteId){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{siteId}', siteId);
+
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesSitesSiteIdNumberplans = getProvidersEdgesSitesSiteIdNumberplans;
+	/**
+     * @summary Update the list of Number Plans.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * [
  {
   "name": "",
   "description": "",
@@ -2064,125 +2707,186 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteIdNumberplans = fu
   "matchType": ""
  }
 ]
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesSitesSiteIdNumberplans = function putProvidersEdgesSitesSiteIdNumberplans(siteId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesSitesSiteIdNumberplans(siteId, body){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{siteId}', siteId);
 
-/**
-  * @summary Get a list of Classifications for this Site
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  * @param {string} classification - Classification
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteIdNumberplansClassifications = function getProvidersEdgesSitesSiteIdNumberplansClassifications(siteId, classification){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans/classifications';
-    var requestQuery = {};
-    var requestBody;
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    requestQuery.classification = classification;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a Number Plan by ID.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  * @param {string} numberPlanId - Number Plan ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteIdNumberplansNumberplanId = function getProvidersEdgesSitesSiteIdNumberplansNumberplanId(siteId, numberPlanId){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans/{numberPlanId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    if(numberPlanId === undefined || numberPlanId === null){
-      throw new Error('Missing required  parameter: numberPlanId');
-    }
-    requestPath = requestPath.replace('{numberPlanId}', numberPlanId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesSitesSiteIdNumberplans = putProvidersEdgesSitesSiteIdNumberplans;
+	/**
+     * @summary Get a list of Classifications for this Site
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	* @param {string} classification - Classification
+	*/
+	function getProvidersEdgesSitesSiteIdNumberplansClassifications(siteId, classification){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans/classifications';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Triggers the rebalance operation.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} siteId - Site ID
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesSitesSiteIdRebalance = function postProvidersEdgesSitesSiteIdRebalance(siteId){
-    var requestPath = '/api/v2/telephony/providers/edges/sites/{siteId}/rebalance';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{siteId}', siteId);
 
-    if(siteId === undefined || siteId === null){
-      throw new Error('Missing required  parameter: siteId');
-    }
-    requestPath = requestPath.replace('{siteId}', siteId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
 
-/**
-  * @summary Get a list of Edge-compatible time zones
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTimezones = function getProvidersEdgesTimezones(pageSize, pageNumber){
-    var requestPath = '/api/v2/telephony/providers/edges/timezones';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(classification !== undefined && classification !== null){
+			queryParameters.classification = classification;
+		}
 
-/**
-  * @summary Get Trunk Base Settings listing
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  * @param {string} sortBy - Value by which to sort
-  * @param {string} sortOrder - Sort order
-  * @param {boolean} recordingEnabled - Filter trunks by recording enabled
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettings = function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.recordingEnabled = recordingEnabled;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesSitesSiteIdNumberplansClassifications = getProvidersEdgesSitesSiteIdNumberplansClassifications;
+	/**
+     * @summary Get a Number Plan by ID.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	* @param {string} numberPlanId - Number Plan ID
+	*/
+	function getProvidersEdgesSitesSiteIdNumberplansNumberplanId(siteId, numberPlanId){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/numberplans/{numberPlanId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a Trunk Base Settings object
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{siteId}', siteId);
+
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
+
+        apipath = apipath.replace('{numberPlanId}', numberPlanId);
+
+        if(numberPlanId === undefined && numberPlanId !== null){
+			throw 'Missing required  parameter: numberPlanId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesSitesSiteIdNumberplansNumberplanId = getProvidersEdgesSitesSiteIdNumberplansNumberplanId;
+	/**
+     * @summary Triggers the rebalance operation.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} siteId - Site ID
+	*/
+	function postProvidersEdgesSitesSiteIdRebalance(siteId){
+		var apipath = '/api/v2/telephony/providers/edges/sites/{siteId}/rebalance';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{siteId}', siteId);
+
+        if(siteId === undefined && siteId !== null){
+			throw 'Missing required  parameter: siteId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesSitesSiteIdRebalance = postProvidersEdgesSitesSiteIdRebalance;
+	/**
+     * @summary Get a list of Edge-compatible time zones
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getProvidersEdgesTimezones(pageSize, pageNumber){
+		var apipath = '/api/v2/telephony/providers/edges/timezones';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTimezones = getProvidersEdgesTimezones;
+	/**
+     * @summary Get Trunk Base Settings listing
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	* @param {boolean} recordingEnabled - Filter trunks by recording enabled
+	*/
+	function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(recordingEnabled !== undefined && recordingEnabled !== null){
+			queryParameters.recordingEnabled = recordingEnabled;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkbasesettings = getProvidersEdgesTrunkbasesettings;
+	/**
+     * @summary Create a Trunk Base Settings object
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -2202,81 +2906,113 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettings = functio
    "trunkType": "",
    "managed": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesTrunkbasesettings = function postProvidersEdgesTrunkbasesettings(body){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesTrunkbasesettings(body){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a list of available makes and models to create a new Trunk Base Settings
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} type - 
-  EXTERNAL,
-  PHONE,
-  EDGE,
-  * @param {integer} pageSize - 
-  * @param {integer} pageNumber - 
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsAvailablemetabases = function getProvidersEdgesTrunkbasesettingsAvailablemetabases(type, pageSize, pageNumber){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings/availablemetabases';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.type = type;
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesTrunkbasesettings = postProvidersEdgesTrunkbasesettings;
+	/**
+     * @summary Get a list of available makes and models to create a new Trunk Base Settings
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} type - 
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	* @param {integer} pageSize - 
+	* @param {integer} pageNumber - 
+	*/
+	function getProvidersEdgesTrunkbasesettingsAvailablemetabases(type, pageSize, pageNumber){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings/availablemetabases';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a Trunk Base Settings instance template from a given make and model. This object can then be modified and saved as a new Trunk Base Settings instance
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} trunkMetabaseId - The id of a metabase object upon which to base this Trunk Base Settings
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTemplate = function getProvidersEdgesTrunkbasesettingsTemplate(trunkMetabaseId){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings/template';
-    var requestQuery = {};
-    var requestBody;
 
-    if(trunkMetabaseId === undefined || trunkMetabaseId === null){
-      throw new Error('Missing required  parameter: trunkMetabaseId');
-    }
-    requestQuery.trunkMetabaseId = trunkMetabaseId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(type !== undefined && type !== null){
+			queryParameters.type = type;
+		}
 
-/**
-  * @summary Get a Trunk Base Settings object by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} trunkBaseSettingsId - Trunk Base ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = function getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(trunkBaseSettingsId === undefined || trunkBaseSettingsId === null){
-      throw new Error('Missing required  parameter: trunkBaseSettingsId');
-    }
-    requestPath = requestPath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Update a Trunk Base Settings object by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} trunkBaseSettingsId - Trunk Base ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkbasesettingsAvailablemetabases = getProvidersEdgesTrunkbasesettingsAvailablemetabases;
+	/**
+     * @summary Get a Trunk Base Settings instance template from a given make and model. This object can then be modified and saved as a new Trunk Base Settings instance
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkMetabaseId - The id of a metabase object upon which to base this Trunk Base Settings
+	*/
+	function getProvidersEdgesTrunkbasesettingsTemplate(trunkMetabaseId){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings/template';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(trunkMetabaseId !== undefined && trunkMetabaseId !== null){
+			queryParameters.trunkMetabaseId = trunkMetabaseId;
+		}
+
+        if(trunkMetabaseId === undefined && trunkMetabaseId !== null){
+			throw 'Missing required  parameter: trunkMetabaseId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkbasesettingsTemplate = getProvidersEdgesTrunkbasesettingsTemplate;
+	/**
+     * @summary Get a Trunk Base Settings object by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkBaseSettingsId - Trunk Base ID
+	*/
+	function getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
+
+        if(trunkBaseSettingsId === undefined && trunkBaseSettingsId !== null){
+			throw 'Missing required  parameter: trunkBaseSettingsId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId;
+	/**
+     * @summary Update a Trunk Base Settings object by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkBaseSettingsId - Trunk Base ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -2296,128 +3032,187 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTrunkbases
    "trunkType": "",
    "managed": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = function putProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId, body){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(trunkBaseSettingsId === undefined || trunkBaseSettingsId === null){
-      throw new Error('Missing required  parameter: trunkBaseSettingsId');
-    }
-    requestPath = requestPath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
 
-/**
-  * @summary Delete a Trunk Base Settings object by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} trunkBaseSettingsId - Trunk Base ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = function deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
-    var requestQuery = {};
-    var requestBody;
+        if(trunkBaseSettingsId === undefined && trunkBaseSettingsId !== null){
+			throw 'Missing required  parameter: trunkBaseSettingsId';
+        }
 
-    if(trunkBaseSettingsId === undefined || trunkBaseSettingsId === null){
-      throw new Error('Missing required  parameter: trunkBaseSettingsId');
-    }
-    requestPath = requestPath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get the list of available trunks.
-  * @description Trunks are created by assigning trunk base settings to an Edge or Edge Group.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  * @param {string} sortBy - Value by which to sort
-  * @param {string} sortOrder - Sort order
-  * @param {string} edgeid - Filter by Edge Ids
-  * @param {string} trunkBaseid - Filter by Trunk Base Ids
-  * @param {string} trunkType - Filter by a Trunk type
-  EXTERNAL,
-  PHONE,
-  EDGE,
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunks = function getProvidersEdgesTrunks(pageNumber, pageSize, sortBy, sortOrder, edgeid, trunkBaseid, trunkType){
-    var requestPath = '/api/v2/telephony/providers/edges/trunks';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.edge.id = edgeid;
-    requestQuery.trunkBase.id = trunkBaseid;
-    requestQuery.trunkType = trunkType;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = putProvidersEdgesTrunkbasesettingsTrunkbasesettingsId;
+	/**
+     * @summary Delete a Trunk Base Settings object by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkBaseSettingsId - Trunk Base ID
+	*/
+	function deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId){
+		var apipath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a Trunk by ID
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} trunkId - Trunk ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunksTrunkId = function getProvidersEdgesTrunksTrunkId(trunkId){
-    var requestPath = '/api/v2/telephony/providers/edges/trunks/{trunkId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
 
-    if(trunkId === undefined || trunkId === null){
-      throw new Error('Missing required  parameter: trunkId');
-    }
-    requestPath = requestPath.replace('{trunkId}', trunkId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(trunkBaseSettingsId === undefined && trunkBaseSettingsId !== null){
+			throw 'Missing required  parameter: trunkBaseSettingsId';
+        }
 
-/**
-  * @summary Get Counts of trunks that have recording disabled or enabled
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} trunkType - The type of this trunk base.
-  EXTERNAL,
-  PHONE,
-  EDGE,
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = function getProvidersEdgesTrunkswithrecording(trunkType){
-    var requestPath = '/api/v2/telephony/providers/edges/trunkswithrecording';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.trunkType = trunkType;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = deleteProvidersEdgesTrunkbasesettingsTrunkbasesettingsId;
+	/**
+     * @summary Get the list of available trunks.
+	 * @description Trunks are created by assigning trunk base settings to an Edge or Edge Group.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} sortBy - Value by which to sort
+	* @param {string} sortOrder - Sort order
+	* @param {string} edgeid - Filter by Edge Ids
+	* @param {string} trunkBaseid - Filter by Trunk Base Ids
+	* @param {string} trunkType - Filter by a Trunk type
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	*/
+	function getProvidersEdgesTrunks(pageNumber, pageSize, sortBy, sortOrder, edgeid, trunkBaseid, trunkType){
+		var apipath = '/api/v2/telephony/providers/edges/trunks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvidersEdgesEdgeId(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-/**
-  * @summary Update a edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {} body - Edge
-  * @example
-  * Body Example:
-  * {
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(sortBy !== undefined && sortBy !== null){
+			queryParameters.sortBy = sortBy;
+		}
+
+
+		if(sortOrder !== undefined && sortOrder !== null){
+			queryParameters.sortOrder = sortOrder;
+		}
+
+
+		if(edgeid !== undefined && edgeid !== null){
+			queryParameters.edge.id = edgeid;
+		}
+
+
+		if(trunkBaseid !== undefined && trunkBaseid !== null){
+			queryParameters.trunkBase.id = trunkBaseid;
+		}
+
+
+		if(trunkType !== undefined && trunkType !== null){
+			queryParameters.trunkType = trunkType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunks = getProvidersEdgesTrunks;
+	/**
+     * @summary Get a Trunk by ID
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkId - Trunk ID
+	*/
+	function getProvidersEdgesTrunksTrunkId(trunkId){
+		var apipath = '/api/v2/telephony/providers/edges/trunks/{trunkId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{trunkId}', trunkId);
+
+        if(trunkId === undefined && trunkId !== null){
+			throw 'Missing required  parameter: trunkId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunksTrunkId = getProvidersEdgesTrunksTrunkId;
+	/**
+     * @summary Get Counts of trunks that have recording disabled or enabled
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} trunkType - The type of this trunk base.
+	EXTERNAL,
+	PHONE,
+	EDGE,
+	*/
+	function getProvidersEdgesTrunkswithrecording(trunkType){
+		var apipath = '/api/v2/telephony/providers/edges/trunkswithrecording';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(trunkType !== undefined && trunkType !== null){
+			queryParameters.trunkType = trunkType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesTrunkswithrecording = getProvidersEdgesTrunkswithrecording;
+	/**
+     * @summary Get edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function getProvidersEdgesEdgeId(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeId = getProvidersEdgesEdgeId;
+	/**
+     * @summary Update a edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - Edge
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -2481,91 +3276,122 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
    "physicalEdge": true,
    "managed": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeId = function putProvidersEdgesEdgeId(edgeId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesEdgeId(edgeId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-/**
-  * @summary Delete a edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeId = function deleteProvidersEdgesEdgeId(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get the list of lines.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLines = function getProvidersEdgesEdgeIdLines(edgeId, pageSize, pageNumber){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/lines';
-    var requestQuery = {};
-    var requestBody;
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesEdgeId = putProvidersEdgesEdgeId;
+	/**
+     * @summary Delete a edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function deleteProvidersEdgesEdgeId(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get line
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} lineId - Line ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = function getProvidersEdgesEdgeIdLinesLineId(edgeId, lineId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(lineId === undefined || lineId === null){
-      throw new Error('Missing required  parameter: lineId');
-    }
-    requestPath = requestPath.replace('{lineId}', lineId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-/**
-  * @summary Update a line.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} lineId - Line ID
-  * @param {} body - Line
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesEdgeId = deleteProvidersEdgesEdgeId;
+	/**
+     * @summary Get the list of lines.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	*/
+	function getProvidersEdgesEdgeIdLines(edgeId, pageSize, pageNumber){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/lines';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdLines = getProvidersEdgesEdgeIdLines;
+	/**
+     * @summary Get line
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} lineId - Line ID
+	*/
+	function getProvidersEdgesEdgeIdLinesLineId(edgeId, lineId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{lineId}', lineId);
+
+        if(lineId === undefined && lineId !== null){
+			throw 'Missing required  parameter: lineId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdLinesLineId = getProvidersEdgesEdgeIdLinesLineId;
+	/**
+     * @summary Update a line.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} lineId - Line ID
+	* @param {} body - Line
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "schema": {
       "id": "",
@@ -2646,53 +3472,66 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
    "ipAddress": "",
    "logicalInterfaceId": ""
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLinesLineId = function putProvidersEdgesEdgeIdLinesLineId(edgeId, lineId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesEdgeIdLinesLineId(edgeId, lineId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(lineId === undefined || lineId === null){
-      throw new Error('Missing required  parameter: lineId');
-    }
-    requestPath = requestPath.replace('{lineId}', lineId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-/**
-  * @summary Get edge logical interfaces.
-  * @description Retrieve a list of all configured logical interfaces from a specific edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = function getProvidersEdgesEdgeIdLogicalinterfaces(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{lineId}', lineId);
 
-/**
-  * @summary Create an edge logical interface.
-  * @description Create
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {} body - Create
-  * @example
-  * Body Example:
-  * {
+        if(lineId === undefined && lineId !== null){
+			throw 'Missing required  parameter: lineId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesEdgeIdLinesLineId = putProvidersEdgesEdgeIdLinesLineId;
+	/**
+     * @summary Get edge logical interfaces.
+	 * @description Retrieve a list of all configured logical interfaces from a specific edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function getProvidersEdgesEdgeIdLogicalinterfaces(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdLogicalinterfaces = getProvidersEdgesEdgeIdLogicalinterfaces;
+	/**
+     * @summary Create an edge logical interface.
+	 * @description Create
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - Create
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -2737,53 +3576,66 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = f
    "externalTrunkBaseAssignments": [],
    "phoneTrunkBaseAssignments": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogicalinterfaces = function postProvidersEdgesEdgeIdLogicalinterfaces(edgeId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesEdgeIdLogicalinterfaces(edgeId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-/**
-  * @summary Get an edge logical interface
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} interfaceId - Interface ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = function getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(interfaceId === undefined || interfaceId === null){
-      throw new Error('Missing required  parameter: interfaceId');
-    }
-    requestPath = requestPath.replace('{interfaceId}', interfaceId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Update an edge logical interface.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} interfaceId - Interface ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgeIdLogicalinterfaces = postProvidersEdgesEdgeIdLogicalinterfaces;
+	/**
+     * @summary Get an edge logical interface
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} interfaceId - Interface ID
+	*/
+	function getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{interfaceId}', interfaceId);
+
+        if(interfaceId === undefined && interfaceId !== null){
+			throw 'Missing required  parameter: interfaceId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId;
+	/**
+     * @summary Update an edge logical interface.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} interfaceId - Interface ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "description": "",
    "version": 0,
@@ -2828,211 +3680,269 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInte
    "externalTrunkBaseAssignments": [],
    "phoneTrunkBaseAssignments": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = function putProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(interfaceId === undefined || interfaceId === null){
-      throw new Error('Missing required  parameter: interfaceId');
-    }
-    requestPath = requestPath.replace('{interfaceId}', interfaceId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-/**
-  * @summary Delete an edge logical interface
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} interfaceId - Interface ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = function deleteProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(interfaceId === undefined || interfaceId === null){
-      throw new Error('Missing required  parameter: interfaceId');
-    }
-    requestPath = requestPath.replace('{interfaceId}', interfaceId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{interfaceId}', interfaceId);
 
-/**
-  * @summary Create a job to upload a list of Edge logs.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {} body - EdgeLogsJobRequest
-  * @example
-  * Body Example:
-  * {
+        if(interfaceId === undefined && interfaceId !== null){
+			throw 'Missing required  parameter: interfaceId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = putProvidersEdgesEdgeIdLogicalinterfacesInterfaceId;
+	/**
+     * @summary Delete an edge logical interface
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} interfaceId - Interface ID
+	*/
+	function deleteProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{interfaceId}', interfaceId);
+
+        if(interfaceId === undefined && interfaceId !== null){
+			throw 'Missing required  parameter: interfaceId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = deleteProvidersEdgesEdgeIdLogicalinterfacesInterfaceId;
+	/**
+     * @summary Create a job to upload a list of Edge logs.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - EdgeLogsJobRequest
+	 * @example
+	 * Body Example:
+	 * {
    "path": "",
    "query": "",
    "recurse": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogsJobs = function postProvidersEdgesEdgeIdLogsJobs(edgeId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logs/jobs';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesEdgeIdLogsJobs(edgeId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logs/jobs';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-/**
-  * @summary Get an Edge logs job.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} jobId - Job ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogsJobsJobId = function getProvidersEdgesEdgeIdLogsJobsJobId(edgeId, jobId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(jobId === undefined || jobId === null){
-      throw new Error('Missing required  parameter: jobId');
-    }
-    requestPath = requestPath.replace('{jobId}', jobId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Request that the specified fileIds be uploaded from the Edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} jobId - Job ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgeIdLogsJobs = postProvidersEdgesEdgeIdLogsJobs;
+	/**
+     * @summary Get an Edge logs job.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - Job ID
+	*/
+	function getProvidersEdgesEdgeIdLogsJobsJobId(edgeId, jobId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{jobId}', jobId);
+
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdLogsJobsJobId = getProvidersEdgesEdgeIdLogsJobsJobId;
+	/**
+     * @summary Request that the specified fileIds be uploaded from the Edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} jobId - Job ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "fileIds": []
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogsJobsJobIdUpload = function postProvidersEdgesEdgeIdLogsJobsJobIdUpload(edgeId, jobId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}/upload';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesEdgeIdLogsJobsJobIdUpload(edgeId, jobId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}/upload';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(jobId === undefined || jobId === null){
-      throw new Error('Missing required  parameter: jobId');
-    }
-    requestPath = requestPath.replace('{jobId}', jobId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-/**
-  * @summary Retrieve a list of all configured physical interfaces from a specific edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdPhysicalinterfaces = function getProvidersEdgesEdgeIdPhysicalinterfaces(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces';
-    var requestQuery = {};
-    var requestBody;
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{jobId}', jobId);
 
-/**
-  * @summary Get edge physical interface.
-  * @description Retrieve a physical interface from a specific edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {string} interfaceId - Interface ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdPhysicalinterfacesInterfaceId = function getProvidersEdgesEdgeIdPhysicalinterfacesInterfaceId(edgeId, interfaceId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces/{interfaceId}';
-    var requestQuery = {};
-    var requestBody;
+        if(jobId === undefined && jobId !== null){
+			throw 'Missing required  parameter: jobId';
+        }
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(interfaceId === undefined || interfaceId === null){
-      throw new Error('Missing required  parameter: interfaceId');
-    }
-    requestPath = requestPath.replace('{interfaceId}', interfaceId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Reboot an Edge
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdReboot = function postProvidersEdgesEdgeIdReboot(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/reboot';
-    var requestQuery = {};
-    var requestBody;
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgeIdLogsJobsJobIdUpload = postProvidersEdgesEdgeIdLogsJobsJobIdUpload;
+	/**
+     * @summary Retrieve a list of all configured physical interfaces from a specific edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function getProvidersEdgesEdgeIdPhysicalinterfaces(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Gets software update status information about any edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = function getProvidersEdgesEdgeIdSoftwareupdate(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/softwareupdate';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{edgeId}', edgeId);
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
 
-/**
-  * @summary Starts a software update for this edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdPhysicalinterfaces = getProvidersEdgesEdgeIdPhysicalinterfaces;
+	/**
+     * @summary Get edge physical interface.
+	 * @description Retrieve a physical interface from a specific edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {string} interfaceId - Interface ID
+	*/
+	function getProvidersEdgesEdgeIdPhysicalinterfacesInterfaceId(edgeId, interfaceId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces/{interfaceId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        apipath = apipath.replace('{interfaceId}', interfaceId);
+
+        if(interfaceId === undefined && interfaceId !== null){
+			throw 'Missing required  parameter: interfaceId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdPhysicalinterfacesInterfaceId = getProvidersEdgesEdgeIdPhysicalinterfacesInterfaceId;
+	/**
+     * @summary Reboot an Edge
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function postProvidersEdgesEdgeIdReboot(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/reboot';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgeIdReboot = postProvidersEdgesEdgeIdReboot;
+	/**
+     * @summary Gets software update status information about any edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function getProvidersEdgesEdgeIdSoftwareupdate(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/softwareupdate';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdSoftwareupdate = getProvidersEdgesEdgeIdSoftwareupdate;
+	/**
+     * @summary Starts a software update for this edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "version": {
       "name": "",
       "edgeVersion": "",
@@ -3050,71 +3960,94 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
    "edgeUri": "",
    "current": true
 }
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdSoftwareupdate = function postProvidersEdgesEdgeIdSoftwareupdate(edgeId, body){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/softwareupdate';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postProvidersEdgesEdgeIdSoftwareupdate(edgeId, body){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/softwareupdate';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgeIdSoftwareupdate = postProvidersEdgesEdgeIdSoftwareupdate;
+	/**
+     * @summary Cancels any in-progress update for this edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function deleteProvidersEdgesEdgeIdSoftwareupdate(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/softwareupdate';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteProvidersEdgesEdgeIdSoftwareupdate = deleteProvidersEdgesEdgeIdSoftwareupdate;
+	/**
+     * @summary Gets all the available software versions for this edge.
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge ID
+	*/
+	function getProvidersEdgesEdgeIdSoftwareversions(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/softwareversions';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getProvidersEdgesEdgeIdSoftwareversions = getProvidersEdgesEdgeIdSoftwareversions;
+	/**
+     * @summary Unpair an Edge
+	 * @memberOf TelephonyProvidersEdgeApi#
+	* @param {string} edgeId - Edge Id
+	*/
+	function postProvidersEdgesEdgeIdUnpair(edgeId){
+		var apipath = '/api/v2/telephony/providers/edges/{edgeId}/unpair';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{edgeId}', edgeId);
+
+        if(edgeId === undefined && edgeId !== null){
+			throw 'Missing required  parameter: edgeId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postProvidersEdgesEdgeIdUnpair = postProvidersEdgesEdgeIdUnpair;
+
+    return self;
 };
-
-/**
-  * @summary Cancels any in-progress update for this edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = function deleteProvidersEdgesEdgeIdSoftwareupdate(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/softwareupdate';
-    var requestQuery = {};
-    var requestBody;
-
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Gets all the available software versions for this edge.
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge ID
-  */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareversions = function getProvidersEdgesEdgeIdSoftwareversions(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/softwareversions';
-    var requestQuery = {};
-    var requestBody;
-
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Unpair an Edge
-  * @memberOf TelephonyProvidersEdgeApi#
-  * @param {string} edgeId - Edge Id
-  */
-TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdUnpair = function postProvidersEdgesEdgeIdUnpair(edgeId){
-    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/unpair';
-    var requestQuery = {};
-    var requestBody;
-
-    if(edgeId === undefined || edgeId === null){
-      throw new Error('Missing required  parameter: edgeId');
-    }
-    requestPath = requestPath.replace('{edgeId}', edgeId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
-
-

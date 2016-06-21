@@ -1,25 +1,22 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ConversationsApi(pureCloudSession);
 */
-function ConversationsApi(session) {
-    if(!(this instanceof ConversationsApi)) {
-        return new ConversationsApi(session);
+var ConversationsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('ConversationsApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Query for conversation aggregates
-  * @memberOf ConversationsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+	var self = this;
+	/**
+     * @summary Query for conversation aggregates
+	 * @memberOf ConversationsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "granularity": "",
    "groupBy": [],
@@ -31,25 +28,29 @@ function ConversationsApi(session) {
    "metrics": [],
    "flattenMultivaluedDimensions": true
 }
-  */
-ConversationsApi.prototype.postConversationsAggregatesQuery = function postConversationsAggregatesQuery(body){
-    var requestPath = '/api/v2/analytics/conversations/aggregates/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/conversations/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Query for conversation details
-  * @memberOf ConversationsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsAggregatesQuery = postConversationsAggregatesQuery;
+	/**
+     * @summary Query for conversation details
+	 * @memberOf ConversationsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "conversationFilters": [],
    "evaluationFilters": [],
@@ -62,96 +63,121 @@ ConversationsApi.prototype.postConversationsAggregatesQuery = function postConve
    "order": "",
    "orderBy": ""
 }
-  */
-ConversationsApi.prototype.postConversationsDetailsQuery = function postConversationsDetailsQuery(body){
-    var requestPath = '/api/v2/analytics/conversations/details/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsDetailsQuery(body){
+		var apipath = '/api/v2/analytics/conversations/details/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a conversation by id
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversationId
-  */
-ConversationsApi.prototype.getConversationsConversationIdDetails = function getConversationsConversationIdDetails(conversationId){
-    var requestPath = '/api/v2/analytics/conversations/{conversationId}/details';
-    var requestQuery = {};
-    var requestBody;
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsDetailsQuery = postConversationsDetailsQuery;
+	/**
+     * @summary Get a conversation by id
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversationId
+	*/
+	function getConversationsConversationIdDetails(conversationId){
+		var apipath = '/api/v2/analytics/conversations/{conversationId}/details';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Index conversation properties
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversationId
-  * @param {} body - request
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationsConversationIdDetails = getConversationsConversationIdDetails;
+	/**
+     * @summary Index conversation properties
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversationId
+	* @param {} body - request
+	 * @example
+	 * Body Example:
+	 * {
    "sessionId": "",
    "timestamp": 0,
    "properties": []
 }
-  */
-ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = function postConversationsConversationIdDetailsProperties(conversationId, body){
-    var requestPath = '/api/v2/analytics/conversations/{conversationId}/details/properties';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsConversationIdDetailsProperties(conversationId, body){
+		var apipath = '/api/v2/analytics/conversations/{conversationId}/details/properties';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Get conversations
-  * @memberOf ConversationsApi#
-  * @param {string} communicationType - Call or Chat communication filtering
-  */
-ConversationsApi.prototype.getConversations = function getConversations(communicationType){
-    var requestPath = '/api/v2/conversations';
-    var requestQuery = {};
-    var requestBody;
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
 
-    requestQuery.communicationType = communicationType;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get callback conversations
-  * @memberOf ConversationsApi#
-  */
-ConversationsApi.prototype.getCallbacks = function getCallbacks(){
-    var requestPath = '/api/v2/conversations/callbacks';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsConversationIdDetailsProperties = postConversationsConversationIdDetailsProperties;
+	/**
+     * @summary Get conversations
+	 * @memberOf ConversationsApi#
+	* @param {string} communicationType - Call or Chat communication filtering
+	*/
+	function getConversations(communicationType){
+		var apipath = '/api/v2/conversations';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a Callback
-  * @memberOf ConversationsApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+
+		if(communicationType !== undefined && communicationType !== null){
+			queryParameters.communicationType = communicationType;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversations = getConversations;
+	/**
+     * @summary Get callback conversations
+	 * @memberOf ConversationsApi#
+	*/
+	function getCallbacks(){
+		var apipath = '/api/v2/conversations/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallbacks = getCallbacks;
+	/**
+     * @summary Create a Callback
+	 * @memberOf ConversationsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "scriptId": "",
    "queueId": "",
    "routingData": {
@@ -168,44 +194,53 @@ ConversationsApi.prototype.getCallbacks = function getCallbacks(){
    "skipEnabled": true,
    "data": {}
 }
-  */
-ConversationsApi.prototype.postCallbacks = function postCallbacks(body){
-    var requestPath = '/api/v2/conversations/callbacks';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCallbacks(body){
+		var apipath = '/api/v2/conversations/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get callback conversation
-  * @memberOf ConversationsApi#
-  * @param {string} callbackId - 
-  */
-ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbackId(callbackId){
-    var requestPath = '/api/v2/conversations/callbacks/{callbackId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(callbackId === undefined || callbackId === null){
-      throw new Error('Missing required  parameter: callbackId');
-    }
-    requestPath = requestPath.replace('{callbackId}', callbackId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallbacks = postCallbacks;
+	/**
+     * @summary Get callback conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} callbackId - 
+	*/
+	function getCallbacksCallbackId(callbackId){
+		var apipath = '/api/v2/conversations/callbacks/{callbackId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{callbackId}', callbackId);
+
+        if(callbackId === undefined && callbackId !== null){
+			throw 'Missing required  parameter: callbackId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallbacksCallbackId = getCallbacksCallbackId;
+	/**
+     * @summary Update conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} callbackId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "wrapup": {
       "code": "",
       "name": "",
@@ -222,157 +257,202 @@ ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbac
    "held": true,
    "wrapupSkipped": true
 }
-  */
-ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantId = function patchCallbacksCallbackIdParticipantsParticipantId(callbackId, participantId, body){
-    var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchCallbacksCallbackIdParticipantsParticipantId(callbackId, participantId, body){
+		var apipath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callbackId === undefined || callbackId === null){
-      throw new Error('Missing required  parameter: callbackId');
-    }
-    requestPath = requestPath.replace('{callbackId}', callbackId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callbackId}', callbackId);
 
-/**
-  * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(callbackId === undefined && callbackId !== null){
+			throw 'Missing required  parameter: callbackId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchCallbacksCallbackIdParticipantsParticipantId = patchCallbacksCallbackIdParticipantsParticipantId;
+	/**
+     * @summary Update the attributes on a conversation participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} callbackId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "attributes": {}
 }
-  */
-ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdAttributes = function patchCallbacksCallbackIdParticipantsParticipantIdAttributes(callbackId, participantId, body){
-    var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/attributes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchCallbacksCallbackIdParticipantsParticipantIdAttributes(callbackId, participantId, body){
+		var apipath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callbackId === undefined || callbackId === null){
-      throw new Error('Missing required  parameter: callbackId');
-    }
-    requestPath = requestPath.replace('{callbackId}', callbackId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callbackId}', callbackId);
 
-/**
-  * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(callbackId === undefined && callbackId !== null){
+			throw 'Missing required  parameter: callbackId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchCallbacksCallbackIdParticipantsParticipantIdAttributes = patchCallbacksCallbackIdParticipantsParticipantIdAttributes;
+	/**
+     * @summary Replace this participant with the specified user and/or address
+	 * @memberOf ConversationsApi#
+	* @param {string} callbackId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "userId": "",
    "address": "",
    "userName": "",
    "queueId": "",
    "voicemail": true
 }
-  */
-ConversationsApi.prototype.postCallbacksCallbackIdParticipantsParticipantIdReplace = function postCallbacksCallbackIdParticipantsParticipantIdReplace(callbackId, participantId, body){
-    var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/replace';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCallbacksCallbackIdParticipantsParticipantIdReplace(callbackId, participantId, body){
+		var apipath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/replace';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callbackId === undefined || callbackId === null){
-      throw new Error('Missing required  parameter: callbackId');
-    }
-    requestPath = requestPath.replace('{callbackId}', callbackId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callbackId}', callbackId);
 
-/**
-  * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
-  * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
-  */
-ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup = function getCallbacksCallbackIdParticipantsParticipantIdWrapup(callbackId, participantId, provisional){
-    var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapup';
-    var requestQuery = {};
-    var requestBody;
+        if(callbackId === undefined && callbackId !== null){
+			throw 'Missing required  parameter: callbackId';
+        }
 
-    if(callbackId === undefined || callbackId === null){
-      throw new Error('Missing required  parameter: callbackId');
-    }
-    requestPath = requestPath.replace('{callbackId}', callbackId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
-  */
-ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes = function getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes(callbackId, participantId){
-    var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
 
-    if(callbackId === undefined || callbackId === null){
-      throw new Error('Missing required  parameter: callbackId');
-    }
-    requestPath = requestPath.replace('{callbackId}', callbackId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get recent conversations
-  * @memberOf ConversationsApi#
-  */
-ConversationsApi.prototype.getCalls = function getCalls(){
-    var requestPath = '/api/v2/conversations/calls';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallbacksCallbackIdParticipantsParticipantIdReplace = postCallbacksCallbackIdParticipantsParticipantIdReplace;
+	/**
+     * @summary Get the wrap-up for this conversation participant. 
+	 * @memberOf ConversationsApi#
+	* @param {string} callbackId - 
+	* @param {string} participantId - 
+	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+	*/
+	function getCallbacksCallbackIdParticipantsParticipantIdWrapup(callbackId, participantId, provisional){
+		var apipath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapup';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Create a call conversation
-  * @memberOf ConversationsApi#
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{callbackId}', callbackId);
+
+        if(callbackId === undefined && callbackId !== null){
+			throw 'Missing required  parameter: callbackId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		if(provisional !== undefined && provisional !== null){
+			queryParameters.provisional = provisional;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallbacksCallbackIdParticipantsParticipantIdWrapup = getCallbacksCallbackIdParticipantsParticipantIdWrapup;
+	/**
+     * @summary Get list of wrapup codes for this conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} callbackId - 
+	* @param {string} participantId - 
+	*/
+	function getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes(callbackId, participantId){
+		var apipath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callbackId}', callbackId);
+
+        if(callbackId === undefined && callbackId !== null){
+			throw 'Missing required  parameter: callbackId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes = getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes;
+	/**
+     * @summary Get recent conversations
+	 * @memberOf ConversationsApi#
+	*/
+	function getCalls(){
+		var apipath = '/api/v2/conversations/calls';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCalls = getCalls;
+	/**
+     * @summary Create a call conversation
+	 * @memberOf ConversationsApi#
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "phoneNumber": "",
    "callFromQueueId": "",
    "callQueueId": "",
@@ -383,99 +463,132 @@ ConversationsApi.prototype.getCalls = function getCalls(){
    "conversationIds": [],
    "participants": []
 }
-  */
-ConversationsApi.prototype.postCalls = function postCalls(body){
-    var requestPath = '/api/v2/conversations/calls';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCalls(body){
+		var apipath = '/api/v2/conversations/calls';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get call history
-  * @memberOf ConversationsApi#
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {string} interval - Interval string; format is ISO-8601. Separate start and end times with forward slash '/'
-  */
-ConversationsApi.prototype.getCallsHistory = function getCallsHistory(pageSize, pageNumber, interval){
-    var requestPath = '/api/v2/conversations/calls/history';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.interval = interval;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCalls = postCalls;
+	/**
+     * @summary Get call history
+	 * @memberOf ConversationsApi#
+	* @param {integer} pageSize - Page size
+	* @param {integer} pageNumber - Page number
+	* @param {string} interval - Interval string; format is ISO-8601. Separate start and end times with forward slash '/'
+	*/
+	function getCallsHistory(pageSize, pageNumber, interval){
+		var apipath = '/api/v2/conversations/calls/history';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get the maximum number of participants that this user can have on a conference
-  * @memberOf ConversationsApi#
-  */
-ConversationsApi.prototype.getCallsMaximumconferenceparties = function getCallsMaximumconferenceparties(){
-    var requestPath = '/api/v2/conversations/calls/maximumconferenceparties';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Get call conversation
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  */
-ConversationsApi.prototype.getCallsCallId = function getCallsCallId(callId){
-    var requestPath = '/api/v2/conversations/calls/{callId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-/**
-  * @summary Add a new call to a conversation
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {} body - Conversation
-  * @example
-  * Body Example:
-  * {
+
+		if(interval !== undefined && interval !== null){
+			queryParameters.interval = interval;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsHistory = getCallsHistory;
+	/**
+     * @summary Get the maximum number of participants that this user can have on a conference
+	 * @memberOf ConversationsApi#
+	*/
+	function getCallsMaximumconferenceparties(){
+		var apipath = '/api/v2/conversations/calls/maximumconferenceparties';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsMaximumconferenceparties = getCallsMaximumconferenceparties;
+	/**
+     * @summary Get call conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	*/
+	function getCallsCallId(callId){
+		var apipath = '/api/v2/conversations/calls/{callId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callId}', callId);
+
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsCallId = getCallsCallId;
+	/**
+     * @summary Add a new call to a conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {} body - Conversation
+	 * @example
+	 * Body Example:
+	 * {
    "callNumber": ""
 }
-  */
-ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCallsCallId(callId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Update conversation
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {} body - Conversation
-  * @example
-  * Body Example:
-  * {
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallsCallId = postCallsCallId;
+	/**
+     * @summary Update conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {} body - Conversation
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "startTime": "",
    "endTime": "",
@@ -485,30 +598,36 @@ ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, bo
    "maxParticipants": 0,
    "recordingState": ""
 }
-  */
-ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchCallsCallId(callId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Add participants to a conversation
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {} body - Conversation
-  * @example
-  * Body Example:
-  * {
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchCallsCallId = patchCallsCallId;
+	/**
+     * @summary Add participants to a conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {} body - Conversation
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "startTime": "",
    "endTime": "",
@@ -518,31 +637,37 @@ ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, 
    "maxParticipants": 0,
    "recordingState": ""
 }
-  */
-ConversationsApi.prototype.postCallsCallIdParticipants = function postCallsCallIdParticipants(callId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCallsCallIdParticipants(callId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Update conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallsCallIdParticipants = postCallsCallIdParticipants;
+	/**
+     * @summary Update conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "wrapup": {
       "code": "",
       "name": "",
@@ -559,66 +684,82 @@ ConversationsApi.prototype.postCallsCallIdParticipants = function postCallsCallI
    "held": true,
    "wrapupSkipped": true
 }
-  */
-ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantId = function patchCallsCallIdParticipantsParticipantId(callId, participantId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchCallsCallIdParticipantsParticipantId(callId, participantId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchCallsCallIdParticipantsParticipantId = patchCallsCallIdParticipantsParticipantId;
+	/**
+     * @summary Update the attributes on a conversation participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "attributes": {}
 }
-  */
-ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdAttributes = function patchCallsCallIdParticipantsParticipantIdAttributes(callId, participantId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/attributes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchCallsCallIdParticipantsParticipantIdAttributes(callId, participantId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Initiate and update consult transfer
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {} body - Destination address & initial speak to
-  * @example
-  * Body Example:
-  * {
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchCallsCallIdParticipantsParticipantIdAttributes = patchCallsCallIdParticipantsParticipantIdAttributes;
+	/**
+     * @summary Initiate and update consult transfer
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	* @param {} body - Destination address & initial speak to
+	 * @example
+	 * Body Example:
+	 * {
    "speakTo": "",
    "destination": {
       "address": "",
@@ -627,220 +768,284 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdAttributes =
       "queueId": ""
    }
 }
-  */
-ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdConsult = function postCallsCallIdParticipantsParticipantIdConsult(callId, participantId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCallsCallIdParticipantsParticipantIdConsult(callId, participantId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Cancel the transfer
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  */
-ConversationsApi.prototype.deleteCallsCallIdParticipantsParticipantIdConsult = function deleteCallsCallIdParticipantsParticipantIdConsult(callId, participantId){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
-    var requestQuery = {};
-    var requestBody;
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Change who can speak
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {} body - new speak to
-  * @example
-  * Body Example:
-  * {
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallsCallIdParticipantsParticipantIdConsult = postCallsCallIdParticipantsParticipantIdConsult;
+	/**
+     * @summary Cancel the transfer
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	*/
+	function deleteCallsCallIdParticipantsParticipantIdConsult(callId, participantId){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callId}', callId);
+
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteCallsCallIdParticipantsParticipantIdConsult = deleteCallsCallIdParticipantsParticipantIdConsult;
+	/**
+     * @summary Change who can speak
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	* @param {} body - new speak to
+	 * @example
+	 * Body Example:
+	 * {
    "speakTo": ""
 }
-  */
-ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdConsult = function patchCallsCallIdParticipantsParticipantIdConsult(callId, participantId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchCallsCallIdParticipantsParticipantIdConsult(callId, participantId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Listen in on the conversation from the point of view of a given participant.
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  */
-ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdMonitor = function postCallsCallIdParticipantsParticipantIdMonitor(callId, participantId){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/monitor';
-    var requestQuery = {};
-    var requestBody;
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchCallsCallIdParticipantsParticipantIdConsult = patchCallsCallIdParticipantsParticipantIdConsult;
+	/**
+     * @summary Listen in on the conversation from the point of view of a given participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	*/
+	function postCallsCallIdParticipantsParticipantIdMonitor(callId, participantId){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/monitor';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callId}', callId);
+
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallsCallIdParticipantsParticipantIdMonitor = postCallsCallIdParticipantsParticipantIdMonitor;
+	/**
+     * @summary Replace this participant with the specified user and/or address
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "userId": "",
    "address": "",
    "userName": "",
    "queueId": "",
    "voicemail": true
 }
-  */
-ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdReplace = function postCallsCallIdParticipantsParticipantIdReplace(callId, participantId, body){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/replace';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postCallsCallIdParticipantsParticipantIdReplace(callId, participantId, body){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/replace';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{callId}', callId);
 
-/**
-  * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
-  */
-ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapup = function getCallsCallIdParticipantsParticipantIdWrapup(callId, participantId, provisional){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapup';
-    var requestQuery = {};
-    var requestBody;
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  */
-ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = function getCallsCallIdParticipantsParticipantIdWrapupcodes(callId, participantId){
-    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
 
-    if(callId === undefined || callId === null){
-      throw new Error('Missing required  parameter: callId');
-    }
-    requestPath = requestPath.replace('{callId}', callId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get recent chat conversations
-  * @memberOf ConversationsApi#
-  */
-ConversationsApi.prototype.getChats = function getChats(){
-    var requestPath = '/api/v2/conversations/chats';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postCallsCallIdParticipantsParticipantIdReplace = postCallsCallIdParticipantsParticipantIdReplace;
+	/**
+     * @summary Get the wrap-up for this conversation participant. 
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+	*/
+	function getCallsCallIdParticipantsParticipantIdWrapup(callId, participantId, provisional){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapup';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get chat conversation
-  * @memberOf ConversationsApi#
-  * @param {string} chatId - 
-  */
-ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
-    var requestPath = '/api/v2/conversations/chats/{chatId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{callId}', callId);
 
-    if(chatId === undefined || chatId === null){
-      throw new Error('Missing required  parameter: chatId');
-    }
-    requestPath = requestPath.replace('{chatId}', chatId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
 
-/**
-  * @summary Update conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} chatId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		if(provisional !== undefined && provisional !== null){
+			queryParameters.provisional = provisional;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsCallIdParticipantsParticipantIdWrapup = getCallsCallIdParticipantsParticipantIdWrapup;
+	/**
+     * @summary Get list of wrapup codes for this conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} callId - 
+	* @param {string} participantId - 
+	*/
+	function getCallsCallIdParticipantsParticipantIdWrapupcodes(callId, participantId){
+		var apipath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{callId}', callId);
+
+        if(callId === undefined && callId !== null){
+			throw 'Missing required  parameter: callId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getCallsCallIdParticipantsParticipantIdWrapupcodes = getCallsCallIdParticipantsParticipantIdWrapupcodes;
+	/**
+     * @summary Get recent chat conversations
+	 * @memberOf ConversationsApi#
+	*/
+	function getChats(){
+		var apipath = '/api/v2/conversations/chats';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getChats = getChats;
+	/**
+     * @summary Get chat conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} chatId - 
+	*/
+	function getChatsChatId(chatId){
+		var apipath = '/api/v2/conversations/chats/{chatId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{chatId}', chatId);
+
+        if(chatId === undefined && chatId !== null){
+			throw 'Missing required  parameter: chatId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getChatsChatId = getChatsChatId;
+	/**
+     * @summary Update conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} chatId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "wrapup": {
       "code": "",
       "name": "",
@@ -857,192 +1062,247 @@ ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
    "held": true,
    "wrapupSkipped": true
 }
-  */
-ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantId = function patchChatsChatIdParticipantsParticipantId(chatId, participantId, body){
-    var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchChatsChatIdParticipantsParticipantId(chatId, participantId, body){
+		var apipath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(chatId === undefined || chatId === null){
-      throw new Error('Missing required  parameter: chatId');
-    }
-    requestPath = requestPath.replace('{chatId}', chatId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{chatId}', chatId);
 
-/**
-  * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
-  * @param {string} chatId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(chatId === undefined && chatId !== null){
+			throw 'Missing required  parameter: chatId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchChatsChatIdParticipantsParticipantId = patchChatsChatIdParticipantsParticipantId;
+	/**
+     * @summary Update the attributes on a conversation participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} chatId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "attributes": {}
 }
-  */
-ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdAttributes = function patchChatsChatIdParticipantsParticipantIdAttributes(chatId, participantId, body){
-    var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/attributes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchChatsChatIdParticipantsParticipantIdAttributes(chatId, participantId, body){
+		var apipath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(chatId === undefined || chatId === null){
-      throw new Error('Missing required  parameter: chatId');
-    }
-    requestPath = requestPath.replace('{chatId}', chatId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{chatId}', chatId);
 
-/**
-  * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
-  * @param {string} chatId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(chatId === undefined && chatId !== null){
+			throw 'Missing required  parameter: chatId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchChatsChatIdParticipantsParticipantIdAttributes = patchChatsChatIdParticipantsParticipantIdAttributes;
+	/**
+     * @summary Replace this participant with the specified user and/or address
+	 * @memberOf ConversationsApi#
+	* @param {string} chatId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "userId": "",
    "address": "",
    "userName": "",
    "queueId": "",
    "voicemail": true
 }
-  */
-ConversationsApi.prototype.postChatsChatIdParticipantsParticipantIdReplace = function postChatsChatIdParticipantsParticipantIdReplace(chatId, participantId, body){
-    var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/replace';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postChatsChatIdParticipantsParticipantIdReplace(chatId, participantId, body){
+		var apipath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/replace';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(chatId === undefined || chatId === null){
-      throw new Error('Missing required  parameter: chatId');
-    }
-    requestPath = requestPath.replace('{chatId}', chatId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{chatId}', chatId);
 
-/**
-  * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
-  * @param {string} chatId - 
-  * @param {string} participantId - 
-  * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
-  */
-ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapup = function getChatsChatIdParticipantsParticipantIdWrapup(chatId, participantId, provisional){
-    var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapup';
-    var requestQuery = {};
-    var requestBody;
+        if(chatId === undefined && chatId !== null){
+			throw 'Missing required  parameter: chatId';
+        }
 
-    if(chatId === undefined || chatId === null){
-      throw new Error('Missing required  parameter: chatId');
-    }
-    requestPath = requestPath.replace('{chatId}', chatId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} chatId - 
-  * @param {string} participantId - 
-  */
-ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = function getChatsChatIdParticipantsParticipantIdWrapupcodes(chatId, participantId){
-    var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
 
-    if(chatId === undefined || chatId === null){
-      throw new Error('Missing required  parameter: chatId');
-    }
-    requestPath = requestPath.replace('{chatId}', chatId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get recent email conversations
-  * @memberOf ConversationsApi#
-  */
-ConversationsApi.prototype.getEmails = function getEmails(){
-    var requestPath = '/api/v2/conversations/emails';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postChatsChatIdParticipantsParticipantIdReplace = postChatsChatIdParticipantsParticipantIdReplace;
+	/**
+     * @summary Get the wrap-up for this conversation participant. 
+	 * @memberOf ConversationsApi#
+	* @param {string} chatId - 
+	* @param {string} participantId - 
+	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+	*/
+	function getChatsChatIdParticipantsParticipantIdWrapup(chatId, participantId, provisional){
+		var apipath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapup';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get email conversation
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  */
-ConversationsApi.prototype.getEmailsEmailId = function getEmailsEmailId(emailId){
-    var requestPath = '/api/v2/conversations/emails/{emailId}';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{chatId}', chatId);
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(chatId === undefined && chatId !== null){
+			throw 'Missing required  parameter: chatId';
+        }
 
-/**
-  * @summary Get conversation messages
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  */
-ConversationsApi.prototype.getEmailsEmailIdMessages = function getEmailsEmailIdMessages(emailId){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/messages';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{participantId}', participantId);
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
 
-/**
-  * @summary Send an email reply
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {} body - Reply
-  * @example
-  * Body Example:
-  * {
+
+		if(provisional !== undefined && provisional !== null){
+			queryParameters.provisional = provisional;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getChatsChatIdParticipantsParticipantIdWrapup = getChatsChatIdParticipantsParticipantIdWrapup;
+	/**
+     * @summary Get list of wrapup codes for this conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} chatId - 
+	* @param {string} participantId - 
+	*/
+	function getChatsChatIdParticipantsParticipantIdWrapupcodes(chatId, participantId){
+		var apipath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{chatId}', chatId);
+
+        if(chatId === undefined && chatId !== null){
+			throw 'Missing required  parameter: chatId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getChatsChatIdParticipantsParticipantIdWrapupcodes = getChatsChatIdParticipantsParticipantIdWrapupcodes;
+	/**
+     * @summary Get recent email conversations
+	 * @memberOf ConversationsApi#
+	*/
+	function getEmails(){
+		var apipath = '/api/v2/conversations/emails';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmails = getEmails;
+	/**
+     * @summary Get email conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	*/
+	function getEmailsEmailId(emailId){
+		var apipath = '/api/v2/conversations/emails/{emailId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailsEmailId = getEmailsEmailId;
+	/**
+     * @summary Get conversation messages
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	*/
+	function getEmailsEmailIdMessages(emailId){
+		var apipath = '/api/v2/conversations/emails/{emailId}/messages';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailsEmailIdMessages = getEmailsEmailIdMessages;
+	/**
+     * @summary Send an email reply
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {} body - Reply
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "to": [],
    "cc": [],
@@ -1057,47 +1317,58 @@ ConversationsApi.prototype.getEmailsEmailIdMessages = function getEmailsEmailIdM
    "htmlBody": "",
    "time": ""
 }
-  */
-ConversationsApi.prototype.postEmailsEmailIdMessages = function postEmailsEmailIdMessages(emailId, body){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/messages';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEmailsEmailIdMessages(emailId, body){
+		var apipath = '/api/v2/conversations/emails/{emailId}/messages';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{emailId}', emailId);
 
-/**
-  * @summary Get conversation draft reply
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  */
-ConversationsApi.prototype.getEmailsEmailIdMessagesDraft = function getEmailsEmailIdMessagesDraft(emailId){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/messages/draft';
-    var requestQuery = {};
-    var requestBody;
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Update conversation draft reply
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {} body - Draft
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEmailsEmailIdMessages = postEmailsEmailIdMessages;
+	/**
+     * @summary Get conversation draft reply
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	*/
+	function getEmailsEmailIdMessagesDraft(emailId){
+		var apipath = '/api/v2/conversations/emails/{emailId}/messages/draft';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailsEmailIdMessagesDraft = getEmailsEmailIdMessagesDraft;
+	/**
+     * @summary Update conversation draft reply
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {} body - Draft
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "to": [],
    "cc": [],
@@ -1112,75 +1383,95 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesDraft = function getEmailsEma
    "htmlBody": "",
    "time": ""
 }
-  */
-ConversationsApi.prototype.putEmailsEmailIdMessagesDraft = function putEmailsEmailIdMessagesDraft(emailId, body){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/messages/draft';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putEmailsEmailIdMessagesDraft(emailId, body){
+		var apipath = '/api/v2/conversations/emails/{emailId}/messages/draft';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{emailId}', emailId);
 
-/**
-  * @summary Delete attachment from draft
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} attachmentId - 
-  */
-ConversationsApi.prototype.deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId = function deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId(emailId, attachmentId){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/messages/draft/attachments/{attachmentId}';
-    var requestQuery = {};
-    var requestBody;
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(attachmentId === undefined || attachmentId === null){
-      throw new Error('Missing required  parameter: attachmentId');
-    }
-    requestPath = requestPath.replace('{attachmentId}', attachmentId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get conversation message
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} messageId - 
-  */
-ConversationsApi.prototype.getEmailsEmailIdMessagesMessageId = function getEmailsEmailIdMessagesMessageId(emailId, messageId){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/messages/{messageId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(messageId === undefined || messageId === null){
-      throw new Error('Missing required  parameter: messageId');
-    }
-    requestPath = requestPath.replace('{messageId}', messageId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putEmailsEmailIdMessagesDraft = putEmailsEmailIdMessagesDraft;
+	/**
+     * @summary Delete attachment from draft
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} attachmentId - 
+	*/
+	function deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId(emailId, attachmentId){
+		var apipath = '/api/v2/conversations/emails/{emailId}/messages/draft/attachments/{attachmentId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+        apipath = apipath.replace('{attachmentId}', attachmentId);
+
+        if(attachmentId === undefined && attachmentId !== null){
+			throw 'Missing required  parameter: attachmentId';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId = deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId;
+	/**
+     * @summary Get conversation message
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} messageId - 
+	*/
+	function getEmailsEmailIdMessagesMessageId(emailId, messageId){
+		var apipath = '/api/v2/conversations/emails/{emailId}/messages/{messageId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+        apipath = apipath.replace('{messageId}', messageId);
+
+        if(messageId === undefined && messageId !== null){
+			throw 'Missing required  parameter: messageId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailsEmailIdMessagesMessageId = getEmailsEmailIdMessagesMessageId;
+	/**
+     * @summary Update conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "wrapup": {
       "code": "",
       "name": "",
@@ -1197,145 +1488,187 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesMessageId = function getEmail
    "held": true,
    "wrapupSkipped": true
 }
-  */
-ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantId = function patchEmailsEmailIdParticipantsParticipantId(emailId, participantId, body){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchEmailsEmailIdParticipantsParticipantId(emailId, participantId, body){
+		var apipath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{emailId}', emailId);
 
-/**
-  * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchEmailsEmailIdParticipantsParticipantId = patchEmailsEmailIdParticipantsParticipantId;
+	/**
+     * @summary Update the attributes on a conversation participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "attributes": {}
 }
-  */
-ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantIdAttributes = function patchEmailsEmailIdParticipantsParticipantIdAttributes(emailId, participantId, body){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/attributes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchEmailsEmailIdParticipantsParticipantIdAttributes(emailId, participantId, body){
+		var apipath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{emailId}', emailId);
 
-/**
-  * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} participantId - 
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchEmailsEmailIdParticipantsParticipantIdAttributes = patchEmailsEmailIdParticipantsParticipantIdAttributes;
+	/**
+     * @summary Replace this participant with the specified user and/or address
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} participantId - 
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "userId": "",
    "address": "",
    "userName": "",
    "queueId": "",
    "voicemail": true
 }
-  */
-ConversationsApi.prototype.postEmailsEmailIdParticipantsParticipantIdReplace = function postEmailsEmailIdParticipantsParticipantIdReplace(emailId, participantId, body){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/replace';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEmailsEmailIdParticipantsParticipantIdReplace(emailId, participantId, body){
+		var apipath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/replace';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{emailId}', emailId);
 
-/**
-  * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} participantId - 
-  * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
-  */
-ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapup = function getEmailsEmailIdParticipantsParticipantIdWrapup(emailId, participantId, provisional){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapup';
-    var requestQuery = {};
-    var requestBody;
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} emailId - 
-  * @param {string} participantId - 
-  */
-ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes = function getEmailsEmailIdParticipantsParticipantIdWrapupcodes(emailId, participantId){
-    var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
 
-    if(emailId === undefined || emailId === null){
-      throw new Error('Missing required  parameter: emailId');
-    }
-    requestPath = requestPath.replace('{emailId}', emailId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Create Fax Conversation
-  * @memberOf ConversationsApi#
-  * @param {} body - Fax
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEmailsEmailIdParticipantsParticipantIdReplace = postEmailsEmailIdParticipantsParticipantIdReplace;
+	/**
+     * @summary Get the wrap-up for this conversation participant. 
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} participantId - 
+	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+	*/
+	function getEmailsEmailIdParticipantsParticipantIdWrapup(emailId, participantId, provisional){
+		var apipath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapup';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		if(provisional !== undefined && provisional !== null){
+			queryParameters.provisional = provisional;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailsEmailIdParticipantsParticipantIdWrapup = getEmailsEmailIdParticipantsParticipantIdWrapup;
+	/**
+     * @summary Get list of wrapup codes for this conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} emailId - 
+	* @param {string} participantId - 
+	*/
+	function getEmailsEmailIdParticipantsParticipantIdWrapupcodes(emailId, participantId){
+		var apipath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{emailId}', emailId);
+
+        if(emailId === undefined && emailId !== null){
+			throw 'Missing required  parameter: emailId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getEmailsEmailIdParticipantsParticipantIdWrapupcodes = getEmailsEmailIdParticipantsParticipantIdWrapupcodes;
+	/**
+     * @summary Create Fax Conversation
+	 * @memberOf ConversationsApi#
+	* @param {} body - Fax
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "addresses": [],
    "documentId": "",
@@ -1357,45 +1690,54 @@ ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes 
       "locale": ""
    }
 }
-  */
-ConversationsApi.prototype.postFaxes = function postFaxes(body){
-    var requestPath = '/api/v2/conversations/faxes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postFaxes(body){
+		var apipath = '/api/v2/conversations/faxes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get conversation
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  */
-ConversationsApi.prototype.getConversationId = function getConversationId(conversationId){
-    var requestPath = '/api/v2/conversations/{conversationId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postFaxes = postFaxes;
+	/**
+     * @summary Get conversation
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	*/
+	function getConversationId(conversationId){
+		var apipath = '/api/v2/conversations/{conversationId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a participant.
-  * @description Update conversation participant.
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  * @param {} body - Update conversation participant.
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationId = getConversationId;
+	/**
+     * @summary Update a participant.
+	 * @description Update conversation participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {} body - Update conversation participant.
+	 * @example
+	 * Body Example:
+	 * {
    "wrapup": {
       "code": "",
       "name": "",
@@ -1412,66 +1754,82 @@ ConversationsApi.prototype.getConversationId = function getConversationId(conver
    "held": true,
    "wrapupSkipped": true
 }
-  */
-ConversationsApi.prototype.patchConversationIdParticipantsParticipantId = function patchConversationIdParticipantsParticipantId(conversationId, participantId, body){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchConversationIdParticipantsParticipantId(conversationId, participantId, body){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchConversationIdParticipantsParticipantId = patchConversationIdParticipantsParticipantId;
+	/**
+     * @summary Update the attributes on a conversation participant.
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "attributes": {}
 }
-  */
-ConversationsApi.prototype.patchConversationIdParticipantsParticipantIdAttributes = function patchConversationIdParticipantsParticipantIdAttributes(conversationId, participantId, body){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/attributes';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function patchConversationIdParticipantsParticipantIdAttributes(conversationId, participantId, body){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/attributes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Create a new callback for the specified participant on the conversation.
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.patchConversationIdParticipantsParticipantIdAttributes = patchConversationIdParticipantsParticipantIdAttributes;
+	/**
+     * @summary Create a new callback for the specified participant on the conversation.
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "scriptId": "",
    "queueId": "",
    "routingData": {
@@ -1488,132 +1846,177 @@ ConversationsApi.prototype.patchConversationIdParticipantsParticipantIdAttribute
    "skipEnabled": true,
    "data": {}
 }
-  */
-ConversationsApi.prototype.postConversationIdParticipantsParticipantIdCallbacks = function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/callbacks';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/callbacks';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Delete a code used to add a communication to this participant
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  * @param {string} addCommunicationCode - addCommunicationCode
-  */
-ConversationsApi.prototype.deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode = function deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode(conversationId, participantId, addCommunicationCode){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/codes/{addCommunicationCode}';
-    var requestQuery = {};
-    var requestBody;
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(addCommunicationCode === undefined || addCommunicationCode === null){
-      throw new Error('Missing required  parameter: addCommunicationCode');
-    }
-    requestPath = requestPath.replace('{addCommunicationCode}', addCommunicationCode);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{participantId}', participantId);
 
-/**
-  * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  * @param {} body - 
-  * @example
-  * Body Example:
-  * {
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationIdParticipantsParticipantIdCallbacks = postConversationIdParticipantsParticipantIdCallbacks;
+	/**
+     * @summary Delete a code used to add a communication to this participant
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {string} addCommunicationCode - addCommunicationCode
+	*/
+	function deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode(conversationId, participantId, addCommunicationCode){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/codes/{addCommunicationCode}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        apipath = apipath.replace('{addCommunicationCode}', addCommunicationCode);
+
+        if(addCommunicationCode === undefined && addCommunicationCode !== null){
+			throw 'Missing required  parameter: addCommunicationCode';
+        }
+
+
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode = deleteConversationIdParticipantsParticipantIdCodesAddcommunicationcode;
+	/**
+     * @summary Replace this participant with the specified user and/or address
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {} body - 
+	 * @example
+	 * Body Example:
+	 * {
    "userId": "",
    "address": "",
    "userName": "",
    "queueId": "",
    "voicemail": true
 }
-  */
-ConversationsApi.prototype.postConversationIdParticipantsParticipantIdReplace = function postConversationIdParticipantsParticipantIdReplace(conversationId, participantId, body){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/replace';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationIdParticipantsParticipantIdReplace(conversationId, participantId, body){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/replace';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationIdParticipantsParticipantIdReplace = postConversationIdParticipantsParticipantIdReplace;
+	/**
+     * @summary Get the wrap-up for this conversation participant. 
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	* @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+	*/
+	function getConversationIdParticipantsParticipantIdWrapup(conversationId, participantId, provisional){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapup';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		if(provisional !== undefined && provisional !== null){
+			queryParameters.provisional = provisional;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationIdParticipantsParticipantIdWrapup = getConversationIdParticipantsParticipantIdWrapup;
+	/**
+     * @summary Get list of wrapup codes for this conversation participant
+	 * @memberOf ConversationsApi#
+	* @param {string} conversationId - conversation ID
+	* @param {string} participantId - participant ID
+	*/
+	function getConversationIdParticipantsParticipantIdWrapupcodes(conversationId, participantId){
+		var apipath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapupcodes';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        apipath = apipath.replace('{participantId}', participantId);
+
+        if(participantId === undefined && participantId !== null){
+			throw 'Missing required  parameter: participantId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationIdParticipantsParticipantIdWrapupcodes = getConversationIdParticipantsParticipantIdWrapupcodes;
+
+    return self;
 };
-
-/**
-  * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
-  */
-ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapup = function getConversationIdParticipantsParticipantIdWrapup(conversationId, participantId, provisional){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapup';
-    var requestQuery = {};
-    var requestBody;
-
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
-  * @param {string} conversationId - conversation ID
-  * @param {string} participantId - participant ID
-  */
-ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapupcodes = function getConversationIdParticipantsParticipantIdWrapupcodes(conversationId, participantId){
-    var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapupcodes';
-    var requestQuery = {};
-    var requestBody;
-
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(participantId === undefined || participantId === null){
-      throw new Error('Missing required  parameter: participantId');
-    }
-    requestPath = requestPath.replace('{participantId}', participantId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-

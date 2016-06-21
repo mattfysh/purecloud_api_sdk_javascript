@@ -1,25 +1,22 @@
+//API VERSION - 
 /**
 * @class
 * @example
 * var api = new AnalyticsApi(pureCloudSession);
 */
-function AnalyticsApi(session) {
-    if(!(this instanceof AnalyticsApi)) {
-        return new AnalyticsApi(session);
+var AnalyticsApi = function (pureCloudSession) {
+	if(!pureCloudSession){
+		throw "PureCloudSession is not valid.";
     }
-    if(!(session && session.makeRequest)) {
-        throw new Error('AnalyticsApi requires a PureCloudSession');
-    }
-    this.session = session;
-}
 
-/**
-  * @summary Query for conversation aggregates
-  * @memberOf AnalyticsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+	var self = this;
+	/**
+     * @summary Query for conversation aggregates
+	 * @memberOf AnalyticsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "granularity": "",
    "groupBy": [],
@@ -31,25 +28,29 @@ function AnalyticsApi(session) {
    "metrics": [],
    "flattenMultivaluedDimensions": true
 }
-  */
-AnalyticsApi.prototype.postConversationsAggregatesQuery = function postConversationsAggregatesQuery(body){
-    var requestPath = '/api/v2/analytics/conversations/aggregates/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/conversations/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Query for conversation details
-  * @memberOf AnalyticsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsAggregatesQuery = postConversationsAggregatesQuery;
+	/**
+     * @summary Query for conversation details
+	 * @memberOf AnalyticsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "conversationFilters": [],
    "evaluationFilters": [],
@@ -62,70 +63,85 @@ AnalyticsApi.prototype.postConversationsAggregatesQuery = function postConversat
    "order": "",
    "orderBy": ""
 }
-  */
-AnalyticsApi.prototype.postConversationsDetailsQuery = function postConversationsDetailsQuery(body){
-    var requestPath = '/api/v2/analytics/conversations/details/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsDetailsQuery(body){
+		var apipath = '/api/v2/analytics/conversations/details/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a conversation by id
-  * @memberOf AnalyticsApi#
-  * @param {string} conversationId - conversationId
-  */
-AnalyticsApi.prototype.getConversationsConversationIdDetails = function getConversationsConversationIdDetails(conversationId){
-    var requestPath = '/api/v2/analytics/conversations/{conversationId}/details';
-    var requestQuery = {};
-    var requestBody;
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsDetailsQuery = postConversationsDetailsQuery;
+	/**
+     * @summary Get a conversation by id
+	 * @memberOf AnalyticsApi#
+	* @param {string} conversationId - conversationId
+	*/
+	function getConversationsConversationIdDetails(conversationId){
+		var apipath = '/api/v2/analytics/conversations/{conversationId}/details';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Index conversation properties
-  * @memberOf AnalyticsApi#
-  * @param {string} conversationId - conversationId
-  * @param {} body - request
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{conversationId}', conversationId);
+
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getConversationsConversationIdDetails = getConversationsConversationIdDetails;
+	/**
+     * @summary Index conversation properties
+	 * @memberOf AnalyticsApi#
+	* @param {string} conversationId - conversationId
+	* @param {} body - request
+	 * @example
+	 * Body Example:
+	 * {
    "sessionId": "",
    "timestamp": 0,
    "properties": []
 }
-  */
-AnalyticsApi.prototype.postConversationsConversationIdDetailsProperties = function postConversationsConversationIdDetailsProperties(conversationId, body){
-    var requestPath = '/api/v2/analytics/conversations/{conversationId}/details/properties';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postConversationsConversationIdDetailsProperties(conversationId, body){
+		var apipath = '/api/v2/analytics/conversations/{conversationId}/details/properties';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(conversationId === undefined || conversationId === null){
-      throw new Error('Missing required  parameter: conversationId');
-    }
-    requestPath = requestPath.replace('{conversationId}', conversationId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{conversationId}', conversationId);
 
-/**
-  * @summary Query for evaluation aggregates
-  * @memberOf AnalyticsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+        if(conversationId === undefined && conversationId !== null){
+			throw 'Missing required  parameter: conversationId';
+        }
+
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postConversationsConversationIdDetailsProperties = postConversationsConversationIdDetailsProperties;
+	/**
+     * @summary Query for evaluation aggregates
+	 * @memberOf AnalyticsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "granularity": "",
    "groupBy": [],
@@ -137,25 +153,29 @@ AnalyticsApi.prototype.postConversationsConversationIdDetailsProperties = functi
    "metrics": [],
    "flattenMultivaluedDimensions": true
 }
-  */
-AnalyticsApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAggregatesQuery(body){
-    var requestPath = '/api/v2/analytics/evaluations/aggregates/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postEvaluationsAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/evaluations/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Query for queue observations
-  * @memberOf AnalyticsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postEvaluationsAggregatesQuery = postEvaluationsAggregatesQuery;
+	/**
+     * @summary Query for queue observations
+	 * @memberOf AnalyticsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "filter": {
       "type": "",
       "clauses": [],
@@ -163,74 +183,107 @@ AnalyticsApi.prototype.postEvaluationsAggregatesQuery = function postEvaluations
    },
    "metrics": []
 }
-  */
-AnalyticsApi.prototype.postQueuesObservationsQuery = function postQueuesObservationsQuery(body){
-    var requestPath = '/api/v2/analytics/queues/observations/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postQueuesObservationsQuery(body){
+		var apipath = '/api/v2/analytics/queues/observations/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get list of reporting metadata.
-  * @memberOf AnalyticsApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  * @param {string} locale - Locale
-  */
-AnalyticsApi.prototype.getReportingMetadata = function getReportingMetadata(pageNumber, pageSize, locale){
-    var requestPath = '/api/v2/analytics/reporting/metadata';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.locale = locale;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postQueuesObservationsQuery = postQueuesObservationsQuery;
+	/**
+     * @summary Get list of reporting metadata.
+	 * @memberOf AnalyticsApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	* @param {string} locale - Locale
+	*/
+	function getReportingMetadata(pageNumber, pageSize, locale){
+		var apipath = '/api/v2/analytics/reporting/metadata';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get a list of report formats
-  * @description Get a list of report formats.
-  * @memberOf AnalyticsApi#
-  */
-AnalyticsApi.prototype.getReportingReportformats = function getReportingReportformats(){
-    var requestPath = '/api/v2/analytics/reporting/reportformats';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-/**
-  * @summary Get a list of scheduled report jobs
-  * @description Get a list of scheduled report jobs.
-  * @memberOf AnalyticsApi#
-  * @param {integer} pageNumber - Page number
-  * @param {integer} pageSize - Page size
-  */
-AnalyticsApi.prototype.getReportingSchedules = function getReportingSchedules(pageNumber, pageSize){
-    var requestPath = '/api/v2/analytics/reporting/schedules';
-    var requestQuery = {};
-    var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Create a scheduled report job
-  * @description Create a scheduled report job.
-  * @memberOf AnalyticsApi#
-  * @param {} body - ReportSchedule
-  * @example
-  * Body Example:
-  * {
+
+		if(locale !== undefined && locale !== null){
+			queryParameters.locale = locale;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingMetadata = getReportingMetadata;
+	/**
+     * @summary Get a list of report formats
+	 * @description Get a list of report formats.
+	 * @memberOf AnalyticsApi#
+	*/
+	function getReportingReportformats(){
+		var apipath = '/api/v2/analytics/reporting/reportformats';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingReportformats = getReportingReportformats;
+	/**
+     * @summary Get a list of scheduled report jobs
+	 * @description Get a list of scheduled report jobs.
+	 * @memberOf AnalyticsApi#
+	* @param {integer} pageNumber - Page number
+	* @param {integer} pageSize - Page size
+	*/
+	function getReportingSchedules(pageNumber, pageSize){
+		var apipath = '/api/v2/analytics/reporting/schedules';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
+
+
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingSchedules = getReportingSchedules;
+	/**
+     * @summary Create a scheduled report job
+	 * @description Create a scheduled report job.
+	 * @memberOf AnalyticsApi#
+	* @param {} body - ReportSchedule
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "quartzCronExpression": "",
    "nextFireTime": "",
@@ -257,43 +310,52 @@ AnalyticsApi.prototype.getReportingSchedules = function getReportingSchedules(pa
       "scheduleUri": ""
    }
 }
-  */
-AnalyticsApi.prototype.postReportingSchedules = function postReportingSchedules(body){
-    var requestPath = '/api/v2/analytics/reporting/schedules';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postReportingSchedules(body){
+		var apipath = '/api/v2/analytics/reporting/schedules';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get a scheduled report job.
-  * @memberOf AnalyticsApi#
-  * @param {string} scheduleId - Schedule ID
-  */
-AnalyticsApi.prototype.getReportingSchedulesScheduleId = function getReportingSchedulesScheduleId(scheduleId){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postReportingSchedules = postReportingSchedules;
+	/**
+     * @summary Get a scheduled report job.
+	 * @memberOf AnalyticsApi#
+	* @param {string} scheduleId - Schedule ID
+	*/
+	function getReportingSchedulesScheduleId(scheduleId){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Update a scheduled report job.
-  * @memberOf AnalyticsApi#
-  * @param {string} scheduleId - Schedule ID
-  * @param {} body - ReportSchedule
-  * @example
-  * Body Example:
-  * {
+        apipath = apipath.replace('{scheduleId}', scheduleId);
+
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingSchedulesScheduleId = getReportingSchedulesScheduleId;
+	/**
+     * @summary Update a scheduled report job.
+	 * @memberOf AnalyticsApi#
+	* @param {string} scheduleId - Schedule ID
+	* @param {} body - ReportSchedule
+	 * @example
+	 * Body Example:
+	 * {
    "name": "",
    "quartzCronExpression": "",
    "nextFireTime": "",
@@ -320,155 +382,208 @@ AnalyticsApi.prototype.getReportingSchedulesScheduleId = function getReportingSc
       "scheduleUri": ""
    }
 }
-  */
-AnalyticsApi.prototype.putReportingSchedulesScheduleId = function putReportingSchedulesScheduleId(scheduleId, body){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function putReportingSchedulesScheduleId(scheduleId, body){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
+        apipath = apipath.replace('{scheduleId}', scheduleId);
 
-/**
-  * @summary Delete a scheduled report job.
-  * @memberOf AnalyticsApi#
-  * @param {string} scheduleId - Schedule ID
-  */
-AnalyticsApi.prototype.deleteReportingSchedulesScheduleId = function deleteReportingSchedulesScheduleId(scheduleId){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
-    var requestQuery = {};
-    var requestBody;
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
 
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Get list of completed scheduled report jobs.
-  * @memberOf AnalyticsApi#
-  * @param {string} scheduleId - Schedule ID
-  * @param {integer} pageNumber - 
-  * @param {integer} pageSize - 
-  */
-AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistory = function getReportingSchedulesScheduleIdHistory(scheduleId, pageNumber, pageSize){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history';
-    var requestQuery = {};
-    var requestBody;
 
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.putReportingSchedulesScheduleId = putReportingSchedulesScheduleId;
+	/**
+     * @summary Delete a scheduled report job.
+	 * @memberOf AnalyticsApi#
+	* @param {string} scheduleId - Schedule ID
+	*/
+	function deleteReportingSchedulesScheduleId(scheduleId){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Get most recently completed scheduled report job.
-  * @memberOf AnalyticsApi#
-  * @param {string} scheduleId - Schedule ID
-  */
-AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistoryLatest = function getReportingSchedulesScheduleIdHistoryLatest(scheduleId){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history/latest';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{scheduleId}', scheduleId);
 
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
 
-/**
-  * @summary A completed scheduled report job
-  * @description A completed scheduled report job.
-  * @memberOf AnalyticsApi#
-  * @param {string} runId - Run ID
-  * @param {string} scheduleId - Schedule ID
-  */
-AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistoryRunId = function getReportingSchedulesScheduleIdHistoryRunId(runId, scheduleId){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history/{runId}';
-    var requestQuery = {};
-    var requestBody;
 
-    if(runId === undefined || runId === null){
-      throw new Error('Missing required  parameter: runId');
-    }
-    requestPath = requestPath.replace('{runId}', runId);
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.deleteReportingSchedulesScheduleId = deleteReportingSchedulesScheduleId;
+	/**
+     * @summary Get list of completed scheduled report jobs.
+	 * @memberOf AnalyticsApi#
+	* @param {string} scheduleId - Schedule ID
+	* @param {integer} pageNumber - 
+	* @param {integer} pageSize - 
+	*/
+	function getReportingSchedulesScheduleIdHistory(scheduleId, pageNumber, pageSize){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-/**
-  * @summary Place a scheduled report immediately into the reporting queue
-  * @memberOf AnalyticsApi#
-  * @param {string} scheduleId - Schedule ID
-  */
-AnalyticsApi.prototype.postReportingSchedulesScheduleIdRunreport = function postReportingSchedulesScheduleIdRunreport(scheduleId){
-    var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/runreport';
-    var requestQuery = {};
-    var requestBody;
+        apipath = apipath.replace('{scheduleId}', scheduleId);
 
-    if(scheduleId === undefined || scheduleId === null){
-      throw new Error('Missing required  parameter: scheduleId');
-    }
-    requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
 
-/**
-  * @summary Get a list of report time periods.
-  * @memberOf AnalyticsApi#
-  */
-AnalyticsApi.prototype.getReportingTimeperiods = function getReportingTimeperiods(){
-    var requestPath = '/api/v2/analytics/reporting/timeperiods';
-    var requestQuery = {};
-    var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageNumber !== undefined && pageNumber !== null){
+			queryParameters.pageNumber = pageNumber;
+		}
 
-/**
-  * @summary Get a reporting metadata.
-  * @memberOf AnalyticsApi#
-  * @param {string} reportId - Report ID
-  * @param {string} locale - Locale
-  */
-AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingReportIdMetadata(reportId, locale){
-    var requestPath = '/api/v2/analytics/reporting/{reportId}/metadata';
-    var requestQuery = {};
-    var requestBody;
 
-    if(reportId === undefined || reportId === null){
-      throw new Error('Missing required  parameter: reportId');
-    }
-    requestPath = requestPath.replace('{reportId}', reportId);
-    requestQuery.locale = locale;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
+		if(pageSize !== undefined && pageSize !== null){
+			queryParameters.pageSize = pageSize;
+		}
 
-/**
-  * @summary Query for user aggregates
-  * @memberOf AnalyticsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingSchedulesScheduleIdHistory = getReportingSchedulesScheduleIdHistory;
+	/**
+     * @summary Get most recently completed scheduled report job.
+	 * @memberOf AnalyticsApi#
+	* @param {string} scheduleId - Schedule ID
+	*/
+	function getReportingSchedulesScheduleIdHistoryLatest(scheduleId){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history/latest';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{scheduleId}', scheduleId);
+
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingSchedulesScheduleIdHistoryLatest = getReportingSchedulesScheduleIdHistoryLatest;
+	/**
+     * @summary A completed scheduled report job
+	 * @description A completed scheduled report job.
+	 * @memberOf AnalyticsApi#
+	* @param {string} runId - Run ID
+	* @param {string} scheduleId - Schedule ID
+	*/
+	function getReportingSchedulesScheduleIdHistoryRunId(runId, scheduleId){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history/{runId}';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{runId}', runId);
+
+        if(runId === undefined && runId !== null){
+			throw 'Missing required  parameter: runId';
+        }
+
+        apipath = apipath.replace('{scheduleId}', scheduleId);
+
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingSchedulesScheduleIdHistoryRunId = getReportingSchedulesScheduleIdHistoryRunId;
+	/**
+     * @summary Place a scheduled report immediately into the reporting queue
+	 * @memberOf AnalyticsApi#
+	* @param {string} scheduleId - Schedule ID
+	*/
+	function postReportingSchedulesScheduleIdRunreport(scheduleId){
+		var apipath = '/api/v2/analytics/reporting/schedules/{scheduleId}/runreport';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{scheduleId}', scheduleId);
+
+        if(scheduleId === undefined && scheduleId !== null){
+			throw 'Missing required  parameter: scheduleId';
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postReportingSchedulesScheduleIdRunreport = postReportingSchedulesScheduleIdRunreport;
+	/**
+     * @summary Get a list of report time periods.
+	 * @memberOf AnalyticsApi#
+	*/
+	function getReportingTimeperiods(){
+		var apipath = '/api/v2/analytics/reporting/timeperiods';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingTimeperiods = getReportingTimeperiods;
+	/**
+     * @summary Get a reporting metadata.
+	 * @memberOf AnalyticsApi#
+	* @param {string} reportId - Report ID
+	* @param {string} locale - Locale
+	*/
+	function getReportingReportIdMetadata(reportId, locale){
+		var apipath = '/api/v2/analytics/reporting/{reportId}/metadata';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
+
+        apipath = apipath.replace('{reportId}', reportId);
+
+        if(reportId === undefined && reportId !== null){
+			throw 'Missing required  parameter: reportId';
+        }
+
+
+		if(locale !== undefined && locale !== null){
+			queryParameters.locale = locale;
+		}
+
+
+		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.getReportingReportIdMetadata = getReportingReportIdMetadata;
+	/**
+     * @summary Query for user aggregates
+	 * @memberOf AnalyticsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "interval": "",
    "granularity": "",
    "groupBy": [],
@@ -480,25 +595,29 @@ AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingRepor
    "metrics": [],
    "flattenMultivaluedDimensions": true
 }
-  */
-AnalyticsApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(body){
-    var requestPath = '/api/v2/analytics/users/aggregates/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postUsersAggregatesQuery(body){
+		var apipath = '/api/v2/analytics/users/aggregates/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
 
-/**
-  * @summary Query for user observations
-  * @memberOf AnalyticsApi#
-  * @param {} body - query
-  * @example
-  * Body Example:
-  * {
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postUsersAggregatesQuery = postUsersAggregatesQuery;
+	/**
+     * @summary Query for user observations
+	 * @memberOf AnalyticsApi#
+	* @param {} body - query
+	 * @example
+	 * Body Example:
+	 * {
    "filter": {
       "type": "",
       "clauses": [],
@@ -506,16 +625,22 @@ AnalyticsApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQu
    },
    "metrics": []
 }
-  */
-AnalyticsApi.prototype.postUsersObservationsQuery = function postUsersObservationsQuery(body){
-    var requestPath = '/api/v2/analytics/users/observations/query';
-    var requestQuery = {};
-    var requestBody;
+	*/
+	function postUsersObservationsQuery(body){
+		var apipath = '/api/v2/analytics/users/observations/query';
+	    var requestBody;
+	    var queryParameters = {};
+	    var headers = {};
+	    var form = {};
 
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+        if(body !== undefined && body !== null){
+            requestBody = body;
+        }
+
+
+		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
+	}
+	self.postUsersObservationsQuery = postUsersObservationsQuery;
+
+    return self;
 };
-
-
