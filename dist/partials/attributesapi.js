@@ -1,49 +1,41 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new AttributesApi(pureCloudSession);
 */
-var AttributesApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function AttributesApi(session) {
+    if(!(this instanceof AttributesApi)) {
+        return new AttributesApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('AttributesApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Gets a list of existing attributes.
-	 * @memberOf AttributesApi#
-	* @param {integer} pageNumber - Page number
-	* @param {integer} pageSize - Page size
-	*/
-	function getAttributes(pageNumber, pageSize){
-		var apipath = '/api/v2/attributes';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Gets a list of existing attributes.
+  * @memberOf AttributesApi#
+  * @param {integer} pageNumber - Page number
+  * @param {integer} pageSize - Page size
+  */
+AttributesApi.prototype.getAttributes = function getAttributes(pageNumber, pageSize){
+    var requestPath = '/api/v2/attributes';
+    var requestQuery = {};
+    var requestBody;
 
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.pageSize = pageSize;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getAttributes = getAttributes;
-	/**
-     * @summary Create an attribute.
-	 * @memberOf AttributesApi#
-	* @param {} body - Attribute
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Create an attribute.
+  * @memberOf AttributesApi#
+  * @param {} body - Attribute
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "version": 0,
    "description": "",
@@ -60,80 +52,67 @@ var AttributesApi = function (pureCloudSession) {
    },
    "dateModified": ""
 }
-	*/
-	function postAttributes(body){
-		var apipath = '/api/v2/attributes';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+AttributesApi.prototype.postAttributes = function postAttributes(body){
+    var requestPath = '/api/v2/attributes';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postAttributes = postAttributes;
-	/**
-     * @summary Query attributes
-	 * @memberOf AttributesApi#
-	* @param {} body - query
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Query attributes
+  * @memberOf AttributesApi#
+  * @param {} body - query
+  * @example
+  * Body Example:
+  * {
    "query": "",
    "pageSize": 0,
    "pageNumber": 0
 }
-	*/
-	function postQuery(body){
-		var apipath = '/api/v2/attributes/query';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+AttributesApi.prototype.postQuery = function postQuery(body){
+    var requestPath = '/api/v2/attributes/query';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Get details about an existing attribute.
+  * @memberOf AttributesApi#
+  * @param {string} attributeId - Attribute ID
+  */
+AttributesApi.prototype.getAttributeId = function getAttributeId(attributeId){
+    var requestPath = '/api/v2/attributes/{attributeId}';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postQuery = postQuery;
-	/**
-     * @summary Get details about an existing attribute.
-	 * @memberOf AttributesApi#
-	* @param {string} attributeId - Attribute ID
-	*/
-	function getAttributeId(attributeId){
-		var apipath = '/api/v2/attributes/{attributeId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    if(attributeId === undefined || attributeId === null){
+      throw new Error('Missing required  parameter: attributeId');
+    }
+    requestPath = requestPath.replace('{attributeId}', attributeId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        apipath = apipath.replace('{attributeId}', attributeId);
-
-        if(attributeId === undefined && attributeId !== null){
-			throw 'Missing required  parameter: attributeId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getAttributeId = getAttributeId;
-	/**
-     * @summary Update an existing attribute.
-	 * @description Fields that can be updated: name, description. The most recent version is required for updates.
-	 * @memberOf AttributesApi#
-	* @param {string} attributeId - Attribute ID
-	* @param {} body - Attribute
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update an existing attribute.
+  * @description Fields that can be updated: name, description. The most recent version is required for updates.
+  * @memberOf AttributesApi#
+  * @param {string} attributeId - Attribute ID
+  * @param {} body - Attribute
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "version": 0,
    "description": "",
@@ -150,51 +129,38 @@ var AttributesApi = function (pureCloudSession) {
    },
    "dateModified": ""
 }
-	*/
-	function putAttributeId(attributeId, body){
-		var apipath = '/api/v2/attributes/{attributeId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+AttributesApi.prototype.putAttributeId = function putAttributeId(attributeId, body){
+    var requestPath = '/api/v2/attributes/{attributeId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{attributeId}', attributeId);
-
-        if(attributeId === undefined && attributeId !== null){
-			throw 'Missing required  parameter: attributeId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putAttributeId = putAttributeId;
-	/**
-     * @summary Delete an existing Attribute.
-	 * @description This will remove attribute.
-	 * @memberOf AttributesApi#
-	* @param {string} attributeId - Attribute ID
-	*/
-	function deleteAttributeId(attributeId){
-		var apipath = '/api/v2/attributes/{attributeId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{attributeId}', attributeId);
-
-        if(attributeId === undefined && attributeId !== null){
-			throw 'Missing required  parameter: attributeId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteAttributeId = deleteAttributeId;
-
-    return self;
+    if(attributeId === undefined || attributeId === null){
+      throw new Error('Missing required  parameter: attributeId');
+    }
+    requestPath = requestPath.replace('{attributeId}', attributeId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary Delete an existing Attribute.
+  * @description This will remove attribute.
+  * @memberOf AttributesApi#
+  * @param {string} attributeId - Attribute ID
+  */
+AttributesApi.prototype.deleteAttributeId = function deleteAttributeId(attributeId){
+    var requestPath = '/api/v2/attributes/{attributeId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(attributeId === undefined || attributeId === null){
+      throw new Error('Missing required  parameter: attributeId');
+    }
+    requestPath = requestPath.replace('{attributeId}', attributeId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+

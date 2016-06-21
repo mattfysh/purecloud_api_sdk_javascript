@@ -1,84 +1,61 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new LocationsApi(pureCloudSession);
 */
-var LocationsApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function LocationsApi(session) {
+    if(!(this instanceof LocationsApi)) {
+        return new LocationsApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('LocationsApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Get a list of all locations.
-	 * @memberOf LocationsApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {string} sortOrder - Sort order
-	asc,
-	desc,
-	*/
-	function getLocations(pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v2/locations';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Get a list of all locations.
+  * @memberOf LocationsApi#
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} sortOrder - Sort order
+  asc,
+  desc,
+  */
+LocationsApi.prototype.getLocations = function getLocations(pageSize, pageNumber, sortOrder){
+    var requestPath = '/api/v2/locations';
+    var requestQuery = {};
+    var requestBody;
 
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.sortOrder = sortOrder;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
+/**
+  * @summary Search using q64
+  * @memberOf LocationsApi#
+  * @param {string} q64 - 
+  * @param {array} expand - 
+  */
+LocationsApi.prototype.getSearch = function getSearch(q64, expand){
+    var requestPath = '/api/v2/locations/search';
+    var requestQuery = {};
+    var requestBody;
 
+    requestQuery.q64 = q64;
+    requestQuery.expand = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(sortOrder !== undefined && sortOrder !== null){
-			queryParameters.sortOrder = sortOrder;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLocations = getLocations;
-	/**
-     * @summary Search using q64
-	 * @memberOf LocationsApi#
-	* @param {string} q64 - 
-	* @param {array} expand - 
-	*/
-	function getSearch(q64, expand){
-		var apipath = '/api/v2/locations/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(q64 !== undefined && q64 !== null){
-			queryParameters.q64 = q64;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSearch = getSearch;
-	/**
-     * @summary Search
-	 * @memberOf LocationsApi#
-	* @param {} body - Search request options
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Search
+  * @memberOf LocationsApi#
+  * @param {} body - Search request options
+  * @example
+  * Body Example:
+  * {
    "sortOrder": "",
    "sortBy": "",
    "pageSize": 0,
@@ -87,44 +64,33 @@ var LocationsApi = function (pureCloudSession) {
    "expand": [],
    "query": []
 }
-	*/
-	function postSearch(body){
-		var apipath = '/api/v2/locations/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+LocationsApi.prototype.postSearch = function postSearch(body){
+    var requestPath = '/api/v2/locations/search';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postSearch = postSearch;
-	/**
-     * @summary Get Location by ID.
-	 * @memberOf LocationsApi#
-	* @param {string} locationId - Location ID
-	*/
-	function getLocationId(locationId){
-		var apipath = '/api/v2/locations/{locationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{locationId}', locationId);
-
-        if(locationId === undefined && locationId !== null){
-			throw 'Missing required  parameter: locationId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLocationId = getLocationId;
-
-    return self;
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary Get Location by ID.
+  * @memberOf LocationsApi#
+  * @param {string} locationId - Location ID
+  */
+LocationsApi.prototype.getLocationId = function getLocationId(locationId){
+    var requestPath = '/api/v2/locations/{locationId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(locationId === undefined || locationId === null){
+      throw new Error('Missing required  parameter: locationId');
+    }
+    requestPath = requestPath.replace('{locationId}', locationId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+

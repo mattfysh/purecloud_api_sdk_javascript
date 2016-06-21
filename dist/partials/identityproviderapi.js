@@ -1,52 +1,49 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new IdentityProviderApi(pureCloudSession);
 */
-var IdentityProviderApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function IdentityProviderApi(session) {
+    if(!(this instanceof IdentityProviderApi)) {
+        return new IdentityProviderApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('IdentityProviderApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary The list of identity providers
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getIdentityproviders(){
-		var apipath = '/api/v2/identityproviders';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary The list of identity providers
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getIdentityproviders = function getIdentityproviders(){
+    var requestPath = '/api/v2/identityproviders';
+    var requestQuery = {};
+    var requestBody;
 
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getIdentityproviders = getIdentityproviders;
-	/**
-     * @summary Get ADFS Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getAdfs(){
-		var apipath = '/api/v2/identityproviders/adfs';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Get ADFS Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getAdfs = function getAdfs(){
+    var requestPath = '/api/v2/identityproviders/adfs';
+    var requestQuery = {};
+    var requestBody;
 
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getAdfs = getAdfs;
-	/**
-     * @summary Update/Create ADFS Identity Provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update/Create ADFS Identity Provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
@@ -54,385 +51,316 @@ var IdentityProviderApi = function (pureCloudSession) {
    "ssoTargetURI": "",
    "disabled": true
 }
-	*/
-	function putAdfs(body){
-		var apipath = '/api/v2/identityproviders/adfs';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+IdentityProviderApi.prototype.putAdfs = function putAdfs(body){
+    var requestPath = '/api/v2/identityproviders/adfs';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putAdfs = putAdfs;
-	/**
-     * @summary Delete ADFS Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deleteAdfs(){
-		var apipath = '/api/v2/identityproviders/adfs';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteAdfs = deleteAdfs;
-	/**
-     * @summary Get Customer Interaction Center (CIC) Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getCic(){
-		var apipath = '/api/v2/identityproviders/cic';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getCic = getCic;
-	/**
-     * @summary Update/Create Customer Interaction Center (CIC) Identity Provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-	*/
-	function putCic(body){
-		var apipath = '/api/v2/identityproviders/cic';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putCic = putCic;
-	/**
-     * @summary Delete Customer Interaction Center (CIC) Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deleteCic(){
-		var apipath = '/api/v2/identityproviders/cic';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteCic = deleteCic;
-	/**
-     * @summary Get Okta Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getOkta(){
-		var apipath = '/api/v2/identityproviders/okta';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOkta = getOkta;
-	/**
-     * @summary Update/Create Okta Identity Provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-	*/
-	function putOkta(body){
-		var apipath = '/api/v2/identityproviders/okta';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putOkta = putOkta;
-	/**
-     * @summary Delete Okta Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deleteOkta(){
-		var apipath = '/api/v2/identityproviders/okta';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteOkta = deleteOkta;
-	/**
-     * @summary Get OneLogin Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getOnelogin(){
-		var apipath = '/api/v2/identityproviders/onelogin';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOnelogin = getOnelogin;
-	/**
-     * @summary Update/Create OneLogin Identity Provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-	*/
-	function putOnelogin(body){
-		var apipath = '/api/v2/identityproviders/onelogin';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putOnelogin = putOnelogin;
-	/**
-     * @summary Delete OneLogin Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deleteOnelogin(){
-		var apipath = '/api/v2/identityproviders/onelogin';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteOnelogin = deleteOnelogin;
-	/**
-     * @summary Get PureCloud Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getPurecloud(){
-		var apipath = '/api/v2/identityproviders/purecloud';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getPurecloud = getPurecloud;
-	/**
-     * @summary Update/Create PureCloud Identity Provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "disabled": true
-}
-	*/
-	function putPurecloud(body){
-		var apipath = '/api/v2/identityproviders/purecloud';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putPurecloud = putPurecloud;
-	/**
-     * @summary Delete PureCloud Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deletePurecloud(){
-		var apipath = '/api/v2/identityproviders/purecloud';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deletePurecloud = deletePurecloud;
-	/**
-     * @summary Get Salesforce Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getSalesforce(){
-		var apipath = '/api/v2/identityproviders/salesforce';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSalesforce = getSalesforce;
-	/**
-     * @summary Update/Create Salesforce Identity Provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-	*/
-	function putSalesforce(body){
-		var apipath = '/api/v2/identityproviders/salesforce';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putSalesforce = putSalesforce;
-	/**
-     * @summary Delete Salesforce Identity Provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deleteSalesforce(){
-		var apipath = '/api/v2/identityproviders/salesforce';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteSalesforce = deleteSalesforce;
-	/**
-     * @summary Get an identity provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function getProviderId(){
-		var apipath = '/api/v2/identityproviders/{providerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getProviderId = getProviderId;
-	/**
-     * @summary Update an identity provider
-	 * @memberOf IdentityProviderApi#
-	* @param {} body - Provider
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "disabled": true
-}
-	*/
-	function putProviderId(body){
-		var apipath = '/api/v2/identityproviders/{providerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putProviderId = putProviderId;
-	/**
-     * @summary Delete an identity provider
-	 * @memberOf IdentityProviderApi#
-	*/
-	function deleteProviderId(){
-		var apipath = '/api/v2/identityproviders/{providerId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteProviderId = deleteProviderId;
-
-    return self;
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary Delete ADFS Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
+    var requestPath = '/api/v2/identityproviders/adfs';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get Customer Interaction Center (CIC) Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getCic = function getCic(){
+    var requestPath = '/api/v2/identityproviders/cic';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create Customer Interaction Center (CIC) Identity Provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putCic = function putCic(body){
+    var requestPath = '/api/v2/identityproviders/cic';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Customer Interaction Center (CIC) Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deleteCic = function deleteCic(){
+    var requestPath = '/api/v2/identityproviders/cic';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get Okta Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getOkta = function getOkta(){
+    var requestPath = '/api/v2/identityproviders/okta';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create Okta Identity Provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putOkta = function putOkta(body){
+    var requestPath = '/api/v2/identityproviders/okta';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Okta Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
+    var requestPath = '/api/v2/identityproviders/okta';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get OneLogin Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
+    var requestPath = '/api/v2/identityproviders/onelogin';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create OneLogin Identity Provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
+    var requestPath = '/api/v2/identityproviders/onelogin';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete OneLogin Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
+    var requestPath = '/api/v2/identityproviders/onelogin';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get PureCloud Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getPurecloud = function getPurecloud(){
+    var requestPath = '/api/v2/identityproviders/purecloud';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create PureCloud Identity Provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putPurecloud = function putPurecloud(body){
+    var requestPath = '/api/v2/identityproviders/purecloud';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete PureCloud Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
+    var requestPath = '/api/v2/identityproviders/purecloud';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get Salesforce Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
+    var requestPath = '/api/v2/identityproviders/salesforce';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create Salesforce Identity Provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putSalesforce = function putSalesforce(body){
+    var requestPath = '/api/v2/identityproviders/salesforce';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Salesforce Identity Provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
+    var requestPath = '/api/v2/identityproviders/salesforce';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get an identity provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.getProviderId = function getProviderId(){
+    var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update an identity provider
+  * @memberOf IdentityProviderApi#
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putProviderId = function putProviderId(body){
+    var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete an identity provider
+  * @memberOf IdentityProviderApi#
+  */
+IdentityProviderApi.prototype.deleteProviderId = function deleteProviderId(){
+    var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+

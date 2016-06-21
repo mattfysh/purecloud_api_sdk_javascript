@@ -1,49 +1,41 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new ResponseManagementApi(pureCloudSession);
 */
-var ResponseManagementApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function ResponseManagementApi(session) {
+    if(!(this instanceof ResponseManagementApi)) {
+        return new ResponseManagementApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('ResponseManagementApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Gets a list of existing response libraries.
-	 * @memberOf ResponseManagementApi#
-	* @param {integer} pageNumber - Page number
-	* @param {integer} pageSize - Page size
-	*/
-	function getLibraries(pageNumber, pageSize){
-		var apipath = '/api/v2/responsemanagement/libraries';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Gets a list of existing response libraries.
+  * @memberOf ResponseManagementApi#
+  * @param {integer} pageNumber - Page number
+  * @param {integer} pageSize - Page size
+  */
+ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber, pageSize){
+    var requestPath = '/api/v2/responsemanagement/libraries';
+    var requestQuery = {};
+    var requestBody;
 
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.pageSize = pageSize;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLibraries = getLibraries;
-	/**
-     * @summary Create a response library.
-	 * @memberOf ResponseManagementApi#
-	* @param {} body - Library
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Create a response library.
+  * @memberOf ResponseManagementApi#
+  * @param {} body - Library
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "version": 0,
    "createdBy": {
@@ -58,53 +50,44 @@ var ResponseManagementApi = function (pureCloudSession) {
    },
    "dateCreated": ""
 }
-	*/
-	function postLibraries(body){
-		var apipath = '/api/v2/responsemanagement/libraries';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
+    var requestPath = '/api/v2/responsemanagement/libraries';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Get details about an existing response library.
+  * @memberOf ResponseManagementApi#
+  * @param {string} libraryId - Library ID
+  */
+ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLibraryId(libraryId){
+    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postLibraries = postLibraries;
-	/**
-     * @summary Get details about an existing response library.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} libraryId - Library ID
-	*/
-	function getLibrariesLibraryId(libraryId){
-		var apipath = '/api/v2/responsemanagement/libraries/{libraryId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestPath = requestPath.replace('{libraryId}', libraryId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        apipath = apipath.replace('{libraryId}', libraryId);
-
-        if(libraryId === undefined && libraryId !== null){
-			throw 'Missing required  parameter: libraryId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLibrariesLibraryId = getLibrariesLibraryId;
-	/**
-     * @summary Update an existing response library.
-	 * @description Fields that can be updated: name. The most recent version is required for updates.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} libraryId - Library ID
-	* @param {} body - Library
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update an existing response library.
+  * @description Fields that can be updated: name. The most recent version is required for updates.
+  * @memberOf ResponseManagementApi#
+  * @param {string} libraryId - Library ID
+  * @param {} body - Library
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "version": 0,
    "createdBy": {
@@ -119,95 +102,68 @@ var ResponseManagementApi = function (pureCloudSession) {
    },
    "dateCreated": ""
 }
-	*/
-	function putLibrariesLibraryId(libraryId, body){
-		var apipath = '/api/v2/responsemanagement/libraries/{libraryId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+ResponseManagementApi.prototype.putLibrariesLibraryId = function putLibrariesLibraryId(libraryId, body){
+    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{libraryId}', libraryId);
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestPath = requestPath.replace('{libraryId}', libraryId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
 
-        if(libraryId === undefined && libraryId !== null){
-			throw 'Missing required  parameter: libraryId';
-        }
+/**
+  * @summary Delete an existing response library.
+  * @description This will remove any responses associated with the library.
+  * @memberOf ResponseManagementApi#
+  * @param {string} libraryId - Library ID
+  */
+ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrariesLibraryId(libraryId){
+    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestPath = requestPath.replace('{libraryId}', libraryId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Gets a list of existing responses.
+  * @memberOf ResponseManagementApi#
+  * @param {string} libraryId - Library ID
+  * @param {integer} pageNumber - Page number
+  * @param {integer} pageSize - Page size
+  */
+ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, pageNumber, pageSize){
+    var requestPath = '/api/v2/responsemanagement/responses';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putLibrariesLibraryId = putLibrariesLibraryId;
-	/**
-     * @summary Delete an existing response library.
-	 * @description This will remove any responses associated with the library.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} libraryId - Library ID
-	*/
-	function deleteLibrariesLibraryId(libraryId){
-		var apipath = '/api/v2/responsemanagement/libraries/{libraryId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestQuery.libraryId = libraryId;
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.pageSize = pageSize;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        apipath = apipath.replace('{libraryId}', libraryId);
-
-        if(libraryId === undefined && libraryId !== null){
-			throw 'Missing required  parameter: libraryId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteLibrariesLibraryId = deleteLibrariesLibraryId;
-	/**
-     * @summary Gets a list of existing responses.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} libraryId - Library ID
-	* @param {integer} pageNumber - Page number
-	* @param {integer} pageSize - Page size
-	*/
-	function getResponses(libraryId, pageNumber, pageSize){
-		var apipath = '/api/v2/responsemanagement/responses';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(libraryId !== undefined && libraryId !== null){
-			queryParameters.libraryId = libraryId;
-		}
-
-        if(libraryId === undefined && libraryId !== null){
-			throw 'Missing required  parameter: libraryId';
-        }
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getResponses = getResponses;
-	/**
-     * @summary Create a response.
-	 * @memberOf ResponseManagementApi#
-	* @param {} body - Response
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Create a response.
+  * @memberOf ResponseManagementApi#
+  * @param {} body - Response
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "version": 0,
    "libraries": [],
@@ -225,80 +181,67 @@ var ResponseManagementApi = function (pureCloudSession) {
    "dateCreated": "",
    "interactionType": ""
 }
-	*/
-	function postResponses(body){
-		var apipath = '/api/v2/responsemanagement/responses';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+ResponseManagementApi.prototype.postResponses = function postResponses(body){
+    var requestPath = '/api/v2/responsemanagement/responses';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postResponses = postResponses;
-	/**
-     * @summary Query responses
-	 * @memberOf ResponseManagementApi#
-	* @param {} body - Response
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Query responses
+  * @memberOf ResponseManagementApi#
+  * @param {} body - Response
+  * @example
+  * Body Example:
+  * {
    "queryPhrase": "",
    "pageSize": 0,
    "filters": []
 }
-	*/
-	function postResponsesQuery(body){
-		var apipath = '/api/v2/responsemanagement/responses/query';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery(body){
+    var requestPath = '/api/v2/responsemanagement/responses/query';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Get details about an existing response.
+  * @memberOf ResponseManagementApi#
+  * @param {string} responseId - Response ID
+  */
+ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesResponseId(responseId){
+    var requestPath = '/api/v2/responsemanagement/responses/{responseId}';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postResponsesQuery = postResponsesQuery;
-	/**
-     * @summary Get details about an existing response.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} responseId - Response ID
-	*/
-	function getResponsesResponseId(responseId){
-		var apipath = '/api/v2/responsemanagement/responses/{responseId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    if(responseId === undefined || responseId === null){
+      throw new Error('Missing required  parameter: responseId');
+    }
+    requestPath = requestPath.replace('{responseId}', responseId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        apipath = apipath.replace('{responseId}', responseId);
-
-        if(responseId === undefined && responseId !== null){
-			throw 'Missing required  parameter: responseId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getResponsesResponseId = getResponsesResponseId;
-	/**
-     * @summary Update an existing response.
-	 * @description Fields that can be updated: name, libraries, and texts. The most recent version is required for updates.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} responseId - Response ID
-	* @param {} body - Response
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update an existing response.
+  * @description Fields that can be updated: name, libraries, and texts. The most recent version is required for updates.
+  * @memberOf ResponseManagementApi#
+  * @param {string} responseId - Response ID
+  * @param {} body - Response
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "version": 0,
    "libraries": [],
@@ -316,51 +259,38 @@ var ResponseManagementApi = function (pureCloudSession) {
    "dateCreated": "",
    "interactionType": ""
 }
-	*/
-	function putResponsesResponseId(responseId, body){
-		var apipath = '/api/v2/responsemanagement/responses/{responseId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+ResponseManagementApi.prototype.putResponsesResponseId = function putResponsesResponseId(responseId, body){
+    var requestPath = '/api/v2/responsemanagement/responses/{responseId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{responseId}', responseId);
-
-        if(responseId === undefined && responseId !== null){
-			throw 'Missing required  parameter: responseId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putResponsesResponseId = putResponsesResponseId;
-	/**
-     * @summary Delete an existing response.
-	 * @description This will remove the response from any libraries associated with it.
-	 * @memberOf ResponseManagementApi#
-	* @param {string} responseId - Response ID
-	*/
-	function deleteResponsesResponseId(responseId){
-		var apipath = '/api/v2/responsemanagement/responses/{responseId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{responseId}', responseId);
-
-        if(responseId === undefined && responseId !== null){
-			throw 'Missing required  parameter: responseId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteResponsesResponseId = deleteResponsesResponseId;
-
-    return self;
+    if(responseId === undefined || responseId === null){
+      throw new Error('Missing required  parameter: responseId');
+    }
+    requestPath = requestPath.replace('{responseId}', responseId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary Delete an existing response.
+  * @description This will remove the response from any libraries associated with it.
+  * @memberOf ResponseManagementApi#
+  * @param {string} responseId - Response ID
+  */
+ResponseManagementApi.prototype.deleteResponsesResponseId = function deleteResponsesResponseId(responseId){
+    var requestPath = '/api/v2/responsemanagement/responses/{responseId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(responseId === undefined || responseId === null){
+      throw new Error('Missing required  parameter: responseId');
+    }
+    requestPath = requestPath.replace('{responseId}', responseId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+

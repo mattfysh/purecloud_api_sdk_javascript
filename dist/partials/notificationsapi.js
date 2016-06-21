@@ -1,179 +1,145 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new NotificationsApi(pureCloudSession);
 */
-var NotificationsApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function NotificationsApi(session) {
+    if(!(this instanceof NotificationsApi)) {
+        return new NotificationsApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('NotificationsApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Get available notification topics.
-	 * @memberOf NotificationsApi#
-	* @param {array} expand - Which fields, if any, to expand
-	*/
-	function getAvailabletopics(expand){
-		var apipath = '/api/v2/notifications/availabletopics';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Get available notification topics.
+  * @memberOf NotificationsApi#
+  * @param {array} expand - Which fields, if any, to expand
+  */
+NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expand){
+    var requestPath = '/api/v2/notifications/availabletopics';
+    var requestQuery = {};
+    var requestBody;
 
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getAvailabletopics = getAvailabletopics;
-	/**
-     * @summary The list of existing channels
-	 * @memberOf NotificationsApi#
-	*/
-	function getChannels(){
-		var apipath = '/api/v2/notifications/channels';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getChannels = getChannels;
-	/**
-     * @summary Create a new channel
-	 * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
-	 * @memberOf NotificationsApi#
-	*/
-	function postChannels(){
-		var apipath = '/api/v2/notifications/channels';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postChannels = postChannels;
-	/**
-     * @summary The list of all subscriptions for this channel
-	 * @memberOf NotificationsApi#
-	* @param {string} channelId - Channel ID
-	*/
-	function getChannelsChannelIdSubscriptions(channelId){
-		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{channelId}', channelId);
-
-        if(channelId === undefined && channelId !== null){
-			throw 'Missing required  parameter: channelId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getChannelsChannelIdSubscriptions = getChannelsChannelIdSubscriptions;
-	/**
-     * @summary Add a list of subscriptions to the existing list of subscriptions
-	 * @memberOf NotificationsApi#
-	* @param {string} channelId - Channel ID
-	* @param {} body - Topic
-	 * @example
-	 * Body Example:
-	 * [
- {
-  "id": ""
- }
-]
-	*/
-	function postChannelsChannelIdSubscriptions(channelId, body){
-		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{channelId}', channelId);
-
-        if(channelId === undefined && channelId !== null){
-			throw 'Missing required  parameter: channelId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postChannelsChannelIdSubscriptions = postChannelsChannelIdSubscriptions;
-	/**
-     * @summary Replace the current list of subscriptions with a new list.
-	 * @memberOf NotificationsApi#
-	* @param {string} channelId - Channel ID
-	* @param {} body - Topic
-	 * @example
-	 * Body Example:
-	 * [
- {
-  "id": ""
- }
-]
-	*/
-	function putChannelsChannelIdSubscriptions(channelId, body){
-		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{channelId}', channelId);
-
-        if(channelId === undefined && channelId !== null){
-			throw 'Missing required  parameter: channelId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putChannelsChannelIdSubscriptions = putChannelsChannelIdSubscriptions;
-	/**
-     * @summary Remove all subscriptions
-	 * @memberOf NotificationsApi#
-	* @param {string} channelId - Channel ID
-	*/
-	function deleteChannelsChannelIdSubscriptions(channelId){
-		var apipath = '/api/v2/notifications/channels/{channelId}/subscriptions';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{channelId}', channelId);
-
-        if(channelId === undefined && channelId !== null){
-			throw 'Missing required  parameter: channelId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteChannelsChannelIdSubscriptions = deleteChannelsChannelIdSubscriptions;
-
-    return self;
+    requestQuery.expand = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary The list of existing channels
+  * @memberOf NotificationsApi#
+  */
+NotificationsApi.prototype.getChannels = function getChannels(){
+    var requestPath = '/api/v2/notifications/channels';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Create a new channel
+  * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
+  * @memberOf NotificationsApi#
+  */
+NotificationsApi.prototype.postChannels = function postChannels(){
+    var requestPath = '/api/v2/notifications/channels';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary The list of all subscriptions for this channel
+  * @memberOf NotificationsApi#
+  * @param {string} channelId - Channel ID
+  */
+NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChannelsChannelIdSubscriptions(channelId){
+    var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
+    var requestQuery = {};
+    var requestBody;
+
+    if(channelId === undefined || channelId === null){
+      throw new Error('Missing required  parameter: channelId');
+    }
+    requestPath = requestPath.replace('{channelId}', channelId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Add a list of subscriptions to the existing list of subscriptions
+  * @memberOf NotificationsApi#
+  * @param {string} channelId - Channel ID
+  * @param {} body - Topic
+  * @example
+  * Body Example:
+  * [
+ {
+  "id": ""
+ }
+]
+  */
+NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postChannelsChannelIdSubscriptions(channelId, body){
+    var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
+    var requestQuery = {};
+    var requestBody;
+
+    if(channelId === undefined || channelId === null){
+      throw new Error('Missing required  parameter: channelId');
+    }
+    requestPath = requestPath.replace('{channelId}', channelId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Replace the current list of subscriptions with a new list.
+  * @memberOf NotificationsApi#
+  * @param {string} channelId - Channel ID
+  * @param {} body - Topic
+  * @example
+  * Body Example:
+  * [
+ {
+  "id": ""
+ }
+]
+  */
+NotificationsApi.prototype.putChannelsChannelIdSubscriptions = function putChannelsChannelIdSubscriptions(channelId, body){
+    var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
+    var requestQuery = {};
+    var requestBody;
+
+    if(channelId === undefined || channelId === null){
+      throw new Error('Missing required  parameter: channelId');
+    }
+    requestPath = requestPath.replace('{channelId}', channelId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Remove all subscriptions
+  * @memberOf NotificationsApi#
+  * @param {string} channelId - Channel ID
+  */
+NotificationsApi.prototype.deleteChannelsChannelIdSubscriptions = function deleteChannelsChannelIdSubscriptions(channelId){
+    var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
+    var requestQuery = {};
+    var requestBody;
+
+    if(channelId === undefined || channelId === null){
+      throw new Error('Missing required  parameter: channelId');
+    }
+    requestPath = requestPath.replace('{channelId}', channelId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+

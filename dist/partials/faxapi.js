@@ -1,72 +1,59 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new FaxApi(pureCloudSession);
 */
-var FaxApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function FaxApi(session) {
+    if(!(this instanceof FaxApi)) {
+        return new FaxApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('FaxApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Get a list of fax documents.
-	 * @memberOf FaxApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	*/
-	function getDocuments(pageSize, pageNumber){
-		var apipath = '/api/v2/fax/documents';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Get a list of fax documents.
+  * @memberOf FaxApi#
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  */
+FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
+    var requestPath = '/api/v2/fax/documents';
+    var requestQuery = {};
+    var requestBody;
 
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
+/**
+  * @summary Get a document.
+  * @memberOf FaxApi#
+  * @param {string} documentId - Document ID
+  */
+FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(documentId){
+    var requestPath = '/api/v2/fax/documents/{documentId}';
+    var requestQuery = {};
+    var requestBody;
 
+    if(documentId === undefined || documentId === null){
+      throw new Error('Missing required  parameter: documentId');
+    }
+    requestPath = requestPath.replace('{documentId}', documentId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getDocuments = getDocuments;
-	/**
-     * @summary Get a document.
-	 * @memberOf FaxApi#
-	* @param {string} documentId - Document ID
-	*/
-	function getDocumentsDocumentId(documentId){
-		var apipath = '/api/v2/fax/documents/{documentId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{documentId}', documentId);
-
-        if(documentId === undefined && documentId !== null){
-			throw 'Missing required  parameter: documentId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getDocumentsDocumentId = getDocumentsDocumentId;
-	/**
-     * @summary Update a fax document.
-	 * @memberOf FaxApi#
-	* @param {string} documentId - Document ID
-	* @param {} body - Document
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update a fax document.
+  * @memberOf FaxApi#
+  * @param {string} documentId - Document ID
+  * @param {} body - Document
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "dateCreated": "",
    "dateModified": "",
@@ -92,87 +79,66 @@ var FaxApi = function (pureCloudSession) {
    "sharingUri": "",
    "downloadSharingUri": ""
 }
-	*/
-	function putDocumentsDocumentId(documentId, body){
-		var apipath = '/api/v2/fax/documents/{documentId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+FaxApi.prototype.putDocumentsDocumentId = function putDocumentsDocumentId(documentId, body){
+    var requestPath = '/api/v2/fax/documents/{documentId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{documentId}', documentId);
-
-        if(documentId === undefined && documentId !== null){
-			throw 'Missing required  parameter: documentId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putDocumentsDocumentId = putDocumentsDocumentId;
-	/**
-     * @summary Delete a fax document.
-	 * @memberOf FaxApi#
-	* @param {string} documentId - Document ID
-	*/
-	function deleteDocumentsDocumentId(documentId){
-		var apipath = '/api/v2/fax/documents/{documentId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{documentId}', documentId);
-
-        if(documentId === undefined && documentId !== null){
-			throw 'Missing required  parameter: documentId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteDocumentsDocumentId = deleteDocumentsDocumentId;
-	/**
-     * @summary Download a fax document.
-	 * @memberOf FaxApi#
-	* @param {string} documentId - Document ID
-	*/
-	function getDocumentsDocumentIdContent(documentId){
-		var apipath = '/api/v2/fax/documents/{documentId}/content';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{documentId}', documentId);
-
-        if(documentId === undefined && documentId !== null){
-			throw 'Missing required  parameter: documentId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getDocumentsDocumentIdContent = getDocumentsDocumentIdContent;
-	/**
-     * @summary Get fax summary
-	 * @memberOf FaxApi#
-	*/
-	function getSummary(){
-		var apipath = '/api/v2/fax/summary';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSummary = getSummary;
-
-    return self;
+    if(documentId === undefined || documentId === null){
+      throw new Error('Missing required  parameter: documentId');
+    }
+    requestPath = requestPath.replace('{documentId}', documentId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary Delete a fax document.
+  * @memberOf FaxApi#
+  * @param {string} documentId - Document ID
+  */
+FaxApi.prototype.deleteDocumentsDocumentId = function deleteDocumentsDocumentId(documentId){
+    var requestPath = '/api/v2/fax/documents/{documentId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(documentId === undefined || documentId === null){
+      throw new Error('Missing required  parameter: documentId');
+    }
+    requestPath = requestPath.replace('{documentId}', documentId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Download a fax document.
+  * @memberOf FaxApi#
+  * @param {string} documentId - Document ID
+  */
+FaxApi.prototype.getDocumentsDocumentIdContent = function getDocumentsDocumentIdContent(documentId){
+    var requestPath = '/api/v2/fax/documents/{documentId}/content';
+    var requestQuery = {};
+    var requestBody;
+
+    if(documentId === undefined || documentId === null){
+      throw new Error('Missing required  parameter: documentId');
+    }
+    requestPath = requestPath.replace('{documentId}', documentId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get fax summary
+  * @memberOf FaxApi#
+  */
+FaxApi.prototype.getSummary = function getSummary(){
+    var requestPath = '/api/v2/fax/summary';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+

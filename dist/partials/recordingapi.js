@@ -1,121 +1,92 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new RecordingApi(pureCloudSession);
 */
-var RecordingApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function RecordingApi(session) {
+    if(!(this instanceof RecordingApi)) {
+        return new RecordingApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('RecordingApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Get all of a Conversation's Recordings.
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
-	Any integer greater than or equal to 0.,
-	* @param {string} formatId - The desired media format
-	WAV,
-	WEBM,
-	WAV_ULAW,
-	OGG_VORBIS,
-	OGG_OPUS,
-	NONE,
-	*/
-	function getConversationIdRecordings(conversationId, maxWaitMs, formatId){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Get all of a Conversation's Recordings.
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
+  Any integer greater than or equal to 0.,
+  * @param {string} formatId - The desired media format
+  WAV,
+  WEBM,
+  WAV_ULAW,
+  OGG_VORBIS,
+  OGG_OPUS,
+  NONE,
+  */
+RecordingApi.prototype.getConversationIdRecordings = function getConversationIdRecordings(conversationId, maxWaitMs, formatId){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{conversationId}', conversationId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    requestQuery.maxWaitMs = maxWaitMs;
+    requestQuery.formatId = formatId;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
+/**
+  * @summary Gets a specific recording.
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  * @param {string} formatId - The desired media format.
+  WAV,
+  WEBM,
+  WAV_ULAW,
+  OGG_VORBIS,
+  OGG_OPUS,
+  NONE,
+  * @param {boolean} download - requesting a download format of the recording
+  true,
+  false,
+  * @param {string} fileName - the name of the downloaded fileName
+  */
+RecordingApi.prototype.getConversationIdRecordingsRecordingId = function getConversationIdRecordingsRecordingId(conversationId, recordingId, formatId, download, fileName){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
+    var requestQuery = {};
+    var requestBody;
 
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    requestQuery.formatId = formatId;
+    requestQuery.download = download;
+    requestQuery.fileName = fileName;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(maxWaitMs !== undefined && maxWaitMs !== null){
-			queryParameters.maxWaitMs = maxWaitMs;
-		}
-
-
-		if(formatId !== undefined && formatId !== null){
-			queryParameters.formatId = formatId;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getConversationIdRecordings = getConversationIdRecordings;
-	/**
-     * @summary Gets a specific recording.
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {string} formatId - The desired media format.
-	WAV,
-	WEBM,
-	WAV_ULAW,
-	OGG_VORBIS,
-	OGG_OPUS,
-	NONE,
-	* @param {boolean} download - requesting a download format of the recording
-	true,
-	false,
-	* @param {string} fileName - the name of the downloaded fileName
-	*/
-	function getConversationIdRecordingsRecordingId(conversationId, recordingId, formatId, download, fileName){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{conversationId}', conversationId);
-
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
-
-        apipath = apipath.replace('{recordingId}', recordingId);
-
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-
-		if(formatId !== undefined && formatId !== null){
-			queryParameters.formatId = formatId;
-		}
-
-
-		if(download !== undefined && download !== null){
-			queryParameters.download = download;
-		}
-
-
-		if(fileName !== undefined && fileName !== null){
-			queryParameters.fileName = fileName;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getConversationIdRecordingsRecordingId = getConversationIdRecordingsRecordingId;
-	/**
-     * @summary Updates the retention records on a recording.
-	 * @description Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. Use of the query parameter 'restoreDays' is deprecated and will be removed in the next major version release. If 'restoreDays' is provided, no attempt at updating other retention data will be made. To migrate to the new usage, issuing a request with restoreDays=10 would instead set the archiveDate's time stamp in the PUT body to 10 days in the future.
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {} body - recording
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Updates the retention records on a recording.
+  * @description Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. Use of the query parameter 'restoreDays' is deprecated and will be removed in the next major version release. If 'restoreDays' is provided, no attempt at updating other retention data will be made. To migrate to the new usage, issuing a request with restoreDays=10 would instead set the archiveDate's time stamp in the PUT body to 10 days in the future.
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  * @param {} body - recording
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "conversationId": "",
    "path": "",
@@ -137,76 +108,60 @@ var RecordingApi = function (pureCloudSession) {
    "remainingRestorationsAllowedForOrg": 0,
    "sessionId": ""
 }
-	*/
-	function putConversationIdRecordingsRecordingId(conversationId, recordingId, body){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.putConversationIdRecordingsRecordingId = function putConversationIdRecordingsRecordingId(conversationId, recordingId, body){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{conversationId}', conversationId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
 
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
+/**
+  * @summary Get annotations for recording
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  */
+RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = function getConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{recordingId}', recordingId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-        if(body === undefined && body !== null){
-			throw 'Missing required  parameter: body';
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putConversationIdRecordingsRecordingId = putConversationIdRecordingsRecordingId;
-	/**
-     * @summary Get annotations for recording
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	*/
-	function getConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{conversationId}', conversationId);
-
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
-
-        apipath = apipath.replace('{recordingId}', recordingId);
-
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getConversationIdRecordingsRecordingIdAnnotations = getConversationIdRecordingsRecordingIdAnnotations;
-	/**
-     * @summary Create annotation
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {} body - annotation
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Create annotation
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  * @param {} body - annotation
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "type": "",
    "location": 0,
@@ -223,80 +178,63 @@ var RecordingApi = function (pureCloudSession) {
    },
    "description": ""
 }
-	*/
-	function postConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId, body){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.postConversationIdRecordingsRecordingIdAnnotations = function postConversationIdRecordingsRecordingIdAnnotations(conversationId, recordingId, body){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{conversationId}', conversationId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
+/**
+  * @summary Get annotation
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  * @param {string} annotationId - Annotation ID
+  */
+RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotationId = function getConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{recordingId}', recordingId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    if(annotationId === undefined || annotationId === null){
+      throw new Error('Missing required  parameter: annotationId');
+    }
+    requestPath = requestPath.replace('{annotationId}', annotationId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postConversationIdRecordingsRecordingIdAnnotations = postConversationIdRecordingsRecordingIdAnnotations;
-	/**
-     * @summary Get annotation
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {string} annotationId - Annotation ID
-	*/
-	function getConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{conversationId}', conversationId);
-
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
-
-        apipath = apipath.replace('{recordingId}', recordingId);
-
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-        apipath = apipath.replace('{annotationId}', annotationId);
-
-        if(annotationId === undefined && annotationId !== null){
-			throw 'Missing required  parameter: annotationId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getConversationIdRecordingsRecordingIdAnnotationsAnnotationId = getConversationIdRecordingsRecordingIdAnnotationsAnnotationId;
-	/**
-     * @summary Update annotation
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {string} annotationId - Annotation ID
-	* @param {} body - annotation
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update annotation
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  * @param {string} annotationId - Annotation ID
+  * @param {} body - annotation
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "type": "",
    "location": 0,
@@ -313,254 +251,155 @@ var RecordingApi = function (pureCloudSession) {
    },
    "description": ""
 }
-	*/
-	function putConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId, body){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.putConversationIdRecordingsRecordingIdAnnotationsAnnotationId = function putConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId, body){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{conversationId}', conversationId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    if(annotationId === undefined || annotationId === null){
+      throw new Error('Missing required  parameter: annotationId');
+    }
+    requestPath = requestPath.replace('{annotationId}', annotationId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
 
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
+/**
+  * @summary Delete annotation
+  * @memberOf RecordingApi#
+  * @param {string} conversationId - Conversation ID
+  * @param {string} recordingId - Recording ID
+  * @param {string} annotationId - Annotation ID
+  */
+RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId = function deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
+    var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{recordingId}', recordingId);
+    if(conversationId === undefined || conversationId === null){
+      throw new Error('Missing required  parameter: conversationId');
+    }
+    requestPath = requestPath.replace('{conversationId}', conversationId);
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    if(annotationId === undefined || annotationId === null){
+      throw new Error('Missing required  parameter: annotationId');
+    }
+    requestPath = requestPath.replace('{annotationId}', annotationId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
 
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
+/**
+  * @summary Gets all orphan recordings
+  * @memberOf RecordingApi#
+  * @param {integer} pageSize - The total page size requested
+  * @param {integer} pageNumber - The page number requested
+  * @param {string} sortBy - variable name requested to sort by
+  * @param {array} expand - variable name requested by expand list
+  * @param {string} nextPage - next page token
+  * @param {string} previousPage - Previous page token
+  */
+RecordingApi.prototype.getOrphanrecordings = function getOrphanrecordings(pageSize, pageNumber, sortBy, expand, nextPage, previousPage){
+    var requestPath = '/api/v2/orphanrecordings';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{annotationId}', annotationId);
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.sortBy = sortBy;
+    requestQuery.expand = expand;
+    requestQuery.nextPage = nextPage;
+    requestQuery.previousPage = previousPage;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        if(annotationId === undefined && annotationId !== null){
-			throw 'Missing required  parameter: annotationId';
-        }
+/**
+  * @summary Gets a single orphan recording
+  * @memberOf RecordingApi#
+  * @param {string} orphanId - Orphan ID
+  */
+RecordingApi.prototype.getOrphanId = function getOrphanId(orphanId){
+    var requestPath = '/api/v2/orphanrecordings/{orphanId}';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(orphanId === undefined || orphanId === null){
+      throw new Error('Missing required  parameter: orphanId');
+    }
+    requestPath = requestPath.replace('{orphanId}', orphanId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary  deletes a single orphan recording
+  * @memberOf RecordingApi#
+  * @param {string} orphanId - Orphan ID
+  */
+RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
+    var requestPath = '/api/v2/orphanrecordings/{orphanId}';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putConversationIdRecordingsRecordingIdAnnotationsAnnotationId = putConversationIdRecordingsRecordingIdAnnotationsAnnotationId;
-	/**
-     * @summary Delete annotation
-	 * @memberOf RecordingApi#
-	* @param {string} conversationId - Conversation ID
-	* @param {string} recordingId - Recording ID
-	* @param {string} annotationId - Annotation ID
-	*/
-	function deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId(conversationId, recordingId, annotationId){
-		var apipath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    if(orphanId === undefined || orphanId === null){
+      throw new Error('Missing required  parameter: orphanId');
+    }
+    requestPath = requestPath.replace('{orphanId}', orphanId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
 
-        apipath = apipath.replace('{conversationId}', conversationId);
+/**
+  * @summary Gets media retention policy list with query options to filter on name and enabled.
+  * @description for a less verbose response, add summary=true to this endpoint
+  * @memberOf RecordingApi#
+  * @param {integer} pageSize - The total page size requested
+  * @param {integer} pageNumber - The page number requested
+  * @param {string} sortBy - variable name requested to sort by
+  * @param {array} expand - variable name requested by expand list
+  * @param {string} nextPage - next page token
+  * @param {string} previousPage - Previous page token
+  * @param {string} name - the policy name - used for filtering results in searches.
+  * @param {boolean} enabled - checks to see if policy is enabled - use enabled = true or enabled = false
+  * @param {boolean} summary - provides a less verbose response of policy lists.
+  * @param {boolean} hasErrors - provides a way to fetch all policies with errors or policies that do not have errors
+  */
+RecordingApi.prototype.getMediaretentionpolicies = function getMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies';
+    var requestQuery = {};
+    var requestBody;
 
-        if(conversationId === undefined && conversationId !== null){
-			throw 'Missing required  parameter: conversationId';
-        }
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.sortBy = sortBy;
+    requestQuery.expand = expand;
+    requestQuery.nextPage = nextPage;
+    requestQuery.previousPage = previousPage;
+    requestQuery.name = name;
+    requestQuery.enabled = enabled;
+    requestQuery.summary = summary;
+    requestQuery.hasErrors = hasErrors;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        apipath = apipath.replace('{recordingId}', recordingId);
-
-        if(recordingId === undefined && recordingId !== null){
-			throw 'Missing required  parameter: recordingId';
-        }
-
-        apipath = apipath.replace('{annotationId}', annotationId);
-
-        if(annotationId === undefined && annotationId !== null){
-			throw 'Missing required  parameter: annotationId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId = deleteConversationIdRecordingsRecordingIdAnnotationsAnnotationId;
-	/**
-     * @summary Gets all orphan recordings
-	 * @memberOf RecordingApi#
-	* @param {integer} pageSize - The total page size requested
-	* @param {integer} pageNumber - The page number requested
-	* @param {string} sortBy - variable name requested to sort by
-	* @param {array} expand - variable name requested by expand list
-	* @param {string} nextPage - next page token
-	* @param {string} previousPage - Previous page token
-	*/
-	function getOrphanrecordings(pageSize, pageNumber, sortBy, expand, nextPage, previousPage){
-		var apipath = '/api/v2/orphanrecordings';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		if(nextPage !== undefined && nextPage !== null){
-			queryParameters.nextPage = nextPage;
-		}
-
-
-		if(previousPage !== undefined && previousPage !== null){
-			queryParameters.previousPage = previousPage;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOrphanrecordings = getOrphanrecordings;
-	/**
-     * @summary Gets a single orphan recording
-	 * @memberOf RecordingApi#
-	* @param {string} orphanId - Orphan ID
-	*/
-	function getOrphanId(orphanId){
-		var apipath = '/api/v2/orphanrecordings/{orphanId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{orphanId}', orphanId);
-
-        if(orphanId === undefined && orphanId !== null){
-			throw 'Missing required  parameter: orphanId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getOrphanId = getOrphanId;
-	/**
-     * @summary  deletes a single orphan recording
-	 * @memberOf RecordingApi#
-	* @param {string} orphanId - Orphan ID
-	*/
-	function deleteOrphanId(orphanId){
-		var apipath = '/api/v2/orphanrecordings/{orphanId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{orphanId}', orphanId);
-
-        if(orphanId === undefined && orphanId !== null){
-			throw 'Missing required  parameter: orphanId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteOrphanId = deleteOrphanId;
-	/**
-     * @summary Gets media retention policy list with query options to filter on name and enabled.
-	 * @description for a less verbose response, add summary=true to this endpoint
-	 * @memberOf RecordingApi#
-	* @param {integer} pageSize - The total page size requested
-	* @param {integer} pageNumber - The page number requested
-	* @param {string} sortBy - variable name requested to sort by
-	* @param {array} expand - variable name requested by expand list
-	* @param {string} nextPage - next page token
-	* @param {string} previousPage - Previous page token
-	* @param {string} name - the policy name - used for filtering results in searches.
-	* @param {boolean} enabled - checks to see if policy is enabled - use enabled = true or enabled = false
-	* @param {boolean} summary - provides a less verbose response of policy lists.
-	* @param {boolean} hasErrors - provides a way to fetch all policies with errors or policies that do not have errors
-	*/
-	function getMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors){
-		var apipath = '/api/v2/recording/mediaretentionpolicies';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(sortBy !== undefined && sortBy !== null){
-			queryParameters.sortBy = sortBy;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		if(nextPage !== undefined && nextPage !== null){
-			queryParameters.nextPage = nextPage;
-		}
-
-
-		if(previousPage !== undefined && previousPage !== null){
-			queryParameters.previousPage = previousPage;
-		}
-
-
-		if(name !== undefined && name !== null){
-			queryParameters.name = name;
-		}
-
-
-		if(enabled !== undefined && enabled !== null){
-			queryParameters.enabled = enabled;
-		}
-
-
-		if(summary !== undefined && summary !== null){
-			queryParameters.summary = summary;
-		}
-
-
-		if(hasErrors !== undefined && hasErrors !== null){
-			queryParameters.hasErrors = hasErrors;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getMediaretentionpolicies = getMediaretentionpolicies;
-	/**
-     * @summary Create media retention policy
-	 * @memberOf RecordingApi#
-	* @param {} body - Policy
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Create media retention policy
+  * @memberOf RecordingApi#
+  * @param {} body - Policy
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -596,78 +435,61 @@ var RecordingApi = function (pureCloudSession) {
       "policyErrorMessages": []
    }
 }
-	*/
-	function postMediaretentionpolicies(body){
-		var apipath = '/api/v2/recording/mediaretentionpolicies';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.postMediaretentionpolicies = function postMediaretentionpolicies(body){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Delete media retention policies
+  * @description Bulk delete of media retention policies, this will only delete the polices that match the ids specified in the query param.
+  * @memberOf RecordingApi#
+  * @param {string} ids - Bulk delete of media retention policies, this will only delete the polices that match the ids specified in the query param.
+  */
+RecordingApi.prototype.deleteMediaretentionpolicies = function deleteMediaretentionpolicies(ids){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postMediaretentionpolicies = postMediaretentionpolicies;
-	/**
-     * @summary Delete media retention policies
-	 * @description Bulk delete of media retention policies, this will only delete the polices that match the ids specified in the query param.
-	 * @memberOf RecordingApi#
-	* @param {string} ids - Bulk delete of media retention policies, this will only delete the polices that match the ids specified in the query param.
-	*/
-	function deleteMediaretentionpolicies(ids){
-		var apipath = '/api/v2/recording/mediaretentionpolicies';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    if(ids === undefined || ids === null){
+      throw new Error('Missing required  parameter: ids');
+    }
+    requestQuery.ids = ids;
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Get a media retention policy
+  * @memberOf RecordingApi#
+  * @param {string} policyId - Policy ID
+  */
+RecordingApi.prototype.getMediaretentionpoliciesPolicyId = function getMediaretentionpoliciesPolicyId(policyId){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
+    var requestQuery = {};
+    var requestBody;
 
-		if(ids !== undefined && ids !== null){
-			queryParameters.ids = ids;
-		}
+    if(policyId === undefined || policyId === null){
+      throw new Error('Missing required  parameter: policyId');
+    }
+    requestPath = requestPath.replace('{policyId}', policyId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-        if(ids === undefined && ids !== null){
-			throw 'Missing required  parameter: ids';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteMediaretentionpolicies = deleteMediaretentionpolicies;
-	/**
-     * @summary Get a media retention policy
-	 * @memberOf RecordingApi#
-	* @param {string} policyId - Policy ID
-	*/
-	function getMediaretentionpoliciesPolicyId(policyId){
-		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{policyId}', policyId);
-
-        if(policyId === undefined && policyId !== null){
-			throw 'Missing required  parameter: policyId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getMediaretentionpoliciesPolicyId = getMediaretentionpoliciesPolicyId;
-	/**
-     * @summary Update a media retention policy
-	 * @memberOf RecordingApi#
-	* @param {string} policyId - Policy ID
-	* @param {} body - Policy
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update a media retention policy
+  * @memberOf RecordingApi#
+  * @param {string} policyId - Policy ID
+  * @param {} body - Policy
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -703,58 +525,47 @@ var RecordingApi = function (pureCloudSession) {
       "policyErrorMessages": []
    }
 }
-	*/
-	function putMediaretentionpoliciesPolicyId(policyId, body){
-		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.putMediaretentionpoliciesPolicyId = function putMediaretentionpoliciesPolicyId(policyId, body){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{policyId}', policyId);
+    if(policyId === undefined || policyId === null){
+      throw new Error('Missing required  parameter: policyId');
+    }
+    requestPath = requestPath.replace('{policyId}', policyId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
 
-        if(policyId === undefined && policyId !== null){
-			throw 'Missing required  parameter: policyId';
-        }
+/**
+  * @summary Delete a media retention policy
+  * @memberOf RecordingApi#
+  * @param {string} policyId - Policy ID
+  */
+RecordingApi.prototype.deleteMediaretentionpoliciesPolicyId = function deleteMediaretentionpoliciesPolicyId(policyId){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(policyId === undefined || policyId === null){
+      throw new Error('Missing required  parameter: policyId');
+    }
+    requestPath = requestPath.replace('{policyId}', policyId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
 
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putMediaretentionpoliciesPolicyId = putMediaretentionpoliciesPolicyId;
-	/**
-     * @summary Delete a media retention policy
-	 * @memberOf RecordingApi#
-	* @param {string} policyId - Policy ID
-	*/
-	function deleteMediaretentionpoliciesPolicyId(policyId){
-		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{policyId}', policyId);
-
-        if(policyId === undefined && policyId !== null){
-			throw 'Missing required  parameter: policyId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteMediaretentionpoliciesPolicyId = deleteMediaretentionpoliciesPolicyId;
-	/**
-     * @summary Patch a media retention policy
-	 * @memberOf RecordingApi#
-	* @param {string} policyId - Policy ID
-	* @param {} body - Policy
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Patch a media retention policy
+  * @memberOf RecordingApi#
+  * @param {string} policyId - Policy ID
+  * @param {} body - Policy
+  * @example
+  * Body Example:
+  * {
    "name": "",
    "modifiedDate": "",
    "createdDate": "",
@@ -790,74 +601,55 @@ var RecordingApi = function (pureCloudSession) {
       "policyErrorMessages": []
    }
 }
-	*/
-	function patchMediaretentionpoliciesPolicyId(policyId, body){
-		var apipath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.patchMediaretentionpoliciesPolicyId = function patchMediaretentionpoliciesPolicyId(policyId, body){
+    var requestPath = '/api/v2/recording/mediaretentionpolicies/{policyId}';
+    var requestQuery = {};
+    var requestBody;
 
-        apipath = apipath.replace('{policyId}', policyId);
+    if(policyId === undefined || policyId === null){
+      throw new Error('Missing required  parameter: policyId');
+    }
+    requestPath = requestPath.replace('{policyId}', policyId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
 
-        if(policyId === undefined && policyId !== null){
-			throw 'Missing required  parameter: policyId';
-        }
+/**
+  * @summary Get the Recording Settings for the Organization
+  * @memberOf RecordingApi#
+  * @param {boolean} createDefault - If no settings are found, a new one is created with default values
+  */
+RecordingApi.prototype.getSettings = function getSettings(createDefault){
+    var requestPath = '/api/v2/recording/settings';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    requestQuery.createDefault = createDefault;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-
-		return pureCloudSession.makeRequest('PATCH', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.patchMediaretentionpoliciesPolicyId = patchMediaretentionpoliciesPolicyId;
-	/**
-     * @summary Get the Recording Settings for the Organization
-	 * @memberOf RecordingApi#
-	* @param {boolean} createDefault - If no settings are found, a new one is created with default values
-	*/
-	function getSettings(createDefault){
-		var apipath = '/api/v2/recording/settings';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(createDefault !== undefined && createDefault !== null){
-			queryParameters.createDefault = createDefault;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSettings = getSettings;
-	/**
-     * @summary Update the Recording Settings for the Organization
-	 * @memberOf RecordingApi#
-	* @param {} body - 
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Update the Recording Settings for the Organization
+  * @memberOf RecordingApi#
+  * @param {} body - 
+  * @example
+  * Body Example:
+  * {
    "maxSimultaneousStreams": 0
 }
-	*/
-	function putSettings(body){
-		var apipath = '/api/v2/recording/settings';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+RecordingApi.prototype.putSettings = function putSettings(body){
+    var requestPath = '/api/v2/recording/settings';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putSettings = putSettings;
-
-    return self;
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
+
+

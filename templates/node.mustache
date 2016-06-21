@@ -1,9 +1,6 @@
-
-
-    module.exports = {
-        {{#methods}}
-        {{moduleName}} : {{moduleName}},
-        {{/methods}}
-        PureCloudSession: PureCloudSession
-    };
-}());
+module.exports = {
+    {{#methods}}
+    {{moduleName}}: {{moduleName}},
+    {{/methods}}
+    PureCloudSession: PureCloudSession
+};

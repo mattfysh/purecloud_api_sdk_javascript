@@ -1,49 +1,41 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new SearchApi(pureCloudSession);
 */
-var SearchApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function SearchApi(session) {
+    if(!(this instanceof SearchApi)) {
+        return new SearchApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('SearchApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Search using q64
-	 * @memberOf SearchApi#
-	* @param {string} q64 - 
-	* @param {array} expand - 
-	*/
-	function getSearch(q64, expand){
-		var apipath = '/api/v2/groups/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Search using q64
+  * @memberOf SearchApi#
+  * @param {string} q64 - 
+  * @param {array} expand - 
+  */
+SearchApi.prototype.getSearch = function getSearch(q64, expand){
+    var requestPath = '/api/v2/groups/search';
+    var requestQuery = {};
+    var requestBody;
 
+    requestQuery.q64 = q64;
+    requestQuery.expand = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-		if(q64 !== undefined && q64 !== null){
-			queryParameters.q64 = q64;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSearch = getSearch;
-	/**
-     * @summary Search
-	 * @memberOf SearchApi#
-	* @param {} body - Search request options
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Search
+  * @memberOf SearchApi#
+  * @param {} body - Search request options
+  * @example
+  * Body Example:
+  * {
    "sortOrder": "",
    "sortBy": "",
    "pageSize": 0,
@@ -52,56 +44,41 @@ var SearchApi = function (pureCloudSession) {
    "expand": [],
    "query": []
 }
-	*/
-	function postSearch(body){
-		var apipath = '/api/v2/groups/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+SearchApi.prototype.postSearch = function postSearch(body){
+    var requestPath = '/api/v2/groups/search';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Search using q64
+  * @memberOf SearchApi#
+  * @param {string} q64 - 
+  * @param {array} expand - 
+  */
+SearchApi.prototype.getSearch = function getSearch(q64, expand){
+    var requestPath = '/api/v2/locations/search';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postSearch = postSearch;
-	/**
-     * @summary Search using q64
-	 * @memberOf SearchApi#
-	* @param {string} q64 - 
-	* @param {array} expand - 
-	*/
-	function getSearch(q64, expand){
-		var apipath = '/api/v2/locations/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    requestQuery.q64 = q64;
+    requestQuery.expand = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-
-		if(q64 !== undefined && q64 !== null){
-			queryParameters.q64 = q64;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSearch = getSearch;
-	/**
-     * @summary Search
-	 * @memberOf SearchApi#
-	* @param {} body - Search request options
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Search
+  * @memberOf SearchApi#
+  * @param {} body - Search request options
+  * @example
+  * Body Example:
+  * {
    "sortOrder": "",
    "sortBy": "",
    "pageSize": 0,
@@ -110,63 +87,44 @@ var SearchApi = function (pureCloudSession) {
    "expand": [],
    "query": []
 }
-	*/
-	function postSearch(body){
-		var apipath = '/api/v2/locations/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+SearchApi.prototype.postSearch = function postSearch(body){
+    var requestPath = '/api/v2/locations/search';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Search using q64
+  * @memberOf SearchApi#
+  * @param {string} q64 - 
+  * @param {array} expand - 
+  * @param {boolean} profile - 
+  */
+SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
+    var requestPath = '/api/v2/search';
+    var requestQuery = {};
+    var requestBody;
 
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postSearch = postSearch;
-	/**
-     * @summary Search using q64
-	 * @memberOf SearchApi#
-	* @param {string} q64 - 
-	* @param {array} expand - 
-	* @param {boolean} profile - 
-	*/
-	function getSearch(q64, expand, profile){
-		var apipath = '/api/v2/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+    requestQuery.q64 = q64;
+    requestQuery.expand = expand;
+    requestQuery.profile = profile;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-
-		if(q64 !== undefined && q64 !== null){
-			queryParameters.q64 = q64;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		if(profile !== undefined && profile !== null){
-			queryParameters.profile = profile;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSearch = getSearch;
-	/**
-     * @summary Search
-	 * @memberOf SearchApi#
-	* @param {} body - Search request options
-	* @param {boolean} profile - 
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Search
+  * @memberOf SearchApi#
+  * @param {} body - Search request options
+  * @param {boolean} profile - 
+  * @example
+  * Body Example:
+  * {
    "sortOrder": "",
    "sortBy": "",
    "pageSize": 0,
@@ -177,120 +135,82 @@ var SearchApi = function (pureCloudSession) {
    "query": [],
    "aggregations": []
 }
-	*/
-	function postSearch(body, profile){
-		var apipath = '/api/v2/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+SearchApi.prototype.postSearch = function postSearch(body, profile){
+    var requestPath = '/api/v2/search';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    requestQuery.profile = profile;
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Suggest using q64
+  * @memberOf SearchApi#
+  * @param {string} q64 - 
+  * @param {boolean} profile - 
+  */
+SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
+    var requestPath = '/api/v2/search/suggest';
+    var requestQuery = {};
+    var requestBody;
 
-		if(profile !== undefined && profile !== null){
-			queryParameters.profile = profile;
-		}
+    requestQuery.q64 = q64;
+    requestQuery.profile = profile;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postSearch = postSearch;
-	/**
-     * @summary Suggest using q64
-	 * @memberOf SearchApi#
-	* @param {string} q64 - 
-	* @param {boolean} profile - 
-	*/
-	function getSuggest(q64, profile){
-		var apipath = '/api/v2/search/suggest';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(q64 !== undefined && q64 !== null){
-			queryParameters.q64 = q64;
-		}
-
-
-		if(profile !== undefined && profile !== null){
-			queryParameters.profile = profile;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSuggest = getSuggest;
-	/**
-     * @summary Suggest
-	 * @memberOf SearchApi#
-	* @param {} body - Search request options
-	* @param {boolean} profile - 
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Suggest
+  * @memberOf SearchApi#
+  * @param {} body - Search request options
+  * @param {boolean} profile - 
+  * @example
+  * Body Example:
+  * {
    "types": [],
    "query": []
 }
-	*/
-	function postSuggest(body, profile){
-		var apipath = '/api/v2/search/suggest';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+SearchApi.prototype.postSuggest = function postSuggest(body, profile){
+    var requestPath = '/api/v2/search/suggest';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    requestQuery.profile = profile;
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
 
+/**
+  * @summary Search using q64
+  * @memberOf SearchApi#
+  * @param {string} q64 - 
+  * @param {array} expand - 
+  */
+SearchApi.prototype.getSearch = function getSearch(q64, expand){
+    var requestPath = '/api/v2/users/search';
+    var requestQuery = {};
+    var requestBody;
 
-		if(profile !== undefined && profile !== null){
-			queryParameters.profile = profile;
-		}
+    requestQuery.q64 = q64;
+    requestQuery.expand = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
 
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postSuggest = postSuggest;
-	/**
-     * @summary Search using q64
-	 * @memberOf SearchApi#
-	* @param {string} q64 - 
-	* @param {array} expand - 
-	*/
-	function getSearch(q64, expand){
-		var apipath = '/api/v2/users/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(q64 !== undefined && q64 !== null){
-			queryParameters.q64 = q64;
-		}
-
-
-		if(expand !== undefined && expand !== null){
-			queryParameters.expand = expand;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getSearch = getSearch;
-	/**
-     * @summary Search
-	 * @memberOf SearchApi#
-	* @param {} body - Search request options
-	 * @example
-	 * Body Example:
-	 * {
+/**
+  * @summary Search
+  * @memberOf SearchApi#
+  * @param {} body - Search request options
+  * @example
+  * Body Example:
+  * {
    "sortOrder": "",
    "sortBy": "",
    "pageSize": 0,
@@ -299,22 +219,16 @@ var SearchApi = function (pureCloudSession) {
    "expand": [],
    "query": []
 }
-	*/
-	function postSearch(body){
-		var apipath = '/api/v2/users/search';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+  */
+SearchApi.prototype.postSearch = function postSearch(body){
+    var requestPath = '/api/v2/users/search';
+    var requestQuery = {};
+    var requestBody;
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postSearch = postSearch;
-
-    return self;
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
+
+

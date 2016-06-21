@@ -1,157 +1,123 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new LanguagesApi(pureCloudSession);
 */
-var LanguagesApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function LanguagesApi(session) {
+    if(!(this instanceof LanguagesApi)) {
+        return new LanguagesApi(session);
     }
-
-	var self = this;
-	/**
-     * @summary Get the list of supported languages.
-	 * @memberOf LanguagesApi#
-	* @param {integer} pageSize - Page size
-	* @param {integer} pageNumber - Page number
-	* @param {string} sortOrder - Ascending or descending sort order
-	ascending,
-	descending,
-	*/
-	function getLanguages(pageSize, pageNumber, sortOrder){
-		var apipath = '/api/v2/languages';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-
-		if(pageSize !== undefined && pageSize !== null){
-			queryParameters.pageSize = pageSize;
-		}
-
-
-		if(pageNumber !== undefined && pageNumber !== null){
-			queryParameters.pageNumber = pageNumber;
-		}
-
-
-		if(sortOrder !== undefined && sortOrder !== null){
-			queryParameters.sortOrder = sortOrder;
-		}
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLanguages = getLanguages;
-	/**
-     * @summary Create Language
-	 * @memberOf LanguagesApi#
-	* @param {} body - Language
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateModified": "",
-   "state": "",
-   "version": ""
+    if(!(session && session.makeRequest)) {
+        throw new Error('LanguagesApi requires a PureCloudSession');
+    }
+    this.session = session;
 }
-	*/
-	function postLanguages(body){
-		var apipath = '/api/v2/languages';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
 
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
+/**
+  * @summary Get the list of supported languages.
+  * @memberOf LanguagesApi#
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} sortOrder - Ascending or descending sort order
+  ascending,
+  descending,
+  */
+LanguagesApi.prototype.getLanguages = function getLanguages(pageSize, pageNumber, sortOrder){
+    var requestPath = '/api/v2/languages';
+    var requestQuery = {};
+    var requestBody;
 
-
-		return pureCloudSession.makeRequest('POST', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.postLanguages = postLanguages;
-	/**
-     * @summary Get language
-	 * @memberOf LanguagesApi#
-	* @param {string} languageId - Language ID
-	*/
-	function getLanguageId(languageId){
-		var apipath = '/api/v2/languages/{languageId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{languageId}', languageId);
-
-        if(languageId === undefined && languageId !== null){
-			throw 'Missing required  parameter: languageId';
-        }
-
-
-		return pureCloudSession.makeRequest('GET', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.getLanguageId = getLanguageId;
-	/**
-     * @summary Update Language
-	 * @memberOf LanguagesApi#
-	* @param {string} languageId - Language ID
-	* @param {} body - Language
-	 * @example
-	 * Body Example:
-	 * {
-   "name": "",
-   "dateModified": "",
-   "state": "",
-   "version": ""
-}
-	*/
-	function putLanguageId(languageId, body){
-		var apipath = '/api/v2/languages/{languageId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{languageId}', languageId);
-
-        if(languageId === undefined && languageId !== null){
-			throw 'Missing required  parameter: languageId';
-        }
-
-        if(body !== undefined && body !== null){
-            requestBody = body;
-        }
-
-
-		return pureCloudSession.makeRequest('PUT', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.putLanguageId = putLanguageId;
-	/**
-     * @summary Delete Language
-	 * @memberOf LanguagesApi#
-	* @param {string} languageId - Language ID
-	*/
-	function deleteLanguageId(languageId){
-		var apipath = '/api/v2/languages/{languageId}';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
-
-        apipath = apipath.replace('{languageId}', languageId);
-
-        if(languageId === undefined && languageId !== null){
-			throw 'Missing required  parameter: languageId';
-        }
-
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteLanguageId = deleteLanguageId;
-
-    return self;
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.sortOrder = sortOrder;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
+
+/**
+  * @summary Create Language
+  * @memberOf LanguagesApi#
+  * @param {} body - Language
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": ""
+}
+  */
+LanguagesApi.prototype.postLanguages = function postLanguages(body){
+    var requestPath = '/api/v2/languages';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get language
+  * @memberOf LanguagesApi#
+  * @param {string} languageId - Language ID
+  */
+LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
+    var requestPath = '/api/v2/languages/{languageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(languageId === undefined || languageId === null){
+      throw new Error('Missing required  parameter: languageId');
+    }
+    requestPath = requestPath.replace('{languageId}', languageId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update Language
+  * @memberOf LanguagesApi#
+  * @param {string} languageId - Language ID
+  * @param {} body - Language
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": ""
+}
+  */
+LanguagesApi.prototype.putLanguageId = function putLanguageId(languageId, body){
+    var requestPath = '/api/v2/languages/{languageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(languageId === undefined || languageId === null){
+      throw new Error('Missing required  parameter: languageId');
+    }
+    requestPath = requestPath.replace('{languageId}', languageId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Language
+  * @memberOf LanguagesApi#
+  * @param {string} languageId - Language ID
+  */
+LanguagesApi.prototype.deleteLanguageId = function deleteLanguageId(languageId){
+    var requestPath = '/api/v2/languages/{languageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(languageId === undefined || languageId === null){
+      throw new Error('Missing required  parameter: languageId');
+    }
+    requestPath = requestPath.replace('{languageId}', languageId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+

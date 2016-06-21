@@ -1,30 +1,28 @@
-//API VERSION - 
 /**
 * @class
 * @example
 * var api = new TokensApi(pureCloudSession);
 */
-var TokensApi = function (pureCloudSession) {
-	if(!pureCloudSession){
-		throw "PureCloudSession is not valid.";
+function TokensApi(session) {
+    if(!(this instanceof TokensApi)) {
+        return new TokensApi(session);
     }
+    if(!(session && session.makeRequest)) {
+        throw new Error('TokensApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
 
-	var self = this;
-	/**
-     * @summary Delete  auth token used to make the request.
-	 * @memberOf TokensApi#
-	*/
-	function deleteMe(){
-		var apipath = '/api/v2/tokens/me';
-	    var requestBody;
-	    var queryParameters = {};
-	    var headers = {};
-	    var form = {};
+/**
+  * @summary Delete  auth token used to make the request.
+  * @memberOf TokensApi#
+  */
+TokensApi.prototype.deleteMe = function deleteMe(){
+    var requestPath = '/api/v2/tokens/me';
+    var requestQuery = {};
+    var requestBody;
 
-
-		return pureCloudSession.makeRequest('DELETE', apipath + '?' +$.param(queryParameters), requestBody);
-	}
-	self.deleteMe = deleteMe;
-
-    return self;
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
+
+
