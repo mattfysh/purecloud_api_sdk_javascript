@@ -2,14 +2,14 @@
 /**
   * @description {{&info.description}}
   * @class
-  * @param  {string} environment (Optional) The environment that this is run in.  If set should be mypurecloud.com, mypurecloud.ie, mypurecloud.com.au, etc.
+  * @param  {object} options (Optional) Environment and authentication options
   **/
 function PureCloudSession(options) {
     if(!(this instanceof PureCloudSession)) {
         return new PureCloudSession(options);
     }
-
     this.options = options || {};
+    this.options.token = this._getToken();
     this.setEnvironment(this.options.environment);
 }
 
@@ -20,28 +20,48 @@ PureCloudSession.prototype.setEnvironment = function setEnvironment(env) {
 }
 
 PureCloudSession.prototype.login = function login() {
-  if(this.options.token) return Promise.resolve();
+    return this.options.token
+        ? this._testTokenAccess().catch(this._authenticate())
+        : this._authenticate();
+}
+
+PureCloudSession.prototype._authenticate = function _authenticate() {
   var strategy = this.options.strategy;
   switch(strategy) {
+    case 'token':
+      var token = this.options.token;
+      return this._loginWithToken(token);
     case 'oauth':
       var clientId = this.options.clientId;
       var redirectUrl = this.options.redirectUrl;
       var state = this.options.state;
-      return this.loginWithOauth(clientId, redirectUrl, state);
-    case 'basic':
-      var username = options.username;
-      var password = options.password;
-      return this.loginWithBasicAuth(username, password);
+      this._setHashValues();
+      return this._loginWithOauth(clientId, redirectUrl, state);
+    case 'client-credentials':
+      var clientId = options.clientId;
+      var clientSecret = options.clientSecret;
+      return this._loginWithClientCredentials(clientId, clientSecret);
     default:
       throw new Error('Authentication strategy "'+strategy+'" is not supported.');  
   }
 }
 
-PureCloudSession.prototype.loginWithOauth = function(clientId, redirectUrl, state) {
+PureCloudSession.prototype._testTokenAccess = function _testTokenAccess() {
+    var checkUrl = this.apiUrl + "/api/v2/users/me?expand=organization";
+    return this.makeRequest('get', checkUrl);
+}
+
+PureCloudSession.prototype._loginWithToken = function _loginWithToken(token) {
+    if(!token) {
+        throw new Error('Options requires a "token" key for the "token" strategy');
+    }
+    return Promise.resolve();
+}
+
+PureCloudSession.prototype._loginWithOauth = function(clientId, redirectUrl, state) {
     var self = this;
     var checkUrl = this.apiUrl + "/api/v2/users/me?expand=organization";
-    this._setHashValues();
-    return makeRequest('get', checkUrl).catch(function(error) {
+    return this.makeRequest('get', checkUrl).catch(function(error) {
         var query = {
             response_type: 'token',
             client_id: encodeURIComponent(clientId),
@@ -70,11 +90,11 @@ PureCloudSession.prototype._setHashValues = function setHashValues() {
             return obj;
         }, {});
 
-    if(hash.access_token) this.options.token = hash.access_token;
+    if(hash.access_token) this._setToken(hash.access_token);
     if(hash.state) this.options.state = hash.state;
 }
 
-PureCloudSession.prototype.loginWithBasicAuth = function(username, password) {
+PureCloudSession.prototype._loginWithClientCredentials = function(clientId, clientSecret) {
     var self = this;
     var url = this.authUrl + '/token';
     var data = {grant_type: 'client_credentials'};
@@ -83,16 +103,34 @@ PureCloudSession.prototype.loginWithBasicAuth = function(username, password) {
     return new Promise(function(resolve, reject) {
         superagent
             .post(url)
-            .auth(username, password)
+            .auth(clientId, clientSecret)
             .send(data)
             .timeout(timeout)
             .end(function(error, res) {
                 if(error) return reject(error);
                 if(!res.ok) return reject(res);
-                self.options.token = res.body.access_token;
+                self._setToken(res.body.access_token);
                 resolve();
             });
     });
+}
+
+PureCloudSession.prototype._getToken = function _getToken() {
+    if(this.options.token) return this.options.token;
+    if(this.options.storageKey) {
+        if(typeof window === 'object' && window.localStorage) {
+            return localStorage.getItem(this.options.storageKey);
+        }
+    }
+}
+
+PureCloudSession.prototype._setToken = function _setToken(token) {
+    this.options.token = token;
+    if(this.options.storageKey) {
+        if(typeof window === 'object' && window.localStorage) {
+            localStorage.setItem(this.options.storageKey, token);
+        }
+    }
 }
 
 PureCloudSession.prototype.logout = function logout() {
@@ -106,15 +144,19 @@ PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query
         if(url.charAt(0) === '/') url = self.apiUrl + url;
         
         var bearer = 'bearer ' + self.options.token;
-        var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
         var timeout = 2000;
 
+        var request = superagent[method](url);
+        if (typeof module !== 'undefined' && module.exports) {
+            var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
+            request = request.set('User-Agent', userAgent);
+        }
+
         return new Promise(function(resolve, reject) {
-            superagent[method](url)
+            request
                 .type('json')
                 .accept('json')
                 .set('Authorization', bearer)
-                .set('User-Agent', userAgent)
                 .timeout(timeout)
                 .query(query)
                 .send(data)
@@ -123,6 +165,11 @@ PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query
                     if(!res.ok) return reject(res);
                     resolve(res.body);
                 });
-        });
+          });
     });
 }
+
+PureCloudSession.prototype.get = function get(url, query) {
+  return this.makeRequest('get', url, query);
+}
+
