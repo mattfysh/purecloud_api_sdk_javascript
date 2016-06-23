@@ -2,7 +2,13 @@
 /**
   * @description {{&info.description}}
   * @class
-  * @param  {object} options (Optional) Environment and authentication options
+  * @param {string} options.strategy - Authentication strategy: "token", "oauth", "client-credentials"
+  * @param {string} options.environment - (Optional, default "mypurecloud.com") Environment the session use, e.g. mypurecloud.ie, mypurecloud.com.au, etc.
+  * @param {string} options.clientId - (Optional) Client identifier for "oauth" or "client-credentials" strategies
+  * @param {string} options.clientSecret - (Optional) Client secret key for "client-credentials" strategy
+  * @param {string} options.redirectUrl - (Optional) Callback URL for "oauth" strategy
+  * @param {string} options.token - (Optional) Existing token for "token" strategy
+  * @param {string} options.storageKey - (Optional) Key to set in localStorage with the authentication token
   **/
 function PureCloudSession(options) {
     if(!(this instanceof PureCloudSession)) {
@@ -13,12 +19,20 @@ function PureCloudSession(options) {
     this.setEnvironment(this.options.environment);
 }
 
-PureCloudSession.prototype.setEnvironment = function setEnvironment(env) {
-    this.options.environment = env || 'mypurecloud.com';
+/**
+  * @description Sets the environment used by the session
+  * @param {string} environment - (Optional, default "mypurecloud.com") Environment the session use, e.g. mypurecloud.ie, mypurecloud.com.au, etc.
+  **/
+PureCloudSession.prototype.setEnvironment = function setEnvironment(environment) {
+    this.options.environment = environment || 'mypurecloud.com';
     this.apiUrl = 'https://api.' + this.options.environment;
     this.authUrl = 'https://login.' + this.options.environment;
 }
 
+/**
+  * @description Attempts to login with the appropriate authentication strategy
+  * @returns Promise which resolves on successful authentication, otherwise rejects with an error
+  **/
 PureCloudSession.prototype.login = function login() {
     return this.options.token
         ? this._testTokenAccess().catch(this._authenticate())
@@ -117,27 +131,47 @@ PureCloudSession.prototype._loginWithClientCredentials = function(clientId, clie
 
 PureCloudSession.prototype._getToken = function _getToken() {
     if(this.options.token) return this.options.token;
-    if(this.options.storageKey) {
-        if(typeof window === 'object' && window.localStorage) {
-            return localStorage.getItem(this.options.storageKey);
-        }
+    if(this.options.storageKey && PureCloudSession.hasLocalStorage) {
+        return localStorage.getItem(this.options.storageKey);
     }
 }
 
 PureCloudSession.prototype._setToken = function _setToken(token) {
     this.options.token = token;
-    if(this.options.storageKey) {
-        if(typeof window === 'object' && window.localStorage) {
-            localStorage.setItem(this.options.storageKey, token);
-        }
+    if(this.options.storageKey && PureCloudSession.hasLocalStorage) {
+        localStorage.setItem(this.options.storageKey, token);
     }
 }
 
+PureCloudSession.hasLocalStorage = (function() {
+    try {
+        localStorage.setItem(mod, mod);
+        localStorage.removeItem(mod);
+        return true;
+    } catch(e) {
+        return false;
+    }
+}).call(this);
+
+/**
+  * @description Deauthenticates the session and removes any stored token
+  **/
 PureCloudSession.prototype.logout = function logout() {
+    if(PureCloudSession.hasLocalStorage) {
+        this._setToken(null);
+    }
 		window.location.replace(this.authUrl + "/logout");
 }
 
-PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query, data) {
+/**
+  * @description Makes authenticated requests to PureCloud
+  * @param {string} method - HTTP method verb, e.g. "get", "post"
+  * @param {string} url - URL to request
+  * @param {object} query - (Optional) query parameters
+  * @param {object} body - (Optional) request body payload
+  * @returns Promise resolving to the response body, otherwise rejects with an error
+  */
+PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query, body) {
     var self = this;
     return this.login().then(function() {
         method = method.toLowerCase();
@@ -159,7 +193,7 @@ PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query
                 .set('Authorization', bearer)
                 .timeout(timeout)
                 .query(query)
-                .send(data)
+                .send(body)
                 .end(function(error, res) {
                     if(error) return reject(error);
                     if(!res.ok) return reject(res);
@@ -169,6 +203,12 @@ PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query
     });
 }
 
+/**
+  * @description Conveinence method for making GET requests
+  * @param {string} url - URL to request
+  * @param {object} query - (Optional) query parameters
+  * @returns Promise resolving to the response body, otherwise rejects with an error
+  */
 PureCloudSession.prototype.get = function get(url, query) {
   return this.makeRequest('get', url, query);
 }
