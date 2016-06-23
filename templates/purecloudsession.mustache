@@ -2,11 +2,11 @@
 /**
   * @description {{&info.description}}
   * @class
-  * @param {string} options.strategy - Authentication strategy: "token", "oauth", "client-credentials"
+  * @param {string} options.strategy - Authentication strategy: "token", "implicit", "client-credentials"
   * @param {string} options.environment - (Optional, default "mypurecloud.com") Environment the session use, e.g. mypurecloud.ie, mypurecloud.com.au, etc.
-  * @param {string} options.clientId - (Optional) Client identifier for "oauth" or "client-credentials" strategies
+  * @param {string} options.clientId - (Optional) Client identifier for "implicit" or "client-credentials" strategies
   * @param {string} options.clientSecret - (Optional) Client secret key for "client-credentials" strategy
-  * @param {string} options.redirectUrl - (Optional) Callback URL for "oauth" strategy
+  * @param {string} options.redirectUrl - (Optional) Callback URL for "implicit" strategy
   * @param {string} options.token - (Optional) Existing token for "token" strategy
   * @param {string} options.storageKey - (Optional) Key to set in localStorage with the authentication token
   **/
@@ -45,7 +45,7 @@ PureCloudSession.prototype._authenticate = function _authenticate() {
     case 'token':
       var token = this.options.token;
       return this._loginWithToken(token);
-    case 'oauth':
+    case 'implicit':
       var clientId = this.options.clientId;
       var redirectUrl = this.options.redirectUrl;
       var state = this.options.state;
