@@ -27,11 +27,13 @@ var api = new {{&moduleName}}(pureCloudSession);
 var {{&camelCaseName}} = {{&default}};
 {{/parameters}}
 
-api.{{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}}).done(function(result){
+api.{{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}})
+  .then(function(result){
     console.log(result);
-}).error(function(error){
+  })
+  .catch(function(error){
     console.log(error);
-});
+  });
 ~~~
 
 {{#parameters.length}}

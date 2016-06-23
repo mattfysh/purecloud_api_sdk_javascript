@@ -30,86 +30,88 @@ Reference from the CDN:
 View the documentation on the [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/).
 View the source code on [Github](https://github.com/MyPureCloud/purecloud_api_sdk_javascript).
 
-# Using the Library
+# Usage
 
-## Referencing the modules in a web application
+## Client-side usage
 
-For convenience, all modules are bundled together, but if your application only uses a small subset of features, you can reference those modules directly.
-
-**_Note: JQuery > 1.5 is required_**
-
-Including the full Library:
+For convenience, all modules are bundled together. 
+If your application only uses a small subset of features, you can reference those modules directly.
 
 ~~~html
+<!-- Include the full library -->
 <script type="text/javascript" src="purecloud-api.js"></script>
-~~~
 
-Including only a subset.  It is important to note that purecloudsession.js must be referenced first.
-
-~~~html
+<!-- Include a subset -->
+<!-- Note: `purecloudsession.js` must be included first -->
 <script type="text/javascript" src="purecloudsession.js"></script>
 <script type="text/javascript" src="usersapi.js"></script>
 ~~~
 
-## Referencing the modules in a NodeJS application
+## Authentication
 
-For NodeJS, helper methods are available for client credential grant authorization, usage is similar to the browser usage except that API classes are under the pureCloud object.
+Every module uses a ~PureCloudSession~ to make authenticated requests to the PureCloud API.
 
 ~~~js
-var pureCloud = require("purecloud");
+// Node.js - Client credentials strategy
+var purecloud = require('purecloud');
+var session = purecloud.PureCloudSession({
+  strategy: 'client-credentials',
+  clientId: yourPurecloudClientId,
+  clientSecret: yourPurecloudSecretKey
+});
 
-var secret = process.env.PURECLOUD_SECRET;
-var id = process.env.PURECLOUD_CLIENT_ID;
+// Browser - Implicit strategy
+var session = purecloud.PureCloudSession({
+  strategy: 'implicit',
+  clientId: yourClientId,
+  redirectUrl: yourCallbackUrl
+});
 
-var pureCloudSession = new pureCloud.PureCloudSession();
-pureCloudSession.authorizeWithClientCredentialsGrant(id, secret).done(function(){
-    var authApi = new pureCloud.AuthorizationApi(pureCloudSession);
-    authApi.getRoles().done(function(roles){
-        //do something with the roles
-    });
+// Browser - Token strategy
+var session = purecloud.PureCloudSession({
+  strategy: 'token',
+  token: yourToken
 });
 ~~~
 
-## Authenticating in a Browser Application
-Let the library handle the OAuth2 redirects for you.
+## Environments
+If connecting to a PureCloud environment other than mypurecloud.com (e.g. mypurecloud.ie), set the ~environment~ in ~PureCloudSession~.
 
 ~~~js
-var pureCloudSession = new PureCloudSession();
-pureCloudSession.authorize('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX','http://localhost:8085/examples/')
-                .done(function(){
-    //this method will be called once we have a valid authorization token
-    // if we don't have one a redirect to login will be called and then after redirecting back here,
-    // the done method will be called.
+var session = purecloud.PureCloudSession({
+  // ... your other settings
+  environment: 'mypurecloud.ie'
 });
 ~~~
 
-## If you already have a Bearer Token
-If you already have a bearer token, you can specify it using
+## Local Storage
+To persist a token across web pages when navigating between them, set the ~storageKey~ in ~PureCloudSession~.
+~storageKey~ will be used to store the token in LocalStorage if supported so make it unique if multiple sessions may exist in the same page.
 
 ~~~js
-var pureCloudSession = new PureCloudSession();
-pureCloudSession.authToken("MYTOKEN");
-~~~
-
-## Setting the Environment
-
-If connecting to a PureCloud environment other than mypurecloud.com (e.g. mypurecloud.ie), set the new host before constructing any API classes. The host is set in the constructor for _PureCloudSession_.
-
-~~~js
-var pureCloudSession = new PureCloudSession('mypurecloud.ie');
+var session = purecloud.PureCloudSession({
+  // ... your other settings
+  storageKey: 'myAuthToken'
+});
 ~~~
 
 ## Making Requests
-Requests return the [JQuery deferred object](https://api.jquery.com/category/deferred-object/) so handlers can be registered to that response.
+
+All API requests return a Promise which resolves to the response body,
+otherwise it rejects with an error.
 
 ~~~js
-var usersapi = new UsersApi(pureCloudSession);
-usersapi.getMe()
-    .done(function(userObject){
-        //successfully got the user object, do something with it here
-    }).error(function(){
-        //and error occurred getting /me
-    }).always(function(){
-        //this will be called for successes and failures
+var session = purecloud.PureCloudSession({ /* your settings */ });
+var Users = new purecloud.UsersApi(session);
+Users.getMe()
+    .then(function(user) {
+        // successfully got the user object, do something with it here
+    })
+    .catch(function(error) {
+        // an error occurred getting the user object
+    })
+    .finally(function() {
+        // this will be called for successes and failures
     });
 ~~~
+
