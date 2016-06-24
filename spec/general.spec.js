@@ -1,18 +1,20 @@
-// #!/usr/bin/env node
+
+const unitTestOnly = process.env.UNIT_ONLY;
+if(unitTestOnly) return;
 
 const assert = require('assert');
 const purecloud = require("../dist/purecloud-api-node.js");
 
-const environments = [
-  'mypurecloud.com'
-];
-
 const clientId = process.env.PURECLOUD_CLIENT_ID;
 const clientSecret = process.env.PURECLOUD_SECRET;
-const environment = environments[0];
+const environment = process.env.PURECLOUD_ENV;
 
-assert(clientId);
-assert(clientSecret);
+describe('Environment variables', () => {
+  it('should have PURECLOUD_CLIENT_ID and PURECLOUD_SECRET set', () => {
+    assert(clientId);
+    assert(clientSecret);
+  });
+});
 
 function session() {
   return purecloud.PureCloudSession({
@@ -31,7 +33,13 @@ describe('AuthorizationApi', () => {
         assert(roles && roles.total > 0);
         done();
       })
-      .catch(done.fail);
+      .catch(error => {
+        console.log('\n');
+        console.log(error);
+        console.log(error.response.request.header);
+        console.log(error.response.request._data);
+        done.fail(error);
+      });
   });
 });
 
@@ -78,7 +86,7 @@ describe('Use Case: Update user status', () => {
     let defs;
     let nextPresence;
     Promise.all([users, presenceDefs])
-      .then([users, presenceDefs] => {
+      .then(([users, presenceDefs]) => {
         userId = users.entities[0].id;
         defs = presenceDefs;
         return Presence.getUserIdPresencesSource(userId, tag);
@@ -96,9 +104,9 @@ describe('Use Case: Update user status', () => {
       })
       .catch(done.fail);
 
-    function nextPresence(presence) {
+    function changePresence(presence) {
       const oldStatus = defs
-        .find(def => def.id === presence.presenceDefinition.id);
+        .find(def => def.id === presence.presenceDefinition.id)
         .systemPresence;
       const newStatus = oldStatus === 'OFFLINE' || oldStatus === 'AVAILABLE'
         ? 'AWAY'
@@ -169,14 +177,6 @@ describe('Modules', () => {
     assert.throws(() => {
       const Auth = purecloud.AuthorizationApi();
     });
-  });
-
-  it('should reject if session is bad', (done) => {
-    const badSession = purecloud.PureCloudSession();
-    const Auth = purecloud.AuthorizationApi(badSession);
-    Auth.getRoles()
-      .then(done.fail)
-      .catch(done);
   });
 
   it('should reject if session client credentials are bad', (done) => {

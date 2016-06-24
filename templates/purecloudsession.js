@@ -14,9 +14,10 @@ function PureCloudSession(options) {
     if(!(this instanceof PureCloudSession)) {
         return new PureCloudSession(options);
     }
-    this.options = options || {};
+    this.options = options;
     this.options.token = this._getToken();
     this.setEnvironment(this.options.environment);
+    this._setHashValues();
 }
 
 /**
@@ -49,11 +50,10 @@ PureCloudSession.prototype._authenticate = function _authenticate() {
       var clientId = this.options.clientId;
       var redirectUrl = this.options.redirectUrl;
       var state = this.options.state;
-      this._setHashValues();
       return this._loginWithOauth(clientId, redirectUrl, state);
     case 'client-credentials':
-      var clientId = options.clientId;
-      var clientSecret = options.clientSecret;
+      var clientId = this.options.clientId;
+      var clientSecret = this.options.clientSecret;
       return this._loginWithClientCredentials(clientId, clientSecret);
     default:
       throw new Error('Authentication strategy "'+strategy+'" is not supported.');  
@@ -73,25 +73,21 @@ PureCloudSession.prototype._loginWithToken = function _loginWithToken(token) {
 }
 
 PureCloudSession.prototype._loginWithOauth = function(clientId, redirectUrl, state) {
-    var self = this;
-    var checkUrl = this.apiUrl + "/api/v2/users/me?expand=organization";
-    return this.makeRequest('get', checkUrl).catch(function(error) {
-        var query = {
-            response_type: 'token',
-            client_id: encodeURIComponent(clientId),
-            redirect_uri: encodeURI(redirectUrl),
-            state: state
-        };
+    var query = {
+        response_type: 'token',
+        client_id: encodeURIComponent(clientId),
+        redirect_uri: encodeURI(redirectUrl),
+        state: state
+    };
 
-        function qs(url, key) {
-            var val = query[key];
-            if(!val) return url;
-            return url + '&' + key + '=' + val;
-        }
+    function qs(url, key) {
+        var val = query[key];
+        if(!val) return url;
+        return url + '&' + key + '=' + val;
+    }
 
-        var url = Object.keys(query).reduce(qs, this.authUrl + '/authorize?');
-        window.location.replace(url);
-    });
+    var url = Object.keys(query).reduce(qs, this.authUrl + '/authorize?');
+    window.location.replace(url);
 }
 
 PureCloudSession.prototype._setHashValues = function setHashValues() {
@@ -112,21 +108,13 @@ PureCloudSession.prototype._loginWithClientCredentials = function(clientId, clie
     var self = this;
     var url = this.authUrl + '/token';
     var data = {grant_type: 'client_credentials'};
-    var timeout = 1000;
-
-    return new Promise(function(resolve, reject) {
-        superagent
-            .post(url)
-            .auth(clientId, clientSecret)
-            .send(data)
-            .timeout(timeout)
-            .end(function(error, res) {
-                if(error) return reject(error);
-                if(!res.ok) return reject(res);
-                self._setToken(res.body.access_token);
-                resolve();
-            });
-    });
+    var request = this._baseRequest('post', url)
+        .auth(clientId, clientSecret)
+        .send(data);
+    return this._sendRequest(request)
+        .then(function(body) {
+            self._setToken(body.access_token);
+        });
 }
 
 PureCloudSession.prototype._getToken = function _getToken() {
@@ -174,32 +162,40 @@ PureCloudSession.prototype.logout = function logout() {
 PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query, body) {
     var self = this;
     return this.login().then(function() {
-        method = method.toLowerCase();
-        if(url.charAt(0) === '/') url = self.apiUrl + url;
-        
         var bearer = 'bearer ' + self.options.token;
-        var timeout = 2000;
+        var request = self._baseRequest(method, url)
+            .set('Authorization', bearer)
+            .query(query)
+            .send(body);
+        return self._sendRequest(request);
+    });
+}
 
-        var request = superagent[method](url);
-        if (typeof module !== 'undefined' && module.exports) {
-            var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
-            request = request.set('User-Agent', userAgent);
-        }
+PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
+    method = method.toLowerCase();
+    if(url.charAt(0) === '/') url = this.apiUrl + url;
 
-        return new Promise(function(resolve, reject) {
-            request
-                .type('json')
-                .accept('json')
-                .set('Authorization', bearer)
-                .timeout(timeout)
-                .query(query)
-                .send(body)
-                .end(function(error, res) {
-                    if(error) return reject(error);
-                    if(!res.ok) return reject(res);
-                    resolve(res.body);
-                });
-          });
+    var timeout = 2000;
+    var request = superagent[method](url)
+        .type('json')
+        .accept('json')
+        .timeout(timeout);
+    
+    if (typeof module !== 'undefined' && module.exports) {
+        var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
+        request = request.set('User-Agent', userAgent);
+    }
+
+    return request;
+}
+
+PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
+    return new Promise(function(resolve, reject) {
+        request.end(function(error, res) {
+            if(error) return reject(error);
+            if(!res.ok) return reject(res);
+            resolve(res.body);
+        });
     });
 }
 
