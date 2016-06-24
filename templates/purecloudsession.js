@@ -61,8 +61,11 @@ PureCloudSession.prototype._authenticate = function _authenticate() {
 }
 
 PureCloudSession.prototype._testTokenAccess = function _testTokenAccess() {
-    var checkUrl = this.apiUrl + "/api/v2/users/me?expand=organization";
-    return this.makeRequest('get', checkUrl);
+    if(this.options.strategy === 'implicit') {
+      var checkUrl = this.apiUrl + "/api/v2/users/me";
+      return this._makeRequest('get', checkUrl);
+    }
+    return Promise.resolve();
 }
 
 PureCloudSession.prototype._loginWithToken = function _loginWithToken(token) {
@@ -109,6 +112,7 @@ PureCloudSession.prototype._loginWithClientCredentials = function(clientId, clie
     var url = this.authUrl + '/token';
     var data = {grant_type: 'client_credentials'};
     var request = this._baseRequest('post', url)
+        .set('Content-Type', 'application/x-www-form-urlencoded')
         .auth(clientId, clientSecret)
         .send(data);
     return this._sendRequest(request)
@@ -162,13 +166,17 @@ PureCloudSession.prototype.logout = function logout() {
 PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query, body) {
     var self = this;
     return this.login().then(function() {
-        var bearer = 'bearer ' + self.options.token;
-        var request = self._baseRequest(method, url)
-            .set('Authorization', bearer)
-            .query(query)
-            .send(body);
-        return self._sendRequest(request);
+        return self._makeRequest(method, url, query, body);
     });
+}
+
+PureCloudSession.prototype._makeRequest = function _makeRequest(method, url, query, body) {
+    var bearer = 'bearer ' + this.options.token;
+    var request = this._baseRequest(method, url)
+        .set('Authorization', bearer)
+        .query(query)
+        .send(body);
+    return this._sendRequest(request);
 }
 
 PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
@@ -193,7 +201,7 @@ PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
     return new Promise(function(resolve, reject) {
         request.end(function(error, res) {
             if(error) return reject(error);
-            if(!res.ok) return reject(res);
+            if(res.error) return reject(res);
             resolve(res.body);
         });
     });

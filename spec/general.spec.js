@@ -33,13 +33,7 @@ describe('AuthorizationApi', () => {
         assert(roles && roles.total > 0);
         done();
       })
-      .catch(error => {
-        console.log('\n');
-        console.log(error);
-        console.log(error.response.request.header);
-        console.log(error.response.request._data);
-        done.fail(error);
-      });
+      .catch(done.fail);
   });
 });
 
@@ -49,6 +43,7 @@ describe('OAuthApi', () => {
     Oauth.getClients()
       .then((clients) => {
         assert(clients.total > 0);
+        done();
       })
       .catch(done.fail);
   });
@@ -82,24 +77,27 @@ describe('Use Case: Update user status', () => {
     const presenceDefs = Presence.getPresencedefinitions();
     const tag = 'purecloud'.toUpperCase();
 
+    let i = 0;
     let userId;
     let defs;
     let nextPresence;
     Promise.all([users, presenceDefs])
       .then(([users, presenceDefs]) => {
         userId = users.entities[0].id;
-        defs = presenceDefs;
-        return Presence.getUserIdPresencesSource(userId, tag);
+        defs = presenceDefs.entities;
+        return Presence.getUserIdPresencesSourceId(userId, tag);
       })
       .then(presence => {
         nextPresence = changePresence(presence);
-        return Presence.patchUserIdPresencesSource(userId, tag, newPresence);
+        return Presence.patchUserIdPresencesSourceId(userId, tag, nextPresence);
       })
       .then(() => {
-        return Presence.getUserIdPresencesSource(userId, tag);
+        return Presence.getUserIdPresencesSourceId(userId, tag);
       })
       .then(presence => {
-        assert.deepEqual(presence, nextPresence);
+        assert.deepEqual(
+          presence.presenceDefinition.id,
+          nextPresence.presenceDefinition.id);
         done();
       })
       .catch(done.fail);
@@ -112,7 +110,7 @@ describe('Use Case: Update user status', () => {
         ? 'AWAY'
         : 'AVAILABLE';
       const id = defs
-        .find(def => def.systemPresence === newStatus)
+        .find(def => def.systemPresence.toUpperCase() === newStatus)
         .id;
       return {presenceDefinition: {id}};
     }
