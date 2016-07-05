@@ -192,7 +192,7 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
         .accept('json')
         .timeout(timeout);
 
-    if (typeof window !== 'undefined' ) {
+    if (typeof window === 'undefined' ) {
         var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
         request = request.set('User-Agent', userAgent);
     }

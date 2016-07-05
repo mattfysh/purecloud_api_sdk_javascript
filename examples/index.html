@@ -33,8 +33,6 @@
               redirectUrl: window.location.href
             });
 
-        pureCloudSession.login()
-            .then(function() { alert('LOGGED IN');});
 
         var usersapi = new purecloud.platform.UsersApi(pureCloudSession);
         var notificationsapi = new purecloud.platform.NotificationsApi(pureCloudSession);
