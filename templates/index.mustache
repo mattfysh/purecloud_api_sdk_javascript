@@ -1,0 +1,8 @@
+/* jshint node: true */
+
+'use strict';
+
+{{#methods}}
+exports.{{moduleName}} = require('./partials/{{moduleName}}');
+{{/methods}}
+exports.PureCloudSession= require('./partials/purecloudsession');
