@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/purecloud-api-node.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "build": "gulp"
   },
   "author": "Interactive Intelligence",
   "license": "MIT",

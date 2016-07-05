@@ -119,4 +119,3 @@ describe('Modules', () => {
       .catch(done);
   });
 });
-

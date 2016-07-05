@@ -56,7 +56,7 @@ PureCloudSession.prototype._authenticate = function _authenticate() {
       var clientSecret = this.options.clientSecret;
       return this._loginWithClientCredentials(clientId, clientSecret);
     default:
-      throw new Error('Authentication strategy "'+strategy+'" is not supported.');  
+      throw new Error('Authentication strategy "'+strategy+'" is not supported.');
   }
 }
 
@@ -98,7 +98,7 @@ PureCloudSession.prototype._setHashValues = function setHashValues() {
     var hash = window.location.hash
         .slice(1).split('&')
         .reduce(function(obj, pair) {
-            keyValue = pair.split('=');              
+            keyValue = pair.split('=');
             obj[keyValue[0]] = keyValue[1];
             return obj;
         }, {});
@@ -188,7 +188,7 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
         .type('json')
         .accept('json')
         .timeout(timeout);
-    
+
     if (typeof module !== 'undefined' && module.exports) {
         var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
         request = request.set('User-Agent', userAgent);
@@ -216,4 +216,3 @@ PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
 PureCloudSession.prototype.get = function get(url, query) {
   return this.makeRequest('get', url, query);
 }
-
