@@ -4,7 +4,7 @@ var purecloud = require('../dist/purecloud-api-node');
 describe("PureCloudSession", function() {
   describe('constructor(options)', function() {
     it("should set the environment by default", function() {
-      var session = new purecloud.PureCloudSession();
+      var session = new purecloud.PureCloudSession({});
       assert.equal(session.options.environment, 'mypurecloud.com');
     });
 
