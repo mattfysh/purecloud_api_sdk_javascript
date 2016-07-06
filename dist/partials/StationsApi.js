@@ -1,0 +1,73 @@
+/**
+* @class
+* @example
+* var api = new StationsApi(pureCloudSession);
+*/
+function StationsApi(session) {
+    if(!(this instanceof StationsApi)) {
+        return new StationsApi(session);
+    }
+    if(!(session && session.makeRequest)) {
+        throw new Error('StationsApi requires a PureCloudSession');
+    }
+    this.session = session;
+}
+
+/**
+  * @summary Get the list of available stations.
+  * @memberOf StationsApi#
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} sortBy - Sort by
+  * @param {string} name - Name
+  * @param {string} lineAppearanceId - lineAppearanceId
+  */
+StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, sortBy, name, lineAppearanceId){
+    var requestPath = '/api/v2/stations';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    requestQuery.sortBy = sortBy;
+    requestQuery.name = name;
+    requestQuery.lineAppearanceId = lineAppearanceId;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get station.
+  * @memberOf StationsApi#
+  * @param {string} stationId - Station ID
+  */
+StationsApi.prototype.getStationId = function getStationId(stationId){
+    var requestPath = '/api/v2/stations/{stationId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(stationId === undefined || stationId === null){
+      throw new Error('Missing required  parameter: stationId');
+    }
+    requestPath = requestPath.replace('{stationId}', stationId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Unassigns the user assigned to this station
+  * @memberOf StationsApi#
+  * @param {string} stationId - Station ID
+  */
+StationsApi.prototype.deleteStationIdAssociateduser = function deleteStationIdAssociateduser(stationId){
+    var requestPath = '/api/v2/stations/{stationId}/associateduser';
+    var requestQuery = {};
+    var requestBody;
+
+    if(stationId === undefined || stationId === null){
+      throw new Error('Missing required  parameter: stationId');
+    }
+    requestPath = requestPath.replace('{stationId}', stationId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+
+module.exports = StationsApi;
