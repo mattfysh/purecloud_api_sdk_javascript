@@ -278,9 +278,6 @@ gulp.task('doc', function() {
 
 gulp.task('movegen', function(){
     return gulp.src("./gen/partials/*.*")
-                  .pipe(rename(function (path) {
-                    path.basename = path.basename.toLowerCase();
-                  }))
                   .pipe(gulp.dest("./dist/partials"));
 
 });
