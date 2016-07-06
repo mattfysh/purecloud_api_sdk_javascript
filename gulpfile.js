@@ -1,3 +1,7 @@
+/* jshint node: true */
+/* jshint sub:true */
+/* globals gutil */
+
 'use strict';
 
 var gulp = require('gulp');
@@ -19,22 +23,26 @@ var pclib = require('purecloud-api-sdk-common');
 var runSequence = require('run-sequence');
 var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
 var openapiModelExample = require('openapi-model-example');
+var uglify = require('gulp-uglify');
+
+// Browser Bundling Modules
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+
+var API_EXPORT_NAME = 'purecloud.platform';
 
 function getDefaultValue(type){
 
     switch (type) {
         case 'integer':
             return 0;
-            break;
         case 'array':
             return '[]';
-            break;
         case 'boolean':
             return 'true';
-            break;
         case 'string':
             return '""';
-            break;
         default:
             return "{}";
 
@@ -70,12 +78,12 @@ function parseJsonSchema(opts, type){
 
     var swaggerTags = {};
     _.forEach(swagger.tags, function(tag){
-        swaggerTags[tag["name"]] = tag["description"]
+        swaggerTags[tag["name"]] = tag.description;
     });
 
     _.forEach(swagger.paths, function(api, path){
 
-        var classPath = "PureCloud" + path.replace(/\/api\/v1/, '').replace(/\//g,'.').replace(/\.\{[A-Za-z]*\}/g, '')
+        var classPath = "PureCloud" + path.replace(/\/api\/v1/, '').replace(/\//g,'.').replace(/\.\{[A-Za-z]*\}/g, '');
         var operationGroup = classPath.split('.')[1];
         //console.log(operationGroup);
 
@@ -100,10 +108,10 @@ function parseJsonSchema(opts, type){
             };
 
             if(method.methodName === "delete"){
-                method.methodName = "performDelete"
+                method.methodName = "performDelete";
             }
 
-            if(relativePath.join('.') != ''){
+            if(relativePath.join('.') !== ''){
                 method.relativePath= relativePath.join('.');
 
                 var parentPath = relativePath;
@@ -153,10 +161,10 @@ function parseJsonSchema(opts, type){
                 method.parameters[method.parameters.length-1].last = true;
             }
 
-            if(op.responses['200'] != null){
-                var response = op.responses['200']
+            if(!op.responses['200']){
+                var response = op.responses['200'];
 
-                if (response.schema){
+                if (response && response.schema){
                     if(response.schema["$ref"]){
                         method.response200 = openapiModelExample.getModelExample(response.schema["$ref"], swagger, true);
                     }else if(response.schema.items && response.schema.items["$ref"]){
@@ -167,10 +175,10 @@ function parseJsonSchema(opts, type){
 
             for(var tagIndex =0; tagIndex < op.tags.length; tagIndex++){
                 var tag = op.tags[tagIndex].replace(/[ -]/g, "");
-                if (data.methods[tag] == null){
+                if (!data.methods[tag]){
                     data.methods[tag] = [];
                 }
-                if(method.method != "HEAD"){
+                if(method.method !== "HEAD"){
                     data.methods[tag].push(method);
                 }
             }
@@ -198,20 +206,20 @@ function parseJsonSchema(opts, type){
 }
 
 var build = function() {
-    return gulp.src('./gen/*core.js')
-                .pipe(addsrc('./gen/*[^core].js'))
-                .pipe(jshint())
-                .pipe(concat('purecloud-api.js'))
-                .pipe(jshint.reporter('default'))
+
+    return browserify({entries: './gen/index.js', standalone: API_EXPORT_NAME, debug: true})
+                .transform('babelify', {presets: ['es2015']})
+                .bundle()
+                .pipe(source('purecloud-api.js'))
                 .pipe(gulp.dest('./dist/'))
-                .pipe(minify())
-                .pipe(gulp.dest('./dist'));
+                .pipe(buffer())
+                .pipe(uglify())
+                .pipe(rename({extname: '.min.js'}))
+                .pipe(gulp.dest('./dist/'));
 };
 
 var buildNode = function() {
-    return gulp.src('./gen/*.js')
-                .pipe(addsrc.prepend('./templates/node_pre.js'))
-                .pipe(addsrc.append('./nodegen/*.js'))
+    return gulp.src('./gen/index.js')
                 .pipe(jshint())
                 .pipe(concat('purecloud-api-node.js'))
                 .pipe(jshint.reporter('default'))
@@ -233,18 +241,18 @@ function getCommonResponsesDocumentation(){
             var newResponse = {
                 code: code,
                 description: response.description
-            }
+            };
             newResponse.errorCodes = [];
-            _.forEach(response['x-inin-error-codes'], function(description, errorcode){
+            _.forEach(response['x-inin-G-codes'], function(description, errorcode){
                 newResponse.errorCodes.push({
                     code: errorcode,
                     description: description
-                })
+                });
             });
-            commonData.responses.push (newResponse)
+            commonData.responses.push (newResponse);
         }
     });
-    console.log(commonData)
+
     var source = Mustache.render(fs.readFileSync('templates/common_responses.mustache', 'utf-8'), commonData);
     return source;
 
@@ -263,13 +271,13 @@ gulp.task('doc', function() {
         .pipe(replace(/`/g, '~'))
         .pipe(replace('[PureCloudSession](#PureCloudSession)', 'PureCloudSession'))
         .on('error', function (err) {
-          gutil.log('jsdoc2md failed:', err.message)
-        })
-        .pipe(gulp.dest('doc'))
+          gutil.log('jsdoc2md failed:', err.message);
+      })
+        .pipe(gulp.dest('doc'));
 });
 
 gulp.task('movegen', function(){
-    return gulp.src("./gen/*.*")
+    return gulp.src("./gen/partials/*.*")
                   .pipe(rename(function (path) {
                     path.basename = path.basename.toLowerCase();
                   }))
@@ -310,7 +318,7 @@ gulp.task('clean:dist', function(){
 
 gulp.task('clean', ['clean:doc', 'clean:dist', 'clean:gen']);
 
-gulp.task('build', ['clean'], function() {
+gulp.task('build', function() {
 
     if (!fileExists("gen")) {
         fs.mkdirSync('gen');
@@ -322,6 +330,10 @@ gulp.task('build', ['clean'], function() {
 
     if (!fileExists("nodegen")) {
         fs.mkdirSync('nodegen');
+    }
+
+    if (!fileExists("gen/partials")) {
+        fs.mkdirSync('gen/partials');
     }
 
     var file = 'swagger.json';
@@ -337,12 +349,12 @@ gulp.task('build', ['clean'], function() {
     _.forEach(data.methods, function(moduledata){
         moduledata.version = version;
         var source = Mustache.render(fs.readFileSync('templates/module.mustache', 'utf-8'), moduledata);
-        source = source.replace(/&#x2F;/g,'/')
-        fs.writeFileSync("gen/" + moduledata.moduleName + ".js", source);
+        source = source.replace(/&#x2F;/g,'/');
+        fs.writeFileSync("gen/partials/" + moduledata.moduleName + ".js", source);
 
         //console.log(moduledata)
         var docSource = Mustache.render(fs.readFileSync('templates/api_doc.mustache', 'utf-8'), moduledata);
-        docSource = docSource.replace(/&#x2F;/g,'/')
+        docSource = docSource.replace(/&#x2F;/g,'/');
         fs.writeFileSync("doc/" + moduledata.moduleName + ".md", docSource);
     });
 
@@ -353,11 +365,10 @@ gulp.task('build', ['clean'], function() {
 
     //Write the core file
     var source = Mustache.render(fs.readFileSync('templates/purecloudsession.js', 'utf-8'), swagger);
-    fs.writeFileSync("gen/purecloudsession.js", source);
+    fs.writeFileSync("gen/partials/purecloudsession.js", source);
 
-    //write the node templates
-    var source = Mustache.render(fs.readFileSync('templates/node.mustache', 'utf-8'), data);
-    fs.writeFileSync("nodegen/purecloud_node.js", source);
+    source = Mustache.render(fs.readFileSync('templates/index.mustache', 'utf-8'), data);
+    fs.writeFileSync("gen/index.js", source);
 
     buildNode();
 
@@ -371,7 +382,7 @@ gulp.task('jshint', function(){
                 .pipe(jshint.extract('always'))
                 .pipe(jshint())
                 .pipe(jshint.reporter('default'))
-                .pipe(jshint.reporter('fail'))
+                .pipe(jshint.reporter('fail'));
 
 });
 
@@ -380,7 +391,7 @@ gulp.task('watch', function() {
     gulp.watch('./tutorials/*', ['doc']);
 });
 
-gulp.task('default', function (callback) {
+gulp.task('default', ["clean"], function (callback) {
 
   runSequence('build',
    ['movegen', 'jshint'],
@@ -400,7 +411,7 @@ gulp.task('jenkins', function(callback){
         console.log("new version: " + version);
 
         if(hasChanges){
-            console.log("has changes")
+            console.log("has changes");
             fs.writeFileSync("newVersion.md", version);
 
             var versionData = JSON.parse(fs.readFileSync('version.json', 'UTF-8'));
@@ -412,7 +423,7 @@ gulp.task('jenkins', function(callback){
             fs.writeFileSync('package.json', JSON.stringify(npmpackage, null, "  "));
 
         }else{
-            console.log("no changes")
+            console.log("no changes");
         }
 
         runSequence('default',
