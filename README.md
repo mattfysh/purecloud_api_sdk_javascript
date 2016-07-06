@@ -34,17 +34,12 @@ View the source code on [Github](https://github.com/MyPureCloud/purecloud_api_sd
 
 ## Client-side usage
 
-For convenience, all modules are bundled together. 
-If your application only uses a small subset of features, you can reference those modules directly.
+For convenience, all modules are bundled together.
 
 ~~~html
 <!-- Include the full library -->
 <script type="text/javascript" src="purecloud-api.js"></script>
 
-<!-- Include a subset -->
-<!-- Note: `purecloudsession.js` must be included first -->
-<script type="text/javascript" src="purecloudsession.js"></script>
-<script type="text/javascript" src="usersapi.js"></script>
 ~~~
 
 ## Authentication
@@ -61,14 +56,14 @@ var session = purecloud.PureCloudSession({
 });
 
 // Browser - Implicit strategy
-var session = purecloud.PureCloudSession({
+var session = purecloud.platform.PureCloudSession({
   strategy: 'implicit',
   clientId: yourClientId,
   redirectUrl: yourCallbackUrl
 });
 
 // Browser - Token strategy
-var session = purecloud.PureCloudSession({
+var session = purecloud.platform.PureCloudSession({
   strategy: 'token',
   token: yourToken
 });
@@ -78,7 +73,7 @@ var session = purecloud.PureCloudSession({
 If connecting to a PureCloud environment other than mypurecloud.com (e.g. mypurecloud.ie), set the ~environment~ in ~PureCloudSession~.
 
 ~~~js
-var session = purecloud.PureCloudSession({
+var session = purecloud.platform.PureCloudSession({
   // ... your other settings
   environment: 'mypurecloud.ie'
 });
@@ -89,7 +84,7 @@ To persist a token across web pages when navigating between them, set the ~stora
 ~storageKey~ will be used to store the token in LocalStorage if supported so make it unique if multiple sessions may exist in the same page.
 
 ~~~js
-var session = purecloud.PureCloudSession({
+var session = purecloud.platform.PureCloudSession({
   // ... your other settings
   storageKey: 'myAuthToken'
 });
@@ -101,9 +96,9 @@ All API requests return a Promise which resolves to the response body,
 otherwise it rejects with an error.
 
 ~~~js
-var session = purecloud.PureCloudSession({ /* your settings */ });
-var Users = new purecloud.UsersApi(session);
-Users.getMe()
+var session = purecloud.platform.PureCloudSession({ /* your settings */ });
+var users = new purecloud.platform.UsersApi(session);
+users.getMe()
     .then(function(user) {
         // successfully got the user object, do something with it here
     })
@@ -114,4 +109,3 @@ Users.getMe()
         // this will be called for successes and failures
     });
 ~~~
-
