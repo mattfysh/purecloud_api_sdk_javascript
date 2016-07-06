@@ -220,8 +220,6 @@ var build = function() {
 
 var buildNode = function() {
     return gulp.src('./gen/index.js')
-                //.pipe(addsrc.prepend('./templates/node_pre.js'))
-                //.pipe(addsrc.append('./nodegen/*.js'))
                 .pipe(jshint())
                 .pipe(concat('purecloud-api-node.js'))
                 .pipe(jshint.reporter('default'))
