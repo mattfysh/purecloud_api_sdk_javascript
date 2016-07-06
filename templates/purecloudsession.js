@@ -18,9 +18,12 @@ function PureCloudSession(options) {
         return new PureCloudSession(options);
     }
     this.options = options;
+
+    this._setValuesFromUrlHash();
+
     this.options.token = this._getToken();
     this.setEnvironment(this.options.environment);
-    this._setValuesFromUrlHash();
+
 }
 
 /**
@@ -140,8 +143,8 @@ PureCloudSession.prototype._setToken = function _setToken(token) {
 
 PureCloudSession.hasLocalStorage = (function() {
     try {
-        localStorage.setItem(mod, mod);
-        localStorage.removeItem(mod);
+        localStorage.setItem("mod", "mod");
+        localStorage.removeItem("mod");
         return true;
     } catch(e) {
         return false;
@@ -167,10 +170,7 @@ PureCloudSession.prototype.logout = function logout() {
   * @returns Promise resolving to the response body, otherwise rejects with an error
   */
 PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query, body) {
-    var self = this;
-    return this.login().then(function() {
-        return self._makeRequest(method, url, query, body);
-    });
+    return this._makeRequest(method, url, query, body);
 };
 
 PureCloudSession.prototype._makeRequest = function _makeRequest(method, url, query, body) {
