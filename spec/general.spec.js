@@ -16,86 +16,100 @@ describe('Environment variables', () => {
   });
 });
 
-function session() {
-  return purecloud.PureCloudSession({
+function getSession() {
+  let session = purecloud.PureCloudSession({
     strategy: 'client-credentials',
     clientId: clientId,
     clientSecret: clientSecret,
     environment: environment
   });
+
+  return session;
 }
 
 describe('AuthorizationApi', () => {
   it('should return authorization roles', (done) => {
-    const Auth = purecloud.AuthorizationApi(session());
-    Auth.getRoles()
-      .then((roles) => {
-        assert(roles && roles.total > 0);
-        done();
-      })
-      .catch(done.fail);
+    let session = getSession();
+    session.login().then(function(){
+        const Auth = purecloud.AuthorizationApi(session);
+        Auth.getRoles()
+          .then((roles) => {
+            assert(roles && roles.total > 0);
+            done();
+          })
+          .catch(done.fail);
+    });
+
   });
 });
 
 describe('OAuthApi', () => {
   it('should return oauth clients', (done) => {
-    const Oauth = purecloud.OAuthApi(session());
-    Oauth.getClients()
-      .then((clients) => {
-        assert(clients.total > 0);
-        done();
-      })
-      .catch(done.fail);
+    let session = getSession();
+    session.login().then(function(){
+        const Oauth = purecloud.OAuthApi(session);
+        Oauth.getClients()
+          .then((clients) => {
+            assert(clients.total > 0);
+            done();
+          })
+          .catch(done.fail);
+    });
   });
 });
 
 describe('Use Case: Update user status', () => {
   it('should work', (done) => {
-    const sharedSession = session();
-    const Users = purecloud.UsersApi(sharedSession);
-    const Presence = purecloud.PresenceApi(sharedSession);
 
-    const users = Users.getUsers();
-    const presenceDefs = Presence.getPresencedefinitions();
-    const tag = 'purecloud'.toUpperCase();
+    const sharedSession = getSession();
 
-    let i = 0;
-    let userId;
-    let defs;
-    let nextPresence;
-    Promise.all([users, presenceDefs])
-      .then(([users, presenceDefs]) => {
-        userId = users.entities[0].id;
-        defs = presenceDefs.entities;
-        return Presence.getUserIdPresencesSourceId(userId, tag);
-      })
-      .then(presence => {
-        nextPresence = changePresence(presence);
-        return Presence.patchUserIdPresencesSourceId(userId, tag, nextPresence);
-      })
-      .then(() => {
-        return Presence.getUserIdPresencesSourceId(userId, tag);
-      })
-      .then(presence => {
-        assert.deepEqual(
-          presence.presenceDefinition.id,
-          nextPresence.presenceDefinition.id);
-        done();
-      })
-      .catch(done.fail);
+    sharedSession.login().then(function(){
 
-    function changePresence(presence) {
-      const oldStatus = defs
-        .find(def => def.id === presence.presenceDefinition.id)
-        .systemPresence;
-      const newStatus = oldStatus === 'OFFLINE' || oldStatus === 'AVAILABLE'
-        ? 'AWAY'
-        : 'AVAILABLE';
-      const id = defs
-        .find(def => def.systemPresence.toUpperCase() === newStatus)
-        .id;
-      return {presenceDefinition: {id}};
-    }
+        const Users = purecloud.UsersApi(sharedSession);
+        const Presence = purecloud.PresenceApi(sharedSession);
+
+        const users = Users.getUsers();
+        const presenceDefs = Presence.getPresencedefinitions();
+        const tag = 'purecloud'.toUpperCase();
+
+        let i = 0;
+        let userId;
+        let defs;
+        let nextPresence;
+        Promise.all([users, presenceDefs])
+          .then(([users, presenceDefs]) => {
+            userId = users.entities[0].id;
+            defs = presenceDefs.entities;
+            return Presence.getUserIdPresencesSourceId(userId, tag);
+          })
+          .then(presence => {
+            nextPresence = changePresence(presence);
+            return Presence.patchUserIdPresencesSourceId(userId, tag, nextPresence);
+          })
+          .then(() => {
+            return Presence.getUserIdPresencesSourceId(userId, tag);
+          })
+          .then(presence => {
+            assert.deepEqual(
+              presence.presenceDefinition.id,
+              nextPresence.presenceDefinition.id);
+            done();
+          })
+          .catch(done.fail);
+
+        function changePresence(presence) {
+          const oldStatus = defs
+            .find(def => def.id === presence.presenceDefinition.id)
+            .systemPresence;
+          const newStatus = oldStatus === 'OFFLINE' || oldStatus === 'AVAILABLE'
+            ? 'AWAY'
+            : 'AVAILABLE';
+          const id = defs
+            .find(def => def.systemPresence.toUpperCase() === newStatus)
+            .id;
+          return {presenceDefinition: {id}};
+        }
+    });
 
   });
 });
