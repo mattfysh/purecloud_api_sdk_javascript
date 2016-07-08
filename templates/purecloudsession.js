@@ -41,8 +41,9 @@ PureCloudSession.prototype.setEnvironment = function setEnvironment(environment)
   * @returns Promise which resolves on successful authentication, otherwise rejects with an error
   **/
 PureCloudSession.prototype.login = function login() {
+    var self = this;
     return this.options.token ? this._testTokenAccess().catch(function(){
-            this._authenticate();
+            self._authenticate();
         }) : this._authenticate();
 };
 
