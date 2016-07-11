@@ -24,7 +24,7 @@ Reference from the CDN:
 
 ~~~html
 <!-- Replace `0.46.0` with the version you want to use. -->
-<script src="https://sdk-cdn.mypurecloud.com/javascript/0.46.0/purecloud-api-min.js"></script>
+<script src="https://sdk-cdn.mypurecloud.com/javascript/0.51.1/purecloud-api.min.js"></script>
 ~~~
 
 View the documentation on the [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/).
