@@ -4,7 +4,7 @@ title: Javascript SDK
 Javascript wrapper around the PureCloud Platform API
 
 ![Bower version](https://img.shields.io/bower/v/purecloud-api.svg)
-[![npm](https://img.shields.io/npm/v/purecloud_api_sdk_javascript.svg)](https://www.npmjs.com/package/purecloud)
+[![npm](https://img.shields.io/npm/v/purecloud_api_sdk_javascript.svg)](https://www.npmjs.com/package/purecloud_api_sdk_javascript)
 
 # Platform API Javascript Client
 
