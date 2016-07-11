@@ -14,10 +14,10 @@ Install with [Bower](http://bower.io):
 bower install purecloud-api
 ~~~
 
-Install with [NPM](https://www.npmjs.com/package/purecloud):
+Install with [NPM](https://www.npmjs.com/package/purecloud_api_sdk_javascript):
 
 ~~~sh
-npm install purecloud
+npm install purecloud_api_sdk_javascript
 ~~~
 
 Reference from the CDN:
@@ -69,6 +69,12 @@ var session = purecloud.platform.PureCloudSession({
 });
 ~~~
 
+After creating the session object, invoke the login method to authenticate with PureCloud.
+
+~~~
+pureCloudSession.login();
+~~~
+
 ## Environments
 If connecting to a PureCloud environment other than mypurecloud.com (e.g. mypurecloud.ie), set the ~environment~ in ~PureCloudSession~.
 
@@ -97,15 +103,17 @@ otherwise it rejects with an error.
 
 ~~~js
 var session = purecloud.platform.PureCloudSession({ /* your settings */ });
-var users = new purecloud.platform.UsersApi(session);
-users.getMe()
-    .then(function(user) {
-        // successfully got the user object, do something with it here
-    })
-    .catch(function(error) {
-        // an error occurred getting the user object
-    })
-    .finally(function() {
-        // this will be called for successes and failures
-    });
+pureCloudSession.login().then(function(){
+  var users = new purecloud.platform.UsersApi(session);
+  users.getMe()
+      .then(function(user) {
+          // successfully got the user object, do something with it here
+      })
+      .catch(function(error) {
+          // an error occurred getting the user object
+      })
+      .finally(function() {
+          // this will be called for successes and failures
+      });
+});
 ~~~
