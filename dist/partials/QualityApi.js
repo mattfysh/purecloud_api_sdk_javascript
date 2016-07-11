@@ -868,11 +868,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
-      "nextUri": "",
-      "previousUri": "",
-      "lastUri": "",
       "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    }
 }
@@ -927,11 +927,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
-      "nextUri": "",
-      "previousUri": "",
-      "lastUri": "",
       "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    }
 }
@@ -1213,11 +1213,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
-      "nextUri": "",
-      "previousUri": "",
-      "lastUri": "",
       "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    }
 }

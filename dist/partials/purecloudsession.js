@@ -1,7 +1,7 @@
 
 var superagent = require('superagent');
 
-//API VERSION - 0.52.1
+//API VERSION - 0.53.1
 /**
   * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
   * @class
@@ -194,7 +194,7 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
         .timeout(timeout);
 
     if (typeof window === 'undefined' ) {
-        var userAgent = 'PureCloud SDK/Javascript 0.52.1';
+        var userAgent = 'PureCloud SDK/Javascript 0.53.1';
         request = request.set('User-Agent', userAgent);
     }
 
