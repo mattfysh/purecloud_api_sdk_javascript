@@ -71,7 +71,7 @@ var session = purecloud.platform.PureCloudSession({
 
 After creating the session object, invoke the login method to authenticate with PureCloud.
 
-~~~
+~~~js
 pureCloudSession.login();
 ~~~
 
@@ -103,17 +103,18 @@ otherwise it rejects with an error.
 
 ~~~js
 var session = purecloud.platform.PureCloudSession({ /* your settings */ });
-pureCloudSession.login().then(function(){
-  var users = new purecloud.platform.UsersApi(session);
-  users.getMe()
+pureCloudSession.login()
+  .then(function(){
+    var users = new purecloud.platform.UsersApi(session);
+    users.getMe()
       .then(function(user) {
-          // successfully got the user object, do something with it here
+        // successfully got the user object, do something with it here
       })
       .catch(function(error) {
-          // an error occurred getting the user object
+        // an error occurred getting the user object
       })
       .finally(function() {
-          // this will be called for successes and failures
+        // this will be called for successes and failures
       });
 });
 ~~~
