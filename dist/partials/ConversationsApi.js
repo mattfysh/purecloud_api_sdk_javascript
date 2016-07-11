@@ -176,7 +176,7 @@ ConversationsApi.prototype.getCallbacks = function getCallbacks(){
    "countryCode": "",
    "isAutomated": true,
    "automatedCallbackConfigId": "",
-   "additionalInfo": {}
+   "data": {}
 }
   */
 ConversationsApi.prototype.postCallbacks = function postCallbacks(body){
@@ -1428,7 +1428,8 @@ ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes 
    "coverSheet": {
       "notes": "",
       "locale": ""
-   }
+   },
+   "timeZoneOffsetMinutes": 0
 }
   */
 ConversationsApi.prototype.postFaxes = function postFaxes(body){
@@ -1569,7 +1570,7 @@ ConversationsApi.prototype.patchConversationIdParticipantsParticipantIdAttribute
    "countryCode": "",
    "isAutomated": true,
    "automatedCallbackConfigId": "",
-   "additionalInfo": {}
+   "data": {}
 }
   */
 ConversationsApi.prototype.postConversationIdParticipantsParticipantIdCallbacks = function postConversationIdParticipantsParticipantIdCallbacks(conversationId, participantId, body){

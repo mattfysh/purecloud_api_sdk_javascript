@@ -76,8 +76,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
-   "downloadSharingUri": ""
+   "downloadSharingUri": "",
+   "sharingUri": ""
 }
   */
 FaxApi.prototype.putDocumentsDocumentId = function putDocumentsDocumentId(documentId, body){

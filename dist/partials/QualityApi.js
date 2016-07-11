@@ -1048,6 +1048,7 @@ QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumb
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "queues": [],
    "language": "",
    "agents": [],
    "keywords": [],
@@ -1134,6 +1135,7 @@ QualityApi.prototype.getKeywordsetsKeywordsetId = function getKeywordsetsKeyword
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "queues": [],
    "language": "",
    "agents": [],
    "keywords": [],
