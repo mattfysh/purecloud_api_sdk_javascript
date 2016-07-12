@@ -163,6 +163,14 @@ PureCloudSession.prototype.logout = function logout() {
 };
 
 /**
+  * @description Method to log additional data about requests. Does nothing by default but can be overridden to output to a custom function.
+  * @example pureCloudSession.debugLog = console.log;
+  */
+PureCloudSession.prototype.debugLog = function(params){
+
+};
+
+/**
   * @description Makes authenticated requests to PureCloud
   * @param {string} method - HTTP method verb, e.g. "get", "post"
   * @param {string} url - URL to request
@@ -176,6 +184,18 @@ PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query
 
 PureCloudSession.prototype._makeRequest = function _makeRequest(method, url, query, body) {
     var bearer = 'bearer ' + this.options.token;
+
+    var trace = method + " " + url;
+    if(query && Object.keys(query).count > 0 && query[Object.keys(query)[0]]){
+        trace += "\nQuery Params: " + JSON.stringify(query);
+    }
+
+    if(body){
+        trace += "\nBody: " + JSON.stringify(body);
+    }
+
+    this.debugLog(trace);
+
     var request = this._baseRequest(method, url)
         .set('Authorization', bearer)
         .query(query)
@@ -202,10 +222,18 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
 };
 
 PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
+    var self = this;
     return new Promise(function(resolve, reject) {
         request.end(function(error, res) {
-            if(error) return reject(error);
-            if(res.error) return reject(res);
+            if(error){
+                self.debugLog(error)
+                return reject(error);
+            }
+            if(res.error) {
+                self.debugLog(res.error);
+                return reject(res);
+            }
+            self.debugLog(res.body);
             resolve(res.body);
         });
     });

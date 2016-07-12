@@ -24,6 +24,8 @@ function getSession() {
     environment: environment
   });
 
+  session.debugLog = console.log;
+
   return session;
 }
 
