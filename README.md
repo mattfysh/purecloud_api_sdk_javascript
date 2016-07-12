@@ -46,6 +46,12 @@ For convenience, all modules are bundled together.
 
 Every module uses a ~PureCloudSession~ to make authenticated requests to the PureCloud API.
 
+**¡Auth Type Restrictions!**
+
+The **client-credentials** strategy only works when used in node.js. This is restricted intentionally because it is impossible for client credentials to be handled securely in a browser application.
+
+The **implicit** strategy only works when used in a browser. This is because a node.js application does not have a browser interface to display the PureCloud login window.
+
 ~~~js
 // Node.js - Client credentials strategy
 var purecloud = require('purecloud');
