@@ -868,11 +868,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    }
 }
@@ -927,11 +927,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    }
 }
@@ -1048,6 +1048,7 @@ QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumb
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "queues": [],
    "language": "",
    "agents": [],
    "keywords": [],
@@ -1134,6 +1135,7 @@ QualityApi.prototype.getKeywordsetsKeywordsetId = function getKeywordsetsKeyword
       "callingPartyNumber": "",
       "memberCount": 0
    },
+   "queues": [],
    "language": "",
    "agents": [],
    "keywords": [],
@@ -1211,11 +1213,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageNumber": 0,
       "total": 0,
       "entities": [],
-      "selfUri": "",
-      "previousUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
+      "selfUri": "",
       "pageCount": 0
    }
 }

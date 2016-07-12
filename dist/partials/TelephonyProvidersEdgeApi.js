@@ -1654,11 +1654,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
    "site": {
       "id": "",
       "name": "",
@@ -1805,11 +1800,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "edgeGroup": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
    "site": {
       "id": "",
       "name": "",

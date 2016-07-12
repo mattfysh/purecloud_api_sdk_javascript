@@ -4,7 +4,7 @@ title: Javascript SDK
 Javascript wrapper around the PureCloud Platform API
 
 ![Bower version](https://img.shields.io/bower/v/purecloud-api.svg)
-[![npm](https://img.shields.io/npm/v/purecloud.svg)](https://www.npmjs.com/package/purecloud)
+[![npm](https://img.shields.io/npm/v/purecloud_api_sdk_javascript.svg)](https://www.npmjs.com/package/purecloud_api_sdk_javascript)
 
 # Platform API Javascript Client
 
@@ -14,17 +14,17 @@ Install with [Bower](http://bower.io):
 bower install purecloud-api
 ~~~
 
-Install with [NPM](https://www.npmjs.com/package/purecloud):
+Install with [NPM](https://www.npmjs.com/package/purecloud_api_sdk_javascript):
 
 ~~~sh
-npm install purecloud
+npm install purecloud_api_sdk_javascript
 ~~~
 
 Reference from the CDN:
 
 ~~~html
 <!-- Replace `0.46.0` with the version you want to use. -->
-<script src="https://sdk-cdn.mypurecloud.com/javascript/0.46.0/purecloud-api-min.js"></script>
+<script src="https://sdk-cdn.mypurecloud.com/javascript/0.51.1/purecloud-api.min.js"></script>
 ~~~
 
 View the documentation on the [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/client-libraries/javascript/latest/).
@@ -45,6 +45,12 @@ For convenience, all modules are bundled together.
 ## Authentication
 
 Every module uses a ~PureCloudSession~ to make authenticated requests to the PureCloud API.
+
+**¡Auth Type Restrictions!**
+
+The **client-credentials** strategy only works when used in node.js. This is restricted intentionally because it is impossible for client credentials to be handled securely in a browser application.
+
+The **implicit** strategy only works when used in a browser. This is because a node.js application does not have a browser interface to display the PureCloud login window.
 
 ~~~js
 // Node.js - Client credentials strategy
@@ -67,6 +73,12 @@ var session = purecloud.platform.PureCloudSession({
   strategy: 'token',
   token: yourToken
 });
+~~~
+
+After creating the session object, invoke the login method to authenticate with PureCloud.
+
+~~~js
+pureCloudSession.login();
 ~~~
 
 ## Environments
@@ -97,15 +109,18 @@ otherwise it rejects with an error.
 
 ~~~js
 var session = purecloud.platform.PureCloudSession({ /* your settings */ });
-var users = new purecloud.platform.UsersApi(session);
-users.getMe()
-    .then(function(user) {
+pureCloudSession.login()
+  .then(function(){
+    var users = new purecloud.platform.UsersApi(session);
+    users.getMe()
+      .then(function(user) {
         // successfully got the user object, do something with it here
-    })
-    .catch(function(error) {
+      })
+      .catch(function(error) {
         // an error occurred getting the user object
-    })
-    .finally(function() {
+      })
+      .finally(function() {
         // this will be called for successes and failures
-    });
+      });
+});
 ~~~

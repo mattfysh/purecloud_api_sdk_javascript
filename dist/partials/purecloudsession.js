@@ -1,7 +1,7 @@
 
 var superagent = require('superagent');
 
-//API VERSION - 0.50.1
+//API VERSION - 0.54.2
 /**
   * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
   * @class
@@ -18,9 +18,12 @@ function PureCloudSession(options) {
         return new PureCloudSession(options);
     }
     this.options = options;
+
+    this._setValuesFromUrlHash();
+
     this.options.token = this._getToken();
     this.setEnvironment(this.options.environment);
-    this._setValuesFromUrlHash();
+
 }
 
 /**
@@ -38,8 +41,9 @@ PureCloudSession.prototype.setEnvironment = function setEnvironment(environment)
   * @returns Promise which resolves on successful authentication, otherwise rejects with an error
   **/
 PureCloudSession.prototype.login = function login() {
+    var self = this;
     return this.options.token ? this._testTokenAccess().catch(function(){
-            this._authenticate();
+            self._authenticate();
         }) : this._authenticate();
 };
 
@@ -140,8 +144,8 @@ PureCloudSession.prototype._setToken = function _setToken(token) {
 
 PureCloudSession.hasLocalStorage = (function() {
     try {
-        localStorage.setItem(mod, mod);
-        localStorage.removeItem(mod);
+        localStorage.setItem("mod", "mod");
+        localStorage.removeItem("mod");
         return true;
     } catch(e) {
         return false;
@@ -167,10 +171,7 @@ PureCloudSession.prototype.logout = function logout() {
   * @returns Promise resolving to the response body, otherwise rejects with an error
   */
 PureCloudSession.prototype.makeRequest = function makeRequest(method, url, query, body) {
-    var self = this;
-    return this.login().then(function() {
-        return self._makeRequest(method, url, query, body);
-    });
+    return this._makeRequest(method, url, query, body);
 };
 
 PureCloudSession.prototype._makeRequest = function _makeRequest(method, url, query, body) {
@@ -193,7 +194,7 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
         .timeout(timeout);
 
     if (typeof window === 'undefined' ) {
-        var userAgent = 'PureCloud SDK/Javascript 0.50.1';
+        var userAgent = 'PureCloud SDK/Javascript 0.54.2';
         request = request.set('User-Agent', userAgent);
     }
 
