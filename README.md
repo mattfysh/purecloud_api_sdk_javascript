@@ -124,3 +124,11 @@ pureCloudSession.login()
       });
 });
 ~~~
+
+## Debug Logging
+
+There are hooks to trace requests and responses.  To enable tracing, override the .debugLog method on the session object.
+
+~~~js
+pureCloudSession.debugLog = console.log;
+~~~
