@@ -135,3 +135,21 @@ describe('Modules', () => {
       .catch(done);
   });
 });
+
+describe('Login', () => {
+  it('should handle when a request is made before the login completes', (done) => {
+    let session = getSession();
+    const Auth = purecloud.AuthorizationApi(session);
+
+    session.login().then(function(){
+        done();
+    }).catch(()=>{
+        done.fail;
+    });;
+
+    Auth.getRoles()
+      .then((roles) => {
+        done.fail;
+    });
+  });
+});
