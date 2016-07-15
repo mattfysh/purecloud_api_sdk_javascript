@@ -40,7 +40,7 @@
         var userPresenceTopic = '';
 
         $(document).ready(function() {
-            $('button#logoutButton').click(function() { window.location = 'https://login.mypurecloud.com/logout'; });
+            $('button#logoutButton').click(function() { pureCloudSession.logout(); });
 
             pureCloudSession.login()
                 .then(function() {
