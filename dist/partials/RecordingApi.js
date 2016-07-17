@@ -670,5 +670,21 @@ RecordingApi.prototype.putSettings = function putSettings(body){
     return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
 
+/**
+  * @summary Retrieves a paged listing of screen recording sessions
+  * @memberOf RecordingApi#
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  */
+RecordingApi.prototype.getsScreensessions = function getsScreensessions(pageSize, pageNumber){
+    var requestPath = '/api/v2/recordings/screensessions';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery.pageSize = pageSize;
+    requestQuery.pageNumber = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
 
 module.exports = RecordingApi;
