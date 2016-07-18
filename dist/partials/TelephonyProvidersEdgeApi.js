@@ -254,7 +254,7 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdges = function postProvidersE
 /**
   * @summary Validates a street address
   * @memberOf TelephonyProvidersEdgeApi#
-  * @param {} body - 
+  * @param {} body - Address
   * @example
   * Body Example:
   * {
@@ -275,6 +275,9 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesAddressvalidation = functi
     var requestQuery = {};
     var requestBody;
 
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
     if(body !== undefined && body !== null){
       requestBody = body;
     }

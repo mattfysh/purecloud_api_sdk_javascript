@@ -1208,6 +1208,7 @@ OutboundApi.prototype.getDnclistsDnclistIdImportstatus = function getDnclistsDnc
 
 /**
   * @summary Add phone numbers to a Dialer DNC list.
+  * @description Only Internal DNC lists may be appended to
   * @memberOf OutboundApi#
   * @param {string} dncListId - DncList ID
   * @param {} body - DNC Phone Numbers
