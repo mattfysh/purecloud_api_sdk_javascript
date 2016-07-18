@@ -41,7 +41,7 @@
 
         $(document).ready(function() {
             $('button#logoutButton').click(function() { pureCloudSession.logout(); });
-
+            pureCloudSession.debugLog = function(message){ console.log(message)};
             pureCloudSession.login()
                 .then(function() {
                     // Get list of presences available

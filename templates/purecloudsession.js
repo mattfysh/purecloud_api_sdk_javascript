@@ -110,8 +110,13 @@ PureCloudSession.prototype._setValuesFromUrlHash = function setValuesFromUrlHash
             return obj;
         }, {});
 
-    if(hash.access_token) this._setToken(hash.access_token);
     if(hash.state) this.options.state = hash.state;
+
+    if(hash.access_token){
+        this._setToken(hash.access_token);
+        window.location.hash = "";
+    }
+
 };
 
 PureCloudSession.prototype._loginWithClientCredentials = function(clientId, clientSecret) {
@@ -129,9 +134,19 @@ PureCloudSession.prototype._loginWithClientCredentials = function(clientId, clie
 };
 
 PureCloudSession.prototype._getToken = function _getToken() {
-    if(this.options.token) return this.options.token;
+    if(this.options.token) {
+        if(this.debugLog){
+            this.debugLog("options.token already set")
+        }
+        return this.options.token;
+    }
     if(this.options.storageKey && PureCloudSession.hasLocalStorage) {
-        return localStorage.getItem(this.options.storageKey);
+
+        var token = localStorage.getItem(this.options.storageKey);
+
+        if(this.debugLog){
+            this.debugLog("token from local storage: " + token);
+        }
     }
 };
 
