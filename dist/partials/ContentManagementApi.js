@@ -790,7 +790,8 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "group": {
       "name": "",

@@ -93,7 +93,8 @@ UserRecordingsApi.prototype.getRecordingId = function getRecordingId(recordingId
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "contentLength": 0,
    "durationMilliseconds": 0,

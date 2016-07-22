@@ -491,7 +491,8 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
    "addresses": [],
    "title": "",
    "username": "",
-   "images": []
+   "images": [],
+   "version": 0
   },
   "ringNumber": 0,
   "joined": true,
@@ -541,7 +542,8 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
    "addresses": [],
    "title": "",
    "username": "",
-   "images": []
+   "images": [],
+   "version": 0
   },
   "ringNumber": 0,
   "joined": true,
@@ -612,7 +614,8 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "ringNumber": 0,
    "joined": true,

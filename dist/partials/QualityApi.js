@@ -135,7 +135,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -145,7 +146,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "conversation": {
       "name": "",
@@ -155,7 +157,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -201,7 +204,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    }
 }
   */
@@ -259,7 +263,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -269,7 +274,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "conversation": {
       "name": "",
@@ -279,7 +285,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -325,7 +332,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    }
 }
   */
@@ -420,7 +428,8 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -439,7 +448,8 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -449,7 +459,8 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "calibration": {
       "name": "",
@@ -569,7 +580,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -588,7 +600,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -598,7 +611,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "calibration": {
       "name": "",
@@ -871,8 +885,8 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "selfUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -930,8 +944,8 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "selfUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -1216,8 +1230,8 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "selfUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }

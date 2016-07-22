@@ -51,7 +51,8 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "createdDate": "",
    "modifiedBy": {
@@ -62,7 +63,8 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "modifiedDate": ""
 }
@@ -119,7 +121,8 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "createdDate": "",
    "modifiedBy": {
@@ -130,7 +133,8 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "modifiedDate": ""
 }

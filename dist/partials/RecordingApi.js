@@ -174,7 +174,8 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = funct
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "description": ""
 }
@@ -250,7 +251,8 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotati
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "description": ""
 }

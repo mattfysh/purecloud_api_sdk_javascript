@@ -82,7 +82,8 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "read": true,
    "audioRecordingDurationSeconds": 0,
@@ -99,7 +100,8 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    }
 }
   */
