@@ -318,6 +318,7 @@ RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "sourceQueueId": "",
    "memberCount": 0
 }
   */

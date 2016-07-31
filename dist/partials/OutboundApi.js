@@ -404,7 +404,8 @@ OutboundApi.prototype.getCampaigns = function getCampaigns(pageSize, pageNumber,
       "fieldName": "",
       "direction": "",
       "numeric": true
-   }
+   },
+   "noAnswerTimeout": 0
 }
   */
 OutboundApi.prototype.postCampaigns = function postCampaigns(body){
@@ -512,7 +513,8 @@ OutboundApi.prototype.getCampaignsCampaignId = function getCampaignsCampaignId(c
       "fieldName": "",
       "direction": "",
       "numeric": true
-   }
+   },
+   "noAnswerTimeout": 0
 }
   */
 OutboundApi.prototype.putCampaignsCampaignId = function putCampaignsCampaignId(campaignId, body){

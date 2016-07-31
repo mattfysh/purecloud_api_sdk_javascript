@@ -885,8 +885,8 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "selfUri": "",
       "firstUri": "",
       "previousUri": "",
-      "lastUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -944,8 +944,8 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "selfUri": "",
       "firstUri": "",
       "previousUri": "",
-      "lastUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -1230,8 +1230,8 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "selfUri": "",
       "firstUri": "",
       "previousUri": "",
-      "lastUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -1265,6 +1265,53 @@ QualityApi.prototype.getPublishedformsFormId = function getPublishedformsFormId(
     }
     requestPath = requestPath.replace('{formId}', formId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Retrieve the spotability statistic
+  * @memberOf QualityApi#
+  * @param {} body - Keyword Set
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "description": "",
+   "queue": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "mediaSettings": {},
+      "bullseye": {},
+      "acwSettings": {},
+      "skillEvaluationMethod": "",
+      "queueFlow": {},
+      "callingPartyName": "",
+      "callingPartyNumber": "",
+      "memberCount": 0
+   },
+   "queues": [],
+   "language": "",
+   "agents": [],
+   "keywords": [],
+   "participantPurposes": []
+}
+  */
+QualityApi.prototype.postSpotability = function postSpotability(body){
+    var requestPath = '/api/v2/quality/spotability';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 
