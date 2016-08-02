@@ -46,7 +46,8 @@ ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber,
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "dateCreated": ""
 }
@@ -101,7 +102,8 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "dateCreated": ""
 }
@@ -182,7 +184,8 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "dateCreated": "",
    "interactionType": ""
@@ -266,7 +269,8 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "dateCreated": "",
    "interactionType": ""

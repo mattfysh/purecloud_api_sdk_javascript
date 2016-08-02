@@ -1464,6 +1464,15 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettings = functio
   * Body Example:
   * {
    "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
    "phoneMetaBase": {
       "id": "",
       "name": "",
@@ -1554,6 +1563,15 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonebasesettingsPhonebaseI
   * Body Example:
   * {
    "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
    "phoneMetaBase": {
       "id": "",
       "name": "",
@@ -1618,10 +1636,12 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
   * @param {string} phoneBaseSettingsid - Filter by phoneBaseSettings.id
   * @param {string} linesloggedInUserid - Filter by lines.loggedInUser.id
   * @param {string} phone_hardwareId - Filter by phone_hardwareId
+  * @param {string} linesid - Filter by lines.id
+  * @param {string} linesname - Filter by lines.name
   * @param {array} expand - Fields to expand in the response, comma-separated
   * @param {array} fields - Fields and properties to get, comma-separated
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, expand, fields){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, linesid, linesname, expand, fields){
     var requestPath = '/api/v2/telephony/providers/edges/phones';
     var requestQuery = {};
     var requestBody;
@@ -1635,6 +1655,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
     requestQuery.phoneBaseSettings.id = phoneBaseSettingsid;
     requestQuery.lines.loggedInUser.id = linesloggedInUserid;
     requestQuery.phone_hardwareId = phone_hardwareId;
+    requestQuery.lines.id = linesid;
+    requestQuery.lines.name = linesname;
     requestQuery.expand = expand;
     requestQuery.fields = fields;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
@@ -2638,6 +2660,15 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
   * Body Example:
   * {
    "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
    "schema": {
       "id": "",
       "name": "",

@@ -245,7 +245,8 @@ UsersApi.prototype.deleteUserId = function deleteUserId(userId){
    "addresses": [],
    "title": "",
    "username": "",
-   "images": []
+   "images": [],
+   "version": 0
 }
   */
 UsersApi.prototype.patchUserId = function patchUserId(userId, body){
@@ -300,7 +301,8 @@ UsersApi.prototype.getUserIdCallforwarding = function getUserIdCallforwarding(us
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "enabled": true,
    "phoneNumber": "",
@@ -342,7 +344,8 @@ UsersApi.prototype.putUserIdCallforwarding = function putUserIdCallforwarding(us
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "enabled": true,
    "phoneNumber": "",
@@ -465,7 +468,8 @@ UsersApi.prototype.getUserIdOutofoffice = function getUserIdOutofoffice(userId){
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "startDate": "",
    "endDate": "",

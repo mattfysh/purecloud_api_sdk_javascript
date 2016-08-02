@@ -211,6 +211,43 @@ ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbac
 };
 
 /**
+  * @summary Update a conversation by disconnecting all of the participants
+  * @memberOf ConversationsApi#
+  * @param {string} callbackId - 
+  * @param {} body - Conversation
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": ""
+}
+  */
+ConversationsApi.prototype.patchCallbacksCallbackId = function patchCallbacksCallbackId(callbackId, body){
+    var requestPath = '/api/v2/conversations/callbacks/{callbackId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(callbackId === undefined || callbackId === null){
+      throw new Error('Missing required  parameter: callbackId');
+    }
+    requestPath = requestPath.replace('{callbackId}', callbackId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Update conversation participant
   * @memberOf ConversationsApi#
   * @param {string} callbackId - 
@@ -283,6 +320,59 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdAttr
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update conversation participant's communication by disconnecting it.
+  * @memberOf ConversationsApi#
+  * @param {string} callbackId - 
+  * @param {string} participantId - 
+  * @param {string} communicationId - 
+  * @param {} body - Participant
+  * @example
+  * Body Example:
+  * {
+   "wrapup": {
+      "code": "",
+      "name": "",
+      "notes": "",
+      "tags": [],
+      "durationSeconds": 0,
+      "endTime": "",
+      "provisional": true
+   },
+   "state": "",
+   "recording": true,
+   "muted": true,
+   "confined": true,
+   "held": true,
+   "wrapupSkipped": true
+}
+  */
+ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdCommunicationsCommunicationId = function patchCallbacksCallbackIdParticipantsParticipantIdCommunicationsCommunicationId(callbackId, participantId, communicationId, body){
+    var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/communications/{communicationId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(callbackId === undefined || callbackId === null){
+      throw new Error('Missing required  parameter: callbackId');
+    }
+    requestPath = requestPath.replace('{callbackId}', callbackId);
+    if(participantId === undefined || participantId === null){
+      throw new Error('Missing required  parameter: participantId');
+    }
+    requestPath = requestPath.replace('{participantId}', participantId);
+    if(communicationId === undefined || communicationId === null){
+      throw new Error('Missing required  parameter: communicationId');
+    }
+    requestPath = requestPath.replace('{communicationId}', communicationId);
     if(body === undefined || body === null){
       throw new Error('Missing required  parameter: body');
     }
@@ -497,7 +587,7 @@ ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, bo
 };
 
 /**
-  * @summary Update conversation
+  * @summary Update a conversation by setting it's recording state or disconnecting all of the participants
   * @memberOf ConversationsApi#
   * @param {string} callId - 
   * @param {} body - Conversation
@@ -511,7 +601,8 @@ ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, bo
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
-   "recordingState": ""
+   "recordingState": "",
+   "state": ""
 }
   */
 ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, body){
@@ -547,7 +638,8 @@ ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, 
    "participants": [],
    "conversationIds": [],
    "maxParticipants": 0,
-   "recordingState": ""
+   "recordingState": "",
+   "state": ""
 }
   */
 ConversationsApi.prototype.postCallsCallIdParticipants = function postCallsCallIdParticipants(callId, body){
@@ -641,6 +733,59 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdAttributes =
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update conversation participant's communication by disconnecting it.
+  * @memberOf ConversationsApi#
+  * @param {string} callId - 
+  * @param {string} participantId - 
+  * @param {string} communicationId - 
+  * @param {} body - Participant
+  * @example
+  * Body Example:
+  * {
+   "wrapup": {
+      "code": "",
+      "name": "",
+      "notes": "",
+      "tags": [],
+      "durationSeconds": 0,
+      "endTime": "",
+      "provisional": true
+   },
+   "state": "",
+   "recording": true,
+   "muted": true,
+   "confined": true,
+   "held": true,
+   "wrapupSkipped": true
+}
+  */
+ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdCommunicationsCommunicationId = function patchCallsCallIdParticipantsParticipantIdCommunicationsCommunicationId(callId, participantId, communicationId, body){
+    var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/communications/{communicationId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(callId === undefined || callId === null){
+      throw new Error('Missing required  parameter: callId');
+    }
+    requestPath = requestPath.replace('{callId}', callId);
+    if(participantId === undefined || participantId === null){
+      throw new Error('Missing required  parameter: participantId');
+    }
+    requestPath = requestPath.replace('{participantId}', participantId);
+    if(communicationId === undefined || communicationId === null){
+      throw new Error('Missing required  parameter: communicationId');
+    }
+    requestPath = requestPath.replace('{communicationId}', communicationId);
     if(body === undefined || body === null){
       throw new Error('Missing required  parameter: body');
     }
@@ -882,6 +1027,43 @@ ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
 };
 
 /**
+  * @summary Update a conversation by disconnecting all of the participants
+  * @memberOf ConversationsApi#
+  * @param {string} chatId - 
+  * @param {} body - Conversation
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": ""
+}
+  */
+ConversationsApi.prototype.patchChatsChatId = function patchChatsChatId(chatId, body){
+    var requestPath = '/api/v2/conversations/chats/{chatId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(chatId === undefined || chatId === null){
+      throw new Error('Missing required  parameter: chatId');
+    }
+    requestPath = requestPath.replace('{chatId}', chatId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Update conversation participant
   * @memberOf ConversationsApi#
   * @param {string} chatId - 
@@ -954,6 +1136,59 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdAttributes =
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update conversation participant's communication by disconnecting it.
+  * @memberOf ConversationsApi#
+  * @param {string} chatId - 
+  * @param {string} participantId - 
+  * @param {string} communicationId - 
+  * @param {} body - Participant
+  * @example
+  * Body Example:
+  * {
+   "wrapup": {
+      "code": "",
+      "name": "",
+      "notes": "",
+      "tags": [],
+      "durationSeconds": 0,
+      "endTime": "",
+      "provisional": true
+   },
+   "state": "",
+   "recording": true,
+   "muted": true,
+   "confined": true,
+   "held": true,
+   "wrapupSkipped": true
+}
+  */
+ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdCommunicationsCommunicationId = function patchChatsChatIdParticipantsParticipantIdCommunicationsCommunicationId(chatId, participantId, communicationId, body){
+    var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/communications/{communicationId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(chatId === undefined || chatId === null){
+      throw new Error('Missing required  parameter: chatId');
+    }
+    requestPath = requestPath.replace('{chatId}', chatId);
+    if(participantId === undefined || participantId === null){
+      throw new Error('Missing required  parameter: participantId');
+    }
+    requestPath = requestPath.replace('{participantId}', participantId);
+    if(communicationId === undefined || communicationId === null){
+      throw new Error('Missing required  parameter: communicationId');
+    }
+    requestPath = requestPath.replace('{communicationId}', communicationId);
     if(body === undefined || body === null){
       throw new Error('Missing required  parameter: body');
     }
@@ -1074,6 +1309,43 @@ ConversationsApi.prototype.getEmailsEmailId = function getEmailsEmailId(emailId)
     }
     requestPath = requestPath.replace('{emailId}', emailId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update a conversation by disconnecting all of the participants
+  * @memberOf ConversationsApi#
+  * @param {string} emailId - 
+  * @param {} body - Conversation
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": ""
+}
+  */
+ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emailId, body){
+    var requestPath = '/api/v2/conversations/emails/{emailId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(emailId === undefined || emailId === null){
+      throw new Error('Missing required  parameter: emailId');
+    }
+    requestPath = requestPath.replace('{emailId}', emailId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
 };
 
 /**

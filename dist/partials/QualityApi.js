@@ -135,7 +135,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -145,7 +146,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "conversation": {
       "name": "",
@@ -155,7 +157,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -201,7 +204,8 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    }
 }
   */
@@ -259,7 +263,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -269,7 +274,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "conversation": {
       "name": "",
@@ -279,7 +285,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -325,7 +332,8 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    }
 }
   */
@@ -420,7 +428,8 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -439,7 +448,8 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -449,7 +459,8 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "calibration": {
       "name": "",
@@ -569,7 +580,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "participants": [],
       "conversationIds": [],
       "maxParticipants": 0,
-      "recordingState": ""
+      "recordingState": "",
+      "state": ""
    },
    "evaluationForm": {
       "name": "",
@@ -588,7 +600,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "agent": {
       "name": "",
@@ -598,7 +611,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "addresses": [],
       "title": "",
       "username": "",
-      "images": []
+      "images": [],
+      "version": 0
    },
    "calibration": {
       "name": "",
@@ -1251,6 +1265,53 @@ QualityApi.prototype.getPublishedformsFormId = function getPublishedformsFormId(
     }
     requestPath = requestPath.replace('{formId}', formId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Retrieve the spotability statistic
+  * @memberOf QualityApi#
+  * @param {} body - Keyword Set
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "description": "",
+   "queue": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "mediaSettings": {},
+      "bullseye": {},
+      "acwSettings": {},
+      "skillEvaluationMethod": "",
+      "queueFlow": {},
+      "callingPartyName": "",
+      "callingPartyNumber": "",
+      "memberCount": 0
+   },
+   "queues": [],
+   "language": "",
+   "agents": [],
+   "keywords": [],
+   "participantPurposes": []
+}
+  */
+QualityApi.prototype.postSpotability = function postSpotability(body){
+    var requestPath = '/api/v2/quality/spotability';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 
