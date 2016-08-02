@@ -24,7 +24,17 @@ function getSession() {
     environment: environment
   });
 
-  session.debugLog = console.log;
+  session.debugLog = function(message){
+      try {
+          var object = JSON.parse(message);
+          if(object.error){
+                console.log(object.error);
+          }
+      } catch (e) {
+
+      }
+
+  }
 
   return session;
 }

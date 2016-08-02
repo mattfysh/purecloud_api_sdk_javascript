@@ -220,7 +220,8 @@ PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
     return new Promise(function(resolve, reject) {
         request.end(function(error, res) {
             if(self.debugLog){
-                self.debugLog(error || res.error || res.body)
+                self.debugLog(res.headers);
+                self.debugLog(error || res.error || res.body);
             }
 
             if(error){

@@ -47,7 +47,7 @@ function {{&moduleName}}(session) {
     requestPath = requestPath.replace('{{=<% %>=}}{<%&name%>}<%={{ }}=%>', {{&camelCaseName}});
       {{/isPathParameter}}
       {{#isQueryParameter}}
-    requestQuery.{{&name}} = {{&camelCaseName}};
+    requestQuery["{{&name}}"] = {{&camelCaseName}};
       {{/isQueryParameter}}
       {{#isBodyParameter}}
     if({{&camelCaseName}} !== undefined && {{&camelCaseName}} !== null){
