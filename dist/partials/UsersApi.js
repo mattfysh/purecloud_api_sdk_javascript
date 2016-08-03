@@ -98,7 +98,7 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
-  * @param {array} expand - Which fields, if any, to expand
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
   * @example
   * 200 Response Example:
   * {
@@ -238,7 +238,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
   * @description This request is not valid when using the Client Credentials OAuth grant.
   * @memberOf UsersApi
   * @instance
-  * @param {array} expand - Which fields, if any, to expand.
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations
   * @example
   * 200 Response Example:
   * {
@@ -433,7 +433,7 @@ UsersApi.prototype.postSearch = function postSearch(body){
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {array} expand - Which fields, if any, to expand
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
   * @example
   * 200 Response Example:
   * {

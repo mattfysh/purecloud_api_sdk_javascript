@@ -153,6 +153,12 @@ function parseJsonSchema(opts, type){
                 } else if(parameter.in === 'query'){
                     parameter.isQueryParameter = true;
                 }
+
+                if (parameter["items"] != null && parameter["items"]["enum"] != null){
+                     parameter["description"] =  parameter["description"] + " Valid Values: " + parameter["items"]["enum"].join(", ")
+                }
+
+
                 method.parameters.push(parameter);
 
             });

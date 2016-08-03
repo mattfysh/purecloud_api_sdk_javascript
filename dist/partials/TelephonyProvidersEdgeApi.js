@@ -2021,7 +2021,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinebasesettingsLinebaseId 
   * @param {integer} pageNumber - Page number
   * @param {string} name - Name
   * @param {string} sortBy - Value by which to sort
-  * @param {array} expand - Fields to expand in the response, comma-separated
+  * @param {array} expand - Fields to expand in the response, comma-separated Valid Values: properties, site, edgeGroup, primaryEdge, secondaryEdge, edges, assignedUser
   * @example
   * 200 Response Example:
   * {
@@ -3010,8 +3010,8 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
   * @param {string} phone_hardwareId - Filter by phone_hardwareId
   * @param {string} linesid - Filter by lines.id
   * @param {string} linesname - Filter by lines.name
-  * @param {array} expand - Fields to expand in the response, comma-separated
-  * @param {array} fields - Fields and properties to get, comma-separated
+  * @param {array} expand - Fields to expand in the response, comma-separated Valid Values: properties, site, status, status.primaryEdgesStatus, status.secondaryEdgesStatus, phoneBaseSettings, lines
+  * @param {array} fields - Fields and properties to get, comma-separated Valid Values: webRtcUser, properties.*, lines.loggedInUser
   * @example
   * 200 Response Example:
   * {

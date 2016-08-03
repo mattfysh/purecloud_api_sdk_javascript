@@ -17,7 +17,7 @@ function NotificationsApi(session) {
   * @summary Get available notification topics.
   * @memberOf NotificationsApi
   * @instance
-  * @param {array} expand - Which fields, if any, to expand
+  * @param {array} expand - Which fields, if any, to expand Valid Values: description, requiresPermissions, schema
   * @example
   * 200 Response Example:
   * {
