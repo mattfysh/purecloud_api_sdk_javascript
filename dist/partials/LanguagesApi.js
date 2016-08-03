@@ -1,7 +1,7 @@
 /**
-* @class
+* @class LanguagesApi
 * @example
-* var api = new LanguagesApi(pureCloudSession);
+* var api = new purecloud.platform.LanguagesApi(pureCloudSession);
 */
 function LanguagesApi(session) {
     if(!(this instanceof LanguagesApi)) {
@@ -15,29 +15,45 @@ function LanguagesApi(session) {
 
 /**
   * @summary Get the list of supported languages.
-  * @memberOf LanguagesApi#
+  * @memberOf LanguagesApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
   * @param {string} name - Name
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 LanguagesApi.prototype.getLanguages = function getLanguages(pageSize, pageNumber, sortOrder, name){
     var requestPath = '/api/v2/languages';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.name = name;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortOrder"] = sortOrder;
+    requestQuery["name"] = name;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create Language
-  * @memberOf LanguagesApi#
+  * @memberOf LanguagesApi
+  * @instance
   * @param {} body - Language
   * @example
   * Body Example:
@@ -46,6 +62,16 @@ LanguagesApi.prototype.getLanguages = function getLanguages(pageSize, pageNumber
    "dateModified": "",
    "state": "",
    "version": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": "",
+   "selfUri": ""
 }
   */
 LanguagesApi.prototype.postLanguages = function postLanguages(body){
@@ -64,8 +90,19 @@ LanguagesApi.prototype.postLanguages = function postLanguages(body){
 
 /**
   * @summary Get language
-  * @memberOf LanguagesApi#
+  * @memberOf LanguagesApi
+  * @instance
   * @param {string} languageId - Language ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": "",
+   "selfUri": ""
+}
   */
 LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
     var requestPath = '/api/v2/languages/{languageId}';
@@ -81,7 +118,8 @@ LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
 
 /**
   * @summary Update Language
-  * @memberOf LanguagesApi#
+  * @memberOf LanguagesApi
+  * @instance
   * @param {string} languageId - Language ID
   * @param {} body - Language
   * @example
@@ -91,6 +129,16 @@ LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
    "dateModified": "",
    "state": "",
    "version": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": "",
+   "selfUri": ""
 }
   */
 LanguagesApi.prototype.putLanguageId = function putLanguageId(languageId, body){
@@ -113,7 +161,8 @@ LanguagesApi.prototype.putLanguageId = function putLanguageId(languageId, body){
 
 /**
   * @summary Delete Language
-  * @memberOf LanguagesApi#
+  * @memberOf LanguagesApi
+  * @instance
   * @param {string} languageId - Language ID
   */
 LanguagesApi.prototype.deleteLanguageId = function deleteLanguageId(languageId){

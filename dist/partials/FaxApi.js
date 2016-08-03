@@ -1,7 +1,7 @@
 /**
-* @class
+* @class FaxApi
 * @example
-* var api = new FaxApi(pureCloudSession);
+* var api = new purecloud.platform.FaxApi(pureCloudSession);
 */
 function FaxApi(session) {
     if(!(this instanceof FaxApi)) {
@@ -15,24 +15,70 @@ function FaxApi(session) {
 
 /**
   * @summary Get a list of fax documents.
-  * @memberOf FaxApi#
+  * @memberOf FaxApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
     var requestPath = '/api/v2/fax/documents';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a document.
-  * @memberOf FaxApi#
+  * @memberOf FaxApi
+  * @instance
   * @param {string} documentId - Document ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "contentType": "",
+   "contentLength": 0,
+   "filename": "",
+   "read": true,
+   "pageCount": 0,
+   "callerAddress": "",
+   "receiverAddress": "",
+   "thumbnails": [],
+   "downloadSharingUri": "",
+   "sharingUri": "",
+   "selfUri": ""
+}
   */
 FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(documentId){
     var requestPath = '/api/v2/fax/documents/{documentId}';
@@ -48,7 +94,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
 
 /**
   * @summary Update a fax document.
-  * @memberOf FaxApi#
+  * @memberOf FaxApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {} body - Document
   * @example
@@ -79,6 +126,36 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "downloadSharingUri": "",
    "sharingUri": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "contentType": "",
+   "contentLength": 0,
+   "filename": "",
+   "read": true,
+   "pageCount": 0,
+   "callerAddress": "",
+   "receiverAddress": "",
+   "thumbnails": [],
+   "downloadSharingUri": "",
+   "sharingUri": "",
+   "selfUri": ""
+}
   */
 FaxApi.prototype.putDocumentsDocumentId = function putDocumentsDocumentId(documentId, body){
     var requestPath = '/api/v2/fax/documents/{documentId}';
@@ -100,7 +177,8 @@ FaxApi.prototype.putDocumentsDocumentId = function putDocumentsDocumentId(docume
 
 /**
   * @summary Delete a fax document.
-  * @memberOf FaxApi#
+  * @memberOf FaxApi
+  * @instance
   * @param {string} documentId - Document ID
   */
 FaxApi.prototype.deleteDocumentsDocumentId = function deleteDocumentsDocumentId(documentId){
@@ -117,8 +195,16 @@ FaxApi.prototype.deleteDocumentsDocumentId = function deleteDocumentsDocumentId(
 
 /**
   * @summary Download a fax document.
-  * @memberOf FaxApi#
+  * @memberOf FaxApi
+  * @instance
   * @param {string} documentId - Document ID
+  * @example
+  * 200 Response Example:
+  * {
+   "contentLocationUri": "",
+   "imageUri": "",
+   "thumbnails": []
+}
   */
 FaxApi.prototype.getDocumentsDocumentIdContent = function getDocumentsDocumentIdContent(documentId){
     var requestPath = '/api/v2/fax/documents/{documentId}/content';
@@ -134,7 +220,15 @@ FaxApi.prototype.getDocumentsDocumentIdContent = function getDocumentsDocumentId
 
 /**
   * @summary Get fax summary
-  * @memberOf FaxApi#
+  * @memberOf FaxApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "readCount": 0,
+   "unreadCount": 0,
+   "totalCount": 0
+}
   */
 FaxApi.prototype.getSummary = function getSummary(){
     var requestPath = '/api/v2/fax/summary';

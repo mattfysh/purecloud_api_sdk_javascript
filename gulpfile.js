@@ -161,7 +161,7 @@ function parseJsonSchema(opts, type){
                 method.parameters[method.parameters.length-1].last = true;
             }
 
-            if(!op.responses['200']){
+            if(op.responses['200']){
                 var response = op.responses['200'];
 
                 if (response && response.schema){

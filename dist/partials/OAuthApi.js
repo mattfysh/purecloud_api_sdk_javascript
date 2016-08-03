@@ -1,7 +1,7 @@
 /**
-* @class
+* @class OAuthApi
 * @example
-* var api = new OAuthApi(pureCloudSession);
+* var api = new purecloud.platform.OAuthApi(pureCloudSession);
 */
 function OAuthApi(session) {
     if(!(this instanceof OAuthApi)) {
@@ -15,7 +15,22 @@ function OAuthApi(session) {
 
 /**
   * @summary The list of OAuth clients
-  * @memberOf OAuthApi#
+  * @memberOf OAuthApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 OAuthApi.prototype.getClients = function getClients(){
     var requestPath = '/api/v2/oauth/clients';
@@ -32,7 +47,8 @@ The preferred authorizedGrantTypes is 'CODE' which requires applications to send
 If the client is unable to secure the client secret then the 'TOKEN' grant type aka IMPLICIT should be used. This is would be for browser or mobile apps. 
 If a client is to be used outside of the context of a user then the 'CLIENT-CREDENTIALS' grant may be used. In this case the client must be granted roles 
 via the 'roleIds' field.
-  * @memberOf OAuthApi#
+  * @memberOf OAuthApi
+  * @instance
   * @param {} body - Client
   * @example
   * Body Example:
@@ -44,6 +60,19 @@ via the 'roleIds' field.
    "secret": "",
    "roleIds": [],
    "authorizedGrantType": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "accessTokenValiditySeconds": 0,
+   "description": "",
+   "registeredRedirectUri": [],
+   "secret": "",
+   "roleIds": [],
+   "authorizedGrantType": "",
+   "selfUri": ""
 }
   */
 OAuthApi.prototype.postClients = function postClients(body){
@@ -62,8 +91,22 @@ OAuthApi.prototype.postClients = function postClients(body){
 
 /**
   * @summary Get OAuth Client
-  * @memberOf OAuthApi#
+  * @memberOf OAuthApi
+  * @instance
   * @param {string} clientId - Client ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "accessTokenValiditySeconds": 0,
+   "description": "",
+   "registeredRedirectUri": [],
+   "secret": "",
+   "roleIds": [],
+   "authorizedGrantType": "",
+   "selfUri": ""
+}
   */
 OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
     var requestPath = '/api/v2/oauth/clients/{clientId}';
@@ -79,7 +122,8 @@ OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
 
 /**
   * @summary Update OAuth Client
-  * @memberOf OAuthApi#
+  * @memberOf OAuthApi
+  * @instance
   * @param {string} clientId - Client ID
   * @param {} body - Client
   * @example
@@ -92,6 +136,19 @@ OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
    "secret": "",
    "roleIds": [],
    "authorizedGrantType": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "accessTokenValiditySeconds": 0,
+   "description": "",
+   "registeredRedirectUri": [],
+   "secret": "",
+   "roleIds": [],
+   "authorizedGrantType": "",
+   "selfUri": ""
 }
   */
 OAuthApi.prototype.putClientsClientId = function putClientsClientId(clientId, body){
@@ -114,7 +171,8 @@ OAuthApi.prototype.putClientsClientId = function putClientsClientId(clientId, bo
 
 /**
   * @summary Delete OAuth Client
-  * @memberOf OAuthApi#
+  * @memberOf OAuthApi
+  * @instance
   * @param {string} clientId - Client ID
   */
 OAuthApi.prototype.deleteClientsClientId = function deleteClientsClientId(clientId){
@@ -132,7 +190,8 @@ OAuthApi.prototype.deleteClientsClientId = function deleteClientsClientId(client
 /**
   * @summary Regenerate Client Secret
   * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
-  * @memberOf OAuthApi#
+  * @memberOf OAuthApi
+  * @instance
   * @param {string} clientId - Client ID
   */
 OAuthApi.prototype.postClientsClientIdSecret = function postClientsClientIdSecret(clientId){

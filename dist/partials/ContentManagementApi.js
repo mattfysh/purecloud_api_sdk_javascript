@@ -1,7 +1,7 @@
 /**
-* @class
+* @class ContentManagementApi
 * @example
-* var api = new ContentManagementApi(pureCloudSession);
+* var api = new purecloud.platform.ContentManagementApi(pureCloudSession);
 */
 function ContentManagementApi(session) {
     if(!(this instanceof ContentManagementApi)) {
@@ -15,7 +15,8 @@ function ContentManagementApi(session) {
 
 /**
   * @summary Query audits
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {} body - Allows for a filtered query returning facet information
   * @example
   * Body Example:
@@ -28,6 +29,26 @@ function ContentManagementApi(session) {
    "filters": [],
    "attributeFilters": [],
    "includeShares": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   },
+   "facetInfo": {
+      "attributes": [],
+      "facets": []
+   }
 }
   */
 ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
@@ -46,7 +67,8 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
 
 /**
   * @summary Get a list of documents.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} name - Name
   * @param {string} expand - Expand some document fields
@@ -56,6 +78,20 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - name or dateCreated
   * @param {string} sortOrder - ascending or descending
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getDocuments = function getDocuments(workspaceId, name, expand, pageSize, pageNumber, sortBy, sortOrder){
     var requestPath = '/api/v2/contentmanagement/documents';
@@ -65,19 +101,20 @@ ContentManagementApi.prototype.getDocuments = function getDocuments(workspaceId,
     if(workspaceId === undefined || workspaceId === null){
       throw new Error('Missing required  parameter: workspaceId');
     }
-    requestQuery.workspaceId = workspaceId;
-    requestQuery.name = name;
-    requestQuery.expand = expand;
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["workspaceId"] = workspaceId;
+    requestQuery["name"] = name;
+    requestQuery["expand"] = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["sortOrder"] = sortOrder;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Add a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {} body - Document
   * @param {string} copySource - Copy a document within a workspace or to a new workspace. Provide a document ID as the copy source.
   * @param {string} moveSource - Move a document to a new workspace. Provide a document ID as the move source.
@@ -94,6 +131,62 @@ ContentManagementApi.prototype.getDocuments = function getDocuments(workspaceId,
    "tags": [],
    "tagIds": []
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "changeNumber": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "dateUploaded": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "contentType": "",
+   "contentLength": 0,
+   "systemType": "",
+   "filename": "",
+   "pageCount": 0,
+   "read": true,
+   "callerAddress": "",
+   "receiverAddress": "",
+   "tags": [],
+   "tagValues": [],
+   "attributes": [],
+   "thumbnails": [],
+   "uploadStatus": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadDestinationUri": "",
+   "uploadMethod": "",
+   "lockInfo": {
+      "lockedBy": {},
+      "dateCreated": "",
+      "dateExpires": "",
+      "action": ""
+   },
+   "acl": [],
+   "sharingStatus": "",
+   "downloadSharingUri": "",
+   "sharingUri": "",
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.postDocuments = function postDocuments(body, copySource, moveSource, override){
     var requestPath = '/api/v2/contentmanagement/documents';
@@ -106,20 +199,77 @@ ContentManagementApi.prototype.postDocuments = function postDocuments(body, copy
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.copySource = copySource;
-    requestQuery.moveSource = moveSource;
-    requestQuery.override = override;
+    requestQuery["copySource"] = copySource;
+    requestQuery["moveSource"] = moveSource;
+    requestQuery["override"] = override;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {string} expand - Expand some document fields
   lockInfo,
   acl,
   workspace,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "changeNumber": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "dateUploaded": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "contentType": "",
+   "contentLength": 0,
+   "systemType": "",
+   "filename": "",
+   "pageCount": 0,
+   "read": true,
+   "callerAddress": "",
+   "receiverAddress": "",
+   "tags": [],
+   "tagValues": [],
+   "attributes": [],
+   "thumbnails": [],
+   "uploadStatus": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadDestinationUri": "",
+   "uploadMethod": "",
+   "lockInfo": {
+      "lockedBy": {},
+      "dateCreated": "",
+      "dateExpires": "",
+      "action": ""
+   },
+   "acl": [],
+   "sharingStatus": "",
+   "downloadSharingUri": "",
+   "sharingUri": "",
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(documentId, expand){
     var requestPath = '/api/v2/contentmanagement/documents/{documentId}';
@@ -130,13 +280,14 @@ ContentManagementApi.prototype.getDocumentsDocumentId = function getDocumentsDoc
       throw new Error('Missing required  parameter: documentId');
     }
     requestPath = requestPath.replace('{documentId}', documentId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Update a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {} body - Document
   * @param {string} expand - Expand some document fields
@@ -155,6 +306,62 @@ ContentManagementApi.prototype.getDocumentsDocumentId = function getDocumentsDoc
    "updateAttributes": [],
    "removeAttributes": []
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "changeNumber": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "dateUploaded": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "contentType": "",
+   "contentLength": 0,
+   "systemType": "",
+   "filename": "",
+   "pageCount": 0,
+   "read": true,
+   "callerAddress": "",
+   "receiverAddress": "",
+   "tags": [],
+   "tagValues": [],
+   "attributes": [],
+   "thumbnails": [],
+   "uploadStatus": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadDestinationUri": "",
+   "uploadMethod": "",
+   "lockInfo": {
+      "lockedBy": {},
+      "dateCreated": "",
+      "dateExpires": "",
+      "action": ""
+   },
+   "acl": [],
+   "sharingStatus": "",
+   "downloadSharingUri": "",
+   "sharingUri": "",
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.postDocumentsDocumentId = function postDocumentsDocumentId(documentId, body, expand, override){
     var requestPath = '/api/v2/contentmanagement/documents/{documentId}';
@@ -171,14 +378,15 @@ ContentManagementApi.prototype.postDocumentsDocumentId = function postDocumentsD
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.expand = expand;
-    requestQuery.override = override;
+    requestQuery["expand"] = expand;
+    requestQuery["override"] = override;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Delete a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {boolean} override - Override any lock on the document
   */
@@ -191,13 +399,14 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
       throw new Error('Missing required  parameter: documentId');
     }
     requestPath = requestPath.replace('{documentId}', documentId);
-    requestQuery.override = override;
+    requestQuery["override"] = override;
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a list of audits for a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
@@ -205,6 +414,20 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
   * @param {string} level - level
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getDocumentsDocumentIdAudits = function getDocumentsDocumentIdAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder){
     var requestPath = '/api/v2/contentmanagement/documents/{documentId}/audits';
@@ -215,18 +438,19 @@ ContentManagementApi.prototype.getDocumentsDocumentIdAudits = function getDocume
       throw new Error('Missing required  parameter: documentId');
     }
     requestPath = requestPath.replace('{documentId}', documentId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.transactionFilter = transactionFilter;
-    requestQuery.level = level;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["transactionFilter"] = transactionFilter;
+    requestQuery["level"] = level;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["sortOrder"] = sortOrder;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Download a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {string} disposition - Request how the content will be downloaded: attached as a file or inline. Default is attachment.
   attachment,
@@ -242,14 +466,15 @@ ContentManagementApi.prototype.getDocumentsDocumentIdContent = function getDocum
       throw new Error('Missing required  parameter: documentId');
     }
     requestPath = requestPath.replace('{documentId}', documentId);
-    requestQuery.disposition = disposition;
-    requestQuery.contentType = contentType;
+    requestQuery["disposition"] = disposition;
+    requestQuery["contentType"] = contentType;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Replace the contents of a document.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} documentId - Document ID
   * @param {} body - Replace Request
   * @param {boolean} override - Override any lock on the document
@@ -259,6 +484,20 @@ ContentManagementApi.prototype.getDocumentsDocumentIdContent = function getDocum
    "changeNumber": 0,
    "name": "",
    "authToken": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "changeNumber": 0,
+   "uploadStatus": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "uploadDestinationUri": "",
+   "uploadMethod": ""
 }
   */
 ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDocumentsDocumentIdContent(documentId, body, override){
@@ -276,13 +515,14 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.override = override;
+    requestQuery["override"] = override;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Query content
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - name or dateCreated
@@ -291,27 +531,48 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
   * @param {string} expand - Expand some document fields
   acl,
   workspace,
+  * @example
+  * 200 Response Example:
+  * {
+   "results": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   },
+   "facetInfo": {
+      "attributes": [],
+      "facets": []
+   }
+}
   */
 ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber, sortBy, sortOrder, queryPhrase, expand){
     var requestPath = '/api/v2/contentmanagement/query';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["sortOrder"] = sortOrder;
     if(queryPhrase === undefined || queryPhrase === null){
       throw new Error('Missing required  parameter: queryPhrase');
     }
-    requestQuery.queryPhrase = queryPhrase;
-    requestQuery.expand = expand;
+    requestQuery["queryPhrase"] = queryPhrase;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Query content
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {} body - Allows for a filtered query returning facet information
   * @param {string} expand - Expand some document fields
   acl,
@@ -328,6 +589,26 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
    "attributeFilters": [],
    "includeShares": true
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "results": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   },
+   "facetInfo": {
+      "attributes": [],
+      "facets": []
+   }
+}
   */
 ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
     var requestPath = '/api/v2/contentmanagement/query';
@@ -340,13 +621,28 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a List of Security Profiles
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getSecurityprofiles = function getSecurityprofiles(){
     var requestPath = '/api/v2/contentmanagement/securityprofiles';
@@ -358,8 +654,17 @@ ContentManagementApi.prototype.getSecurityprofiles = function getSecurityprofile
 
 /**
   * @summary Get a Security Profile
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} securityProfileId - Security Profile Id
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "permissions": [],
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getSecurityprofilesSecurityprofileId = function getSecurityprofilesSecurityprofileId(securityProfileId){
     var requestPath = '/api/v2/contentmanagement/securityprofiles/{securityProfileId}';
@@ -376,7 +681,8 @@ ContentManagementApi.prototype.getSecurityprofilesSecurityprofileId = function g
 /**
   * @summary Get shared documents. Securely download a shared document.
   * @description This method requires the download sharing URI obtained in the get document response (downloadSharingUri). Documents may be shared between users in the same workspace. Documents may also be shared between any user by creating a content management share.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} sharedId - Shared ID
   * @param {boolean} redirect - Turn on or off redirect
   * @param {string} disposition - Request how the share content will be downloaded: attached as a file or inline. Default is attachment.
@@ -396,38 +702,54 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
       throw new Error('Missing required  parameter: sharedId');
     }
     requestPath = requestPath.replace('{sharedId}', sharedId);
-    requestQuery.redirect = redirect;
-    requestQuery.disposition = disposition;
-    requestQuery.contentType = contentType;
-    requestQuery.expand = expand;
+    requestQuery["redirect"] = redirect;
+    requestQuery["disposition"] = disposition;
+    requestQuery["contentType"] = contentType;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Gets a list of shares.  You must specify at least one filter (e.g. entityId).
   * @description Failing to specify a filter will return 400.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} entityId - Filters the shares returned to only the entity specified by the value of this parameter.
   * @param {string} expand - Expand share fields
   member,
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getShares = function getShares(entityId, expand, pageSize, pageNumber){
     var requestPath = '/api/v2/contentmanagement/shares';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.entityId = entityId;
-    requestQuery.expand = expand;
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["entityId"] = entityId;
+    requestQuery["expand"] = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Creates a new share or updates an existing share if the entity has already been shared
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {} body - CreateShareRequest - entity id and type and a single member or list of members are required
   * @example
   * Body Example:
@@ -441,6 +763,37 @@ ContentManagementApi.prototype.getShares = function getShares(entityId, expand, 
       "id": ""
    },
    "members": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "sharedEntityType": "",
+   "sharedEntity": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "memberType": "",
+   "member": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "sharedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "succeeded": [],
+   "failed": [],
+   "selfUri": ""
 }
   */
 ContentManagementApi.prototype.postShares = function postShares(body){
@@ -459,10 +812,78 @@ ContentManagementApi.prototype.postShares = function postShares(body){
 
 /**
   * @summary Retrieve details about an existing share.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} shareId - Share ID
   * @param {string} expand - Expand share fields
   member,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "sharedEntityType": "",
+   "sharedEntity": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "memberType": "",
+   "member": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "sharedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "group": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "dateModified": "",
+      "memberCount": 0,
+      "state": "",
+      "version": 0,
+      "type": "",
+      "images": [],
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getSharesShareId = function getSharesShareId(shareId, expand){
     var requestPath = '/api/v2/contentmanagement/shares/{shareId}';
@@ -473,14 +894,15 @@ ContentManagementApi.prototype.getSharesShareId = function getSharesShareId(shar
       throw new Error('Missing required  parameter: shareId');
     }
     requestPath = requestPath.replace('{shareId}', shareId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Deletes an existing share.
   * @description This revokes sharing rights specified in the share record
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} shareId - Share ID
   */
 ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareId(shareId){
@@ -497,24 +919,84 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
 
 /**
   * @summary Get a list of statuses for pending operations
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getStatus = function getStatus(pageSize, pageNumber){
     var requestPath = '/api/v2/contentmanagement/status';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a status.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} statusId - Status ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "expiration": "",
+   "userId": "",
+   "statusCode": "",
+   "commandType": "",
+   "document": {
+      "id": "",
+      "name": "",
+      "changeNumber": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "dateUploaded": "",
+      "contentUri": "",
+      "workspace": {},
+      "createdBy": {},
+      "uploadedBy": {},
+      "contentType": "",
+      "contentLength": 0,
+      "systemType": "",
+      "filename": "",
+      "pageCount": 0,
+      "read": true,
+      "callerAddress": "",
+      "receiverAddress": "",
+      "tags": [],
+      "tagValues": [],
+      "attributes": [],
+      "thumbnails": [],
+      "uploadStatus": {},
+      "uploadDestinationUri": "",
+      "uploadMethod": "",
+      "lockInfo": {},
+      "acl": [],
+      "sharingStatus": "",
+      "downloadSharingUri": "",
+      "sharingUri": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getStatusStatusId = function getStatusStatusId(statusId){
     var requestPath = '/api/v2/contentmanagement/status/{statusId}';
@@ -530,7 +1012,8 @@ ContentManagementApi.prototype.getStatusStatusId = function getStatusStatusId(st
 
 /**
   * @summary Cancel the command for this status
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} statusId - Status ID
   */
 ContentManagementApi.prototype.deleteStatusStatusId = function deleteStatusStatusId(statusId){
@@ -547,7 +1030,13 @@ ContentManagementApi.prototype.deleteStatusStatusId = function deleteStatusStatu
 
 /**
   * @summary Get usage details.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "types": []
+}
   */
 ContentManagementApi.prototype.getUsage = function getUsage(){
     var requestPath = '/api/v2/contentmanagement/usage';
@@ -560,7 +1049,8 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
 /**
   * @summary Get a list of workspaces.
   * @description Specifying 'content' access will return all workspaces the user has document access to, while 'admin' access will return all group workspaces the user has administrative rights to.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} access - Requested access level
@@ -588,22 +1078,37 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
   * @param {string} expand - Expand some workspace fields
   summary,
   acl,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getWorkspaces = function getWorkspaces(pageSize, pageNumber, access, expand){
     var requestPath = '/api/v2/contentmanagement/workspaces';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.access = access;
-    requestQuery.expand = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["access"] = access;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a group workspace
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {} body - Workspace
   * @example
   * Body Example:
@@ -611,6 +1116,29 @@ ContentManagementApi.prototype.getWorkspaces = function getWorkspaces(pageSize, 
    "name": "",
    "bucket": "",
    "description": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "isCurrentUserWorkspace": true,
+   "user": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "bucket": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "summary": {
+      "totalDocumentCount": 0,
+      "totalDocumentByteCount": 0
+   },
+   "acl": [],
+   "description": "",
+   "selfUri": ""
 }
   */
 ContentManagementApi.prototype.postWorkspaces = function postWorkspaces(body){
@@ -629,11 +1157,35 @@ ContentManagementApi.prototype.postWorkspaces = function postWorkspaces(body){
 
 /**
   * @summary Get a workspace.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} expand - Expand some workspace fields
   summary,
   acl,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "isCurrentUserWorkspace": true,
+   "user": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "bucket": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "summary": {
+      "totalDocumentCount": 0,
+      "totalDocumentByteCount": 0
+   },
+   "acl": [],
+   "description": "",
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getWorkspacesWorkspaceId = function getWorkspacesWorkspaceId(workspaceId, expand){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}';
@@ -644,13 +1196,14 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceId = function getWorkspaces
       throw new Error('Missing required  parameter: workspaceId');
     }
     requestPath = requestPath.replace('{workspaceId}', workspaceId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Update a workspace
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {} body - Workspace
   * @example
@@ -674,6 +1227,29 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceId = function getWorkspaces
    "acl": [],
    "description": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "isCurrentUserWorkspace": true,
+   "user": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "bucket": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "summary": {
+      "totalDocumentCount": 0,
+      "totalDocumentByteCount": 0
+   },
+   "acl": [],
+   "description": "",
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.putWorkspacesWorkspaceId = function putWorkspacesWorkspaceId(workspaceId, body){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}';
@@ -695,7 +1271,8 @@ ContentManagementApi.prototype.putWorkspacesWorkspaceId = function putWorkspaces
 
 /**
   * @summary Delete a workspace
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} moveChildrenToWorkspaceId - New location for objects in deleted workspace.
   */
@@ -708,18 +1285,33 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
       throw new Error('Missing required  parameter: workspaceId');
     }
     requestPath = requestPath.replace('{workspaceId}', workspaceId);
-    requestQuery.moveChildrenToWorkspaceId = moveChildrenToWorkspaceId;
+    requestQuery["moveChildrenToWorkspaceId"] = moveChildrenToWorkspaceId;
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a list workspace members
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} expand - Expand workspace member fields
   member,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembers = function getWorkspacesWorkspaceIdMembers(workspaceId, pageSize, pageNumber, expand){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members';
@@ -730,19 +1322,82 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembers = function getWor
       throw new Error('Missing required  parameter: workspaceId');
     }
     requestPath = requestPath.replace('{workspaceId}', workspaceId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.expand = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a workspace member
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} memberId - Member ID
   * @param {string} expand - Expand workspace member fields
   member,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "memberType": "",
+   "member": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "group": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "dateModified": "",
+      "memberCount": 0,
+      "state": "",
+      "version": 0,
+      "type": "",
+      "images": [],
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": "",
+      "selfUri": ""
+   },
+   "securityProfile": {
+      "id": "",
+      "name": "",
+      "permissions": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = function getWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId, expand){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
@@ -757,13 +1412,14 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
       throw new Error('Missing required  parameter: memberId');
     }
     requestPath = requestPath.replace('{memberId}', memberId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Add a member to a workspace
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} memberId - Member ID
   * @param {} body - Workspace
@@ -807,6 +1463,68 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
       "permissions": []
    }
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "memberType": "",
+   "member": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "group": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "dateModified": "",
+      "memberCount": 0,
+      "state": "",
+      "version": 0,
+      "type": "",
+      "images": [],
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": "",
+      "selfUri": ""
+   },
+   "securityProfile": {
+      "id": "",
+      "name": "",
+      "permissions": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.putWorkspacesWorkspaceIdMembersMemberId = function putWorkspacesWorkspaceIdMembersMemberId(workspaceId, memberId, body){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}';
@@ -832,7 +1550,8 @@ ContentManagementApi.prototype.putWorkspacesWorkspaceIdMembersMemberId = functio
 
 /**
   * @summary Delete a member from a workspace
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} memberId - Member ID
   */
@@ -854,13 +1573,28 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
 
 /**
   * @summary Get a list of workspace tags
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} value - filter the list of tags returned
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} expand - Expand some document fields
   acl,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ContentManagementApi.prototype.getWorkspacesWorkspaceIdTagvalues = function getWorkspacesWorkspaceIdTagvalues(workspaceId, value, pageSize, pageNumber, expand){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues';
@@ -871,16 +1605,17 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdTagvalues = function getW
       throw new Error('Missing required  parameter: workspaceId');
     }
     requestPath = requestPath.replace('{workspaceId}', workspaceId);
-    requestQuery.value = value;
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.expand = expand;
+    requestQuery["value"] = value;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a workspace tag
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {} body - tag
   * @example
@@ -889,6 +1624,15 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdTagvalues = function getW
    "name": "",
    "inUse": true,
    "acl": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "inUse": true,
+   "acl": [],
+   "selfUri": ""
 }
   */
 ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function postWorkspacesWorkspaceIdTagvalues(workspaceId, body){
@@ -911,7 +1655,8 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
 
 /**
   * @summary Perform a prefix query on tags in the workspace
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {} body - query
   * @param {string} expand - Expand some document fields
@@ -922,6 +1667,20 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
    "query": "",
    "pageNumber": 0,
    "pageSize": 0
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
 ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvaluesQuery = function postWorkspacesWorkspaceIdTagvaluesQuery(workspaceId, body, expand){
@@ -939,17 +1698,27 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvaluesQuery = functio
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a workspace tag
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} tagId - Tag ID
   * @param {string} expand - Expand some document fields
   acl,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "inUse": true,
+   "acl": [],
+   "selfUri": ""
+}
   */
 ContentManagementApi.prototype.getWorkspacesWorkspaceIdTagvaluesTagId = function getWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId, expand){
     var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}';
@@ -964,13 +1733,14 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdTagvaluesTagId = function
       throw new Error('Missing required  parameter: tagId');
     }
     requestPath = requestPath.replace('{tagId}', tagId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Update a workspace tag. Will update all documents with the new tag value.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} tagId - Tag ID
   * @param {} body - Workspace
@@ -980,6 +1750,15 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdTagvaluesTagId = function
    "name": "",
    "inUse": true,
    "acl": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "inUse": true,
+   "acl": [],
+   "selfUri": ""
 }
   */
 ContentManagementApi.prototype.putWorkspacesWorkspaceIdTagvaluesTagId = function putWorkspacesWorkspaceIdTagvaluesTagId(workspaceId, tagId, body){
@@ -1007,7 +1786,8 @@ ContentManagementApi.prototype.putWorkspacesWorkspaceIdTagvaluesTagId = function
 /**
   * @summary Delete workspace tag
   * @description Delete a tag from a workspace. Will remove this tag from all documents.
-  * @memberOf ContentManagementApi#
+  * @memberOf ContentManagementApi
+  * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} tagId - Tag ID
   */

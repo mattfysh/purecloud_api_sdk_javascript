@@ -1,7 +1,7 @@
 /**
-* @class
+* @class OrganizationApi
 * @example
-* var api = new OrganizationApi(pureCloudSession);
+* var api = new purecloud.platform.OrganizationApi(pureCloudSession);
 */
 function OrganizationApi(session) {
     if(!(this instanceof OrganizationApi)) {
@@ -15,7 +15,23 @@ function OrganizationApi(session) {
 
 /**
   * @summary Get organization.
-  * @memberOf OrganizationApi#
+  * @memberOf OrganizationApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "thirdPartyOrgId": "",
+   "thirdPartyOrgName": "",
+   "thirdPartyURI": "",
+   "domain": "",
+   "version": 0,
+   "state": "",
+   "defaultSiteId": "",
+   "deletable": true,
+   "selfUri": ""
+}
   */
 OrganizationApi.prototype.getMe = function getMe(){
     var requestPath = '/api/v2/organizations/me';

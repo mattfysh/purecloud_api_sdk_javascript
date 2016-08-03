@@ -1,7 +1,7 @@
 /**
-* @class
+* @class TokensApi
 * @example
-* var api = new TokensApi(pureCloudSession);
+* var api = new purecloud.platform.TokensApi(pureCloudSession);
 */
 function TokensApi(session) {
     if(!(this instanceof TokensApi)) {
@@ -15,7 +15,8 @@ function TokensApi(session) {
 
 /**
   * @summary Delete  auth token used to make the request.
-  * @memberOf TokensApi#
+  * @memberOf TokensApi
+  * @instance
   */
 TokensApi.prototype.deleteMe = function deleteMe(){
     var requestPath = '/api/v2/tokens/me';

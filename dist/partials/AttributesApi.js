@@ -1,7 +1,7 @@
 /**
-* @class
+* @class AttributesApi
 * @example
-* var api = new AttributesApi(pureCloudSession);
+* var api = new purecloud.platform.AttributesApi(pureCloudSession);
 */
 function AttributesApi(session) {
     if(!(this instanceof AttributesApi)) {
@@ -15,23 +15,39 @@ function AttributesApi(session) {
 
 /**
   * @summary Gets a list of existing attributes.
-  * @memberOf AttributesApi#
+  * @memberOf AttributesApi
+  * @instance
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AttributesApi.prototype.getAttributes = function getAttributes(pageNumber, pageSize){
     var requestPath = '/api/v2/attributes';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create an attribute.
-  * @memberOf AttributesApi#
+  * @memberOf AttributesApi
+  * @instance
   * @param {} body - Attribute
   * @example
   * Body Example:
@@ -51,6 +67,27 @@ AttributesApi.prototype.getAttributes = function getAttributes(pageNumber, pageS
       "selfUri": ""
    },
    "dateModified": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "description": "",
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dateModified": "",
+   "selfUri": ""
 }
   */
 AttributesApi.prototype.postAttributes = function postAttributes(body){
@@ -69,7 +106,8 @@ AttributesApi.prototype.postAttributes = function postAttributes(body){
 
 /**
   * @summary Query attributes
-  * @memberOf AttributesApi#
+  * @memberOf AttributesApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -77,6 +115,20 @@ AttributesApi.prototype.postAttributes = function postAttributes(body){
    "query": "",
    "pageSize": 0,
    "pageNumber": 0
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
 AttributesApi.prototype.postQuery = function postQuery(body){
@@ -95,8 +147,30 @@ AttributesApi.prototype.postQuery = function postQuery(body){
 
 /**
   * @summary Get details about an existing attribute.
-  * @memberOf AttributesApi#
+  * @memberOf AttributesApi
+  * @instance
   * @param {string} attributeId - Attribute ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "description": "",
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dateModified": "",
+   "selfUri": ""
+}
   */
 AttributesApi.prototype.getAttributeId = function getAttributeId(attributeId){
     var requestPath = '/api/v2/attributes/{attributeId}';
@@ -113,7 +187,8 @@ AttributesApi.prototype.getAttributeId = function getAttributeId(attributeId){
 /**
   * @summary Update an existing attribute.
   * @description Fields that can be updated: name, description. The most recent version is required for updates.
-  * @memberOf AttributesApi#
+  * @memberOf AttributesApi
+  * @instance
   * @param {string} attributeId - Attribute ID
   * @param {} body - Attribute
   * @example
@@ -134,6 +209,27 @@ AttributesApi.prototype.getAttributeId = function getAttributeId(attributeId){
       "selfUri": ""
    },
    "dateModified": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "description": "",
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "dateModified": "",
+   "selfUri": ""
 }
   */
 AttributesApi.prototype.putAttributeId = function putAttributeId(attributeId, body){
@@ -157,7 +253,8 @@ AttributesApi.prototype.putAttributeId = function putAttributeId(attributeId, bo
 /**
   * @summary Delete an existing Attribute.
   * @description This will remove attribute.
-  * @memberOf AttributesApi#
+  * @memberOf AttributesApi
+  * @instance
   * @param {string} attributeId - Attribute ID
   */
 AttributesApi.prototype.deleteAttributeId = function deleteAttributeId(attributeId){

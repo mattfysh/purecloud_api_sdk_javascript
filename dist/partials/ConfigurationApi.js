@@ -1,7 +1,7 @@
 /**
-* @class
+* @class ConfigurationApi
 * @example
-* var api = new ConfigurationApi(pureCloudSession);
+* var api = new purecloud.platform.ConfigurationApi(pureCloudSession);
 */
 function ConfigurationApi(session) {
     if(!(this instanceof ConfigurationApi)) {
@@ -15,23 +15,71 @@ function ConfigurationApi(session) {
 
 /**
   * @summary Get encryption key list
-  * @memberOf ConfigurationApi#
+  * @memberOf ConfigurationApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConfigurationApi.prototype.getRecordingkeys = function getRecordingkeys(pageSize, pageNumber){
     var requestPath = '/api/v2/recording/recordingkeys';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create encryption key
-  * @memberOf ConfigurationApi#
+  * @memberOf ConfigurationApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "createDate": "",
+   "keydataSummary": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 ConfigurationApi.prototype.postRecordingkeys = function postRecordingkeys(){
     var requestPath = '/api/v2/recording/recordingkeys';
@@ -43,7 +91,16 @@ ConfigurationApi.prototype.postRecordingkeys = function postRecordingkeys(){
 
 /**
   * @summary Get key rotation schedule
-  * @memberOf ConfigurationApi#
+  * @memberOf ConfigurationApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "period": "",
+   "selfUri": ""
+}
   */
 ConfigurationApi.prototype.getRecordingkeysRotationschedule = function getRecordingkeysRotationschedule(){
     var requestPath = '/api/v2/recording/recordingkeys/rotationschedule';
@@ -55,13 +112,22 @@ ConfigurationApi.prototype.getRecordingkeysRotationschedule = function getRecord
 
 /**
   * @summary Update key rotation schedule
-  * @memberOf ConfigurationApi#
+  * @memberOf ConfigurationApi
+  * @instance
   * @param {} body - KeyRotationSchedule
   * @example
   * Body Example:
   * {
    "name": "",
    "period": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "period": "",
+   "selfUri": ""
 }
   */
 ConfigurationApi.prototype.putRecordingkeysRotationschedule = function putRecordingkeysRotationschedule(body){

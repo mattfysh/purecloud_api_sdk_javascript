@@ -1,7 +1,7 @@
 /**
-* @class
+* @class SuggestApi
 * @example
-* var api = new SuggestApi(pureCloudSession);
+* var api = new purecloud.platform.SuggestApi(pureCloudSession);
 */
 function SuggestApi(session) {
     if(!(this instanceof SuggestApi)) {
@@ -15,10 +15,69 @@ function SuggestApi(session) {
 
 /**
   * @summary Search using q64
-  * @memberOf SuggestApi#
+  * @memberOf SuggestApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
   * @param {boolean} profile - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
+}
   */
 SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
     var requestPath = '/api/v2/search';
@@ -28,15 +87,16 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
-    requestQuery.profile = profile;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf SuggestApi#
+  * @memberOf SuggestApi
+  * @instance
   * @param {} body - Search request options
   * @param {boolean} profile - 
   * @example
@@ -52,6 +112,64 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "query": [],
    "aggregations": []
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
+}
   */
 SuggestApi.prototype.postSearch = function postSearch(body, profile){
     var requestPath = '/api/v2/search';
@@ -64,15 +182,74 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.profile = profile;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Suggest using q64
-  * @memberOf SuggestApi#
+  * @memberOf SuggestApi
+  * @instance
   * @param {string} q64 - 
   * @param {boolean} profile - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
+}
   */
 SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
     var requestPath = '/api/v2/search/suggest';
@@ -82,14 +259,15 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.profile = profile;
+    requestQuery["q64"] = q64;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Suggest
-  * @memberOf SuggestApi#
+  * @memberOf SuggestApi
+  * @instance
   * @param {} body - Search request options
   * @param {boolean} profile - 
   * @example
@@ -97,6 +275,64 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
   * {
    "types": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
 }
   */
 SuggestApi.prototype.postSuggest = function postSuggest(body, profile){
@@ -110,7 +346,7 @@ SuggestApi.prototype.postSuggest = function postSuggest(body, profile){
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.profile = profile;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 

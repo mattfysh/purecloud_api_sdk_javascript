@@ -1,7 +1,7 @@
 /**
-* @class
+* @class NotificationsApi
 * @example
-* var api = new NotificationsApi(pureCloudSession);
+* var api = new purecloud.platform.NotificationsApi(pureCloudSession);
 */
 function NotificationsApi(session) {
     if(!(this instanceof NotificationsApi)) {
@@ -15,21 +15,51 @@ function NotificationsApi(session) {
 
 /**
   * @summary Get available notification topics.
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
   * @param {array} expand - Which fields, if any, to expand
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expand){
     var requestPath = '/api/v2/notifications/availabletopics';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary The list of existing channels
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 NotificationsApi.prototype.getChannels = function getChannels(){
     var requestPath = '/api/v2/notifications/channels';
@@ -42,7 +72,14 @@ NotificationsApi.prototype.getChannels = function getChannels(){
 /**
   * @summary Create a new channel
   * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "connectUri": ""
+}
   */
 NotificationsApi.prototype.postChannels = function postChannels(){
     var requestPath = '/api/v2/notifications/channels';
@@ -54,8 +91,23 @@ NotificationsApi.prototype.postChannels = function postChannels(){
 
 /**
   * @summary The list of all subscriptions for this channel
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
   * @param {string} channelId - Channel ID
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChannelsChannelIdSubscriptions(channelId){
     var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
@@ -71,7 +123,8 @@ NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChann
 
 /**
   * @summary Add a list of subscriptions to the existing list of subscriptions
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
   * @param {string} channelId - Channel ID
   * @param {} body - Topic
   * @example
@@ -81,6 +134,20 @@ NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChann
   "id": ""
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postChannelsChannelIdSubscriptions(channelId, body){
     var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
@@ -102,7 +169,8 @@ NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postCha
 
 /**
   * @summary Replace the current list of subscriptions with a new list.
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
   * @param {string} channelId - Channel ID
   * @param {} body - Topic
   * @example
@@ -112,6 +180,20 @@ NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postCha
   "id": ""
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 NotificationsApi.prototype.putChannelsChannelIdSubscriptions = function putChannelsChannelIdSubscriptions(channelId, body){
     var requestPath = '/api/v2/notifications/channels/{channelId}/subscriptions';
@@ -133,7 +215,8 @@ NotificationsApi.prototype.putChannelsChannelIdSubscriptions = function putChann
 
 /**
   * @summary Remove all subscriptions
-  * @memberOf NotificationsApi#
+  * @memberOf NotificationsApi
+  * @instance
   * @param {string} channelId - Channel ID
   */
 NotificationsApi.prototype.deleteChannelsChannelIdSubscriptions = function deleteChannelsChannelIdSubscriptions(channelId){

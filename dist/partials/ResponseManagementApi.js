@@ -1,7 +1,7 @@
 /**
-* @class
+* @class ResponseManagementApi
 * @example
-* var api = new ResponseManagementApi(pureCloudSession);
+* var api = new purecloud.platform.ResponseManagementApi(pureCloudSession);
 */
 function ResponseManagementApi(session) {
     if(!(this instanceof ResponseManagementApi)) {
@@ -15,23 +15,39 @@ function ResponseManagementApi(session) {
 
 /**
   * @summary Gets a list of existing response libraries.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber, pageSize){
     var requestPath = '/api/v2/responsemanagement/libraries';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a response library.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {} body - Library
   * @example
   * Body Example:
@@ -50,6 +66,38 @@ ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber,
       "version": 0
    },
    "dateCreated": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "selfUri": ""
 }
   */
 ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
@@ -68,8 +116,41 @@ ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
 
 /**
   * @summary Get details about an existing response library.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} libraryId - Library ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "selfUri": ""
+}
   */
 ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLibraryId(libraryId){
     var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
@@ -86,7 +167,8 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
 /**
   * @summary Update an existing response library.
   * @description Fields that can be updated: name. The most recent version is required for updates.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} libraryId - Library ID
   * @param {} body - Library
   * @example
@@ -106,6 +188,38 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
       "version": 0
    },
    "dateCreated": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "selfUri": ""
 }
   */
 ResponseManagementApi.prototype.putLibrariesLibraryId = function putLibrariesLibraryId(libraryId, body){
@@ -129,7 +243,8 @@ ResponseManagementApi.prototype.putLibrariesLibraryId = function putLibrariesLib
 /**
   * @summary Delete an existing response library.
   * @description This will remove any responses associated with the library.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} libraryId - Library ID
   */
 ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrariesLibraryId(libraryId){
@@ -146,10 +261,25 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
 
 /**
   * @summary Gets a list of existing responses.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} libraryId - Library ID
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, pageNumber, pageSize){
     var requestPath = '/api/v2/responsemanagement/responses';
@@ -159,15 +289,16 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
     if(libraryId === undefined || libraryId === null){
       throw new Error('Missing required  parameter: libraryId');
     }
-    requestQuery.libraryId = libraryId;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
+    requestQuery["libraryId"] = libraryId;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a response.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {} body - Response
   * @example
   * Body Example:
@@ -189,6 +320,41 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
    },
    "dateCreated": "",
    "interactionType": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "interactionType": "",
+   "selfUri": ""
 }
   */
 ResponseManagementApi.prototype.postResponses = function postResponses(body){
@@ -207,7 +373,8 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
 
 /**
   * @summary Query responses
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {} body - Response
   * @example
   * Body Example:
@@ -215,6 +382,22 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
    "queryPhrase": "",
    "pageSize": 0,
    "filters": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": {
+      "pageSize": 0,
+      "pageNumber": 0,
+      "total": 0,
+      "entities": [],
+      "selfUri": "",
+      "firstUri": "",
+      "previousUri": "",
+      "nextUri": "",
+      "lastUri": "",
+      "pageCount": 0
+   }
 }
   */
 ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery(body){
@@ -233,8 +416,44 @@ ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery
 
 /**
   * @summary Get details about an existing response.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} responseId - Response ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "interactionType": "",
+   "selfUri": ""
+}
   */
 ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesResponseId(responseId){
     var requestPath = '/api/v2/responsemanagement/responses/{responseId}';
@@ -251,7 +470,8 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
 /**
   * @summary Update an existing response.
   * @description Fields that can be updated: name, libraries, and texts. The most recent version is required for updates.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} responseId - Response ID
   * @param {} body - Response
   * @example
@@ -274,6 +494,41 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
    },
    "dateCreated": "",
    "interactionType": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "libraries": [],
+   "texts": [],
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "interactionType": "",
+   "selfUri": ""
 }
   */
 ResponseManagementApi.prototype.putResponsesResponseId = function putResponsesResponseId(responseId, body){
@@ -297,7 +552,8 @@ ResponseManagementApi.prototype.putResponsesResponseId = function putResponsesRe
 /**
   * @summary Delete an existing response.
   * @description This will remove the response from any libraries associated with it.
-  * @memberOf ResponseManagementApi#
+  * @memberOf ResponseManagementApi
+  * @instance
   * @param {string} responseId - Response ID
   */
 ResponseManagementApi.prototype.deleteResponsesResponseId = function deleteResponsesResponseId(responseId){

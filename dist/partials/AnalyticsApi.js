@@ -1,7 +1,7 @@
 /**
-* @class
+* @class AnalyticsApi
 * @example
-* var api = new AnalyticsApi(pureCloudSession);
+* var api = new purecloud.platform.AnalyticsApi(pureCloudSession);
 */
 function AnalyticsApi(session) {
     if(!(this instanceof AnalyticsApi)) {
@@ -15,7 +15,8 @@ function AnalyticsApi(session) {
 
 /**
   * @summary Query for conversation aggregates
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -30,6 +31,11 @@ function AnalyticsApi(session) {
    },
    "metrics": [],
    "flattenMultivaluedDimensions": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": []
 }
   */
 AnalyticsApi.prototype.postConversationsAggregatesQuery = function postConversationsAggregatesQuery(body){
@@ -48,7 +54,8 @@ AnalyticsApi.prototype.postConversationsAggregatesQuery = function postConversat
 
 /**
   * @summary Query for conversation details
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -64,6 +71,12 @@ AnalyticsApi.prototype.postConversationsAggregatesQuery = function postConversat
    },
    "order": "",
    "orderBy": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "conversations": [],
+   "aggregations": []
 }
   */
 AnalyticsApi.prototype.postConversationsDetailsQuery = function postConversationsDetailsQuery(body){
@@ -82,8 +95,17 @@ AnalyticsApi.prototype.postConversationsDetailsQuery = function postConversation
 
 /**
   * @summary Get a conversation by id
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} conversationId - conversationId
+  * @example
+  * 200 Response Example:
+  * {
+   "conversationId": "",
+   "conversationStart": "",
+   "participants": [],
+   "evaluations": []
+}
   */
 AnalyticsApi.prototype.getConversationsConversationIdDetails = function getConversationsConversationIdDetails(conversationId){
     var requestPath = '/api/v2/analytics/conversations/{conversationId}/details';
@@ -99,11 +121,19 @@ AnalyticsApi.prototype.getConversationsConversationIdDetails = function getConve
 
 /**
   * @summary Index conversation properties
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} conversationId - conversationId
   * @param {} body - request
   * @example
   * Body Example:
+  * {
+   "sessionId": "",
+   "timestamp": 0,
+   "properties": []
+}
+  * @example
+  * 200 Response Example:
   * {
    "sessionId": "",
    "timestamp": 0,
@@ -130,7 +160,8 @@ AnalyticsApi.prototype.postConversationsConversationIdDetailsProperties = functi
 
 /**
   * @summary Query for evaluation aggregates
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -145,6 +176,11 @@ AnalyticsApi.prototype.postConversationsConversationIdDetailsProperties = functi
    },
    "metrics": [],
    "flattenMultivaluedDimensions": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": []
 }
   */
 AnalyticsApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAggregatesQuery(body){
@@ -163,7 +199,8 @@ AnalyticsApi.prototype.postEvaluationsAggregatesQuery = function postEvaluations
 
 /**
   * @summary Query for queue observations
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -174,6 +211,12 @@ AnalyticsApi.prototype.postEvaluationsAggregatesQuery = function postEvaluations
       "predicates": []
    },
    "metrics": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "systemToOrganizationMappings": {},
+   "results": []
 }
   */
 AnalyticsApi.prototype.postQueuesObservationsQuery = function postQueuesObservationsQuery(body){
@@ -192,26 +235,42 @@ AnalyticsApi.prototype.postQueuesObservationsQuery = function postQueuesObservat
 
 /**
   * @summary Get list of reporting metadata.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
   * @param {string} locale - Locale
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AnalyticsApi.prototype.getReportingMetadata = function getReportingMetadata(pageNumber, pageSize, locale){
     var requestPath = '/api/v2/analytics/reporting/metadata';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.locale = locale;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["locale"] = locale;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a list of report formats
   * @description Get a list of report formats.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   */
 AnalyticsApi.prototype.getReportingReportformats = function getReportingReportformats(){
     var requestPath = '/api/v2/analytics/reporting/reportformats';
@@ -224,24 +283,40 @@ AnalyticsApi.prototype.getReportingReportformats = function getReportingReportfo
 /**
   * @summary Get a list of scheduled report jobs
   * @description Get a list of scheduled report jobs.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AnalyticsApi.prototype.getReportingSchedules = function getReportingSchedules(pageNumber, pageSize){
     var requestPath = '/api/v2/analytics/reporting/schedules';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a scheduled report job
   * @description Create a scheduled report job.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - ReportSchedule
   * @example
   * Body Example:
@@ -272,6 +347,39 @@ AnalyticsApi.prototype.getReportingSchedules = function getReportingSchedules(pa
       "scheduleUri": ""
    }
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "quartzCronExpression": "",
+   "nextFireTime": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "description": "",
+   "timeZone": "",
+   "timePeriod": "",
+   "interval": "",
+   "reportFormat": "",
+   "locale": "",
+   "enabled": true,
+   "reportId": "",
+   "parameters": {},
+   "lastRun": {
+      "id": "",
+      "name": "",
+      "reportId": "",
+      "runTime": "",
+      "runStatus": "",
+      "errorMessage": "",
+      "runDurationMsec": 0,
+      "reportUrl": "",
+      "reportFormat": "",
+      "scheduleUri": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 AnalyticsApi.prototype.postReportingSchedules = function postReportingSchedules(body){
     var requestPath = '/api/v2/analytics/reporting/schedules';
@@ -289,8 +397,42 @@ AnalyticsApi.prototype.postReportingSchedules = function postReportingSchedules(
 
 /**
   * @summary Get a scheduled report job.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} scheduleId - Schedule ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "quartzCronExpression": "",
+   "nextFireTime": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "description": "",
+   "timeZone": "",
+   "timePeriod": "",
+   "interval": "",
+   "reportFormat": "",
+   "locale": "",
+   "enabled": true,
+   "reportId": "",
+   "parameters": {},
+   "lastRun": {
+      "id": "",
+      "name": "",
+      "reportId": "",
+      "runTime": "",
+      "runStatus": "",
+      "errorMessage": "",
+      "runDurationMsec": 0,
+      "reportUrl": "",
+      "reportFormat": "",
+      "scheduleUri": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 AnalyticsApi.prototype.getReportingSchedulesScheduleId = function getReportingSchedulesScheduleId(scheduleId){
     var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}';
@@ -306,7 +448,8 @@ AnalyticsApi.prototype.getReportingSchedulesScheduleId = function getReportingSc
 
 /**
   * @summary Update a scheduled report job.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} scheduleId - Schedule ID
   * @param {} body - ReportSchedule
   * @example
@@ -337,6 +480,39 @@ AnalyticsApi.prototype.getReportingSchedulesScheduleId = function getReportingSc
       "reportFormat": "",
       "scheduleUri": ""
    }
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "quartzCronExpression": "",
+   "nextFireTime": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "description": "",
+   "timeZone": "",
+   "timePeriod": "",
+   "interval": "",
+   "reportFormat": "",
+   "locale": "",
+   "enabled": true,
+   "reportId": "",
+   "parameters": {},
+   "lastRun": {
+      "id": "",
+      "name": "",
+      "reportId": "",
+      "runTime": "",
+      "runStatus": "",
+      "errorMessage": "",
+      "runDurationMsec": 0,
+      "reportUrl": "",
+      "reportFormat": "",
+      "scheduleUri": "",
+      "selfUri": ""
+   },
+   "selfUri": ""
 }
   */
 AnalyticsApi.prototype.putReportingSchedulesScheduleId = function putReportingSchedulesScheduleId(scheduleId, body){
@@ -359,7 +535,8 @@ AnalyticsApi.prototype.putReportingSchedulesScheduleId = function putReportingSc
 
 /**
   * @summary Delete a scheduled report job.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} scheduleId - Schedule ID
   */
 AnalyticsApi.prototype.deleteReportingSchedulesScheduleId = function deleteReportingSchedulesScheduleId(scheduleId){
@@ -376,10 +553,25 @@ AnalyticsApi.prototype.deleteReportingSchedulesScheduleId = function deleteRepor
 
 /**
   * @summary Get list of completed scheduled report jobs.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} scheduleId - Schedule ID
   * @param {integer} pageNumber - 
   * @param {integer} pageSize - 
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistory = function getReportingSchedulesScheduleIdHistory(scheduleId, pageNumber, pageSize){
     var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history';
@@ -390,15 +582,31 @@ AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistory = function getRepo
       throw new Error('Missing required  parameter: scheduleId');
     }
     requestPath = requestPath.replace('{scheduleId}', scheduleId);
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get most recently completed scheduled report job.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} scheduleId - Schedule ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "reportId": "",
+   "runTime": "",
+   "runStatus": "",
+   "errorMessage": "",
+   "runDurationMsec": 0,
+   "reportUrl": "",
+   "reportFormat": "",
+   "scheduleUri": "",
+   "selfUri": ""
+}
   */
 AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistoryLatest = function getReportingSchedulesScheduleIdHistoryLatest(scheduleId){
     var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history/latest';
@@ -415,9 +623,25 @@ AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistoryLatest = function g
 /**
   * @summary A completed scheduled report job
   * @description A completed scheduled report job.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} runId - Run ID
   * @param {string} scheduleId - Schedule ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "reportId": "",
+   "runTime": "",
+   "runStatus": "",
+   "errorMessage": "",
+   "runDurationMsec": 0,
+   "reportUrl": "",
+   "reportFormat": "",
+   "scheduleUri": "",
+   "selfUri": ""
+}
   */
 AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistoryRunId = function getReportingSchedulesScheduleIdHistoryRunId(runId, scheduleId){
     var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/history/{runId}';
@@ -437,8 +661,16 @@ AnalyticsApi.prototype.getReportingSchedulesScheduleIdHistoryRunId = function ge
 
 /**
   * @summary Place a scheduled report immediately into the reporting queue
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} scheduleId - Schedule ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "selfUri": ""
+}
   */
 AnalyticsApi.prototype.postReportingSchedulesScheduleIdRunreport = function postReportingSchedulesScheduleIdRunreport(scheduleId){
     var requestPath = '/api/v2/analytics/reporting/schedules/{scheduleId}/runreport';
@@ -454,7 +686,8 @@ AnalyticsApi.prototype.postReportingSchedulesScheduleIdRunreport = function post
 
 /**
   * @summary Get a list of report time periods.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   */
 AnalyticsApi.prototype.getReportingTimeperiods = function getReportingTimeperiods(){
     var requestPath = '/api/v2/analytics/reporting/timeperiods';
@@ -466,9 +699,23 @@ AnalyticsApi.prototype.getReportingTimeperiods = function getReportingTimeperiod
 
 /**
   * @summary Get a reporting metadata.
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {string} reportId - Report ID
   * @param {string} locale - Locale
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "title": "",
+   "description": "",
+   "keywords": [],
+   "availableLocales": [],
+   "parameters": [],
+   "exampleUrl": "",
+   "selfUri": ""
+}
   */
 AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingReportIdMetadata(reportId, locale){
     var requestPath = '/api/v2/analytics/reporting/{reportId}/metadata';
@@ -479,13 +726,14 @@ AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingRepor
       throw new Error('Missing required  parameter: reportId');
     }
     requestPath = requestPath.replace('{reportId}', reportId);
-    requestQuery.locale = locale;
+    requestQuery["locale"] = locale;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Query for user aggregates
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -500,6 +748,12 @@ AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingRepor
    },
    "metrics": [],
    "flattenMultivaluedDimensions": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "systemToOrganizationMappings": {},
+   "results": []
 }
   */
 AnalyticsApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(body){
@@ -518,7 +772,8 @@ AnalyticsApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQu
 
 /**
   * @summary Query for user observations
-  * @memberOf AnalyticsApi#
+  * @memberOf AnalyticsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -529,6 +784,11 @@ AnalyticsApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQu
       "predicates": []
    },
    "metrics": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": []
 }
   */
 AnalyticsApi.prototype.postUsersObservationsQuery = function postUsersObservationsQuery(body){

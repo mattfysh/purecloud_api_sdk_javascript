@@ -1,7 +1,7 @@
 /**
-* @class
+* @class GreetingsApi
 * @example
-* var api = new GreetingsApi(pureCloudSession);
+* var api = new purecloud.platform.GreetingsApi(pureCloudSession);
 */
 function GreetingsApi(session) {
     if(!(this instanceof GreetingsApi)) {
@@ -15,23 +15,39 @@ function GreetingsApi(session) {
 
 /**
   * @summary Gets an Organization's Greetings
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 GreetingsApi.prototype.getGreetings = function getGreetings(pageSize, pageNumber){
     var requestPath = '/api/v2/greetings';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a Greeting for an Organization
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {} body - The Greeting to create
   * @example
   * Body Example:
@@ -53,6 +69,24 @@ GreetingsApi.prototype.getGreetings = function getGreetings(pageSize, pageNumber
    "modifiedDate": "",
    "modifiedBy": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "ownerType": "",
+   "greetings": {},
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.postGreetings = function postGreetings(body){
     var requestPath = '/api/v2/greetings';
@@ -70,7 +104,26 @@ GreetingsApi.prototype.postGreetings = function postGreetings(body){
 
 /**
   * @summary Get an Organization's DefaultGreetingList
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "ownerType": "",
+   "greetings": {},
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.getDefaults = function getDefaults(){
     var requestPath = '/api/v2/greetings/defaults';
@@ -82,7 +135,8 @@ GreetingsApi.prototype.getDefaults = function getDefaults(){
 
 /**
   * @summary Update an Organization's DefaultGreetingList
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {} body - The updated defaultGreetingList
   * @example
   * Body Example:
@@ -97,6 +151,24 @@ GreetingsApi.prototype.getDefaults = function getDefaults(){
    "createdBy": "",
    "modifiedDate": "",
    "modifiedBy": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "ownerType": "",
+   "greetings": {},
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
 }
   */
 GreetingsApi.prototype.putDefaults = function putDefaults(body){
@@ -115,8 +187,33 @@ GreetingsApi.prototype.putDefaults = function putDefaults(body){
 
 /**
   * @summary Get a Greeting with the given GreetingId
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} greetingId - Greeting ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "ownerType": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "audioFile": {
+      "durationMilliseconds": 0,
+      "sizeBytes": 0,
+      "selfUri": ""
+   },
+   "audioTTS": "",
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.getGreetingId = function getGreetingId(greetingId){
     var requestPath = '/api/v2/greetings/{greetingId}';
@@ -132,7 +229,8 @@ GreetingsApi.prototype.getGreetingId = function getGreetingId(greetingId){
 
 /**
   * @summary Updates the Greeting with the given GreetingId
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} greetingId - Greeting ID
   * @param {} body - The updated Greeting
   * @example
@@ -155,6 +253,30 @@ GreetingsApi.prototype.getGreetingId = function getGreetingId(greetingId){
    "modifiedDate": "",
    "modifiedBy": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "ownerType": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "audioFile": {
+      "durationMilliseconds": 0,
+      "sizeBytes": 0,
+      "selfUri": ""
+   },
+   "audioTTS": "",
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.putGreetingId = function putGreetingId(greetingId, body){
     var requestPath = '/api/v2/greetings/{greetingId}';
@@ -176,8 +298,33 @@ GreetingsApi.prototype.putGreetingId = function putGreetingId(greetingId, body){
 
 /**
   * @summary Deletes a Greeting with the given GreetingId
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} greetingId - Greeting ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "ownerType": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "audioFile": {
+      "durationMilliseconds": 0,
+      "sizeBytes": 0,
+      "selfUri": ""
+   },
+   "audioTTS": "",
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.deleteGreetingId = function deleteGreetingId(greetingId){
     var requestPath = '/api/v2/greetings/{greetingId}';
@@ -193,7 +340,8 @@ GreetingsApi.prototype.deleteGreetingId = function deleteGreetingId(greetingId){
 
 /**
   * @summary Get media playback URI for this greeting
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} greetingId - Greeting ID
   * @param {string} formatId - The desired media format.
   WAV,
@@ -202,6 +350,13 @@ GreetingsApi.prototype.deleteGreetingId = function deleteGreetingId(greetingId){
   OGG_VORBIS,
   OGG_OPUS,
   NONE,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "mediaFileUri": "",
+   "mediaImageUri": ""
+}
   */
 GreetingsApi.prototype.getGreetingIdMedia = function getGreetingIdMedia(greetingId, formatId){
     var requestPath = '/api/v2/greetings/{greetingId}/media';
@@ -212,16 +367,31 @@ GreetingsApi.prototype.getGreetingIdMedia = function getGreetingIdMedia(greeting
       throw new Error('Missing required  parameter: greetingId');
     }
     requestPath = requestPath.replace('{greetingId}', greetingId);
-    requestQuery.formatId = formatId;
+    requestQuery["formatId"] = formatId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a list of the User's Greetings
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} userId - User ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 GreetingsApi.prototype.getUserIdGreetings = function getUserIdGreetings(userId, pageSize, pageNumber){
     var requestPath = '/api/v2/users/{userId}/greetings';
@@ -232,14 +402,15 @@ GreetingsApi.prototype.getUserIdGreetings = function getUserIdGreetings(userId, 
       throw new Error('Missing required  parameter: userId');
     }
     requestPath = requestPath.replace('{userId}', userId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Creates a Greeting for a User
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - The Greeting to create
   * @example
@@ -262,6 +433,30 @@ GreetingsApi.prototype.getUserIdGreetings = function getUserIdGreetings(userId, 
    "modifiedDate": "",
    "modifiedBy": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "ownerType": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "audioFile": {
+      "durationMilliseconds": 0,
+      "sizeBytes": 0,
+      "selfUri": ""
+   },
+   "audioTTS": "",
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.postUserIdGreetings = function postUserIdGreetings(userId, body){
     var requestPath = '/api/v2/users/{userId}/greetings';
@@ -283,8 +478,27 @@ GreetingsApi.prototype.postUserIdGreetings = function postUserIdGreetings(userId
 
 /**
   * @summary Grabs the list of Default Greetings given a User's ID
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "ownerType": "",
+   "greetings": {},
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
+}
   */
 GreetingsApi.prototype.getUserIdGreetingsDefaults = function getUserIdGreetingsDefaults(userId){
     var requestPath = '/api/v2/users/{userId}/greetings/defaults';
@@ -300,7 +514,8 @@ GreetingsApi.prototype.getUserIdGreetingsDefaults = function getUserIdGreetingsD
 
 /**
   * @summary Updates the DefaultGreetingList of the specified User
-  * @memberOf GreetingsApi#
+  * @memberOf GreetingsApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - The updated defaultGreetingList
   * @example
@@ -316,6 +531,24 @@ GreetingsApi.prototype.getUserIdGreetingsDefaults = function getUserIdGreetingsD
    "createdBy": "",
    "modifiedDate": "",
    "modifiedBy": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "owner": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "ownerType": "",
+   "greetings": {},
+   "createdDate": "",
+   "createdBy": "",
+   "modifiedDate": "",
+   "modifiedBy": "",
+   "selfUri": ""
 }
   */
 GreetingsApi.prototype.putUserIdGreetingsDefaults = function putUserIdGreetingsDefaults(userId, body){

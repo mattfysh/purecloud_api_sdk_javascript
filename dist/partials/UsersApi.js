@@ -1,7 +1,7 @@
 /**
-* @class
+* @class UsersApi
 * @example
-* var api = new UsersApi(pureCloudSession);
+* var api = new purecloud.platform.UsersApi(pureCloudSession);
 */
 function UsersApi(session) {
     if(!(this instanceof UsersApi)) {
@@ -15,7 +15,8 @@ function UsersApi(session) {
 
 /**
   * @summary Query for user aggregates
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -30,6 +31,12 @@ function UsersApi(session) {
    },
    "metrics": [],
    "flattenMultivaluedDimensions": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "systemToOrganizationMappings": {},
+   "results": []
 }
   */
 UsersApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(body){
@@ -48,7 +55,8 @@ UsersApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(
 
 /**
   * @summary Query for user observations
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -59,6 +67,11 @@ UsersApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(
       "predicates": []
    },
    "metrics": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": []
 }
   */
 UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQuery(body){
@@ -77,7 +90,8 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
 
 /**
   * @summary Get the list of available users.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {array} id - id
@@ -85,23 +99,38 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
   ascending,
   descending,
   * @param {array} expand - Which fields, if any, to expand
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 UsersApi.prototype.getUsers = function getUsers(pageSize, pageNumber, id, sortOrder, expand){
     var requestPath = '/api/v2/users';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.id = id;
-    requestQuery.sortOrder = sortOrder;
-    requestQuery.expand = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["id"] = id;
+    requestQuery["sortOrder"] = sortOrder;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {} body - User
   * @example
   * Body Example:
@@ -112,6 +141,82 @@ UsersApi.prototype.getUsers = function getUsers(pageSize, pageNumber, id, sortOr
    "addresses": [],
    "title": "",
    "password": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "chat": {
+      "jabberId": ""
+   },
+   "department": "",
+   "email": "",
+   "primaryContactInfo": [],
+   "addresses": [],
+   "state": "",
+   "title": "",
+   "username": "",
+   "images": [],
+   "version": 0,
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "presence": {
+      "id": "",
+      "name": "",
+      "source": "",
+      "primary": true,
+      "presenceDefinition": {},
+      "message": "",
+      "modifiedDate": "",
+      "selfUri": ""
+   },
+   "conversationSummary": {
+      "userId": "",
+      "call": {},
+      "callback": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "outOfOffice": {
+      "id": "",
+      "name": "",
+      "user": {},
+      "startDate": "",
+      "endDate": "",
+      "active": true,
+      "selfUri": ""
+   },
+   "geolocation": {
+      "id": "",
+      "name": "",
+      "type": "",
+      "primary": true,
+      "latitude": {},
+      "longitude": {},
+      "country": "",
+      "region": "",
+      "city": "",
+      "selfUri": ""
+   },
+   "station": {
+      "associatedStation": {},
+      "effectiveStation": {},
+      "defaultStation": {},
+      "lastAssociatedStation": {}
+   },
+   "authorization": {
+      "roles": [],
+      "permissions": [],
+      "permissionPolicies": []
+   },
+   "profileSkills": [],
+   "selfUri": ""
 }
   */
 UsersApi.prototype.postUsers = function postUsers(body){
@@ -131,23 +236,139 @@ UsersApi.prototype.postUsers = function postUsers(body){
 /**
   * @summary Get current user details.
   * @description This request is not valid when using the Client Credentials OAuth grant.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {array} expand - Which fields, if any, to expand.
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "chat": {
+      "jabberId": ""
+   },
+   "department": "",
+   "email": "",
+   "primaryContactInfo": [],
+   "addresses": [],
+   "state": "",
+   "title": "",
+   "username": "",
+   "images": [],
+   "version": 0,
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "presence": {
+      "id": "",
+      "name": "",
+      "source": "",
+      "primary": true,
+      "presenceDefinition": {},
+      "message": "",
+      "modifiedDate": "",
+      "selfUri": ""
+   },
+   "conversationSummary": {
+      "userId": "",
+      "call": {},
+      "callback": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "outOfOffice": {
+      "id": "",
+      "name": "",
+      "user": {},
+      "startDate": "",
+      "endDate": "",
+      "active": true,
+      "selfUri": ""
+   },
+   "geolocation": {
+      "id": "",
+      "name": "",
+      "type": "",
+      "primary": true,
+      "latitude": {},
+      "longitude": {},
+      "country": "",
+      "region": "",
+      "city": "",
+      "selfUri": ""
+   },
+   "station": {
+      "associatedStation": {},
+      "effectiveStation": {},
+      "defaultStation": {},
+      "lastAssociatedStation": {}
+   },
+   "authorization": {
+      "roles": [],
+      "permissions": [],
+      "permissionPolicies": []
+   },
+   "profileSkills": [],
+   "date": {
+      "currentDate": ""
+   },
+   "geolocationSettings": {
+      "id": "",
+      "name": "",
+      "enabled": true,
+      "selfUri": ""
+   },
+   "organization": {
+      "id": "",
+      "name": "",
+      "thirdPartyOrgId": "",
+      "thirdPartyOrgName": "",
+      "thirdPartyURI": "",
+      "domain": "",
+      "version": 0,
+      "state": "",
+      "defaultSiteId": "",
+      "deletable": true,
+      "selfUri": ""
+   },
+   "presenceDefinitions": [],
+   "locations": [],
+   "selfUri": ""
+}
   */
 UsersApi.prototype.getMe = function getMe(expand){
     var requestPath = '/api/v2/users/me';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search using q64
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
+}
   */
 UsersApi.prototype.getSearch = function getSearch(q64, expand){
     var requestPath = '/api/v2/users/search';
@@ -157,14 +378,15 @@ UsersApi.prototype.getSearch = function getSearch(q64, expand){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {} body - Search request options
   * @example
   * Body Example:
@@ -176,6 +398,20 @@ UsersApi.prototype.getSearch = function getSearch(q64, expand){
    "returnFields": [],
    "expand": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
 }
   */
 UsersApi.prototype.postSearch = function postSearch(body){
@@ -194,9 +430,86 @@ UsersApi.prototype.postSearch = function postSearch(body){
 
 /**
   * @summary Get user.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {array} expand - Which fields, if any, to expand
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "chat": {
+      "jabberId": ""
+   },
+   "department": "",
+   "email": "",
+   "primaryContactInfo": [],
+   "addresses": [],
+   "state": "",
+   "title": "",
+   "username": "",
+   "images": [],
+   "version": 0,
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "presence": {
+      "id": "",
+      "name": "",
+      "source": "",
+      "primary": true,
+      "presenceDefinition": {},
+      "message": "",
+      "modifiedDate": "",
+      "selfUri": ""
+   },
+   "conversationSummary": {
+      "userId": "",
+      "call": {},
+      "callback": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "outOfOffice": {
+      "id": "",
+      "name": "",
+      "user": {},
+      "startDate": "",
+      "endDate": "",
+      "active": true,
+      "selfUri": ""
+   },
+   "geolocation": {
+      "id": "",
+      "name": "",
+      "type": "",
+      "primary": true,
+      "latitude": {},
+      "longitude": {},
+      "country": "",
+      "region": "",
+      "city": "",
+      "selfUri": ""
+   },
+   "station": {
+      "associatedStation": {},
+      "effectiveStation": {},
+      "defaultStation": {},
+      "lastAssociatedStation": {}
+   },
+   "authorization": {
+      "roles": [],
+      "permissions": [],
+      "permissionPolicies": []
+   },
+   "profileSkills": [],
+   "selfUri": ""
+}
   */
 UsersApi.prototype.getUserId = function getUserId(userId, expand){
     var requestPath = '/api/v2/users/{userId}';
@@ -207,13 +520,14 @@ UsersApi.prototype.getUserId = function getUserId(userId, expand){
       throw new Error('Missing required  parameter: userId');
     }
     requestPath = requestPath.replace('{userId}', userId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Delete user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   */
 UsersApi.prototype.deleteUserId = function deleteUserId(userId){
@@ -230,7 +544,8 @@ UsersApi.prototype.deleteUserId = function deleteUserId(userId){
 
 /**
   * @summary Update user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - User
   * @example
@@ -247,6 +562,82 @@ UsersApi.prototype.deleteUserId = function deleteUserId(userId){
    "username": "",
    "images": [],
    "version": 0
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "chat": {
+      "jabberId": ""
+   },
+   "department": "",
+   "email": "",
+   "primaryContactInfo": [],
+   "addresses": [],
+   "state": "",
+   "title": "",
+   "username": "",
+   "images": [],
+   "version": 0,
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "presence": {
+      "id": "",
+      "name": "",
+      "source": "",
+      "primary": true,
+      "presenceDefinition": {},
+      "message": "",
+      "modifiedDate": "",
+      "selfUri": ""
+   },
+   "conversationSummary": {
+      "userId": "",
+      "call": {},
+      "callback": {},
+      "email": {},
+      "chat": {},
+      "socialExpression": {},
+      "video": {}
+   },
+   "outOfOffice": {
+      "id": "",
+      "name": "",
+      "user": {},
+      "startDate": "",
+      "endDate": "",
+      "active": true,
+      "selfUri": ""
+   },
+   "geolocation": {
+      "id": "",
+      "name": "",
+      "type": "",
+      "primary": true,
+      "latitude": {},
+      "longitude": {},
+      "country": "",
+      "region": "",
+      "city": "",
+      "selfUri": ""
+   },
+   "station": {
+      "associatedStation": {},
+      "effectiveStation": {},
+      "defaultStation": {},
+      "lastAssociatedStation": {}
+   },
+   "authorization": {
+      "roles": [],
+      "permissions": [],
+      "permissionPolicies": []
+   },
+   "profileSkills": [],
+   "selfUri": ""
 }
   */
 UsersApi.prototype.patchUserId = function patchUserId(userId, body){
@@ -269,8 +660,42 @@ UsersApi.prototype.patchUserId = function patchUserId(userId, body){
 
 /**
   * @summary Get a user's CallForwarding
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "enabled": true,
+   "phoneNumber": "",
+   "modifiedDate": "",
+   "selfUri": ""
+}
   */
 UsersApi.prototype.getUserIdCallforwarding = function getUserIdCallforwarding(userId){
     var requestPath = '/api/v2/users/{userId}/callforwarding';
@@ -286,7 +711,8 @@ UsersApi.prototype.getUserIdCallforwarding = function getUserIdCallforwarding(us
 
 /**
   * @summary Update a user's CallForwarding
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - Call forwarding
   * @example
@@ -307,6 +733,39 @@ UsersApi.prototype.getUserIdCallforwarding = function getUserIdCallforwarding(us
    "enabled": true,
    "phoneNumber": "",
    "modifiedDate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "enabled": true,
+   "phoneNumber": "",
+   "modifiedDate": "",
+   "selfUri": ""
 }
   */
 UsersApi.prototype.putUserIdCallforwarding = function putUserIdCallforwarding(userId, body){
@@ -329,7 +788,8 @@ UsersApi.prototype.putUserIdCallforwarding = function putUserIdCallforwarding(us
 
 /**
   * @summary Patch a user's CallForwarding
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - Call forwarding
   * @example
@@ -350,6 +810,39 @@ UsersApi.prototype.putUserIdCallforwarding = function putUserIdCallforwarding(us
    "enabled": true,
    "phoneNumber": "",
    "modifiedDate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "enabled": true,
+   "phoneNumber": "",
+   "modifiedDate": "",
+   "selfUri": ""
 }
   */
 UsersApi.prototype.patchUserIdCallforwarding = function patchUserIdCallforwarding(userId, body){
@@ -372,9 +865,24 @@ UsersApi.prototype.patchUserIdCallforwarding = function patchUserIdCallforwardin
 
 /**
   * @summary Get a user's Geolocation
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - user Id
   * @param {string} clientId - client Id
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "primary": true,
+   "latitude": {},
+   "longitude": {},
+   "country": "",
+   "region": "",
+   "city": "",
+   "selfUri": ""
+}
   */
 UsersApi.prototype.getUserIdGeolocationsClientId = function getUserIdGeolocationsClientId(userId, clientId){
     var requestPath = '/api/v2/users/{userId}/geolocations/{clientId}';
@@ -395,7 +903,8 @@ UsersApi.prototype.getUserIdGeolocationsClientId = function getUserIdGeolocation
 /**
   * @summary Patch a user's Geolocation
   * @description The geolocation object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the client as the user's primary geolocation source.  Option 2: Provide the 'latitude' and 'longitude' values.  This will enqueue an asynchronous update of the 'city', 'region', and 'country', generating a notification. A subsequent GET operation will include the new values for 'city', 'region' and 'country'.  Option 3:  Provide the 'city', 'region', 'country' values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - user Id
   * @param {string} clientId - client Id
   * @param {} body - Geolocation
@@ -410,6 +919,20 @@ UsersApi.prototype.getUserIdGeolocationsClientId = function getUserIdGeolocation
    "country": "",
    "region": "",
    "city": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "type": "",
+   "primary": true,
+   "latitude": {},
+   "longitude": {},
+   "country": "",
+   "region": "",
+   "city": "",
+   "selfUri": ""
 }
   */
 UsersApi.prototype.patchUserIdGeolocationsClientId = function patchUserIdGeolocationsClientId(userId, clientId, body){
@@ -436,8 +959,42 @@ UsersApi.prototype.patchUserIdGeolocationsClientId = function patchUserIdGeoloca
 
 /**
   * @summary Get a OutOfOffice
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "startDate": "",
+   "endDate": "",
+   "active": true,
+   "selfUri": ""
+}
   */
 UsersApi.prototype.getUserIdOutofoffice = function getUserIdOutofoffice(userId){
     var requestPath = '/api/v2/users/{userId}/outofoffice';
@@ -453,7 +1010,8 @@ UsersApi.prototype.getUserIdOutofoffice = function getUserIdOutofoffice(userId){
 
 /**
   * @summary Update an OutOfOffice
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - The updated UserPresence
   * @example
@@ -474,6 +1032,39 @@ UsersApi.prototype.getUserIdOutofoffice = function getUserIdOutofoffice(userId){
    "startDate": "",
    "endDate": "",
    "active": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "startDate": "",
+   "endDate": "",
+   "active": true,
+   "selfUri": ""
 }
   */
 UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, body){
@@ -496,10 +1087,25 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
 
 /**
   * @summary Get queues for user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, pageNumber){
     var requestPath = '/api/v2/users/{userId}/queues';
@@ -510,14 +1116,15 @@ UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, 
       throw new Error('Missing required  parameter: userId');
     }
     requestPath = requestPath.replace('{userId}', userId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Join or unjoin a set of queues for a user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - User Queues
   * @example
@@ -554,6 +1161,40 @@ UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, 
   "memberCount": 0
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "mediaSettings": {},
+   "bullseye": {
+      "rings": []
+   },
+   "acwSettings": {
+      "wrapupPrompt": "",
+      "timeoutMs": 0
+   },
+   "skillEvaluationMethod": "",
+   "queueFlow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callingPartyName": "",
+   "callingPartyNumber": "",
+   "joined": true,
+   "memberCount": 0,
+   "selfUri": ""
+}
   */
 UsersApi.prototype.patchUserIdQueues = function patchUserIdQueues(userId, body){
     var requestPath = '/api/v2/users/{userId}/queues';
@@ -575,7 +1216,8 @@ UsersApi.prototype.patchUserIdQueues = function patchUserIdQueues(userId, body){
 
 /**
   * @summary Join or unjoin a queue for a user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {string} userId - User ID
   * @param {} body - Queue Member
@@ -611,6 +1253,40 @@ UsersApi.prototype.patchUserIdQueues = function patchUserIdQueues(userId, body){
    "joined": true,
    "memberCount": 0
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "mediaSettings": {},
+   "bullseye": {
+      "rings": []
+   },
+   "acwSettings": {
+      "wrapupPrompt": "",
+      "timeoutMs": 0
+   },
+   "skillEvaluationMethod": "",
+   "queueFlow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callingPartyName": "",
+   "callingPartyNumber": "",
+   "joined": true,
+   "memberCount": 0,
+   "selfUri": ""
+}
   */
 UsersApi.prototype.patchUserIdQueuesQueueId = function patchUserIdQueuesQueueId(queueId, userId, body){
     var requestPath = '/api/v2/users/{userId}/queues/{queueId}';
@@ -636,8 +1312,16 @@ UsersApi.prototype.patchUserIdQueuesQueueId = function patchUserIdQueuesQueueId(
 
 /**
   * @summary Returns a listing of roles and permissions for a user.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "roles": [],
+   "permissions": [],
+   "permissionPolicies": []
+}
   */
 UsersApi.prototype.getUserIdRoles = function getUserIdRoles(userId){
     var requestPath = '/api/v2/users/{userId}/roles';
@@ -653,9 +1337,17 @@ UsersApi.prototype.getUserIdRoles = function getUserIdRoles(userId){
 
 /**
   * @summary Sets the user's roles
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - List of roles
+  * @example
+  * 200 Response Example:
+  * {
+   "roles": [],
+   "permissions": [],
+   "permissionPolicies": []
+}
   */
 UsersApi.prototype.putUserIdRoles = function putUserIdRoles(userId, body){
     var requestPath = '/api/v2/users/{userId}/roles';
@@ -677,7 +1369,8 @@ UsersApi.prototype.putUserIdRoles = function putUserIdRoles(userId, body){
 
 /**
   * @summary Removes all the roles from the user.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   */
 UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
@@ -694,13 +1387,28 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
 
 /**
   * @summary List routing skills for user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 UsersApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
     var requestPath = '/api/v2/users/{userId}/routingskills';
@@ -711,15 +1419,16 @@ UsersApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(user
       throw new Error('Missing required  parameter: userId');
     }
     requestPath = requestPath.replace('{userId}', userId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortOrder"] = sortOrder;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Add routing skill to user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - Skill
   * @example
@@ -728,6 +1437,16 @@ UsersApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(user
    "name": "",
    "proficiency": {},
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "proficiency": {},
+   "state": "",
+   "skillUri": "",
+   "selfUri": ""
 }
   */
 UsersApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(userId, body){
@@ -750,7 +1469,8 @@ UsersApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(us
 
 /**
   * @summary Update routing skill proficiency or state.
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {string} skillId - 
   * @param {} body - Skill
@@ -760,6 +1480,16 @@ UsersApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(us
    "name": "",
    "proficiency": {},
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "proficiency": {},
+   "state": "",
+   "skillUri": "",
+   "selfUri": ""
 }
   */
 UsersApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingskillsSkillId(userId, skillId, body){
@@ -786,7 +1516,8 @@ UsersApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingskil
 
 /**
   * @summary Remove routing skill from user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {string} skillId - 
   */
@@ -808,8 +1539,16 @@ UsersApi.prototype.deleteUserIdRoutingskillsSkillId = function deleteUserIdRouti
 
 /**
   * @summary Fetch the routing status of a user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+}
   */
 UsersApi.prototype.getUserIdRoutingstatus = function getUserIdRoutingstatus(userId){
     var requestPath = '/api/v2/users/{userId}/routingstatus';
@@ -825,11 +1564,19 @@ UsersApi.prototype.getUserIdRoutingstatus = function getUserIdRoutingstatus(user
 
 /**
   * @summary Update the routing status of a user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - Routing Status
   * @example
   * Body Example:
+  * {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+}
+  * @example
+  * 200 Response Example:
   * {
    "userId": "",
    "status": "",
@@ -856,8 +1603,41 @@ UsersApi.prototype.putUserIdRoutingstatus = function putUserIdRoutingstatus(user
 
 /**
   * @summary Get station information for user
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "associatedStation": {
+      "id": "",
+      "associatedUser": {},
+      "associatedDate": "",
+      "defaultUser": {},
+      "providerInfo": {}
+   },
+   "effectiveStation": {
+      "id": "",
+      "associatedUser": {},
+      "associatedDate": "",
+      "defaultUser": {},
+      "providerInfo": {}
+   },
+   "defaultStation": {
+      "id": "",
+      "associatedUser": {},
+      "associatedDate": "",
+      "defaultUser": {},
+      "providerInfo": {}
+   },
+   "lastAssociatedStation": {
+      "id": "",
+      "associatedUser": {},
+      "associatedDate": "",
+      "defaultUser": {},
+      "providerInfo": {}
+   }
+}
   */
 UsersApi.prototype.getUserIdStation = function getUserIdStation(userId){
     var requestPath = '/api/v2/users/{userId}/station';
@@ -873,7 +1653,8 @@ UsersApi.prototype.getUserIdStation = function getUserIdStation(userId){
 
 /**
   * @summary Clear associated station
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   */
 UsersApi.prototype.deleteUserIdStationAssociatedstation = function deleteUserIdStationAssociatedstation(userId){
@@ -890,7 +1671,8 @@ UsersApi.prototype.deleteUserIdStationAssociatedstation = function deleteUserIdS
 
 /**
   * @summary Set associated station
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {string} stationId - 
   */
@@ -912,7 +1694,8 @@ UsersApi.prototype.putUserIdStationAssociatedstationStationId = function putUser
 
 /**
   * @summary Clear default station
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   */
 UsersApi.prototype.deleteUserIdStationDefaultstation = function deleteUserIdStationDefaultstation(userId){
@@ -929,7 +1712,8 @@ UsersApi.prototype.deleteUserIdStationDefaultstation = function deleteUserIdStat
 
 /**
   * @summary Set default station
-  * @memberOf UsersApi#
+  * @memberOf UsersApi
+  * @instance
   * @param {string} userId - User ID
   * @param {string} stationId - 
   */

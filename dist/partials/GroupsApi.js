@@ -1,7 +1,7 @@
 /**
-* @class
+* @class GroupsApi
 * @example
-* var api = new GroupsApi(pureCloudSession);
+* var api = new purecloud.platform.GroupsApi(pureCloudSession);
 */
 function GroupsApi(session) {
     if(!(this instanceof GroupsApi)) {
@@ -15,27 +15,43 @@ function GroupsApi(session) {
 
 /**
   * @summary Get a group list
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 GroupsApi.prototype.getGroups = function getGroups(pageSize, pageNumber, sortOrder){
     var requestPath = '/api/v2/groups';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortOrder"] = sortOrder;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a group
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {} body - Group
   * @example
   * Body Example:
@@ -47,6 +63,23 @@ GroupsApi.prototype.getGroups = function getGroups(pageSize, pageNumber, sortOrd
    "addresses": [],
    "rulesVisible": true,
    "visibility": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "dateModified": "",
+   "memberCount": 0,
+   "state": "",
+   "version": 0,
+   "type": "",
+   "images": [],
+   "addresses": [],
+   "rulesVisible": true,
+   "visibility": "",
+   "selfUri": ""
 }
   */
 GroupsApi.prototype.postGroups = function postGroups(body){
@@ -65,9 +98,24 @@ GroupsApi.prototype.postGroups = function postGroups(body){
 
 /**
   * @summary Search using q64
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
+}
   */
 GroupsApi.prototype.getSearch = function getSearch(q64, expand){
     var requestPath = '/api/v2/groups/search';
@@ -77,14 +125,15 @@ GroupsApi.prototype.getSearch = function getSearch(q64, expand){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {} body - Search request options
   * @example
   * Body Example:
@@ -96,6 +145,20 @@ GroupsApi.prototype.getSearch = function getSearch(q64, expand){
    "returnFields": [],
    "expand": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
 }
   */
 GroupsApi.prototype.postSearch = function postSearch(body){
@@ -114,8 +177,26 @@ GroupsApi.prototype.postSearch = function postSearch(body){
 
 /**
   * @summary Get group
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {string} groupId - Group ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "dateModified": "",
+   "memberCount": 0,
+   "state": "",
+   "version": 0,
+   "type": "",
+   "images": [],
+   "addresses": [],
+   "rulesVisible": true,
+   "visibility": "",
+   "selfUri": ""
+}
   */
 GroupsApi.prototype.getGroupId = function getGroupId(groupId){
     var requestPath = '/api/v2/groups/{groupId}';
@@ -131,13 +212,28 @@ GroupsApi.prototype.getGroupId = function getGroupId(groupId){
 
 /**
   * @summary Get group members
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {string} groupId - Group ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 GroupsApi.prototype.getGroupIdMembers = function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
     var requestPath = '/api/v2/groups/{groupId}/members';
@@ -148,15 +244,16 @@ GroupsApi.prototype.getGroupIdMembers = function getGroupIdMembers(groupId, page
       throw new Error('Missing required  parameter: groupId');
     }
     requestPath = requestPath.replace('{groupId}', groupId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortOrder"] = sortOrder;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Add members
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {string} groupId - Group ID
   * @param {} body - Add members
   * @example
@@ -186,7 +283,8 @@ GroupsApi.prototype.postGroupIdMembers = function postGroupIdMembers(groupId, bo
 
 /**
   * @summary Remove members
-  * @memberOf GroupsApi#
+  * @memberOf GroupsApi
+  * @instance
   * @param {string} groupId - Group ID
   * @param {string} ids - Comma separated list of userIds to remove
   */
@@ -202,7 +300,7 @@ GroupsApi.prototype.deleteGroupIdMembers = function deleteGroupIdMembers(groupId
     if(ids === undefined || ids === null){
       throw new Error('Missing required  parameter: ids');
     }
-    requestQuery.ids = ids;
+    requestQuery["ids"] = ids;
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 

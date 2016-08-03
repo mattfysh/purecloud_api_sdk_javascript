@@ -1,7 +1,7 @@
 /**
-* @class
+* @class ConversationsApi
 * @example
-* var api = new ConversationsApi(pureCloudSession);
+* var api = new purecloud.platform.ConversationsApi(pureCloudSession);
 */
 function ConversationsApi(session) {
     if(!(this instanceof ConversationsApi)) {
@@ -15,7 +15,8 @@ function ConversationsApi(session) {
 
 /**
   * @summary Query for conversation aggregates
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -30,6 +31,11 @@ function ConversationsApi(session) {
    },
    "metrics": [],
    "flattenMultivaluedDimensions": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "results": []
 }
   */
 ConversationsApi.prototype.postConversationsAggregatesQuery = function postConversationsAggregatesQuery(body){
@@ -48,7 +54,8 @@ ConversationsApi.prototype.postConversationsAggregatesQuery = function postConve
 
 /**
   * @summary Query for conversation details
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -64,6 +71,12 @@ ConversationsApi.prototype.postConversationsAggregatesQuery = function postConve
    },
    "order": "",
    "orderBy": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "conversations": [],
+   "aggregations": []
 }
   */
 ConversationsApi.prototype.postConversationsDetailsQuery = function postConversationsDetailsQuery(body){
@@ -82,8 +95,17 @@ ConversationsApi.prototype.postConversationsDetailsQuery = function postConversa
 
 /**
   * @summary Get a conversation by id
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversationId
+  * @example
+  * 200 Response Example:
+  * {
+   "conversationId": "",
+   "conversationStart": "",
+   "participants": [],
+   "evaluations": []
+}
   */
 ConversationsApi.prototype.getConversationsConversationIdDetails = function getConversationsConversationIdDetails(conversationId){
     var requestPath = '/api/v2/analytics/conversations/{conversationId}/details';
@@ -99,11 +121,19 @@ ConversationsApi.prototype.getConversationsConversationIdDetails = function getC
 
 /**
   * @summary Index conversation properties
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversationId
   * @param {} body - request
   * @example
   * Body Example:
+  * {
+   "sessionId": "",
+   "timestamp": 0,
+   "properties": []
+}
+  * @example
+  * 200 Response Example:
   * {
    "sessionId": "",
    "timestamp": 0,
@@ -130,21 +160,51 @@ ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = fu
 
 /**
   * @summary Get conversations
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} communicationType - Call or Chat communication filtering
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getConversations = function getConversations(communicationType){
     var requestPath = '/api/v2/conversations';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.communicationType = communicationType;
+    requestQuery["communicationType"] = communicationType;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get callback conversations
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getCallbacks = function getCallbacks(){
     var requestPath = '/api/v2/conversations/callbacks';
@@ -156,7 +216,8 @@ ConversationsApi.prototype.getCallbacks = function getCallbacks(){
 
 /**
   * @summary Create a Callback
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {} body - Callback
   * @example
   * Body Example:
@@ -178,6 +239,16 @@ ConversationsApi.prototype.getCallbacks = function getCallbacks(){
    "automatedCallbackConfigId": "",
    "data": {}
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "conversation": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callbackIdentifiers": []
+}
   */
 ConversationsApi.prototype.postCallbacks = function postCallbacks(body){
     var requestPath = '/api/v2/conversations/callbacks';
@@ -195,8 +266,18 @@ ConversationsApi.prototype.postCallbacks = function postCallbacks(body){
 
 /**
   * @summary Get callback conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "participants": [],
+   "otherMediaUris": [],
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbackId(callbackId){
     var requestPath = '/api/v2/conversations/callbacks/{callbackId}';
@@ -212,7 +293,8 @@ ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbac
 
 /**
   * @summary Update a conversation by disconnecting all of the participants
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {} body - Conversation
   * @example
@@ -227,6 +309,21 @@ ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbac
    "maxParticipants": 0,
    "recordingState": "",
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.patchCallbacksCallbackId = function patchCallbacksCallbackId(callbackId, body){
@@ -249,7 +346,8 @@ ConversationsApi.prototype.patchCallbacksCallbackId = function patchCallbacksCal
 
 /**
   * @summary Update conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {string} participantId - 
   * @param {} body - Participant
@@ -297,7 +395,8 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantId = f
 
 /**
   * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {string} participantId - 
   * @param {} body - Attributes
@@ -331,7 +430,8 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdAttr
 
 /**
   * @summary Update conversation participant's communication by disconnecting it.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {string} participantId - 
   * @param {string} communicationId - 
@@ -384,7 +484,8 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdComm
 
 /**
   * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {string} participantId - 
   * @param {} body - Transfer request
@@ -422,10 +523,22 @@ ConversationsApi.prototype.postCallbacksCallbackIdParticipantsParticipantIdRepla
 
 /**
   * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {string} participantId - 
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup = function getCallbacksCallbackIdParticipantsParticipantIdWrapup(callbackId, participantId, provisional){
     var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapup';
@@ -440,15 +553,27 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
+    requestQuery["provisional"] = provisional;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callbackId - 
   * @param {string} participantId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes = function getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes(callbackId, participantId){
     var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapupcodes';
@@ -468,7 +593,22 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
 
 /**
   * @summary Get recent conversations
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getCalls = function getCalls(){
     var requestPath = '/api/v2/conversations/calls';
@@ -480,7 +620,8 @@ ConversationsApi.prototype.getCalls = function getCalls(){
 
 /**
   * @summary Create a call conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {} body - Call request
   * @example
   * Body Example:
@@ -494,6 +635,13 @@ ConversationsApi.prototype.getCalls = function getCalls(){
    "routingSkillsIds": [],
    "conversationIds": [],
    "participants": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.postCalls = function postCalls(body){
@@ -512,25 +660,46 @@ ConversationsApi.prototype.postCalls = function postCalls(body){
 
 /**
   * @summary Get call history
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} interval - Interval string; format is ISO-8601. Separate start and end times with forward slash '/'
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getCallsHistory = function getCallsHistory(pageSize, pageNumber, interval){
     var requestPath = '/api/v2/conversations/calls/history';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.interval = interval;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["interval"] = interval;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get the maximum number of participants that this user can have on a conference
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "maxParticipants": 0
+}
   */
 ConversationsApi.prototype.getCallsMaximumconferenceparties = function getCallsMaximumconferenceparties(){
     var requestPath = '/api/v2/conversations/calls/maximumconferenceparties';
@@ -542,8 +711,19 @@ ConversationsApi.prototype.getCallsMaximumconferenceparties = function getCallsM
 
 /**
   * @summary Get call conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "participants": [],
+   "otherMediaUris": [],
+   "recordingState": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getCallsCallId = function getCallsCallId(callId){
     var requestPath = '/api/v2/conversations/calls/{callId}';
@@ -559,13 +739,29 @@ ConversationsApi.prototype.getCallsCallId = function getCallsCallId(callId){
 
 /**
   * @summary Add a new call to a conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {} body - Conversation
   * @example
   * Body Example:
   * {
    "callNumber": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, body){
@@ -588,7 +784,8 @@ ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, bo
 
 /**
   * @summary Update a conversation by setting it's recording state or disconnecting all of the participants
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {} body - Conversation
   * @example
@@ -603,6 +800,21 @@ ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, bo
    "maxParticipants": 0,
    "recordingState": "",
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, body){
@@ -625,7 +837,8 @@ ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, 
 
 /**
   * @summary Add participants to a conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {} body - Conversation
   * @example
@@ -640,6 +853,21 @@ ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, 
    "maxParticipants": 0,
    "recordingState": "",
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.postCallsCallIdParticipants = function postCallsCallIdParticipants(callId, body){
@@ -662,7 +890,8 @@ ConversationsApi.prototype.postCallsCallIdParticipants = function postCallsCallI
 
 /**
   * @summary Update conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {} body - Participant request
@@ -710,7 +939,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantId = function 
 
 /**
   * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {} body - Participant attributes
@@ -744,7 +974,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdAttributes =
 
 /**
   * @summary Update conversation participant's communication by disconnecting it.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {string} communicationId - 
@@ -797,7 +1028,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdCommunicatio
 
 /**
   * @summary Initiate and update consult transfer
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {} body - Destination address & initial speak to
@@ -811,6 +1043,11 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdCommunicatio
       "userId": "",
       "queueId": ""
    }
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "destinationParticipantId": ""
 }
   */
 ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdConsult = function postCallsCallIdParticipantsParticipantIdConsult(callId, participantId, body){
@@ -837,7 +1074,8 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdConsult = fun
 
 /**
   * @summary Cancel the transfer
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   */
@@ -859,7 +1097,8 @@ ConversationsApi.prototype.deleteCallsCallIdParticipantsParticipantIdConsult = f
 
 /**
   * @summary Change who can speak
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {} body - new speak to
@@ -867,6 +1106,11 @@ ConversationsApi.prototype.deleteCallsCallIdParticipantsParticipantIdConsult = f
   * Body Example:
   * {
    "speakTo": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "destinationParticipantId": ""
 }
   */
 ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdConsult = function patchCallsCallIdParticipantsParticipantIdConsult(callId, participantId, body){
@@ -893,7 +1137,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdConsult = fu
 
 /**
   * @summary Listen in on the conversation from the point of view of a given participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   */
@@ -915,7 +1160,8 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdMonitor = fun
 
 /**
   * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {} body - Transfer request
@@ -953,10 +1199,22 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdReplace = fun
 
 /**
   * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapup = function getCallsCallIdParticipantsParticipantIdWrapup(callId, participantId, provisional){
     var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapup';
@@ -971,15 +1229,27 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapup = funct
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
+    requestQuery["provisional"] = provisional;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} callId - 
   * @param {string} participantId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = function getCallsCallIdParticipantsParticipantIdWrapupcodes(callId, participantId){
     var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapupcodes';
@@ -999,7 +1269,22 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = 
 
 /**
   * @summary Get recent chat conversations
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getChats = function getChats(){
     var requestPath = '/api/v2/conversations/chats';
@@ -1011,8 +1296,18 @@ ConversationsApi.prototype.getChats = function getChats(){
 
 /**
   * @summary Get chat conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "participants": [],
+   "otherMediaUris": [],
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
     var requestPath = '/api/v2/conversations/chats/{chatId}';
@@ -1028,7 +1323,8 @@ ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
 
 /**
   * @summary Update a conversation by disconnecting all of the participants
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {} body - Conversation
   * @example
@@ -1043,6 +1339,21 @@ ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
    "maxParticipants": 0,
    "recordingState": "",
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.patchChatsChatId = function patchChatsChatId(chatId, body){
@@ -1065,7 +1376,8 @@ ConversationsApi.prototype.patchChatsChatId = function patchChatsChatId(chatId, 
 
 /**
   * @summary Update conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {string} participantId - 
   * @param {} body - Update request
@@ -1113,7 +1425,8 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantId = function 
 
 /**
   * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {string} participantId - 
   * @param {} body - Participant attributes
@@ -1147,7 +1460,8 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdAttributes =
 
 /**
   * @summary Update conversation participant's communication by disconnecting it.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {string} participantId - 
   * @param {string} communicationId - 
@@ -1200,7 +1514,8 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdCommunicatio
 
 /**
   * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {string} participantId - 
   * @param {} body - Transfer request
@@ -1238,10 +1553,22 @@ ConversationsApi.prototype.postChatsChatIdParticipantsParticipantIdReplace = fun
 
 /**
   * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {string} participantId - 
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapup = function getChatsChatIdParticipantsParticipantIdWrapup(chatId, participantId, provisional){
     var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapup';
@@ -1256,15 +1583,27 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapup = funct
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
+    requestQuery["provisional"] = provisional;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} chatId - 
   * @param {string} participantId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = function getChatsChatIdParticipantsParticipantIdWrapupcodes(chatId, participantId){
     var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapupcodes';
@@ -1284,7 +1623,22 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = 
 
 /**
   * @summary Get recent email conversations
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getEmails = function getEmails(){
     var requestPath = '/api/v2/conversations/emails';
@@ -1296,8 +1650,18 @@ ConversationsApi.prototype.getEmails = function getEmails(){
 
 /**
   * @summary Get email conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "participants": [],
+   "otherMediaUris": [],
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getEmailsEmailId = function getEmailsEmailId(emailId){
     var requestPath = '/api/v2/conversations/emails/{emailId}';
@@ -1313,7 +1677,8 @@ ConversationsApi.prototype.getEmailsEmailId = function getEmailsEmailId(emailId)
 
 /**
   * @summary Update a conversation by disconnecting all of the participants
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {} body - Conversation
   * @example
@@ -1328,6 +1693,21 @@ ConversationsApi.prototype.getEmailsEmailId = function getEmailsEmailId(emailId)
    "maxParticipants": 0,
    "recordingState": "",
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emailId, body){
@@ -1350,8 +1730,23 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
 
 /**
   * @summary Get conversation messages
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 ConversationsApi.prototype.getEmailsEmailIdMessages = function getEmailsEmailIdMessages(emailId){
     var requestPath = '/api/v2/conversations/emails/{emailId}/messages';
@@ -1367,7 +1762,8 @@ ConversationsApi.prototype.getEmailsEmailIdMessages = function getEmailsEmailIdM
 
 /**
   * @summary Send an email reply
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {} body - Reply
   * @example
@@ -1386,6 +1782,25 @@ ConversationsApi.prototype.getEmailsEmailIdMessages = function getEmailsEmailIdM
    "textBody": "",
    "htmlBody": "",
    "time": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "to": [],
+   "cc": [],
+   "bcc": [],
+   "from": {
+      "email": "",
+      "name": ""
+   },
+   "subject": "",
+   "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
+   "time": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.postEmailsEmailIdMessages = function postEmailsEmailIdMessages(emailId, body){
@@ -1408,8 +1823,28 @@ ConversationsApi.prototype.postEmailsEmailIdMessages = function postEmailsEmailI
 
 /**
   * @summary Get conversation draft reply
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "to": [],
+   "cc": [],
+   "bcc": [],
+   "from": {
+      "email": "",
+      "name": ""
+   },
+   "subject": "",
+   "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
+   "time": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getEmailsEmailIdMessagesDraft = function getEmailsEmailIdMessagesDraft(emailId){
     var requestPath = '/api/v2/conversations/emails/{emailId}/messages/draft';
@@ -1425,7 +1860,8 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesDraft = function getEmailsEma
 
 /**
   * @summary Update conversation draft reply
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {} body - Draft
   * @example
@@ -1444,6 +1880,25 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesDraft = function getEmailsEma
    "textBody": "",
    "htmlBody": "",
    "time": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "to": [],
+   "cc": [],
+   "bcc": [],
+   "from": {
+      "email": "",
+      "name": ""
+   },
+   "subject": "",
+   "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
+   "time": "",
+   "selfUri": ""
 }
   */
 ConversationsApi.prototype.putEmailsEmailIdMessagesDraft = function putEmailsEmailIdMessagesDraft(emailId, body){
@@ -1466,7 +1921,8 @@ ConversationsApi.prototype.putEmailsEmailIdMessagesDraft = function putEmailsEma
 
 /**
   * @summary Delete attachment from draft
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} attachmentId - 
   */
@@ -1488,9 +1944,29 @@ ConversationsApi.prototype.deleteEmailsEmailIdMessagesDraftAttachmentsAttachment
 
 /**
   * @summary Get conversation message
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} messageId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "to": [],
+   "cc": [],
+   "bcc": [],
+   "from": {
+      "email": "",
+      "name": ""
+   },
+   "subject": "",
+   "attachments": [],
+   "textBody": "",
+   "htmlBody": "",
+   "time": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getEmailsEmailIdMessagesMessageId = function getEmailsEmailIdMessagesMessageId(emailId, messageId){
     var requestPath = '/api/v2/conversations/emails/{emailId}/messages/{messageId}';
@@ -1510,7 +1986,8 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesMessageId = function getEmail
 
 /**
   * @summary Update conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} participantId - 
   * @param {} body - Update request
@@ -1558,7 +2035,8 @@ ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantId = functio
 
 /**
   * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} participantId - 
   * @param {} body - Participant attributes
@@ -1592,7 +2070,8 @@ ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantIdAttributes
 
 /**
   * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} participantId - 
   * @param {} body - Transfer request
@@ -1630,10 +2109,22 @@ ConversationsApi.prototype.postEmailsEmailIdParticipantsParticipantIdReplace = f
 
 /**
   * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} participantId - 
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapup = function getEmailsEmailIdParticipantsParticipantIdWrapup(emailId, participantId, provisional){
     var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapup';
@@ -1648,15 +2139,27 @@ ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapup = fun
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
+    requestQuery["provisional"] = provisional;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} emailId - 
   * @param {string} participantId - 
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes = function getEmailsEmailIdParticipantsParticipantIdWrapupcodes(emailId, participantId){
     var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapupcodes';
@@ -1676,7 +2179,8 @@ ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes 
 
 /**
   * @summary Create Fax Conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {} body - Fax
   * @example
   * Body Example:
@@ -1703,6 +2207,15 @@ ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes 
    },
    "timeZoneOffsetMinutes": 0
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "uploadDestinationUri": "",
+   "uploadMethodType": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.postFaxes = function postFaxes(body){
     var requestPath = '/api/v2/conversations/faxes';
@@ -1720,8 +2233,24 @@ ConversationsApi.prototype.postFaxes = function postFaxes(body){
 
 /**
   * @summary Get conversation
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "startTime": "",
+   "endTime": "",
+   "address": "",
+   "participants": [],
+   "conversationIds": [],
+   "maxParticipants": 0,
+   "recordingState": "",
+   "state": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getConversationId = function getConversationId(conversationId){
     var requestPath = '/api/v2/conversations/{conversationId}';
@@ -1738,7 +2267,8 @@ ConversationsApi.prototype.getConversationId = function getConversationId(conver
 /**
   * @summary Update a participant.
   * @description Update conversation participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
   * @param {} body - Update request
@@ -1786,7 +2316,8 @@ ConversationsApi.prototype.patchConversationIdParticipantsParticipantId = functi
 
 /**
   * @summary Update the attributes on a conversation participant.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
   * @param {} body - Participant attributes
@@ -1820,7 +2351,8 @@ ConversationsApi.prototype.patchConversationIdParticipantsParticipantIdAttribute
 
 /**
   * @summary Create a new callback for the specified participant on the conversation.
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
   * @param {} body - 
@@ -1866,7 +2398,8 @@ ConversationsApi.prototype.postConversationIdParticipantsParticipantIdCallbacks 
 
 /**
   * @summary Delete a code used to add a communication to this participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
   * @param {string} addCommunicationCode - addCommunicationCode
@@ -1893,7 +2426,8 @@ ConversationsApi.prototype.deleteConversationIdParticipantsParticipantIdCodesAdd
 
 /**
   * @summary Replace this participant with the specified user and/or address
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
   * @param {} body - Transfer request
@@ -1931,10 +2465,22 @@ ConversationsApi.prototype.postConversationIdParticipantsParticipantIdReplace = 
 
 /**
   * @summary Get the wrap-up for this conversation participant. 
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapup = function getConversationIdParticipantsParticipantIdWrapup(conversationId, participantId, provisional){
     var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapup';
@@ -1949,15 +2495,27 @@ ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapup = fu
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
-    requestQuery.provisional = provisional;
+    requestQuery["provisional"] = provisional;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get list of wrapup codes for this conversation participant
-  * @memberOf ConversationsApi#
+  * @memberOf ConversationsApi
+  * @instance
   * @param {string} conversationId - conversation ID
   * @param {string} participantId - participant ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapupcodes = function getConversationIdParticipantsParticipantIdWrapupcodes(conversationId, participantId){
     var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapupcodes';

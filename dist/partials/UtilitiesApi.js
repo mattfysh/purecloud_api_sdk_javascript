@@ -1,7 +1,7 @@
 /**
-* @class
+* @class UtilitiesApi
 * @example
-* var api = new UtilitiesApi(pureCloudSession);
+* var api = new purecloud.platform.UtilitiesApi(pureCloudSession);
 */
 function UtilitiesApi(session) {
     if(!(this instanceof UtilitiesApi)) {
@@ -15,12 +15,18 @@ function UtilitiesApi(session) {
 
 /**
   * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
-  * @memberOf UtilitiesApi#
+  * @memberOf UtilitiesApi
+  * @instance
   * @param {} body - Certificate
   * @example
   * Body Example:
   * {
    "certificate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "certificateDetails": []
 }
   */
 UtilitiesApi.prototype.postDetails = function postDetails(body){
@@ -39,7 +45,13 @@ UtilitiesApi.prototype.postDetails = function postDetails(body){
 
 /**
   * @summary Get the current system date/time
-  * @memberOf UtilitiesApi#
+  * @memberOf UtilitiesApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "currentDate": ""
+}
   */
 UtilitiesApi.prototype.getDate = function getDate(){
     var requestPath = '/api/v2/date';
@@ -51,17 +63,32 @@ UtilitiesApi.prototype.getDate = function getDate(){
 
 /**
   * @summary Get time zones list
-  * @memberOf UtilitiesApi#
+  * @memberOf UtilitiesApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 UtilitiesApi.prototype.getTimezones = function getTimezones(pageSize, pageNumber){
     var requestPath = '/api/v2/timezones';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

@@ -1,7 +1,7 @@
 /**
-* @class
+* @class AlertingApi
 * @example
-* var api = new AlertingApi(pureCloudSession);
+* var api = new purecloud.platform.AlertingApi(pureCloudSession);
 */
 function AlertingApi(session) {
     if(!(this instanceof AlertingApi)) {
@@ -15,7 +15,22 @@ function AlertingApi(session) {
 
 /**
   * @summary Get interaction stats alert list.
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AlertingApi.prototype.getInteractionstatsAlerts = function getInteractionstatsAlerts(){
     var requestPath = '/api/v2/alerting/interactionstats/alerts';
@@ -27,7 +42,13 @@ AlertingApi.prototype.getInteractionstatsAlerts = function getInteractionstatsAl
 
 /**
   * @summary Gets user unread count of interaction stats alerts.
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "count": 0
+}
   */
 AlertingApi.prototype.getInteractionstatsAlertsUnread = function getInteractionstatsAlertsUnread(){
     var requestPath = '/api/v2/alerting/interactionstats/alerts/unread';
@@ -39,8 +60,30 @@ AlertingApi.prototype.getInteractionstatsAlertsUnread = function getInteractions
 
 /**
   * @summary Get an interaction stats alert
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {string} alertId - Alert ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dimension": "",
+   "dimensionValue": "",
+   "metric": "",
+   "mediaType": "",
+   "numericRange": "",
+   "statistic": "",
+   "value": {},
+   "ruleId": "",
+   "unread": true,
+   "startDate": "",
+   "endDate": "",
+   "notificationUsers": [],
+   "alertTypes": [],
+   "ruleUri": "",
+   "selfUri": ""
+}
   */
 AlertingApi.prototype.getInteractionstatsAlertsAlertId = function getInteractionstatsAlertsAlertId(alertId){
     var requestPath = '/api/v2/alerting/interactionstats/alerts/{alertId}';
@@ -56,11 +99,17 @@ AlertingApi.prototype.getInteractionstatsAlertsAlertId = function getInteraction
 
 /**
   * @summary Update an interaction stats alert read status
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {string} alertId - Alert ID
   * @param {} body - InteractionStatsAlert
   * @example
   * Body Example:
+  * {
+   "unread": true
+}
+  * @example
+  * 200 Response Example:
   * {
    "unread": true
 }
@@ -85,7 +134,8 @@ AlertingApi.prototype.putInteractionstatsAlertsAlertId = function putInteraction
 
 /**
   * @summary Delete an interaction stats alert
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {string} alertId - Alert ID
   */
 AlertingApi.prototype.deleteInteractionstatsAlertsAlertId = function deleteInteractionstatsAlertsAlertId(alertId){
@@ -102,7 +152,22 @@ AlertingApi.prototype.deleteInteractionstatsAlertsAlertId = function deleteInter
 
 /**
   * @summary Get an interaction stats rule list.
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AlertingApi.prototype.getInteractionstatsRules = function getInteractionstatsRules(){
     var requestPath = '/api/v2/alerting/interactionstats/rules';
@@ -114,7 +179,8 @@ AlertingApi.prototype.getInteractionstatsRules = function getInteractionstatsRul
 
 /**
   * @summary Create an interaction stats rule.
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {} body - AlertingRule
   * @example
   * Body Example:
@@ -130,6 +196,24 @@ AlertingApi.prototype.getInteractionstatsRules = function getInteractionstatsRul
    "enabled": true,
    "notificationUsers": [],
    "alertTypes": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dimension": "",
+   "dimensionValue": "",
+   "metric": "",
+   "mediaType": "",
+   "numericRange": "",
+   "statistic": "",
+   "value": {},
+   "enabled": true,
+   "inAlarm": true,
+   "notificationUsers": [],
+   "alertTypes": [],
+   "selfUri": ""
 }
   */
 AlertingApi.prototype.postInteractionstatsRules = function postInteractionstatsRules(body){
@@ -148,8 +232,27 @@ AlertingApi.prototype.postInteractionstatsRules = function postInteractionstatsR
 
 /**
   * @summary Get an interaction stats rule.
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {string} ruleId - Rule ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dimension": "",
+   "dimensionValue": "",
+   "metric": "",
+   "mediaType": "",
+   "numericRange": "",
+   "statistic": "",
+   "value": {},
+   "enabled": true,
+   "inAlarm": true,
+   "notificationUsers": [],
+   "alertTypes": [],
+   "selfUri": ""
+}
   */
 AlertingApi.prototype.getInteractionstatsRulesRuleId = function getInteractionstatsRulesRuleId(ruleId){
     var requestPath = '/api/v2/alerting/interactionstats/rules/{ruleId}';
@@ -165,7 +268,8 @@ AlertingApi.prototype.getInteractionstatsRulesRuleId = function getInteractionst
 
 /**
   * @summary Update an interaction stats rule
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {string} ruleId - Rule ID
   * @param {} body - AlertingRule
   * @example
@@ -182,6 +286,24 @@ AlertingApi.prototype.getInteractionstatsRulesRuleId = function getInteractionst
    "enabled": true,
    "notificationUsers": [],
    "alertTypes": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dimension": "",
+   "dimensionValue": "",
+   "metric": "",
+   "mediaType": "",
+   "numericRange": "",
+   "statistic": "",
+   "value": {},
+   "enabled": true,
+   "inAlarm": true,
+   "notificationUsers": [],
+   "alertTypes": [],
+   "selfUri": ""
 }
   */
 AlertingApi.prototype.putInteractionstatsRulesRuleId = function putInteractionstatsRulesRuleId(ruleId, body){
@@ -204,7 +326,8 @@ AlertingApi.prototype.putInteractionstatsRulesRuleId = function putInteractionst
 
 /**
   * @summary Delete an interaction stats rule.
-  * @memberOf AlertingApi#
+  * @memberOf AlertingApi
+  * @instance
   * @param {string} ruleId - Rule ID
   */
 AlertingApi.prototype.deleteInteractionstatsRulesRuleId = function deleteInteractionstatsRulesRuleId(ruleId){

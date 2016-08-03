@@ -1,7 +1,7 @@
 /**
-* @class
+* @class SearchApi
 * @example
-* var api = new SearchApi(pureCloudSession);
+* var api = new purecloud.platform.SearchApi(pureCloudSession);
 */
 function SearchApi(session) {
     if(!(this instanceof SearchApi)) {
@@ -15,9 +15,24 @@ function SearchApi(session) {
 
 /**
   * @summary Search using q64
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
+}
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
     var requestPath = '/api/v2/groups/search';
@@ -27,14 +42,15 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {} body - Search request options
   * @example
   * Body Example:
@@ -46,6 +62,20 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
    "returnFields": [],
    "expand": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){
@@ -64,9 +94,24 @@ SearchApi.prototype.postSearch = function postSearch(body){
 
 /**
   * @summary Search using q64
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
+}
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
     var requestPath = '/api/v2/locations/search';
@@ -76,14 +121,15 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {} body - Search request options
   * @example
   * Body Example:
@@ -95,6 +141,20 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
    "returnFields": [],
    "expand": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){
@@ -113,10 +173,69 @@ SearchApi.prototype.postSearch = function postSearch(body){
 
 /**
   * @summary Search using q64
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
   * @param {boolean} profile - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
+}
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
     var requestPath = '/api/v2/search';
@@ -126,15 +245,16 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
-    requestQuery.profile = profile;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {} body - Search request options
   * @param {boolean} profile - 
   * @example
@@ -150,6 +270,64 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "query": [],
    "aggregations": []
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
+}
   */
 SearchApi.prototype.postSearch = function postSearch(body, profile){
     var requestPath = '/api/v2/search';
@@ -162,15 +340,74 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.profile = profile;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Suggest using q64
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {string} q64 - 
   * @param {boolean} profile - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
+}
   */
 SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
     var requestPath = '/api/v2/search/suggest';
@@ -180,14 +417,15 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.profile = profile;
+    requestQuery["q64"] = q64;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Suggest
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {} body - Search request options
   * @param {boolean} profile - 
   * @example
@@ -195,6 +433,64 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
   * {
    "types": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   },
+   "aggregations": {
+      "nodeType": "",
+      "float": true,
+      "boolean": true,
+      "number": true,
+      "object": true,
+      "missingNode": true,
+      "valueNode": true,
+      "containerNode": true,
+      "pojo": true,
+      "integralNumber": true,
+      "floatingPointNumber": true,
+      "short": true,
+      "int": true,
+      "long": true,
+      "double": true,
+      "bigDecimal": true,
+      "bigInteger": true,
+      "textual": true,
+      "binary": true,
+      "array": true,
+      "null": true
+   }
 }
   */
 SearchApi.prototype.postSuggest = function postSuggest(body, profile){
@@ -208,15 +504,30 @@ SearchApi.prototype.postSuggest = function postSuggest(body, profile){
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.profile = profile;
+    requestQuery["profile"] = profile;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search using q64
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {string} q64 - 
   * @param {array} expand - 
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
+}
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
     var requestPath = '/api/v2/users/search';
@@ -226,14 +537,15 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
     if(q64 === undefined || q64 === null){
       throw new Error('Missing required  parameter: q64');
     }
-    requestQuery.q64 = q64;
-    requestQuery.expand = expand;
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Search
-  * @memberOf SearchApi#
+  * @memberOf SearchApi
+  * @instance
   * @param {} body - Search request options
   * @example
   * Body Example:
@@ -245,6 +557,20 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
    "returnFields": [],
    "expand": [],
    "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": [],
+   "aggregations": []
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){

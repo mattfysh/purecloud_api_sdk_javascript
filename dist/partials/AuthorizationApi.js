@@ -1,7 +1,7 @@
 /**
-* @class
+* @class AuthorizationApi
 * @example
-* var api = new AuthorizationApi(pureCloudSession);
+* var api = new purecloud.platform.AuthorizationApi(pureCloudSession);
 */
 function AuthorizationApi(session) {
     if(!(this instanceof AuthorizationApi)) {
@@ -16,24 +16,49 @@ function AuthorizationApi(session) {
 /**
   * @summary Get all permissions.
   * @description Retrieve a list of all permission defined in the system.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AuthorizationApi.prototype.getPermissions = function getPermissions(pageSize, pageNumber){
     var requestPath = '/api/v2/authorization/permissions';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get the list of enabled products
   * @description Gets the list of enabled products. Some example product names are: collaborateFree, collaboratePro, communicate, and engage.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "pageCount": 0
+}
   */
 AuthorizationApi.prototype.getProducts = function getProducts(){
     var requestPath = '/api/v2/authorization/products';
@@ -45,7 +70,8 @@ AuthorizationApi.prototype.getProducts = function getProducts(){
 
 /**
   * @summary Retrieve a list of all roles defined for the organization
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {integer} pageSize - The total page size requested
   * @param {integer} pageNumber - The page number requested
   * @param {string} sortBy - variable name requested to sort by
@@ -54,26 +80,41 @@ AuthorizationApi.prototype.getProducts = function getProducts(){
   * @param {string} previousPage - Previous page token
   * @param {array} permission - 
   * @param {boolean} userCount - 
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AuthorizationApi.prototype.getRoles = function getRoles(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, permission, userCount){
     var requestPath = '/api/v2/authorization/roles';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.nextPage = nextPage;
-    requestQuery.previousPage = previousPage;
-    requestQuery.permission = permission;
-    requestQuery.userCount = userCount;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["expand"] = expand;
+    requestQuery["nextPage"] = nextPage;
+    requestQuery["previousPage"] = previousPage;
+    requestQuery["permission"] = permission;
+    requestQuery["userCount"] = userCount;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create an organization role.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {} body - Organization role
   * @example
   * Body Example:
@@ -86,6 +127,20 @@ AuthorizationApi.prototype.getRoles = function getRoles(pageSize, pageNumber, so
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "defaultRoleId": "",
+   "permissions": [],
+   "permissionPolicies": [],
+   "userCount": 0,
+   "roleNeedsUpdate": true,
+   "default": true,
+   "selfUri": ""
 }
   */
 AuthorizationApi.prototype.postRoles = function postRoles(body){
@@ -105,21 +160,37 @@ AuthorizationApi.prototype.postRoles = function postRoles(body){
 /**
   * @summary Restores all default roles
   * @description This endpoint serves several purposes. 1. It provides the org with default roles. This is important for default roles that will be added after go-live (they can retroactively add the new default-role). Note: When not using a query param of force=true, it only adds the default roles not configured for the org; it does not overwrite roles. 2. Using the query param force=true, you can restore all default roles. Note: This does not have an effect on custom roles.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {boolean} force - Restore default roles
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
     var requestPath = '/api/v2/authorization/roles/default';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.force = force;
+    requestQuery["force"] = force;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Restore specified default roles
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {} body - Organization roles list
   * @example
   * Body Example:
@@ -135,6 +206,20 @@ AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
   "default": true
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 AuthorizationApi.prototype.putRolesDefault = function putRolesDefault(body){
     var requestPath = '/api/v2/authorization/roles/default';
@@ -153,9 +238,41 @@ AuthorizationApi.prototype.putRolesDefault = function putRolesDefault(body){
 /**
   * @summary Get an org role to default role comparison comparison
   * @description Compares any organization role to a default role id and show differences
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} leftRoleId - Left Role ID
   * @param {string} rightRoleId - Right Role id
+  * @example
+  * 200 Response Example:
+  * {
+   "removedPermissionPolicies": [],
+   "addedPermissionPolicies": [],
+   "samePermissionPolicies": [],
+   "userOrgRole": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "defaultRoleId": "",
+      "permissions": [],
+      "permissionPolicies": [],
+      "userCount": 0,
+      "roleNeedsUpdate": true,
+      "default": true,
+      "selfUri": ""
+   },
+   "roleFromDefault": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "defaultRoleId": "",
+      "permissions": [],
+      "permissionPolicies": [],
+      "userCount": 0,
+      "roleNeedsUpdate": true,
+      "default": true,
+      "selfUri": ""
+   }
+}
   */
 AuthorizationApi.prototype.getRolesLeftroleIdComparedefaultRightroleId = function getRolesLeftroleIdComparedefaultRightroleId(leftRoleId, rightRoleId){
     var requestPath = '/api/v2/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}';
@@ -176,7 +293,8 @@ AuthorizationApi.prototype.getRolesLeftroleIdComparedefaultRightroleId = functio
 /**
   * @summary Get an unsaved org role to default role comparison
   * @description Allows users to compare their existing roles in an unsaved state to its default role
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} leftRoleId - Left Role ID
   * @param {string} rightRoleId - Right Role id
   * @param {} body - Organization role
@@ -191,6 +309,37 @@ AuthorizationApi.prototype.getRolesLeftroleIdComparedefaultRightroleId = functio
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "removedPermissionPolicies": [],
+   "addedPermissionPolicies": [],
+   "samePermissionPolicies": [],
+   "userOrgRole": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "defaultRoleId": "",
+      "permissions": [],
+      "permissionPolicies": [],
+      "userCount": 0,
+      "roleNeedsUpdate": true,
+      "default": true,
+      "selfUri": ""
+   },
+   "roleFromDefault": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "defaultRoleId": "",
+      "permissions": [],
+      "permissionPolicies": [],
+      "userCount": 0,
+      "roleNeedsUpdate": true,
+      "default": true,
+      "selfUri": ""
+   }
 }
   */
 AuthorizationApi.prototype.postRolesLeftroleIdComparedefaultRightroleId = function postRolesLeftroleIdComparedefaultRightroleId(leftRoleId, rightRoleId, body){
@@ -218,8 +367,23 @@ AuthorizationApi.prototype.postRolesLeftroleIdComparedefaultRightroleId = functi
 /**
   * @summary Get a single organization role.
   * @description Get the organization role specified by its ID.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} roleId - Role ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "defaultRoleId": "",
+   "permissions": [],
+   "permissionPolicies": [],
+   "userCount": 0,
+   "roleNeedsUpdate": true,
+   "default": true,
+   "selfUri": ""
+}
   */
 AuthorizationApi.prototype.getRolesRoleId = function getRolesRoleId(roleId){
     var requestPath = '/api/v2/authorization/roles/{roleId}';
@@ -236,7 +400,8 @@ AuthorizationApi.prototype.getRolesRoleId = function getRolesRoleId(roleId){
 /**
   * @summary Update an organization role.
   * @description Update
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} roleId - Role ID
   * @param {} body - Organization role
   * @example
@@ -250,6 +415,20 @@ AuthorizationApi.prototype.getRolesRoleId = function getRolesRoleId(roleId){
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "defaultRoleId": "",
+   "permissions": [],
+   "permissionPolicies": [],
+   "userCount": 0,
+   "roleNeedsUpdate": true,
+   "default": true,
+   "selfUri": ""
 }
   */
 AuthorizationApi.prototype.putRolesRoleId = function putRolesRoleId(roleId, body){
@@ -272,7 +451,8 @@ AuthorizationApi.prototype.putRolesRoleId = function putRolesRoleId(roleId, body
 
 /**
   * @summary Delete an organization role.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} roleId - Role ID
   */
 AuthorizationApi.prototype.deleteRolesRoleId = function deleteRolesRoleId(roleId){
@@ -290,7 +470,8 @@ AuthorizationApi.prototype.deleteRolesRoleId = function deleteRolesRoleId(roleId
 /**
   * @summary Patch Organization Role for needsUpdate Field
   * @description Patch Organization Role for needsUpdate Field
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} roleId - Role ID
   * @param {} body - Organization role
   * @example
@@ -304,6 +485,20 @@ AuthorizationApi.prototype.deleteRolesRoleId = function deleteRolesRoleId(roleId
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "defaultRoleId": "",
+   "permissions": [],
+   "permissionPolicies": [],
+   "userCount": 0,
+   "roleNeedsUpdate": true,
+   "default": true,
+   "selfUri": ""
 }
   */
 AuthorizationApi.prototype.patchRolesRoleId = function patchRolesRoleId(roleId, body){
@@ -326,7 +521,8 @@ AuthorizationApi.prototype.patchRolesRoleId = function patchRolesRoleId(roleId, 
 
 /**
   * @summary Sets the users for the role
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} roleId - Role ID
   * @param {} body - List of user IDs
   */
@@ -350,7 +546,8 @@ AuthorizationApi.prototype.putRolesRoleIdUsersAdd = function putRolesRoleIdUsers
 
 /**
   * @summary Removes the users from the role
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} roleId - Role ID
   * @param {} body - List of user IDs
   */
@@ -374,8 +571,16 @@ AuthorizationApi.prototype.putRolesRoleIdUsersRemove = function putRolesRoleIdUs
 
 /**
   * @summary Returns a listing of roles and permissions for a user.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "roles": [],
+   "permissions": [],
+   "permissionPolicies": []
+}
   */
 AuthorizationApi.prototype.getUserIdRoles = function getUserIdRoles(userId){
     var requestPath = '/api/v2/users/{userId}/roles';
@@ -391,9 +596,17 @@ AuthorizationApi.prototype.getUserIdRoles = function getUserIdRoles(userId){
 
 /**
   * @summary Sets the user's roles
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - List of roles
+  * @example
+  * 200 Response Example:
+  * {
+   "roles": [],
+   "permissions": [],
+   "permissionPolicies": []
+}
   */
 AuthorizationApi.prototype.putUserIdRoles = function putUserIdRoles(userId, body){
     var requestPath = '/api/v2/users/{userId}/roles';
@@ -415,7 +628,8 @@ AuthorizationApi.prototype.putUserIdRoles = function putUserIdRoles(userId, body
 
 /**
   * @summary Removes all the roles from the user.
-  * @memberOf AuthorizationApi#
+  * @memberOf AuthorizationApi
+  * @instance
   * @param {string} userId - User ID
   */
 AuthorizationApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){

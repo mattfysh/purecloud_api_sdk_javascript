@@ -1,7 +1,7 @@
 /**
-* @class
+* @class RoutingApi
 * @example
-* var api = new RoutingApi(pureCloudSession);
+* var api = new purecloud.platform.RoutingApi(pureCloudSession);
 */
 function RoutingApi(session) {
     if(!(this instanceof RoutingApi)) {
@@ -15,7 +15,8 @@ function RoutingApi(session) {
 
 /**
   * @summary Query for queue observations
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {} body - query
   * @example
   * Body Example:
@@ -26,6 +27,12 @@ function RoutingApi(session) {
       "predicates": []
    },
    "metrics": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "systemToOrganizationMappings": {},
+   "results": []
 }
   */
 RoutingApi.prototype.postQueuesObservationsQuery = function postQueuesObservationsQuery(body){
@@ -44,7 +51,22 @@ RoutingApi.prototype.postQueuesObservationsQuery = function postQueuesObservatio
 
 /**
   * @summary Get domains
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 RoutingApi.prototype.getEmailDomains = function getEmailDomains(){
     var requestPath = '/api/v2/routing/email/domains';
@@ -56,7 +78,8 @@ RoutingApi.prototype.getEmailDomains = function getEmailDomains(){
 
 /**
   * @summary Create a domain
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {} body - Domain
   * @example
   * Body Example:
@@ -64,6 +87,15 @@ RoutingApi.prototype.getEmailDomains = function getEmailDomains(){
    "name": "",
    "mxRecordStatus": "",
    "subDomain": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "mxRecordStatus": "",
+   "subDomain": true,
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.postEmailDomains = function postEmailDomains(body){
@@ -82,7 +114,8 @@ RoutingApi.prototype.postEmailDomains = function postEmailDomains(body){
 
 /**
   * @summary Delete a domain
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} domainId - domain ID
   */
 RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDomainId(domainId){
@@ -99,8 +132,23 @@ RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDom
 
 /**
   * @summary Get routes
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} domainName - email domain
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsDomainnameRoutes(domainName){
     var requestPath = '/api/v2/routing/email/domains/{domainName}/routes';
@@ -116,7 +164,8 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsD
 
 /**
   * @summary Create a route
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} domainName - email domain
   * @param {} body - Route
   * @example
@@ -138,6 +187,28 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsD
    },
    "fromName": "",
    "fromEmail": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "pattern": "",
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "priority": 0,
+   "skills": [],
+   "language": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "fromName": "",
+   "fromEmail": "",
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.postEmailDomainsDomainnameRoutes = function postEmailDomainsDomainnameRoutes(domainName, body){
@@ -160,9 +231,32 @@ RoutingApi.prototype.postEmailDomainsDomainnameRoutes = function postEmailDomain
 
 /**
   * @summary Get a route
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} domainName - email domain
   * @param {string} routeId - route ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "pattern": "",
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "priority": 0,
+   "skills": [],
+   "language": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "fromName": "",
+   "fromEmail": "",
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailDomainsDomainnameRoutesRouteId(domainName, routeId){
     var requestPath = '/api/v2/routing/email/domains/{domainName}/routes/{routeId}';
@@ -182,7 +276,8 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailD
 
 /**
   * @summary Update a route
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} domainName - email domain
   * @param {string} routeId - route ID
   * @param {} body - Route
@@ -205,6 +300,28 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailD
    },
    "fromName": "",
    "fromEmail": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "pattern": "",
+   "queue": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "priority": 0,
+   "skills": [],
+   "language": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "fromName": "",
+   "fromEmail": "",
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.putEmailDomainsDomainnameRoutesRouteId = function putEmailDomainsDomainnameRoutesRouteId(domainName, routeId, body){
@@ -231,7 +348,8 @@ RoutingApi.prototype.putEmailDomainsDomainnameRoutesRouteId = function putEmailD
 
 /**
   * @summary Delete a route
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} domainName - email domain
   * @param {string} routeId - route ID
   */
@@ -253,7 +371,13 @@ RoutingApi.prototype.deleteEmailDomainsDomainnameRoutesRouteId = function delete
 
 /**
   * @summary Get email setup
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "rootDomain": ""
+}
   */
 RoutingApi.prototype.getEmailSetup = function getEmailSetup(){
     var requestPath = '/api/v2/routing/email/setup';
@@ -265,29 +389,45 @@ RoutingApi.prototype.getEmailSetup = function getEmailSetup(){
 
 /**
   * @summary Get list of queues.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
   * @param {string} name - Name
   * @param {boolean} active - Active
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy, name, active){
     var requestPath = '/api/v2/routing/queues';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.name = name;
-    requestQuery.active = active;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["name"] = name;
+    requestQuery["active"] = active;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {} body - Queue
   * @example
   * Body Example:
@@ -321,6 +461,39 @@ RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy
    "sourceQueueId": "",
    "memberCount": 0
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "mediaSettings": {},
+   "bullseye": {
+      "rings": []
+   },
+   "acwSettings": {
+      "wrapupPrompt": "",
+      "timeoutMs": 0
+   },
+   "skillEvaluationMethod": "",
+   "queueFlow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callingPartyName": "",
+   "callingPartyNumber": "",
+   "memberCount": 0,
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.postQueues = function postQueues(body){
     var requestPath = '/api/v2/routing/queues';
@@ -338,8 +511,42 @@ RoutingApi.prototype.postQueues = function postQueues(body){
 
 /**
   * @summary Get details about this queue.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "mediaSettings": {},
+   "bullseye": {
+      "rings": []
+   },
+   "acwSettings": {
+      "wrapupPrompt": "",
+      "timeoutMs": 0
+   },
+   "skillEvaluationMethod": "",
+   "queueFlow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callingPartyName": "",
+   "callingPartyNumber": "",
+   "memberCount": 0,
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
     var requestPath = '/api/v2/routing/queues/{queueId}';
@@ -355,7 +562,8 @@ RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
 
 /**
   * @summary Update a queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {} body - Queue
   * @example
@@ -389,6 +597,39 @@ RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
    "callingPartyNumber": "",
    "memberCount": 0
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "version": 0,
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "state": "",
+   "modifiedByApp": "",
+   "createdByApp": "",
+   "mediaSettings": {},
+   "bullseye": {
+      "rings": []
+   },
+   "acwSettings": {
+      "wrapupPrompt": "",
+      "timeoutMs": 0
+   },
+   "skillEvaluationMethod": "",
+   "queueFlow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "callingPartyName": "",
+   "callingPartyNumber": "",
+   "memberCount": 0,
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.putQueuesQueueId = function putQueuesQueueId(queueId, body){
     var requestPath = '/api/v2/routing/queues/{queueId}';
@@ -410,7 +651,8 @@ RoutingApi.prototype.putQueuesQueueId = function putQueuesQueueId(queueId, body)
 
 /**
   * @summary Delete a queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {boolean} forceDelete - 
   */
@@ -423,15 +665,21 @@ RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId,
       throw new Error('Missing required  parameter: queueId');
     }
     requestPath = requestPath.replace('{queueId}', queueId);
-    requestQuery.forceDelete = forceDelete;
+    requestQuery["forceDelete"] = forceDelete;
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get Estimated Wait Time
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - queueId
   * @param {string} conversationId - conversationId
+  * @example
+  * 200 Response Example:
+  * {
+   "results": []
+}
   */
 RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueueIdEstimatedwaittime(queueId, conversationId){
     var requestPath = '/api/v2/routing/queues/{queueId}/estimatedwaittime';
@@ -442,19 +690,58 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
       throw new Error('Missing required  parameter: queueId');
     }
     requestPath = requestPath.replace('{queueId}', queueId);
-    requestQuery.conversationId = conversationId;
+    requestQuery["conversationId"] = conversationId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get the members of this queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
   * @param {string} expand - expand
   * @param {boolean} directMembers - Only get users that are direct members of the queue
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "ringNumber": 0,
+   "joined": true,
+   "memberBy": "",
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queueId, pageSize, pageNumber, sortBy, expand, directMembers){
     var requestPath = '/api/v2/routing/queues/{queueId}/users';
@@ -465,17 +752,18 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
       throw new Error('Missing required  parameter: queueId');
     }
     requestPath = requestPath.replace('{queueId}', queueId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.expand = expand;
-    requestQuery.directMembers = directMembers;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["expand"] = expand;
+    requestQuery["directMembers"] = directMembers;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Bulk add or delete up to 100 queue members
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {} body - Queue Members
   * @param {boolean} doDelete - True to delete queue members
@@ -505,6 +793,44 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
   }
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "ringNumber": 0,
+   "joined": true,
+   "memberBy": "",
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(queueId, body, doDelete){
     var requestPath = '/api/v2/routing/queues/{queueId}/users';
@@ -521,13 +847,14 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.delete = doDelete;
+    requestQuery["delete"] = doDelete;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Join or unjoin a set of users for a queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {} body - Queue Members
   * @example
@@ -556,6 +883,44 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
   }
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "ringNumber": 0,
+   "joined": true,
+   "memberBy": "",
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.patchQueuesQueueIdUsers = function patchQueuesQueueIdUsers(queueId, body){
     var requestPath = '/api/v2/routing/queues/{queueId}/users';
@@ -577,7 +942,8 @@ RoutingApi.prototype.patchQueuesQueueIdUsers = function patchQueuesQueueIdUsers(
 
 /**
   * @summary Delete queue member
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {string} memberId - Member ID
   */
@@ -599,7 +965,8 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
 
 /**
   * @summary Update the ring number of joined status for a User in a Queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {string} memberId - Member ID
   * @param {} body - Queue Member
@@ -627,6 +994,44 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
       "startTime": ""
    }
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "ringNumber": 0,
+   "joined": true,
+   "memberBy": "",
+   "routingStatus": {
+      "userId": "",
+      "status": "",
+      "startTime": ""
+   },
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueueIdUsersMemberId(queueId, memberId, body){
     var requestPath = '/api/v2/routing/queues/{queueId}/users/{memberId}';
@@ -652,9 +1057,21 @@ RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueue
 
 /**
   * @summary Get the wrap-up codes for a queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {string} codeId - Code ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrapupcodes(queueId, codeId){
     var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
@@ -674,7 +1091,8 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
 
 /**
   * @summary Add up to 100 wrap-up codes to a queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {string} codeId - Code ID
   * @param {} body - List of wrapup codes
@@ -689,6 +1107,17 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
   "createdBy": ""
  }
 ]
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
     var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
@@ -714,7 +1143,8 @@ RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWr
 
 /**
   * @summary Delete a wrap-up code from a queue
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} queueId - Queue ID
   * @param {string} codeId - Code ID
   */
@@ -736,28 +1166,54 @@ RoutingApi.prototype.deleteQueuesQueueIdWrapupcodesCodeId = function deleteQueue
 
 /**
   * @summary Get the list of routing skills.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 RoutingApi.prototype.getSkills = function getSkills(pageSize, pageNumber){
     var requestPath = '/api/v2/routing/skills';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create Skill
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {} body - Skill
   * @example
   * Body Example:
   * {
    "name": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": "",
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.postSkills = function postSkills(body){
@@ -776,8 +1232,19 @@ RoutingApi.prototype.postSkills = function postSkills(body){
 
 /**
   * @summary Get Routing Skill
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} skillId - Skill ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": "",
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.getSkillsSkillId = function getSkillsSkillId(skillId){
     var requestPath = '/api/v2/routing/skills/{skillId}';
@@ -793,7 +1260,8 @@ RoutingApi.prototype.getSkillsSkillId = function getSkillsSkillId(skillId){
 
 /**
   * @summary Delete Routing Skill
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} skillId - Skill ID
   */
 RoutingApi.prototype.deleteSkillsSkillId = function deleteSkillsSkillId(skillId){
@@ -810,7 +1278,13 @@ RoutingApi.prototype.deleteSkillsSkillId = function deleteSkillsSkillId(skillId)
 
 /**
   * @summary Get the utilization settings.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "utilization": {}
+}
   */
 RoutingApi.prototype.getUtilization = function getUtilization(){
     var requestPath = '/api/v2/routing/utilization';
@@ -822,10 +1296,16 @@ RoutingApi.prototype.getUtilization = function getUtilization(){
 
 /**
   * @summary Update the utilization settings.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {} body - utilization
   * @example
   * Body Example:
+  * {
+   "utilization": {}
+}
+  * @example
+  * 200 Response Example:
   * {
    "utilization": {}
 }
@@ -846,7 +1326,8 @@ RoutingApi.prototype.putUtilization = function putUtilization(body){
 
 /**
   * @summary Delete utilization settings and revert to system defaults.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   */
 RoutingApi.prototype.deleteUtilization = function deleteUtilization(){
     var requestPath = '/api/v2/routing/utilization';
@@ -858,25 +1339,41 @@ RoutingApi.prototype.deleteUtilization = function deleteUtilization(){
 
 /**
   * @summary Get list of wrapup codes.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 RoutingApi.prototype.getWrapupcodes = function getWrapupcodes(pageSize, pageNumber, sortBy){
     var requestPath = '/api/v2/routing/wrapupcodes';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a wrap-up code
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {} body - WrapupCode
   * @example
   * Body Example:
@@ -886,6 +1383,17 @@ RoutingApi.prototype.getWrapupcodes = function getWrapupcodes(pageSize, pageNumb
    "dateModified": "",
    "modifiedBy": "",
    "createdBy": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "callableTimes": [],
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.postWrapupcodes = function postWrapupcodes(body){
@@ -904,8 +1412,20 @@ RoutingApi.prototype.postWrapupcodes = function postWrapupcodes(body){
 
 /**
   * @summary Get details about this wrap-up code.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} codeId - Wrapup Code ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
+}
   */
 RoutingApi.prototype.getWrapupcodesCodeId = function getWrapupcodesCodeId(codeId){
     var requestPath = '/api/v2/routing/wrapupcodes/{codeId}';
@@ -921,7 +1441,8 @@ RoutingApi.prototype.getWrapupcodesCodeId = function getWrapupcodesCodeId(codeId
 
 /**
   * @summary Update wrap-up code
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} codeId - Wrapup Code ID
   * @param {} body - WrapupCode
   * @example
@@ -932,6 +1453,17 @@ RoutingApi.prototype.getWrapupcodesCodeId = function getWrapupcodesCodeId(codeId
    "dateModified": "",
    "modifiedBy": "",
    "createdBy": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "modifiedBy": "",
+   "createdBy": "",
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.putWrapupcodesCodeId = function putWrapupcodesCodeId(codeId, body){
@@ -954,7 +1486,8 @@ RoutingApi.prototype.putWrapupcodesCodeId = function putWrapupcodesCodeId(codeId
 
 /**
   * @summary Delete wrap-up code
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} codeId - Wrapup Code ID
   */
 RoutingApi.prototype.deleteWrapupcodesCodeId = function deleteWrapupcodesCodeId(codeId){
@@ -971,13 +1504,28 @@ RoutingApi.prototype.deleteWrapupcodesCodeId = function deleteWrapupcodesCodeId(
 
 /**
   * @summary List routing skills for user
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} userId - User ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 RoutingApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(userId, pageSize, pageNumber, sortOrder){
     var requestPath = '/api/v2/users/{userId}/routingskills';
@@ -988,15 +1536,16 @@ RoutingApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(us
       throw new Error('Missing required  parameter: userId');
     }
     requestPath = requestPath.replace('{userId}', userId);
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortOrder = sortOrder;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortOrder"] = sortOrder;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Add routing skill to user
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - Skill
   * @example
@@ -1005,6 +1554,16 @@ RoutingApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(us
    "name": "",
    "proficiency": {},
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "proficiency": {},
+   "state": "",
+   "skillUri": "",
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(userId, body){
@@ -1027,7 +1586,8 @@ RoutingApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(
 
 /**
   * @summary Update routing skill proficiency or state.
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} userId - User ID
   * @param {string} skillId - 
   * @param {} body - Skill
@@ -1037,6 +1597,16 @@ RoutingApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(
    "name": "",
    "proficiency": {},
    "state": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "proficiency": {},
+   "state": "",
+   "skillUri": "",
+   "selfUri": ""
 }
   */
 RoutingApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingskillsSkillId(userId, skillId, body){
@@ -1063,7 +1633,8 @@ RoutingApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingsk
 
 /**
   * @summary Remove routing skill from user
-  * @memberOf RoutingApi#
+  * @memberOf RoutingApi
+  * @instance
   * @param {string} userId - User ID
   * @param {string} skillId - 
   */

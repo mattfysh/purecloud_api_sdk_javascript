@@ -1,7 +1,7 @@
 /**
-* @class
+* @class StationsApi
 * @example
-* var api = new StationsApi(pureCloudSession);
+* var api = new purecloud.platform.StationsApi(pureCloudSession);
 */
 function StationsApi(session) {
     if(!(this instanceof StationsApi)) {
@@ -15,30 +15,68 @@ function StationsApi(session) {
 
 /**
   * @summary Get the list of available stations.
-  * @memberOf StationsApi#
+  * @memberOf StationsApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
   * @param {string} name - Name
   * @param {string} lineAppearanceId - lineAppearanceId
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, sortBy, name, lineAppearanceId){
     var requestPath = '/api/v2/stations';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.sortBy = sortBy;
-    requestQuery.name = name;
-    requestQuery.lineAppearanceId = lineAppearanceId;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["name"] = name;
+    requestQuery["lineAppearanceId"] = lineAppearanceId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get station.
-  * @memberOf StationsApi#
+  * @memberOf StationsApi
+  * @instance
   * @param {string} stationId - Station ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "status": "",
+   "userId": "",
+   "primaryEdge": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "secondaryEdge": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "type": "",
+   "lineAppearanceId": "",
+   "selfUri": ""
+}
   */
 StationsApi.prototype.getStationId = function getStationId(stationId){
     var requestPath = '/api/v2/stations/{stationId}';
@@ -54,7 +92,8 @@ StationsApi.prototype.getStationId = function getStationId(stationId){
 
 /**
   * @summary Unassigns the user assigned to this station
-  * @memberOf StationsApi#
+  * @memberOf StationsApi
+  * @instance
   * @param {string} stationId - Station ID
   */
 StationsApi.prototype.deleteStationIdAssociateduser = function deleteStationIdAssociateduser(stationId){

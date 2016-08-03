@@ -1,7 +1,7 @@
 /**
-* @class
+* @class PresenceApi
 * @example
-* var api = new PresenceApi(pureCloudSession);
+* var api = new purecloud.platform.PresenceApi(pureCloudSession);
 */
 function PresenceApi(session) {
     if(!(this instanceof PresenceApi)) {
@@ -15,25 +15,41 @@ function PresenceApi(session) {
 
 /**
   * @summary Get an Organization's list of Presence Definitions
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
   * @param {string} doDeleted - Deleted query can be true, false or all
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(pageNumber, pageSize, doDeleted){
     var requestPath = '/api/v2/presencedefinitions';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.pageSize = pageSize;
-    requestQuery.deleted = doDeleted;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["deleted"] = doDeleted;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Create a Presence Definition
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {} body - The Presence Definition to create
   * @example
   * Body Example:
@@ -68,6 +84,65 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
    },
    "modifiedDate": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "languageLabels": {},
+   "systemPresence": "",
+   "deactivated": true,
+   "primary": true,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "createdDate": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "modifiedDate": "",
+   "selfUri": ""
+}
   */
 PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions(body){
     var requestPath = '/api/v2/presencedefinitions';
@@ -85,8 +160,68 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
 
 /**
   * @summary Get a Presence Definition
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {string} presenceId - Organization Presence ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "languageLabels": {},
+   "systemPresence": "",
+   "deactivated": true,
+   "primary": true,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "createdDate": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "modifiedDate": "",
+   "selfUri": ""
+}
   */
 PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
     var requestPath = '/api/v2/presencedefinitions/{presenceId}';
@@ -102,7 +237,8 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
 
 /**
   * @summary Update a Presence Definition
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {string} presenceId - Organization Presence ID
   * @param {} body - The OrganizationPresence to update
   * @example
@@ -138,6 +274,65 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
    },
    "modifiedDate": ""
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "languageLabels": {},
+   "systemPresence": "",
+   "deactivated": true,
+   "primary": true,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "createdDate": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "modifiedDate": "",
+   "selfUri": ""
+}
   */
 PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
     var requestPath = '/api/v2/presencedefinitions/{presenceId}';
@@ -159,8 +354,68 @@ PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
 
 /**
   * @summary Delete a Presence Definition
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {string} presenceId - Organization Presence ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "languageLabels": {},
+   "systemPresence": "",
+   "deactivated": true,
+   "primary": true,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "createdDate": "",
+   "modifiedBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "modifiedDate": "",
+   "selfUri": ""
+}
   */
 PresenceApi.prototype.deletePresenceId = function deletePresenceId(presenceId){
     var requestPath = '/api/v2/presencedefinitions/{presenceId}';
@@ -176,7 +431,15 @@ PresenceApi.prototype.deletePresenceId = function deletePresenceId(presenceId){
 
 /**
   * @summary Get the list of SystemPresences
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "selfUri": ""
+}
   */
 PresenceApi.prototype.getSystempresences = function getSystempresences(){
     var requestPath = '/api/v2/systempresences';
@@ -188,9 +451,34 @@ PresenceApi.prototype.getSystempresences = function getSystempresences(){
 
 /**
   * @summary Get a user's Presence
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {string} userId - user Id
   * @param {string} sourceId - Source
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "source": "",
+   "primary": true,
+   "presenceDefinition": {
+      "id": "",
+      "name": "",
+      "languageLabels": {},
+      "systemPresence": "",
+      "deactivated": true,
+      "primary": true,
+      "createdBy": {},
+      "createdDate": "",
+      "modifiedBy": {},
+      "modifiedDate": "",
+      "selfUri": ""
+   },
+   "message": "",
+   "modifiedDate": "",
+   "selfUri": ""
+}
   */
 PresenceApi.prototype.getUserIdPresencesSourceId = function getUserIdPresencesSourceId(userId, sourceId){
     var requestPath = '/api/v2/users/{userId}/presences/{sourceId}';
@@ -211,7 +499,8 @@ PresenceApi.prototype.getUserIdPresencesSourceId = function getUserIdPresencesSo
 /**
   * @summary Patch a user's Presence
   * @description The presence object can be patched one of three ways. Option 1: Set the 'primary' property to true. This will set the 'source' defined in the path as the user's primary presence source. Option 2: Provide the presenceDefinition value. The 'id' is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
-  * @memberOf PresenceApi#
+  * @memberOf PresenceApi
+  * @instance
   * @param {string} userId - user Id
   * @param {string} sourceId - Source
   * @param {} body - User presence
@@ -234,6 +523,30 @@ PresenceApi.prototype.getUserIdPresencesSourceId = function getUserIdPresencesSo
    },
    "message": "",
    "modifiedDate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "source": "",
+   "primary": true,
+   "presenceDefinition": {
+      "id": "",
+      "name": "",
+      "languageLabels": {},
+      "systemPresence": "",
+      "deactivated": true,
+      "primary": true,
+      "createdBy": {},
+      "createdDate": "",
+      "modifiedBy": {},
+      "modifiedDate": "",
+      "selfUri": ""
+   },
+   "message": "",
+   "modifiedDate": "",
+   "selfUri": ""
 }
   */
 PresenceApi.prototype.patchUserIdPresencesSourceId = function patchUserIdPresencesSourceId(userId, sourceId, body){

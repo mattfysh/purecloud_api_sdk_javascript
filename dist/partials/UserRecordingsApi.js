@@ -1,7 +1,7 @@
 /**
-* @class
+* @class UserRecordingsApi
 * @example
-* var api = new UserRecordingsApi(pureCloudSession);
+* var api = new purecloud.platform.UserRecordingsApi(pureCloudSession);
 */
 function UserRecordingsApi(session) {
     if(!(this instanceof UserRecordingsApi)) {
@@ -15,25 +15,48 @@ function UserRecordingsApi(session) {
 
 /**
   * @summary Get a list of user recordings.
-  * @memberOf UserRecordingsApi#
+  * @memberOf UserRecordingsApi
+  * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} expand - conversation
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 UserRecordingsApi.prototype.getUserrecordings = function getUserrecordings(pageSize, pageNumber, expand){
     var requestPath = '/api/v2/userrecordings';
     var requestQuery = {};
     var requestBody;
 
-    requestQuery.pageSize = pageSize;
-    requestQuery.pageNumber = pageNumber;
-    requestQuery.expand = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get user recording summary
-  * @memberOf UserRecordingsApi#
+  * @memberOf UserRecordingsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "readCount": 0,
+   "unreadCount": 0,
+   "totalCount": 0
+}
   */
 UserRecordingsApi.prototype.getSummary = function getSummary(){
     var requestPath = '/api/v2/userrecordings/summary';
@@ -45,9 +68,47 @@ UserRecordingsApi.prototype.getSummary = function getSummary(){
 
 /**
   * @summary Get a user recording.
-  * @memberOf UserRecordingsApi#
+  * @memberOf UserRecordingsApi
+  * @instance
   * @param {string} recordingId - User Recording ID
   * @param {string} expand - conversation
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "conversation": {
+      "id": "",
+      "name": "",
+      "startTime": "",
+      "endTime": "",
+      "address": "",
+      "participants": [],
+      "conversationIds": [],
+      "maxParticipants": 0,
+      "recordingState": "",
+      "state": "",
+      "selfUri": ""
+   },
+   "contentLength": 0,
+   "durationMilliseconds": 0,
+   "thumbnails": [],
+   "read": true,
+   "selfUri": ""
+}
   */
 UserRecordingsApi.prototype.getRecordingId = function getRecordingId(recordingId, expand){
     var requestPath = '/api/v2/userrecordings/{recordingId}';
@@ -58,13 +119,14 @@ UserRecordingsApi.prototype.getRecordingId = function getRecordingId(recordingId
       throw new Error('Missing required  parameter: recordingId');
     }
     requestPath = requestPath.replace('{recordingId}', recordingId);
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Update a user recording.
-  * @memberOf UserRecordingsApi#
+  * @memberOf UserRecordingsApi
+  * @instance
   * @param {string} recordingId - User Recording ID
   * @param {} body - UserRecording
   * @param {string} expand - conversation
@@ -101,6 +163,43 @@ UserRecordingsApi.prototype.getRecordingId = function getRecordingId(recordingId
    "thumbnails": [],
    "read": true
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "contentUri": "",
+   "workspace": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "conversation": {
+      "id": "",
+      "name": "",
+      "startTime": "",
+      "endTime": "",
+      "address": "",
+      "participants": [],
+      "conversationIds": [],
+      "maxParticipants": 0,
+      "recordingState": "",
+      "state": "",
+      "selfUri": ""
+   },
+   "contentLength": 0,
+   "durationMilliseconds": 0,
+   "thumbnails": [],
+   "read": true,
+   "selfUri": ""
+}
   */
 UserRecordingsApi.prototype.putRecordingId = function putRecordingId(recordingId, body, expand){
     var requestPath = '/api/v2/userrecordings/{recordingId}';
@@ -117,13 +216,14 @@ UserRecordingsApi.prototype.putRecordingId = function putRecordingId(recordingId
     if(body !== undefined && body !== null){
       requestBody = body;
     }
-    requestQuery.expand = expand;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Delete a user recording.
-  * @memberOf UserRecordingsApi#
+  * @memberOf UserRecordingsApi
+  * @instance
   * @param {string} recordingId - User Recording ID
   */
 UserRecordingsApi.prototype.deleteRecordingId = function deleteRecordingId(recordingId){
@@ -140,7 +240,8 @@ UserRecordingsApi.prototype.deleteRecordingId = function deleteRecordingId(recor
 
 /**
   * @summary Download a user recording.
-  * @memberOf UserRecordingsApi#
+  * @memberOf UserRecordingsApi
+  * @instance
   * @param {string} recordingId - User Recording ID
   * @param {string} formatId - The desired media format.
   WAV,
@@ -149,6 +250,13 @@ UserRecordingsApi.prototype.deleteRecordingId = function deleteRecordingId(recor
   OGG_VORBIS,
   OGG_OPUS,
   NONE,
+  * @example
+  * 200 Response Example:
+  * {
+   "contentLocationUri": "",
+   "imageUri": "",
+   "thumbnails": []
+}
   */
 UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(recordingId, formatId){
     var requestPath = '/api/v2/userrecordings/{recordingId}/media';
@@ -159,7 +267,7 @@ UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(r
       throw new Error('Missing required  parameter: recordingId');
     }
     requestPath = requestPath.replace('{recordingId}', recordingId);
-    requestQuery.formatId = formatId;
+    requestQuery["formatId"] = formatId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

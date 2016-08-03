@@ -1,7 +1,7 @@
 /**
-* @class
+* @class {{&moduleName}}
 * @example
-* var api = new {{&moduleName}}(pureCloudSession);
+* var api = new purecloud.platform.{{&moduleName}}(pureCloudSession);
 */
 function {{&moduleName}}(session) {
     if(!(this instanceof {{&moduleName}})) {
@@ -19,7 +19,8 @@ function {{&moduleName}}(session) {
   {{#hasDescription}}
   * @description {{&description}}
   {{/hasDescription}}
-  * @memberOf {{&moduleName}}#
+  * @memberOf {{&moduleName}}
+  * @instance
   {{#parameters}}
   * @param {{=<% %>=}}{<%&type%>}<%={{ }}=%> {{&camelCaseName}} - {{&description}}
   {{#enum}}
@@ -31,6 +32,11 @@ function {{&moduleName}}(session) {
   * Body Example:
   * {{&bodyExample}}
   {{/bodyExample}}
+  {{#response200}}
+  * @example
+  * 200 Response Example:
+  * {{&response200}}
+  {{/response200}}
   */
 {{&moduleName}}.prototype.{{&methodName}} = function {{&methodName}}({{#parameters}}{{&camelCaseName}}{{^last}}, {{/last}}{{/parameters}}){
     var requestPath = '{{&path}}';

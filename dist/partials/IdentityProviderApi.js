@@ -1,7 +1,7 @@
 /**
-* @class
+* @class IdentityProviderApi
 * @example
-* var api = new IdentityProviderApi(pureCloudSession);
+* var api = new purecloud.platform.IdentityProviderApi(pureCloudSession);
 */
 function IdentityProviderApi(session) {
     if(!(this instanceof IdentityProviderApi)) {
@@ -15,7 +15,22 @@ function IdentityProviderApi(session) {
 
 /**
   * @summary The list of identity providers
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
 IdentityProviderApi.prototype.getIdentityproviders = function getIdentityproviders(){
     var requestPath = '/api/v2/identityproviders';
@@ -27,7 +42,20 @@ IdentityProviderApi.prototype.getIdentityproviders = function getIdentityprovide
 
 /**
   * @summary Get ADFS Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "relyingPartyIdentifier": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getAdfs = function getAdfs(){
     var requestPath = '/api/v2/identityproviders/adfs';
@@ -39,7 +67,8 @@ IdentityProviderApi.prototype.getAdfs = function getAdfs(){
 
 /**
   * @summary Update/Create ADFS Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -68,7 +97,8 @@ IdentityProviderApi.prototype.putAdfs = function putAdfs(body){
 
 /**
   * @summary Delete ADFS Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
     var requestPath = '/api/v2/identityproviders/adfs';
@@ -80,7 +110,19 @@ IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
 
 /**
   * @summary Get Customer Interaction Center (CIC) Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getCic = function getCic(){
     var requestPath = '/api/v2/identityproviders/cic';
@@ -92,7 +134,8 @@ IdentityProviderApi.prototype.getCic = function getCic(){
 
 /**
   * @summary Update/Create Customer Interaction Center (CIC) Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -120,7 +163,8 @@ IdentityProviderApi.prototype.putCic = function putCic(body){
 
 /**
   * @summary Delete Customer Interaction Center (CIC) Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deleteCic = function deleteCic(){
     var requestPath = '/api/v2/identityproviders/cic';
@@ -132,7 +176,19 @@ IdentityProviderApi.prototype.deleteCic = function deleteCic(){
 
 /**
   * @summary Get Okta Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getOkta = function getOkta(){
     var requestPath = '/api/v2/identityproviders/okta';
@@ -144,7 +200,8 @@ IdentityProviderApi.prototype.getOkta = function getOkta(){
 
 /**
   * @summary Update/Create Okta Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -172,7 +229,8 @@ IdentityProviderApi.prototype.putOkta = function putOkta(body){
 
 /**
   * @summary Delete Okta Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
     var requestPath = '/api/v2/identityproviders/okta';
@@ -184,7 +242,19 @@ IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
 
 /**
   * @summary Get OneLogin Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
     var requestPath = '/api/v2/identityproviders/onelogin';
@@ -196,7 +266,8 @@ IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
 
 /**
   * @summary Update/Create OneLogin Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -224,7 +295,8 @@ IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
 
 /**
   * @summary Delete OneLogin Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
     var requestPath = '/api/v2/identityproviders/onelogin';
@@ -236,7 +308,16 @@ IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
 
 /**
   * @summary Get PureCloud Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getPurecloud = function getPurecloud(){
     var requestPath = '/api/v2/identityproviders/purecloud';
@@ -248,7 +329,8 @@ IdentityProviderApi.prototype.getPurecloud = function getPurecloud(){
 
 /**
   * @summary Update/Create PureCloud Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -273,7 +355,8 @@ IdentityProviderApi.prototype.putPurecloud = function putPurecloud(body){
 
 /**
   * @summary Delete PureCloud Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
     var requestPath = '/api/v2/identityproviders/purecloud';
@@ -285,7 +368,19 @@ IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
 
 /**
   * @summary Get Salesforce Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "issuerURI": "",
+   "ssoTargetURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
     var requestPath = '/api/v2/identityproviders/salesforce';
@@ -297,7 +392,8 @@ IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
 
 /**
   * @summary Update/Create Salesforce Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -325,7 +421,8 @@ IdentityProviderApi.prototype.putSalesforce = function putSalesforce(body){
 
 /**
   * @summary Delete Salesforce Identity Provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
     var requestPath = '/api/v2/identityproviders/salesforce';
@@ -337,7 +434,16 @@ IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
 
 /**
   * @summary Get an identity provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "disabled": true,
+   "selfUri": ""
+}
   */
 IdentityProviderApi.prototype.getProviderId = function getProviderId(){
     var requestPath = '/api/v2/identityproviders/{providerId}';
@@ -349,7 +455,8 @@ IdentityProviderApi.prototype.getProviderId = function getProviderId(){
 
 /**
   * @summary Update an identity provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   * @param {} body - Provider
   * @example
   * Body Example:
@@ -374,7 +481,8 @@ IdentityProviderApi.prototype.putProviderId = function putProviderId(body){
 
 /**
   * @summary Delete an identity provider
-  * @memberOf IdentityProviderApi#
+  * @memberOf IdentityProviderApi
+  * @instance
   */
 IdentityProviderApi.prototype.deleteProviderId = function deleteProviderId(){
     var requestPath = '/api/v2/identityproviders/{providerId}';

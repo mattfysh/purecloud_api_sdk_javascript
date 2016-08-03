@@ -1,7 +1,7 @@
 /**
-* @class
+* @class VoicemailApi
 * @example
-* var api = new VoicemailApi(pureCloudSession);
+* var api = new purecloud.platform.VoicemailApi(pureCloudSession);
 */
 function VoicemailApi(session) {
     if(!(this instanceof VoicemailApi)) {
@@ -15,7 +15,30 @@ function VoicemailApi(session) {
 
 /**
   * @summary Get mailbox information
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "usageSizeBytes": 0,
+   "totalCount": 0,
+   "unreadCount": 0,
+   "voicemailPolicy": {
+      "enabled": true,
+      "alertTimeoutSeconds": 0,
+      "minimumRecordingTimeSeconds": 0,
+      "maximumRecordingTimeSeconds": 0,
+      "unavailableMessageUri": "",
+      "namePromptMessageUri": "",
+      "fullMessageUri": "",
+      "pin": "",
+      "quotaSizeBytes": 0,
+      "createdDate": "",
+      "modifiedDate": ""
+   },
+   "createdDate": "",
+   "modifiedDate": ""
+}
   */
 VoicemailApi.prototype.getMailbox = function getMailbox(){
     var requestPath = '/api/v2/voicemail/mailbox';
@@ -27,7 +50,15 @@ VoicemailApi.prototype.getMailbox = function getMailbox(){
 
 /**
   * @summary List voicemail messages
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "entities": [],
+   "selfUri": ""
+}
   */
 VoicemailApi.prototype.getMessages = function getMessages(){
     var requestPath = '/api/v2/voicemail/messages';
@@ -39,7 +70,8 @@ VoicemailApi.prototype.getMessages = function getMessages(){
 
 /**
   * @summary Delete all voicemail messages
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   */
 VoicemailApi.prototype.deleteMessages = function deleteMessages(){
     var requestPath = '/api/v2/voicemail/messages';
@@ -51,8 +83,58 @@ VoicemailApi.prototype.deleteMessages = function deleteMessages(){
 
 /**
   * @summary Get message.
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {string} messageId - Message ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "conversation": {
+      "id": "",
+      "name": "",
+      "startTime": "",
+      "endTime": "",
+      "address": "",
+      "participants": [],
+      "conversationIds": [],
+      "maxParticipants": 0,
+      "recordingState": "",
+      "state": "",
+      "selfUri": ""
+   },
+   "read": true,
+   "audioRecordingDurationSeconds": 0,
+   "audioRecordingSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "callerAddress": "",
+   "callerName": "",
+   "callerUser": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(messageId){
     var requestPath = '/api/v2/voicemail/messages/{messageId}';
@@ -68,7 +150,8 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
 
 /**
   * @summary Update a message.
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {string} messageId - Message ID
   * @param {} body - VoicemailMessage
   * @example
@@ -104,6 +187,55 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "version": 0
    }
 }
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "conversation": {
+      "id": "",
+      "name": "",
+      "startTime": "",
+      "endTime": "",
+      "address": "",
+      "participants": [],
+      "conversationIds": [],
+      "maxParticipants": 0,
+      "recordingState": "",
+      "state": "",
+      "selfUri": ""
+   },
+   "read": true,
+   "audioRecordingDurationSeconds": 0,
+   "audioRecordingSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "callerAddress": "",
+   "callerName": "",
+   "callerUser": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
   */
 VoicemailApi.prototype.putMessagesMessageId = function putMessagesMessageId(messageId, body){
     var requestPath = '/api/v2/voicemail/messages/{messageId}';
@@ -125,7 +257,8 @@ VoicemailApi.prototype.putMessagesMessageId = function putMessagesMessageId(mess
 
 /**
   * @summary Delete a message.
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {string} messageId - Message ID
   */
 VoicemailApi.prototype.deleteMessagesMessageId = function deleteMessagesMessageId(messageId){
@@ -142,7 +275,8 @@ VoicemailApi.prototype.deleteMessagesMessageId = function deleteMessagesMessageI
 
 /**
   * @summary Get media playback URI for this message
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {string} messageId - Message ID
   * @param {string} formatId - The desired media format.
   WAV,
@@ -151,6 +285,13 @@ VoicemailApi.prototype.deleteMessagesMessageId = function deleteMessagesMessageI
   OGG_VORBIS,
   OGG_OPUS,
   NONE,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "mediaFileUri": "",
+   "mediaImageUri": ""
+}
   */
 VoicemailApi.prototype.getMessagesMessageIdMedia = function getMessagesMessageIdMedia(messageId, formatId){
     var requestPath = '/api/v2/voicemail/messages/{messageId}/media';
@@ -161,13 +302,36 @@ VoicemailApi.prototype.getMessagesMessageIdMedia = function getMessagesMessageId
       throw new Error('Missing required  parameter: messageId');
     }
     requestPath = requestPath.replace('{messageId}', messageId);
-    requestQuery.formatId = formatId;
+    requestQuery["formatId"] = formatId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
   * @summary Get a policy
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "retentionTimeDays": 0,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "compressSilence": true,
+   "pinConfiguration": {
+      "minimumLength": 0,
+      "maximumLength": 0
+   },
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "voicemailExtension": "",
+   "pinRequired": true
+}
   */
 VoicemailApi.prototype.getPolicy = function getPolicy(){
     var requestPath = '/api/v2/voicemail/policy';
@@ -179,10 +343,33 @@ VoicemailApi.prototype.getPolicy = function getPolicy(){
 
 /**
   * @summary Update a policy
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {} body - Policy
   * @example
   * Body Example:
+  * {
+   "enabled": true,
+   "retentionTimeDays": 0,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "compressSilence": true,
+   "pinConfiguration": {
+      "minimumLength": 0,
+      "maximumLength": 0
+   },
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "voicemailExtension": "",
+   "pinRequired": true
+}
+  * @example
+  * 200 Response Example:
   * {
    "enabled": true,
    "retentionTimeDays": 0,
@@ -220,8 +407,24 @@ VoicemailApi.prototype.putPolicy = function putPolicy(body){
 
 /**
   * @summary Get a user's voicemail policy
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
   */
 VoicemailApi.prototype.getUserpoliciesUserId = function getUserpoliciesUserId(userId){
     var requestPath = '/api/v2/voicemail/userpolicies/{userId}';
@@ -237,11 +440,27 @@ VoicemailApi.prototype.getUserpoliciesUserId = function getUserpoliciesUserId(us
 
 /**
   * @summary Update a user's voicemail policy
-  * @memberOf VoicemailApi#
+  * @memberOf VoicemailApi
+  * @instance
   * @param {string} userId - User ID
   * @param {} body - The user's voicemail policy
   * @example
   * Body Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  * @example
+  * 200 Response Example:
   * {
    "enabled": true,
    "alertTimeoutSeconds": 0,
