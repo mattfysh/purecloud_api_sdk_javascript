@@ -42,6 +42,15 @@ PureCloudSession.prototype.setEnvironment = function setEnvironment(environment)
     this.authUrl = 'https://login.' + this.options.environment;
 };
 
+
+/**
+  * @description Sets an error handler to be called any time there is a 401 Unauthenticated error returned by the api
+  * @param {function} errorHandler - The function to call.
+  **/
+PureCloudSession.prototype.setUnauthenticatedErrorHandler = function setEnvironment(errorHandler) {
+    this.unauthenticatedErrorHandler = errorHandler;
+}
+
 /**
   * @description Attempts to login with the appropriate authentication strategy
   * @returns Promise which resolves on successful authentication, otherwise rejects with an error
@@ -225,8 +234,16 @@ PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
     return new Promise(function(resolve, reject) {
         request.end(function(error, res) {
             if(self.debugLog){
-                self.debugLog(res.headers);
+                if(res){
+                    self.debugLog(res.headers);
+                }
+
                 self.debugLog(error || res.error || res.body);
+            }
+
+
+            if(res && res.unauthorized && self.unauthenticatedErrorHandler){
+                self.unauthenticatedErrorHandler(error);
             }
 
             if(error){
