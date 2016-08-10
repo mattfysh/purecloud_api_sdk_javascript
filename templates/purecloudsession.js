@@ -12,11 +12,17 @@ var superagent = require('superagent');
   * @param {string} options.redirectUrl - (Optional) Callback URL for "implicit" strategy
   * @param {string} options.token - (Optional) Existing token for "token" strategy
   * @param {string} options.storageKey - (Optional) Key to set in localStorage with the authentication token
+  * @param {number} options.timeout - (Optional) Request timeout in millisecondw
   **/
 function PureCloudSession(options) {
     if(!(this instanceof PureCloudSession)) {
         return new PureCloudSession(options);
     }
+
+    if(!options.timeout){
+        options.timeout = 2000;
+    }
+
     this.options = options;
 
     this._setValuesFromUrlHash();
@@ -201,11 +207,10 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
     method = method.toLowerCase();
     if(url.charAt(0) === '/') url = this.apiUrl + url;
 
-    var timeout = 2000;
     var request = superagent[method](url)
         .type('json')
         .accept('json')
-        .timeout(timeout);
+        .timeout(this.options.timeout);
 
     if (typeof window === 'undefined' ) {
         var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
