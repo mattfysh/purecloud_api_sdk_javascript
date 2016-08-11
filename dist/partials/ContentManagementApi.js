@@ -183,8 +183,8 @@ ContentManagementApi.prototype.getDocuments = function getDocuments(workspaceId,
    },
    "acl": [],
    "sharingStatus": "",
-   "downloadSharingUri": "",
    "sharingUri": "",
+   "downloadSharingUri": "",
    "selfUri": ""
 }
   */
@@ -266,8 +266,8 @@ ContentManagementApi.prototype.postDocuments = function postDocuments(body, copy
    },
    "acl": [],
    "sharingStatus": "",
-   "downloadSharingUri": "",
    "sharingUri": "",
+   "downloadSharingUri": "",
    "selfUri": ""
 }
   */
@@ -358,8 +358,8 @@ ContentManagementApi.prototype.getDocumentsDocumentId = function getDocumentsDoc
    },
    "acl": [],
    "sharingStatus": "",
-   "downloadSharingUri": "",
    "sharingUri": "",
+   "downloadSharingUri": "",
    "selfUri": ""
 }
   */
@@ -991,8 +991,8 @@ ContentManagementApi.prototype.getStatus = function getStatus(pageSize, pageNumb
       "lockInfo": {},
       "acl": [],
       "sharingStatus": "",
-      "downloadSharingUri": "",
       "sharingUri": "",
+      "downloadSharingUri": "",
       "selfUri": ""
    },
    "selfUri": ""

@@ -670,6 +670,186 @@ RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId,
 };
 
 /**
+  * @summary Get recent conversations that are still active
+  * @memberOf RoutingApi
+  * @instance
+  * @param {string} queueId - Queue ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RoutingApi.prototype.getQueuesQueueIdConversations = function getQueuesQueueIdConversations(queueId, pageSize, pageNumber){
+    var requestPath = '/api/v2/routing/queues/{queueId}/conversations';
+    var requestQuery = {};
+    var requestBody;
+
+    if(queueId === undefined || queueId === null){
+      throw new Error('Missing required  parameter: queueId');
+    }
+    requestPath = requestPath.replace('{queueId}', queueId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get recent callback conversations that are still active
+  * @memberOf RoutingApi
+  * @instance
+  * @param {string} queueId - Queue ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RoutingApi.prototype.getQueuesQueueIdConversationsCallbacks = function getQueuesQueueIdConversationsCallbacks(queueId, pageSize, pageNumber){
+    var requestPath = '/api/v2/routing/queues/{queueId}/conversations/callbacks';
+    var requestQuery = {};
+    var requestBody;
+
+    if(queueId === undefined || queueId === null){
+      throw new Error('Missing required  parameter: queueId');
+    }
+    requestPath = requestPath.replace('{queueId}', queueId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get recent call conversations that are still active
+  * @memberOf RoutingApi
+  * @instance
+  * @param {string} queueId - Queue ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RoutingApi.prototype.getQueuesQueueIdConversationsCalls = function getQueuesQueueIdConversationsCalls(queueId, pageSize, pageNumber){
+    var requestPath = '/api/v2/routing/queues/{queueId}/conversations/calls';
+    var requestQuery = {};
+    var requestBody;
+
+    if(queueId === undefined || queueId === null){
+      throw new Error('Missing required  parameter: queueId');
+    }
+    requestPath = requestPath.replace('{queueId}', queueId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get recent chat conversations that are still active
+  * @memberOf RoutingApi
+  * @instance
+  * @param {string} queueId - Queue ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RoutingApi.prototype.getQueuesQueueIdConversationsChats = function getQueuesQueueIdConversationsChats(queueId, pageSize, pageNumber){
+    var requestPath = '/api/v2/routing/queues/{queueId}/conversations/chats';
+    var requestQuery = {};
+    var requestBody;
+
+    if(queueId === undefined || queueId === null){
+      throw new Error('Missing required  parameter: queueId');
+    }
+    requestPath = requestPath.replace('{queueId}', queueId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get recent email conversations that are still active
+  * @memberOf RoutingApi
+  * @instance
+  * @param {string} queueId - Queue ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RoutingApi.prototype.getQueuesQueueIdConversationsEmails = function getQueuesQueueIdConversationsEmails(queueId, pageSize, pageNumber){
+    var requestPath = '/api/v2/routing/queues/{queueId}/conversations/emails';
+    var requestQuery = {};
+    var requestBody;
+
+    if(queueId === undefined || queueId === null){
+      throw new Error('Missing required  parameter: queueId');
+    }
+    requestPath = requestPath.replace('{queueId}', queueId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get Estimated Wait Time
   * @memberOf RoutingApi
   * @instance

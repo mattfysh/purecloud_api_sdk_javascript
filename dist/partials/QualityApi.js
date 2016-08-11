@@ -1849,7 +1849,7 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
   * @param {string} queueId - queue id
   * @param {string} startTime - start time of the evaluation query
   * @param {string} endTime - end time of the evaluation query
-  * @param {array} evaluationState - evaluation state options: Pending, InProgress, Finished Valid Values: PENDING, INPROGRESS, FINISHED
+  * @param {array} evaluationState - evaluation state options: Pending, InProgress, Finished
   * @param {boolean} isReleased - the evaluation has been released
   * @param {boolean} agentHasRead - agent has the evaluation
   * @param {boolean} expandAnswerTotalScores - get the total scores for evaluations

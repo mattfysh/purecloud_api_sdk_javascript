@@ -435,11 +435,13 @@ PresenceApi.prototype.deletePresenceId = function deletePresenceId(presenceId){
   * @instance
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "selfUri": ""
+ }
+]
   */
 PresenceApi.prototype.getSystempresences = function getSystempresences(){
     var requestPath = '/api/v2/systempresences';
