@@ -531,13 +531,13 @@ ConversationsApi.prototype.postCallbacksCallbackIdParticipantsParticipantIdRepla
   * @example
   * 200 Response Example:
   * {
-   "id": "",
+   "code": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "notes": "",
+   "tags": [],
+   "durationSeconds": 0,
+   "endTime": "",
+   "provisional": true
 }
   */
 ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup = function getCallbacksCallbackIdParticipantsParticipantIdWrapup(callbackId, participantId, provisional){
@@ -1207,13 +1207,13 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdReplace = fun
   * @example
   * 200 Response Example:
   * {
-   "id": "",
+   "code": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "notes": "",
+   "tags": [],
+   "durationSeconds": 0,
+   "endTime": "",
+   "provisional": true
 }
   */
 ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapup = function getCallsCallIdParticipantsParticipantIdWrapup(callId, participantId, provisional){
@@ -1561,13 +1561,13 @@ ConversationsApi.prototype.postChatsChatIdParticipantsParticipantIdReplace = fun
   * @example
   * 200 Response Example:
   * {
-   "id": "",
+   "code": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "notes": "",
+   "tags": [],
+   "durationSeconds": 0,
+   "endTime": "",
+   "provisional": true
 }
   */
 ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapup = function getChatsChatIdParticipantsParticipantIdWrapup(chatId, participantId, provisional){
@@ -2117,13 +2117,13 @@ ConversationsApi.prototype.postEmailsEmailIdParticipantsParticipantIdReplace = f
   * @example
   * 200 Response Example:
   * {
-   "id": "",
+   "code": "",
    "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "notes": "",
+   "tags": [],
+   "durationSeconds": 0,
+   "endTime": "",
+   "provisional": true
 }
   */
 ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapup = function getEmailsEmailIdParticipantsParticipantIdWrapup(emailId, participantId, provisional){
@@ -2507,15 +2507,17 @@ ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapup = fu
   * @param {string} participantId - participant ID
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "selfUri": ""
+ }
+]
   */
 ConversationsApi.prototype.getConversationIdParticipantsParticipantIdWrapupcodes = function getConversationIdParticipantsParticipantIdWrapupcodes(conversationId, participantId){
     var requestPath = '/api/v2/conversations/{conversationId}/participants/{participantId}/wrapupcodes';

@@ -75,8 +75,8 @@ FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "downloadSharingUri": "",
    "sharingUri": "",
+   "downloadSharingUri": "",
    "selfUri": ""
 }
   */
@@ -123,8 +123,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "downloadSharingUri": "",
-   "sharingUri": ""
+   "sharingUri": "",
+   "downloadSharingUri": ""
 }
   * @example
   * 200 Response Example:
@@ -152,8 +152,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "downloadSharingUri": "",
    "sharingUri": "",
+   "downloadSharingUri": "",
    "selfUri": ""
 }
   */

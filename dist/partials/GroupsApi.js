@@ -113,8 +113,7 @@ GroupsApi.prototype.postGroups = function postGroups(body){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 GroupsApi.prototype.getSearch = function getSearch(q64, expand){
@@ -157,8 +156,7 @@ GroupsApi.prototype.getSearch = function getSearch(q64, expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 GroupsApi.prototype.postSearch = function postSearch(body){

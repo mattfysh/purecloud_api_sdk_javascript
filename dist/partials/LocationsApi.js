@@ -78,8 +78,7 @@ LocationsApi.prototype.getLocations = function getLocations(pageSize, pageNumber
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 LocationsApi.prototype.getSearch = function getSearch(q64, expand){
@@ -122,8 +121,7 @@ LocationsApi.prototype.getSearch = function getSearch(q64, expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 LocationsApi.prototype.postSearch = function postSearch(body){

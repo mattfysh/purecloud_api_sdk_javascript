@@ -30,8 +30,7 @@ function SearchApi(session) {
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
@@ -74,8 +73,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){
@@ -109,8 +107,7 @@ SearchApi.prototype.postSearch = function postSearch(body){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
@@ -153,8 +150,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){
@@ -193,11 +189,11 @@ SearchApi.prototype.postSearch = function postSearch(body){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -216,11 +212,11 @@ SearchApi.prototype.postSearch = function postSearch(body){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -285,11 +281,11 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -308,11 +304,11 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -365,11 +361,11 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -388,11 +384,11 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -449,11 +445,11 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -472,11 +468,11 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
       "nodeType": "",
       "float": true,
       "boolean": true,
-      "number": true,
       "object": true,
-      "missingNode": true,
+      "number": true,
       "valueNode": true,
       "containerNode": true,
+      "missingNode": true,
       "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
@@ -525,8 +521,7 @@ SearchApi.prototype.postSuggest = function postSuggest(body, profile){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
@@ -569,8 +564,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){

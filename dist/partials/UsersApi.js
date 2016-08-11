@@ -366,8 +366,7 @@ UsersApi.prototype.getMe = function getMe(expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 UsersApi.prototype.getSearch = function getSearch(q64, expand){
@@ -410,8 +409,7 @@ UsersApi.prototype.getSearch = function getSearch(q64, expand){
    "currentPage": "",
    "nextPage": "",
    "types": [],
-   "results": [],
-   "aggregations": []
+   "results": []
 }
   */
 UsersApi.prototype.postSearch = function postSearch(body){
@@ -1092,6 +1090,7 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
   * @param {string} userId - User ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @param {boolean} joined - Is joined to the queue
   * @example
   * 200 Response Example:
   * {
@@ -1107,7 +1106,7 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
    "pageCount": 0
 }
   */
-UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, pageNumber){
+UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, pageNumber, joined){
     var requestPath = '/api/v2/users/{userId}/queues';
     var requestQuery = {};
     var requestBody;
@@ -1118,6 +1117,7 @@ UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, 
     requestPath = requestPath.replace('{userId}', userId);
     requestQuery["pageSize"] = pageSize;
     requestQuery["pageNumber"] = pageNumber;
+    requestQuery["joined"] = joined;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

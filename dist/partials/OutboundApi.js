@@ -983,6 +983,7 @@ OutboundApi.prototype.postCampaignsCampaignIdCallbackSchedule = function postCam
       "usersOnDifferentEdgeGroup": 0,
       "usersOnANonCampaignCall": 0
    },
+   "ruleSetDiagnostics": [],
    "outstandingInteractionsCount": 0
 }
   */
@@ -1327,18 +1328,18 @@ OutboundApi.prototype.deleteContactlistsContactlistId = function deleteContactli
 ]
   * @example
   * 200 Response Example:
-  * {
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "entities": [],
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "pageCount": 0
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "contactListId": "",
+  "data": {},
+  "callRecords": {},
+  "callable": true,
+  "phoneNumberStatus": {},
+  "selfUri": ""
+ }
+]
   */
 OutboundApi.prototype.postContactlistsContactlistIdContacts = function postContactlistsContactlistIdContacts(contactListId, body, priority){
     var requestPath = '/api/v2/outbound/contactlists/{contactListId}/contacts';

@@ -305,7 +305,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": []
    },
    "site": {
@@ -373,7 +372,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": [],
       "selfUri": ""
    },
@@ -1109,7 +1107,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getPr
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": []
 }
   * @example
@@ -1131,7 +1128,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getPr
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": [],
    "selfUri": ""
 }
@@ -1155,6 +1151,7 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgegroups = function post
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} edgeGroupId - Edge group ID
+  * @param {array} expand - Fields to expand in the response Valid Values: phoneTrunkBases, edgeTrunkBaseAssignment
   * @example
   * 200 Response Example:
   * {
@@ -1174,12 +1171,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgegroups = function post
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": [],
    "selfUri": ""
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = function getProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = function getProvidersEdgesEdgegroupsEdgegroupId(edgeGroupId, expand){
     var requestPath = '/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}';
     var requestQuery = {};
     var requestBody;
@@ -1188,6 +1184,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = fun
       throw new Error('Missing required  parameter: edgeGroupId');
     }
     requestPath = requestPath.replace('{edgeGroupId}', edgeGroupId);
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -1215,7 +1212,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = fun
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": []
 }
   * @example
@@ -1237,7 +1233,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroupsEdgegroupId = fun
       "family": 0,
       "trunkBase": {}
    },
-   "phoneTrunkBaseAssignments": [],
    "phoneTrunkBases": [],
    "selfUri": ""
 }
@@ -2169,6 +2164,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLines = function getProvide
       "name": "",
       "selfUri": ""
    },
+   "defaultForUser": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -2299,6 +2299,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesTemplate = function ge
       "selfUri": ""
    },
    "loggedInUser": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "defaultForUser": {
       "id": "",
       "name": "",
       "selfUri": ""
@@ -3007,11 +3012,12 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
   * @param {string} webRtcUserid - Filter by webRtcUser.id
   * @param {string} phoneBaseSettingsid - Filter by phoneBaseSettings.id
   * @param {string} linesloggedInUserid - Filter by lines.loggedInUser.id
+  * @param {string} linesdefaultForUserid - Filter by lines.defaultForUser.id
   * @param {string} phone_hardwareId - Filter by phone_hardwareId
   * @param {string} linesid - Filter by lines.id
   * @param {string} linesname - Filter by lines.name
   * @param {array} expand - Fields to expand in the response, comma-separated Valid Values: properties, site, status, status.primaryEdgesStatus, status.secondaryEdgesStatus, phoneBaseSettings, lines
-  * @param {array} fields - Fields and properties to get, comma-separated Valid Values: webRtcUser, properties.*, lines.loggedInUser
+  * @param {array} fields - Fields and properties to get, comma-separated Valid Values: webRtcUser, properties.*, lines.loggedInUser, lines.defaultForUser
   * @example
   * 200 Response Example:
   * {
@@ -3027,7 +3033,7 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
    "pageCount": 0
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, phone_hardwareId, linesid, linesname, expand, fields){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteid, webRtcUserid, phoneBaseSettingsid, linesloggedInUserid, linesdefaultForUserid, phone_hardwareId, linesid, linesname, expand, fields){
     var requestPath = '/api/v2/telephony/providers/edges/phones';
     var requestQuery = {};
     var requestBody;
@@ -3040,6 +3046,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
     requestQuery["webRtcUser.id"] = webRtcUserid;
     requestQuery["phoneBaseSettings.id"] = phoneBaseSettingsid;
     requestQuery["lines.loggedInUser.id"] = linesloggedInUserid;
+    requestQuery["lines.defaultForUser.id"] = linesdefaultForUserid;
     requestQuery["phone_hardwareId"] = phone_hardwareId;
     requestQuery["lines.id"] = linesid;
     requestQuery["lines.name"] = linesname;
@@ -4642,7 +4649,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = funct
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": [],
       "selfUri": ""
    },
@@ -4729,7 +4735,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": []
    },
    "site": {
@@ -4797,7 +4802,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": [],
       "selfUri": ""
    },
@@ -4973,7 +4977,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLines = function getP
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": [],
       "selfUri": ""
    },
@@ -5093,7 +5096,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": []
    },
    "lineType": "",
@@ -5189,7 +5191,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
       "createdByApp": "",
       "managed": true,
       "edgeTrunkBaseAssignment": {},
-      "phoneTrunkBaseAssignments": [],
       "phoneTrunkBases": [],
       "selfUri": ""
    },
@@ -5247,6 +5248,7 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLinesLineId = functio
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} edgeId - Edge ID
+  * @param {array} expand - Field to expand in the response Valid Values: externalTrunkBaseAssignments, phoneTrunkBaseAssignments
   * @example
   * 200 Response Example:
   * {
@@ -5262,7 +5264,7 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLinesLineId = functio
    "pageCount": 0
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = function getProvidersEdgesEdgeIdLogicalinterfaces(edgeId){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = function getProvidersEdgesEdgeIdLogicalinterfaces(edgeId, expand){
     var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces';
     var requestQuery = {};
     var requestBody;
@@ -5271,6 +5273,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = f
       throw new Error('Missing required  parameter: edgeId');
     }
     requestPath = requestPath.replace('{edgeId}', edgeId);
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -5321,7 +5324,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = f
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
    "commandResponses": [],
-   "inheritPhoneTrunkBases": true,
    "inheritPhoneTrunkBasesIPv4": true,
    "inheritPhoneTrunkBasesIPv6": true,
    "useForInternalEdgeCommunication": true,
@@ -5369,7 +5371,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = f
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
    "commandResponses": [],
-   "inheritPhoneTrunkBases": true,
    "inheritPhoneTrunkBasesIPv4": true,
    "inheritPhoneTrunkBasesIPv6": true,
    "useForInternalEdgeCommunication": true,
@@ -5402,6 +5403,7 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogicalinterfaces = 
   * @instance
   * @param {string} edgeId - Edge ID
   * @param {string} interfaceId - Interface ID
+  * @param {array} expand - Field to expand in the response Valid Values: externalTrunkBaseAssignments, phoneTrunkBaseAssignments
   * @example
   * 200 Response Example:
   * {
@@ -5443,7 +5445,6 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogicalinterfaces = 
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
    "commandResponses": [],
-   "inheritPhoneTrunkBases": true,
    "inheritPhoneTrunkBasesIPv4": true,
    "inheritPhoneTrunkBasesIPv6": true,
    "useForInternalEdgeCommunication": true,
@@ -5452,7 +5453,7 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogicalinterfaces = 
    "selfUri": ""
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = function getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId = function getProvidersEdgesEdgeIdLogicalinterfacesInterfaceId(edgeId, interfaceId, expand){
     var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}';
     var requestQuery = {};
     var requestBody;
@@ -5465,6 +5466,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInte
       throw new Error('Missing required  parameter: interfaceId');
     }
     requestPath = requestPath.replace('{interfaceId}', interfaceId);
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -5515,7 +5517,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInte
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
    "commandResponses": [],
-   "inheritPhoneTrunkBases": true,
    "inheritPhoneTrunkBasesIPv4": true,
    "inheritPhoneTrunkBasesIPv6": true,
    "useForInternalEdgeCommunication": true,
@@ -5563,7 +5564,6 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInte
    "lastModifiedUserId": "",
    "lastModifiedCorrelationId": "",
    "commandResponses": [],
-   "inheritPhoneTrunkBases": true,
    "inheritPhoneTrunkBasesIPv4": true,
    "inheritPhoneTrunkBasesIPv6": true,
    "useForInternalEdgeCommunication": true,
