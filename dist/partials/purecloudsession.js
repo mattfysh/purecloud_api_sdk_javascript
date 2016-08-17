@@ -1,7 +1,7 @@
 
 var superagent = require('superagent');
 
-//API VERSION - 0.58.2
+//API VERSION - 0.59.2
 /**
   * @description With the PureCloud Platform API, you can control all aspects of your PureCloud environment. With the APIs you can access the system configuration, manage conversations and more.
   * @class
@@ -12,11 +12,17 @@ var superagent = require('superagent');
   * @param {string} options.redirectUrl - (Optional) Callback URL for "implicit" strategy
   * @param {string} options.token - (Optional) Existing token for "token" strategy
   * @param {string} options.storageKey - (Optional) Key to set in localStorage with the authentication token
+  * @param {number} options.timeout - (Optional) Request timeout in millisecondw
   **/
 function PureCloudSession(options) {
     if(!(this instanceof PureCloudSession)) {
         return new PureCloudSession(options);
     }
+
+    if(!options.timeout){
+        options.timeout = 2000;
+    }
+
     this.options = options;
 
     this._setValuesFromUrlHash();
@@ -35,6 +41,15 @@ PureCloudSession.prototype.setEnvironment = function setEnvironment(environment)
     this.apiUrl = 'https://api.' + this.options.environment;
     this.authUrl = 'https://login.' + this.options.environment;
 };
+
+
+/**
+  * @description Sets an error handler to be called any time there is a 401 Unauthenticated error returned by the api
+  * @param {function} errorHandler - The function to call.
+  **/
+PureCloudSession.prototype.setUnauthenticatedErrorHandler = function setEnvironment(errorHandler) {
+    this.unauthenticatedErrorHandler = errorHandler;
+}
 
 /**
   * @description Attempts to login with the appropriate authentication strategy
@@ -201,14 +216,13 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
     method = method.toLowerCase();
     if(url.charAt(0) === '/') url = this.apiUrl + url;
 
-    var timeout = 2000;
     var request = superagent[method](url)
         .type('json')
         .accept('json')
-        .timeout(timeout);
+        .timeout(this.options.timeout);
 
     if (typeof window === 'undefined' ) {
-        var userAgent = 'PureCloud SDK/Javascript 0.58.2';
+        var userAgent = 'PureCloud SDK/Javascript 0.59.2';
         request = request.set('User-Agent', userAgent);
     }
 
@@ -220,8 +234,16 @@ PureCloudSession.prototype._sendRequest = function _sendRequest(request) {
     return new Promise(function(resolve, reject) {
         request.end(function(error, res) {
             if(self.debugLog){
-                self.debugLog(res.headers);
+                if(res){
+                    self.debugLog(res.headers);
+                }
+
                 self.debugLog(error || res.error || res.body);
+            }
+
+
+            if(res && res.unauthorized && self.unauthenticatedErrorHandler){
+                self.unauthenticatedErrorHandler(error);
             }
 
             if(error){
