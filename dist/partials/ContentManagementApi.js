@@ -456,6 +456,13 @@ ContentManagementApi.prototype.getDocumentsDocumentIdAudits = function getDocume
   attachment,
   inline,
   * @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
+  * @example
+  * 200 Response Example:
+  * {
+   "contentLocationUri": "",
+   "imageUri": "",
+   "thumbnails": []
+}
   */
 ContentManagementApi.prototype.getDocumentsDocumentIdContent = function getDocumentsDocumentIdContent(documentId, disposition, contentType){
     var requestPath = '/api/v2/contentmanagement/documents/{documentId}/content';

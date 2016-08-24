@@ -259,7 +259,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
 };
 
 /**
-  * @summary Create a edge.
+  * @summary Create an edge.
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {} body - Edge
@@ -326,7 +326,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
    "onlineStatus": "",
    "serialNumber": "",
    "physicalEdge": true,
-   "managed": true
+   "managed": true,
+   "edgeDeploymentType": ""
 }
   * @example
   * 200 Response Example:
@@ -395,6 +396,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
    "serialNumber": "",
    "physicalEdge": true,
    "managed": true,
+   "edgeDeploymentType": "",
    "selfUri": ""
 }
   */
@@ -2120,6 +2122,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLines = function getProvide
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
+      "edgeDeploymentType": "",
       "selfUri": ""
    },
    "secondaryEdge": {
@@ -2157,6 +2160,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLines = function getProvide
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
+      "edgeDeploymentType": "",
       "selfUri": ""
    },
    "loggedInUser": {
@@ -2259,6 +2263,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesTemplate = function ge
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
+      "edgeDeploymentType": "",
       "selfUri": ""
    },
    "secondaryEdge": {
@@ -2296,6 +2301,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesTemplate = function ge
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
+      "edgeDeploymentType": "",
       "selfUri": ""
    },
    "loggedInUser": {
@@ -4672,6 +4678,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = funct
    "serialNumber": "",
    "physicalEdge": true,
    "managed": true,
+   "edgeDeploymentType": "",
    "selfUri": ""
 }
   */
@@ -4756,7 +4763,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
    "onlineStatus": "",
    "serialNumber": "",
    "physicalEdge": true,
-   "managed": true
+   "managed": true,
+   "edgeDeploymentType": ""
 }
   * @example
   * 200 Response Example:
@@ -4825,6 +4833,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
    "serialNumber": "",
    "physicalEdge": true,
    "managed": true,
+   "edgeDeploymentType": "",
    "selfUri": ""
 }
   */
@@ -4961,6 +4970,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLines = function getP
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
+      "edgeDeploymentType": "",
       "selfUri": ""
    },
    "edgeGroup": {
@@ -5081,7 +5091,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
       "onlineStatus": "",
       "serialNumber": "",
       "physicalEdge": true,
-      "managed": true
+      "managed": true,
+      "edgeDeploymentType": ""
    },
    "edgeGroup": {
       "name": "",
@@ -5175,6 +5186,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
+      "edgeDeploymentType": "",
       "selfUri": ""
    },
    "edgeGroup": {

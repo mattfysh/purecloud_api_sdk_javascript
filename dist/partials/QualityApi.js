@@ -985,7 +985,7 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
   * @summary Create an evaluation
   * @memberOf QualityApi
   * @instance
-  * @param {string} conversationId - 
+  * @param {string} conversationId - conversationId
   * @param {} body - evaluation
   * @param {string} expand - evaluatorId
   * @example
@@ -1248,8 +1248,8 @@ QualityApi.prototype.postConversationsConversationIdEvaluations = function postC
   * @summary Get an evaluation
   * @memberOf QualityApi
   * @instance
-  * @param {string} conversationId - 
-  * @param {string} evaluationId - 
+  * @param {string} conversationId - conversationId
+  * @param {string} evaluationId - evaluationId
   * @param {string} expand - agent, evaluator, evaluationForm
   * @example
   * 200 Response Example:
@@ -1408,8 +1408,8 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
   * @summary Update an evaluation
   * @memberOf QualityApi
   * @instance
-  * @param {string} conversationId - 
-  * @param {string} evaluationId - 
+  * @param {string} conversationId - conversationId
+  * @param {string} evaluationId - evaluationId
   * @param {} body - evaluation
   * @param {string} expand - evaluatorId
   * @example
@@ -1676,8 +1676,8 @@ QualityApi.prototype.putConversationsConversationIdEvaluationsEvaluationId = fun
   * @summary Delete an evaluation
   * @memberOf QualityApi
   * @instance
-  * @param {string} conversationId - 
-  * @param {string} evaluationId - 
+  * @param {string} conversationId - conversationId
+  * @param {string} evaluationId - evaluationId
   * @param {string} expand - evaluatorId
   * @example
   * 200 Response Example:

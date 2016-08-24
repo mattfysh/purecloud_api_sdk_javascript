@@ -353,8 +353,8 @@ UsersApi.prototype.getMe = function getMe(expand){
   * @summary Search using q64
   * @memberOf UsersApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
   * @example
   * 200 Response Example:
   * {
@@ -1472,7 +1472,7 @@ UsersApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(us
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {string} skillId - 
+  * @param {string} skillId - skillId
   * @param {} body - Skill
   * @example
   * Body Example:
@@ -1519,7 +1519,7 @@ UsersApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingskil
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {string} skillId - 
+  * @param {string} skillId - skillId
   */
 UsersApi.prototype.deleteUserIdRoutingskillsSkillId = function deleteUserIdRoutingskillsSkillId(userId, skillId){
     var requestPath = '/api/v2/users/{userId}/routingskills/{skillId}';
@@ -1674,7 +1674,7 @@ UsersApi.prototype.deleteUserIdStationAssociatedstation = function deleteUserIdS
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {string} stationId - 
+  * @param {string} stationId - stationId
   */
 UsersApi.prototype.putUserIdStationAssociatedstationStationId = function putUserIdStationAssociatedstationStationId(userId, stationId){
     var requestPath = '/api/v2/users/{userId}/station/associatedstation/{stationId}';
@@ -1715,7 +1715,7 @@ UsersApi.prototype.deleteUserIdStationDefaultstation = function deleteUserIdStat
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {string} stationId - 
+  * @param {string} stationId - stationId
   */
 UsersApi.prototype.putUserIdStationDefaultstationStationId = function putUserIdStationDefaultstationStationId(userId, stationId){
     var requestPath = '/api/v2/users/{userId}/station/defaultstation/{stationId}';

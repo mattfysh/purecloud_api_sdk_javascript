@@ -268,7 +268,7 @@ ConversationsApi.prototype.postCallbacks = function postCallbacks(body){
   * @summary Get callback conversation
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
+  * @param {string} callbackId - callbackId
   * @example
   * 200 Response Example:
   * {
@@ -295,7 +295,7 @@ ConversationsApi.prototype.getCallbacksCallbackId = function getCallbacksCallbac
   * @summary Update a conversation by disconnecting all of the participants
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
+  * @param {string} callbackId - callbackId
   * @param {} body - Conversation
   * @example
   * Body Example:
@@ -348,8 +348,8 @@ ConversationsApi.prototype.patchCallbacksCallbackId = function patchCallbacksCal
   * @summary Update conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
+  * @param {string} callbackId - callbackId
+  * @param {string} participantId - participantId
   * @param {} body - Participant
   * @example
   * Body Example:
@@ -397,8 +397,8 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantId = f
   * @summary Update the attributes on a conversation participant.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
+  * @param {string} callbackId - callbackId
+  * @param {string} participantId - participantId
   * @param {} body - Attributes
   * @example
   * Body Example:
@@ -432,9 +432,9 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdAttr
   * @summary Update conversation participant's communication by disconnecting it.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
-  * @param {string} communicationId - 
+  * @param {string} callbackId - callbackId
+  * @param {string} participantId - participantId
+  * @param {string} communicationId - communicationId
   * @param {} body - Participant
   * @example
   * Body Example:
@@ -486,8 +486,8 @@ ConversationsApi.prototype.patchCallbacksCallbackIdParticipantsParticipantIdComm
   * @summary Replace this participant with the specified user and/or address
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
+  * @param {string} callbackId - callbackId
+  * @param {string} participantId - participantId
   * @param {} body - Transfer request
   * @example
   * Body Example:
@@ -525,8 +525,8 @@ ConversationsApi.prototype.postCallbacksCallbackIdParticipantsParticipantIdRepla
   * @summary Get the wrap-up for this conversation participant. 
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
+  * @param {string} callbackId - callbackId
+  * @param {string} participantId - participantId
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
   * @example
   * 200 Response Example:
@@ -561,19 +561,21 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
   * @summary Get list of wrapup codes for this conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callbackId - 
-  * @param {string} participantId - 
+  * @param {string} callbackId - callbackId
+  * @param {string} participantId - participantId
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "selfUri": ""
+ }
+]
   */
 ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes = function getCallbacksCallbackIdParticipantsParticipantIdWrapupcodes(callbackId, participantId){
     var requestPath = '/api/v2/conversations/callbacks/{callbackId}/participants/{participantId}/wrapupcodes';
@@ -713,7 +715,7 @@ ConversationsApi.prototype.getCallsMaximumconferenceparties = function getCallsM
   * @summary Get call conversation
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
+  * @param {string} callId - callId
   * @example
   * 200 Response Example:
   * {
@@ -741,7 +743,7 @@ ConversationsApi.prototype.getCallsCallId = function getCallsCallId(callId){
   * @summary Add a new call to a conversation
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
+  * @param {string} callId - callId
   * @param {} body - Conversation
   * @example
   * Body Example:
@@ -783,10 +785,10 @@ ConversationsApi.prototype.postCallsCallId = function postCallsCallId(callId, bo
 };
 
 /**
-  * @summary Update a conversation by setting it's recording state or disconnecting all of the participants
+  * @summary Update a conversation by setting it's recording state, merging in other conversations to create a conference, or disconnecting all of the participants
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
+  * @param {string} callId - callId
   * @param {} body - Conversation
   * @example
   * Body Example:
@@ -839,7 +841,7 @@ ConversationsApi.prototype.patchCallsCallId = function patchCallsCallId(callId, 
   * @summary Add participants to a conversation
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
+  * @param {string} callId - callId
   * @param {} body - Conversation
   * @example
   * Body Example:
@@ -892,8 +894,8 @@ ConversationsApi.prototype.postCallsCallIdParticipants = function postCallsCallI
   * @summary Update conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @param {} body - Participant request
   * @example
   * Body Example:
@@ -941,8 +943,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantId = function 
   * @summary Update the attributes on a conversation participant.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @param {} body - Participant attributes
   * @example
   * Body Example:
@@ -976,9 +978,9 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdAttributes =
   * @summary Update conversation participant's communication by disconnecting it.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
-  * @param {string} communicationId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
+  * @param {string} communicationId - communicationId
   * @param {} body - Participant
   * @example
   * Body Example:
@@ -1030,8 +1032,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdCommunicatio
   * @summary Initiate and update consult transfer
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @param {} body - Destination address & initial speak to
   * @example
   * Body Example:
@@ -1076,8 +1078,8 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdConsult = fun
   * @summary Cancel the transfer
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   */
 ConversationsApi.prototype.deleteCallsCallIdParticipantsParticipantIdConsult = function deleteCallsCallIdParticipantsParticipantIdConsult(callId, participantId){
     var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/consult';
@@ -1099,8 +1101,8 @@ ConversationsApi.prototype.deleteCallsCallIdParticipantsParticipantIdConsult = f
   * @summary Change who can speak
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @param {} body - new speak to
   * @example
   * Body Example:
@@ -1139,8 +1141,8 @@ ConversationsApi.prototype.patchCallsCallIdParticipantsParticipantIdConsult = fu
   * @summary Listen in on the conversation from the point of view of a given participant.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   */
 ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdMonitor = function postCallsCallIdParticipantsParticipantIdMonitor(callId, participantId){
     var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/monitor';
@@ -1162,8 +1164,8 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdMonitor = fun
   * @summary Replace this participant with the specified user and/or address
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @param {} body - Transfer request
   * @example
   * Body Example:
@@ -1201,8 +1203,8 @@ ConversationsApi.prototype.postCallsCallIdParticipantsParticipantIdReplace = fun
   * @summary Get the wrap-up for this conversation participant. 
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
   * @example
   * 200 Response Example:
@@ -1237,19 +1239,21 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapup = funct
   * @summary Get list of wrapup codes for this conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} callId - 
-  * @param {string} participantId - 
+  * @param {string} callId - callId
+  * @param {string} participantId - participantId
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "selfUri": ""
+ }
+]
   */
 ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = function getCallsCallIdParticipantsParticipantIdWrapupcodes(callId, participantId){
     var requestPath = '/api/v2/conversations/calls/{callId}/participants/{participantId}/wrapupcodes';
@@ -1298,7 +1302,7 @@ ConversationsApi.prototype.getChats = function getChats(){
   * @summary Get chat conversation
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
+  * @param {string} chatId - chatId
   * @example
   * 200 Response Example:
   * {
@@ -1325,7 +1329,7 @@ ConversationsApi.prototype.getChatsChatId = function getChatsChatId(chatId){
   * @summary Update a conversation by disconnecting all of the participants
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
+  * @param {string} chatId - chatId
   * @param {} body - Conversation
   * @example
   * Body Example:
@@ -1378,8 +1382,8 @@ ConversationsApi.prototype.patchChatsChatId = function patchChatsChatId(chatId, 
   * @summary Update conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
-  * @param {string} participantId - 
+  * @param {string} chatId - chatId
+  * @param {string} participantId - participantId
   * @param {} body - Update request
   * @example
   * Body Example:
@@ -1427,8 +1431,8 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantId = function 
   * @summary Update the attributes on a conversation participant.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
-  * @param {string} participantId - 
+  * @param {string} chatId - chatId
+  * @param {string} participantId - participantId
   * @param {} body - Participant attributes
   * @example
   * Body Example:
@@ -1462,9 +1466,9 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdAttributes =
   * @summary Update conversation participant's communication by disconnecting it.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
-  * @param {string} participantId - 
-  * @param {string} communicationId - 
+  * @param {string} chatId - chatId
+  * @param {string} participantId - participantId
+  * @param {string} communicationId - communicationId
   * @param {} body - Participant
   * @example
   * Body Example:
@@ -1516,8 +1520,8 @@ ConversationsApi.prototype.patchChatsChatIdParticipantsParticipantIdCommunicatio
   * @summary Replace this participant with the specified user and/or address
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
-  * @param {string} participantId - 
+  * @param {string} chatId - chatId
+  * @param {string} participantId - participantId
   * @param {} body - Transfer request
   * @example
   * Body Example:
@@ -1555,8 +1559,8 @@ ConversationsApi.prototype.postChatsChatIdParticipantsParticipantIdReplace = fun
   * @summary Get the wrap-up for this conversation participant. 
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
-  * @param {string} participantId - 
+  * @param {string} chatId - chatId
+  * @param {string} participantId - participantId
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
   * @example
   * 200 Response Example:
@@ -1591,19 +1595,21 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapup = funct
   * @summary Get list of wrapup codes for this conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} chatId - 
-  * @param {string} participantId - 
+  * @param {string} chatId - chatId
+  * @param {string} participantId - participantId
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "selfUri": ""
+ }
+]
   */
 ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = function getChatsChatIdParticipantsParticipantIdWrapupcodes(chatId, participantId){
     var requestPath = '/api/v2/conversations/chats/{chatId}/participants/{participantId}/wrapupcodes';
@@ -1652,7 +1658,7 @@ ConversationsApi.prototype.getEmails = function getEmails(){
   * @summary Get email conversation
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
+  * @param {string} emailId - emailId
   * @example
   * 200 Response Example:
   * {
@@ -1679,7 +1685,7 @@ ConversationsApi.prototype.getEmailsEmailId = function getEmailsEmailId(emailId)
   * @summary Update a conversation by disconnecting all of the participants
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
+  * @param {string} emailId - emailId
   * @param {} body - Conversation
   * @example
   * Body Example:
@@ -1732,7 +1738,7 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
   * @summary Get conversation messages
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
+  * @param {string} emailId - emailId
   * @example
   * 200 Response Example:
   * {
@@ -1764,7 +1770,7 @@ ConversationsApi.prototype.getEmailsEmailIdMessages = function getEmailsEmailIdM
   * @summary Send an email reply
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
+  * @param {string} emailId - emailId
   * @param {} body - Reply
   * @example
   * Body Example:
@@ -1825,7 +1831,7 @@ ConversationsApi.prototype.postEmailsEmailIdMessages = function postEmailsEmailI
   * @summary Get conversation draft reply
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
+  * @param {string} emailId - emailId
   * @example
   * 200 Response Example:
   * {
@@ -1862,7 +1868,7 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesDraft = function getEmailsEma
   * @summary Update conversation draft reply
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
+  * @param {string} emailId - emailId
   * @param {} body - Draft
   * @example
   * Body Example:
@@ -1923,8 +1929,8 @@ ConversationsApi.prototype.putEmailsEmailIdMessagesDraft = function putEmailsEma
   * @summary Delete attachment from draft
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} attachmentId - 
+  * @param {string} emailId - emailId
+  * @param {string} attachmentId - attachmentId
   */
 ConversationsApi.prototype.deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId = function deleteEmailsEmailIdMessagesDraftAttachmentsAttachmentId(emailId, attachmentId){
     var requestPath = '/api/v2/conversations/emails/{emailId}/messages/draft/attachments/{attachmentId}';
@@ -1946,8 +1952,8 @@ ConversationsApi.prototype.deleteEmailsEmailIdMessagesDraftAttachmentsAttachment
   * @summary Get conversation message
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} messageId - 
+  * @param {string} emailId - emailId
+  * @param {string} messageId - messageId
   * @example
   * 200 Response Example:
   * {
@@ -1988,8 +1994,8 @@ ConversationsApi.prototype.getEmailsEmailIdMessagesMessageId = function getEmail
   * @summary Update conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} participantId - 
+  * @param {string} emailId - emailId
+  * @param {string} participantId - participantId
   * @param {} body - Update request
   * @example
   * Body Example:
@@ -2037,8 +2043,8 @@ ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantId = functio
   * @summary Update the attributes on a conversation participant.
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} participantId - 
+  * @param {string} emailId - emailId
+  * @param {string} participantId - participantId
   * @param {} body - Participant attributes
   * @example
   * Body Example:
@@ -2072,8 +2078,8 @@ ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantIdAttributes
   * @summary Replace this participant with the specified user and/or address
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} participantId - 
+  * @param {string} emailId - emailId
+  * @param {string} participantId - participantId
   * @param {} body - Transfer request
   * @example
   * Body Example:
@@ -2111,8 +2117,8 @@ ConversationsApi.prototype.postEmailsEmailIdParticipantsParticipantIdReplace = f
   * @summary Get the wrap-up for this conversation participant. 
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} participantId - 
+  * @param {string} emailId - emailId
+  * @param {string} participantId - participantId
   * @param {boolean} provisional - Indicates if the wrap-up code is provisional.
   * @example
   * 200 Response Example:
@@ -2147,19 +2153,21 @@ ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapup = fun
   * @summary Get list of wrapup codes for this conversation participant
   * @memberOf ConversationsApi
   * @instance
-  * @param {string} emailId - 
-  * @param {string} participantId - 
+  * @param {string} emailId - emailId
+  * @param {string} participantId - participantId
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "selfUri": ""
+ }
+]
   */
 ConversationsApi.prototype.getEmailsEmailIdParticipantsParticipantIdWrapupcodes = function getEmailsEmailIdParticipantsParticipantIdWrapupcodes(emailId, participantId){
     var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/wrapupcodes';
