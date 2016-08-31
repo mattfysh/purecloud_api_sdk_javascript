@@ -17,6 +17,10 @@
       "class": "ChatConversationNotification"
     },
     {
+      "topic": "v2.routing.queues.{id}.conversations.cobrowseSessions",
+      "class": "CobrowseConversationNotification"
+    },
+    {
       "topic": "v2.routing.queues.{id}.conversations.emails",
       "class": "EmailConversationNotification"
     },
@@ -43,6 +47,10 @@
     {
       "topic": "v2.users.{id}.conversations.chats",
       "class": "ChatConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.cobrowseSessions",
+      "class": "CobrowseConversationNotification"
     },
     {
       "topic": "v2.users.{id}.conversations.emails",

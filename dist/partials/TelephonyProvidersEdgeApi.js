@@ -2330,6 +2330,39 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesLineId = function getP
 };
 
 /**
+  * @summary Create a file that can be used to configure a hardware Edge's settings.
+  * @memberOf TelephonyProvidersEdgeApi
+  * @instance
+  * @param {} body - EdgeOfflineConfiguration
+  * @example
+  * Body Example:
+  * {
+   "pairingId": "",
+   "network": {
+      "wan": {}
+   }
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "downloadUrl": ""
+}
+  */
+TelephonyProvidersEdgeApi.prototype.postProvidersEdgesOfflineconfiguration = function postProvidersEdgesOfflineconfiguration(body){
+    var requestPath = '/api/v2/telephony/providers/edges/offlineconfiguration';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get outbound routes
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
@@ -5315,22 +5348,20 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = f
    "vlanTagId": 0,
    "hardwareAddress": "",
    "physicalAdapterId": "",
-   "ipAddress": "",
-   "gateway": "",
-   "primaryDns": "",
-   "secondaryDns": "",
    "ifStatus": "",
    "routes": [],
    "addresses": [],
    "ipv4Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true
    },
    "ipv6Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true
    },
    "currentState": "",
    "lastModifiedUserId": "",
@@ -5362,22 +5393,23 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfaces = f
    "vlanTagId": 0,
    "hardwareAddress": "",
    "physicalAdapterId": "",
-   "ipAddress": "",
-   "gateway": "",
-   "primaryDns": "",
-   "secondaryDns": "",
    "ifStatus": "",
+   "interfaceType": "",
    "routes": [],
    "addresses": [],
    "ipv4Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true,
+      "supportsMetric": true
    },
    "ipv6Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true,
+      "supportsMetric": true
    },
    "currentState": "",
    "lastModifiedUserId": "",
@@ -5436,22 +5468,23 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogicalinterfaces = 
    "vlanTagId": 0,
    "hardwareAddress": "",
    "physicalAdapterId": "",
-   "ipAddress": "",
-   "gateway": "",
-   "primaryDns": "",
-   "secondaryDns": "",
    "ifStatus": "",
+   "interfaceType": "",
    "routes": [],
    "addresses": [],
    "ipv4Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true,
+      "supportsMetric": true
    },
    "ipv6Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true,
+      "supportsMetric": true
    },
    "currentState": "",
    "lastModifiedUserId": "",
@@ -5508,22 +5541,20 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInte
    "vlanTagId": 0,
    "hardwareAddress": "",
    "physicalAdapterId": "",
-   "ipAddress": "",
-   "gateway": "",
-   "primaryDns": "",
-   "secondaryDns": "",
    "ifStatus": "",
    "routes": [],
    "addresses": [],
    "ipv4Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true
    },
    "ipv6Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true
    },
    "currentState": "",
    "lastModifiedUserId": "",
@@ -5555,22 +5586,23 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLogicalinterfacesInte
    "vlanTagId": 0,
    "hardwareAddress": "",
    "physicalAdapterId": "",
-   "ipAddress": "",
-   "gateway": "",
-   "primaryDns": "",
-   "secondaryDns": "",
    "ifStatus": "",
+   "interfaceType": "",
    "routes": [],
    "addresses": [],
    "ipv4Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true,
+      "supportsMetric": true
    },
    "ipv6Capabilities": {
       "enabled": true,
       "dhcp": true,
-      "metric": 0
+      "metric": 0,
+      "autoMetric": true,
+      "supportsMetric": true
    },
    "currentState": "",
    "lastModifiedUserId": "",

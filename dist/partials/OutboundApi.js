@@ -1000,6 +1000,37 @@ OutboundApi.prototype.getCampaignsCampaignIdDiagnostics = function getCampaignsC
 };
 
 /**
+  * @summary Get dialer campaign interactions.
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} campaignId - Campaign ID
+  * @example
+  * 200 Response Example:
+  * {
+   "campaign": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
+   "pendingInteractions": [],
+   "proceedingInteractions": [],
+   "previewingInteractions": [],
+   "interactingInteractions": []
+}
+  */
+OutboundApi.prototype.getCampaignsCampaignIdInteractions = function getCampaignsCampaignIdInteractions(campaignId){
+    var requestPath = '/api/v2/outbound/campaigns/{campaignId}/interactions';
+    var requestQuery = {};
+    var requestBody;
+
+    if(campaignId === undefined || campaignId === null){
+      throw new Error('Missing required  parameter: campaignId');
+    }
+    requestPath = requestPath.replace('{campaignId}', campaignId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get campaign progress
   * @memberOf OutboundApi
   * @instance
@@ -1623,8 +1654,7 @@ OutboundApi.prototype.getDnclists = function getDnclists(includeImportStatus, in
   * Body Example:
   * {
    "name": "",
-   "version": 0,
-   "phoneNumberColumns": []
+   "version": 0
 }
   * @example
   * 200 Response Example:
@@ -1634,7 +1664,6 @@ OutboundApi.prototype.getDnclists = function getDnclists(includeImportStatus, in
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "phoneNumberColumns": [],
    "importStatus": {
       "state": "",
       "totalRecords": 0,
@@ -1679,7 +1708,6 @@ OutboundApi.prototype.postDnclists = function postDnclists(body){
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "phoneNumberColumns": [],
    "importStatus": {
       "state": "",
       "totalRecords": 0,
@@ -1719,8 +1747,7 @@ OutboundApi.prototype.getDnclistsDnclistId = function getDnclistsDnclistId(dncLi
   * Body Example:
   * {
    "name": "",
-   "version": 0,
-   "phoneNumberColumns": []
+   "version": 0
 }
   * @example
   * 200 Response Example:
@@ -1730,7 +1757,6 @@ OutboundApi.prototype.getDnclistsDnclistId = function getDnclistsDnclistId(dncLi
    "dateCreated": "",
    "dateModified": "",
    "version": 0,
-   "phoneNumberColumns": [],
    "importStatus": {
       "state": "",
       "totalRecords": 0,

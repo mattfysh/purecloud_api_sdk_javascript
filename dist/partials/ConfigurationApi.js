@@ -152,24 +152,14 @@ ConfigurationApi.prototype.putRecordingkeysRotationschedule = function putRecord
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "vmPairingInfo": {
-      "meta-data": {},
-      "edge-id": "",
-      "auth-token": "",
-      "org-id": ""
+   "meta-data": {
+      "pairing-token": "",
+      "pairing-trust": [],
+      "pairing-url": ""
    },
-   "selfUri": ""
+   "edge-id": "",
+   "auth-token": "",
+   "org-id": ""
 }
   */
 ConfigurationApi.prototype.getProvidersEdgesEdgeIdSetuppackage = function getProvidersEdgesEdgeIdSetuppackage(edgeId){
