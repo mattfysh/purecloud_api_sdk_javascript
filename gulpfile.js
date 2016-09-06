@@ -214,7 +214,6 @@ function parseJsonSchema(opts, type){
 var build = function() {
 
     return browserify({entries: './gen/index.js', standalone: API_EXPORT_NAME, debug: true})
-                .transform('babelify', {presets: ['es2015']})
                 .bundle()
                 .pipe(source('purecloud-api.js'))
                 .pipe(gulp.dest('./dist/'))
