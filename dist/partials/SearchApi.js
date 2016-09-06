@@ -17,8 +17,8 @@ function SearchApi(session) {
   * @summary Search using q64
   * @memberOf SearchApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
   * @example
   * 200 Response Example:
   * {
@@ -94,8 +94,8 @@ SearchApi.prototype.postSearch = function postSearch(body){
   * @summary Search using q64
   * @memberOf SearchApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
   * @example
   * 200 Response Example:
   * {
@@ -171,9 +171,9 @@ SearchApi.prototype.postSearch = function postSearch(body){
   * @summary Search using q64
   * @memberOf SearchApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
-  * @param {boolean} profile - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
+  * @param {boolean} profile - profile
   * @example
   * 200 Response Example:
   * {
@@ -188,8 +188,8 @@ SearchApi.prototype.postSearch = function postSearch(body){
    "results": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -211,8 +211,8 @@ SearchApi.prototype.postSearch = function postSearch(body){
    "aggregations": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -252,7 +252,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
   * @memberOf SearchApi
   * @instance
   * @param {} body - Search request options
-  * @param {boolean} profile - 
+  * @param {boolean} profile - profile
   * @example
   * Body Example:
   * {
@@ -280,8 +280,8 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "results": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -303,8 +303,8 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "aggregations": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -344,8 +344,8 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
   * @summary Suggest using q64
   * @memberOf SearchApi
   * @instance
-  * @param {string} q64 - 
-  * @param {boolean} profile - 
+  * @param {string} q64 - q64
+  * @param {boolean} profile - profile
   * @example
   * 200 Response Example:
   * {
@@ -360,8 +360,8 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
    "results": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -383,8 +383,8 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
    "aggregations": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -423,7 +423,7 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
   * @memberOf SearchApi
   * @instance
   * @param {} body - Search request options
-  * @param {boolean} profile - 
+  * @param {boolean} profile - profile
   * @example
   * Body Example:
   * {
@@ -444,8 +444,8 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
    "results": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -467,8 +467,8 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
    "aggregations": {
       "nodeType": "",
       "float": true,
-      "boolean": true,
       "object": true,
+      "boolean": true,
       "number": true,
       "valueNode": true,
       "containerNode": true,
@@ -508,8 +508,8 @@ SearchApi.prototype.postSuggest = function postSuggest(body, profile){
   * @summary Search using q64
   * @memberOf SearchApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
   * @example
   * 200 Response Example:
   * {

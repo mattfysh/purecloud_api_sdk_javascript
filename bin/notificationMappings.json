@@ -1,0 +1,80 @@
+{
+  "notifications": [
+    {
+      "topic": "v2.routing.queues.{id}.conversations",
+      "class": "ConversationNotification"
+    },
+    {
+      "topic": "v2.routing.queues.{id}.conversations.callbacks",
+      "class": "CallbackConversationNotification"
+    },
+    {
+      "topic": "v2.routing.queues.{id}.conversations.calls",
+      "class": "CallConversationNotification"
+    },
+    {
+      "topic": "v2.routing.queues.{id}.conversations.chats",
+      "class": "ChatConversationNotification"
+    },
+    {
+      "topic": "v2.routing.queues.{id}.conversations.cobrowseSessions",
+      "class": "CobrowseConversationNotification"
+    },
+    {
+      "topic": "v2.routing.queues.{id}.conversations.emails",
+      "class": "EmailConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.alerting.interactionstats.alerts",
+      "class": "InteractionStatAlertNotification"
+    },
+    {
+      "topic": "v2.users.{id}.alerting.interactionstats.rules",
+      "class": "InteractionStatRuleNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations",
+      "class": "ConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.callbacks",
+      "class": "CallbackConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.calls",
+      "class": "CallConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.chats",
+      "class": "ChatConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.cobrowseSessions",
+      "class": "CobrowseConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.emails",
+      "class": "EmailConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.socialexpressions",
+      "class": "SocialConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversations.videos",
+      "class": "VideoConversationNotification"
+    },
+    {
+      "topic": "v2.users.{id}.conversationsummary",
+      "class": "UserConversationSummaryNotification"
+    },
+    {
+      "topic": "v2.users.{id}.outofoffice",
+      "class": "OutOfOfficeNotification"
+    },
+    {
+      "topic": "v2.users.{id}.presence",
+      "class": "UserPresenceNotification"
+    }
+  ]
+}

@@ -654,7 +654,7 @@ RoutingApi.prototype.putQueuesQueueId = function putQueuesQueueId(queueId, body)
   * @memberOf RoutingApi
   * @instance
   * @param {string} queueId - Queue ID
-  * @param {boolean} forceDelete - 
+  * @param {boolean} forceDelete - forceDelete
   */
 RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId, forceDelete){
     var requestPath = '/api/v2/routing/queues/{queueId}';
@@ -882,48 +882,29 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
-  * @param {string} expand - expand
-  * @param {boolean} directMembers - Only get users that are direct members of the queue
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations
+  * @param {boolean} joined - Filter by joined status
+  * @param {string} name - Filter by queue member name
+  * @param {array} skills - Filter by skill
+  * @param {array} languages - Filter by language
+  * @param {array} routingStatus - Filter by routing status
+  * @param {array} presence - Filter by presence
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "user": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "selfUri": ""
-   },
-   "ringNumber": 0,
-   "joined": true,
-   "memberBy": "",
-   "routingStatus": {
-      "userId": "",
-      "status": "",
-      "startTime": ""
-   },
-   "selfUri": ""
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
-RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queueId, pageSize, pageNumber, sortBy, expand, directMembers){
+RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queueId, pageSize, pageNumber, sortBy, expand, joined, name, skills, languages, routingStatus, presence){
     var requestPath = '/api/v2/routing/queues/{queueId}/users';
     var requestQuery = {};
     var requestBody;
@@ -936,7 +917,12 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
     requestQuery["pageNumber"] = pageNumber;
     requestQuery["sortBy"] = sortBy;
     requestQuery["expand"] = expand;
-    requestQuery["directMembers"] = directMembers;
+    requestQuery["joined"] = joined;
+    requestQuery["name"] = name;
+    requestQuery["skills"] = skills;
+    requestQuery["languages"] = languages;
+    requestQuery["routingStatus"] = routingStatus;
+    requestQuery["presence"] = presence;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -973,44 +959,6 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
   }
  }
 ]
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "user": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "selfUri": ""
-   },
-   "ringNumber": 0,
-   "joined": true,
-   "memberBy": "",
-   "routingStatus": {
-      "userId": "",
-      "status": "",
-      "startTime": ""
-   },
-   "selfUri": ""
-}
   */
 RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(queueId, body, doDelete){
     var requestPath = '/api/v2/routing/queues/{queueId}/users';
@@ -1066,40 +1014,16 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "user": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "selfUri": ""
-   },
-   "ringNumber": 0,
-   "joined": true,
-   "memberBy": "",
-   "routingStatus": {
-      "userId": "",
-      "status": "",
-      "startTime": ""
-   },
-   "selfUri": ""
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
 RoutingApi.prototype.patchQueuesQueueIdUsers = function patchQueuesQueueIdUsers(queueId, body){
@@ -1244,13 +1168,16 @@ RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueue
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
 RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrapupcodes(queueId, codeId){
@@ -1289,15 +1216,17 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
 ]
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "dateCreated": "",
+  "dateModified": "",
+  "modifiedBy": "",
+  "createdBy": "",
+  "selfUri": ""
+ }
+]
   */
 RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
     var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
@@ -1769,7 +1698,7 @@ RoutingApi.prototype.postUserIdRoutingskills = function postUserIdRoutingskills(
   * @memberOf RoutingApi
   * @instance
   * @param {string} userId - User ID
-  * @param {string} skillId - 
+  * @param {string} skillId - skillId
   * @param {} body - Skill
   * @example
   * Body Example:
@@ -1816,7 +1745,7 @@ RoutingApi.prototype.putUserIdRoutingskillsSkillId = function putUserIdRoutingsk
   * @memberOf RoutingApi
   * @instance
   * @param {string} userId - User ID
-  * @param {string} skillId - 
+  * @param {string} skillId - skillId
   */
 RoutingApi.prototype.deleteUserIdRoutingskillsSkillId = function deleteUserIdRoutingskillsSkillId(userId, skillId){
     var requestPath = '/api/v2/users/{userId}/routingskills/{skillId}';

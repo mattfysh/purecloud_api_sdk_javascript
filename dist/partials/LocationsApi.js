@@ -65,8 +65,8 @@ LocationsApi.prototype.getLocations = function getLocations(pageSize, pageNumber
   * @summary Search using q64
   * @memberOf LocationsApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
   * @example
   * 200 Response Example:
   * {

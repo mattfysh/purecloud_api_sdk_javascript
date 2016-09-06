@@ -144,5 +144,35 @@ ConfigurationApi.prototype.putRecordingkeysRotationschedule = function putRecord
     return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
 };
 
+/**
+  * @summary Get the setup package for a locally deployed edge device. This is needed to complete the setup process for the virtual edge.
+  * @memberOf ConfigurationApi
+  * @instance
+  * @param {string} edgeId - Edge ID
+  * @example
+  * 200 Response Example:
+  * {
+   "meta-data": {
+      "pairing-token": "",
+      "pairing-trust": [],
+      "pairing-url": ""
+   },
+   "edge-id": "",
+   "auth-token": "",
+   "org-id": ""
+}
+  */
+ConfigurationApi.prototype.getProvidersEdgesEdgeIdSetuppackage = function getProvidersEdgesEdgeIdSetuppackage(edgeId){
+    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/setuppackage';
+    var requestQuery = {};
+    var requestBody;
+
+    if(edgeId === undefined || edgeId === null){
+      throw new Error('Missing required  parameter: edgeId');
+    }
+    requestPath = requestPath.replace('{edgeId}', edgeId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
 
 module.exports = ConfigurationApi;

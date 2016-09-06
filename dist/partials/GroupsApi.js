@@ -100,8 +100,8 @@ GroupsApi.prototype.postGroups = function postGroups(body){
   * @summary Search using q64
   * @memberOf GroupsApi
   * @instance
-  * @param {string} q64 - 
-  * @param {array} expand - 
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
   * @example
   * 200 Response Example:
   * {
