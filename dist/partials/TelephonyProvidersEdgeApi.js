@@ -5867,6 +5867,36 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdReboot = function po
 };
 
 /**
+  * @summary Get the setup package for a locally deployed edge device. This is needed to complete the setup process for the virtual edge.
+  * @memberOf TelephonyProvidersEdgeApi
+  * @instance
+  * @param {string} edgeId - Edge ID
+  * @example
+  * 200 Response Example:
+  * {
+   "meta-data": {
+      "pairing-token": "",
+      "pairing-trust": [],
+      "pairing-url": ""
+   },
+   "edge-id": "",
+   "auth-token": "",
+   "org-id": ""
+}
+  */
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSetuppackage = function getProvidersEdgesEdgeIdSetuppackage(edgeId){
+    var requestPath = '/api/v2/telephony/providers/edges/{edgeId}/setuppackage';
+    var requestQuery = {};
+    var requestBody;
+
+    if(edgeId === undefined || edgeId === null){
+      throw new Error('Missing required  parameter: edgeId');
+    }
+    requestPath = requestPath.replace('{edgeId}', edgeId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Gets software update status information about any edge.
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
@@ -5880,8 +5910,8 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdReboot = function po
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
       "latestRelease": true,
+      "current": true,
       "selfUri": ""
    },
    "maxDownloadRate": 0,
@@ -5920,8 +5950,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
-      "latestRelease": true
+      "latestRelease": true,
+      "current": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -5941,8 +5971,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
       "latestRelease": true,
+      "current": true,
       "selfUri": ""
    },
    "maxDownloadRate": 0,
@@ -6004,8 +6034,8 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = f
    "edgeVersion": "",
    "publishDate": "",
    "edgeUri": "",
-   "current": true,
    "latestRelease": true,
+   "current": true,
    "selfUri": ""
 }
   */
