@@ -1631,18 +1631,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesExtensionpools = function g
    "state": "",
    "modifiedByApp": "",
    "createdByApp": "",
-   "number": "",
-   "owner": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "extensionPool": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "ownerType": "",
+   "startNumber": "",
+   "endNumber": "",
    "selfUri": ""
 }
   */
@@ -5910,8 +5900,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSetuppackage = functi
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "latestRelease": true,
       "current": true,
+      "latestRelease": true,
       "selfUri": ""
    },
    "maxDownloadRate": 0,
@@ -5950,8 +5940,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "latestRelease": true,
-      "current": true
+      "current": true,
+      "latestRelease": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -5971,8 +5961,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "latestRelease": true,
       "current": true,
+      "latestRelease": true,
       "selfUri": ""
    },
    "maxDownloadRate": 0,
@@ -6034,8 +6024,8 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = f
    "edgeVersion": "",
    "publishDate": "",
    "edgeUri": "",
-   "latestRelease": true,
    "current": true,
+   "latestRelease": true,
    "selfUri": ""
 }
   */

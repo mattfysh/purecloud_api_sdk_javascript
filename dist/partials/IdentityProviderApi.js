@@ -51,8 +51,8 @@ IdentityProviderApi.prototype.getIdentityproviders = function getIdentityprovide
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -76,8 +76,8 @@ IdentityProviderApi.prototype.getAdfs = function getAdfs(){
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true
 }
   */
@@ -118,8 +118,8 @@ IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
    "id": "",
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -142,8 +142,8 @@ IdentityProviderApi.prototype.getCic = function getCic(){
   * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true
 }
   */
@@ -184,8 +184,8 @@ IdentityProviderApi.prototype.deleteCic = function deleteCic(){
    "id": "",
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -208,8 +208,8 @@ IdentityProviderApi.prototype.getOkta = function getOkta(){
   * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true
 }
   */
@@ -250,8 +250,8 @@ IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
    "id": "",
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -274,8 +274,8 @@ IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
   * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true
 }
   */
@@ -376,8 +376,8 @@ IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
    "id": "",
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -400,8 +400,8 @@ IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
   * {
    "name": "",
    "certificate": "",
-   "ssoTargetURI": "",
    "issuerURI": "",
+   "ssoTargetURI": "",
    "disabled": true
 }
   */
