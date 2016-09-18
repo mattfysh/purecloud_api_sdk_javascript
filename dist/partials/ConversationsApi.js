@@ -171,10 +171,10 @@ ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = fu
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -199,10 +199,10 @@ ConversationsApi.prototype.getConversations = function getConversations(communic
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -605,10 +605,10 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -675,10 +675,10 @@ ConversationsApi.prototype.postCalls = function postCalls(body){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1283,10 +1283,10 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = 
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1639,10 +1639,10 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = 
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1986,10 +1986,10 @@ ConversationsApi.prototype.getCobrowsesessionsCobrowseIdParticipantsParticipantI
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2094,10 +2094,10 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

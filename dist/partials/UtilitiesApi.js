@@ -75,10 +75,10 @@ UtilitiesApi.prototype.getDate = function getDate(){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

@@ -25,10 +25,10 @@ function IdentityProviderApi(session) {
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

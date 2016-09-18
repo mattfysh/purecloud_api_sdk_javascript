@@ -28,10 +28,10 @@ function AuthorizationApi(session) {
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -88,10 +88,10 @@ AuthorizationApi.prototype.getProducts = function getProducts(){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -171,10 +171,10 @@ AuthorizationApi.prototype.postRoles = function postRoles(body){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -214,10 +214,10 @@ AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

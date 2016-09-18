@@ -26,10 +26,10 @@ function NotificationsApi(session) {
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -54,10 +54,10 @@ NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expa
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -102,10 +102,10 @@ NotificationsApi.prototype.postChannels = function postChannels(){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -142,10 +142,10 @@ NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChann
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -188,10 +188,10 @@ NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postCha
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

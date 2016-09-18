@@ -39,10 +39,10 @@ function ContentManagementApi(session) {
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
-      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -71,9 +71,7 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
   * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} name - Name
-  * @param {string} expand - Expand some document fields
-  acl,
-  workspace,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: acl, workspace
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - name or dateCreated
@@ -86,10 +84,10 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -210,10 +208,7 @@ ContentManagementApi.prototype.postDocuments = function postDocuments(body, copy
   * @memberOf ContentManagementApi
   * @instance
   * @param {string} documentId - Document ID
-  * @param {string} expand - Expand some document fields
-  lockInfo,
-  acl,
-  workspace,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: lockInfo, acl, workspace
   * @example
   * 200 Response Example:
   * {
@@ -422,10 +417,10 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -452,7 +447,7 @@ ContentManagementApi.prototype.getDocumentsDocumentIdAudits = function getDocume
   * @memberOf ContentManagementApi
   * @instance
   * @param {string} documentId - Document ID
-  * @param {string} disposition - Request how the content will be downloaded: attached as a file or inline. Default is attachment.
+  * @param {string} disposition - Request how the content will be downloaded: a file attachment or inline. Default is attachment.
   attachment,
   inline,
   * @param {string} contentType - The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav
@@ -535,9 +530,7 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
   * @param {string} sortBy - name or dateCreated
   * @param {string} sortOrder - ascending or descending
   * @param {string} queryPhrase - Phrase tokens are ANDed together over all searchable fields
-  * @param {string} expand - Expand some document fields
-  acl,
-  workspace,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: acl, workspace
   * @example
   * 200 Response Example:
   * {
@@ -547,10 +540,10 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
-      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -605,10 +598,10 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
       "total": 0,
       "entities": [],
       "selfUri": "",
-      "firstUri": "",
-      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
+      "firstUri": "",
+      "previousUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -644,10 +637,10 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -722,8 +715,7 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
   * @memberOf ContentManagementApi
   * @instance
   * @param {string} entityId - Filters the shares returned to only the entity specified by the value of this parameter.
-  * @param {string} expand - Expand share fields
-  member,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: member
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @example
@@ -734,10 +726,10 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -822,8 +814,7 @@ ContentManagementApi.prototype.postShares = function postShares(body){
   * @memberOf ContentManagementApi
   * @instance
   * @param {string} shareId - Share ID
-  * @param {string} expand - Expand share fields
-  member,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: member
   * @example
   * 200 Response Example:
   * {
@@ -938,10 +929,10 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1060,31 +1051,8 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
   * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
-  * @param {string} access - Requested access level
-  content,
-  admin,
-  document:create,
-  document:viewContent,
-  document:viewMetadata,
-  document:download,
-  document:delete,
-  document:update,
-  document:share,
-  document:shareView,
-  document:email,
-  document:print,
-  document:auditView,
-  document:replace,
-  document:tag,
-  tag:create,
-  tag:view,
-  tag:update,
-  tag:apply,
-  tag:remove,
-  tag:delete,
-  * @param {string} expand - Expand some workspace fields
-  summary,
-  acl,
+  * @param {array} access - Requested access level. Valid Values: content, admin, document:create, document:viewContent, document:viewMetadata, document:download, document:delete, document:update, document:share, document:shareView, document:email, document:print, document:auditView, document:replace, document:tag, tag:create, tag:view, tag:update, tag:apply, tag:remove, tag:delete
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: summary, acl
   * @example
   * 200 Response Example:
   * {
@@ -1093,10 +1061,10 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1167,9 +1135,7 @@ ContentManagementApi.prototype.postWorkspaces = function postWorkspaces(body){
   * @memberOf ContentManagementApi
   * @instance
   * @param {string} workspaceId - Workspace ID
-  * @param {string} expand - Expand some workspace fields
-  summary,
-  acl,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: summary, acl
   * @example
   * 200 Response Example:
   * {
@@ -1303,8 +1269,7 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
   * @param {string} workspaceId - Workspace ID
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
-  * @param {string} expand - Expand workspace member fields
-  member,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: member
   * @example
   * 200 Response Example:
   * {
@@ -1313,10 +1278,10 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1341,8 +1306,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembers = function getWor
   * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} memberId - Member ID
-  * @param {string} expand - Expand workspace member fields
-  member,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: member
   * @example
   * 200 Response Example:
   * {
@@ -1429,7 +1393,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
   * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} memberId - Member ID
-  * @param {} body - Workspace
+  * @param {} body - Workspace Member
   * @example
   * Body Example:
   * {
@@ -1586,8 +1550,7 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
   * @param {string} value - filter the list of tags returned
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
-  * @param {string} expand - Expand some document fields
-  acl,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: acl
   * @example
   * 200 Response Example:
   * {
@@ -1596,10 +1559,10 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1666,8 +1629,7 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
   * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {} body - query
-  * @param {string} expand - Expand some document fields
-  acl,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: acl
   * @example
   * Body Example:
   * {
@@ -1683,10 +1645,10 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1715,8 +1677,7 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvaluesQuery = functio
   * @instance
   * @param {string} workspaceId - Workspace ID
   * @param {string} tagId - Tag ID
-  * @param {string} expand - Expand some document fields
-  acl,
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: acl
   * @example
   * 200 Response Example:
   * {

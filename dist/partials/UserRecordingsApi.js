@@ -19,7 +19,7 @@ function UserRecordingsApi(session) {
   * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
-  * @param {string} expand - conversation
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
   * @example
   * 200 Response Example:
   * {
@@ -28,10 +28,10 @@ function UserRecordingsApi(session) {
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
+   "firstUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -71,7 +71,7 @@ UserRecordingsApi.prototype.getSummary = function getSummary(){
   * @memberOf UserRecordingsApi
   * @instance
   * @param {string} recordingId - User Recording ID
-  * @param {string} expand - conversation
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
   * @example
   * 200 Response Example:
   * {
@@ -129,7 +129,7 @@ UserRecordingsApi.prototype.getRecordingId = function getRecordingId(recordingId
   * @instance
   * @param {string} recordingId - User Recording ID
   * @param {} body - UserRecording
-  * @param {string} expand - conversation
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
   * @example
   * Body Example:
   * {
