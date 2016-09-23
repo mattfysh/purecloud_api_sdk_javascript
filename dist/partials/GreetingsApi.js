@@ -27,10 +27,10 @@ function GreetingsApi(session) {
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -386,10 +386,10 @@ GreetingsApi.prototype.getGreetingIdMedia = function getGreetingIdMedia(greeting
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

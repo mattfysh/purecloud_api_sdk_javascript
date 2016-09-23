@@ -28,10 +28,10 @@ function UserRecordingsApi(session) {
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

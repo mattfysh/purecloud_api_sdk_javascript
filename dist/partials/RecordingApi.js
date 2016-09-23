@@ -109,7 +109,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingId = function getConv
 
 /**
   * @summary Updates the retention records on a recording.
-  * @description Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. Use of the query parameter 'restoreDays' is deprecated and will be removed in the next major version release. If 'restoreDays' is provided, no attempt at updating other retention data will be made. To migrate to the new usage, issuing a request with restoreDays=10 would instead set the archiveDate's time stamp in the PUT body to 10 days in the future.
+  * @description Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. 
   * @memberOf RecordingApi
   * @instance
   * @param {string} conversationId - Conversation ID
@@ -502,10 +502,10 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -696,10 +696,10 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1183,6 +1183,11 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "pageNumber": 0,
    "total": 0,
    "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1194,6 +1199,35 @@ RecordingApi.prototype.getsScreensessions = function getsScreensessions(pageSize
     requestQuery["pageSize"] = pageSize;
     requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update a screen recording session
+  * @memberOf RecordingApi
+  * @instance
+  * @param {string} recordingSessionId - Screen recording session ID
+  * @param {} body - 
+  * @example
+  * Body Example:
+  * {
+   "state": "",
+   "archiveDate": "",
+   "deleteDate": ""
+}
+  */
+RecordingApi.prototype.patchsScreensessionsRecordingsessionId = function patchsScreensessionsRecordingsessionId(recordingSessionId, body){
+    var requestPath = '/api/v2/recordings/screensessions/{recordingSessionId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(recordingSessionId === undefined || recordingSessionId === null){
+      throw new Error('Missing required  parameter: recordingSessionId');
+    }
+    requestPath = requestPath.replace('{recordingSessionId}', recordingSessionId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
 };
 
 

@@ -107,10 +107,10 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1099,10 +1099,10 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1403,10 +1403,10 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1434,9 +1434,8 @@ UsersApi.prototype.getUserIdRoutingskills = function getUserIdRoutingskills(user
   * @example
   * Body Example:
   * {
-   "name": "",
-   "proficiency": {},
-   "state": ""
+   "id": "",
+   "proficiency": {}
 }
   * @example
   * 200 Response Example:

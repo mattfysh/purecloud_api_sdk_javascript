@@ -14,6 +14,200 @@ function OutboundApi(session) {
 }
 
 /**
+  * @summary Query attempt limits list
+  * @memberOf OutboundApi
+  * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} filterType - Filter type
+  EQUALS,
+  REGEX,
+  CONTAINS,
+  PREFIX,
+  LESSTHAN,
+  LESSTHANEQUALTO,
+  GREATERTHAN,
+  GREATERTHANEQUALTO,
+  BEGINSWITH,
+  ENDSWITH,
+  * @param {string} name - Name
+  * @param {string} sortBy - Sort by
+  * @param {string} sortOrder - Sort order
+  ascending,
+  descending,
+  * @example
+  * 200 Response Example:
+  * {
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+OutboundApi.prototype.getAttemptlimits = function getAttemptlimits(pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+    var requestPath = '/api/v2/outbound/attemptlimits';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["filterType"] = filterType;
+    requestQuery["name"] = name;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["sortOrder"] = sortOrder;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Create attempt limits
+  * @memberOf OutboundApi
+  * @instance
+  * @param {} body - AttemptLimits
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "version": 0,
+   "maxAttemptsPerContact": 0,
+   "maxAttemptsPerNumber": 0,
+   "timeZoneId": "",
+   "resetPeriod": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "maxAttemptsPerContact": 0,
+   "maxAttemptsPerNumber": 0,
+   "timeZoneId": "",
+   "resetPeriod": "",
+   "selfUri": ""
+}
+  */
+OutboundApi.prototype.postAttemptlimits = function postAttemptlimits(body){
+    var requestPath = '/api/v2/outbound/attemptlimits';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get attempt limits
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} attemptLimitsId - Attempt limits ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "maxAttemptsPerContact": 0,
+   "maxAttemptsPerNumber": 0,
+   "timeZoneId": "",
+   "resetPeriod": "",
+   "selfUri": ""
+}
+  */
+OutboundApi.prototype.getAttemptlimitsAttemptlimitsId = function getAttemptlimitsAttemptlimitsId(attemptLimitsId){
+    var requestPath = '/api/v2/outbound/attemptlimits/{attemptLimitsId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(attemptLimitsId === undefined || attemptLimitsId === null){
+      throw new Error('Missing required  parameter: attemptLimitsId');
+    }
+    requestPath = requestPath.replace('{attemptLimitsId}', attemptLimitsId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update attempt limits
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} attemptLimitsId - Attempt limits ID
+  * @param {} body - AttemptLimits
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "version": 0,
+   "maxAttemptsPerContact": 0,
+   "maxAttemptsPerNumber": 0,
+   "timeZoneId": "",
+   "resetPeriod": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "maxAttemptsPerContact": 0,
+   "maxAttemptsPerNumber": 0,
+   "timeZoneId": "",
+   "resetPeriod": "",
+   "selfUri": ""
+}
+  */
+OutboundApi.prototype.putAttemptlimitsAttemptlimitsId = function putAttemptlimitsAttemptlimitsId(attemptLimitsId, body){
+    var requestPath = '/api/v2/outbound/attemptlimits/{attemptLimitsId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(attemptLimitsId === undefined || attemptLimitsId === null){
+      throw new Error('Missing required  parameter: attemptLimitsId');
+    }
+    requestPath = requestPath.replace('{attemptLimitsId}', attemptLimitsId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete attempt limits
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} attemptLimitsId - Attempt limits ID
+  */
+OutboundApi.prototype.deleteAttemptlimitsAttemptlimitsId = function deleteAttemptlimitsAttemptlimitsId(attemptLimitsId){
+    var requestPath = '/api/v2/outbound/attemptlimits/{attemptLimitsId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(attemptLimitsId === undefined || attemptLimitsId === null){
+      throw new Error('Missing required  parameter: attemptLimitsId');
+    }
+    requestPath = requestPath.replace('{attemptLimitsId}', attemptLimitsId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Retrieves audits for dialer.
   * @memberOf OutboundApi
   * @instance
@@ -91,10 +285,10 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -270,10 +464,10 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -454,10 +648,10 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -536,7 +730,8 @@ OutboundApi.prototype.getCampaigns = function getCampaigns(pageSize, pageNumber,
       "direction": "",
       "numeric": true
    },
-   "noAnswerTimeout": 0
+   "noAnswerTimeout": 0,
+   "callAnalysisLanguage": ""
 }
   * @example
   * 200 Response Example:
@@ -594,6 +789,7 @@ OutboundApi.prototype.getCampaigns = function getCampaigns(pageSize, pageNumber,
       "numeric": true
    },
    "noAnswerTimeout": 0,
+   "callAnalysisLanguage": "",
    "selfUri": ""
 }
   */
@@ -711,6 +907,7 @@ OutboundApi.prototype.postCampaignsProgress = function postCampaignsProgress(bod
       "numeric": true
    },
    "noAnswerTimeout": 0,
+   "callAnalysisLanguage": "",
    "selfUri": ""
 }
   */
@@ -783,7 +980,8 @@ OutboundApi.prototype.getCampaignsCampaignId = function getCampaignsCampaignId(c
       "direction": "",
       "numeric": true
    },
-   "noAnswerTimeout": 0
+   "noAnswerTimeout": 0,
+   "callAnalysisLanguage": ""
 }
   * @example
   * 200 Response Example:
@@ -841,6 +1039,7 @@ OutboundApi.prototype.getCampaignsCampaignId = function getCampaignsCampaignId(c
       "numeric": true
    },
    "noAnswerTimeout": 0,
+   "callAnalysisLanguage": "",
    "selfUri": ""
 }
   */
@@ -1145,10 +1344,10 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1622,10 +1821,10 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1936,10 +2135,10 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2445,10 +2644,10 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "total": 0,
    "entities": [],
    "selfUri": "",
-   "nextUri": "",
-   "lastUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
