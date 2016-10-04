@@ -209,6 +209,75 @@ GroupsApi.prototype.getGroupId = function getGroupId(groupId){
 };
 
 /**
+  * @summary Update group
+  * @memberOf GroupsApi
+  * @instance
+  * @param {string} groupId - Group ID
+  * @param {} body - Group
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "description": "",
+   "state": "",
+   "version": 0,
+   "images": [],
+   "addresses": [],
+   "rulesVisible": true,
+   "visibility": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "description": "",
+   "dateModified": "",
+   "memberCount": 0,
+   "state": "",
+   "version": 0,
+   "type": "",
+   "images": [],
+   "addresses": [],
+   "rulesVisible": true,
+   "visibility": "",
+   "selfUri": ""
+}
+  */
+GroupsApi.prototype.putGroupId = function putGroupId(groupId, body){
+    var requestPath = '/api/v2/groups/{groupId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(groupId === undefined || groupId === null){
+      throw new Error('Missing required  parameter: groupId');
+    }
+    requestPath = requestPath.replace('{groupId}', groupId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete group
+  * @memberOf GroupsApi
+  * @instance
+  * @param {string} groupId - Group ID
+  */
+GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
+    var requestPath = '/api/v2/groups/{groupId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(groupId === undefined || groupId === null){
+      throw new Error('Missing required  parameter: groupId');
+    }
+    requestPath = requestPath.replace('{groupId}', groupId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get group members
   * @memberOf GroupsApi
   * @instance

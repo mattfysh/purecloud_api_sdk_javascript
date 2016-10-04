@@ -19,7 +19,8 @@ function PresenceApi(session) {
   * @instance
   * @param {integer} pageNumber - Page number
   * @param {integer} pageSize - Page size
-  * @param {string} doDeleted - Deleted query can be true, false or all
+  * @param {string} doDeleted - Deleted query can be TRUE, FALSE or ALL
+  * @param {string} localeCode - The locale code to fetch for each presence definition. Use ALL to fetch everything.
   * @example
   * 200 Response Example:
   * {
@@ -35,7 +36,7 @@ function PresenceApi(session) {
    "pageCount": 0
 }
   */
-PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(pageNumber, pageSize, doDeleted){
+PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(pageNumber, pageSize, doDeleted, localeCode){
     var requestPath = '/api/v2/presencedefinitions';
     var requestQuery = {};
     var requestBody;
@@ -43,6 +44,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
     requestQuery["pageNumber"] = pageNumber;
     requestQuery["pageSize"] = pageSize;
     requestQuery["deleted"] = doDeleted;
+    requestQuery["localeCode"] = localeCode;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -163,6 +165,7 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
   * @memberOf PresenceApi
   * @instance
   * @param {string} presenceId - Organization Presence ID
+  * @param {string} localeCode - The locale code to fetch for the presence definition. Use ALL to fetch everything.
   * @example
   * 200 Response Example:
   * {
@@ -223,7 +226,7 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
    "selfUri": ""
 }
   */
-PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
+PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeCode){
     var requestPath = '/api/v2/presencedefinitions/{presenceId}';
     var requestQuery = {};
     var requestBody;
@@ -232,6 +235,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId){
       throw new Error('Missing required  parameter: presenceId');
     }
     requestPath = requestPath.replace('{presenceId}', presenceId);
+    requestQuery["localeCode"] = localeCode;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

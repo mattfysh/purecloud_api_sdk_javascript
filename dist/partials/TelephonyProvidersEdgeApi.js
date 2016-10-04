@@ -3723,9 +3723,13 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvide
       "end": ""
    },
    "location": {
-      "id": "",
       "name": "",
-      "selfUri": ""
+      "address": {},
+      "addressVerified": true,
+      "emergencyNumber": {},
+      "state": "",
+      "version": 0,
+      "path": []
    },
    "managed": true
 }
@@ -3758,6 +3762,12 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvide
    "location": {
       "id": "",
       "name": "",
+      "address": {},
+      "addressVerified": true,
+      "emergencyNumber": {},
+      "state": "",
+      "version": 0,
+      "path": [],
       "selfUri": ""
    },
    "managed": true,
@@ -3812,6 +3822,12 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesSites = function postProvi
    "location": {
       "id": "",
       "name": "",
+      "address": {},
+      "addressVerified": true,
+      "emergencyNumber": {},
+      "state": "",
+      "version": 0,
+      "path": [],
       "selfUri": ""
    },
    "managed": true,
@@ -3862,9 +3878,13 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteId = function getP
       "end": ""
    },
    "location": {
-      "id": "",
       "name": "",
-      "selfUri": ""
+      "address": {},
+      "addressVerified": true,
+      "emergencyNumber": {},
+      "state": "",
+      "version": 0,
+      "path": []
    },
    "managed": true
 }
@@ -3897,6 +3917,12 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSitesSiteId = function getP
    "location": {
       "id": "",
       "name": "",
+      "address": {},
+      "addressVerified": true,
+      "emergencyNumber": {},
+      "state": "",
+      "version": 0,
+      "path": [],
       "selfUri": ""
    },
    "managed": true,
@@ -5900,8 +5926,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSetuppackage = functi
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
       "latestRelease": true,
+      "current": true,
       "selfUri": ""
    },
    "maxDownloadRate": 0,
@@ -5940,8 +5966,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
-      "latestRelease": true
+      "latestRelease": true,
+      "current": true
    },
    "maxDownloadRate": 0,
    "downloadStartTime": "",
@@ -5961,8 +5987,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareupdate = func
       "edgeVersion": "",
       "publishDate": "",
       "edgeUri": "",
-      "current": true,
       "latestRelease": true,
+      "current": true,
       "selfUri": ""
    },
    "maxDownloadRate": 0,
@@ -6019,14 +6045,16 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = f
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "edgeVersion": "",
-   "publishDate": "",
-   "edgeUri": "",
-   "current": true,
-   "latestRelease": true,
-   "selfUri": ""
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "entities": [],
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
 TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdSoftwareversions = function getProvidersEdgesEdgeIdSoftwareversions(edgeId){

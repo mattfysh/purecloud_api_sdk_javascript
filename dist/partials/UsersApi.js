@@ -238,7 +238,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
   * @description This request is not valid when using the Client Credentials OAuth grant.
   * @memberOf UsersApi
   * @instance
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization
   * @example
   * 200 Response Example:
   * {
@@ -337,6 +337,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
    },
    "presenceDefinitions": [],
    "locations": [],
+   "orgAuthorization": [],
    "selfUri": ""
 }
   */
