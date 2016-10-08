@@ -23,14 +23,14 @@ function AuthorizationApi(session) {
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -53,10 +53,10 @@ AuthorizationApi.prototype.getPermissions = function getPermissions(pageSize, pa
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "pageCount": 0
 }
   */
@@ -83,14 +83,14 @@ AuthorizationApi.prototype.getProducts = function getProducts(){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -166,14 +166,14 @@ AuthorizationApi.prototype.postRoles = function postRoles(body){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -209,14 +209,14 @@ AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

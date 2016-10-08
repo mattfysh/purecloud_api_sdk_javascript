@@ -102,14 +102,14 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1095,14 +1095,14 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1399,14 +1399,14 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

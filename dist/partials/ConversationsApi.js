@@ -166,14 +166,14 @@ ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = fu
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -194,14 +194,14 @@ ConversationsApi.prototype.getConversations = function getConversations(communic
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -600,14 +600,14 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -670,14 +670,14 @@ ConversationsApi.prototype.postCalls = function postCalls(body){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1278,14 +1278,14 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = 
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1634,14 +1634,14 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = 
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1981,14 +1981,14 @@ ConversationsApi.prototype.getCobrowsesessionsCobrowseIdParticipantsParticipantI
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2089,14 +2089,14 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

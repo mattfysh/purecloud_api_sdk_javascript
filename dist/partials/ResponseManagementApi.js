@@ -22,14 +22,14 @@ function ResponseManagementApi(session) {
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -269,14 +269,14 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -387,14 +387,14 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
   * 200 Response Example:
   * {
    "results": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }

@@ -38,14 +38,14 @@ function OutboundApi(session) {
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -280,14 +280,14 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -459,14 +459,14 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -643,14 +643,14 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1339,14 +1339,14 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1816,14 +1816,14 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2130,14 +2130,14 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2639,14 +2639,14 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

@@ -21,16 +21,7 @@ function NotificationsApi(session) {
   * @example
   * 200 Response Example:
   * {
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "entities": [],
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "pageCount": 0
+   "entities": []
 }
   */
 NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expand){
@@ -49,14 +40,14 @@ NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expa
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -97,16 +88,7 @@ NotificationsApi.prototype.postChannels = function postChannels(){
   * @example
   * 200 Response Example:
   * {
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "entities": [],
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "pageCount": 0
+   "entities": []
 }
   */
 NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChannelsChannelIdSubscriptions(channelId){
@@ -137,16 +119,7 @@ NotificationsApi.prototype.getChannelsChannelIdSubscriptions = function getChann
   * @example
   * 200 Response Example:
   * {
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "entities": [],
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "pageCount": 0
+   "entities": []
 }
   */
 NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postChannelsChannelIdSubscriptions(channelId, body){
@@ -183,16 +156,7 @@ NotificationsApi.prototype.postChannelsChannelIdSubscriptions = function postCha
   * @example
   * 200 Response Example:
   * {
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "entities": [],
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "pageCount": 0
+   "entities": []
 }
   */
 NotificationsApi.prototype.putChannelsChannelIdSubscriptions = function putChannelsChannelIdSubscriptions(channelId, body){

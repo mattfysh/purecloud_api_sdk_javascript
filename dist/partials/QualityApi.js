@@ -72,14 +72,14 @@ QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAg
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -121,14 +121,14 @@ QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pa
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -949,14 +949,14 @@ QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibratio
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1857,14 +1857,14 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1963,14 +1963,14 @@ QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(bo
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2008,14 +2008,14 @@ QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(page
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2050,14 +2050,14 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
@@ -2073,14 +2073,14 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2117,14 +2117,14 @@ QualityApi.prototype.postForms = function postForms(body){
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2159,14 +2159,14 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
@@ -2182,14 +2182,14 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2242,14 +2242,14 @@ QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2282,14 +2282,14 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2588,14 +2588,14 @@ QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsK
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2626,14 +2626,14 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
@@ -2649,14 +2649,14 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2693,14 +2693,14 @@ QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
    "contextId": "",
    "questionGroups": [],
    "publishedVersions": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },

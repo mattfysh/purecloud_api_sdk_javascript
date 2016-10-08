@@ -56,14 +56,14 @@ RoutingApi.prototype.postQueuesObservationsQuery = function postQueuesObservatio
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -165,14 +165,14 @@ RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDom
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -426,14 +426,14 @@ RoutingApi.prototype.getEmailSetup = function getEmailSetup(){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -706,14 +706,14 @@ RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId,
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -742,14 +742,14 @@ RoutingApi.prototype.getQueuesQueueIdConversations = function getQueuesQueueIdCo
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -778,14 +778,14 @@ RoutingApi.prototype.getQueuesQueueIdConversationsCallbacks = function getQueues
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -814,14 +814,14 @@ RoutingApi.prototype.getQueuesQueueIdConversationsCalls = function getQueuesQueu
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -850,14 +850,14 @@ RoutingApi.prototype.getQueuesQueueIdConversationsChats = function getQueuesQueu
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -920,14 +920,14 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1043,14 +1043,14 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1193,23 +1193,22 @@ RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueue
   * @memberOf RoutingApi
   * @instance
   * @param {string} queueId - Queue ID
-  * @param {string} codeId - Code ID
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
   */
-RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrapupcodes(queueId, codeId){
+RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrapupcodes(queueId){
     var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
     var requestQuery = {};
     var requestBody;
@@ -1218,10 +1217,6 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
       throw new Error('Missing required  parameter: queueId');
     }
     requestPath = requestPath.replace('{queueId}', queueId);
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -1230,7 +1225,6 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
   * @memberOf RoutingApi
   * @instance
   * @param {string} queueId - Queue ID
-  * @param {string} codeId - Code ID
   * @param {} body - List of wrapup codes
   * @example
   * Body Example:
@@ -1257,7 +1251,7 @@ RoutingApi.prototype.getQueuesQueueIdWrapupcodes = function getQueuesQueueIdWrap
  }
 ]
   */
-RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWrapupcodes(queueId, codeId, body){
+RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWrapupcodes(queueId, body){
     var requestPath = '/api/v2/routing/queues/{queueId}/wrapupcodes';
     var requestQuery = {};
     var requestBody;
@@ -1266,10 +1260,6 @@ RoutingApi.prototype.postQueuesQueueIdWrapupcodes = function postQueuesQueueIdWr
       throw new Error('Missing required  parameter: queueId');
     }
     requestPath = requestPath.replace('{queueId}', queueId);
-    if(codeId === undefined || codeId === null){
-      throw new Error('Missing required  parameter: codeId');
-    }
-    requestPath = requestPath.replace('{codeId}', codeId);
     if(body === undefined || body === null){
       throw new Error('Missing required  parameter: body');
     }
@@ -1311,14 +1301,14 @@ RoutingApi.prototype.deleteQueuesQueueIdWrapupcodesCodeId = function deleteQueue
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1485,14 +1475,14 @@ RoutingApi.prototype.deleteUtilization = function deleteUtilization(){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1653,14 +1643,14 @@ RoutingApi.prototype.deleteWrapupcodesCodeId = function deleteWrapupcodesCodeId(
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

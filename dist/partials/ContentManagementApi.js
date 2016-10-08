@@ -34,14 +34,14 @@ function ContentManagementApi(session) {
   * 200 Response Example:
   * {
    "results": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -79,14 +79,14 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -412,14 +412,14 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -535,14 +535,14 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
   * 200 Response Example:
   * {
    "results": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -593,14 +593,14 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
   * 200 Response Example:
   * {
    "results": {
+      "entities": [],
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "entities": [],
       "selfUri": "",
+      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -632,14 +632,14 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -721,14 +721,14 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -924,14 +924,14 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1056,14 +1056,14 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1273,14 +1273,14 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1554,14 +1554,14 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1640,14 +1640,14 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
   * @example
   * 200 Response Example:
   * {
+   "entities": [],
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "entities": [],
    "selfUri": "",
+   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
