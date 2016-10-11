@@ -43,9 +43,9 @@ function OutboundApi(session) {
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -285,9 +285,9 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -464,9 +464,9 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -648,9 +648,9 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -731,7 +731,8 @@ OutboundApi.prototype.getCampaigns = function getCampaigns(pageSize, pageNumber,
       "numeric": true
    },
    "noAnswerTimeout": 0,
-   "callAnalysisLanguage": ""
+   "callAnalysisLanguage": "",
+   "priority": 0
 }
   * @example
   * 200 Response Example:
@@ -790,6 +791,7 @@ OutboundApi.prototype.getCampaigns = function getCampaigns(pageSize, pageNumber,
    },
    "noAnswerTimeout": 0,
    "callAnalysisLanguage": "",
+   "priority": 0,
    "selfUri": ""
 }
   */
@@ -908,6 +910,7 @@ OutboundApi.prototype.postCampaignsProgress = function postCampaignsProgress(bod
    },
    "noAnswerTimeout": 0,
    "callAnalysisLanguage": "",
+   "priority": 0,
    "selfUri": ""
 }
   */
@@ -981,7 +984,8 @@ OutboundApi.prototype.getCampaignsCampaignId = function getCampaignsCampaignId(c
       "numeric": true
    },
    "noAnswerTimeout": 0,
-   "callAnalysisLanguage": ""
+   "callAnalysisLanguage": "",
+   "priority": 0
 }
   * @example
   * 200 Response Example:
@@ -1040,6 +1044,7 @@ OutboundApi.prototype.getCampaignsCampaignId = function getCampaignsCampaignId(c
    },
    "noAnswerTimeout": 0,
    "callAnalysisLanguage": "",
+   "priority": 0,
    "selfUri": ""
 }
   */
@@ -1167,6 +1172,7 @@ OutboundApi.prototype.postCampaignsCampaignIdCallbackSchedule = function postCam
   * 200 Response Example:
   * {
    "callableContacts": {
+      "attemptLimits": {},
       "dncLists": [],
       "callableTimeSet": {},
       "ruleSets": []
@@ -1344,9 +1350,9 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1821,9 +1827,9 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2135,9 +2141,9 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2644,9 +2650,9 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

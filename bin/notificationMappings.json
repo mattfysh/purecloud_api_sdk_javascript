@@ -29,6 +29,14 @@
       "class": "ScreenShareConversationNotification"
     },
     {
+      "topic": "v2.routing.queues.{id}.conversations.socialexpressions",
+      "class": "ConversationNotification"
+    },
+    {
+      "topic": "v2.routing.queues.{id}.conversations.videos",
+      "class": "ConversationNotification"
+    },
+    {
       "topic": "v2.users.{id}.alerting.heartbeat.alerts",
       "class": "HeartBeatAlertNotification"
     },

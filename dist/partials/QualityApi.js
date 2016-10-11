@@ -77,9 +77,9 @@ QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAg
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -126,9 +126,9 @@ QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pa
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -954,9 +954,9 @@ QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibratio
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1862,9 +1862,9 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1968,9 +1968,9 @@ QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(bo
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2013,9 +2013,9 @@ QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(page
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2055,9 +2055,9 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
@@ -2078,9 +2078,9 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2122,9 +2122,9 @@ QualityApi.prototype.postForms = function postForms(body){
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2164,9 +2164,9 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
@@ -2187,9 +2187,9 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2247,9 +2247,9 @@ QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2287,9 +2287,9 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2593,9 +2593,9 @@ QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsK
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2631,9 +2631,9 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }
@@ -2654,9 +2654,9 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },
@@ -2698,9 +2698,9 @@ QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    },

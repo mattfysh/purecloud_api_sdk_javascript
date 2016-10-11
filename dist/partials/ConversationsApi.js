@@ -171,9 +171,9 @@ ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = fu
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -199,9 +199,9 @@ ConversationsApi.prototype.getConversations = function getConversations(communic
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -605,9 +605,9 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -675,9 +675,9 @@ ConversationsApi.prototype.postCalls = function postCalls(body){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1283,9 +1283,9 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = 
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1639,9 +1639,9 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = 
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1986,9 +1986,9 @@ ConversationsApi.prototype.getCobrowsesessionsCobrowseIdParticipantsParticipantI
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -2094,9 +2094,9 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

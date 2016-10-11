@@ -25,9 +25,9 @@ function AlertingApi(session) {
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -104,9 +104,9 @@ AlertingApi.prototype.deleteHeartbeatAlertsAlertId = function deleteHeartbeatAle
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -276,9 +276,9 @@ AlertingApi.prototype.deleteHeartbeatRulesRuleId = function deleteHeartbeatRules
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -413,9 +413,9 @@ AlertingApi.prototype.deleteInteractionstatsAlertsAlertId = function deleteInter
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

@@ -62,7 +62,7 @@ LocationsApi.prototype.getLocations = function getLocations(pageSize, pageNumber
 };
 
 /**
-  * @summary Search using q64
+  * @summary Search locations using the q64 value returned from a previous search
   * @memberOf LocationsApi
   * @instance
   * @param {string} q64 - q64
@@ -95,7 +95,7 @@ LocationsApi.prototype.getSearch = function getSearch(q64, expand){
 };
 
 /**
-  * @summary Search
+  * @summary Search locations
   * @memberOf LocationsApi
   * @instance
   * @param {} body - Search request options

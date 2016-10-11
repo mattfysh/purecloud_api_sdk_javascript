@@ -107,9 +107,9 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -351,7 +351,7 @@ UsersApi.prototype.getMe = function getMe(expand){
 };
 
 /**
-  * @summary Search using q64
+  * @summary Search users using the q64 value returned from a previous search
   * @memberOf UsersApi
   * @instance
   * @param {string} q64 - q64
@@ -384,7 +384,7 @@ UsersApi.prototype.getSearch = function getSearch(q64, expand){
 };
 
 /**
-  * @summary Search
+  * @summary Search users
   * @memberOf UsersApi
   * @instance
   * @param {} body - Search request options
@@ -1085,6 +1085,46 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
 };
 
 /**
+  * @summary List profile skills for a user
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} userId - User ID
+  */
+UsersApi.prototype.getUserIdProfileskills = function getUserIdProfileskills(userId){
+    var requestPath = '/api/v2/users/{userId}/profileskills';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update profile skills for a user
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} userId - User ID
+  * @param {} body - Skills
+  */
+UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(userId, body){
+    var requestPath = '/api/v2/users/{userId}/profileskills';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get queues for user
   * @memberOf UsersApi
   * @instance
@@ -1100,9 +1140,9 @@ UsersApi.prototype.putUserIdOutofoffice = function putUserIdOutofoffice(userId, 
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1404,9 +1444,9 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

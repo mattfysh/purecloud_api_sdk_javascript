@@ -30,9 +30,9 @@ function GroupsApi(session) {
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -97,7 +97,7 @@ GroupsApi.prototype.postGroups = function postGroups(body){
 };
 
 /**
-  * @summary Search using q64
+  * @summary Search groups using the q64 value returned from a previous search
   * @memberOf GroupsApi
   * @instance
   * @param {string} q64 - q64
@@ -130,7 +130,7 @@ GroupsApi.prototype.getSearch = function getSearch(q64, expand){
 };
 
 /**
-  * @summary Search
+  * @summary Search groups
   * @memberOf GroupsApi
   * @instance
   * @param {} body - Search request options
@@ -295,9 +295,9 @@ GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

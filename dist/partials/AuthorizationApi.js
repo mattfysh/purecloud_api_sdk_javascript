@@ -28,9 +28,9 @@ function AuthorizationApi(session) {
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -88,9 +88,9 @@ AuthorizationApi.prototype.getProducts = function getProducts(){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -126,7 +126,8 @@ AuthorizationApi.prototype.getRoles = function getRoles(pageSize, pageNumber, so
    "permissionPolicies": [],
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true
+   "default": true,
+   "base": true
 }
   * @example
   * 200 Response Example:
@@ -140,6 +141,7 @@ AuthorizationApi.prototype.getRoles = function getRoles(pageSize, pageNumber, so
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true,
+   "base": true,
    "selfUri": ""
 }
   */
@@ -171,9 +173,9 @@ AuthorizationApi.prototype.postRoles = function postRoles(body){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -203,7 +205,8 @@ AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
   "permissionPolicies": [],
   "userCount": 0,
   "roleNeedsUpdate": true,
-  "default": true
+  "default": true,
+  "base": true
  }
 ]
   * @example
@@ -214,9 +217,9 @@ AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -258,6 +261,7 @@ AuthorizationApi.prototype.putRolesDefault = function putRolesDefault(body){
       "userCount": 0,
       "roleNeedsUpdate": true,
       "default": true,
+      "base": true,
       "selfUri": ""
    },
    "roleFromDefault": {
@@ -270,6 +274,7 @@ AuthorizationApi.prototype.putRolesDefault = function putRolesDefault(body){
       "userCount": 0,
       "roleNeedsUpdate": true,
       "default": true,
+      "base": true,
       "selfUri": ""
    }
 }
@@ -308,7 +313,8 @@ AuthorizationApi.prototype.getRolesLeftroleIdComparedefaultRightroleId = functio
    "permissionPolicies": [],
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true
+   "default": true,
+   "base": true
 }
   * @example
   * 200 Response Example:
@@ -326,6 +332,7 @@ AuthorizationApi.prototype.getRolesLeftroleIdComparedefaultRightroleId = functio
       "userCount": 0,
       "roleNeedsUpdate": true,
       "default": true,
+      "base": true,
       "selfUri": ""
    },
    "roleFromDefault": {
@@ -338,6 +345,7 @@ AuthorizationApi.prototype.getRolesLeftroleIdComparedefaultRightroleId = functio
       "userCount": 0,
       "roleNeedsUpdate": true,
       "default": true,
+      "base": true,
       "selfUri": ""
    }
 }
@@ -382,6 +390,7 @@ AuthorizationApi.prototype.postRolesLeftroleIdComparedefaultRightroleId = functi
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true,
+   "base": true,
    "selfUri": ""
 }
   */
@@ -414,7 +423,8 @@ AuthorizationApi.prototype.getRolesRoleId = function getRolesRoleId(roleId){
    "permissionPolicies": [],
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true
+   "default": true,
+   "base": true
 }
   * @example
   * 200 Response Example:
@@ -428,6 +438,7 @@ AuthorizationApi.prototype.getRolesRoleId = function getRolesRoleId(roleId){
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true,
+   "base": true,
    "selfUri": ""
 }
   */
@@ -484,7 +495,8 @@ AuthorizationApi.prototype.deleteRolesRoleId = function deleteRolesRoleId(roleId
    "permissionPolicies": [],
    "userCount": 0,
    "roleNeedsUpdate": true,
-   "default": true
+   "default": true,
+   "base": true
 }
   * @example
   * 200 Response Example:
@@ -498,6 +510,7 @@ AuthorizationApi.prototype.deleteRolesRoleId = function deleteRolesRoleId(roleId
    "userCount": 0,
    "roleNeedsUpdate": true,
    "default": true,
+   "base": true,
    "selfUri": ""
 }
   */

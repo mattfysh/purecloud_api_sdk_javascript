@@ -27,9 +27,9 @@ function ResponseManagementApi(session) {
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -274,9 +274,9 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -392,9 +392,9 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
       "pageNumber": 0,
       "total": 0,
       "selfUri": "",
-      "nextUri": "",
       "firstUri": "",
       "previousUri": "",
+      "nextUri": "",
       "lastUri": "",
       "pageCount": 0
    }

@@ -502,9 +502,9 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -696,9 +696,9 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -1184,9 +1184,9 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "pageNumber": 0,
    "total": 0,
    "selfUri": "",
-   "nextUri": "",
    "firstUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }

@@ -34,4 +34,5 @@ exports.StationsApi = require('./partials/StationsApi');
 exports.TokensApi = require('./partials/TokensApi');
 exports.UserRecordingsApi = require('./partials/UserRecordingsApi');
 exports.VoicemailApi = require('./partials/VoicemailApi');
+exports.WorkforceManagementApi = require('./partials/WorkforceManagementApi');
 exports.PureCloudSession= require('./partials/purecloudsession');
