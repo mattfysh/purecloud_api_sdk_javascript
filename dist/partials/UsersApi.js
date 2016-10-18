@@ -238,7 +238,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
   * @description This request is not valid when using the Client Credentials OAuth grant.
   * @memberOf UsersApi
   * @instance
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization, favorites, superiors, directreports, adjacents
   * @example
   * 200 Response Example:
   * {
@@ -338,6 +338,14 @@ UsersApi.prototype.postUsers = function postUsers(body){
    "presenceDefinitions": [],
    "locations": [],
    "orgAuthorization": [],
+   "favorites": [],
+   "superiors": [],
+   "directReports": [],
+   "adjacents": {
+      "superiors": [],
+      "siblings": [],
+      "directReports": []
+   },
    "selfUri": ""
 }
   */
@@ -658,6 +666,26 @@ UsersApi.prototype.patchUserId = function patchUserId(userId, body){
 };
 
 /**
+  * @summary Get adjacents
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} userId - User ID
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  */
+UsersApi.prototype.getUserIdAdjacents = function getUserIdAdjacents(userId, expand){
+    var requestPath = '/api/v2/users/{userId}/adjacents';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get a user's CallForwarding
   * @memberOf UsersApi
   * @instance
@@ -860,6 +888,52 @@ UsersApi.prototype.patchUserIdCallforwarding = function patchUserIdCallforwardin
       requestBody = body;
     }
     return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get direct reports
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} userId - User ID
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  */
+UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(userId, expand){
+    var requestPath = '/api/v2/users/{userId}/directreports';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get favorites
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} userId - User ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} sortOrder - Sort order
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  */
+UsersApi.prototype.getUserIdFavorites = function getUserIdFavorites(userId, pageSize, pageNumber, sortOrder, expand){
+    var requestPath = '/api/v2/users/{userId}/favorites';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortOrder"] = sortOrder;
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -1771,6 +1845,26 @@ UsersApi.prototype.putUserIdStationDefaultstationStationId = function putUserIdS
     }
     requestPath = requestPath.replace('{stationId}', stationId);
     return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get superiors
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} userId - User ID
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  */
+UsersApi.prototype.getUserIdSuperiors = function getUserIdSuperiors(userId, expand){
+    var requestPath = '/api/v2/users/{userId}/superiors';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 

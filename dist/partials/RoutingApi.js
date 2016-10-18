@@ -909,7 +909,7 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization, favorites, superiors, directreports, adjacents
   * @param {boolean} joined - Filter by joined status
   * @param {string} name - Filter by queue member name
   * @param {array} profileSkills - Filter by profile skill

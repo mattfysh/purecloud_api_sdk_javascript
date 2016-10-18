@@ -37,6 +37,10 @@
       "class": "ConversationNotification"
     },
     {
+      "topic": "v2.routing.queues.{id}.users",
+      "class": "QueueMemberNotification"
+    },
+    {
       "topic": "v2.users.{id}.alerting.heartbeat.alerts",
       "class": "HeartBeatAlertNotification"
     },
@@ -99,6 +103,14 @@
     {
       "topic": "v2.users.{id}.presence",
       "class": "UserPresenceNotification"
+    },
+    {
+      "topic": "v2.users.{id}.routingStatus",
+      "class": "UserRoutingStatusNotification"
+    },
+    {
+      "topic": "v2.users.{id}.voicemail.messages",
+      "class": "VoicemailMessageNotification"
     }
   ]
 }
