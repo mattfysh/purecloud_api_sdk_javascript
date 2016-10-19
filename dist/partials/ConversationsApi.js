@@ -170,11 +170,11 @@ ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = fu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -198,11 +198,11 @@ ConversationsApi.prototype.getConversations = function getConversations(communic
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -604,11 +604,11 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -674,11 +674,11 @@ ConversationsApi.prototype.postCalls = function postCalls(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1282,11 +1282,11 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1638,11 +1638,11 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1985,11 +1985,11 @@ ConversationsApi.prototype.getCobrowsesessionsCobrowseIdParticipantsParticipantI
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2093,11 +2093,11 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

@@ -30,11 +30,11 @@ function LanguagesApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

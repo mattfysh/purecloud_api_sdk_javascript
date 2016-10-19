@@ -106,11 +106,11 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1213,11 +1213,11 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1517,11 +1517,11 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

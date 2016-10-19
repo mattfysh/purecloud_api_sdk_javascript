@@ -26,11 +26,11 @@ function GreetingsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -385,11 +385,11 @@ GreetingsApi.prototype.getGreetingIdMedia = function getGreetingIdMedia(greeting
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

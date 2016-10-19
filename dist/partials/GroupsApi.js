@@ -29,11 +29,11 @@ function GroupsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -294,11 +294,11 @@ GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

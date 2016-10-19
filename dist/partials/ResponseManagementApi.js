@@ -26,11 +26,11 @@ function ResponseManagementApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -273,11 +273,11 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -391,11 +391,11 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
+      "selfUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
