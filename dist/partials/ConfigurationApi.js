@@ -26,11 +26,11 @@ function ConfigurationApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */

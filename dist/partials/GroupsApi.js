@@ -14,6 +14,39 @@ function GroupsApi(session) {
 }
 
 /**
+  * @summary Fetch field config for an entity type
+  * @memberOf GroupsApi
+  * @instance
+  * @param {string} type - Field type
+  person,
+  group,
+  org,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "entityType": "",
+   "state": "",
+   "sections": [],
+   "version": "",
+   "schemaVersion": "",
+   "selfUri": ""
+}
+  */
+GroupsApi.prototype.getFieldconfig = function getFieldconfig(type){
+    var requestPath = '/api/v2/fieldconfig';
+    var requestQuery = {};
+    var requestBody;
+
+    if(type === undefined || type === null){
+      throw new Error('Missing required  parameter: type');
+    }
+    requestQuery["type"] = type;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get a group list
   * @memberOf GroupsApi
   * @instance
@@ -29,11 +62,11 @@ function GroupsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -294,11 +327,11 @@ GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */

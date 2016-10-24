@@ -42,11 +42,11 @@ function OutboundApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -284,11 +284,11 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -463,11 +463,11 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -647,11 +647,11 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1349,11 +1349,11 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1826,11 +1826,11 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2140,11 +2140,11 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2649,11 +2649,11 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */

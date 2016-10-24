@@ -23,6 +23,7 @@ function ConversationsApi(session) {
   * {
    "interval": "",
    "granularity": "",
+   "timeZone": "",
    "groupBy": [],
    "filter": {
       "type": "",
@@ -129,14 +130,14 @@ ConversationsApi.prototype.getConversationsConversationIdDetails = function getC
   * Body Example:
   * {
    "sessionId": "",
-   "timestamp": 0,
+   "targetDate": "",
    "properties": []
 }
   * @example
   * 200 Response Example:
   * {
    "sessionId": "",
-   "timestamp": 0,
+   "targetDate": "",
    "properties": []
 }
   */
@@ -170,11 +171,11 @@ ConversationsApi.prototype.postConversationsConversationIdDetailsProperties = fu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -198,11 +199,11 @@ ConversationsApi.prototype.getConversations = function getConversations(communic
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -604,11 +605,11 @@ ConversationsApi.prototype.getCallbacksCallbackIdParticipantsParticipantIdWrapup
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -674,11 +675,11 @@ ConversationsApi.prototype.postCalls = function postCalls(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1282,11 +1283,11 @@ ConversationsApi.prototype.getCallsCallIdParticipantsParticipantIdWrapupcodes = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1638,11 +1639,11 @@ ConversationsApi.prototype.getChatsChatIdParticipantsParticipantIdWrapupcodes = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1985,11 +1986,11 @@ ConversationsApi.prototype.getCobrowsesessionsCobrowseIdParticipantsParticipantI
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2093,11 +2094,11 @@ ConversationsApi.prototype.patchEmailsEmailId = function patchEmailsEmailId(emai
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2412,6 +2413,60 @@ ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantIdAttributes
       throw new Error('Missing required  parameter: participantId');
     }
     requestPath = requestPath.replace('{participantId}', participantId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update conversation participant's communication by disconnecting it.
+  * @memberOf ConversationsApi
+  * @instance
+  * @param {string} emailId - emailId
+  * @param {string} participantId - participantId
+  * @param {string} communicationId - communicationId
+  * @param {} body - Participant
+  * @example
+  * Body Example:
+  * {
+   "wrapup": {
+      "code": "",
+      "name": "",
+      "notes": "",
+      "tags": [],
+      "durationSeconds": 0,
+      "endTime": "",
+      "provisional": true
+   },
+   "state": "",
+   "recording": true,
+   "muted": true,
+   "confined": true,
+   "held": true,
+   "wrapupSkipped": true
+}
+  */
+ConversationsApi.prototype.patchEmailsEmailIdParticipantsParticipantIdCommunicationsCommunicationId = function patchEmailsEmailIdParticipantsParticipantIdCommunicationsCommunicationId(emailId, participantId, communicationId, body){
+    var requestPath = '/api/v2/conversations/emails/{emailId}/participants/{participantId}/communications/{communicationId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(emailId === undefined || emailId === null){
+      throw new Error('Missing required  parameter: emailId');
+    }
+    requestPath = requestPath.replace('{emailId}', emailId);
+    if(participantId === undefined || participantId === null){
+      throw new Error('Missing required  parameter: participantId');
+    }
+    requestPath = requestPath.replace('{participantId}', participantId);
+    if(communicationId === undefined || communicationId === null){
+      throw new Error('Missing required  parameter: communicationId');
+    }
+    requestPath = requestPath.replace('{communicationId}', communicationId);
     if(body === undefined || body === null){
       throw new Error('Missing required  parameter: body');
     }

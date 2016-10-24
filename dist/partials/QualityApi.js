@@ -23,6 +23,7 @@ function QualityApi(session) {
   * {
    "interval": "",
    "granularity": "",
+   "timeZone": "",
    "groupBy": [],
    "filter": {
       "type": "",
@@ -76,11 +77,11 @@ QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAg
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -125,11 +126,11 @@ QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -953,11 +954,11 @@ QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibratio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1861,11 +1862,11 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1967,11 +1968,11 @@ QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(bo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2012,11 +2013,11 @@ QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(page
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2054,11 +2055,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2077,11 +2078,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2121,11 +2122,11 @@ QualityApi.prototype.postForms = function postForms(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2163,11 +2164,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2186,11 +2187,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2246,11 +2247,11 @@ QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2286,11 +2287,11 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2592,11 +2593,11 @@ QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsK
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2630,11 +2631,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2653,11 +2654,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2697,11 +2698,11 @@ QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
+      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
-      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""

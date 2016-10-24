@@ -24,11 +24,11 @@ function OAuthApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -58,8 +58,7 @@ via the 'roleIds' field.
    "description": "",
    "registeredRedirectUri": [],
    "secret": "",
-   "roleIds": [],
-   "authorizedGrantType": ""
+   "roleIds": []
 }
   * @example
   * 200 Response Example:
@@ -134,8 +133,7 @@ OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
    "description": "",
    "registeredRedirectUri": [],
    "secret": "",
-   "roleIds": [],
-   "authorizedGrantType": ""
+   "roleIds": []
 }
   * @example
   * 200 Response Example:

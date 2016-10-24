@@ -23,6 +23,7 @@ function AnalyticsApi(session) {
   * {
    "interval": "",
    "granularity": "",
+   "timeZone": "",
    "groupBy": [],
    "filter": {
       "type": "",
@@ -129,14 +130,14 @@ AnalyticsApi.prototype.getConversationsConversationIdDetails = function getConve
   * Body Example:
   * {
    "sessionId": "",
-   "timestamp": 0,
+   "targetDate": "",
    "properties": []
 }
   * @example
   * 200 Response Example:
   * {
    "sessionId": "",
-   "timestamp": 0,
+   "targetDate": "",
    "properties": []
 }
   */
@@ -168,6 +169,7 @@ AnalyticsApi.prototype.postConversationsConversationIdDetailsProperties = functi
   * {
    "interval": "",
    "granularity": "",
+   "timeZone": "",
    "groupBy": [],
    "filter": {
       "type": "",
@@ -247,11 +249,11 @@ AnalyticsApi.prototype.postQueuesObservationsQuery = function postQueuesObservat
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -294,11 +296,11 @@ AnalyticsApi.prototype.getReportingReportformats = function getReportingReportfo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -565,11 +567,11 @@ AnalyticsApi.prototype.deleteReportingSchedulesScheduleId = function deleteRepor
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -740,6 +742,7 @@ AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingRepor
   * {
    "interval": "",
    "granularity": "",
+   "timeZone": "",
    "groupBy": [],
    "filter": {
       "type": "",

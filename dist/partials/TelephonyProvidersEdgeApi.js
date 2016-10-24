@@ -26,11 +26,11 @@ function TelephonyProvidersEdgeApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -58,11 +58,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnext = function getSchemasEd
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -95,11 +95,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategory = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -236,11 +236,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -486,11 +486,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesAvailablelanguages = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -693,11 +693,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesCertificateauthoritiesCe
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -905,11 +905,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesDidpoolsDidpoolId = func
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1066,11 +1066,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesDidsDidId = function putPro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1314,11 +1314,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeversionreport = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1576,11 +1576,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEndpointsEndpointId = fu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1779,11 +1779,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesExtensionpoolsExtensionp
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1940,11 +1940,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesExtensionsExtensionId = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2016,11 +2016,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinebasesettingsLinebaseId 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2368,11 +2368,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesOfflineconfiguration = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2697,11 +2697,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesOutboundroutesOutboundro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2810,11 +2810,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonebasesettings = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -3054,11 +3054,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -3127,6 +3127,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3136,6 +3137,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3196,6 +3198,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3207,11 +3210,17 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
       "edge": {},
       "selfUri": ""
+   },
+   "userAgentInfo": {
+      "firmwareVersion": "",
+      "manufacturer": "",
+      "model": ""
    },
    "properties": {},
    "capabilities": {
@@ -3315,6 +3324,7 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesReboot = function po
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3326,11 +3336,17 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesReboot = function po
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
       "edge": {},
       "selfUri": ""
+   },
+   "userAgentInfo": {
+      "firmwareVersion": "",
+      "manufacturer": "",
+      "model": ""
    },
    "properties": {},
    "capabilities": {
@@ -3406,6 +3422,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesTemplate = function g
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3417,11 +3434,17 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesTemplate = function g
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
       "edge": {},
       "selfUri": ""
+   },
+   "userAgentInfo": {
+      "firmwareVersion": "",
+      "manufacturer": "",
+      "model": ""
    },
    "properties": {},
    "capabilities": {
@@ -3496,6 +3519,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3505,6 +3529,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3565,6 +3590,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
@@ -3576,11 +3602,17 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "name": "",
       "operationalStatus": "",
       "edgesStatus": "",
+      "eventCreationTime": "",
       "provision": {},
       "lineStatuses": [],
       "phoneAssignmentToEdgeType": "",
       "edge": {},
       "selfUri": ""
+   },
+   "userAgentInfo": {
+      "firmwareVersion": "",
+      "manufacturer": "",
+      "model": ""
    },
    "properties": {},
    "capabilities": {
@@ -3670,11 +3702,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesPhoneIdReboot = func
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -4190,11 +4222,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesSitesSiteIdRebalance = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -4220,26 +4252,16 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTimezones = function getPro
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "description": "",
-   "version": 0,
-   "dateCreated": "",
-   "dateModified": "",
-   "modifiedBy": "",
-   "createdBy": "",
-   "state": "",
-   "modifiedByApp": "",
-   "createdByApp": "",
-   "trunkMetabase": {
-      "id": "",
-      "name": "",
-      "selfUri": ""
-   },
-   "properties": {},
-   "trunkType": "",
-   "managed": true,
-   "selfUri": ""
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
 TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettings = function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled){
@@ -4338,11 +4360,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesTrunkbasesettings = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -4552,11 +4574,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesTrunkbasesettingsTrunkba
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -4936,11 +4958,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeId = function delete
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -5317,11 +5339,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLinesLineId = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -5796,11 +5818,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogsJobsJobIdUpload 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -6049,11 +6071,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = f
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */

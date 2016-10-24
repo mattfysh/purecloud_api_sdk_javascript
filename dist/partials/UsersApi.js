@@ -23,6 +23,7 @@ function UsersApi(session) {
   * {
    "interval": "",
    "granularity": "",
+   "timeZone": "",
    "groupBy": [],
    "filter": {
       "type": "",
@@ -89,6 +90,39 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
 };
 
 /**
+  * @summary Fetch field config for an entity type
+  * @memberOf UsersApi
+  * @instance
+  * @param {string} type - Field type
+  person,
+  group,
+  org,
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "entityType": "",
+   "state": "",
+   "sections": [],
+   "version": "",
+   "schemaVersion": "",
+   "selfUri": ""
+}
+  */
+UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
+    var requestPath = '/api/v2/fieldconfig';
+    var requestQuery = {};
+    var requestBody;
+
+    if(type === undefined || type === null){
+      throw new Error('Missing required  parameter: type');
+    }
+    requestQuery["type"] = type;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get the list of available users.
   * @memberOf UsersApi
   * @instance
@@ -106,11 +140,11 @@ UsersApi.prototype.postUsersObservationsQuery = function postUsersObservationsQu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1213,11 +1247,11 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1517,11 +1551,11 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
