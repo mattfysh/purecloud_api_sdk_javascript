@@ -8,3 +8,4 @@ newVersion.md
 .npmrc
 *.log
 .npm-cache/
+.idea

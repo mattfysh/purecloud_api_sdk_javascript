@@ -19,7 +19,7 @@ describe("PureCloudSession", function() {
   describe("unauthenticated requests", function(){
       let handlerCalled=false;
       beforeEach(function(done) {
-          var session = new purecloud.PureCloudSession({timeout:20000});
+          var session = new purecloud.PureCloudSession({timeout:20000, proxy: process.env['http_proxy']});
 
         //  session.debugLog = console.log;
 

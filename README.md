@@ -136,3 +136,11 @@ There are hooks to trace requests and responses.  To enable tracing, override th
 ~~~js
 pureCloudSession.debugLog = console.log;
 ~~~
+
+## Proxy Support
+
+If behind a corporate proxy, provide an ```options.proxy``` property when creating a session:
+
+~~~js
+var session = purecloud.PureCloudSession({proxy: 'http://my-corporate-proxy:1080'})
+~~~

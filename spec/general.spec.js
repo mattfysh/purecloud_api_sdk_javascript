@@ -21,7 +21,8 @@ function getSession() {
     strategy: 'client-credentials',
     clientId: clientId,
     clientSecret: clientSecret,
-    environment: environment
+    environment: environment,
+    proxy: process.env['http_proxy']
   });
 
   session.debugLog = function(message){

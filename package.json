@@ -25,7 +25,8 @@
   "homepage": "https://github.com/MyPureCloud/purecloud_api_sdk_javascript",
   "dependencies": {
     "es6-promise": "^3.2.1",
-    "superagent": "^1.8.3"
+    "superagent": "^1.8.3",
+    "superagent-proxy": "^1.0.1"
   },
   "devDependencies": {
     "bluebird": "^3.4.1",
