@@ -28,8 +28,8 @@ function AttributesApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -125,8 +125,8 @@ AttributesApi.prototype.postAttributes = function postAttributes(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

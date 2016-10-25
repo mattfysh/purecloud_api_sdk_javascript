@@ -26,8 +26,8 @@ function IdentityProviderApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

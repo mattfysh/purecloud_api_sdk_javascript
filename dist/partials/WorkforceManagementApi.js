@@ -139,8 +139,8 @@ WorkforceManagementApi.prototype.postLongtermforecasts = function postLongtermfo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
