@@ -28,9 +28,9 @@ function GreetingsApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -387,9 +387,9 @@ GreetingsApi.prototype.getGreetingIdMedia = function getGreetingIdMedia(greeting
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

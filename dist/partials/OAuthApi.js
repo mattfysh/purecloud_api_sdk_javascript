@@ -26,9 +26,9 @@ function OAuthApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

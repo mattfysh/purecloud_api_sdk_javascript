@@ -142,9 +142,9 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1249,9 +1249,9 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1553,9 +1553,9 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

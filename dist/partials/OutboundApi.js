@@ -44,9 +44,9 @@ function OutboundApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -286,9 +286,9 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -465,9 +465,9 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -649,9 +649,9 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1351,9 +1351,9 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1828,9 +1828,9 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2142,9 +2142,9 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2651,9 +2651,9 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
