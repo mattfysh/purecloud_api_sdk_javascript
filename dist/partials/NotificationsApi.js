@@ -46,8 +46,8 @@ NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
    "previousUri": "",
+   "lastUri": "",
    "nextUri": "",
    "pageCount": 0
 }

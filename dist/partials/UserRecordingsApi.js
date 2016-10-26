@@ -29,8 +29,8 @@ function UserRecordingsApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
    "previousUri": "",
+   "lastUri": "",
    "nextUri": "",
    "pageCount": 0
 }
