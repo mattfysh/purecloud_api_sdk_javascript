@@ -142,9 +142,9 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -354,6 +354,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
       "id": "",
       "name": "",
       "enabled": true,
+      "mapboxKey": "",
       "selfUri": ""
    },
    "organization": {
@@ -1249,9 +1250,9 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1553,9 +1554,9 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1759,6 +1760,8 @@ UsersApi.prototype.putUserIdRoutingstatus = function putUserIdRoutingstatus(user
   * {
    "associatedStation": {
       "id": "",
+      "name": "",
+      "type": "",
       "associatedUser": {},
       "associatedDate": "",
       "defaultUser": {},
@@ -1766,6 +1769,8 @@ UsersApi.prototype.putUserIdRoutingstatus = function putUserIdRoutingstatus(user
    },
    "effectiveStation": {
       "id": "",
+      "name": "",
+      "type": "",
       "associatedUser": {},
       "associatedDate": "",
       "defaultUser": {},
@@ -1773,6 +1778,8 @@ UsersApi.prototype.putUserIdRoutingstatus = function putUserIdRoutingstatus(user
    },
    "defaultStation": {
       "id": "",
+      "name": "",
+      "type": "",
       "associatedUser": {},
       "associatedDate": "",
       "defaultUser": {},
@@ -1780,6 +1787,8 @@ UsersApi.prototype.putUserIdRoutingstatus = function putUserIdRoutingstatus(user
    },
    "lastAssociatedStation": {
       "id": "",
+      "name": "",
+      "type": "",
       "associatedUser": {},
       "associatedDate": "",
       "defaultUser": {},

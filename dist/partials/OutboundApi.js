@@ -44,9 +44,9 @@ function OutboundApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -286,9 +286,9 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -465,9 +465,9 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -649,9 +649,9 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1121,7 +1121,8 @@ OutboundApi.prototype.putCampaignsCampaignIdAgentsUserId = function putCampaigns
 };
 
 /**
-  * @summary Schedule a Callback for a Dialer Campaign
+  * @summary Schedule a Callback for a Dialer Campaign (Deprecated)
+  * @description This endpoint is deprecated and may have unexpected results. Please use "/conversations/{conversationId}/participants/{participantId}/callbacks instead."
   * @memberOf OutboundApi
   * @instance
   * @param {string} campaignId - Campaign ID
@@ -1351,9 +1352,9 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1828,9 +1829,9 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2142,9 +2143,9 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2651,9 +2652,9 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
+   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
