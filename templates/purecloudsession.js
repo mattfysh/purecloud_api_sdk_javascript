@@ -1,7 +1,5 @@
 
 var superagent = require('superagent');
-require('superagent-proxy')(superagent);
-
 var Promise = require('es6-promise').Promise;
 require('es6-promise').polyfill();
 
@@ -228,10 +226,6 @@ PureCloudSession.prototype._baseRequest = function _baseRequest(method, url) {
     if (typeof window === 'undefined' ) {
         var userAgent = 'PureCloud SDK/Javascript {{&info.version}}';
         request = request.set('User-Agent', userAgent);
-    }
-
-    if (this.options.proxy) {
-        request = request.proxy(this.options.proxy);
     }
 
     return request;
