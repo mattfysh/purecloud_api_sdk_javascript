@@ -503,9 +503,9 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -697,9 +697,9 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1185,9 +1185,9 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

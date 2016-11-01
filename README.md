@@ -55,8 +55,8 @@ The **implicit** strategy only works when used in a browser. This is because a n
 
 ~~~js
 // Node.js - Client credentials strategy
-var pureCloudSession = require('purecloud_api_sdk_javascript');
-var session = purecloud.PureCloudSession({
+var purecloud = require('purecloud_api_sdk_javascript');
+var pureCloudSession = purecloud.PureCloudSession({
   strategy: 'client-credentials',
   clientId: yourPurecloudClientId,
   clientSecret: yourPurecloudSecretKey

@@ -23,6 +23,7 @@ function GeolocationApi(session) {
    "id": "",
    "name": "",
    "enabled": true,
+   "mapboxKey": "",
    "selfUri": ""
 }
   */
@@ -43,7 +44,8 @@ GeolocationApi.prototype.getSettings = function getSettings(){
   * Body Example:
   * {
    "name": "",
-   "enabled": true
+   "enabled": true,
+   "mapboxKey": ""
 }
   * @example
   * 200 Response Example:
@@ -51,6 +53,7 @@ GeolocationApi.prototype.getSettings = function getSettings(){
    "id": "",
    "name": "",
    "enabled": true,
+   "mapboxKey": "",
    "selfUri": ""
 }
   */

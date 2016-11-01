@@ -62,9 +62,9 @@ RoutingApi.prototype.postQueuesObservationsQuery = function postQueuesObservatio
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -171,9 +171,9 @@ RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDom
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -213,7 +213,12 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsD
       "selfUri": ""
    },
    "fromName": "",
-   "fromEmail": ""
+   "fromEmail": "",
+   "flow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   }
 }
   * @example
   * 200 Response Example:
@@ -235,6 +240,11 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsD
    },
    "fromName": "",
    "fromEmail": "",
+   "flow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -282,6 +292,11 @@ RoutingApi.prototype.postEmailDomainsDomainnameRoutes = function postEmailDomain
    },
    "fromName": "",
    "fromEmail": "",
+   "flow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -326,7 +341,12 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailD
       "selfUri": ""
    },
    "fromName": "",
-   "fromEmail": ""
+   "fromEmail": "",
+   "flow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   }
 }
   * @example
   * 200 Response Example:
@@ -348,6 +368,11 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutesRouteId = function getEmailD
    },
    "fromName": "",
    "fromEmail": "",
+   "flow": {
+      "id": "",
+      "name": "",
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -432,9 +457,9 @@ RoutingApi.prototype.getEmailSetup = function getEmailSetup(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -712,9 +737,9 @@ RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId,
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -748,9 +773,9 @@ RoutingApi.prototype.getQueuesQueueIdConversations = function getQueuesQueueIdCo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -784,9 +809,9 @@ RoutingApi.prototype.getQueuesQueueIdConversationsCallbacks = function getQueues
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -820,9 +845,9 @@ RoutingApi.prototype.getQueuesQueueIdConversationsCalls = function getQueuesQueu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -856,9 +881,9 @@ RoutingApi.prototype.getQueuesQueueIdConversationsChats = function getQueuesQueu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -926,9 +951,9 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1049,9 +1074,9 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1202,9 +1227,9 @@ RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueue
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1307,9 +1332,9 @@ RoutingApi.prototype.deleteQueuesQueueIdWrapupcodesCodeId = function deleteQueue
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1481,9 +1506,9 @@ RoutingApi.prototype.deleteUtilization = function deleteUtilization(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1649,9 +1674,9 @@ RoutingApi.prototype.deleteWrapupcodesCodeId = function deleteWrapupcodesCodeId(
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

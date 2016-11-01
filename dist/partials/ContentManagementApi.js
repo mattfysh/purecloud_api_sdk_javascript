@@ -40,9 +40,9 @@ function ContentManagementApi(session) {
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
-      "previousUri": "",
       "nextUri": "",
+      "previousUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -85,9 +85,9 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -418,9 +418,9 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -541,9 +541,9 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
-      "previousUri": "",
       "nextUri": "",
+      "previousUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -599,9 +599,9 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
-      "previousUri": "",
       "nextUri": "",
+      "previousUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -638,9 +638,9 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -727,9 +727,9 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -930,9 +930,9 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1062,9 +1062,9 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1279,9 +1279,9 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1560,9 +1560,9 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1646,9 +1646,9 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

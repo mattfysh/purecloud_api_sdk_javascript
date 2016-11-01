@@ -32,9 +32,9 @@ function LanguagesApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
-   "previousUri": "",
    "nextUri": "",
+   "previousUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -86,6 +86,79 @@ LanguagesApi.prototype.postLanguages = function postLanguages(body){
       requestBody = body;
     }
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get all available languages for translation
+  * @memberOf LanguagesApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "orgSpecific": [],
+   "builtin": []
+}
+  */
+LanguagesApi.prototype.getTranslations = function getTranslations(){
+    var requestPath = '/api/v2/languages/translations';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the builtin translation for a language
+  * @memberOf LanguagesApi
+  * @instance
+  * @param {string} language - The language of the builtin translation to retrieve
+  */
+LanguagesApi.prototype.getTranslationsBuiltin = function getTranslationsBuiltin(language){
+    var requestPath = '/api/v2/languages/translations/builtin';
+    var requestQuery = {};
+    var requestBody;
+
+    if(language === undefined || language === null){
+      throw new Error('Missing required  parameter: language');
+    }
+    requestQuery["language"] = language;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get effective translation for an organization by language
+  * @memberOf LanguagesApi
+  * @instance
+  * @param {string} language - The language of the translation to retrieve for the organization
+  */
+LanguagesApi.prototype.getTranslationsOrganization = function getTranslationsOrganization(language){
+    var requestPath = '/api/v2/languages/translations/organization';
+    var requestQuery = {};
+    var requestBody;
+
+    if(language === undefined || language === null){
+      throw new Error('Missing required  parameter: language');
+    }
+    requestQuery["language"] = language;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get effective language translation for a user
+  * @memberOf LanguagesApi
+  * @instance
+  * @param {string} userId - The user id
+  */
+LanguagesApi.prototype.getTranslationsUsersUserId = function getTranslationsUsersUserId(userId){
+    var requestPath = '/api/v2/languages/translations/users/{userId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
