@@ -251,8 +251,8 @@ AnalyticsApi.prototype.postQueuesObservationsQuery = function postQueuesObservat
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -298,8 +298,8 @@ AnalyticsApi.prototype.getReportingReportformats = function getReportingReportfo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
@@ -569,8 +569,8 @@ AnalyticsApi.prototype.deleteReportingSchedulesScheduleId = function deleteRepor
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
+   "nextUri": "",
    "lastUri": "",
    "pageCount": 0
 }
