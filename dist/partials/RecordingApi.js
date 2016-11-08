@@ -188,6 +188,7 @@ RecordingApi.prototype.putConversationIdRecordingsRecordingId = function putConv
    "state": "",
    "title": "",
    "username": "",
+   "manager": {},
    "images": [],
    "version": 0,
    "routingStatus": {},
@@ -243,6 +244,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = funct
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -267,6 +269,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = funct
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -331,6 +334,7 @@ RecordingApi.prototype.postConversationIdRecordingsRecordingIdAnnotations = func
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -390,6 +394,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotati
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -414,6 +419,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotati
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -501,8 +507,8 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
    "lastUri": "",
@@ -674,6 +680,202 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
 };
 
 /**
+  * @summary create a local recording key
+  * @memberOf RecordingApi
+  * @instance
+  * @param {} body - Local Encryption body
+  * @example
+  * Body Example:
+  * {
+   "configId": "",
+   "publicKey": "",
+   "keypairId": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "createDate": "",
+   "keydataSummary": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "manager": {},
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.postLocalkeys = function postLocalkeys(body){
+    var requestPath = '/api/v2/recording/localkeys';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary gets a list local key settings data
+  * @memberOf RecordingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RecordingApi.prototype.getLocalkeysSettings = function getLocalkeysSettings(){
+    var requestPath = '/api/v2/recording/localkeys/settings';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary create settings for local key creation
+  * @memberOf RecordingApi
+  * @instance
+  * @param {} body - Local Encryption Configuration
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "url": "",
+   "apiId": "",
+   "apiKey": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "url": "",
+   "apiId": "",
+   "apiKey": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.postLocalkeysSettings = function postLocalkeysSettings(body){
+    var requestPath = '/api/v2/recording/localkeys/settings';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the local encryption settings
+  * @memberOf RecordingApi
+  * @instance
+  * @param {string} settingsId - Settings Id
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "url": "",
+   "apiId": "",
+   "apiKey": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.getLocalkeysSettingsSettingsId = function getLocalkeysSettingsSettingsId(settingsId){
+    var requestPath = '/api/v2/recording/localkeys/settings/{settingsId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(settingsId === undefined || settingsId === null){
+      throw new Error('Missing required  parameter: settingsId');
+    }
+    requestPath = requestPath.replace('{settingsId}', settingsId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update the local encryption settings
+  * @memberOf RecordingApi
+  * @instance
+  * @param {string} settingsId - Settings Id
+  * @param {} body - Local Encryption metadata
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "url": "",
+   "apiId": "",
+   "apiKey": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "url": "",
+   "apiId": "",
+   "apiKey": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.putLocalkeysSettingsSettingsId = function putLocalkeysSettingsSettingsId(settingsId, body){
+    var requestPath = '/api/v2/recording/localkeys/settings/{settingsId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(settingsId === undefined || settingsId === null){
+      throw new Error('Missing required  parameter: settingsId');
+    }
+    requestPath = requestPath.replace('{settingsId}', settingsId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Gets media retention policy list with query options to filter on name and enabled.
   * @description for a less verbose response, add summary=true to this endpoint
   * @memberOf RecordingApi
@@ -695,8 +897,8 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
    "lastUri": "",
@@ -1121,6 +1323,138 @@ RecordingApi.prototype.patchMediaretentionpoliciesPolicyId = function patchMedia
 };
 
 /**
+  * @summary Get encryption key list
+  * @memberOf RecordingApi
+  * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+RecordingApi.prototype.getRecordingkeys = function getRecordingkeys(pageSize, pageNumber){
+    var requestPath = '/api/v2/recording/recordingkeys';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Create encryption key
+  * @memberOf RecordingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "createDate": "",
+   "keydataSummary": "",
+   "user": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "manager": {},
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "selfUri": ""
+   },
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.postRecordingkeys = function postRecordingkeys(){
+    var requestPath = '/api/v2/recording/recordingkeys';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get key rotation schedule
+  * @memberOf RecordingApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "period": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.getRecordingkeysRotationschedule = function getRecordingkeysRotationschedule(){
+    var requestPath = '/api/v2/recording/recordingkeys/rotationschedule';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update key rotation schedule
+  * @memberOf RecordingApi
+  * @instance
+  * @param {} body - KeyRotationSchedule
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "period": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "period": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.putRecordingkeysRotationschedule = function putRecordingkeysRotationschedule(body){
+    var requestPath = '/api/v2/recording/recordingkeys/rotationschedule';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get the Recording Settings for the Organization
   * @memberOf RecordingApi
   * @instance
@@ -1183,8 +1517,8 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
    "lastUri": "",
