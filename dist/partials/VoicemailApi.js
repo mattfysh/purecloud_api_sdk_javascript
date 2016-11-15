@@ -132,6 +132,7 @@ VoicemailApi.prototype.deleteMessages = function deleteMessages(){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -235,6 +236,7 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""

@@ -45,6 +45,7 @@ function WorkforceManagementApi(session) {
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "managementUnit": {

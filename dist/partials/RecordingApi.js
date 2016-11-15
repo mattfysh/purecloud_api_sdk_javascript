@@ -87,6 +87,32 @@ RecordingApi.prototype.getConversationIdRecordings = function getConversationIdR
   true,
   false,
   * @param {string} fileName - the name of the downloaded fileName
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "conversationId": "",
+   "path": "",
+   "startTime": "",
+   "endTime": "",
+   "media": "",
+   "annotations": [],
+   "transcript": [],
+   "emailTranscript": [],
+   "fileState": "",
+   "restoreExpirationTime": "",
+   "mediaUris": {},
+   "estimatedTranscodeTimeMs": 0,
+   "actualTranscodeTimeMs": 0,
+   "archiveDate": "",
+   "archiveMedium": "",
+   "deleteDate": "",
+   "maxAllowedRestorationsForOrg": 0,
+   "remainingRestorationsAllowedForOrg": 0,
+   "sessionId": "",
+   "selfUri": ""
+}
   */
 RecordingApi.prototype.getConversationIdRecordingsRecordingId = function getConversationIdRecordingsRecordingId(conversationId, recordingId, formatId, download, fileName){
     var requestPath = '/api/v2/conversations/{conversationId}/recordings/{recordingId}';
@@ -138,6 +164,32 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingId = function getConv
    "maxAllowedRestorationsForOrg": 0,
    "remainingRestorationsAllowedForOrg": 0,
    "sessionId": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "conversationId": "",
+   "path": "",
+   "startTime": "",
+   "endTime": "",
+   "media": "",
+   "annotations": [],
+   "transcript": [],
+   "emailTranscript": [],
+   "fileState": "",
+   "restoreExpirationTime": "",
+   "mediaUris": {},
+   "estimatedTranscodeTimeMs": 0,
+   "actualTranscodeTimeMs": 0,
+   "archiveDate": "",
+   "archiveMedium": "",
+   "deleteDate": "",
+   "maxAllowedRestorationsForOrg": 0,
+   "remainingRestorationsAllowedForOrg": 0,
+   "sessionId": "",
+   "selfUri": ""
 }
   */
 RecordingApi.prototype.putConversationIdRecordingsRecordingId = function putConversationIdRecordingsRecordingId(conversationId, recordingId, body){
@@ -199,6 +251,7 @@ RecordingApi.prototype.putConversationIdRecordingsRecordingId = function putConv
    "station": {},
    "authorization": {},
    "profileSkills": [],
+   "locations": [],
    "selfUri": ""
   },
   "description": "",
@@ -280,6 +333,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = funct
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "description": "",
@@ -345,6 +399,7 @@ RecordingApi.prototype.postConversationIdRecordingsRecordingIdAnnotations = func
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "description": "",
@@ -430,6 +485,7 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotati
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "description": "",
@@ -507,11 +563,11 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -720,6 +776,7 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -750,11 +807,11 @@ RecordingApi.prototype.postLocalkeys = function postLocalkeys(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -897,11 +954,11 @@ RecordingApi.prototype.putLocalkeysSettingsSettingsId = function putLocalkeysSet
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1335,11 +1392,11 @@ RecordingApi.prototype.patchMediaretentionpoliciesPolicyId = function patchMedia
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1386,6 +1443,7 @@ RecordingApi.prototype.getRecordingkeys = function getRecordingkeys(pageSize, pa
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -1517,11 +1575,11 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

@@ -132,7 +132,7 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
-  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @example
   * 200 Response Example:
   * {
@@ -140,11 +140,11 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -213,6 +213,7 @@ UsersApi.prototype.getUsers = function getUsers(pageSize, pageNumber, id, sortOr
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "images": [],
@@ -274,6 +275,7 @@ UsersApi.prototype.getUsers = function getUsers(pageSize, pageNumber, id, sortOr
       "permissionPolicies": []
    },
    "profileSkills": [],
+   "locations": [],
    "selfUri": ""
 }
   */
@@ -296,7 +298,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
   * @description This request is not valid when using the Client Credentials OAuth grant.
   * @memberOf UsersApi
   * @instance
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization, favorites, superiors, directreports, adjacents, routingskills
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations, date, geolocationsettings, organization, presencedefinitions, locationdefinitions, orgauthorization, favorites, superiors, directreports, adjacents, routingskills
   * @example
   * 200 Response Example:
   * {
@@ -334,6 +336,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "images": [],
@@ -395,6 +398,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
       "permissionPolicies": []
    },
    "profileSkills": [],
+   "locations": [],
    "date": {
       "currentDate": ""
    },
@@ -419,7 +423,7 @@ UsersApi.prototype.postUsers = function postUsers(body){
       "selfUri": ""
    },
    "presenceDefinitions": [],
-   "locations": [],
+   "locationDefinitions": [],
    "orgAuthorization": [],
    "favorites": [],
    "superiors": [],
@@ -524,7 +528,7 @@ UsersApi.prototype.postSearch = function postSearch(body){
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @example
   * 200 Response Example:
   * {
@@ -562,6 +566,7 @@ UsersApi.prototype.postSearch = function postSearch(body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "images": [],
@@ -623,6 +628,7 @@ UsersApi.prototype.postSearch = function postSearch(body){
       "permissionPolicies": []
    },
    "profileSkills": [],
+   "locations": [],
    "selfUri": ""
 }
   */
@@ -727,6 +733,7 @@ UsersApi.prototype.deleteUserId = function deleteUserId(userId){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "images": [],
@@ -788,6 +795,7 @@ UsersApi.prototype.deleteUserId = function deleteUserId(userId){
       "permissionPolicies": []
    },
    "profileSkills": [],
+   "locations": [],
    "selfUri": ""
 }
   */
@@ -814,7 +822,7 @@ UsersApi.prototype.patchUserId = function patchUserId(userId, body){
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   */
 UsersApi.prototype.getUserIdAdjacents = function getUserIdAdjacents(userId, expand){
     var requestPath = '/api/v2/users/{userId}/adjacents';
@@ -861,6 +869,7 @@ UsersApi.prototype.getUserIdAdjacents = function getUserIdAdjacents(userId, expa
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "enabled": true,
@@ -934,6 +943,7 @@ UsersApi.prototype.getUserIdCallforwarding = function getUserIdCallforwarding(us
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "enabled": true,
@@ -1013,6 +1023,7 @@ UsersApi.prototype.putUserIdCallforwarding = function putUserIdCallforwarding(us
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "enabled": true,
@@ -1044,7 +1055,7 @@ UsersApi.prototype.patchUserIdCallforwarding = function patchUserIdCallforwardin
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   */
 UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(userId, expand){
     var requestPath = '/api/v2/users/{userId}/directreports';
@@ -1067,7 +1078,7 @@ UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(user
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Sort order
-  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   */
 UsersApi.prototype.getUserIdFavorites = function getUserIdFavorites(userId, pageSize, pageNumber, sortOrder, expand){
     var requestPath = '/api/v2/users/{userId}/favorites';
@@ -1211,6 +1222,7 @@ UsersApi.prototype.patchUserIdGeolocationsClientId = function patchUserIdGeoloca
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "startDate": "",
@@ -1284,6 +1296,7 @@ UsersApi.prototype.getUserIdOutofoffice = function getUserIdOutofoffice(userId){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "startDate": "",
@@ -1365,11 +1378,11 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1424,6 +1437,10 @@ UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, 
   },
   "callingPartyName": "",
   "callingPartyNumber": "",
+  "outboundEmailAddress": {
+   "domain": {},
+   "route": {}
+  },
   "joined": true,
   "memberCount": 0
  }
@@ -1458,6 +1475,10 @@ UsersApi.prototype.getUserIdQueues = function getUserIdQueues(userId, pageSize, 
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "joined": true,
    "memberCount": 0,
    "selfUri": ""
@@ -1517,6 +1538,10 @@ UsersApi.prototype.patchUserIdQueues = function patchUserIdQueues(userId, body){
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "joined": true,
    "memberCount": 0
 }
@@ -1550,6 +1575,10 @@ UsersApi.prototype.patchUserIdQueues = function patchUserIdQueues(userId, body){
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "joined": true,
    "memberCount": 0,
    "selfUri": ""
@@ -1669,11 +1698,11 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2012,7 +2041,7 @@ UsersApi.prototype.putUserIdStationDefaultstationStationId = function putUserIdS
   * @memberOf UsersApi
   * @instance
   * @param {string} userId - User ID
-  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   */
 UsersApi.prototype.getUserIdSuperiors = function getUserIdSuperiors(userId, expand){
     var requestPath = '/api/v2/users/{userId}/superiors';

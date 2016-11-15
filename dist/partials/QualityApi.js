@@ -77,11 +77,11 @@ QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAg
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -126,11 +126,11 @@ QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -276,6 +276,7 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -300,6 +301,7 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "conversation": {
@@ -377,6 +379,7 @@ QualityApi.prototype.getCalibrations = function getCalibrations(pageSize, pageNu
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -430,6 +433,7 @@ QualityApi.prototype.postCalibrations = function postCalibrations(body, expand){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -454,6 +458,7 @@ QualityApi.prototype.postCalibrations = function postCalibrations(body, expand){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "conversation": {
@@ -531,6 +536,7 @@ QualityApi.prototype.postCalibrations = function postCalibrations(body, expand){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -673,6 +679,7 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -697,6 +704,7 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "conversation": {
@@ -774,6 +782,7 @@ QualityApi.prototype.getCalibrationsCalibrationId = function getCalibrationsCali
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -830,6 +839,7 @@ QualityApi.prototype.putCalibrationsCalibrationId = function putCalibrationsCali
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -854,6 +864,7 @@ QualityApi.prototype.putCalibrationsCalibrationId = function putCalibrationsCali
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "conversation": {
@@ -931,6 +942,7 @@ QualityApi.prototype.putCalibrationsCalibrationId = function putCalibrationsCali
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -972,11 +984,11 @@ QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibratio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1102,6 +1114,7 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0
    },
    "neverRelease": true,
@@ -1161,6 +1174,7 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -1185,6 +1199,7 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "calibration": {
@@ -1237,6 +1252,7 @@ QualityApi.prototype.getConversationsConversationIdAudits = function getConversa
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -1325,6 +1341,7 @@ QualityApi.prototype.postConversationsConversationIdEvaluations = function postC
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -1349,6 +1366,7 @@ QualityApi.prototype.postConversationsConversationIdEvaluations = function postC
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "calibration": {
@@ -1401,6 +1419,7 @@ QualityApi.prototype.postConversationsConversationIdEvaluations = function postC
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -1532,6 +1551,7 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0
    },
    "neverRelease": true,
@@ -1591,6 +1611,7 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -1615,6 +1636,7 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "calibration": {
@@ -1667,6 +1689,7 @@ QualityApi.prototype.getConversationsConversationIdEvaluationsEvaluationId = fun
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -1759,6 +1782,7 @@ QualityApi.prototype.putConversationsConversationIdEvaluationsEvaluationId = fun
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "agent": {
@@ -1783,6 +1807,7 @@ QualityApi.prototype.putConversationsConversationIdEvaluationsEvaluationId = fun
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "calibration": {
@@ -1835,6 +1860,7 @@ QualityApi.prototype.putConversationsConversationIdEvaluationsEvaluationId = fun
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -1892,11 +1918,11 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1998,11 +2024,11 @@ QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(bo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2043,11 +2069,11 @@ QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(page
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2085,11 +2111,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2108,11 +2134,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2152,11 +2178,11 @@ QualityApi.prototype.postForms = function postForms(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2194,11 +2220,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2217,11 +2243,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2277,11 +2303,11 @@ QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2317,11 +2343,11 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2369,6 +2395,7 @@ QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumb
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0
    },
    "queues": [],
@@ -2402,6 +2429,7 @@ QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumb
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -2477,6 +2505,7 @@ QualityApi.prototype.deleteKeywordsets = function deleteKeywordsets(ids){
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -2529,6 +2558,7 @@ QualityApi.prototype.getKeywordsetsKeywordsetId = function getKeywordsetsKeyword
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0
    },
    "queues": [],
@@ -2562,6 +2592,7 @@ QualityApi.prototype.getKeywordsetsKeywordsetId = function getKeywordsetsKeyword
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },
@@ -2623,11 +2654,11 @@ QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsK
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2661,11 +2692,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2684,11 +2715,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2728,11 +2759,11 @@ QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2778,6 +2809,7 @@ QualityApi.prototype.getPublishedformsFormId = function getPublishedformsFormId(
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0
    },
    "queues": [],
@@ -2811,6 +2843,7 @@ QualityApi.prototype.getPublishedformsFormId = function getPublishedformsFormId(
       "queueFlow": {},
       "callingPartyName": "",
       "callingPartyNumber": "",
+      "outboundEmailAddress": {},
       "memberCount": 0,
       "selfUri": ""
    },

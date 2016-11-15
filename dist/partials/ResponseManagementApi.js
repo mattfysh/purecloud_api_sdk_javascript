@@ -26,11 +26,11 @@ function ResponseManagementApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -96,6 +96,7 @@ ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber,
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -149,6 +150,7 @@ ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -221,6 +223,7 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -278,11 +281,11 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
-   "nextUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -357,6 +360,7 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -398,11 +402,11 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "firstUri": "",
       "selfUri": "",
+      "firstUri": "",
       "previousUri": "",
-      "nextUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -456,6 +460,7 @@ ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -534,6 +539,7 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
