@@ -121,6 +121,7 @@ VoicemailApi.prototype.deleteMessages = function deleteMessages(){
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -131,6 +132,7 @@ VoicemailApi.prototype.deleteMessages = function deleteMessages(){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""
@@ -183,6 +185,7 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    }
@@ -222,6 +225,7 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -232,6 +236,7 @@ VoicemailApi.prototype.getMessagesMessageId = function getMessagesMessageId(mess
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "selfUri": ""

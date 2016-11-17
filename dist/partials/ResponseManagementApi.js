@@ -28,9 +28,9 @@ function ResponseManagementApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -62,6 +62,7 @@ ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber,
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -84,6 +85,7 @@ ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber,
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -94,6 +96,7 @@ ResponseManagementApi.prototype.getLibraries = function getLibraries(pageNumber,
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -136,6 +139,7 @@ ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -146,6 +150,7 @@ ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -184,6 +189,7 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -206,6 +212,7 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -216,6 +223,7 @@ ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLib
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -275,9 +283,9 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -315,6 +323,7 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -340,6 +349,7 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -350,6 +360,7 @@ ResponseManagementApi.prototype.getResponses = function getResponses(libraryId, 
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -393,9 +404,9 @@ ResponseManagementApi.prototype.postResponses = function postResponses(body){
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -438,6 +449,7 @@ ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -448,6 +460,7 @@ ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",
@@ -489,6 +502,7 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -514,6 +528,7 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -524,6 +539,7 @@ ResponseManagementApi.prototype.getResponsesResponseId = function getResponsesRe
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "dateCreated": "",

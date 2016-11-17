@@ -40,9 +40,9 @@ function ContentManagementApi(session) {
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -85,9 +85,9 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -418,9 +418,9 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -541,9 +541,9 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -599,9 +599,9 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "previousUri": "",
       "lastUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -638,9 +638,9 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -727,9 +727,9 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -853,6 +853,7 @@ ContentManagementApi.prototype.postShares = function postShares(body){
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -863,6 +864,7 @@ ContentManagementApi.prototype.postShares = function postShares(body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "group": {
@@ -930,9 +932,9 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1062,9 +1064,9 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1279,9 +1281,9 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1334,6 +1336,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembers = function getWor
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -1344,6 +1347,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembers = function getWor
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "group": {
@@ -1417,6 +1421,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -1461,6 +1466,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -1471,6 +1477,7 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdMembersMemberId = functio
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "group": {
@@ -1560,9 +1567,9 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1646,9 +1653,9 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

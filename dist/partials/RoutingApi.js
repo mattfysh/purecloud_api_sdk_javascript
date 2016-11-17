@@ -62,9 +62,9 @@ RoutingApi.prototype.postQueuesObservationsQuery = function postQueuesObservatio
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -162,6 +162,9 @@ RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDom
   * @memberOf RoutingApi
   * @instance
   * @param {string} domainName - email domain
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} pattern - Filter routes by the route's pattern property
   * @example
   * 200 Response Example:
   * {
@@ -171,13 +174,13 @@ RoutingApi.prototype.deleteEmailDomainsDomainId = function deleteEmailDomainsDom
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
-RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsDomainnameRoutes(domainName){
+RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsDomainnameRoutes(domainName, pageSize, pageNumber, pattern){
     var requestPath = '/api/v2/routing/email/domains/{domainName}/routes';
     var requestQuery = {};
     var requestBody;
@@ -186,6 +189,9 @@ RoutingApi.prototype.getEmailDomainsDomainnameRoutes = function getEmailDomainsD
       throw new Error('Missing required  parameter: domainName');
     }
     requestPath = requestPath.replace('{domainName}', domainName);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["pattern"] = pattern;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -457,9 +463,9 @@ RoutingApi.prototype.getEmailSetup = function getEmailSetup(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -510,6 +516,10 @@ RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "sourceQueueId": "",
    "memberCount": 0
 }
@@ -543,6 +553,10 @@ RoutingApi.prototype.getQueues = function getQueues(pageSize, pageNumber, sortBy
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "memberCount": 0,
    "selfUri": ""
 }
@@ -596,6 +610,10 @@ RoutingApi.prototype.postQueues = function postQueues(body){
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "memberCount": 0,
    "selfUri": ""
 }
@@ -647,6 +665,10 @@ RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "memberCount": 0
 }
   * @example
@@ -679,6 +701,10 @@ RoutingApi.prototype.getQueuesQueueId = function getQueuesQueueId(queueId){
    },
    "callingPartyName": "",
    "callingPartyNumber": "",
+   "outboundEmailAddress": {
+      "domain": {},
+      "route": {}
+   },
    "memberCount": 0,
    "selfUri": ""
 }
@@ -737,9 +763,9 @@ RoutingApi.prototype.deleteQueuesQueueId = function deleteQueuesQueueId(queueId,
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -773,9 +799,9 @@ RoutingApi.prototype.getQueuesQueueIdConversations = function getQueuesQueueIdCo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -809,9 +835,9 @@ RoutingApi.prototype.getQueuesQueueIdConversationsCallbacks = function getQueues
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -845,9 +871,9 @@ RoutingApi.prototype.getQueuesQueueIdConversationsCalls = function getQueuesQueu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -881,9 +907,9 @@ RoutingApi.prototype.getQueuesQueueIdConversationsChats = function getQueuesQueu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -934,7 +960,7 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, date, geolocationsettings, organization, presencedefinitions, locations, orgauthorization, favorites, superiors, directreports, adjacents
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations, date, geolocationsettings, organization, presencedefinitions, locationdefinitions, orgauthorization, favorites, superiors, directreports, adjacents, routingskills
   * @param {boolean} joined - Filter by joined status
   * @param {string} name - Filter by queue member name
   * @param {array} profileSkills - Filter by profile skill
@@ -951,9 +977,9 @@ RoutingApi.prototype.getQueuesQueueIdEstimatedwaittime = function getQueuesQueue
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1000,6 +1026,7 @@ RoutingApi.prototype.getQueuesQueueIdUsers = function getQueuesQueueIdUsers(queu
    "addresses": [],
    "title": "",
    "username": "",
+   "manager": {},
    "images": [],
    "version": 0
   },
@@ -1052,6 +1079,7 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
    "addresses": [],
    "title": "",
    "username": "",
+   "manager": {},
    "images": [],
    "version": 0
   },
@@ -1074,9 +1102,9 @@ RoutingApi.prototype.postQueuesQueueIdUsers = function postQueuesQueueIdUsers(qu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1140,6 +1168,7 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -1168,6 +1197,7 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -1178,6 +1208,7 @@ RoutingApi.prototype.deleteQueuesQueueIdUsersMemberId = function deleteQueuesQue
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "ringNumber": 0,
@@ -1227,9 +1258,9 @@ RoutingApi.prototype.patchQueuesQueueIdUsersMemberId = function patchQueuesQueue
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1323,6 +1354,7 @@ RoutingApi.prototype.deleteQueuesQueueIdWrapupcodesCodeId = function deleteQueue
   * @instance
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
+  * @param {string} name - Filter for results that start with this value
   * @example
   * 200 Response Example:
   * {
@@ -1332,19 +1364,20 @@ RoutingApi.prototype.deleteQueuesQueueIdWrapupcodesCodeId = function deleteQueue
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
-RoutingApi.prototype.getSkills = function getSkills(pageSize, pageNumber){
+RoutingApi.prototype.getSkills = function getSkills(pageSize, pageNumber, name){
     var requestPath = '/api/v2/routing/skills';
     var requestQuery = {};
     var requestBody;
 
     requestQuery["pageSize"] = pageSize;
     requestQuery["pageNumber"] = pageNumber;
+    requestQuery["name"] = name;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -1506,9 +1539,9 @@ RoutingApi.prototype.deleteUtilization = function deleteUtilization(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1674,9 +1707,9 @@ RoutingApi.prototype.deleteWrapupcodesCodeId = function deleteWrapupcodesCodeId(
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

@@ -30,9 +30,9 @@ function PresenceApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "previousUri": "",
    "lastUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -69,6 +69,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -81,6 +82,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -106,6 +108,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -116,6 +119,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "createdDate": "",
@@ -130,6 +134,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -140,6 +145,7 @@ PresenceApi.prototype.getPresencedefinitions = function getPresencedefinitions(p
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "modifiedDate": "",
@@ -186,6 +192,7 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -196,6 +203,7 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "createdDate": "",
@@ -210,6 +218,7 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -220,6 +229,7 @@ PresenceApi.prototype.postPresencedefinitions = function postPresencedefinitions
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "modifiedDate": "",
@@ -261,6 +271,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeC
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -273,6 +284,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeC
       "addresses": [],
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0
    },
@@ -298,6 +310,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeC
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -308,6 +321,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeC
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "createdDate": "",
@@ -322,6 +336,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeC
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -332,6 +347,7 @@ PresenceApi.prototype.getPresenceId = function getPresenceId(presenceId, localeC
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "modifiedDate": "",
@@ -381,6 +397,7 @@ PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -391,6 +408,7 @@ PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "createdDate": "",
@@ -405,6 +423,7 @@ PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
       "state": "",
       "title": "",
       "username": "",
+      "manager": {},
       "images": [],
       "version": 0,
       "routingStatus": {},
@@ -415,6 +434,7 @@ PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
       "station": {},
       "authorization": {},
       "profileSkills": [],
+      "locations": [],
       "selfUri": ""
    },
    "modifiedDate": "",
