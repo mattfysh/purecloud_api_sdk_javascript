@@ -379,13 +379,9 @@ gulp.task('build', function() {
 });
 
 gulp.task('jshint', function(){
-    return gulp.src('./gen/*core.js')
-                .pipe(addsrc('./gen/*[^core].js'))
-                .pipe(jshint.extract('always'))
+    return gulp.src('./gen/partials/*.js')
                 .pipe(jshint())
-                .pipe(jshint.reporter('default'))
-                .pipe(jshint.reporter('fail'));
-
+                .pipe(jshint.reporter('default'));
 });
 
 gulp.task('watch', function() {
@@ -396,7 +392,7 @@ gulp.task('watch', function() {
 gulp.task('default', ["clean"], function (callback) {
 
   runSequence('build',
-   ['movegen', 'jshint'],
+   [ 'jshint', 'movegen'],
    callback);
 
 });

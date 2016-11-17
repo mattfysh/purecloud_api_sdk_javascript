@@ -51,7 +51,7 @@ PureCloudSession.prototype.setEnvironment = function setEnvironment(environment)
   **/
 PureCloudSession.prototype.setUnauthenticatedErrorHandler = function setEnvironment(errorHandler) {
     this.unauthenticatedErrorHandler = errorHandler;
-}
+};
 
 /**
   * @description Attempts to login with the appropriate authentication strategy
