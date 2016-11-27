@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class OutboundApi
 * @example
@@ -20,16 +21,16 @@ function OutboundApi(session) {
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -44,8 +45,8 @@ function OutboundApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -262,16 +263,16 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -286,8 +287,8 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -441,16 +442,16 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -465,8 +466,8 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -620,16 +621,16 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} contactListId - Contact List ID
   * @param {string} dncListId - DNC list ID
@@ -649,8 +650,8 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1328,16 +1329,16 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -1352,8 +1353,8 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1805,16 +1806,16 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -1829,8 +1830,8 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -2119,16 +2120,16 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -2143,8 +2144,8 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -2628,16 +2629,16 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
   * @param {integer} pageSize - Page size
   * @param {integer} pageNumber - Page number
   * @param {string} filterType - Filter type
-  EQUALS,
-  REGEX,
-  CONTAINS,
-  PREFIX,
-  LESSTHAN,
-  LESSTHANEQUALTO,
-  GREATERTHAN,
-  GREATERTHANEQUALTO,
-  BEGINSWITH,
-  ENDSWITH,
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
   * @param {string} sortOrder - Sort order
@@ -2652,8 +2653,8 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

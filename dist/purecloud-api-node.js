@@ -28,6 +28,7 @@ exports.OAuthApi = require('./partials/OAuthApi');
 exports.OutboundApi = require('./partials/OutboundApi');
 exports.PresenceApi = require('./partials/PresenceApi');
 exports.ResponseManagementApi = require('./partials/ResponseManagementApi');
+exports.ScriptsApi = require('./partials/ScriptsApi');
 exports.SuggestApi = require('./partials/SuggestApi');
 exports.StationsApi = require('./partials/StationsApi');
 exports.TokensApi = require('./partials/TokensApi');

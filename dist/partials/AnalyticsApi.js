@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class AnalyticsApi
 * @example
@@ -251,8 +252,8 @@ AnalyticsApi.prototype.postQueuesObservationsQuery = function postQueuesObservat
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -298,8 +299,8 @@ AnalyticsApi.prototype.getReportingReportformats = function getReportingReportfo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -569,8 +570,8 @@ AnalyticsApi.prototype.deleteReportingSchedulesScheduleId = function deleteRepor
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -761,6 +762,47 @@ AnalyticsApi.prototype.getReportingReportIdMetadata = function getReportingRepor
   */
 AnalyticsApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(body){
     var requestPath = '/api/v2/analytics/users/aggregates/query';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Query for user details
+  * @memberOf AnalyticsApi
+  * @instance
+  * @param {} body - query
+  * @example
+  * Body Example:
+  * {
+   "interval": "",
+   "userFilters": [],
+   "presenceFilters": [],
+   "routingStatusFilters": [],
+   "presenceAggregations": [],
+   "routingStatusAggregations": [],
+   "paging": {
+      "pageSize": 0,
+      "pageNumber": 0
+   },
+   "order": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "userDetails": [],
+   "aggregations": []
+}
+  */
+AnalyticsApi.prototype.postUsersDetailsQuery = function postUsersDetailsQuery(body){
+    var requestPath = '/api/v2/analytics/users/details/query';
     var requestQuery = {};
     var requestBody;
 

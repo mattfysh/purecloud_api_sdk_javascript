@@ -1,6 +1,14 @@
 {
   "notifications": [
     {
+      "topic": "v2.contentmanagement.documents.{id}",
+      "class": "DocumentDataNotification"
+    },
+    {
+      "topic": "v2.contentmanagement.workspaces.{id}.documents",
+      "class": "DocumentDataNotification"
+    },
+    {
       "topic": "v2.routing.queues.{id}.conversations",
       "class": "ConversationNotification"
     },
@@ -97,6 +105,10 @@
       "class": "UserConversationSummaryNotification"
     },
     {
+      "topic": "v2.users.{id}.fax.documents",
+      "class": "FaxDataNotification"
+    },
+    {
       "topic": "v2.users.{id}.outofoffice",
       "class": "OutOfOfficeNotification"
     },
@@ -107,6 +119,10 @@
     {
       "topic": "v2.users.{id}.routingStatus",
       "class": "UserRoutingStatusNotification"
+    },
+    {
+      "topic": "v2.users.{id}.userrecordings",
+      "class": "RecordingDataNotification"
     },
     {
       "topic": "v2.users.{id}.voicemail.messages",

@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class PresenceApi
 * @example
@@ -30,8 +31,8 @@ function PresenceApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -377,69 +378,6 @@ PresenceApi.prototype.putPresenceId = function putPresenceId(presenceId, body){
   * @memberOf PresenceApi
   * @instance
   * @param {string} presenceId - Organization Presence ID
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "languageLabels": {},
-   "systemPresence": "",
-   "deactivated": true,
-   "primary": true,
-   "createdBy": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "manager": {},
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "locations": [],
-      "selfUri": ""
-   },
-   "createdDate": "",
-   "modifiedBy": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "manager": {},
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "locations": [],
-      "selfUri": ""
-   },
-   "modifiedDate": "",
-   "selfUri": ""
-}
   */
 PresenceApi.prototype.deletePresenceId = function deletePresenceId(presenceId){
     var requestPath = '/api/v2/presencedefinitions/{presenceId}';

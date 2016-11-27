@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class SuggestApi
 * @example
@@ -39,6 +40,10 @@ function SuggestApi(session) {
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -48,11 +53,7 @@ function SuggestApi(session) {
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -62,6 +63,10 @@ function SuggestApi(session) {
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -71,11 +76,7 @@ function SuggestApi(session) {
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */
@@ -131,6 +132,10 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -140,11 +145,7 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -154,6 +155,10 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -163,11 +168,7 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */
@@ -211,6 +212,10 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -220,11 +225,7 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -234,6 +235,10 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -243,11 +248,7 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */
@@ -295,6 +296,10 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -304,11 +309,7 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -318,6 +319,10 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -327,11 +332,7 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */

@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class LanguagesApi
 * @example
@@ -32,8 +33,8 @@ function LanguagesApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class UsersApi
 * @example
@@ -42,6 +43,47 @@ function UsersApi(session) {
   */
 UsersApi.prototype.postUsersAggregatesQuery = function postUsersAggregatesQuery(body){
     var requestPath = '/api/v2/analytics/users/aggregates/query';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Query for user details
+  * @memberOf UsersApi
+  * @instance
+  * @param {} body - query
+  * @example
+  * Body Example:
+  * {
+   "interval": "",
+   "userFilters": [],
+   "presenceFilters": [],
+   "routingStatusFilters": [],
+   "presenceAggregations": [],
+   "routingStatusAggregations": [],
+   "paging": {
+      "pageSize": 0,
+      "pageNumber": 0
+   },
+   "order": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "userDetails": [],
+   "aggregations": []
+}
+  */
+UsersApi.prototype.postUsersDetailsQuery = function postUsersDetailsQuery(body){
+    var requestPath = '/api/v2/analytics/users/details/query';
     var requestQuery = {};
     var requestBody;
 
@@ -142,8 +184,8 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -823,6 +865,13 @@ UsersApi.prototype.patchUserId = function patchUserId(userId, body){
   * @instance
   * @param {string} userId - User ID
   * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
+  * @example
+  * 200 Response Example:
+  * {
+   "superiors": [],
+   "siblings": [],
+   "directReports": []
+}
   */
 UsersApi.prototype.getUserIdAdjacents = function getUserIdAdjacents(userId, expand){
     var requestPath = '/api/v2/users/{userId}/adjacents';
@@ -1056,6 +1105,110 @@ UsersApi.prototype.patchUserIdCallforwarding = function patchUserIdCallforwardin
   * @instance
   * @param {string} userId - User ID
   * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
+  * @example
+  * 200 Response Example:
+  * [
+ {
+  "id": "",
+  "name": "",
+  "chat": {
+   "jabberId": ""
+  },
+  "department": "",
+  "email": "",
+  "primaryContactInfo": [],
+  "addresses": [],
+  "state": "",
+  "title": "",
+  "username": "",
+  "manager": {
+   "id": "",
+   "name": "",
+   "chat": {},
+   "department": "",
+   "email": "",
+   "primaryContactInfo": [],
+   "addresses": [],
+   "state": "",
+   "title": "",
+   "username": "",
+   "manager": {},
+   "images": [],
+   "version": 0,
+   "routingStatus": {},
+   "presence": {},
+   "conversationSummary": {},
+   "outOfOffice": {},
+   "geolocation": {},
+   "station": {},
+   "authorization": {},
+   "profileSkills": [],
+   "locations": [],
+   "selfUri": ""
+  },
+  "images": [],
+  "version": 0,
+  "routingStatus": {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+  },
+  "presence": {
+   "id": "",
+   "name": "",
+   "source": "",
+   "primary": true,
+   "presenceDefinition": {},
+   "message": "",
+   "modifiedDate": "",
+   "selfUri": ""
+  },
+  "conversationSummary": {
+   "userId": "",
+   "call": {},
+   "callback": {},
+   "email": {},
+   "chat": {},
+   "socialExpression": {},
+   "video": {}
+  },
+  "outOfOffice": {
+   "id": "",
+   "name": "",
+   "user": {},
+   "startDate": "",
+   "endDate": "",
+   "active": true,
+   "selfUri": ""
+  },
+  "geolocation": {
+   "id": "",
+   "name": "",
+   "type": "",
+   "primary": true,
+   "latitude": {},
+   "longitude": {},
+   "country": "",
+   "region": "",
+   "city": "",
+   "selfUri": ""
+  },
+  "station": {
+   "associatedStation": {},
+   "effectiveStation": {},
+   "defaultStation": {},
+   "lastAssociatedStation": {}
+  },
+  "authorization": {
+   "roles": [],
+   "permissions": [],
+   "permissionPolicies": []
+  },
+  "profileSkills": [],
+  "locations": [],
+  "selfUri": ""
+ }
+]
   */
 UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(userId, expand){
     var requestPath = '/api/v2/users/{userId}/directreports';
@@ -1079,6 +1232,20 @@ UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(user
   * @param {integer} pageNumber - Page number
   * @param {string} sortOrder - Sort order
   * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "pageCount": 0
+}
   */
 UsersApi.prototype.getUserIdFavorites = function getUserIdFavorites(userId, pageSize, pageNumber, sortOrder, expand){
     var requestPath = '/api/v2/users/{userId}/favorites';
@@ -1380,8 +1547,8 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1700,8 +1867,8 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -2042,6 +2209,110 @@ UsersApi.prototype.putUserIdStationDefaultstationStationId = function putUserIdS
   * @instance
   * @param {string} userId - User ID
   * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
+  * @example
+  * 200 Response Example:
+  * [
+ {
+  "id": "",
+  "name": "",
+  "chat": {
+   "jabberId": ""
+  },
+  "department": "",
+  "email": "",
+  "primaryContactInfo": [],
+  "addresses": [],
+  "state": "",
+  "title": "",
+  "username": "",
+  "manager": {
+   "id": "",
+   "name": "",
+   "chat": {},
+   "department": "",
+   "email": "",
+   "primaryContactInfo": [],
+   "addresses": [],
+   "state": "",
+   "title": "",
+   "username": "",
+   "manager": {},
+   "images": [],
+   "version": 0,
+   "routingStatus": {},
+   "presence": {},
+   "conversationSummary": {},
+   "outOfOffice": {},
+   "geolocation": {},
+   "station": {},
+   "authorization": {},
+   "profileSkills": [],
+   "locations": [],
+   "selfUri": ""
+  },
+  "images": [],
+  "version": 0,
+  "routingStatus": {
+   "userId": "",
+   "status": "",
+   "startTime": ""
+  },
+  "presence": {
+   "id": "",
+   "name": "",
+   "source": "",
+   "primary": true,
+   "presenceDefinition": {},
+   "message": "",
+   "modifiedDate": "",
+   "selfUri": ""
+  },
+  "conversationSummary": {
+   "userId": "",
+   "call": {},
+   "callback": {},
+   "email": {},
+   "chat": {},
+   "socialExpression": {},
+   "video": {}
+  },
+  "outOfOffice": {
+   "id": "",
+   "name": "",
+   "user": {},
+   "startDate": "",
+   "endDate": "",
+   "active": true,
+   "selfUri": ""
+  },
+  "geolocation": {
+   "id": "",
+   "name": "",
+   "type": "",
+   "primary": true,
+   "latitude": {},
+   "longitude": {},
+   "country": "",
+   "region": "",
+   "city": "",
+   "selfUri": ""
+  },
+  "station": {
+   "associatedStation": {},
+   "effectiveStation": {},
+   "defaultStation": {},
+   "lastAssociatedStation": {}
+  },
+  "authorization": {
+   "roles": [],
+   "permissions": [],
+   "permissionPolicies": []
+  },
+  "profileSkills": [],
+  "locations": [],
+  "selfUri": ""
+ }
+]
   */
 UsersApi.prototype.getUserIdSuperiors = function getUserIdSuperiors(userId, expand){
     var requestPath = '/api/v2/users/{userId}/superiors';

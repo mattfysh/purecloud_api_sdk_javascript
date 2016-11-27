@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class AuthorizationApi
 * @example
@@ -29,8 +30,8 @@ function AuthorizationApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -89,8 +90,8 @@ AuthorizationApi.prototype.getProducts = function getProducts(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -174,8 +175,8 @@ AuthorizationApi.prototype.postRoles = function postRoles(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -218,8 +219,8 @@ AuthorizationApi.prototype.postRolesDefault = function postRolesDefault(force){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

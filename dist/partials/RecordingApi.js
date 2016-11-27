@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class RecordingApi
 * @example
@@ -18,8 +19,7 @@ function RecordingApi(session) {
   * @memberOf RecordingApi
   * @instance
   * @param {string} conversationId - Conversation ID
-  * @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready.
-  Any integer greater than or equal to 0.,
+  * @param {integer} maxWaitMs - The maximum number of milliseconds to wait for the recording to be ready. Must be a positive value.
   * @param {string} formatId - The desired media format
   WAV,
   WEBM,
@@ -565,8 +565,8 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -809,8 +809,8 @@ RecordingApi.prototype.postLocalkeys = function postLocalkeys(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -956,8 +956,8 @@ RecordingApi.prototype.putLocalkeysSettingsSettingsId = function putLocalkeysSet
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1394,8 +1394,8 @@ RecordingApi.prototype.patchMediaretentionpoliciesPolicyId = function patchMedia
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1577,8 +1577,8 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class FaxApi
 * @example
@@ -28,8 +29,8 @@ function FaxApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

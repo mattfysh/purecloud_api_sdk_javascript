@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class OAuthApi
 * @example
@@ -26,8 +27,8 @@ function OAuthApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

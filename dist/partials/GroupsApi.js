@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class GroupsApi
 * @example
@@ -64,8 +65,8 @@ GroupsApi.prototype.getFieldconfig = function getFieldconfig(type){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -320,6 +321,7 @@ GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
   * @param {string} sortOrder - Ascending or descending sort order
   ascending,
   descending,
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @example
   * 200 Response Example:
   * {
@@ -329,13 +331,13 @@ GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
   */
-GroupsApi.prototype.getGroupIdMembers = function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder){
+GroupsApi.prototype.getGroupIdMembers = function getGroupIdMembers(groupId, pageSize, pageNumber, sortOrder, expand){
     var requestPath = '/api/v2/groups/{groupId}/members';
     var requestQuery = {};
     var requestBody;
@@ -347,6 +349,7 @@ GroupsApi.prototype.getGroupIdMembers = function getGroupIdMembers(groupId, page
     requestQuery["pageSize"] = pageSize;
     requestQuery["pageNumber"] = pageNumber;
     requestQuery["sortOrder"] = sortOrder;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

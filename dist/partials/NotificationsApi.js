@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class NotificationsApi
 * @example
@@ -46,8 +47,8 @@ NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

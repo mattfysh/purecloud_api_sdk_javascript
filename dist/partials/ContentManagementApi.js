@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class ContentManagementApi
 * @example
@@ -40,8 +41,8 @@ function ContentManagementApi(session) {
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "previousUri": "",
       "lastUri": "",
+      "previousUri": "",
       "nextUri": "",
       "pageCount": 0
    },
@@ -85,8 +86,8 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -418,8 +419,8 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -541,8 +542,8 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "previousUri": "",
       "lastUri": "",
+      "previousUri": "",
       "nextUri": "",
       "pageCount": 0
    },
@@ -599,8 +600,8 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "previousUri": "",
       "lastUri": "",
+      "previousUri": "",
       "nextUri": "",
       "pageCount": 0
    },
@@ -638,8 +639,8 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -727,8 +728,8 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -932,8 +933,8 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1064,8 +1065,8 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1265,6 +1266,48 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
 };
 
 /**
+  * @summary Get a list of documents.
+  * @memberOf ContentManagementApi
+  * @instance
+  * @param {string} workspaceId - Workspace ID
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: acl, workspace
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} sortBy - name or dateCreated
+  * @param {string} sortOrder - ascending or descending
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "pageCount": 0
+}
+  */
+ContentManagementApi.prototype.getWorkspacesWorkspaceIdDocuments = function getWorkspacesWorkspaceIdDocuments(workspaceId, expand, pageSize, pageNumber, sortBy, sortOrder){
+    var requestPath = '/api/v2/contentmanagement/workspaces/{workspaceId}/documents';
+    var requestQuery = {};
+    var requestBody;
+
+    if(workspaceId === undefined || workspaceId === null){
+      throw new Error('Missing required  parameter: workspaceId');
+    }
+    requestPath = requestPath.replace('{workspaceId}', workspaceId);
+    requestQuery["expand"] = expand;
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["sortOrder"] = sortOrder;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get a list workspace members
   * @memberOf ContentManagementApi
   * @instance
@@ -1281,8 +1324,8 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1567,8 +1610,8 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
@@ -1653,8 +1696,8 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "previousUri": "",
    "lastUri": "",
+   "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }

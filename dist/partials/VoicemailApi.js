@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class VoicemailApi
 * @example
