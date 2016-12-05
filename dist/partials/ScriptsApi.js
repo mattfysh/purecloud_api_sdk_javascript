@@ -37,11 +37,11 @@ function ScriptsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -78,11 +78,11 @@ ScriptsApi.prototype.getScripts = function getScripts(pageSize, pageNumber, expa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

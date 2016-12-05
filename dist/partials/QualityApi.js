@@ -78,11 +78,11 @@ QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAg
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -127,11 +127,11 @@ QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -985,11 +985,11 @@ QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibratio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1919,11 +1919,11 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2025,11 +2025,11 @@ QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(bo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2070,11 +2070,11 @@ QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(page
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2112,11 +2112,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -2135,11 +2135,11 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2179,11 +2179,11 @@ QualityApi.prototype.postForms = function postForms(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2221,11 +2221,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -2244,11 +2244,11 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2304,11 +2304,11 @@ QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2337,6 +2337,8 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
   * @param {string} nextPage - next page token
   * @param {string} previousPage - Previous page token
   * @param {string} name - the keyword set name - used for filtering results in searches.
+  * @param {string} queueId - the queue id - used for filtering results in searches.
+  * @param {string} agentId - the agent id - used for filtering results in searches.
   * @example
   * 200 Response Example:
   * {
@@ -2344,15 +2346,15 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
-QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name){
+QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, queueId, agentId){
     var requestPath = '/api/v2/quality/keywordsets';
     var requestQuery = {};
     var requestBody;
@@ -2364,6 +2366,8 @@ QualityApi.prototype.getKeywordsets = function getKeywordsets(pageSize, pageNumb
     requestQuery["nextPage"] = nextPage;
     requestQuery["previousPage"] = previousPage;
     requestQuery["name"] = name;
+    requestQuery["queueId"] = queueId;
+    requestQuery["agentId"] = agentId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -2655,11 +2659,11 @@ QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsK
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2693,11 +2697,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    }
 }
@@ -2716,11 +2720,11 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2760,11 +2764,11 @@ QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
-      "lastUri": "",
+      "selfUri": "",
       "previousUri": "",
       "nextUri": "",
+      "lastUri": "",
       "pageCount": 0
    },
    "selfUri": ""

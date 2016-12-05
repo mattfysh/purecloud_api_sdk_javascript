@@ -182,11 +182,11 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1239,11 +1239,11 @@ UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(user
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1545,11 +1545,11 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1865,11 +1865,11 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

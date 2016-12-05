@@ -15,7 +15,7 @@ function TelephonyProvidersEdgeApi(session) {
 }
 
 /**
-  * @summary Lists available schema categories
+  * @summary Lists available schema categories (Deprecated)
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {integer} pageSize - Page size
@@ -27,11 +27,11 @@ function TelephonyProvidersEdgeApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -46,7 +46,7 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnext = function getSchemasEd
 };
 
 /**
-  * @summary List schemas of a specific category
+  * @summary List schemas of a specific category (Deprecated)
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} schemaCategory - Schema category
@@ -59,11 +59,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnext = function getSchemasEd
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -82,7 +82,7 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategory = functio
 };
 
 /**
-  * @summary List schemas of a specific category
+  * @summary List schemas of a specific category (Deprecated)
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} schemaCategory - Schema category
@@ -96,11 +96,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategory = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -123,7 +123,7 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype
 };
 
 /**
-  * @summary Get a json schema
+  * @summary Get a json schema (Deprecated)
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} schemaCategory - Schema category
@@ -166,7 +166,7 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype
 };
 
 /**
-  * @summary Get metadata for a schema
+  * @summary Get metadata for a schema (Deprecated)
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} schemaCategory - Schema category
@@ -237,11 +237,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -309,9 +309,25 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
       "phoneTrunkBases": []
    },
    "site": {
-      "id": "",
       "name": "",
-      "selfUri": ""
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true
    },
    "softwareStatus": {
       "version": {},
@@ -380,6 +396,24 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
    "site": {
       "id": "",
       "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true,
       "selfUri": ""
    },
    "softwareStatus": {
@@ -487,11 +521,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesAvailablelanguages = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -694,11 +728,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesCertificateauthoritiesCe
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -906,11 +940,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesDidpoolsDidpoolId = func
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1067,11 +1101,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesDidsDidId = function putPro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1315,11 +1349,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeversionreport = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1577,11 +1611,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEndpointsEndpointId = fu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1780,11 +1814,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesExtensionpoolsExtensionp
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1941,11 +1975,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesExtensionsExtensionId = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2017,11 +2051,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinebasesettingsLinebaseId 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2369,11 +2403,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesOfflineconfiguration = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2698,11 +2732,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesOutboundroutesOutboundro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -2811,11 +2845,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonebasesettings = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -3055,11 +3089,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -3703,11 +3737,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesPhoneIdReboot = func
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -4223,11 +4257,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesSitesSiteIdRebalance = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -4259,11 +4293,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTimezones = function getPro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -4364,11 +4398,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesTrunkbasesettings = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -4579,11 +4613,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesTrunkbasesettingsTrunkba
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -4687,6 +4721,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = funct
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} edgeId - Edge ID
+  * @param {array} expand - Fields to expand in the response, comma-separated Valid Values: site
   * @example
   * 200 Response Example:
   * {
@@ -4737,6 +4772,24 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = funct
    "site": {
       "id": "",
       "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true,
       "selfUri": ""
    },
    "softwareStatus": {
@@ -4758,7 +4811,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = funct
    "selfUri": ""
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvidersEdgesEdgeId(edgeId){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvidersEdgesEdgeId(edgeId, expand){
     var requestPath = '/api/v2/telephony/providers/edges/{edgeId}';
     var requestQuery = {};
     var requestBody;
@@ -4767,6 +4820,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
       throw new Error('Missing required  parameter: edgeId');
     }
     requestPath = requestPath.replace('{edgeId}', edgeId);
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -4821,9 +4875,25 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
       "phoneTrunkBases": []
    },
    "site": {
-      "id": "",
       "name": "",
-      "selfUri": ""
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true
    },
    "softwareStatus": {
       "version": {},
@@ -4892,6 +4962,24 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
    "site": {
       "id": "",
       "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "primarySites": [],
+      "secondarySites": [],
+      "primaryEdges": [],
+      "secondaryEdges": [],
+      "addresses": [],
+      "edges": [],
+      "edgeAutoUpdateConfig": {},
+      "location": {},
+      "managed": true,
       "selfUri": ""
    },
    "softwareStatus": {
@@ -4963,11 +5051,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeId = function delete
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -5344,11 +5432,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLinesLineId = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -5823,11 +5911,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogsJobsJobIdUpload 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -6076,11 +6164,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = f
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */

@@ -255,6 +255,16 @@ RecordingApi.prototype.putConversationIdRecordingsRecordingId = function putConv
    "selfUri": ""
   },
   "description": "",
+  "keywordName": "",
+  "confidence": {},
+  "keywordSetId": "",
+  "keywordSetName": "",
+  "utterance": "",
+  "timeBegin": "",
+  "timeEnd": "",
+  "keywordConfidenceThreshold": "",
+  "agentScoreModifier": "",
+  "customerScoreModifier": "",
   "selfUri": ""
  }
 ]
@@ -301,7 +311,17 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = funct
       "images": [],
       "version": 0
    },
-   "description": ""
+   "description": "",
+   "keywordName": "",
+   "confidence": {},
+   "keywordSetId": "",
+   "keywordSetName": "",
+   "utterance": "",
+   "timeBegin": "",
+   "timeEnd": "",
+   "keywordConfidenceThreshold": "",
+   "agentScoreModifier": "",
+   "customerScoreModifier": ""
 }
   * @example
   * 200 Response Example:
@@ -337,6 +357,16 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotations = funct
       "selfUri": ""
    },
    "description": "",
+   "keywordName": "",
+   "confidence": {},
+   "keywordSetId": "",
+   "keywordSetName": "",
+   "utterance": "",
+   "timeBegin": "",
+   "timeEnd": "",
+   "keywordConfidenceThreshold": "",
+   "agentScoreModifier": "",
+   "customerScoreModifier": "",
    "selfUri": ""
 }
   */
@@ -403,6 +433,16 @@ RecordingApi.prototype.postConversationIdRecordingsRecordingIdAnnotations = func
       "selfUri": ""
    },
    "description": "",
+   "keywordName": "",
+   "confidence": {},
+   "keywordSetId": "",
+   "keywordSetName": "",
+   "utterance": "",
+   "timeBegin": "",
+   "timeEnd": "",
+   "keywordConfidenceThreshold": "",
+   "agentScoreModifier": "",
+   "customerScoreModifier": "",
    "selfUri": ""
 }
   */
@@ -453,7 +493,17 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotati
       "images": [],
       "version": 0
    },
-   "description": ""
+   "description": "",
+   "keywordName": "",
+   "confidence": {},
+   "keywordSetId": "",
+   "keywordSetName": "",
+   "utterance": "",
+   "timeBegin": "",
+   "timeEnd": "",
+   "keywordConfidenceThreshold": "",
+   "agentScoreModifier": "",
+   "customerScoreModifier": ""
 }
   * @example
   * 200 Response Example:
@@ -489,6 +539,16 @@ RecordingApi.prototype.getConversationIdRecordingsRecordingIdAnnotationsAnnotati
       "selfUri": ""
    },
    "description": "",
+   "keywordName": "",
+   "confidence": {},
+   "keywordSetId": "",
+   "keywordSetName": "",
+   "utterance": "",
+   "timeBegin": "",
+   "timeEnd": "",
+   "keywordConfidenceThreshold": "",
+   "agentScoreModifier": "",
+   "customerScoreModifier": "",
    "selfUri": ""
 }
   */
@@ -556,6 +616,7 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
   * @param {array} expand - variable name requested by expand list
   * @param {string} nextPage - next page token
   * @param {string} previousPage - Previous page token
+  * @param {boolean} hasConversation - Filter resulting orphans by whether the conversation is known. False returns all orphans for the organization.
   * @example
   * 200 Response Example:
   * {
@@ -563,15 +624,15 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
-RecordingApi.prototype.getOrphanrecordings = function getOrphanrecordings(pageSize, pageNumber, sortBy, expand, nextPage, previousPage){
+RecordingApi.prototype.getOrphanrecordings = function getOrphanrecordings(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, hasConversation){
     var requestPath = '/api/v2/orphanrecordings';
     var requestQuery = {};
     var requestBody;
@@ -582,6 +643,7 @@ RecordingApi.prototype.getOrphanrecordings = function getOrphanrecordings(pageSi
     requestQuery["expand"] = expand;
     requestQuery["nextPage"] = nextPage;
     requestQuery["previousPage"] = previousPage;
+    requestQuery["hasConversation"] = hasConversation;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -645,6 +707,7 @@ RecordingApi.prototype.getOrphanrecordings = function getOrphanrecordings(pageSi
       "sessionId": "",
       "selfUri": ""
    },
+   "orphanStatus": "",
    "selfUri": ""
 }
   */
@@ -661,7 +724,63 @@ RecordingApi.prototype.getOrphanId = function getOrphanId(orphanId){
 };
 
 /**
-  * @summary  deletes a single orphan recording
+  * @summary Updates an orphan recording to a regular recording with retention values
+  * @description If this operation is successful the orphan will no longer exist. It will be replaced by the resulting recording in the response. This replacement recording is accessible by the normal Recording api.
+  * @memberOf RecordingApi
+  * @instance
+  * @param {string} orphanId - Orphan ID
+  * @param {} body - If this operation is successful the orphan will no longer exist. It will be replaced by the resulting recording in the response. This replacement recording is accessible by the normal Recording api.
+  * @example
+  * Body Example:
+  * {
+   "archiveDate": "",
+   "deleteDate": "",
+   "conversationId": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "conversationId": "",
+   "path": "",
+   "startTime": "",
+   "endTime": "",
+   "media": "",
+   "annotations": [],
+   "transcript": [],
+   "emailTranscript": [],
+   "fileState": "",
+   "restoreExpirationTime": "",
+   "mediaUris": {},
+   "estimatedTranscodeTimeMs": 0,
+   "actualTranscodeTimeMs": 0,
+   "archiveDate": "",
+   "archiveMedium": "",
+   "deleteDate": "",
+   "maxAllowedRestorationsForOrg": 0,
+   "remainingRestorationsAllowedForOrg": 0,
+   "sessionId": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.putOrphanId = function putOrphanId(orphanId, body){
+    var requestPath = '/api/v2/orphanrecordings/{orphanId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(orphanId === undefined || orphanId === null){
+      throw new Error('Missing required  parameter: orphanId');
+    }
+    requestPath = requestPath.replace('{orphanId}', orphanId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Deletes a single orphan recording
   * @memberOf RecordingApi
   * @instance
   * @param {string} orphanId - Orphan ID
@@ -720,6 +839,7 @@ RecordingApi.prototype.getOrphanId = function getOrphanId(orphanId){
       "sessionId": "",
       "selfUri": ""
    },
+   "orphanStatus": "",
    "selfUri": ""
 }
   */
@@ -733,6 +853,65 @@ RecordingApi.prototype.deleteOrphanId = function deleteOrphanId(orphanId){
     }
     requestPath = requestPath.replace('{orphanId}', orphanId);
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Gets the media of a single orphan recording
+  * @description A 202 response means the orphaned media is currently transcoding and will be available shortly.A 200 response denotes the transcoded orphan media is available now and is contained in the response body.
+  * @memberOf RecordingApi
+  * @instance
+  * @param {string} orphanId - Orphan ID
+  * @param {string} formatId - The desired media format.
+  WAV,
+  WEBM,
+  WAV_ULAW,
+  OGG_VORBIS,
+  OGG_OPUS,
+  NONE,
+  * @param {boolean} download - requesting a download format of the recording
+  true,
+  false,
+  * @param {string} fileName - the name of the downloaded fileName
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "conversationId": "",
+   "path": "",
+   "startTime": "",
+   "endTime": "",
+   "media": "",
+   "annotations": [],
+   "transcript": [],
+   "emailTranscript": [],
+   "fileState": "",
+   "restoreExpirationTime": "",
+   "mediaUris": {},
+   "estimatedTranscodeTimeMs": 0,
+   "actualTranscodeTimeMs": 0,
+   "archiveDate": "",
+   "archiveMedium": "",
+   "deleteDate": "",
+   "maxAllowedRestorationsForOrg": 0,
+   "remainingRestorationsAllowedForOrg": 0,
+   "sessionId": "",
+   "selfUri": ""
+}
+  */
+RecordingApi.prototype.getOrphanIdMedia = function getOrphanIdMedia(orphanId, formatId, download, fileName){
+    var requestPath = '/api/v2/orphanrecordings/{orphanId}/media';
+    var requestQuery = {};
+    var requestBody;
+
+    if(orphanId === undefined || orphanId === null){
+      throw new Error('Missing required  parameter: orphanId');
+    }
+    requestPath = requestPath.replace('{orphanId}', orphanId);
+    requestQuery["formatId"] = formatId;
+    requestQuery["download"] = download;
+    requestQuery["fileName"] = fileName;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -807,11 +986,11 @@ RecordingApi.prototype.postLocalkeys = function postLocalkeys(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -954,11 +1133,11 @@ RecordingApi.prototype.putLocalkeysSettingsSettingsId = function putLocalkeysSet
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1392,11 +1571,11 @@ RecordingApi.prototype.patchMediaretentionpoliciesPolicyId = function patchMedia
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -1575,11 +1754,11 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
-   "lastUri": "",
+   "selfUri": "",
    "previousUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
