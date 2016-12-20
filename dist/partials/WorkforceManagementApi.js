@@ -82,6 +82,78 @@ WorkforceManagementApi.prototype.getAdherence = function getAdherence(userId){
 };
 
 /**
+  * @summary Download decisions files metadata
+  * @memberOf WorkforceManagementApi
+  * @instance
+  * @param {} body - 
+  * @example
+  * Body Example:
+  * {
+   "sortOrder": "",
+   "sortBy": "",
+   "pageSize": 0,
+   "pageNumber": 0,
+   "returnFields": [],
+   "expand": [],
+   "types": [],
+   "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "pageCount": 0
+}
+  */
+WorkforceManagementApi.prototype.postDecisionsDownloadsSearch = function postDecisionsDownloadsSearch(body){
+    var requestPath = '/api/v2/workforcemanagement/decisions/downloads/search';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get decisions download link
+  * @memberOf WorkforceManagementApi
+  * @instance
+  * @param {string} downloadId - The decisions file download id
+  * @param {string} downloadfilename - The file name used to get the download url
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "url": ""
+}
+  */
+WorkforceManagementApi.prototype.getDecisionsDownloadsDownloadId = function getDecisionsDownloadsDownloadId(downloadId, downloadfilename){
+    var requestPath = '/api/v2/workforcemanagement/decisions/downloads/{downloadId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(downloadId === undefined || downloadId === null){
+      throw new Error('Missing required  parameter: downloadId');
+    }
+    requestPath = requestPath.replace('{downloadId}', downloadId);
+    requestQuery["downloadfilename"] = downloadfilename;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Create a forecast
   * @memberOf WorkforceManagementApi
   * @instance

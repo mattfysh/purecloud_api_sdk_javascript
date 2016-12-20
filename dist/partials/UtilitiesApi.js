@@ -75,11 +75,11 @@ UtilitiesApi.prototype.getDate = function getDate(){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

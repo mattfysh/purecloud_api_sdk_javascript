@@ -624,11 +624,11 @@ RecordingApi.prototype.deleteConversationIdRecordingsRecordingIdAnnotationsAnnot
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -986,11 +986,11 @@ RecordingApi.prototype.postLocalkeys = function postLocalkeys(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1133,11 +1133,11 @@ RecordingApi.prototype.putLocalkeysSettingsSettingsId = function putLocalkeysSet
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1571,11 +1571,11 @@ RecordingApi.prototype.patchMediaretentionpoliciesPolicyId = function patchMedia
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1754,11 +1754,11 @@ RecordingApi.prototype.putSettings = function putSettings(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

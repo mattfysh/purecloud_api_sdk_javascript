@@ -173,7 +173,7 @@ SearchApi.prototype.postSearch = function postSearch(body){
   * @memberOf SearchApi
   * @instance
   * @param {string} q64 - q64
-  * @param {array} expand - expand
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @param {boolean} profile - profile
   * @example
   * 200 Response Example:
@@ -187,6 +187,8 @@ SearchApi.prototype.postSearch = function postSearch(body){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -205,11 +207,11 @@ SearchApi.prototype.postSearch = function postSearch(body){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -228,9 +230,7 @@ SearchApi.prototype.postSearch = function postSearch(body){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -279,6 +279,8 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -297,11 +299,11 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -320,9 +322,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -346,6 +346,7 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
   * @memberOf SearchApi
   * @instance
   * @param {string} q64 - q64
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @param {boolean} profile - profile
   * @example
   * 200 Response Example:
@@ -359,6 +360,8 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -377,11 +380,11 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -400,13 +403,11 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
-SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
+SearchApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
     var requestPath = '/api/v2/search/suggest';
     var requestQuery = {};
     var requestBody;
@@ -415,6 +416,7 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
       throw new Error('Missing required  parameter: q64');
     }
     requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     requestQuery["profile"] = profile;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
@@ -428,6 +430,7 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
   * @example
   * Body Example:
   * {
+   "expand": [],
    "types": [],
    "query": []
 }
@@ -443,6 +446,8 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -461,11 +466,11 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -484,9 +489,7 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -570,6 +573,83 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
   */
 SearchApi.prototype.postSearch = function postSearch(body){
     var requestPath = '/api/v2/users/search';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Search voicemails using the q64 value returned from a previous search
+  * @memberOf SearchApi
+  * @instance
+  * @param {string} q64 - q64
+  * @param {array} expand - expand
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": []
+}
+  */
+SearchApi.prototype.getSearch = function getSearch(q64, expand){
+    var requestPath = '/api/v2/voicemail/search';
+    var requestQuery = {};
+    var requestBody;
+
+    if(q64 === undefined || q64 === null){
+      throw new Error('Missing required  parameter: q64');
+    }
+    requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Search voicemails
+  * @memberOf SearchApi
+  * @instance
+  * @param {} body - Search request options
+  * @example
+  * Body Example:
+  * {
+   "sortOrder": "",
+   "sortBy": "",
+   "pageSize": 0,
+   "pageNumber": 0,
+   "returnFields": [],
+   "expand": [],
+   "query": []
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "total": 0,
+   "pageCount": 0,
+   "pageSize": 0,
+   "pageNumber": 0,
+   "previousPage": "",
+   "currentPage": "",
+   "nextPage": "",
+   "types": [],
+   "results": []
+}
+  */
+SearchApi.prototype.postSearch = function postSearch(body){
+    var requestPath = '/api/v2/voicemail/search';
     var requestQuery = {};
     var requestBody;
 

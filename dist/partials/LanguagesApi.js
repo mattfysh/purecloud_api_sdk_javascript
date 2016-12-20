@@ -15,7 +15,8 @@ function LanguagesApi(session) {
 }
 
 /**
-  * @summary Get the list of supported languages.
+  * @summary Get the list of supported languages. (Deprecated)
+  * @description This endpoint is deprecated. It has been moved to /routing/languages
   * @memberOf LanguagesApi
   * @instance
   * @param {integer} pageSize - Page size
@@ -31,11 +32,11 @@ function LanguagesApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -52,7 +53,8 @@ LanguagesApi.prototype.getLanguages = function getLanguages(pageSize, pageNumber
 };
 
 /**
-  * @summary Create Language
+  * @summary Create Language (Deprecated)
+  * @description This endpoint is deprecated. It has been moved to /routing/languages
   * @memberOf LanguagesApi
   * @instance
   * @param {} body - Language
@@ -163,7 +165,8 @@ LanguagesApi.prototype.getTranslationsUsersUserId = function getTranslationsUser
 };
 
 /**
-  * @summary Get language
+  * @summary Get language (Deprecated)
+  * @description This endpoint is deprecated. It has been moved to /routing/languages/{languageId}
   * @memberOf LanguagesApi
   * @instance
   * @param {string} languageId - Language ID
@@ -191,19 +194,29 @@ LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
 };
 
 /**
-  * @summary Update Language
+  * @summary Delete Language (Deprecated)
+  * @description This endpoint is deprecated. It has been moved to /routing/languages/{languageId}
   * @memberOf LanguagesApi
   * @instance
   * @param {string} languageId - Language ID
-  * @param {} body - Language
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "dateModified": "",
-   "state": "",
-   "version": ""
-}
+  */
+LanguagesApi.prototype.deleteLanguageId = function deleteLanguageId(languageId){
+    var requestPath = '/api/v2/languages/{languageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(languageId === undefined || languageId === null){
+      throw new Error('Missing required  parameter: languageId');
+    }
+    requestPath = requestPath.replace('{languageId}', languageId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get language
+  * @memberOf LanguagesApi
+  * @instance
+  * @param {string} languageId - Language ID
   * @example
   * 200 Response Example:
   * {
@@ -215,8 +228,8 @@ LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
    "selfUri": ""
 }
   */
-LanguagesApi.prototype.putLanguageId = function putLanguageId(languageId, body){
-    var requestPath = '/api/v2/languages/{languageId}';
+LanguagesApi.prototype.getLanguagesLanguageId = function getLanguagesLanguageId(languageId){
+    var requestPath = '/api/v2/routing/languages/{languageId}';
     var requestQuery = {};
     var requestBody;
 
@@ -224,13 +237,7 @@ LanguagesApi.prototype.putLanguageId = function putLanguageId(languageId, body){
       throw new Error('Missing required  parameter: languageId');
     }
     requestPath = requestPath.replace('{languageId}', languageId);
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -239,8 +246,8 @@ LanguagesApi.prototype.putLanguageId = function putLanguageId(languageId, body){
   * @instance
   * @param {string} languageId - Language ID
   */
-LanguagesApi.prototype.deleteLanguageId = function deleteLanguageId(languageId){
-    var requestPath = '/api/v2/languages/{languageId}';
+LanguagesApi.prototype.deleteLanguagesLanguageId = function deleteLanguagesLanguageId(languageId){
+    var requestPath = '/api/v2/routing/languages/{languageId}';
     var requestQuery = {};
     var requestBody;
 

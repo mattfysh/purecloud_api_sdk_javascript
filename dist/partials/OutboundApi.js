@@ -43,11 +43,11 @@ function OutboundApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -285,11 +285,11 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -464,11 +464,11 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -648,11 +648,11 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1351,11 +1351,11 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1553,6 +1553,7 @@ OutboundApi.prototype.deleteContactlistsContactlistId = function deleteContactli
   * @param {string} contactListId - Contact List ID
   * @param {} body - Contact
   * @param {boolean} priority - Contact priority.  True means the contact(s) will go to the beginning of the list, false means at the end.
+  * @param {boolean} clearSystemData - Clear system data.  True means the system data stored on the contact will be cleared if the contact already exists (attempts, callable status, etc), false means it won't.
   * @example
   * Body Example:
   * [
@@ -1579,7 +1580,7 @@ OutboundApi.prototype.deleteContactlistsContactlistId = function deleteContactli
  }
 ]
   */
-OutboundApi.prototype.postContactlistsContactlistIdContacts = function postContactlistsContactlistIdContacts(contactListId, body, priority){
+OutboundApi.prototype.postContactlistsContactlistIdContacts = function postContactlistsContactlistIdContacts(contactListId, body, priority, clearSystemData){
     var requestPath = '/api/v2/outbound/contactlists/{contactListId}/contacts';
     var requestQuery = {};
     var requestBody;
@@ -1595,6 +1596,7 @@ OutboundApi.prototype.postContactlistsContactlistIdContacts = function postConta
       requestBody = body;
     }
     requestQuery["priority"] = priority;
+    requestQuery["clearSystemData"] = clearSystemData;
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
@@ -1828,11 +1830,11 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2142,11 +2144,11 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2651,11 +2653,11 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */

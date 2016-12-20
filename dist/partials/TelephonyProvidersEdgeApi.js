@@ -27,11 +27,11 @@ function TelephonyProvidersEdgeApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -59,11 +59,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnext = function getSchemasEd
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -96,11 +96,11 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategory = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -230,6 +230,7 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype
   * @param {string} siteid - Filter by site.id
   * @param {string} edgeGroupid - Filter by edgeGroup.id
   * @param {string} sortBy - Sort by
+  * @param {boolean} managed - Filter by managed
   * @example
   * 200 Response Example:
   * {
@@ -237,15 +238,15 @@ TelephonyProvidersEdgeApi.prototype.getSchemasEdgesVnextSchemacategorySchematype
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdges(pageSize, pageNumber, name, siteid, edgeGroupid, sortBy){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdges(pageSize, pageNumber, name, siteid, edgeGroupid, sortBy, managed){
     var requestPath = '/api/v2/telephony/providers/edges';
     var requestQuery = {};
     var requestBody;
@@ -256,6 +257,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
     requestQuery["site.id"] = siteid;
     requestQuery["edgeGroup.id"] = edgeGroupid;
     requestQuery["sortBy"] = sortBy;
+    requestQuery["managed"] = managed;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -344,7 +346,9 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
    "serialNumber": "",
    "physicalEdge": true,
    "managed": true,
-   "edgeDeploymentType": ""
+   "edgeDeploymentType": "",
+   "callDrainingState": "",
+   "conversationCount": 0
 }
   * @example
   * 200 Response Example:
@@ -432,6 +436,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdges = function getProvidersEdg
    "physicalEdge": true,
    "managed": true,
    "edgeDeploymentType": "",
+   "callDrainingState": "",
+   "conversationCount": 0,
    "selfUri": ""
 }
   */
@@ -521,11 +527,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesAvailablelanguages = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -728,11 +734,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesCertificateauthoritiesCe
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -940,11 +946,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesDidpoolsDidpoolId = func
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1094,6 +1100,7 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesDidsDidId = function putPro
   * @param {integer} pageNumber - Page number
   * @param {string} name - Name
   * @param {string} sortBy - Sort by
+  * @param {boolean} managed - Filter by managed
   * @example
   * 200 Response Example:
   * {
@@ -1101,15 +1108,15 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesDidsDidId = function putPro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getProvidersEdgesEdgegroups(pageSize, pageNumber, name, sortBy){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getProvidersEdgesEdgegroups(pageSize, pageNumber, name, sortBy, managed){
     var requestPath = '/api/v2/telephony/providers/edges/edgegroups';
     var requestQuery = {};
     var requestBody;
@@ -1118,6 +1125,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgegroups = function getPr
     requestQuery["pageNumber"] = pageNumber;
     requestQuery["name"] = name;
     requestQuery["sortBy"] = sortBy;
+    requestQuery["managed"] = managed;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -1349,11 +1357,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeversionreport = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1611,11 +1619,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEndpointsEndpointId = fu
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1814,11 +1822,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesExtensionpoolsExtensionp
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -1975,11 +1983,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesExtensionsExtensionId = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2051,11 +2059,11 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinebasesettingsLinebaseId 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2148,6 +2156,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLines = function getProvide
       "physicalEdge": true,
       "managed": true,
       "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "secondaryEdge": {
@@ -2186,6 +2196,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLines = function getProvide
       "physicalEdge": true,
       "managed": true,
       "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "loggedInUser": {
@@ -2289,6 +2301,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesTemplate = function ge
       "physicalEdge": true,
       "managed": true,
       "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "secondaryEdge": {
@@ -2327,6 +2341,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesLinesTemplate = function ge
       "physicalEdge": true,
       "managed": true,
       "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "loggedInUser": {
@@ -2403,11 +2419,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesOfflineconfiguration = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2732,11 +2748,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesOutboundroutesOutboundro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -2845,11 +2861,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonebasesettings = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -3089,11 +3105,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesPhonebasesettingsPhoneba
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -3191,6 +3207,82 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
       "id": "",
       "name": "",
       "selfUri": ""
+   },
+   "primaryEdge": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0
+   },
+   "secondaryEdge": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0
    }
 }
   * @example
@@ -3269,6 +3361,86 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhones = function getProvid
    "webRtcUser": {
       "id": "",
       "name": "",
+      "selfUri": ""
+   },
+   "primaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
+   "secondaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "selfUri": ""
@@ -3397,6 +3569,86 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesReboot = function po
       "name": "",
       "selfUri": ""
    },
+   "primaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
+   "secondaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -3495,6 +3747,86 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesTemplate = function g
       "name": "",
       "selfUri": ""
    },
+   "primaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
+   "secondaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -3583,6 +3915,82 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "id": "",
       "name": "",
       "selfUri": ""
+   },
+   "primaryEdge": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0
+   },
+   "secondaryEdge": {
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0
    }
 }
   * @example
@@ -3663,6 +4071,86 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesPhonesPhoneId = function ge
       "name": "",
       "selfUri": ""
    },
+   "primaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
+   "secondaryEdge": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "version": 0,
+      "dateCreated": "",
+      "dateModified": "",
+      "modifiedBy": "",
+      "createdBy": "",
+      "state": "",
+      "modifiedByApp": "",
+      "createdByApp": "",
+      "interfaces": [],
+      "make": "",
+      "model": "",
+      "apiVersion": "",
+      "softwareVersion": "",
+      "softwareVersionTimestamp": "",
+      "softwareVersionPlatform": "",
+      "softwareVersionConfiguration": "",
+      "fullSoftwareVersion": "",
+      "pairingId": "",
+      "fingerprint": "",
+      "fingerprintHint": "",
+      "currentVersion": "",
+      "stagedVersion": "",
+      "patch": "",
+      "statusCode": "",
+      "edgeGroup": {},
+      "site": {},
+      "softwareStatus": {},
+      "onlineStatus": "",
+      "serialNumber": "",
+      "physicalEdge": true,
+      "managed": true,
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
+      "selfUri": ""
+   },
    "selfUri": ""
 }
   */
@@ -3730,6 +4218,7 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesPhoneIdReboot = func
   * @param {string} sortOrder - Sort order
   * @param {string} name - Name
   * @param {string} locationid - Location Id
+  * @param {boolean} managed - Filter by managed
   * @example
   * 200 Response Example:
   * {
@@ -3737,15 +4226,15 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesPhonesPhoneIdReboot = func
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvidersEdgesSites(pageSize, pageNumber, sortBy, sortOrder, name, locationid){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvidersEdgesSites(pageSize, pageNumber, sortBy, sortOrder, name, locationid, managed){
     var requestPath = '/api/v2/telephony/providers/edges/sites';
     var requestQuery = {};
     var requestBody;
@@ -3756,6 +4245,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesSites = function getProvide
     requestQuery["sortOrder"] = sortOrder;
     requestQuery["name"] = name;
     requestQuery["location.id"] = locationid;
+    requestQuery["managed"] = managed;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -4257,11 +4747,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesSitesSiteIdRebalance = fun
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -4285,6 +4775,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTimezones = function getPro
   * @param {string} sortBy - Value by which to sort
   * @param {string} sortOrder - Sort order
   * @param {boolean} recordingEnabled - Filter trunks by recording enabled
+  * @param {boolean} ignoreHidden - Set this to true to not receive trunk properties that are meant to be hidden or for internal system usage only.
+  * @param {boolean} managed - Filter by managed
   * @param {array} expand - Fields to expand in the response, comma-separated Valid Values: properties
   * @example
   * 200 Response Example:
@@ -4293,15 +4785,15 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTimezones = function getPro
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettings = function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled, expand){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettings = function getProvidersEdgesTrunkbasesettings(pageNumber, pageSize, sortBy, sortOrder, recordingEnabled, ignoreHidden, managed, expand){
     var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings';
     var requestQuery = {};
     var requestBody;
@@ -4311,6 +4803,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettings = functio
     requestQuery["sortBy"] = sortBy;
     requestQuery["sortOrder"] = sortOrder;
     requestQuery["recordingEnabled"] = recordingEnabled;
+    requestQuery["ignoreHidden"] = ignoreHidden;
+    requestQuery["managed"] = managed;
     requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
@@ -4398,11 +4892,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesTrunkbasesettings = functi
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -4465,6 +4959,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTemplate =
   * @memberOf TelephonyProvidersEdgeApi
   * @instance
   * @param {string} trunkBaseSettingsId - Trunk Base ID
+  * @param {boolean} ignoreHidden - Set this to true to not receive trunk properties that are meant to be hidden or for internal system usage only.
   * @example
   * 200 Response Example:
   * {
@@ -4490,7 +4985,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTemplate =
    "selfUri": ""
 }
   */
-TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = function getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId){
+TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId = function getProvidersEdgesTrunkbasesettingsTrunkbasesettingsId(trunkBaseSettingsId, ignoreHidden){
     var requestPath = '/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}';
     var requestQuery = {};
     var requestBody;
@@ -4499,6 +4994,7 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkbasesettingsTrunkbases
       throw new Error('Missing required  parameter: trunkBaseSettingsId');
     }
     requestPath = requestPath.replace('{trunkBaseSettingsId}', trunkBaseSettingsId);
+    requestQuery["ignoreHidden"] = ignoreHidden;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -4613,11 +5109,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesTrunkbasesettingsTrunkba
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -4808,6 +5304,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesTrunkswithrecording = funct
    "physicalEdge": true,
    "managed": true,
    "edgeDeploymentType": "",
+   "callDrainingState": "",
+   "conversationCount": 0,
    "selfUri": ""
 }
   */
@@ -4910,7 +5408,9 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
    "serialNumber": "",
    "physicalEdge": true,
    "managed": true,
-   "edgeDeploymentType": ""
+   "edgeDeploymentType": "",
+   "callDrainingState": "",
+   "conversationCount": 0
 }
   * @example
   * 200 Response Example:
@@ -4998,6 +5498,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeId = function getProvid
    "physicalEdge": true,
    "managed": true,
    "edgeDeploymentType": "",
+   "callDrainingState": "",
+   "conversationCount": 0,
    "selfUri": ""
 }
   */
@@ -5051,11 +5553,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeId = function delete
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -5135,6 +5637,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLines = function getP
       "physicalEdge": true,
       "managed": true,
       "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "edgeGroup": {
@@ -5256,7 +5760,9 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
       "serialNumber": "",
       "physicalEdge": true,
       "managed": true,
-      "edgeDeploymentType": ""
+      "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0
    },
    "edgeGroup": {
       "name": "",
@@ -5351,6 +5857,8 @@ TelephonyProvidersEdgeApi.prototype.getProvidersEdgesEdgeIdLinesLineId = functio
       "physicalEdge": true,
       "managed": true,
       "edgeDeploymentType": "",
+      "callDrainingState": "",
+      "conversationCount": 0,
       "selfUri": ""
    },
    "edgeGroup": {
@@ -5432,11 +5940,11 @@ TelephonyProvidersEdgeApi.prototype.putProvidersEdgesEdgeIdLinesLineId = functio
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -5911,11 +6419,11 @@ TelephonyProvidersEdgeApi.prototype.postProvidersEdgesEdgeIdLogsJobsJobIdUpload 
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -6164,11 +6672,11 @@ TelephonyProvidersEdgeApi.prototype.deleteProvidersEdgesEdgeIdSoftwareupdate = f
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
-   "previousUri": "",
+   "firstUri": "",
    "nextUri": "",
    "lastUri": "",
+   "previousUri": "",
    "pageCount": 0
 }
   */
