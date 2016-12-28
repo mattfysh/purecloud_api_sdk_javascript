@@ -65,9 +65,9 @@ GroupsApi.prototype.getFieldconfig = function getFieldconfig(type){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -331,9 +331,9 @@ GroupsApi.prototype.deleteGroupId = function deleteGroupId(groupId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

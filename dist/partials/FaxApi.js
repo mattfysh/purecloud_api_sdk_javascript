@@ -29,9 +29,9 @@ function FaxApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -76,8 +76,8 @@ FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */
@@ -124,8 +124,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
-   "downloadSharingUri": ""
+   "downloadSharingUri": "",
+   "sharingUri": ""
 }
   * @example
   * 200 Response Example:
@@ -153,8 +153,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */

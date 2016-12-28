@@ -29,9 +29,9 @@ function GreetingsApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -388,9 +388,9 @@ GreetingsApi.prototype.getGreetingIdMedia = function getGreetingIdMedia(greeting
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -586,9 +586,9 @@ GreetingsApi.prototype.putGroupIdGreetingsDefaults = function putGroupIdGreeting
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

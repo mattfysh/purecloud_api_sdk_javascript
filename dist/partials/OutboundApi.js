@@ -45,9 +45,9 @@ function OutboundApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -287,9 +287,9 @@ OutboundApi.prototype.postAudits = function postAudits(body, pageSize, pageNumbe
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -466,9 +466,9 @@ OutboundApi.prototype.deleteCallabletimesetsCallabletimesetId = function deleteC
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -615,6 +615,220 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
 };
 
 /**
+  * @summary Query Campaign Rule list
+  * @memberOf OutboundApi
+  * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {string} filterType - Filter type
+  Equals,
+  RegEx,
+  Contains,
+  Prefix,
+  LessThan,
+  LessThanEqualTo,
+  GreaterThan,
+  GreaterThanEqualTo,
+  BeginsWith,
+  EndsWith,
+  * @param {string} name - Name
+  * @param {string} sortBy - Sort by
+  * @param {string} sortOrder - Sort order
+  ascending,
+  descending,
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "pageCount": 0
+}
+  */
+OutboundApi.prototype.getCampaignrules = function getCampaignrules(pageSize, pageNumber, filterType, name, sortBy, sortOrder){
+    var requestPath = '/api/v2/outbound/campaignrules';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["filterType"] = filterType;
+    requestQuery["name"] = name;
+    requestQuery["sortBy"] = sortBy;
+    requestQuery["sortOrder"] = sortOrder;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Create Campaign Rule
+  * @memberOf OutboundApi
+  * @instance
+  * @param {} body - CampaignRule
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "version": 0,
+   "campaignRuleEntities": {
+      "campaigns": [],
+      "sequences": []
+   },
+   "campaignRuleConditions": [],
+   "campaignRuleActions": [],
+   "matchAnyConditions": true,
+   "enabled": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "campaignRuleEntities": {
+      "campaigns": [],
+      "sequences": []
+   },
+   "campaignRuleConditions": [],
+   "campaignRuleActions": [],
+   "matchAnyConditions": true,
+   "enabled": true,
+   "selfUri": ""
+}
+  */
+OutboundApi.prototype.postCampaignrules = function postCampaignrules(body){
+    var requestPath = '/api/v2/outbound/campaignrules';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get Campaign Rule
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} campaignRuleId - Campaign Rule ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "campaignRuleEntities": {
+      "campaigns": [],
+      "sequences": []
+   },
+   "campaignRuleConditions": [],
+   "campaignRuleActions": [],
+   "matchAnyConditions": true,
+   "enabled": true,
+   "selfUri": ""
+}
+  */
+OutboundApi.prototype.getCampaignrulesCampaignruleId = function getCampaignrulesCampaignruleId(campaignRuleId){
+    var requestPath = '/api/v2/outbound/campaignrules/{campaignRuleId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(campaignRuleId === undefined || campaignRuleId === null){
+      throw new Error('Missing required  parameter: campaignRuleId');
+    }
+    requestPath = requestPath.replace('{campaignRuleId}', campaignRuleId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update Campaign Rule
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} campaignRuleId - Campaign Rule ID
+  * @param {} body - CampaignRule
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "version": 0,
+   "campaignRuleEntities": {
+      "campaigns": [],
+      "sequences": []
+   },
+   "campaignRuleConditions": [],
+   "campaignRuleActions": [],
+   "matchAnyConditions": true,
+   "enabled": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateCreated": "",
+   "dateModified": "",
+   "version": 0,
+   "campaignRuleEntities": {
+      "campaigns": [],
+      "sequences": []
+   },
+   "campaignRuleConditions": [],
+   "campaignRuleActions": [],
+   "matchAnyConditions": true,
+   "enabled": true,
+   "selfUri": ""
+}
+  */
+OutboundApi.prototype.putCampaignrulesCampaignruleId = function putCampaignrulesCampaignruleId(campaignRuleId, body){
+    var requestPath = '/api/v2/outbound/campaignrules/{campaignRuleId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(campaignRuleId === undefined || campaignRuleId === null){
+      throw new Error('Missing required  parameter: campaignRuleId');
+    }
+    requestPath = requestPath.replace('{campaignRuleId}', campaignRuleId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Campaign Rule
+  * @memberOf OutboundApi
+  * @instance
+  * @param {string} campaignRuleId - Campaign Rule ID
+  */
+OutboundApi.prototype.deleteCampaignrulesCampaignruleId = function deleteCampaignrulesCampaignruleId(campaignRuleId){
+    var requestPath = '/api/v2/outbound/campaignrules/{campaignRuleId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(campaignRuleId === undefined || campaignRuleId === null){
+      throw new Error('Missing required  parameter: campaignRuleId');
+    }
+    requestPath = requestPath.replace('{campaignRuleId}', campaignRuleId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Query a list of dialer campaigns.
   * @memberOf OutboundApi
   * @instance
@@ -650,9 +864,9 @@ OutboundApi.prototype.deleteCallanalysisresponsesetsCallanalysissetId = function
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1353,9 +1567,9 @@ OutboundApi.prototype.getCampaignsCampaignIdStats = function getCampaignsCampaig
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1832,9 +2046,9 @@ OutboundApi.prototype.postConversationsConversationIdDnc = function postConversa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2146,9 +2360,9 @@ OutboundApi.prototype.postDnclistsDnclistIdPhonenumbers = function postDnclistsD
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2655,9 +2869,9 @@ OutboundApi.prototype.deleteSchedulesSequencesSequenceId = function deleteSchedu
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

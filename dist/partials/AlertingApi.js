@@ -28,9 +28,9 @@ function AlertingApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -111,9 +111,9 @@ AlertingApi.prototype.deleteHeartbeatAlertsAlertId = function deleteHeartbeatAle
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -291,9 +291,9 @@ AlertingApi.prototype.deleteHeartbeatRulesRuleId = function deleteHeartbeatRules
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -434,9 +434,9 @@ AlertingApi.prototype.deleteInteractionstatsAlertsAlertId = function deleteInter
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -634,9 +634,9 @@ AlertingApi.prototype.deleteInteractionstatsRulesRuleId = function deleteInterac
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -740,9 +740,9 @@ AlertingApi.prototype.deleteRoutingstatusAlertsAlertId = function deleteRoutings
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1014,9 +1014,9 @@ AlertingApi.prototype.deleteRoutingstatusRulesRuleId = function deleteRoutingsta
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1122,9 +1122,9 @@ AlertingApi.prototype.deleteUserpresenceAlertsAlertId = function deleteUserprese
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

@@ -41,9 +41,9 @@ function ContentManagementApi(session) {
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -86,9 +86,9 @@ ContentManagementApi.prototype.postAuditquery = function postAuditquery(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -182,8 +182,8 @@ ContentManagementApi.prototype.getDocuments = function getDocuments(workspaceId,
    },
    "acl": [],
    "sharingStatus": "",
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */
@@ -262,8 +262,8 @@ ContentManagementApi.prototype.postDocuments = function postDocuments(body, copy
    },
    "acl": [],
    "sharingStatus": "",
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */
@@ -354,8 +354,8 @@ ContentManagementApi.prototype.getDocumentsDocumentId = function getDocumentsDoc
    },
    "acl": [],
    "sharingStatus": "",
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */
@@ -419,9 +419,9 @@ ContentManagementApi.prototype.deleteDocumentsDocumentId = function deleteDocume
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -542,9 +542,9 @@ ContentManagementApi.prototype.postDocumentsDocumentIdContent = function postDoc
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -600,9 +600,9 @@ ContentManagementApi.prototype.getQuery = function getQuery(pageSize, pageNumber
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "facetInfo": {
@@ -639,9 +639,9 @@ ContentManagementApi.prototype.postQuery = function postQuery(body, expand){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -728,9 +728,9 @@ ContentManagementApi.prototype.getSharedSharedId = function getSharedSharedId(sh
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -933,9 +933,9 @@ ContentManagementApi.prototype.deleteSharesShareId = function deleteSharesShareI
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -992,8 +992,8 @@ ContentManagementApi.prototype.getStatus = function getStatus(pageSize, pageNumb
       "lockInfo": {},
       "acl": [],
       "sharingStatus": "",
-      "sharingUri": "",
       "downloadSharingUri": "",
+      "sharingUri": "",
       "selfUri": ""
    },
    "selfUri": ""
@@ -1065,9 +1065,9 @@ ContentManagementApi.prototype.getUsage = function getUsage(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1284,9 +1284,9 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceId = function deleteWork
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1324,9 +1324,9 @@ ContentManagementApi.prototype.getWorkspacesWorkspaceIdDocuments = function getW
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1610,9 +1610,9 @@ ContentManagementApi.prototype.deleteWorkspacesWorkspaceIdMembersMemberId = func
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1696,9 +1696,9 @@ ContentManagementApi.prototype.postWorkspacesWorkspaceIdTagvalues = function pos
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

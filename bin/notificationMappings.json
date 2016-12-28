@@ -1,6 +1,10 @@
 {
   "notifications": [
     {
+      "topic": "billing.tasks.{id}",
+      "class": "BillingTaskResultNotification"
+    },
+    {
       "topic": "v2.contentmanagement.documents.{id}",
       "class": "DocumentDataNotification"
     },

@@ -80,9 +80,9 @@ QualityApi.prototype.postEvaluationsAggregatesQuery = function postEvaluationsAg
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -129,9 +129,9 @@ QualityApi.prototype.getAgentsActivity = function getAgentsActivity(pageSize, pa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -987,9 +987,9 @@ QualityApi.prototype.deleteCalibrationsCalibrationId = function deleteCalibratio
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1921,9 +1921,9 @@ QualityApi.prototype.deleteConversationsConversationIdEvaluationsEvaluationId = 
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2027,9 +2027,9 @@ QualityApi.prototype.postEvaluationsScoring = function postEvaluationsScoring(bo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2072,9 +2072,9 @@ QualityApi.prototype.getEvaluatorsActivity = function getEvaluatorsActivity(page
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2114,9 +2114,9 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2137,9 +2137,9 @@ QualityApi.prototype.getForms = function getForms(pageSize, pageNumber, sortBy, 
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2181,9 +2181,9 @@ QualityApi.prototype.postForms = function postForms(body){
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2223,9 +2223,9 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2246,9 +2246,9 @@ QualityApi.prototype.getFormsFormId = function getFormsFormId(formId){
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2306,9 +2306,9 @@ QualityApi.prototype.deleteFormsFormId = function deleteFormsFormId(formId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2348,9 +2348,9 @@ QualityApi.prototype.getFormsFormIdVersions = function getFormsFormIdVersions(fo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2661,9 +2661,9 @@ QualityApi.prototype.deleteKeywordsetsKeywordsetId = function deleteKeywordsetsK
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -2699,9 +2699,9 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    }
 }
@@ -2722,9 +2722,9 @@ QualityApi.prototype.getPublishedforms = function getPublishedforms(pageSize, pa
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""
@@ -2766,9 +2766,9 @@ QualityApi.prototype.postPublishedforms = function postPublishedforms(body){
       "total": 0,
       "selfUri": "",
       "firstUri": "",
-      "nextUri": "",
       "lastUri": "",
       "previousUri": "",
+      "nextUri": "",
       "pageCount": 0
    },
    "selfUri": ""

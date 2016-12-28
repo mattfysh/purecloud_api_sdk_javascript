@@ -39,9 +39,9 @@ function ScriptsApi(session) {
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -80,9 +80,9 @@ ScriptsApi.prototype.getScripts = function getScripts(pageSize, pageNumber, expa
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

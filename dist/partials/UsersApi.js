@@ -184,9 +184,9 @@ UsersApi.prototype.getFieldconfig = function getFieldconfig(type){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1241,9 +1241,9 @@ UsersApi.prototype.getUserIdDirectreports = function getUserIdDirectreports(user
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1547,9 +1547,9 @@ UsersApi.prototype.putUserIdProfileskills = function putUserIdProfileskills(user
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -1867,9 +1867,9 @@ UsersApi.prototype.deleteUserIdRoles = function deleteUserIdRoles(userId){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */

@@ -33,8 +33,6 @@ function SuggestApi(session) {
    "nextPage": "",
    "types": [],
    "results": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -53,11 +51,11 @@ function SuggestApi(session) {
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "aggregations": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -76,7 +74,9 @@ function SuggestApi(session) {
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    }
 }
   */
@@ -125,8 +125,6 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "nextPage": "",
    "types": [],
    "results": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -145,11 +143,11 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "aggregations": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -168,7 +166,9 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    }
 }
   */
@@ -206,8 +206,6 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
    "nextPage": "",
    "types": [],
    "results": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -226,11 +224,11 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "aggregations": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -249,7 +247,9 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    }
 }
   */
@@ -292,8 +292,6 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
    "nextPage": "",
    "types": [],
    "results": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -312,11 +310,11 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    },
    "aggregations": {
-      "array": true,
-      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -335,7 +333,9 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true
+      "binary": true,
+      "array": true,
+      "null": true
    }
 }
   */

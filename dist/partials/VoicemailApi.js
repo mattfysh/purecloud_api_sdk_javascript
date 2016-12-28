@@ -58,9 +58,9 @@ VoicemailApi.prototype.getGroupsGroupIdMailbox = function getGroupsGroupIdMailbo
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -103,7 +103,9 @@ VoicemailApi.prototype.getGroupsGroupIdMessages = function getGroupsGroupIdMessa
       "selfUri": ""
    },
    "enabled": true,
-   "sendEmailNotifications": true
+   "sendEmailNotifications": true,
+   "rotateCallsSecs": 0,
+   "stopRingingAfterRotations": 0
 }
   */
 VoicemailApi.prototype.getGroupsGroupIdPolicy = function getGroupsGroupIdPolicy(groupId){
@@ -129,7 +131,9 @@ VoicemailApi.prototype.getGroupsGroupIdPolicy = function getGroupsGroupIdPolicy(
   * {
    "name": "",
    "enabled": true,
-   "sendEmailNotifications": true
+   "sendEmailNotifications": true,
+   "rotateCallsSecs": 0,
+   "stopRingingAfterRotations": 0
 }
   * @example
   * 200 Response Example:
@@ -151,7 +155,9 @@ VoicemailApi.prototype.getGroupsGroupIdPolicy = function getGroupsGroupIdPolicy(
       "selfUri": ""
    },
    "enabled": true,
-   "sendEmailNotifications": true
+   "sendEmailNotifications": true,
+   "rotateCallsSecs": 0,
+   "stopRingingAfterRotations": 0
 }
   */
 VoicemailApi.prototype.patchGroupsGroupIdPolicy = function patchGroupsGroupIdPolicy(groupId, body){
@@ -233,9 +239,9 @@ VoicemailApi.prototype.getMeMailbox = function getMeMailbox(){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -341,9 +347,9 @@ VoicemailApi.prototype.patchMePolicy = function patchMePolicy(body){
    "total": 0,
    "selfUri": "",
    "firstUri": "",
-   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
+   "nextUri": "",
    "pageCount": 0
 }
   */
