@@ -81,6 +81,7 @@ describe('Use Case: Update user status', () => {
   it('should work', (done) => {
 
     const sharedSession = getSession();
+    sharedSession.debugLog = console.log;
 
     sharedSession.login().then(function(){
         console.log('logged in');
