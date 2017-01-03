@@ -83,6 +83,7 @@ describe('Use Case: Update user status', () => {
     const sharedSession = getSession();
 
     sharedSession.login().then(function(){
+        console.log('logged in');
 
         const Users = purecloud.UsersApi(sharedSession);
         const Presence = purecloud.PresenceApi(sharedSession);
@@ -99,19 +100,23 @@ describe('Use Case: Update user status', () => {
           .then(([users, presenceDefs]) => {
             userId = users.entities[0].id;
             defs = presenceDefs.entities;
+            console.log('getting presence');
             return Presence.getUserIdPresencesSourceId(userId, tag);
           })
           .then(presence => {
             nextPresence = changePresence(presence);
+            console.log('updating presence: ' + nextPresence.presenceDefinition.id);
             return Presence.patchUserIdPresencesSourceId(userId, tag, nextPresence);
           })
           .then(() => {
+            console.log('checking presence');
             return Presence.getUserIdPresencesSourceId(userId, tag);
           })
           .then(presence => {
             assert.deepEqual(
               presence.presenceDefinition.id,
               nextPresence.presenceDefinition.id);
+            console.log('presence verified');
             done();
           })
           .catch(done.fail);
