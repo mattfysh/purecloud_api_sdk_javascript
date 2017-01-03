@@ -88,12 +88,9 @@ describe('Use Case: Update user status', () => {
 
         const Users = purecloud.UsersApi(sharedSession);
         const Presence = purecloud.PresenceApi(sharedSession);
-        console.log('APIs initialized');
 
         const users = Users.getUsers();
-        console.log('Users: ' + users.entities.length);
         const presenceDefs = Presence.getPresencedefinitions();
-        console.log('Presences: ' + presenceDefs.entities.length);
         const tag = 'purecloud'.toUpperCase();
 
         let i = 0;
