@@ -15,7 +15,7 @@ function SearchApi(session) {
 }
 
 /**
-  * @summary Search groups using the q64 value returned from a previous search
+  * @summary Search users using the q64 value returned from a previous search
   * @memberOf SearchApi
   * @instance
   * @param {string} q64 - q64
@@ -35,7 +35,7 @@ function SearchApi(session) {
 }
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
-    var requestPath = '/api/v2/groups/search';
+    var requestPath = '/api/v2/users/search';
     var requestQuery = {};
     var requestBody;
 
@@ -48,7 +48,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
 };
 
 /**
-  * @summary Search groups
+  * @summary Search users
   * @memberOf SearchApi
   * @instance
   * @param {} body - Search request options
@@ -78,7 +78,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){
-    var requestPath = '/api/v2/groups/search';
+    var requestPath = '/api/v2/users/search';
     var requestQuery = {};
     var requestBody;
 
@@ -187,6 +187,8 @@ SearchApi.prototype.postSearch = function postSearch(body){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -205,11 +207,11 @@ SearchApi.prototype.postSearch = function postSearch(body){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -228,9 +230,7 @@ SearchApi.prototype.postSearch = function postSearch(body){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -279,6 +279,8 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -297,11 +299,11 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -320,9 +322,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -360,6 +360,8 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -378,11 +380,11 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -401,9 +403,7 @@ SearchApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -446,6 +446,8 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
    "nextPage": "",
    "types": [],
    "results": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -464,11 +466,11 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    },
    "aggregations": {
+      "array": true,
+      "null": true,
       "nodeType": "",
       "object": true,
       "boolean": true,
@@ -487,9 +489,7 @@ SearchApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "array": true,
-      "null": true
+      "binary": true
    }
 }
   */
@@ -509,7 +509,7 @@ SearchApi.prototype.postSuggest = function postSuggest(body, profile){
 };
 
 /**
-  * @summary Search users using the q64 value returned from a previous search
+  * @summary Search groups using the q64 value returned from a previous search
   * @memberOf SearchApi
   * @instance
   * @param {string} q64 - q64
@@ -529,7 +529,7 @@ SearchApi.prototype.postSuggest = function postSuggest(body, profile){
 }
   */
 SearchApi.prototype.getSearch = function getSearch(q64, expand){
-    var requestPath = '/api/v2/users/search';
+    var requestPath = '/api/v2/groups/search';
     var requestQuery = {};
     var requestBody;
 
@@ -542,7 +542,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
 };
 
 /**
-  * @summary Search users
+  * @summary Search groups
   * @memberOf SearchApi
   * @instance
   * @param {} body - Search request options
@@ -572,7 +572,7 @@ SearchApi.prototype.getSearch = function getSearch(q64, expand){
 }
   */
 SearchApi.prototype.postSearch = function postSearch(body){
-    var requestPath = '/api/v2/users/search';
+    var requestPath = '/api/v2/groups/search';
     var requestQuery = {};
     var requestBody;
 

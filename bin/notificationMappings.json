@@ -13,6 +13,66 @@
       "class": "DocumentDataNotification"
     },
     {
+      "topic": "v2.outbound.attemptlimits.{id}",
+      "class": "AttemptLimitsNotification"
+    },
+    {
+      "topic": "v2.outbound.callabletimesets.{id}",
+      "class": "CallableTimeSetNotification"
+    },
+    {
+      "topic": "v2.outbound.campaignrules.{id}",
+      "class": "CampaignRuleNotification"
+    },
+    {
+      "topic": "v2.outbound.campaigns.{id}",
+      "class": "CampaignNotification"
+    },
+    {
+      "topic": "v2.outbound.campaigns.{id}.progress",
+      "class": "CampaignProgressNotification"
+    },
+    {
+      "topic": "v2.outbound.contactlists.{id}",
+      "class": "ContactListNotification"
+    },
+    {
+      "topic": "v2.outbound.contactlists.{id}.importstatus",
+      "class": "ImportStatusNotification"
+    },
+    {
+      "topic": "v2.outbound.dnclists.{id}",
+      "class": "DncListNotification"
+    },
+    {
+      "topic": "v2.outbound.dnclists.{id}.importstatus",
+      "class": "ImportStatusNotification"
+    },
+    {
+      "topic": "v2.outbound.responsesets.{id}",
+      "class": "ResponseSetNotification"
+    },
+    {
+      "topic": "v2.outbound.rulesets.{id}",
+      "class": "RuleSetNotification"
+    },
+    {
+      "topic": "v2.outbound.schedules.campaigns.{id}",
+      "class": "CampaignScheduleNotification"
+    },
+    {
+      "topic": "v2.outbound.schedules.sequences.{id}",
+      "class": "SequenceScheduleNotification"
+    },
+    {
+      "topic": "v2.outbound.sequences.{id}",
+      "class": "CampaignSequenceNotification"
+    },
+    {
+      "topic": "v2.outbound.wrapupcodemappings.{id}",
+      "class": "WrapUpCodeMappingNotification"
+    },
+    {
       "topic": "v2.routing.queues.{id}.conversations",
       "class": "ConversationNotification"
     },
@@ -111,6 +171,14 @@
     {
       "topic": "v2.users.{id}.fax.documents",
       "class": "FaxDataNotification"
+    },
+    {
+      "topic": "v2.users.{id}.outbound.contactlists.{id}.export",
+      "class": "ExportUriNotification"
+    },
+    {
+      "topic": "v2.users.{id}.outbound.dnclists.{id}.export",
+      "class": "ExportUriNotification"
     },
     {
       "topic": "v2.users.{id}.outofoffice",

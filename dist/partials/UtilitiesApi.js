@@ -15,6 +15,24 @@ function UtilitiesApi(session) {
 }
 
 /**
+  * @summary Get the current system date/time
+  * @memberOf UtilitiesApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "currentDate": ""
+}
+  */
+UtilitiesApi.prototype.getDate = function getDate(){
+    var requestPath = '/api/v2/date';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
   * @memberOf UtilitiesApi
   * @instance
@@ -45,24 +63,6 @@ UtilitiesApi.prototype.postDetails = function postDetails(body){
 };
 
 /**
-  * @summary Get the current system date/time
-  * @memberOf UtilitiesApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "currentDate": ""
-}
-  */
-UtilitiesApi.prototype.getDate = function getDate(){
-    var requestPath = '/api/v2/date';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Get time zones list
   * @memberOf UtilitiesApi
   * @instance
@@ -75,8 +75,8 @@ UtilitiesApi.prototype.getDate = function getDate(){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "lastUri": "",
    "previousUri": "",
    "nextUri": "",

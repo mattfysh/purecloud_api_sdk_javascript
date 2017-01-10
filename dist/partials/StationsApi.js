@@ -22,6 +22,7 @@ function StationsApi(session) {
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
   * @param {string} name - Name
+  * @param {string} id - Comma separated list of stationIds
   * @param {string} lineAppearanceId - lineAppearanceId
   * @example
   * 200 Response Example:
@@ -30,15 +31,15 @@ function StationsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "lastUri": "",
    "previousUri": "",
    "nextUri": "",
    "pageCount": 0
 }
   */
-StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, sortBy, name, lineAppearanceId){
+StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, sortBy, name, id, lineAppearanceId){
     var requestPath = '/api/v2/stations';
     var requestQuery = {};
     var requestBody;
@@ -47,8 +48,27 @@ StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, s
     requestQuery["pageNumber"] = pageNumber;
     requestQuery["sortBy"] = sortBy;
     requestQuery["name"] = name;
+    requestQuery["id"] = id;
     requestQuery["lineAppearanceId"] = lineAppearanceId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Unassigns the user assigned to this station
+  * @memberOf StationsApi
+  * @instance
+  * @param {string} stationId - Station ID
+  */
+StationsApi.prototype.deleteStationIdAssociateduser = function deleteStationIdAssociateduser(stationId){
+    var requestPath = '/api/v2/stations/{stationId}/associateduser';
+    var requestQuery = {};
+    var requestBody;
+
+    if(stationId === undefined || stationId === null){
+      throw new Error('Missing required  parameter: stationId');
+    }
+    requestPath = requestPath.replace('{stationId}', stationId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -89,24 +109,6 @@ StationsApi.prototype.getStationId = function getStationId(stationId){
     }
     requestPath = requestPath.replace('{stationId}', stationId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Unassigns the user assigned to this station
-  * @memberOf StationsApi
-  * @instance
-  * @param {string} stationId - Station ID
-  */
-StationsApi.prototype.deleteStationIdAssociateduser = function deleteStationIdAssociateduser(stationId){
-    var requestPath = '/api/v2/stations/{stationId}/associateduser';
-    var requestQuery = {};
-    var requestBody;
-
-    if(stationId === undefined || stationId === null){
-      throw new Error('Missing required  parameter: stationId');
-    }
-    requestPath = requestPath.replace('{stationId}', stationId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 

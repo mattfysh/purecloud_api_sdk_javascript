@@ -32,8 +32,8 @@ function LanguagesApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "lastUri": "",
    "previousUri": "",
    "nextUri": "",
@@ -165,6 +165,52 @@ LanguagesApi.prototype.getTranslationsUsersUserId = function getTranslationsUser
 };
 
 /**
+  * @summary Get language
+  * @memberOf LanguagesApi
+  * @instance
+  * @param {string} languageId - Language ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "dateModified": "",
+   "state": "",
+   "version": "",
+   "selfUri": ""
+}
+  */
+LanguagesApi.prototype.getLanguagesLanguageId = function getLanguagesLanguageId(languageId){
+    var requestPath = '/api/v2/routing/languages/{languageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(languageId === undefined || languageId === null){
+      throw new Error('Missing required  parameter: languageId');
+    }
+    requestPath = requestPath.replace('{languageId}', languageId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Language
+  * @memberOf LanguagesApi
+  * @instance
+  * @param {string} languageId - Language ID
+  */
+LanguagesApi.prototype.deleteLanguagesLanguageId = function deleteLanguagesLanguageId(languageId){
+    var requestPath = '/api/v2/routing/languages/{languageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(languageId === undefined || languageId === null){
+      throw new Error('Missing required  parameter: languageId');
+    }
+    requestPath = requestPath.replace('{languageId}', languageId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get language (Deprecated)
   * @description This endpoint is deprecated. It has been moved to /routing/languages/{languageId}
   * @memberOf LanguagesApi
@@ -202,52 +248,6 @@ LanguagesApi.prototype.getLanguageId = function getLanguageId(languageId){
   */
 LanguagesApi.prototype.deleteLanguageId = function deleteLanguageId(languageId){
     var requestPath = '/api/v2/languages/{languageId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(languageId === undefined || languageId === null){
-      throw new Error('Missing required  parameter: languageId');
-    }
-    requestPath = requestPath.replace('{languageId}', languageId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get language
-  * @memberOf LanguagesApi
-  * @instance
-  * @param {string} languageId - Language ID
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "dateModified": "",
-   "state": "",
-   "version": "",
-   "selfUri": ""
-}
-  */
-LanguagesApi.prototype.getLanguagesLanguageId = function getLanguagesLanguageId(languageId){
-    var requestPath = '/api/v2/routing/languages/{languageId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(languageId === undefined || languageId === null){
-      throw new Error('Missing required  parameter: languageId');
-    }
-    requestPath = requestPath.replace('{languageId}', languageId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete Language
-  * @memberOf LanguagesApi
-  * @instance
-  * @param {string} languageId - Language ID
-  */
-LanguagesApi.prototype.deleteLanguagesLanguageId = function deleteLanguagesLanguageId(languageId){
-    var requestPath = '/api/v2/routing/languages/{languageId}';
     var requestQuery = {};
     var requestBody;
 

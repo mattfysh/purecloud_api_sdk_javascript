@@ -15,26 +15,6 @@ function NotificationsApi(session) {
 }
 
 /**
-  * @summary Get available notification topics.
-  * @memberOf NotificationsApi
-  * @instance
-  * @param {array} expand - Which fields, if any, to expand Valid Values: description, requiresPermissions, schema
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": []
-}
-  */
-NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expand){
-    var requestPath = '/api/v2/notifications/availabletopics';
-    var requestQuery = {};
-    var requestBody;
-
-    requestQuery["expand"] = expand;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary The list of existing channels
   * @memberOf NotificationsApi
   * @instance
@@ -45,8 +25,8 @@ NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "lastUri": "",
    "previousUri": "",
    "nextUri": "",
@@ -79,6 +59,26 @@ NotificationsApi.prototype.postChannels = function postChannels(){
     var requestBody;
 
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get available notification topics.
+  * @memberOf NotificationsApi
+  * @instance
+  * @param {array} expand - Which fields, if any, to expand Valid Values: description, requiresPermissions, schema
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": []
+}
+  */
+NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expand){
+    var requestPath = '/api/v2/notifications/availabletopics';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**
