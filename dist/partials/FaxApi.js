@@ -70,8 +70,8 @@ FaxApi.prototype.getDocumentsDocumentIdContent = function getDocumentsDocumentId
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */
@@ -118,8 +118,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
-   "downloadSharingUri": ""
+   "downloadSharingUri": "",
+   "sharingUri": ""
 }
   * @example
   * 200 Response Example:
@@ -147,8 +147,8 @@ FaxApi.prototype.getDocumentsDocumentId = function getDocumentsDocumentId(docume
    "callerAddress": "",
    "receiverAddress": "",
    "thumbnails": [],
-   "sharingUri": "",
    "downloadSharingUri": "",
+   "sharingUri": "",
    "selfUri": ""
 }
   */
@@ -189,6 +189,37 @@ FaxApi.prototype.deleteDocumentsDocumentId = function deleteDocumentsDocumentId(
 };
 
 /**
+  * @summary Get a list of fax documents.
+  * @memberOf FaxApi
+  * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "pageCount": 0
+}
+  */
+FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
+    var requestPath = '/api/v2/fax/documents';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get fax summary
   * @memberOf FaxApi
   * @instance
@@ -205,37 +236,6 @@ FaxApi.prototype.getSummary = function getSummary(){
     var requestQuery = {};
     var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get a list of fax documents.
-  * @memberOf FaxApi
-  * @instance
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "firstUri": "",
-   "selfUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "pageCount": 0
-}
-  */
-FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
-    var requestPath = '/api/v2/fax/documents';
-    var requestQuery = {};
-    var requestBody;
-
-    requestQuery["pageSize"] = pageSize;
-    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

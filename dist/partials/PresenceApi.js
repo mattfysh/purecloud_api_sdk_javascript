@@ -239,6 +239,28 @@ PresenceApi.prototype.deletePresenceId = function deletePresenceId(presenceId){
 };
 
 /**
+  * @summary Get the list of SystemPresences
+  * @memberOf PresenceApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * [
+ {
+  "id": "",
+  "name": "",
+  "selfUri": ""
+ }
+]
+  */
+PresenceApi.prototype.getSystempresences = function getSystempresences(){
+    var requestPath = '/api/v2/systempresences';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get a user's Presence
   * @memberOf PresenceApi
   * @instance
@@ -361,28 +383,6 @@ PresenceApi.prototype.patchUserIdPresencesSourceId = function patchUserIdPresenc
 };
 
 /**
-  * @summary Get the list of SystemPresences
-  * @memberOf PresenceApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * [
- {
-  "id": "",
-  "name": "",
-  "selfUri": ""
- }
-]
-  */
-PresenceApi.prototype.getSystempresences = function getSystempresences(){
-    var requestPath = '/api/v2/systempresences';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Get an Organization's list of Presence Definitions
   * @memberOf PresenceApi
   * @instance
@@ -397,11 +397,11 @@ PresenceApi.prototype.getSystempresences = function getSystempresences(){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */

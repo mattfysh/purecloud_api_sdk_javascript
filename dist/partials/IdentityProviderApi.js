@@ -143,7 +143,7 @@ IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
 };
 
 /**
-  * @summary Get OneLogin Identity Provider
+  * @summary Get Customer Interaction Center (CIC) Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @example
@@ -158,8 +158,8 @@ IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
    "selfUri": ""
 }
   */
-IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
-    var requestPath = '/api/v2/identityproviders/onelogin';
+IdentityProviderApi.prototype.getCic = function getCic(){
+    var requestPath = '/api/v2/identityproviders/cic';
     var requestQuery = {};
     var requestBody;
 
@@ -167,7 +167,7 @@ IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
 };
 
 /**
-  * @summary Update/Create OneLogin Identity Provider
+  * @summary Update/Create Customer Interaction Center (CIC) Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @param {} body - Provider
@@ -181,8 +181,8 @@ IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
    "disabled": true
 }
   */
-IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
-    var requestPath = '/api/v2/identityproviders/onelogin';
+IdentityProviderApi.prototype.putCic = function putCic(body){
+    var requestPath = '/api/v2/identityproviders/cic';
     var requestQuery = {};
     var requestBody;
 
@@ -196,12 +196,12 @@ IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
 };
 
 /**
-  * @summary Delete OneLogin Identity Provider
+  * @summary Delete Customer Interaction Center (CIC) Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   */
-IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
-    var requestPath = '/api/v2/identityproviders/onelogin';
+IdentityProviderApi.prototype.deleteCic = function deleteCic(){
+    var requestPath = '/api/v2/identityproviders/cic';
     var requestQuery = {};
     var requestBody;
 
@@ -209,30 +209,63 @@ IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
 };
 
 /**
-  * @summary The list of identity providers
+  * @summary Get PureCloud Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @example
   * 200 Response Example:
   * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "firstUri": "",
-   "selfUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "pageCount": 0
+   "id": "",
+   "name": "",
+   "disabled": true,
+   "selfUri": ""
 }
   */
-IdentityProviderApi.prototype.getIdentityproviders = function getIdentityproviders(){
-    var requestPath = '/api/v2/identityproviders';
+IdentityProviderApi.prototype.getPurecloud = function getPurecloud(){
+    var requestPath = '/api/v2/identityproviders/purecloud';
     var requestQuery = {};
     var requestBody;
 
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create PureCloud Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putPurecloud = function putPurecloud(body){
+    var requestPath = '/api/v2/identityproviders/purecloud';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete PureCloud Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  */
+IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
+    var requestPath = '/api/v2/identityproviders/purecloud';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -302,67 +335,7 @@ IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
 };
 
 /**
-  * @summary Get PureCloud Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "disabled": true,
-   "selfUri": ""
-}
-  */
-IdentityProviderApi.prototype.getPurecloud = function getPurecloud(){
-    var requestPath = '/api/v2/identityproviders/purecloud';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update/Create PureCloud Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @param {} body - Provider
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "disabled": true
-}
-  */
-IdentityProviderApi.prototype.putPurecloud = function putPurecloud(body){
-    var requestPath = '/api/v2/identityproviders/purecloud';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete PureCloud Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  */
-IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
-    var requestPath = '/api/v2/identityproviders/purecloud';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get Customer Interaction Center (CIC) Identity Provider
+  * @summary Get OneLogin Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @example
@@ -377,8 +350,8 @@ IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
    "selfUri": ""
 }
   */
-IdentityProviderApi.prototype.getCic = function getCic(){
-    var requestPath = '/api/v2/identityproviders/cic';
+IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
+    var requestPath = '/api/v2/identityproviders/onelogin';
     var requestQuery = {};
     var requestBody;
 
@@ -386,7 +359,7 @@ IdentityProviderApi.prototype.getCic = function getCic(){
 };
 
 /**
-  * @summary Update/Create Customer Interaction Center (CIC) Identity Provider
+  * @summary Update/Create OneLogin Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @param {} body - Provider
@@ -400,8 +373,8 @@ IdentityProviderApi.prototype.getCic = function getCic(){
    "disabled": true
 }
   */
-IdentityProviderApi.prototype.putCic = function putCic(body){
-    var requestPath = '/api/v2/identityproviders/cic';
+IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
+    var requestPath = '/api/v2/identityproviders/onelogin';
     var requestQuery = {};
     var requestBody;
 
@@ -415,12 +388,12 @@ IdentityProviderApi.prototype.putCic = function putCic(body){
 };
 
 /**
-  * @summary Delete Customer Interaction Center (CIC) Identity Provider
+  * @summary Delete OneLogin Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   */
-IdentityProviderApi.prototype.deleteCic = function deleteCic(){
-    var requestPath = '/api/v2/identityproviders/cic';
+IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
+    var requestPath = '/api/v2/identityproviders/onelogin';
     var requestQuery = {};
     var requestBody;
 
@@ -491,6 +464,33 @@ IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
     var requestBody;
 
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary The list of identity providers
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "pageCount": 0
+}
+  */
+IdentityProviderApi.prototype.getIdentityproviders = function getIdentityproviders(){
+    var requestPath = '/api/v2/identityproviders';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 

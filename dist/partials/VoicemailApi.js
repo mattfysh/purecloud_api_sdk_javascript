@@ -15,6 +15,108 @@ function VoicemailApi(session) {
 }
 
 /**
+  * @summary Get a policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "retentionTimeDays": 0,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "compressSilence": true,
+   "pinConfiguration": {
+      "minimumLength": 0,
+      "maximumLength": 0
+   },
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "voicemailExtension": "",
+   "pinRequired": true,
+   "sendEmailNotifications": true
+}
+  */
+VoicemailApi.prototype.getPolicy = function getPolicy(){
+    var requestPath = '/api/v2/voicemail/policy';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update a policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {} body - Policy
+  * @example
+  * Body Example:
+  * {
+   "enabled": true,
+   "retentionTimeDays": 0,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "compressSilence": true,
+   "pinConfiguration": {
+      "minimumLength": 0,
+      "maximumLength": 0
+   },
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "voicemailExtension": "",
+   "pinRequired": true,
+   "sendEmailNotifications": true
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "retentionTimeDays": 0,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "compressSilence": true,
+   "pinConfiguration": {
+      "minimumLength": 0,
+      "maximumLength": 0
+   },
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": "",
+   "voicemailExtension": "",
+   "pinRequired": true,
+   "sendEmailNotifications": true
+}
+  */
+VoicemailApi.prototype.putPolicy = function putPolicy(body){
+    var requestPath = '/api/v2/voicemail/policy';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get message.
   * @memberOf VoicemailApi
   * @instance
@@ -304,515 +406,6 @@ VoicemailApi.prototype.getMessagesMessageIdMedia = function getMessagesMessageId
 };
 
 /**
-  * @summary Get a policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "enabled": true,
-   "retentionTimeDays": 0,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "compressSilence": true,
-   "pinConfiguration": {
-      "minimumLength": 0,
-      "maximumLength": 0
-   },
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": "",
-   "voicemailExtension": "",
-   "pinRequired": true,
-   "sendEmailNotifications": true
-}
-  */
-VoicemailApi.prototype.getPolicy = function getPolicy(){
-    var requestPath = '/api/v2/voicemail/policy';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update a policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {} body - Policy
-  * @example
-  * Body Example:
-  * {
-   "enabled": true,
-   "retentionTimeDays": 0,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "compressSilence": true,
-   "pinConfiguration": {
-      "minimumLength": 0,
-      "maximumLength": 0
-   },
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": "",
-   "voicemailExtension": "",
-   "pinRequired": true,
-   "sendEmailNotifications": true
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "enabled": true,
-   "retentionTimeDays": 0,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "compressSilence": true,
-   "pinConfiguration": {
-      "minimumLength": 0,
-      "maximumLength": 0
-   },
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": "",
-   "voicemailExtension": "",
-   "pinRequired": true,
-   "sendEmailNotifications": true
-}
-  */
-VoicemailApi.prototype.putPolicy = function putPolicy(body){
-    var requestPath = '/api/v2/voicemail/policy';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary List voicemail messages
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "firstUri": "",
-   "selfUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "pageCount": 0
-}
-  */
-VoicemailApi.prototype.getMeMessages = function getMeMessages(pageSize, pageNumber){
-    var requestPath = '/api/v2/voicemail/me/messages';
-    var requestQuery = {};
-    var requestBody;
-
-    requestQuery["pageSize"] = pageSize;
-    requestQuery["pageNumber"] = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get the current user's voicemail policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.getMePolicy = function getMePolicy(){
-    var requestPath = '/api/v2/voicemail/me/policy';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update the current user's voicemail policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {} body - The user's voicemail policy
-  * @example
-  * Body Example:
-  * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.patchMePolicy = function patchMePolicy(body){
-    var requestPath = '/api/v2/voicemail/me/policy';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get a user's voicemail policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {string} userId - User ID
-  * @example
-  * 200 Response Example:
-  * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.getUserpoliciesUserId = function getUserpoliciesUserId(userId){
-    var requestPath = '/api/v2/voicemail/userpolicies/{userId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(userId === undefined || userId === null){
-      throw new Error('Missing required  parameter: userId');
-    }
-    requestPath = requestPath.replace('{userId}', userId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update a user's voicemail policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {string} userId - User ID
-  * @param {} body - The user's voicemail policy
-  * @example
-  * Body Example:
-  * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "enabled": true,
-   "alertTimeoutSeconds": 0,
-   "minimumRecordingTimeSeconds": 0,
-   "maximumRecordingTimeSeconds": 0,
-   "unavailableMessageUri": "",
-   "namePromptMessageUri": "",
-   "fullMessageUri": "",
-   "pin": "",
-   "quotaSizeBytes": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.patchUserpoliciesUserId = function patchUserpoliciesUserId(userId, body){
-    var requestPath = '/api/v2/voicemail/userpolicies/{userId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(userId === undefined || userId === null){
-      throw new Error('Missing required  parameter: userId');
-    }
-    requestPath = requestPath.replace('{userId}', userId);
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get a group's voicemail policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {string} groupId - Group ID
-  * @example
-  * 200 Response Example:
-  * {
-   "name": "",
-   "group": {
-      "id": "",
-      "name": "",
-      "description": "",
-      "dateModified": "",
-      "memberCount": 0,
-      "state": "",
-      "version": 0,
-      "type": "",
-      "images": [],
-      "addresses": [],
-      "rulesVisible": true,
-      "visibility": "",
-      "selfUri": ""
-   },
-   "enabled": true,
-   "sendEmailNotifications": true,
-   "rotateCallsSecs": 0,
-   "stopRingingAfterRotations": 0
-}
-  */
-VoicemailApi.prototype.getGroupsGroupIdPolicy = function getGroupsGroupIdPolicy(groupId){
-    var requestPath = '/api/v2/voicemail/groups/{groupId}/policy';
-    var requestQuery = {};
-    var requestBody;
-
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update a group's voicemail policy
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {string} groupId - Group ID
-  * @param {} body - The group's voicemail policy
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "enabled": true,
-   "sendEmailNotifications": true,
-   "rotateCallsSecs": 0,
-   "stopRingingAfterRotations": 0
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "name": "",
-   "group": {
-      "id": "",
-      "name": "",
-      "description": "",
-      "dateModified": "",
-      "memberCount": 0,
-      "state": "",
-      "version": 0,
-      "type": "",
-      "images": [],
-      "addresses": [],
-      "rulesVisible": true,
-      "visibility": "",
-      "selfUri": ""
-   },
-   "enabled": true,
-   "sendEmailNotifications": true,
-   "rotateCallsSecs": 0,
-   "stopRingingAfterRotations": 0
-}
-  */
-VoicemailApi.prototype.patchGroupsGroupIdPolicy = function patchGroupsGroupIdPolicy(groupId, body){
-    var requestPath = '/api/v2/voicemail/groups/{groupId}/policy';
-    var requestQuery = {};
-    var requestBody;
-
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get the current user's mailbox information
-  * @memberOf VoicemailApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "usageSizeBytes": 0,
-   "totalCount": 0,
-   "unreadCount": 0,
-   "deletedCount": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.getMailbox = function getMailbox(){
-    var requestPath = '/api/v2/voicemail/mailbox';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get the current user's mailbox information
-  * @memberOf VoicemailApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "usageSizeBytes": 0,
-   "totalCount": 0,
-   "unreadCount": 0,
-   "deletedCount": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.getMeMailbox = function getMeMailbox(){
-    var requestPath = '/api/v2/voicemail/me/mailbox';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get the group's mailbox information
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {string} groupId - groupId
-  * @example
-  * 200 Response Example:
-  * {
-   "usageSizeBytes": 0,
-   "totalCount": 0,
-   "unreadCount": 0,
-   "deletedCount": 0,
-   "createdDate": "",
-   "modifiedDate": ""
-}
-  */
-VoicemailApi.prototype.getGroupsGroupIdMailbox = function getGroupsGroupIdMailbox(groupId){
-    var requestPath = '/api/v2/voicemail/groups/{groupId}/mailbox';
-    var requestQuery = {};
-    var requestBody;
-
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary List voicemail messages
-  * @memberOf VoicemailApi
-  * @instance
-  * @param {string} groupId - Group ID
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "firstUri": "",
-   "selfUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "pageCount": 0
-}
-  */
-VoicemailApi.prototype.getGroupsGroupIdMessages = function getGroupsGroupIdMessages(groupId, pageSize, pageNumber){
-    var requestPath = '/api/v2/voicemail/groups/{groupId}/messages';
-    var requestQuery = {};
-    var requestBody;
-
-    if(groupId === undefined || groupId === null){
-      throw new Error('Missing required  parameter: groupId');
-    }
-    requestPath = requestPath.replace('{groupId}', groupId);
-    requestQuery["pageSize"] = pageSize;
-    requestQuery["pageNumber"] = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary List voicemail messages
   * @memberOf VoicemailApi
   * @instance
@@ -825,11 +418,11 @@ VoicemailApi.prototype.getGroupsGroupIdMessages = function getGroupsGroupIdMessa
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
@@ -974,6 +567,308 @@ VoicemailApi.prototype.deleteMessages = function deleteMessages(){
 };
 
 /**
+  * @summary List voicemail messages
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {string} groupId - Group ID
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "pageCount": 0
+}
+  */
+VoicemailApi.prototype.getGroupsGroupIdMessages = function getGroupsGroupIdMessages(groupId, pageSize, pageNumber){
+    var requestPath = '/api/v2/voicemail/groups/{groupId}/messages';
+    var requestQuery = {};
+    var requestBody;
+
+    if(groupId === undefined || groupId === null){
+      throw new Error('Missing required  parameter: groupId');
+    }
+    requestPath = requestPath.replace('{groupId}', groupId);
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get a user's voicemail policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {string} userId - User ID
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.getUserpoliciesUserId = function getUserpoliciesUserId(userId){
+    var requestPath = '/api/v2/voicemail/userpolicies/{userId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update a user's voicemail policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {string} userId - User ID
+  * @param {} body - The user's voicemail policy
+  * @example
+  * Body Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.patchUserpoliciesUserId = function patchUserpoliciesUserId(userId, body){
+    var requestPath = '/api/v2/voicemail/userpolicies/{userId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(userId === undefined || userId === null){
+      throw new Error('Missing required  parameter: userId');
+    }
+    requestPath = requestPath.replace('{userId}', userId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the current user's voicemail policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.getMePolicy = function getMePolicy(){
+    var requestPath = '/api/v2/voicemail/me/policy';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update the current user's voicemail policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {} body - The user's voicemail policy
+  * @example
+  * Body Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "enabled": true,
+   "alertTimeoutSeconds": 0,
+   "minimumRecordingTimeSeconds": 0,
+   "maximumRecordingTimeSeconds": 0,
+   "unavailableMessageUri": "",
+   "namePromptMessageUri": "",
+   "fullMessageUri": "",
+   "pin": "",
+   "quotaSizeBytes": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.patchMePolicy = function patchMePolicy(body){
+    var requestPath = '/api/v2/voicemail/me/policy';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get a group's voicemail policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {string} groupId - Group ID
+  * @example
+  * 200 Response Example:
+  * {
+   "name": "",
+   "group": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "dateModified": "",
+      "memberCount": 0,
+      "state": "",
+      "version": 0,
+      "type": "",
+      "images": [],
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": "",
+      "selfUri": ""
+   },
+   "enabled": true,
+   "sendEmailNotifications": true,
+   "rotateCallsSecs": 0,
+   "stopRingingAfterRotations": 0
+}
+  */
+VoicemailApi.prototype.getGroupsGroupIdPolicy = function getGroupsGroupIdPolicy(groupId){
+    var requestPath = '/api/v2/voicemail/groups/{groupId}/policy';
+    var requestQuery = {};
+    var requestBody;
+
+    if(groupId === undefined || groupId === null){
+      throw new Error('Missing required  parameter: groupId');
+    }
+    requestPath = requestPath.replace('{groupId}', groupId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update a group's voicemail policy
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {string} groupId - Group ID
+  * @param {} body - The group's voicemail policy
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "enabled": true,
+   "sendEmailNotifications": true,
+   "rotateCallsSecs": 0,
+   "stopRingingAfterRotations": 0
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "name": "",
+   "group": {
+      "id": "",
+      "name": "",
+      "description": "",
+      "dateModified": "",
+      "memberCount": 0,
+      "state": "",
+      "version": 0,
+      "type": "",
+      "images": [],
+      "addresses": [],
+      "rulesVisible": true,
+      "visibility": "",
+      "selfUri": ""
+   },
+   "enabled": true,
+   "sendEmailNotifications": true,
+   "rotateCallsSecs": 0,
+   "stopRingingAfterRotations": 0
+}
+  */
+VoicemailApi.prototype.patchGroupsGroupIdPolicy = function patchGroupsGroupIdPolicy(groupId, body){
+    var requestPath = '/api/v2/voicemail/groups/{groupId}/policy';
+    var requestQuery = {};
+    var requestBody;
+
+    if(groupId === undefined || groupId === null){
+      throw new Error('Missing required  parameter: groupId');
+    }
+    requestPath = requestPath.replace('{groupId}', groupId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PATCH', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Search voicemails using the q64 value returned from a previous search
   * @memberOf VoicemailApi
   * @instance
@@ -1048,6 +943,111 @@ VoicemailApi.prototype.postSearch = function postSearch(body){
       requestBody = body;
     }
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the current user's mailbox information
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "usageSizeBytes": 0,
+   "totalCount": 0,
+   "unreadCount": 0,
+   "deletedCount": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.getMeMailbox = function getMeMailbox(){
+    var requestPath = '/api/v2/voicemail/me/mailbox';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the group's mailbox information
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {string} groupId - groupId
+  * @example
+  * 200 Response Example:
+  * {
+   "usageSizeBytes": 0,
+   "totalCount": 0,
+   "unreadCount": 0,
+   "deletedCount": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.getGroupsGroupIdMailbox = function getGroupsGroupIdMailbox(groupId){
+    var requestPath = '/api/v2/voicemail/groups/{groupId}/mailbox';
+    var requestQuery = {};
+    var requestBody;
+
+    if(groupId === undefined || groupId === null){
+      throw new Error('Missing required  parameter: groupId');
+    }
+    requestPath = requestPath.replace('{groupId}', groupId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the current user's mailbox information
+  * @memberOf VoicemailApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "usageSizeBytes": 0,
+   "totalCount": 0,
+   "unreadCount": 0,
+   "deletedCount": 0,
+   "createdDate": "",
+   "modifiedDate": ""
+}
+  */
+VoicemailApi.prototype.getMailbox = function getMailbox(){
+    var requestPath = '/api/v2/voicemail/mailbox';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary List voicemail messages
+  * @memberOf VoicemailApi
+  * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "previousUri": "",
+   "pageCount": 0
+}
+  */
+VoicemailApi.prototype.getMeMessages = function getMeMessages(pageSize, pageNumber){
+    var requestPath = '/api/v2/voicemail/me/messages';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 

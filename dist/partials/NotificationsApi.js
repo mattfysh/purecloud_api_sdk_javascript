@@ -25,11 +25,11 @@ function NotificationsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
+   "nextUri": "",
    "lastUri": "",
    "previousUri": "",
-   "nextUri": "",
    "pageCount": 0
 }
   */
