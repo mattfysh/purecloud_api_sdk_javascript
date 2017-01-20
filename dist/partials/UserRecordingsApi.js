@@ -15,6 +15,72 @@ function UserRecordingsApi(session) {
 }
 
 /**
+  * @summary Get a list of user recordings.
+  * @memberOf UserRecordingsApi
+  * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+UserRecordingsApi.prototype.getUserrecordings = function getUserrecordings(pageSize, pageNumber, expand){
+    var requestPath = '/api/v2/userrecordings';
+    var requestQuery = {};
+    var requestBody;
+
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["expand"] = expand;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Download a user recording.
+  * @memberOf UserRecordingsApi
+  * @instance
+  * @param {string} recordingId - User Recording ID
+  * @param {string} formatId - The desired media format.
+  WAV,
+  WEBM,
+  WAV_ULAW,
+  OGG_VORBIS,
+  OGG_OPUS,
+  NONE,
+  * @example
+  * 200 Response Example:
+  * {
+   "contentLocationUri": "",
+   "imageUri": "",
+   "thumbnails": []
+}
+  */
+UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(recordingId, formatId){
+    var requestPath = '/api/v2/userrecordings/{recordingId}/media';
+    var requestQuery = {};
+    var requestBody;
+
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    requestQuery["formatId"] = formatId;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get a user recording.
   * @memberOf UserRecordingsApi
   * @instance
@@ -184,72 +250,6 @@ UserRecordingsApi.prototype.deleteRecordingId = function deleteRecordingId(recor
     }
     requestPath = requestPath.replace('{recordingId}', recordingId);
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get a list of user recordings.
-  * @memberOf UserRecordingsApi
-  * @instance
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "selfUri": "",
-   "firstUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "pageCount": 0
-}
-  */
-UserRecordingsApi.prototype.getUserrecordings = function getUserrecordings(pageSize, pageNumber, expand){
-    var requestPath = '/api/v2/userrecordings';
-    var requestQuery = {};
-    var requestBody;
-
-    requestQuery["pageSize"] = pageSize;
-    requestQuery["pageNumber"] = pageNumber;
-    requestQuery["expand"] = expand;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Download a user recording.
-  * @memberOf UserRecordingsApi
-  * @instance
-  * @param {string} recordingId - User Recording ID
-  * @param {string} formatId - The desired media format.
-  WAV,
-  WEBM,
-  WAV_ULAW,
-  OGG_VORBIS,
-  OGG_OPUS,
-  NONE,
-  * @example
-  * 200 Response Example:
-  * {
-   "contentLocationUri": "",
-   "imageUri": "",
-   "thumbnails": []
-}
-  */
-UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(recordingId, formatId){
-    var requestPath = '/api/v2/userrecordings/{recordingId}/media';
-    var requestQuery = {};
-    var requestBody;
-
-    if(recordingId === undefined || recordingId === null){
-      throw new Error('Missing required  parameter: recordingId');
-    }
-    requestPath = requestPath.replace('{recordingId}', recordingId);
-    requestQuery["formatId"] = formatId;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 /**

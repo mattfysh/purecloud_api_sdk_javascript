@@ -34,11 +34,11 @@ function ResponseManagementApi(session) {
       "pageSize": 0,
       "pageNumber": 0,
       "total": 0,
-      "selfUri": "",
       "firstUri": "",
+      "selfUri": "",
+      "previousUri": "",
       "nextUri": "",
       "lastUri": "",
-      "previousUri": "",
       "pageCount": 0
    }
 }
@@ -58,156 +58,6 @@ ResponseManagementApi.prototype.postResponsesQuery = function postResponsesQuery
 };
 
 /**
-  * @summary Get details about an existing response library.
-  * @memberOf ResponseManagementApi
-  * @instance
-  * @param {string} libraryId - Library ID
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "version": 0,
-   "createdBy": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "manager": {},
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "locations": [],
-      "selfUri": ""
-   },
-   "dateCreated": "",
-   "selfUri": ""
-}
-  */
-ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLibraryId(libraryId){
-    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(libraryId === undefined || libraryId === null){
-      throw new Error('Missing required  parameter: libraryId');
-    }
-    requestPath = requestPath.replace('{libraryId}', libraryId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update an existing response library.
-  * @description Fields that can be updated: name. The most recent version is required for updates.
-  * @memberOf ResponseManagementApi
-  * @instance
-  * @param {string} libraryId - Library ID
-  * @param {} body - Library
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "version": 0,
-   "createdBy": {
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "addresses": [],
-      "title": "",
-      "username": "",
-      "manager": {},
-      "images": [],
-      "version": 0
-   },
-   "dateCreated": ""
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "version": 0,
-   "createdBy": {
-      "id": "",
-      "name": "",
-      "chat": {},
-      "department": "",
-      "email": "",
-      "primaryContactInfo": [],
-      "addresses": [],
-      "state": "",
-      "title": "",
-      "username": "",
-      "manager": {},
-      "images": [],
-      "version": 0,
-      "routingStatus": {},
-      "presence": {},
-      "conversationSummary": {},
-      "outOfOffice": {},
-      "geolocation": {},
-      "station": {},
-      "authorization": {},
-      "profileSkills": [],
-      "locations": [],
-      "selfUri": ""
-   },
-   "dateCreated": "",
-   "selfUri": ""
-}
-  */
-ResponseManagementApi.prototype.putLibrariesLibraryId = function putLibrariesLibraryId(libraryId, body){
-    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(libraryId === undefined || libraryId === null){
-      throw new Error('Missing required  parameter: libraryId');
-    }
-    requestPath = requestPath.replace('{libraryId}', libraryId);
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete an existing response library.
-  * @description This will remove any responses associated with the library.
-  * @memberOf ResponseManagementApi
-  * @instance
-  * @param {string} libraryId - Library ID
-  */
-ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrariesLibraryId(libraryId){
-    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(libraryId === undefined || libraryId === null){
-      throw new Error('Missing required  parameter: libraryId');
-    }
-    requestPath = requestPath.replace('{libraryId}', libraryId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Gets a list of existing responses.
   * @memberOf ResponseManagementApi
   * @instance
@@ -221,11 +71,11 @@ ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrar
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
-   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -494,11 +344,11 @@ ResponseManagementApi.prototype.deleteResponsesResponseId = function deleteRespo
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
-   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -583,6 +433,156 @@ ResponseManagementApi.prototype.postLibraries = function postLibraries(body){
       requestBody = body;
     }
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get details about an existing response library.
+  * @memberOf ResponseManagementApi
+  * @instance
+  * @param {string} libraryId - Library ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "manager": {},
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "locations": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "selfUri": ""
+}
+  */
+ResponseManagementApi.prototype.getLibrariesLibraryId = function getLibrariesLibraryId(libraryId){
+    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestPath = requestPath.replace('{libraryId}', libraryId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update an existing response library.
+  * @description Fields that can be updated: name. The most recent version is required for updates.
+  * @memberOf ResponseManagementApi
+  * @instance
+  * @param {string} libraryId - Library ID
+  * @param {} body - Library
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "version": 0,
+   "createdBy": {
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "addresses": [],
+      "title": "",
+      "username": "",
+      "manager": {},
+      "images": [],
+      "version": 0
+   },
+   "dateCreated": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "version": 0,
+   "createdBy": {
+      "id": "",
+      "name": "",
+      "chat": {},
+      "department": "",
+      "email": "",
+      "primaryContactInfo": [],
+      "addresses": [],
+      "state": "",
+      "title": "",
+      "username": "",
+      "manager": {},
+      "images": [],
+      "version": 0,
+      "routingStatus": {},
+      "presence": {},
+      "conversationSummary": {},
+      "outOfOffice": {},
+      "geolocation": {},
+      "station": {},
+      "authorization": {},
+      "profileSkills": [],
+      "locations": [],
+      "selfUri": ""
+   },
+   "dateCreated": "",
+   "selfUri": ""
+}
+  */
+ResponseManagementApi.prototype.putLibrariesLibraryId = function putLibrariesLibraryId(libraryId, body){
+    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestPath = requestPath.replace('{libraryId}', libraryId);
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete an existing response library.
+  * @description This will remove any responses associated with the library.
+  * @memberOf ResponseManagementApi
+  * @instance
+  * @param {string} libraryId - Library ID
+  */
+ResponseManagementApi.prototype.deleteLibrariesLibraryId = function deleteLibrariesLibraryId(libraryId){
+    var requestPath = '/api/v2/responsemanagement/libraries/{libraryId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(libraryId === undefined || libraryId === null){
+      throw new Error('Missing required  parameter: libraryId');
+    }
+    requestPath = requestPath.replace('{libraryId}', libraryId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 

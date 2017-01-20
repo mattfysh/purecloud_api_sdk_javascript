@@ -15,63 +15,30 @@ function IdentityProviderApi(session) {
 }
 
 /**
-  * @summary Get an identity provider
+  * @summary The list of identity providers
   * @memberOf IdentityProviderApi
   * @instance
   * @example
   * 200 Response Example:
   * {
-   "id": "",
-   "name": "",
-   "disabled": true,
-   "selfUri": ""
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
-IdentityProviderApi.prototype.getProviderId = function getProviderId(){
-    var requestPath = '/api/v2/identityproviders/{providerId}';
+IdentityProviderApi.prototype.getIdentityproviders = function getIdentityproviders(){
+    var requestPath = '/api/v2/identityproviders';
     var requestQuery = {};
     var requestBody;
 
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update an identity provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @param {} body - Provider
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "disabled": true
-}
-  */
-IdentityProviderApi.prototype.putProviderId = function putProviderId(body){
-    var requestPath = '/api/v2/identityproviders/{providerId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete an identity provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  */
-IdentityProviderApi.prototype.deleteProviderId = function deleteProviderId(){
-    var requestPath = '/api/v2/identityproviders/{providerId}';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -85,8 +52,8 @@ IdentityProviderApi.prototype.deleteProviderId = function deleteProviderId(){
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -110,8 +77,8 @@ IdentityProviderApi.prototype.getAdfs = function getAdfs(){
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
@@ -152,8 +119,8 @@ IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
    "id": "",
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -176,8 +143,8 @@ IdentityProviderApi.prototype.getCic = function getCic(){
   * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
@@ -202,6 +169,138 @@ IdentityProviderApi.prototype.putCic = function putCic(body){
   */
 IdentityProviderApi.prototype.deleteCic = function deleteCic(){
     var requestPath = '/api/v2/identityproviders/cic';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get Salesforce Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
+  */
+IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
+    var requestPath = '/api/v2/identityproviders/salesforce';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create Salesforce Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putSalesforce = function putSalesforce(body){
+    var requestPath = '/api/v2/identityproviders/salesforce';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Salesforce Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  */
+IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
+    var requestPath = '/api/v2/identityproviders/salesforce';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get OneLogin Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
+  */
+IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
+    var requestPath = '/api/v2/identityproviders/onelogin';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create OneLogin Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
+    var requestPath = '/api/v2/identityproviders/onelogin';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete OneLogin Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  */
+IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
+    var requestPath = '/api/v2/identityproviders/onelogin';
     var requestQuery = {};
     var requestBody;
 
@@ -269,6 +368,66 @@ IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
 };
 
 /**
+  * @summary Get an identity provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "disabled": true,
+   "selfUri": ""
+}
+  */
+IdentityProviderApi.prototype.getProviderId = function getProviderId(){
+    var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update an identity provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putProviderId = function putProviderId(body){
+    var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete an identity provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  */
+IdentityProviderApi.prototype.deleteProviderId = function deleteProviderId(){
+    var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get Okta Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
@@ -278,8 +437,8 @@ IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
    "id": "",
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -302,8 +461,8 @@ IdentityProviderApi.prototype.getOkta = function getOkta(){
   * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
@@ -332,165 +491,6 @@ IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
     var requestBody;
 
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get OneLogin Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true,
-   "selfUri": ""
-}
-  */
-IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
-    var requestPath = '/api/v2/identityproviders/onelogin';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update/Create OneLogin Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @param {} body - Provider
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-  */
-IdentityProviderApi.prototype.putOnelogin = function putOnelogin(body){
-    var requestPath = '/api/v2/identityproviders/onelogin';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete OneLogin Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  */
-IdentityProviderApi.prototype.deleteOnelogin = function deleteOnelogin(){
-    var requestPath = '/api/v2/identityproviders/onelogin';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get Salesforce Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true,
-   "selfUri": ""
-}
-  */
-IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
-    var requestPath = '/api/v2/identityproviders/salesforce';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update/Create Salesforce Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @param {} body - Provider
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-  */
-IdentityProviderApi.prototype.putSalesforce = function putSalesforce(body){
-    var requestPath = '/api/v2/identityproviders/salesforce';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete Salesforce Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  */
-IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
-    var requestPath = '/api/v2/identityproviders/salesforce';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary The list of identity providers
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "selfUri": "",
-   "firstUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "pageCount": 0
-}
-  */
-IdentityProviderApi.prototype.getIdentityproviders = function getIdentityproviders(){
-    var requestPath = '/api/v2/identityproviders';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
 

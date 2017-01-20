@@ -15,21 +15,78 @@ function OAuthApi(session) {
 }
 
 /**
-  * @summary Regenerate Client Secret
-  * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
+  * @summary The list of OAuth clients
   * @memberOf OAuthApi
   * @instance
-  * @param {string} clientId - Client ID
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
   */
-OAuthApi.prototype.postClientsClientIdSecret = function postClientsClientIdSecret(clientId){
-    var requestPath = '/api/v2/oauth/clients/{clientId}/secret';
+OAuthApi.prototype.getClients = function getClients(){
+    var requestPath = '/api/v2/oauth/clients';
     var requestQuery = {};
     var requestBody;
 
-    if(clientId === undefined || clientId === null){
-      throw new Error('Missing required  parameter: clientId');
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Create OAuth client
+  * @description The OAuth Grant/Client is required in order to create an authentication token and gain access to PureCloud. 
+The preferred authorizedGrantTypes is 'CODE' which requires applications to send a client ID and client secret. This is typically a web server. 
+If the client is unable to secure the client secret then the 'TOKEN' grant type aka IMPLICIT should be used. This is would be for browser or mobile apps. 
+If a client is to be used outside of the context of a user then the 'CLIENT-CREDENTIALS' grant may be used. In this case the client must be granted roles 
+via the 'roleIds' field.
+  * @memberOf OAuthApi
+  * @instance
+  * @param {} body - Client
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "accessTokenValiditySeconds": 0,
+   "description": "",
+   "registeredRedirectUri": [],
+   "secret": "",
+   "roleIds": [],
+   "authorizedGrantType": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "accessTokenValiditySeconds": 0,
+   "description": "",
+   "registeredRedirectUri": [],
+   "secret": "",
+   "roleIds": [],
+   "authorizedGrantType": "",
+   "selfUri": ""
+}
+  */
+OAuthApi.prototype.postClients = function postClients(body){
+    var requestPath = '/api/v2/oauth/clients';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
     }
-    requestPath = requestPath.replace('{clientId}', clientId);
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
@@ -132,78 +189,21 @@ OAuthApi.prototype.deleteClientsClientId = function deleteClientsClientId(client
 };
 
 /**
-  * @summary The list of OAuth clients
+  * @summary Regenerate Client Secret
+  * @description This operation will set the client secret to a randomly generated cryptographically random value. All clients must be updated with the new secret. This operation should be used with caution.
   * @memberOf OAuthApi
   * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "selfUri": "",
-   "firstUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "previousUri": "",
-   "pageCount": 0
-}
+  * @param {string} clientId - Client ID
   */
-OAuthApi.prototype.getClients = function getClients(){
-    var requestPath = '/api/v2/oauth/clients';
+OAuthApi.prototype.postClientsClientIdSecret = function postClientsClientIdSecret(clientId){
+    var requestPath = '/api/v2/oauth/clients/{clientId}/secret';
     var requestQuery = {};
     var requestBody;
 
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Create OAuth client
-  * @description The OAuth Grant/Client is required in order to create an authentication token and gain access to PureCloud. 
-The preferred authorizedGrantTypes is 'CODE' which requires applications to send a client ID and client secret. This is typically a web server. 
-If the client is unable to secure the client secret then the 'TOKEN' grant type aka IMPLICIT should be used. This is would be for browser or mobile apps. 
-If a client is to be used outside of the context of a user then the 'CLIENT-CREDENTIALS' grant may be used. In this case the client must be granted roles 
-via the 'roleIds' field.
-  * @memberOf OAuthApi
-  * @instance
-  * @param {} body - Client
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "accessTokenValiditySeconds": 0,
-   "description": "",
-   "registeredRedirectUri": [],
-   "secret": "",
-   "roleIds": [],
-   "authorizedGrantType": ""
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "accessTokenValiditySeconds": 0,
-   "description": "",
-   "registeredRedirectUri": [],
-   "secret": "",
-   "roleIds": [],
-   "authorizedGrantType": "",
-   "selfUri": ""
-}
-  */
-OAuthApi.prototype.postClients = function postClients(body){
-    var requestPath = '/api/v2/oauth/clients';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
+    if(clientId === undefined || clientId === null){
+      throw new Error('Missing required  parameter: clientId');
     }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
+    requestPath = requestPath.replace('{clientId}', clientId);
     return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 

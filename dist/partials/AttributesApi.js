@@ -157,11 +157,11 @@ AttributesApi.prototype.deleteAttributeId = function deleteAttributeId(attribute
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
-   "previousUri": "",
    "pageCount": 0
 }
   */
@@ -192,11 +192,11 @@ AttributesApi.prototype.postQuery = function postQuery(body){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
-   "previousUri": "",
    "pageCount": 0
 }
   */

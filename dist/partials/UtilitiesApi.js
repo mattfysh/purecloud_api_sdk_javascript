@@ -45,11 +45,11 @@ UtilitiesApi.prototype.getDate = function getDate(){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
    "nextUri": "",
    "lastUri": "",
-   "previousUri": "",
    "pageCount": 0
 }
   */
