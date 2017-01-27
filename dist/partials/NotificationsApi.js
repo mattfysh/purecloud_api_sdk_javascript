@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class NotificationsApi
 * @example
@@ -31,53 +32,6 @@ NotificationsApi.prototype.getAvailabletopics = function getAvailabletopics(expa
 
     requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary The list of existing channels
-  * @memberOf NotificationsApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "lastUri": "",
-   "nextUri": "",
-   "pageCount": 0
-}
-  */
-NotificationsApi.prototype.getChannels = function getChannels(){
-    var requestPath = '/api/v2/notifications/channels';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Create a new channel
-  * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
-  * @memberOf NotificationsApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "connectUri": ""
-}
-  */
-NotificationsApi.prototype.postChannels = function postChannels(){
-    var requestPath = '/api/v2/notifications/channels';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -193,6 +147,53 @@ NotificationsApi.prototype.deleteChannelsChannelIdSubscriptions = function delet
     }
     requestPath = requestPath.replace('{channelId}', channelId);
     return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary The list of existing channels
+  * @memberOf NotificationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
+}
+  */
+NotificationsApi.prototype.getChannels = function getChannels(){
+    var requestPath = '/api/v2/notifications/channels';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Create a new channel
+  * @description There is a limit of 10 channels. Creating an 11th channel will remove the channel with oldest last used date.
+  * @memberOf NotificationsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "connectUri": ""
+}
+  */
+NotificationsApi.prototype.postChannels = function postChannels(){
+    var requestPath = '/api/v2/notifications/channels';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 

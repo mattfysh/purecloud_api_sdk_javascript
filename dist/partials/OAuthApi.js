@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class OAuthApi
 * @example
@@ -24,11 +25,11 @@ function OAuthApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "lastUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -58,7 +59,8 @@ via the 'roleIds' field.
    "description": "",
    "registeredRedirectUri": [],
    "secret": "",
-   "roleIds": []
+   "roleIds": [],
+   "authorizedGrantType": ""
 }
   * @example
   * 200 Response Example:
@@ -133,7 +135,8 @@ OAuthApi.prototype.getClientsClientId = function getClientsClientId(clientId){
    "description": "",
    "registeredRedirectUri": [],
    "secret": "",
-   "roleIds": []
+   "roleIds": [],
+   "authorizedGrantType": ""
 }
   * @example
   * 200 Response Example:

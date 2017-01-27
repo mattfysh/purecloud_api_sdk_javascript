@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class StationsApi
 * @example
@@ -21,6 +22,7 @@ function StationsApi(session) {
   * @param {integer} pageNumber - Page number
   * @param {string} sortBy - Sort by
   * @param {string} name - Name
+  * @param {string} id - Comma separated list of stationIds
   * @param {string} lineAppearanceId - lineAppearanceId
   * @example
   * 200 Response Example:
@@ -29,15 +31,15 @@ function StationsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "lastUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
-StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, sortBy, name, lineAppearanceId){
+StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, sortBy, name, id, lineAppearanceId){
     var requestPath = '/api/v2/stations';
     var requestQuery = {};
     var requestBody;
@@ -46,6 +48,7 @@ StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, s
     requestQuery["pageNumber"] = pageNumber;
     requestQuery["sortBy"] = sortBy;
     requestQuery["name"] = name;
+    requestQuery["id"] = id;
     requestQuery["lineAppearanceId"] = lineAppearanceId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };

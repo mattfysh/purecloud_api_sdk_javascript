@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class UserRecordingsApi
 * @example
@@ -27,11 +28,11 @@ function UserRecordingsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "lastUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -47,22 +48,35 @@ UserRecordingsApi.prototype.getUserrecordings = function getUserrecordings(pageS
 };
 
 /**
-  * @summary Get user recording summary
+  * @summary Download a user recording.
   * @memberOf UserRecordingsApi
   * @instance
+  * @param {string} recordingId - User Recording ID
+  * @param {string} formatId - The desired media format.
+  WAV,
+  WEBM,
+  WAV_ULAW,
+  OGG_VORBIS,
+  OGG_OPUS,
+  NONE,
   * @example
   * 200 Response Example:
   * {
-   "readCount": 0,
-   "unreadCount": 0,
-   "totalCount": 0
+   "contentLocationUri": "",
+   "imageUri": "",
+   "thumbnails": []
 }
   */
-UserRecordingsApi.prototype.getSummary = function getSummary(){
-    var requestPath = '/api/v2/userrecordings/summary';
+UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(recordingId, formatId){
+    var requestPath = '/api/v2/userrecordings/{recordingId}/media';
     var requestQuery = {};
     var requestBody;
 
+    if(recordingId === undefined || recordingId === null){
+      throw new Error('Missing required  parameter: recordingId');
+    }
+    requestPath = requestPath.replace('{recordingId}', recordingId);
+    requestQuery["formatId"] = formatId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -239,35 +253,22 @@ UserRecordingsApi.prototype.deleteRecordingId = function deleteRecordingId(recor
 };
 
 /**
-  * @summary Download a user recording.
+  * @summary Get user recording summary
   * @memberOf UserRecordingsApi
   * @instance
-  * @param {string} recordingId - User Recording ID
-  * @param {string} formatId - The desired media format.
-  WAV,
-  WEBM,
-  WAV_ULAW,
-  OGG_VORBIS,
-  OGG_OPUS,
-  NONE,
   * @example
   * 200 Response Example:
   * {
-   "contentLocationUri": "",
-   "imageUri": "",
-   "thumbnails": []
+   "readCount": 0,
+   "unreadCount": 0,
+   "totalCount": 0
 }
   */
-UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(recordingId, formatId){
-    var requestPath = '/api/v2/userrecordings/{recordingId}/media';
+UserRecordingsApi.prototype.getSummary = function getSummary(){
+    var requestPath = '/api/v2/userrecordings/summary';
     var requestQuery = {};
     var requestBody;
 
-    if(recordingId === undefined || recordingId === null){
-      throw new Error('Missing required  parameter: recordingId');
-    }
-    requestPath = requestPath.replace('{recordingId}', recordingId);
-    requestQuery["formatId"] = formatId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

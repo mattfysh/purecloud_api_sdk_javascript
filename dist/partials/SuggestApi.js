@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class SuggestApi
 * @example
@@ -18,7 +19,7 @@ function SuggestApi(session) {
   * @memberOf SuggestApi
   * @instance
   * @param {string} q64 - q64
-  * @param {array} expand - expand
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @param {boolean} profile - profile
   * @example
   * 200 Response Example:
@@ -39,6 +40,10 @@ function SuggestApi(session) {
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -48,11 +53,7 @@ function SuggestApi(session) {
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -62,6 +63,10 @@ function SuggestApi(session) {
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -71,11 +76,7 @@ function SuggestApi(session) {
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */
@@ -131,6 +132,10 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -140,11 +145,7 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -154,6 +155,10 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -163,11 +168,7 @@ SuggestApi.prototype.getSearch = function getSearch(q64, expand, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */
@@ -191,6 +192,7 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
   * @memberOf SuggestApi
   * @instance
   * @param {string} q64 - q64
+  * @param {array} expand - Which fields, if any, to expand Valid Values: routingStatus, presence, conversationSummary, outOfOffice, geolocation, station, authorization, profileSkills, locations
   * @param {boolean} profile - profile
   * @example
   * 200 Response Example:
@@ -211,6 +213,10 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -220,11 +226,7 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -234,6 +236,10 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -243,15 +249,11 @@ SuggestApi.prototype.postSearch = function postSearch(body, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */
-SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
+SuggestApi.prototype.getSuggest = function getSuggest(q64, expand, profile){
     var requestPath = '/api/v2/search/suggest';
     var requestQuery = {};
     var requestBody;
@@ -260,6 +262,7 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       throw new Error('Missing required  parameter: q64');
     }
     requestQuery["q64"] = q64;
+    requestQuery["expand"] = expand;
     requestQuery["profile"] = profile;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
@@ -273,6 +276,7 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
   * @example
   * Body Example:
   * {
+   "expand": [],
    "types": [],
    "query": []
 }
@@ -295,6 +299,10 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -304,11 +312,7 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    },
    "aggregations": {
       "array": true,
@@ -318,6 +322,10 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "boolean": true,
       "number": true,
       "float": true,
+      "valueNode": true,
+      "containerNode": true,
+      "missingNode": true,
+      "pojo": true,
       "integralNumber": true,
       "floatingPointNumber": true,
       "short": true,
@@ -327,11 +335,7 @@ SuggestApi.prototype.getSuggest = function getSuggest(q64, profile){
       "bigDecimal": true,
       "bigInteger": true,
       "textual": true,
-      "binary": true,
-      "valueNode": true,
-      "containerNode": true,
-      "missingNode": true,
-      "pojo": true
+      "binary": true
    }
 }
   */

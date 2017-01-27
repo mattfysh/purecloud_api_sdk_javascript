@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class UtilitiesApi
 * @example
@@ -12,36 +13,6 @@ function UtilitiesApi(session) {
     }
     this.session = session;
 }
-
-/**
-  * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
-  * @memberOf UtilitiesApi
-  * @instance
-  * @param {} body - Certificate
-  * @example
-  * Body Example:
-  * {
-   "certificate": ""
-}
-  * @example
-  * 200 Response Example:
-  * {
-   "certificateDetails": []
-}
-  */
-UtilitiesApi.prototype.postDetails = function postDetails(body){
-    var requestPath = '/api/v2/certificate/details';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
-};
 
 /**
   * @summary Get the current system date/time
@@ -74,11 +45,11 @@ UtilitiesApi.prototype.getDate = function getDate(){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "lastUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -90,6 +61,36 @@ UtilitiesApi.prototype.getTimezones = function getTimezones(pageSize, pageNumber
     requestQuery["pageSize"] = pageSize;
     requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Returns the information about an X509 PEM encoded certificate or certificate chain.
+  * @memberOf UtilitiesApi
+  * @instance
+  * @param {} body - Certificate
+  * @example
+  * Body Example:
+  * {
+   "certificate": ""
+}
+  * @example
+  * 200 Response Example:
+  * {
+   "certificateDetails": []
+}
+  */
+UtilitiesApi.prototype.postDetails = function postDetails(body){
+    var requestPath = '/api/v2/certificate/details';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('POST', requestPath, requestQuery, requestBody);
 };
 
 

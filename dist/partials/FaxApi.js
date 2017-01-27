@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class FaxApi
 * @example
@@ -12,37 +13,6 @@ function FaxApi(session) {
     }
     this.session = session;
 }
-
-/**
-  * @summary Get a list of fax documents.
-  * @memberOf FaxApi
-  * @instance
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "selfUri": "",
-   "firstUri": "",
-   "previousUri": "",
-   "lastUri": "",
-   "nextUri": "",
-   "pageCount": 0
-}
-  */
-FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
-    var requestPath = '/api/v2/fax/documents';
-    var requestQuery = {};
-    var requestBody;
-
-    requestQuery["pageSize"] = pageSize;
-    requestQuery["pageNumber"] = pageNumber;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
 
 /**
   * @summary Get a document.
@@ -194,6 +164,26 @@ FaxApi.prototype.deleteDocumentsDocumentId = function deleteDocumentsDocumentId(
 };
 
 /**
+  * @summary Get fax summary
+  * @memberOf FaxApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "readCount": 0,
+   "unreadCount": 0,
+   "totalCount": 0
+}
+  */
+FaxApi.prototype.getSummary = function getSummary(){
+    var requestPath = '/api/v2/fax/summary';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Download a fax document.
   * @memberOf FaxApi
   * @instance
@@ -219,22 +209,33 @@ FaxApi.prototype.getDocumentsDocumentIdContent = function getDocumentsDocumentId
 };
 
 /**
-  * @summary Get fax summary
+  * @summary Get a list of fax documents.
   * @memberOf FaxApi
   * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
   * @example
   * 200 Response Example:
   * {
-   "readCount": 0,
-   "unreadCount": 0,
-   "totalCount": 0
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "firstUri": "",
+   "selfUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
-FaxApi.prototype.getSummary = function getSummary(){
-    var requestPath = '/api/v2/fax/summary';
+FaxApi.prototype.getDocuments = function getDocuments(pageSize, pageNumber){
+    var requestPath = '/api/v2/fax/documents';
     var requestQuery = {};
     var requestBody;
 
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

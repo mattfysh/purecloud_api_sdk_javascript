@@ -1,3 +1,4 @@
+/*jshint -W069 */
 /**
 * @class IdentityProviderApi
 * @example
@@ -24,11 +25,11 @@ function IdentityProviderApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "selfUri": "",
    "firstUri": "",
+   "selfUri": "",
    "previousUri": "",
-   "lastUri": "",
    "nextUri": "",
+   "lastUri": "",
    "pageCount": 0
 }
   */
@@ -51,8 +52,8 @@ IdentityProviderApi.prototype.getIdentityproviders = function getIdentityprovide
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -76,8 +77,8 @@ IdentityProviderApi.prototype.getAdfs = function getAdfs(){
    "name": "",
    "relyingPartyIdentifier": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
@@ -118,8 +119,8 @@ IdentityProviderApi.prototype.deleteAdfs = function deleteAdfs(){
    "id": "",
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -142,8 +143,8 @@ IdentityProviderApi.prototype.getCic = function getCic(){
   * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
@@ -175,7 +176,7 @@ IdentityProviderApi.prototype.deleteCic = function deleteCic(){
 };
 
 /**
-  * @summary Get Okta Identity Provider
+  * @summary Get Salesforce Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @example
@@ -184,14 +185,14 @@ IdentityProviderApi.prototype.deleteCic = function deleteCic(){
    "id": "",
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
   */
-IdentityProviderApi.prototype.getOkta = function getOkta(){
-    var requestPath = '/api/v2/identityproviders/okta';
+IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
+    var requestPath = '/api/v2/identityproviders/salesforce';
     var requestQuery = {};
     var requestBody;
 
@@ -199,7 +200,7 @@ IdentityProviderApi.prototype.getOkta = function getOkta(){
 };
 
 /**
-  * @summary Update/Create Okta Identity Provider
+  * @summary Update/Create Salesforce Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   * @param {} body - Provider
@@ -208,13 +209,13 @@ IdentityProviderApi.prototype.getOkta = function getOkta(){
   * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
-IdentityProviderApi.prototype.putOkta = function putOkta(body){
-    var requestPath = '/api/v2/identityproviders/okta';
+IdentityProviderApi.prototype.putSalesforce = function putSalesforce(body){
+    var requestPath = '/api/v2/identityproviders/salesforce';
     var requestQuery = {};
     var requestBody;
 
@@ -228,12 +229,12 @@ IdentityProviderApi.prototype.putOkta = function putOkta(body){
 };
 
 /**
-  * @summary Delete Okta Identity Provider
+  * @summary Delete Salesforce Identity Provider
   * @memberOf IdentityProviderApi
   * @instance
   */
-IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
-    var requestPath = '/api/v2/identityproviders/okta';
+IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
+    var requestPath = '/api/v2/identityproviders/salesforce';
     var requestQuery = {};
     var requestBody;
 
@@ -250,8 +251,8 @@ IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
    "id": "",
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true,
    "selfUri": ""
 }
@@ -274,8 +275,8 @@ IdentityProviderApi.prototype.getOnelogin = function getOnelogin(){
   * {
    "name": "",
    "certificate": "",
-   "issuerURI": "",
    "ssoTargetURI": "",
+   "issuerURI": "",
    "disabled": true
 }
   */
@@ -367,72 +368,6 @@ IdentityProviderApi.prototype.deletePurecloud = function deletePurecloud(){
 };
 
 /**
-  * @summary Get Salesforce Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true,
-   "selfUri": ""
-}
-  */
-IdentityProviderApi.prototype.getSalesforce = function getSalesforce(){
-    var requestPath = '/api/v2/identityproviders/salesforce';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Update/Create Salesforce Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  * @param {} body - Provider
-  * @example
-  * Body Example:
-  * {
-   "name": "",
-   "certificate": "",
-   "issuerURI": "",
-   "ssoTargetURI": "",
-   "disabled": true
-}
-  */
-IdentityProviderApi.prototype.putSalesforce = function putSalesforce(body){
-    var requestPath = '/api/v2/identityproviders/salesforce';
-    var requestQuery = {};
-    var requestBody;
-
-    if(body === undefined || body === null){
-      throw new Error('Missing required  parameter: body');
-    }
-    if(body !== undefined && body !== null){
-      requestBody = body;
-    }
-    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Delete Salesforce Identity Provider
-  * @memberOf IdentityProviderApi
-  * @instance
-  */
-IdentityProviderApi.prototype.deleteSalesforce = function deleteSalesforce(){
-    var requestPath = '/api/v2/identityproviders/salesforce';
-    var requestQuery = {};
-    var requestBody;
-
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Get an identity provider
   * @memberOf IdentityProviderApi
   * @instance
@@ -486,6 +421,72 @@ IdentityProviderApi.prototype.putProviderId = function putProviderId(body){
   */
 IdentityProviderApi.prototype.deleteProviderId = function deleteProviderId(){
     var requestPath = '/api/v2/identityproviders/{providerId}';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get Okta Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": "",
+   "disabled": true,
+   "selfUri": ""
+}
+  */
+IdentityProviderApi.prototype.getOkta = function getOkta(){
+    var requestPath = '/api/v2/identityproviders/okta';
+    var requestQuery = {};
+    var requestBody;
+
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Update/Create Okta Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  * @param {} body - Provider
+  * @example
+  * Body Example:
+  * {
+   "name": "",
+   "certificate": "",
+   "ssoTargetURI": "",
+   "issuerURI": "",
+   "disabled": true
+}
+  */
+IdentityProviderApi.prototype.putOkta = function putOkta(body){
+    var requestPath = '/api/v2/identityproviders/okta';
+    var requestQuery = {};
+    var requestBody;
+
+    if(body === undefined || body === null){
+      throw new Error('Missing required  parameter: body');
+    }
+    if(body !== undefined && body !== null){
+      requestBody = body;
+    }
+    return this.session.makeRequest('PUT', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Delete Okta Identity Provider
+  * @memberOf IdentityProviderApi
+  * @instance
+  */
+IdentityProviderApi.prototype.deleteOkta = function deleteOkta(){
+    var requestPath = '/api/v2/identityproviders/okta';
     var requestQuery = {};
     var requestBody;
 
