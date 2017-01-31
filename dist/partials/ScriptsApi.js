@@ -15,42 +15,6 @@ function ScriptsApi(session) {
 }
 
 /**
-  * @summary Get the published script.
-  * @memberOf ScriptsApi
-  * @instance
-  * @param {string} scriptId - Script ID
-  * @example
-  * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "versionId": "",
-   "createdDate": "",
-   "modifiedDate": "",
-   "publishedDate": "",
-   "versionDate": "",
-   "startPageId": "",
-   "startPageName": "",
-   "features": {},
-   "variables": {},
-   "customActions": {},
-   "pages": [],
-   "selfUri": ""
-}
-  */
-ScriptsApi.prototype.getPublishedScriptId = function getPublishedScriptId(scriptId){
-    var requestPath = '/api/v2/scripts/published/{scriptId}';
-    var requestQuery = {};
-    var requestBody;
-
-    if(scriptId === undefined || scriptId === null){
-      throw new Error('Missing required  parameter: scriptId');
-    }
-    requestPath = requestPath.replace('{scriptId}', scriptId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Get a script
   * @memberOf ScriptsApi
   * @instance
@@ -87,38 +51,6 @@ ScriptsApi.prototype.getScriptId = function getScriptId(scriptId){
 };
 
 /**
-  * @summary Get the list of pages
-  * @memberOf ScriptsApi
-  * @instance
-  * @param {string} scriptId - Script ID
-  * @example
-  * 200 Response Example:
-  * [
- {
-  "id": "",
-  "name": "",
-  "versionId": "",
-  "createdDate": "",
-  "modifiedDate": "",
-  "rootContainer": {},
-  "properties": {},
-  "selfUri": ""
- }
-]
-  */
-ScriptsApi.prototype.getScriptIdPages = function getScriptIdPages(scriptId){
-    var requestPath = '/api/v2/scripts/{scriptId}/pages';
-    var requestQuery = {};
-    var requestBody;
-
-    if(scriptId === undefined || scriptId === null){
-      throw new Error('Missing required  parameter: scriptId');
-    }
-    requestPath = requestPath.replace('{scriptId}', scriptId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Get the published scripts.
   * @memberOf ScriptsApi
   * @instance
@@ -135,8 +67,8 @@ ScriptsApi.prototype.getScriptIdPages = function getScriptIdPages(scriptId){
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
    "nextUri": "",
    "lastUri": "",
@@ -158,27 +90,84 @@ ScriptsApi.prototype.getPublished = function getPublished(pageSize, pageNumber, 
 };
 
 /**
-  * @summary Get the list of published pages
+  * @summary Get the published script.
   * @memberOf ScriptsApi
   * @instance
   * @param {string} scriptId - Script ID
   * @example
   * 200 Response Example:
-  * [
- {
-  "id": "",
-  "name": "",
-  "versionId": "",
-  "createdDate": "",
-  "modifiedDate": "",
-  "rootContainer": {},
-  "properties": {},
-  "selfUri": ""
- }
-]
+  * {
+   "id": "",
+   "name": "",
+   "versionId": "",
+   "createdDate": "",
+   "modifiedDate": "",
+   "publishedDate": "",
+   "versionDate": "",
+   "startPageId": "",
+   "startPageName": "",
+   "features": {},
+   "variables": {},
+   "customActions": {},
+   "pages": [],
+   "selfUri": ""
+}
   */
-ScriptsApi.prototype.getPublishedScriptIdPages = function getPublishedScriptIdPages(scriptId){
-    var requestPath = '/api/v2/scripts/published/{scriptId}/pages';
+ScriptsApi.prototype.getPublishedScriptId = function getPublishedScriptId(scriptId){
+    var requestPath = '/api/v2/scripts/published/{scriptId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(scriptId === undefined || scriptId === null){
+      throw new Error('Missing required  parameter: scriptId');
+    }
+    requestPath = requestPath.replace('{scriptId}', scriptId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the published page.
+  * @memberOf ScriptsApi
+  * @instance
+  * @param {string} scriptId - Script ID
+  * @param {string} pageId - Page ID
+  * @example
+  * 200 Response Example:
+  * {
+   "id": "",
+   "name": "",
+   "versionId": "",
+   "createdDate": "",
+   "modifiedDate": "",
+   "rootContainer": {},
+   "properties": {},
+   "selfUri": ""
+}
+  */
+ScriptsApi.prototype.getPublishedScriptIdPagesPageId = function getPublishedScriptIdPagesPageId(scriptId, pageId){
+    var requestPath = '/api/v2/scripts/published/{scriptId}/pages/{pageId}';
+    var requestQuery = {};
+    var requestBody;
+
+    if(scriptId === undefined || scriptId === null){
+      throw new Error('Missing required  parameter: scriptId');
+    }
+    requestPath = requestPath.replace('{scriptId}', scriptId);
+    if(pageId === undefined || pageId === null){
+      throw new Error('Missing required  parameter: pageId');
+    }
+    requestPath = requestPath.replace('{pageId}', pageId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get the published variables
+  * @memberOf ScriptsApi
+  * @instance
+  * @param {string} scriptId - Script ID
+  */
+ScriptsApi.prototype.getPublishedScriptIdVariables = function getPublishedScriptIdVariables(scriptId){
+    var requestPath = '/api/v2/scripts/published/{scriptId}/variables';
     var requestQuery = {};
     var requestBody;
 
@@ -225,6 +214,38 @@ ScriptsApi.prototype.getScriptIdPagesPageId = function getScriptIdPagesPageId(sc
 };
 
 /**
+  * @summary Get the list of published pages
+  * @memberOf ScriptsApi
+  * @instance
+  * @param {string} scriptId - Script ID
+  * @example
+  * 200 Response Example:
+  * [
+ {
+  "id": "",
+  "name": "",
+  "versionId": "",
+  "createdDate": "",
+  "modifiedDate": "",
+  "rootContainer": {},
+  "properties": {},
+  "selfUri": ""
+ }
+]
+  */
+ScriptsApi.prototype.getPublishedScriptIdPages = function getPublishedScriptIdPages(scriptId){
+    var requestPath = '/api/v2/scripts/published/{scriptId}/pages';
+    var requestQuery = {};
+    var requestBody;
+
+    if(scriptId === undefined || scriptId === null){
+      throw new Error('Missing required  parameter: scriptId');
+    }
+    requestPath = requestPath.replace('{scriptId}', scriptId);
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
   * @summary Get the list of scripts
   * @memberOf ScriptsApi
   * @instance
@@ -247,8 +268,8 @@ ScriptsApi.prototype.getScriptIdPagesPageId = function getScriptIdPagesPageId(sc
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
    "nextUri": "",
    "lastUri": "",
@@ -272,44 +293,27 @@ ScriptsApi.prototype.getScripts = function getScripts(pageSize, pageNumber, expa
 };
 
 /**
-  * @summary Get the published variables
+  * @summary Get the list of pages
   * @memberOf ScriptsApi
   * @instance
   * @param {string} scriptId - Script ID
-  */
-ScriptsApi.prototype.getPublishedScriptIdVariables = function getPublishedScriptIdVariables(scriptId){
-    var requestPath = '/api/v2/scripts/published/{scriptId}/variables';
-    var requestQuery = {};
-    var requestBody;
-
-    if(scriptId === undefined || scriptId === null){
-      throw new Error('Missing required  parameter: scriptId');
-    }
-    requestPath = requestPath.replace('{scriptId}', scriptId);
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Get the published page.
-  * @memberOf ScriptsApi
-  * @instance
-  * @param {string} scriptId - Script ID
-  * @param {string} pageId - Page ID
   * @example
   * 200 Response Example:
-  * {
-   "id": "",
-   "name": "",
-   "versionId": "",
-   "createdDate": "",
-   "modifiedDate": "",
-   "rootContainer": {},
-   "properties": {},
-   "selfUri": ""
-}
+  * [
+ {
+  "id": "",
+  "name": "",
+  "versionId": "",
+  "createdDate": "",
+  "modifiedDate": "",
+  "rootContainer": {},
+  "properties": {},
+  "selfUri": ""
+ }
+]
   */
-ScriptsApi.prototype.getPublishedScriptIdPagesPageId = function getPublishedScriptIdPagesPageId(scriptId, pageId){
-    var requestPath = '/api/v2/scripts/published/{scriptId}/pages/{pageId}';
+ScriptsApi.prototype.getScriptIdPages = function getScriptIdPages(scriptId){
+    var requestPath = '/api/v2/scripts/{scriptId}/pages';
     var requestQuery = {};
     var requestBody;
 
@@ -317,10 +321,6 @@ ScriptsApi.prototype.getPublishedScriptIdPagesPageId = function getPublishedScri
       throw new Error('Missing required  parameter: scriptId');
     }
     requestPath = requestPath.replace('{scriptId}', scriptId);
-    if(pageId === undefined || pageId === null){
-      throw new Error('Missing required  parameter: pageId');
-    }
-    requestPath = requestPath.replace('{pageId}', pageId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 

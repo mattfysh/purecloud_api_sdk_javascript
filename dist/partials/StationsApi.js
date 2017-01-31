@@ -31,8 +31,8 @@ function StationsApi(session) {
    "pageSize": 0,
    "pageNumber": 0,
    "total": 0,
-   "firstUri": "",
    "selfUri": "",
+   "firstUri": "",
    "previousUri": "",
    "nextUri": "",
    "lastUri": "",
@@ -51,6 +51,24 @@ StationsApi.prototype.getStations = function getStations(pageSize, pageNumber, s
     requestQuery["id"] = id;
     requestQuery["lineAppearanceId"] = lineAppearanceId;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Unassigns the user assigned to this station
+  * @memberOf StationsApi
+  * @instance
+  * @param {string} stationId - Station ID
+  */
+StationsApi.prototype.deleteStationIdAssociateduser = function deleteStationIdAssociateduser(stationId){
+    var requestPath = '/api/v2/stations/{stationId}/associateduser';
+    var requestQuery = {};
+    var requestBody;
+
+    if(stationId === undefined || stationId === null){
+      throw new Error('Missing required  parameter: stationId');
+    }
+    requestPath = requestPath.replace('{stationId}', stationId);
+    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 /**
@@ -91,24 +109,6 @@ StationsApi.prototype.getStationId = function getStationId(stationId){
     }
     requestPath = requestPath.replace('{stationId}', stationId);
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
-  * @summary Unassigns the user assigned to this station
-  * @memberOf StationsApi
-  * @instance
-  * @param {string} stationId - Station ID
-  */
-StationsApi.prototype.deleteStationIdAssociateduser = function deleteStationIdAssociateduser(stationId){
-    var requestPath = '/api/v2/stations/{stationId}/associateduser';
-    var requestQuery = {};
-    var requestBody;
-
-    if(stationId === undefined || stationId === null){
-      throw new Error('Missing required  parameter: stationId');
-    }
-    requestPath = requestPath.replace('{stationId}', stationId);
-    return this.session.makeRequest('DELETE', requestPath, requestQuery, requestBody);
 };
 
 

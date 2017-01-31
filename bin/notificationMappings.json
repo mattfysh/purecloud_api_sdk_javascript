@@ -6,11 +6,11 @@
     },
     {
       "topic": "v2.contentmanagement.documents.{id}",
-      "class": "DocumentDataNotification"
+      "class": "DocumentDataV2Notification"
     },
     {
       "topic": "v2.contentmanagement.workspaces.{id}.documents",
-      "class": "DocumentDataNotification"
+      "class": "DocumentDataV2Notification"
     },
     {
       "topic": "v2.outbound.attemptlimits.{id}",
@@ -170,7 +170,7 @@
     },
     {
       "topic": "v2.users.{id}.fax.documents",
-      "class": "FaxDataNotification"
+      "class": "FaxDataV2Notification"
     },
     {
       "topic": "v2.users.{id}.outbound.contactlists.{id}.export",
@@ -194,7 +194,7 @@
     },
     {
       "topic": "v2.users.{id}.userrecordings",
-      "class": "RecordingDataNotification"
+      "class": "RecordingDataV2Notification"
     },
     {
       "topic": "v2.users.{id}.voicemail.messages",

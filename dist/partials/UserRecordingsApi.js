@@ -15,39 +15,6 @@ function UserRecordingsApi(session) {
 }
 
 /**
-  * @summary Get a list of user recordings.
-  * @memberOf UserRecordingsApi
-  * @instance
-  * @param {integer} pageSize - Page size
-  * @param {integer} pageNumber - Page number
-  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
-  * @example
-  * 200 Response Example:
-  * {
-   "entities": [],
-   "pageSize": 0,
-   "pageNumber": 0,
-   "total": 0,
-   "firstUri": "",
-   "selfUri": "",
-   "previousUri": "",
-   "nextUri": "",
-   "lastUri": "",
-   "pageCount": 0
-}
-  */
-UserRecordingsApi.prototype.getUserrecordings = function getUserrecordings(pageSize, pageNumber, expand){
-    var requestPath = '/api/v2/userrecordings';
-    var requestQuery = {};
-    var requestBody;
-
-    requestQuery["pageSize"] = pageSize;
-    requestQuery["pageNumber"] = pageNumber;
-    requestQuery["expand"] = expand;
-    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
-};
-
-/**
   * @summary Download a user recording.
   * @memberOf UserRecordingsApi
   * @instance
@@ -77,6 +44,26 @@ UserRecordingsApi.prototype.getRecordingIdMedia = function getRecordingIdMedia(r
     }
     requestPath = requestPath.replace('{recordingId}', recordingId);
     requestQuery["formatId"] = formatId;
+    return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
+};
+
+/**
+  * @summary Get user recording summary
+  * @memberOf UserRecordingsApi
+  * @instance
+  * @example
+  * 200 Response Example:
+  * {
+   "readCount": 0,
+   "unreadCount": 0,
+   "totalCount": 0
+}
+  */
+UserRecordingsApi.prototype.getSummary = function getSummary(){
+    var requestPath = '/api/v2/userrecordings/summary';
+    var requestQuery = {};
+    var requestBody;
+
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
@@ -253,22 +240,35 @@ UserRecordingsApi.prototype.deleteRecordingId = function deleteRecordingId(recor
 };
 
 /**
-  * @summary Get user recording summary
+  * @summary Get a list of user recordings.
   * @memberOf UserRecordingsApi
   * @instance
+  * @param {integer} pageSize - Page size
+  * @param {integer} pageNumber - Page number
+  * @param {array} expand - Which fields, if any, to expand. Valid Values: conversation
   * @example
   * 200 Response Example:
   * {
-   "readCount": 0,
-   "unreadCount": 0,
-   "totalCount": 0
+   "entities": [],
+   "pageSize": 0,
+   "pageNumber": 0,
+   "total": 0,
+   "selfUri": "",
+   "firstUri": "",
+   "previousUri": "",
+   "nextUri": "",
+   "lastUri": "",
+   "pageCount": 0
 }
   */
-UserRecordingsApi.prototype.getSummary = function getSummary(){
-    var requestPath = '/api/v2/userrecordings/summary';
+UserRecordingsApi.prototype.getUserrecordings = function getUserrecordings(pageSize, pageNumber, expand){
+    var requestPath = '/api/v2/userrecordings';
     var requestQuery = {};
     var requestBody;
 
+    requestQuery["pageSize"] = pageSize;
+    requestQuery["pageNumber"] = pageNumber;
+    requestQuery["expand"] = expand;
     return this.session.makeRequest('GET', requestPath, requestQuery, requestBody);
 };
 
